@@ -7,7 +7,8 @@
 
 <script>
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import StoreList2 from '../../components/partials/vendor/StoreList2';
+
+import StoreList2 from '~/components/partials/vendor/StoreList2';
 
 export default {
     components: {

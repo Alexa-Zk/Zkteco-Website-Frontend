@@ -12,8 +12,8 @@
 
 <script>
 import BreadCrumb2 from '~/components/elements/BreadCrumb2';
-import BlogList from '../../components/partials/blog/BlogList';
-import BlogSidebar from '../../components/partials/blog/BlogSidebar';
+import BlogList from '~/components/partials/blog/BlogList';
+import BlogSidebar from '~/components/partials/blog/BlogSidebar';
 
 export default {
     transition: 'zoom',

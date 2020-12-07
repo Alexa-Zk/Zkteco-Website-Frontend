@@ -25,8 +25,8 @@
 
 <script>
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import PostComments from '../../components/partials/post/PostComments';
-import RelatedPosts from '../../components/partials/post/RelatedPosts';
+import PostComments from '~/components/partials/post/PostComments';
+import RelatedPosts from '~/components/partials/post/RelatedPosts';
 import PostDetailDefault from '~/components/partials/post/PostDetailDefault';
 import SidebarPost from '~/components/partials/post/modules/SidebarPost';
 import PostDetailSidebar from '~/components/partials/post/PostDetailSidebar';

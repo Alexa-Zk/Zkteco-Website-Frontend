@@ -5,20 +5,20 @@
                 <h1>Our Press</h1>
                 <bread-crumb2 :breadcrumb="breadCrumb" />
             </div>
-            <blog-list />
+            <blog-sidebar layout="right" />
         </div>
     </div>
 </template>
 
 <script>
 import BreadCrumb2 from '~/components/elements/BreadCrumb2';
-import BlogList from '../../components/partials/blog/BlogList';
-import HeaderMobile from '~/components/shared/mobile/HeaderMobile';
+import BlogList from '~/components/partials/blog/BlogList';
+import BlogSidebar from '~/components/partials/blog/BlogSidebar';
 
 export default {
-     transition: 'zoom',
+    transition: 'zoom',
     components: {
-        HeaderMobile,
+        BlogSidebar,
         BlogList,
         BreadCrumb2
     },
