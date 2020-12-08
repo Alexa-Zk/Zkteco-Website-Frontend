@@ -1,6 +1,7 @@
 {
     "header": {
         "shopByDepartment": "Shop by Department",
+        "shopByCategories": "Shop by Categories",
         "wellcomeText": "Welcome to Martfury Online Shopping Store !",
         "login": "Login",
         "register": "Register",

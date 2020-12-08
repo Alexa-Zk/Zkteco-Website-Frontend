@@ -4,7 +4,7 @@
             <menu-dropdown v-if="item.subMenu" :menu-data="item" />
             <menu-mega v-else-if="item.mega" :menu-data="item" />
             <li v-else :key="item.text">
-                <nuxt-link :to="localePath(item.url)">
+                <nuxt-link :to="item.url">
                     {{ item.text }}
                 </nuxt-link>
             </li>
@@ -25,14 +25,14 @@ export default {
                 {
                     icon: 'icon-star',
                     text: this.$i18n.t('menu.menuCategories.hotPromotions'),
-                    url: '/shop'
+                    url: 'store/shop'
                 },
                 {
                     icon: 'icon-laundry',
                     text: this.$i18n.t(
                         'menu.menuCategories.consumerElectronic'
                     ),
-                    url: '/shop',
+                    url: 'store/shop',
                     extraClass: 'menu-item-has-children has-mega-menu',
                     subClass: 'sub-menu',
                     mega: true,
@@ -46,49 +46,49 @@ export default {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.homeAudioAndTheathers'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.tvAndVideos'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.cameraphotosAndVideos'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.cellphonesAndAccessories'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.headphone'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.videosgames'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.wirelessSpeakers'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.officeElectronic'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 }
                             ]
                         },
@@ -101,19 +101,19 @@ export default {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.digitalCables'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.audioAndVideoCables'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.batteries'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 }
                             ]
                         }
@@ -124,31 +124,31 @@ export default {
                     text: this.$i18n.t(
                         'menu.menuCategories.clothingAndapparel'
                     ),
-                    url: '/shop'
+                    url: 'store/shop'
                 },
                 {
                     icon: 'icon-lampshade',
                     text: this.$i18n.t(
                         'menu.menuCategories.HomeGardenAndKitchen'
                     ),
-                    url: '/shop'
+                    url: 'store/shop'
                 },
                 {
                     icon: 'icon-heart-pulse',
                     text: this.$i18n.t('menu.menuCategories.healthAndBeauty'),
-                    url: '/shop'
+                    url: 'store/shop'
                 },
                 {
                     icon: 'icon-diamond2',
                     text: this.$i18n.t('menu.menuCategories.yewelryAndWatches'),
-                    url: '/shop'
+                    url: 'store/shop'
                 },
                 {
                     icon: 'icon-desktop',
                     text: this.$i18n.t(
                         'menu.menuCategories.computerAndTechnology'
                     ),
-                    url: '/shop',
+                    url: 'store/shop',
                     extraClass: 'menu-item-has-children has-mega-menu',
                     subClass: 'sub-menu',
                     megaContent: [
@@ -161,55 +161,55 @@ export default {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.computerAndTablets'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.laptop'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.monitors'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.networking'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.driveAndStorages'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.computerComponents'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.securityAndProtection'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.gamingLaptop'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.accessories'
                                     ),
-                                    url: '/shop'
+                                    url: 'store/shop'
                                 }
                             ]
                         }
@@ -218,36 +218,36 @@ export default {
                 {
                     icon: 'icon-baby-bottle',
                     text: this.$i18n.t('menu.menuCategories.babiesAndMoms'),
-                    url: '/shop'
+                    url: 'store/shop'
                 },
                 {
                     icon: 'icon-smartphone',
                     text: this.$i18n.t(
                         'menu.menuCategories.phonesAndAccessories'
                     ),
-                    url: '/shop'
+                    url: 'store/shop'
                 },
                 {
                     icon: 'icon-book2',
                     text: this.$i18n.t('menu.menuCategories.booksAndOffice'),
-                    url: '/shop'
+                    url: 'store/shop'
                 },
                 {
                     icon: 'icon-car-siren',
                     text: this.$i18n.t('menu.menuCategories.carsAndMotocycles'),
-                    url: '/shop'
+                    url: 'store/shop'
                 },
                 {
                     icon: 'icon-wrench',
                     text: this.$i18n.t('menu.menuCategories.homeImproments'),
-                    url: '/shop'
+                    url: 'store/shop'
                 },
                 {
                     icon: 'icon-tag',
                     text: this.$i18n.t(
                         'menu.menuCategories.vouchersAndServices'
                     ),
-                    url: '/shop'
+                    url: 'store/shop'
                 }
             ]
         };

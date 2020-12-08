@@ -1,5 +1,5 @@
 .navigation {
-    background-color: $color-1st;
+    background-color: $color-1st-header;
 
     > .ps-container,
     > .container {
@@ -145,6 +145,12 @@
 
             > * {
                 width: 100%;
+            }
+            .ps-logo {
+                img {
+                    width: 156px;
+                    height: 32px;
+                }
             }
         }
     }

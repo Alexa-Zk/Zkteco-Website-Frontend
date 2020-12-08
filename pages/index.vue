@@ -1,6 +1,6 @@
 <template lang="html">
     <main id="homepage-1">
-        <home-banner />
+        <!-- <home-banner />
         <site-feautures-fullwidth />
         <home-default-deal-of-day
             v-if="collections !== null"
@@ -19,7 +19,7 @@
             v-if="collections !== null"
             collection-slug="new-arrivals-products"
         />
-        <newsletters layout="fullwidth"/>
+        <newsletters layout="fullwidth"/> -->
     </main>
 </template>
 <script>
@@ -66,7 +66,7 @@ export default {
     },
 
     transition: 'zoom',
-    layout: 'layout-default',
+    layout: 'layout-default-website',
 
     computed: {
         ...mapState({

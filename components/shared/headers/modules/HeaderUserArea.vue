@@ -4,10 +4,10 @@
             <i class="icon-user"></i>
         </div>
         <div class="ps-block__right">
-            <nuxt-link to="/account/login">
+            <nuxt-link to="store/account/login">
                 {{ $t('header.login') }}
             </nuxt-link>
-            <nuxt-link to="/account/register">
+            <nuxt-link to="store/account/register">
                 {{ $t('header.register') }}
             </nuxt-link>
         </div>

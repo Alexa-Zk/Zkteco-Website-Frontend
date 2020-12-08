@@ -31,7 +31,7 @@
                     <figure>
                         <div>
                             <nuxt-link
-                                to="/account/shopping-cart"
+                                to="store/account/shopping-cart"
                                 class="ps-btn"
                             >
                                 View Cart
@@ -39,7 +39,7 @@
                         </div>
                         <div>
                             <nuxt-link
-                                to="/account/checkout"
+                                to="store/account/checkout"
                                 class="ps-btn ps-btn--black"
                             >
                                 Checkout
