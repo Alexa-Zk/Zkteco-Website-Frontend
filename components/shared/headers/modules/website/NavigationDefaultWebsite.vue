@@ -1,19 +1,24 @@
 <template lang="html">
     <nav class="navigation">
         <div class="ps-container">
-            <div class="navigation__left">
-                <div class="menu--product-categories">
-                    <div class="menu__toggle">
-                        <i class="icon-menu"></i>
-                        <span> {{ $t('header.shopByDepartment') }}</span>
-                    </div>
-                    <div class="menu__content">
-                        <!-- <menu-categories /> -->
-                    </div>
-                </div>
-            </div>
             <div class="navigation__right">
-                <menu-default />
+              <ul class="mega-menu__list">
+                <li class="menu-item-has-dropdown">
+                    <nuxt-link to="#">
+                        New Center
+                    </nuxt-link>
+                </li>
+								<li class="menu-item-has-dropdown">
+                    <nuxt-link to="#">
+                        New Center
+                    </nuxt-link>
+                </li>
+								<li class="menu-item-has-dropdown">
+                    <nuxt-link to="#">
+                        New Center
+                    </nuxt-link>
+                </li>
+							</ul>
             </div>
         </div>
     </nav>
@@ -22,17 +27,24 @@
 <script>
 import CurrencyDropdown from '../CurrencyDropdown';
 import LanguageSwicher from '../LanguageSwicher';
-import MenuDefault from '~/components/shared/menu/website/MenuDefaultWebsite';
+// import MenuDefault from '~/components/shared/menu/website/MenuDefaultWebsite';
 import MenuCategories from '~/components/shared/menu/MenuCategories';
 export default {
     name: 'NavigationDefault',
     components: {
         MenuCategories,
-        MenuDefault,
+        // MenuDefault,
         LanguageSwicher,
         CurrencyDropdown
     }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.navigation__right {
+		justify-content: flex-end;
+		  .mega-menu__list {
+				 display: flex;
+			}
+}
+</style>
