@@ -4,7 +4,7 @@
             <MenuDropdown v-if="item.subMenu" :menu-data="item" />
             <MenuMega v-else-if="item.mega" :menu-data="item" />
             <li v-else :key="item.text">
-                <nuxt-link :to="localePath(item.url)">
+                <nuxt-link :to="item.url">
                     {{ item.text }}
                 </nuxt-link>
             </li>

@@ -24,13 +24,61 @@ export default {
             menuCategories: [
                 {
                     icon: 'icon-star',
-                    text: this.$i18n.t('menu.menuCategories.hotPromotions'),
-                    url: 'store/shop'
+                    text: this.$i18n.t('Time Attendance'),
+                    url: 'store/shop',
+                    extraClass: 'menu-item-has-children has-mega-menu',
+                    subClass: 'sub-menu',
+                    mega: true,
+                    megaContent: [
+                        {
+                            heading: this.$i18n.t(
+                                'Time Attendance'
+                            ),
+                            megaItems: [
+                                {
+                                    text: this.$i18n.t(
+                                        'Face'
+                                    ),
+                                    url: 'store/shop'
+                                },
+                                {
+                                    text: this.$i18n.t(
+                                        'Fingerprint'
+                                    ),
+                                    url: 'store/shop'
+                                },
+                                {
+                                    text: this.$i18n.t(
+                                        'Hybrid Biometrics'
+                                    ),
+                                    url: 'store/shop'
+                                },
+                                {
+                                    text: this.$i18n.t(
+                                        'RFID'
+                                    ),
+                                    url: 'store/shop'
+                                },
+                                {
+                                    text: this.$i18n.t(
+                                        'Portable Devices'
+                                    ),
+                                    url: 'store/shop'
+                                },
+                                {
+                                    text: this.$i18n.t(
+                                        'Software'
+                                    ),
+                                    url: 'store/shop'
+                                }
+                            ]
+                        },
+                    ]
                 },
                 {
                     icon: 'icon-laundry',
                     text: this.$i18n.t(
-                        'menu.menuCategories.consumerElectronic'
+                        'Access Control'
                     ),
                     url: 'store/shop',
                     extraClass: 'menu-item-has-children has-mega-menu',
@@ -39,79 +87,36 @@ export default {
                     megaContent: [
                         {
                             heading: this.$i18n.t(
-                                'menu.menuCategories.electronic'
+                                'Access Control'
                             ),
                             megaItems: [
                                 {
                                     text: this.$i18n.t(
-                                        'menu.menuCategories.homeAudioAndTheathers'
+                                        'Accessory'
                                     ),
                                     url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
-                                        'menu.menuCategories.tvAndVideos'
+                                        'Readers'
                                     ),
                                     url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
-                                        'menu.menuCategories.cameraphotosAndVideos'
+                                        'Standalone Devices'
                                     ),
                                     url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
-                                        'menu.menuCategories.cellphonesAndAccessories'
+                                        'Control Panel'
                                     ),
                                     url: 'store/shop'
                                 },
                                 {
                                     text: this.$i18n.t(
                                         'menu.menuCategories.headphone'
-                                    ),
-                                    url: 'store/shop'
-                                },
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.menuCategories.videosgames'
-                                    ),
-                                    url: 'store/shop'
-                                },
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.menuCategories.wirelessSpeakers'
-                                    ),
-                                    url: 'store/shop'
-                                },
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.menuCategories.officeElectronic'
-                                    ),
-                                    url: 'store/shop'
-                                }
-                            ]
-                        },
-                        {
-                            heading: this.$i18n.t(
-                                'menu.menuCategories.accessoriesAndParts'
-                            ),
-                            megaItems: [
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.menuCategories.digitalCables'
-                                    ),
-                                    url: 'store/shop'
-                                },
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.menuCategories.audioAndVideoCables'
-                                    ),
-                                    url: 'store/shop'
-                                },
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.menuCategories.batteries'
                                     ),
                                     url: 'store/shop'
                                 }
@@ -122,34 +127,34 @@ export default {
                 {
                     icon: 'icon-shirt',
                     text: this.$i18n.t(
-                        'menu.menuCategories.clothingAndapparel'
+                        'Smart Locks'
                     ),
                     url: 'store/shop'
                 },
                 {
                     icon: 'icon-lampshade',
                     text: this.$i18n.t(
-                        'menu.menuCategories.HomeGardenAndKitchen'
+                        'CCTV'
                     ),
                     url: 'store/shop'
                 },
                 {
                     icon: 'icon-heart-pulse',
-                    text: this.$i18n.t('menu.menuCategories.healthAndBeauty'),
+                    text: this.$i18n.t('Green Label'),
                     url: 'store/shop'
                 },
                 {
                     icon: 'icon-diamond2',
-                    text: this.$i18n.t('menu.menuCategories.yewelryAndWatches'),
+                    text: this.$i18n.t('Entrance Control'),
                     url: 'store/shop'
                 },
                 {
                     icon: 'icon-desktop',
                     text: this.$i18n.t(
-                        'menu.menuCategories.computerAndTechnology'
+                        'Security Inspection'
                     ),
                     url: 'store/shop',
-                    extraClass: 'menu-item-has-children has-mega-menu',
+                    extraClass: 'POS Terminal',
                     subClass: 'sub-menu',
                     megaContent: [
                         {
@@ -214,41 +219,7 @@ export default {
                             ]
                         }
                     ]
-                },
-                {
-                    icon: 'icon-baby-bottle',
-                    text: this.$i18n.t('menu.menuCategories.babiesAndMoms'),
-                    url: 'store/shop'
-                },
-                {
-                    icon: 'icon-smartphone',
-                    text: this.$i18n.t(
-                        'menu.menuCategories.phonesAndAccessories'
-                    ),
-                    url: 'store/shop'
-                },
-                {
-                    icon: 'icon-book2',
-                    text: this.$i18n.t('menu.menuCategories.booksAndOffice'),
-                    url: 'store/shop'
-                },
-                {
-                    icon: 'icon-car-siren',
-                    text: this.$i18n.t('menu.menuCategories.carsAndMotocycles'),
-                    url: 'store/shop'
-                },
-                {
-                    icon: 'icon-wrench',
-                    text: this.$i18n.t('menu.menuCategories.homeImproments'),
-                    url: 'store/shop'
-                },
-                {
-                    icon: 'icon-tag',
-                    text: this.$i18n.t(
-                        'menu.menuCategories.vouchersAndServices'
-                    ),
-                    url: 'store/shop'
-                }
+                } 
             ]
         };
     }

@@ -1,12 +1,10 @@
 <template lang="html">
     <div class="navigation__right">
-        <nuxt-link to="store/account/shopping-cart" class="header__extra">
+        <nuxt-link to="/store/account/shopping-cart" class="header__extra">
             <i class="icon-bag2"></i>
-            <span>
-                <i>0</i>
-            </span>
+            
         </nuxt-link>
-        <nuxt-link to="store/account/login" class="header__extra">
+        <nuxt-link to="/account/login" class="header__extra">
             <i class="icon-user"></i>
         </nuxt-link>
     </div>
@@ -32,5 +30,4 @@ export default {
         }
     }
 }
-
 </style>

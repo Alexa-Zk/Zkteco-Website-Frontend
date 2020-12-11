@@ -1,6 +1,6 @@
 <template>
     <li class="menu-item-has-children dropdown">
-        <nuxt-link :to="localePath(menuData.url)">
+        <nuxt-link :to="menuData.url">
             {{ menuData.text }}
         </nuxt-link>
         <ul v-if="menuData.subMenu" class="sub-menu">
@@ -32,6 +32,7 @@ export default {
 .dropdown {
     a {
         color: white;
+        border-bottom: none!important;
         &:hover {
             color: #78bc27;
         }

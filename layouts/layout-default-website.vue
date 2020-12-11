@@ -16,9 +16,9 @@
 
 <script>
 import HeaderDefault from '~/components/shared/headers/website/HeaderDefaultWebsite';
-import HeaderMobile from '~/components/shared/mobile/HeaderMobile';
-import NavigationList from '~/components/shared/mobile/NavigationList';
-import MobileDrawer from '~/components/shared/mobile/MobileDrawer';
+import HeaderMobile from '~/components/shared/mobile/website/HeaderMobile';
+import NavigationList from '~/components/shared/mobile/website/NavigationList';
+import MobileDrawer from '~/components/shared/mobile/website/MobileDrawer';
 import FooterFullwidth from '~/components/shared/footers/website/FooterFullwidth';
 import Notify from '~/components/elements/commons/notify';
 export default {

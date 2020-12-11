@@ -21,8 +21,8 @@
         </div>
         <div class="navigation--mobile">
             <div class="navigation__left">
-                <nuxt-link to="/store" class="ps-logo">
-                    <img src="~/static/img/logo-white.png" alt="Zkteco" />
+                <nuxt-link to="/" class="ps-logo">
+                    <img src="~/static/img/logo-white.png" alt="zkteco" />
                 </nuxt-link>
             </div>
             <mobile-header-actions />
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import MobileHeaderActions from '~/components/shared/mobile/modules/MobileHeaderActions';
+import MobileHeaderActions from '~/components/shared/mobile/website/modules/MobileHeaderActions';
 export default {
     name: 'HeaderMobile',
     components: { MobileHeaderActions }
