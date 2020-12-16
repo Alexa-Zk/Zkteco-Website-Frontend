@@ -6,30 +6,30 @@
             </h4>
             <div class="widget_content">
                 <p>Call us 24/7</p>
-                <h3>1800 97 97 69</h3>
+                <h3>+234 817 5555 512</h3>
                 <p>
-                    502 New Design Str, Melbourne, Australia <br />
-                    <a href="mailto:contact@martfury.co">contact@martfury.co</a>
+                    64 Adetokunbo Ademola Street, Victoria Island, Lagos<br />
+                    <a href="mailto:sales@zkteco-wa.com">sales@zkteco-wa.com</a>
                 </p>
                 <ul class="ps-list--social">
                     <li>
-                        <a class="facebook" href="#">
+                        <a class="facebook" href="https://www.facebook.com/zktecowa">
                             <i class="fa fa-facebook"></i>
                         </a>
                     </li>
                     <li>
-                        <a class="twitter" href="#">
+                        <a class="twitter" href="https://twitter.com/ZKTeco_WA">
                             <i class="fa fa-twitter"></i>
                         </a>
                     </li>
                     <li>
-                        <a class="google-plus" href="#">
-                            <i class="fa fa-google-plus"></i>
+                        <a class="instagram" href="https://www.instagram.com/zkteco_wa/">
+                            <i class="fa fa-instagram"></i>
                         </a>
                     </li>
                     <li>
-                        <a class="instagram" href="#">
-                            <i class="fa fa-instagram"></i>
+                        <a class="linkedin" href="https://www.instagram.com/zkteco_wa/">
+                            <i class="fa fa-linkedin"></i>
                         </a>
                     </li>
                 </ul>

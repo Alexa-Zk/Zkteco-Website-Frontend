@@ -5,7 +5,7 @@
                 <div class="menu--product-categories">
                     <div class="menu__toggle">
                         <i class="icon-menu"></i>
-                        <span> {{ $t('header.shopByDepartment') }}</span>
+                        <span> {{ $t('header.shopByCategories') }}</span>
                     </div>
                     <div class="menu__content">
                         <menu-categories />
@@ -15,13 +15,13 @@
             <div class="navigation__right">
                 <menu-default />
                 <ul class="navigation__extra">
-                    <li>
+                    <!-- <li>
                         <nuxt-link to="/vendor/become-a-vendor">
                             {{ $t('header.navigationExtra.sellOnMartfury') }}
                         </nuxt-link>
-                    </li>
+                    </li> -->
                     <li>
-                        <nuxt-link to="/account/order-tracking">
+                        <nuxt-link to="store/account/order-tracking">
                             {{ $t('header.navigationExtra.trackYourOrder') }}
                         </nuxt-link>
                     </li>

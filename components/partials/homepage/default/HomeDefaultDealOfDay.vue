@@ -16,7 +16,7 @@
                         </figure>
                     </div>
                 </div>
-                <nuxt-link to="/shop">
+                <nuxt-link to="/store/shop">
                     {{ $t('common.viewAll') }}
                 </nuxt-link>
             </div>

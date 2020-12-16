@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="ps-footer__links">
         <p>
-            <strong>Consumer Electric:</strong>
+            <strong>Entrance Control</strong>
             <nuxt-link
                 v-for="item in consumerElectric"
                 :to="item.url"
@@ -11,7 +11,7 @@
             </nuxt-link>
         </p>
         <p>
-            <strong>Clothing & Apparel:</strong>
+            <strong>POS Terminal</strong>
             <nuxt-link
                 v-for="item in clothingAndApparel"
                 :to="item.url"
@@ -21,7 +21,7 @@
             </nuxt-link>
         </p>
         <p>
-            <strong>Home, Garden & Kitchen:</strong>
+            <strong>Access Control</strong>
             <nuxt-link
                 v-for="item in gardenAndKitchen"
                 :to="item.url"
@@ -31,7 +31,7 @@
             </nuxt-link>
         </p>
         <p>
-            <strong>Health & Beauty:</strong>
+            <strong>Time Attendance:</strong>
             <nuxt-link
                 v-for="item in healthAndBeauty"
                 :to="item.url"
@@ -41,7 +41,7 @@
             </nuxt-link>
         </p>
         <p>
-            <strong>Jewelry & Watches:</strong>
+            <strong>Green Label:</strong>
             <nuxt-link
                 v-for="item in jewelryAndWatch"
                 :to="item.url"
@@ -51,7 +51,7 @@
             </nuxt-link>
         </p>
         <p>
-            <strong>Computer & Technologies:</strong>
+            <strong>Smart Locks:</strong>
             <nuxt-link
                 v-for="item in computerAndTechnology"
                 :to="item.url"

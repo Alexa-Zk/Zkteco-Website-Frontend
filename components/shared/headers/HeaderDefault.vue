@@ -3,8 +3,8 @@
         <div class="header__top">
             <div class="ps-container">
                 <div class="header__left">
-                    <nuxt-link to="/" class="ps-logo">
-                        <img src="/img/logo_light.png" alt="martfury" />
+                    <nuxt-link to="/store" class="ps-logo">
+                        <img src="/img/logo-white.png" alt="zkteco logo" />
                     </nuxt-link>
                     <div class="menu--product-categories">
                         <div class="menu__toggle">

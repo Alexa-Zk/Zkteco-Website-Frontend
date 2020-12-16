@@ -21,8 +21,8 @@
         </div>
         <div class="navigation--mobile">
             <div class="navigation__left">
-                <nuxt-link to="/" class="ps-logo">
-                    <img src="~/static/img/logo_light.png" alt="martfury" />
+                <nuxt-link to="/store" class="ps-logo">
+                    <img src="~/static/img/logo-white.png" alt="Zkteco" />
                 </nuxt-link>
             </div>
             <mobile-header-actions />
