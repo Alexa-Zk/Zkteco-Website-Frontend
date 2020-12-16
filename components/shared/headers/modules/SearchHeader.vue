@@ -47,7 +47,7 @@
                 <span>Not found! Try with another keyword.</span>
             </div>
             <div class="ps-panel__footer text-center">
-                <nuxt-link to="/search">
+                <nuxt-link to="store/search">
                     See all results
                 </nuxt-link>
             </div>
@@ -71,61 +71,28 @@ export default {
         return {
             exampleCategories: [
                 'All',
-                'Babies & Moms',
-                'Books & Office',
-                'Cars & Motocycles',
-                'Clothing & Apparel',
-                ' Accessories',
-                'Bags',
-                'Kid’s Fashion',
-                'Mens',
-                'Shoes',
-                'Sunglasses',
-                'Womens',
-                'Computers & Technologies',
-                'Desktop PC',
-                'Laptop',
-                'Smartphones',
-                'Consumer Electrics',
-                'Air Conditioners',
                 'Accessories',
-                'Type Hanging Cell',
-                'Audios & Theaters',
-                'Headphone',
-                'Home Theater System',
-                'Speakers',
-                'Car Electronics',
-                'Audio & Video',
-                'Car Security',
-                'Radar Detector',
-                'Vehicle GPS',
-                'Office Electronics',
-                'Printers',
-                'Projectors',
-                'Scanners',
-                'Store & Business',
-                'Refrigerators',
-                'TV Televisions',
-                '4K Ultra HD TVs',
-                'LED TVs',
-                'OLED TVs',
-                'Washing Machines',
-                'Type Drying Clothes',
-                'Type Horizontal',
-                'Type Vertical',
-                'Garden & Kitchen',
-                'Cookware',
-                'Decoration',
-                'Furniture',
-                'Garden Tools',
-                'Home Improvement',
-                'Powers And Hand Tools',
-                'Utensil & Gadget',
-                'Health & Beauty',
-                'Equipments',
-                'Hair Care',
-                'Perfumer',
-                'Wine Cabinets'
+                'Readers',
+                'Face',
+                'Recognition',
+                'Panel',
+                'Software',
+                'Control Devices',
+                'POS Terminal',
+                'Object Inspection',
+                'Vehicle Inspection',
+                'Pedestrian',
+                'Vehicle Product',
+                'Time Attendance',
+                'Access Control',
+                'Green Label',
+                'Smart Camera',
+                'Network Camera',
+                'Video Recorder',
+                'DVR Kit',
+                'Bluetooth',
+                'Padlock',
+                'Fingerprint',
             ],
             isSearching: false,
             isLoading: false,
@@ -164,7 +131,7 @@ export default {
 
         handleSubmit() {
             if (this.searchText !== null || this.searchText !== '') {
-                this.$router.push(`/search?keyword=${this.searchText}`);
+                this.$router.push(`store/search?keyword=${this.searchText}`);
             }
         }
     }
