@@ -22,6 +22,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.ps-footer {
+    padding-top: 0px !important;
+}
 .ps-container {
     background-color: #333;
     color: #e5e5e5;

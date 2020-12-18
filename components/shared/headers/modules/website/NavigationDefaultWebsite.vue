@@ -16,7 +16,7 @@
                     </li>
 										|
                     <li class="menu-item-has-dropdown">
-                        <nuxt-link to="#">
+                        <nuxt-link to="/website/page/contact-us">
                             Contact Us
                         </nuxt-link>
                     </li>
