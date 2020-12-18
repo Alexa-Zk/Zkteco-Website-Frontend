@@ -22,7 +22,7 @@ import MobileDrawer from '~/components/shared/mobile/website/MobileDrawer';
 import FooterFullwidth from '~/components/shared/footers/website/FooterFullwidth';
 import Notify from '~/components/elements/commons/notify';
 export default {
-    name: 'layout-default',
+    name: 'layout-default-website',
     components: {
         FooterFullwidth,
         MobileDrawer,
