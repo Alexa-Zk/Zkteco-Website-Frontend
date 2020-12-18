@@ -1,33 +1,40 @@
 <template lang="html">
     <main id="homepage-1">
-        <!-- <home-banner />
+        <home-banner />
         <site-feautures-fullwidth />
+        <!-- 
         <home-default-deal-of-day
             v-if="collections !== null"
             collection-slug="deal-of-the-day"
         />
         <home-ads-columns />
-        <home-default-top-categories />
-        <template v-if="collections !== null">
+        <home-default-top-categories /> -->
+        <!-- <template v-if="collections !== null">
             <conumer-electronics collection-slug="consumer-electronics" />
             <clothings collection-slug="clothings" />
             <garden-and-kitchen collection-slug="garden-and-kitchen" />
         </template>
-        <home-ads />
-        <download-app />
-        <new-arrivals
+        <home-ads /> -->
+        <!-- <download-app /> -->
+        <div class="ps-container">
+            <related-posts />
+        </div>
+        
+        <!-- <new-arrivals
             v-if="collections !== null"
             collection-slug="new-arrivals-products"
-        />
-        <newsletters layout="fullwidth"/> -->
+        /> -->
+        <home-brand />
+        <newsletters layout="fullwidth"/>
     </main>
 </template>
 <script>
 import { mapState } from 'vuex';
+import RelatedPosts from '~/components/partials/post/website/RelatedPosts';
 import DownloadApp from '~/components/partials/commons/DownloadApp';
 import FooterFullwidth from '~/components/shared/footers/FooterFullwidth';
 import Newsletters from '~/components/partials/commons/Newsletters';
-import SiteFeauturesFullwidth from '~/components/partials/commons/SiteFeauturesFullwidth';
+import SiteFeauturesFullwidth from '~/components/partials/commons/website/SiteFeaturesFullwidth';
 import HomeAdsColumns from '~/components/partials/homepage/default/HomeAdsColumns';
 import HomeAds from '~/components/partials/homepage/default/HomeAds';
 import NewArrivals from '~/components/partials/homepage/default/NewArrivals';
@@ -35,7 +42,8 @@ import HomeDefaultTopCategories from '~/components/partials/homepage/default/Hom
 import GardenAndKitchen from '~/components/partials/homepage/default/GardenAndKitchen';
 import Clothings from '~/components/partials/homepage/default/Clothings';
 import ConumerElectronics from '~/components/partials/homepage/default/ConumerElectronics';
-import HomeBanner from '~/components/partials/homepage/default/HomeBanner';
+import HomeBanner from '~/components/partials/homepage/website/default/HomeBanner';
+import HomeBrand from '~/components/partials/shop/sections/website/ShopBrands';
 import HeaderDefault from '~/components/shared/headers/HeaderDefault';
 import NavigationList from '~/components/shared/mobile/NavigationList';
 import HeaderMobile from '~/components/shared/mobile/HeaderMobile';
@@ -52,6 +60,7 @@ export default {
         NavigationList,
         HeaderDefault,
         HomeBanner,
+        HomeBrand,
         GardenAndKitchen,
         HomeAdsColumns,
         SiteFeauturesFullwidth,
@@ -59,6 +68,7 @@ export default {
         FooterFullwidth,
         DownloadApp,
         Newsletters,
+        RelatedPosts,
         NewArrivals,
         HomeDefaultTopCategories,
         Clothings,

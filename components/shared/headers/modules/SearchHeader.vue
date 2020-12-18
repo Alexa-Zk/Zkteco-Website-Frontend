@@ -47,7 +47,7 @@
                 <span>Not found! Try with another keyword.</span>
             </div>
             <div class="ps-panel__footer text-center">
-                <nuxt-link to="store/search">
+                <nuxt-link to="/store/search">
                     See all results
                 </nuxt-link>
             </div>

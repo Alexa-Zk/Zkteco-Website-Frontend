@@ -50,6 +50,12 @@ export default {
         scss: './assets/scss/env.scss'
     },
 
+    loadingIndicator: {
+        name: 'chasing-dots',
+        color: 'purple',
+        background: 'green'
+    },
+
     modules: ['@nuxtjs/axios', 'nuxt-i18n'],
 
     i18n: {
