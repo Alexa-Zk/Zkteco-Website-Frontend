@@ -21,7 +21,7 @@
                         </nuxt-link>
                     </li> -->
                     <li>
-                        <nuxt-link to="store/account/order-tracking">
+                        <nuxt-link to="/store/account/order-tracking">
                             {{ $t('header.navigationExtra.trackYourOrder') }}
                         </nuxt-link>
                     </li>
