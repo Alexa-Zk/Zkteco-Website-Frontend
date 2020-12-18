@@ -1,6 +1,6 @@
 <template lang="html">
     <div class="header__actions">
-        <!-- <nuxt-link to="store/account/compare">
+        <!-- <nuxt-link to="/store/account/compare">
             <a class="header__extra">
                 <i class="icon-chart-bars"></i>
                 <span>
@@ -8,7 +8,7 @@
                 </span>
             </a>
         </nuxt-link> -->
-        <nuxt-link to="store/account/wishlist">
+        <nuxt-link to="/store/account/wishlist">
             <a class="header__extra">
                 <i class="icon-heart"></i>
                 <span>

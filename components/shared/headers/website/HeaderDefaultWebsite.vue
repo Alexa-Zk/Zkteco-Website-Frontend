@@ -75,5 +75,16 @@ export default {
         }
     }
 }
+
+.header--sticky {
+    .header__left {
+        .ps-logo {
+            display: block !important;
+        }
+        .menu--product-categories {
+            display: none !important;
+        }
+    }
+}
 </style>
 `
