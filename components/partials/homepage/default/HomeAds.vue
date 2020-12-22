@@ -6,7 +6,7 @@
                     <nuxt-link to="/shop">
                         <a class="ps-collection">
                             <img
-                                src="~/static/img/collection/home-1/ad-1.jpg"
+                                src="~/static/img/collection/time-attendance.png"
                                 alt="martfury"
                             />
                         </a>
@@ -16,7 +16,7 @@
                     <nuxt-link to="/shop">
                         <a class="ps-collection">
                             <img
-                                src="~/static/img/collection/home-1/ad-2.jpg"
+                                src="~/static/img/collection/home-ad-2.png"
                                 alt="martfury"
                             />
                         </a>
@@ -33,4 +33,12 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-collection {
+    height: 219px;
+    img {
+        object-fit: cover;
+        height: 100%;
+    }
+}
+</style>

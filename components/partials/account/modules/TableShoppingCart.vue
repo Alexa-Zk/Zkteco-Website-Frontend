@@ -4,7 +4,7 @@
             <tr>
                 <th>Product</th>
                 <th>Price</th>
-                <th>Quantity</th>
+                <!-- <th>Quantity</th> -->
                 <th>Total</th>
                 <th>Action</th>
             </tr>
@@ -15,7 +15,7 @@
                     <product-shopping-cart :product="product" />
                 </td>
                 <td data-label="Price" class="price">$ {{ product.price }}</td>
-                <td data-label="Quantity">
+                <!-- <td data-label="Quantity">
                     <div class="form-group--number">
                         <button class="up">+</button>
                         <button class="down">-</button>
@@ -26,7 +26,7 @@
                             value="1"
                         />
                     </div>
-                </td>
+                </td> -->
                 <td data-label="Total">
                     ${{
                         (cartItems[index].quantity * product.price).toFixed(2)
@@ -74,6 +74,7 @@ export default {
             }
         },
         handleRemoveProductFromCart(product) {
+
             const cartItem = this.cartItems.find(
                 item => item.id === product.id
             );

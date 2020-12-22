@@ -40,33 +40,34 @@ export default {
             accountLinks: [
                 {
                     text: 'Account Information',
-                    url: '/account/user-information',
-                    icon: 'icon-user'
+                    url: '/store/account/user-information',
+                    icon: 'icon-user',
+                    active: true
                 },
-                {
-                    text: 'Notifications',
-                    url: '/account/notifications',
-                    icon: 'icon-alarm-ringing'
-                },
+                // {
+                //     text: 'Notifications',
+                //     url: '/account/notifications',
+                //     icon: 'icon-alarm-ringing'
+                // },
                 {
                     text: 'Invoices',
-                    url: '/account/invoices',
+                    url: '/store/account/invoices',
                     icon: 'icon-papers'
                 },
                 {
                     text: 'Address',
-                    url: '/account/addresses',
+                    url: '/store/account/addresses',
                     icon: 'icon-map-marker'
                 },
                 {
-                    text: 'Recent Viewed Product',
-                    url: '/account/recent-viewed-product',
+                    text: 'My Orders',
+                    url: '/store/account/recent-viewed-product',
                     icon: 'icon-store',
-                    active: true
+                    
                 },
                 {
                     text: 'Wishlist',
-                    url: '/account/wishlist',
+                    url: '/store/account/wishlist',
                     icon: 'icon-heart'
                 }
             ]

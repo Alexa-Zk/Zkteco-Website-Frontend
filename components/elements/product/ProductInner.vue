@@ -7,7 +7,7 @@
                     alt="martfury"
                 />
             </nuxt-link>
-            <div v-if="isSale === true" class="ps-product__badge">sale</div>
+            <div v-if="isSale === true" class="ps-product__badge">new</div>
 
             <ul class="ps-product__actions">
                 <li>
@@ -43,7 +43,7 @@
                         <i class="icon-heart"></i>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a
                         to="#"
                         data-toggle="tooltip"
@@ -53,7 +53,7 @@
                     >
                         <i class="icon-chart-bars"></i>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div class="ps-product__container">
@@ -65,11 +65,13 @@
                     v-if="product.is_sale === true"
                     class="ps-product__price sale"
                 >
-                    {{ currency }}{{ product.price }}
+                    {{ currency }}
+                    {{ product.price }}
+                     <!--
                     <del class="ml-1">
                         {{ currency }}{{ product.sale_price }}</del
                     >
-                    <small>18% off</small>
+                    <small>18% off</small> -->
                 </p>
                 <p v-else class="ps-product__price">
                     {{ currency }}{{ product.price }}
@@ -80,11 +82,11 @@
                 >
                     {{ product.title }}
                 </nuxt-link>
-                <div class="ps-product__rating">
+                <!-- <div class="ps-product__rating">
                     <rating />
                     <span>{{ product.ratingCount }}</span>
-                </div>
-                <div class="ps-product__progress-bar ps-progress">
+                </div> -->
+                <!-- <div class="ps-product__progress-bar ps-progress">
                     <div class="ps-progress__value">
                         <span :style="{ width: '80%' }"></span>
                     </div>
@@ -95,7 +97,7 @@
                         Sold: {{ product.inventory - product.depot }}
                     </p>
                     <p v-else class="mb-0">Sold: {{ product.inventory }}</p>
-                </div>
+                </div> -->
             </div>
         </div>
         <v-dialog v-model="quickviewDialog" width="1200">
@@ -217,6 +219,14 @@ export default {
         small {
             margin-left: 0;
         }
+    }
+    .ps-product__actions {
+    }
+    .ps-product__badge {
+        background-color: #78bc27;
+    }
+    .ps-product__title {
+        color: black;
     }
 }
 </style>

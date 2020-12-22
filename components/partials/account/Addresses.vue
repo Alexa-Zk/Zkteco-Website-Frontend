@@ -77,33 +77,35 @@ export default {
             accountLinks: [
                 {
                     text: 'Account Information',
-                    url: '/account/user-information',
+                    url: '/store/account/user-information',
                     icon: 'icon-user'
                 },
-                {
-                    text: 'Notifications',
-                    url: '/account/notifications',
-                    icon: 'icon-alarm-ringing'
-                },
+                // {
+                //     text: 'Notifications',
+                //     url: '/account/notifications',
+                //     icon: 'icon-alarm-ringing'
+                // },
                 {
                     text: 'Invoices',
-                    url: '/account/invoices',
+                    url: '/store/account/invoices',
                     icon: 'icon-papers'
+                    
                 },
                 {
                     text: 'Address',
-                    url: '/account/addresses',
+                    url: '/store/account/addresses',
                     icon: 'icon-map-marker',
                     active: true
                 },
                 {
-                    text: 'Recent Viewed Product',
-                    url: '/account/recent-viewed-product',
-                    icon: 'icon-store'
+                    text: 'My Orders',
+                    url: '/store/account/recent-viewed-product',
+                    icon: 'icon-store',
+                    
                 },
                 {
                     text: 'Wishlist',
-                    url: '/account/wishlist',
+                    url: '/store/account/wishlist',
                     icon: 'icon-heart'
                 }
             ]

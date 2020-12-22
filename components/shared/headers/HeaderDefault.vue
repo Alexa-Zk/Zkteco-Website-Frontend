@@ -9,7 +9,7 @@
                     <div class="menu--product-categories">
                         <div class="menu__toggle">
                             <i class="icon-menu"></i>
-                            <span> {{ $t('header.shopByDepartment') }} </span>
+                            <span> {{ $t('header.shopByCategories') }} </span>
                         </div>
                         <div class="menu__content">
                             <menu-categories />

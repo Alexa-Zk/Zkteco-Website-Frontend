@@ -27,14 +27,14 @@
         <a class="ps-btn" href="#" @click.prevent="">
             Buy Now
         </a>
-        <div class="ps-product__actions">
+        <!-- <div class="ps-product__actions">
             <a href="#">
                 <i class="icon-heart"></i>
             </a>
             <a href="#">
                 <i class="icon-chart-bars"></i>
             </a>
-        </div>
+        </div> -->
     </div>
 </template>
 

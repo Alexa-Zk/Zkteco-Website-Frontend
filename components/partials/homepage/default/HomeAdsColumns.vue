@@ -6,7 +6,7 @@
                     <nuxt-link to="/shop">
                         <a class="ps-collection">
                             <img
-                                src="/img/collection/home-1/1.jpg"
+                                src="/img/collection/smartlock.png"
                                 alt="martfury"
                             />
                         </a>
@@ -16,7 +16,7 @@
                     <nuxt-link to="/shop">
                         <a class="ps-collection">
                             <img
-                                src="/img/collection/home-1/2.jpg"
+                                src="/img/collection/time-attendance.png"
                                 alt="martfury"
                             />
                         </a>
@@ -26,7 +26,7 @@
                     <nuxt-link to="/shop">
                         <a class="ps-collection">
                             <img
-                                src="/img/collection/home-1/3.jpg"
+                                src="/img/collection/cctv.png"
                                 alt="martfury"
                             />
                         </a>
@@ -43,4 +43,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-home-ads {
+    padding-bottom: 50px;
+}
+</style>

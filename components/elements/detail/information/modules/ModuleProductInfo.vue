@@ -3,8 +3,8 @@
         <h1>{{ product.title }}</h1>
         <div class="ps-product__meta">
             <p>
-                Brand:
-                <nuxt-link to="/shop">
+                Categories:
+                <nuxt-link to="/store/shop">
                     <a class="ml-2 text-capitalize">
                         {{ product.vendor }}
                     </a>

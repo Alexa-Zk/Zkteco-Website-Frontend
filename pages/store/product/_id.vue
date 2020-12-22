@@ -14,11 +14,11 @@
                         />
                     </div>
                 </div>
-                <customer-bought
+                <!-- <customer-bought
                     v-if="collections !== null"
                     layout="fullwidth"
                     collection-slug="customer_bought"
-                />
+                /> -->
                 <related-product
                     v-if="collections !== null"
                     layout="fullwidth"
@@ -88,11 +88,11 @@ export default {
         this.breadCrumb = [
             {
                 text: 'Home',
-                url: '/'
+                url: '/store'
             },
             {
                 text: 'Shop',
-                url: '/shop'
+                url: '/store/shop'
             },
             {
                 text: product.title

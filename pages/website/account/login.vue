@@ -36,6 +36,7 @@ export default {
         Login,
         BreadCrumb
     },
+    layout: "layout-default-website",
     transition: 'zoom',
     data: () => {
         return {

@@ -7,25 +7,19 @@
                         <div class="swiper-slide">
                             <div
                                 class="ps-banner"
-                                :style="{
-                                    backgroundImage: `url(/img/slider/home-1/slide-1.jpg)`
-                                }"
+                                :style="{ backgroundImage: `url(/img/slider/home-1/cctv.png)`,backgroundPosition: 'center', backgroundSize: 'cover' }"
                             ></div>
                         </div>
                         <div class="swiper-slide">
                             <div
                                 class="ps-banner"
-                                :style="{
-                                    backgroundImage: `url(/img/slider/home-1/slide-2.jpg)`
-                                }"
+                                :style="{ backgroundImage: `url(/img/slider/home-1/smartlock.png)`, backgroundPosition: 'center', backgroundSize: 'cover' }"
                             ></div>
                         </div>
                         <div class="swiper-slide">
                             <div
                                 class="ps-banner"
-                                :style="{
-                                    backgroundImage: `url(/img/slider/home-1/slide-3.jpg)`
-                                }"
+                                :style="{ backgroundImage: `url(/img/slider/home-1/zpad.png)`,backgroundPosition: 'center', backgroundSize: 'cover' }"
                             ></div>
                         </div>
                     </div>
@@ -46,13 +40,13 @@
             <div class="ps-section__right">
                 <nuxt-link to="/shop" class="ps-collection">
                     <img
-                        src="/img/slider/home-1/promotion-1.jpg"
+                        src="/img/slider/home-1/home-ad-3.png"
                         alt="martfury"
                     />
                 </nuxt-link>
                 <nuxt-link to="/shop" class="ps-collection">
                     <img
-                        src="/img/slider/home-1/promotion-2.jpg"
+                        src="/img/slider/home-1/home-ad-4.png"
                         alt="martfury"
                     />
                 </nuxt-link>
@@ -80,4 +74,15 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+.ps-collection {
+    width: 390px;
+    height: 193px;
+
+    img {
+        height: 100%;
+        object-fit: cover;
+    }
+}
+</style>
