@@ -7,18 +7,18 @@
             collection-slug="deal-of-the-day"
         />
         <home-ads-columns />
-        <home-default-top-categories />
+        <!-- <home-default-top-categories /> -->
         <template v-if="collections !== null">
             <conumer-electronics collection-slug="consumer-electronics" />
             <clothings collection-slug="clothings" />
             <garden-and-kitchen collection-slug="garden-and-kitchen" />
         </template>
         <home-ads />
-        <download-app />
-        <new-arrivals
+        <!-- <download-app /> -->
+        <!-- <new-arrivals
             v-if="collections !== null"
             collection-slug="new-arrivals-products"
-        />
+        /> -->
         <newsletters layout="fullwidth" />
     </main>
 </template>

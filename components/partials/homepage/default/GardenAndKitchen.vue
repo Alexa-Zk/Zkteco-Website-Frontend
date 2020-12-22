@@ -2,9 +2,9 @@
     <div class="ps-product-list ps-garden-kitchen ps-section--carousel-outside">
         <div class="ps-container">
             <div class="ps-section__header">
-                <h3>{{ $t('homeDefault.gardenAndKitchen.heading') }}</h3>
+                <h3>Smart Home Devices</h3>
                 <ul class="ps-section__links">
-                    <li>
+                    <!-- <li>
                         <nuxt-link :to="localePath('/shop')">
                             {{
                                 $t(
@@ -30,9 +30,9 @@
                                 )
                             }}
                         </nuxt-link>
-                    </li>
+                    </li> -->
                     <li>
-                        <nuxt-link :to="localePath('/shop')">
+                        <nuxt-link :to="localePath('/store/shop')">
                             {{ $t('common.viewAll') }}
                         </nuxt-link>
                     </li>

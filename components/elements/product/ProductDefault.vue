@@ -71,20 +71,16 @@
                     <span>{{ product.ratingCount }}</span>
                 </div>
                 <p
-                    v-if="product.is_sale === true"
-                    class="ps-product__price sale"
+                    class="ps-product__price"
                 >
                     {{ currency }}{{ product.price }}
-                    <del class="ml-2">
+                    <!-- <del class="ml-2">
                         {{ currency }}{{ product.sale_price }}
-                    </del>
-                </p>
-                <p v-else class="ps-product__price">
-                    {{ currency }}{{ product.price }}
+                    </del> -->
                 </p>
             </div>
             <div class="ps-product__content hover">
-                <nuxt-link :to="`/product/${product.id}`">
+                <nuxt-link :to="`/store/product/${product.id}`">
                     <a class="ps-product__title">{{ product.title }}</a>
                 </nuxt-link>
                 <p

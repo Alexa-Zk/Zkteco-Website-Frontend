@@ -4,31 +4,31 @@
             <div class="navigation__right">
                 <ul class="mega-menu__list">
                     <li class="menu-item-has-dropdown">
-                        <nuxt-link to="#">
+                        <nuxt-link to="/website/page/about-us">
                             About Us
                         </nuxt-link>
                     </li>
-										|
+                    |
                     <li class="menu-item-has-dropdown">
-                        <nuxt-link to="#">
+                        <nuxt-link to="/website/blog/blog-right-sidebar">
                             News Center
                         </nuxt-link>
                     </li>
-										|
+                    |
                     <li class="menu-item-has-dropdown">
                         <nuxt-link to="/website/page/contact-us">
                             Contact Us
                         </nuxt-link>
                     </li>
-										|
-										<li class="menu-item-has-dropdown">
-                        <nuxt-link to="#">
+                    |
+                    <li class="menu-item-has-dropdown">
+                        <nuxt-link to="/website/account/login">
                             Login
                         </nuxt-link>
                     </li>
-										|
-										<li class="menu-item-has-dropdown">
-                        <nuxt-link to="#">
+                    |
+                    <li class="menu-item-has-dropdown">
+                        <nuxt-link to="/website/account/register">
                             Register
                         </nuxt-link>
                     </li>
@@ -61,10 +61,13 @@ export default {
         .navigation__right {
             justify-content: flex-end;
             .mega-menu__list {
-								display: flex;
-								li {
-									    margin: 0px 16px;
-								}
+                display: flex;
+                li {
+                    margin: 0px 16px;
+                    a {
+                        color: black;
+                    }
+                }
             }
         }
     }

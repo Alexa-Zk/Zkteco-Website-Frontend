@@ -1,9 +1,6 @@
 <template lang="html">
     <div class="ps-product__specification">
-        <nuxt-link to="/page/blank">
-            <a class="report">Report Abuse</a>
-        </nuxt-link>
-        <p><strong>SKU:</strong> SF1133569600-1</p>
+        
         <p class="categories">
             <strong> Categories:</strong>
             <nuxt-link to="/shop">

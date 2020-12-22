@@ -54,12 +54,12 @@
                             Wishlist
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="#" @click.prevent="handleAddItemToCompare">
                             <i class="icon-chart-bars"></i>
                             Compare
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

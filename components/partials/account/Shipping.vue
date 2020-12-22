@@ -12,7 +12,7 @@
                                 <figure>
                                     <small>Contact</small>
                                     <p>test@gmail.com</p>
-                                    <nuxt-link to="/account/checkout">
+                                    <nuxt-link to="/store/account/checkout">
                                         <a>Change</a>
                                     </nuxt-link>
                                 </figure>
@@ -21,8 +21,8 @@
                                     <p>
                                         2015 South Street, Midland, Texas
                                     </p>
-                                    <nuxt-link to="/account/checkout">
-                                        <a>Change</a>q
+                                    <nuxt-link to="/store/account/checkout">
+                                        <a>Change</a>
                                     </nuxt-link>
                                 </figure>
                             </div>
@@ -36,13 +36,13 @@
                                 </figure>
                             </div>
                             <div class="ps-block__footer">
-                                <nuxt-link to="/account/checkout">
+                                <nuxt-link to="/store/account/checkout">
                                     <a>
                                         <i class="icon-arrow-left mr-2"></i>
                                         Return to information
                                     </a>
                                 </nuxt-link>
-                                <nuxt-link to="/account/payment" class="ps-btn">
+                                <nuxt-link to="/store/account/payment" class="ps-btn">
                                     Continue to payment
                                 </nuxt-link>
                             </div>

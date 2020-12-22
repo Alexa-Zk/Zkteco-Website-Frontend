@@ -17,9 +17,9 @@
         </aside>
         <aside class="widget widget_sell-on-site">
             <p>
-                <i class="icon-store"></i> Sell on Martfury?
-                <nuxt-link to="/account/register">
-                    <a> Register Now !</a>
+                <i class="icon-store"></i>Continue Shopping?
+                <nuxt-link to="/store/shop">
+                    <a> Click Here !</a>
                 </nuxt-link>
             </p>
         </aside>
@@ -27,21 +27,11 @@
             <nuxt-link to="/shop">
                 <a>
                     <img
-                        src="~/static/img/ads/product-ads.png"
+                        src="~/static/img/collection/cctv.png"
                         alt="martfury"
                     />
                 </a>
             </nuxt-link>
-        </aside>
-        <aside class="widget widget_same-brand">
-            <h3>Same Brand</h3>
-            <div class="widget__content">
-                <product-default
-                    v-for="product in products"
-                    :product="product"
-                    :key="product.id"
-                />
-            </div>
         </aside>
     </section>
 </template>

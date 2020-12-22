@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="ps-product__desc">
         <p>
-            Sold By:
+            Categories:
             <nuxt-link to="/shop">
                 <strong> {{ product.vendor }}</strong>
             </nuxt-link>

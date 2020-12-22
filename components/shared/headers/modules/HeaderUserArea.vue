@@ -46,27 +46,27 @@ export default {
             accountLinks: [
                 {
                     text: 'Account Information',
-                    url: '/account/user-information'
+                    url: '/store/account/user-information'
                 },
-                {
-                    text: 'Notifications',
-                    url: '/account/notifications'
-                },
+                // {
+                //     text: 'Notifications',
+                //     url: '/store/account/notifications'
+                // },
                 {
                     text: 'Invoices',
-                    url: '/account/invoices'
+                    url: '/store/account/invoices'
                 },
                 {
                     text: 'Address',
-                    url: '/account/addresses'
+                    url: '/store/account/addresses'
                 },
                 {
-                    text: 'Recent Viewed Product',
-                    url: '/account/recent-viewed-product'
+                    text: 'My Orders',
+                    url: '/store/account/recent-viewed-product'
                 },
                 {
                     text: 'Wishlist',
-                    url: '/account/wishlist'
+                    url: '/store/account/wishlist'
                 }
             ]
         };

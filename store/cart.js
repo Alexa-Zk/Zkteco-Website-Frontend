@@ -98,7 +98,7 @@ export const actions = {
         };
 
         this.$cookies.set('cart', cookieParams, {
-            path: '/',
+            path: '/store',
             maxAge: 60 * 60 * 24 * 7
         });
     },

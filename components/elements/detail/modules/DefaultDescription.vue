@@ -7,20 +7,21 @@
             <v-tab :ripple="false" tag="li">
                 <a class="list-item">Specification</a>
             </v-tab>
-            <v-tab :ripple="false" tag="li">
+            <!-- <v-tab :ripple="false" tag="li">
                 <a class="list-item">
                     Vendor
                 </a>
-            </v-tab>
-            <v-tab :ripple="false" tag="li">
+            </v-tab> -->
+            <!-- <v-tab :ripple="false" tag="li">
                 <a class="list-item">Reviews (1)</a>
-            </v-tab>
-            <v-tab :ripple="false" tag="li">
+            </v-tab> -->
+            <!-- <v-tab :ripple="false" tag="li">
                 <a class="list-item">Questions and Answers</a>
-            </v-tab>
-            <v-tab :ripple="false" tag="li">
+            </v-tab> -->
+            <!-- <v-tab :ripple="false" tag="li">
                 <a class="list-item">More Offers</a>
-            </v-tab>
+            </v-tab> -->
+
             <v-tab-item>
                 <div class="tab-content">
                     <partial-description />
@@ -33,28 +34,28 @@
                 </div>
             </v-tab-item>
 
-            <v-tab-item>
+            <!-- <v-tab-item>
                 <div class="tab-content">
                     <partial-vendor />
                 </div>
-            </v-tab-item>
+            </v-tab-item> -->
 
-            <v-tab-item>
+            <!-- <v-tab-item>
                 <div class="tab-content">
                     <partial-review />
                 </div>
-            </v-tab-item>
+            </v-tab-item> -->
 
-            <v-tab-item>
+            <!-- <v-tab-item>
                 <div class="tab-content">
                     <p>No Content</p>
                 </div>
-            </v-tab-item>
-            <v-tab-item>
+            </v-tab-item> -->
+            <!-- <v-tab-item>
                 <div class="tab-content">
                     <partial-offer />
                 </div>
-            </v-tab-item>
+            </v-tab-item> -->
         </v-tabs>
     </div>
 </template>

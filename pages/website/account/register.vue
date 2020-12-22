@@ -33,6 +33,7 @@ import HeaderMobile from '~/components/shared/mobile/HeaderMobile';
 
 export default {
     transition: 'zoom',
+    layout: "layout-default-website",
     components: {
         HeaderMobile,
         Register,

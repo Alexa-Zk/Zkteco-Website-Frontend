@@ -1,6 +1,6 @@
 <template lang="html">
     <header class="header header--mobile">
-        <div class="header__top">
+        <!-- <div class="header__top">
             <div class="header__left">
                 <p>Welcome to Martfury Online Shopping Store !</p>
             </div>
@@ -18,7 +18,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
         <div class="navigation--mobile">
             <div class="navigation__left">
                 <nuxt-link to="/store" class="ps-logo">
