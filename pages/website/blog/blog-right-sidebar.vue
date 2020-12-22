@@ -17,6 +17,7 @@ import BlogSidebar from '~/components/partials/blog/BlogSidebar';
 
 export default {
     transition: 'zoom',
+    layout: 'layout-default-website',
     components: {
         BlogSidebar,
         BlogList,

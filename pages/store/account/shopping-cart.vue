@@ -24,7 +24,7 @@ export default {
             breadCrumb: [
                 {
                     text: 'Home',
-                    url: '/'
+                    url: '/store'
                 },
                 {
                     text: 'Shopping Cart'

@@ -50,7 +50,7 @@
                                     >
                                         <span class="ps-block__estimate">
                                             <nuxt-link
-                                                :to="`/product/${product.id}`"
+                                                :to="`/store/product/${product.id}`"
                                                 class="ps-product__title"
                                             >
                                                 {{ product.title }}
@@ -67,7 +67,7 @@
                             </div>
                         </div>
                         <nuxt-link
-                            to="/account/checkout"
+                            to="/store/account/checkout"
                             class="ps-btn ps-btn--fullwidth"
                         >
                             Proceed to checkout

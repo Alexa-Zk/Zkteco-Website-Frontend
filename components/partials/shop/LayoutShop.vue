@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="ps-shopping">
-        <best-sale-items collectionSlug="shop-best-seller-items" />
-        <recommend-items collectionSlug="shop-recommend-items" />
+        <!-- <best-sale-items collectionSlug="shop-best-seller-items" />
+        <recommend-items collectionSlug="shop-recommend-items" /> -->
         <div class="ps-shopping__header">
             <p>
                 <strong class="mr-2">{{ total }}</strong>

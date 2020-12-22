@@ -79,7 +79,7 @@
             />
         </div>
         <div class="ps-form__submit">
-            <nuxt-link to="/account/shopping-cart">
+            <nuxt-link to="/store/account/shopping-cart">
                 <i class="icon-arrow-left mr-1"></i>
                 Return to shopping cart
             </nuxt-link>
@@ -97,7 +97,7 @@ export default {
     name: 'FormCheckoutInformation',
     methods: {
         handleToShipping() {
-            this.$router.push('/account/shipping');
+            this.$router.push('/store/account/shipping');
         }
     }
 };
