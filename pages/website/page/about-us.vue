@@ -1,21 +1,25 @@
 <template lang="html">
     <div class="ps-page--single">
-        <img src="~/static/img/bg/about-us.jpg" alt="" />
+        <img src="~/static/img/website/about-us-banner.jpg" alt="" />
         <bread-crumb :breadcrumb="breadCrumb" />
-        <our-team />
-        <about-awards />
+        <!-- <our-team /> -->
+        <about-value />
+        <about-mission />
+        <about-vision />
     </div>
 </template>
 
 <script>
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import OurTeam from '~/components/partials/page/OurTeam';
-import AboutAwards from '~/components/partials/page/AboutAwards';
+import AboutMission from '~/components/partials/page/website/AboutMission';
+import AboutVision from '~/components/partials/page/website/AboutVision';
+import AboutValue from '~/components/partials/page/website/AboutValue';
 
 export default {
     components: {
-        AboutAwards,
-        OurTeam,
+        AboutMission,
+        AboutVision,
+        AboutValue,
         BreadCrumb
     },
     layout: "layout-default-website",
@@ -36,4 +40,12 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-page--single {
+    img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+</style>
