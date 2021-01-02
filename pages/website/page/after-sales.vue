@@ -1,23 +1,21 @@
 <template lang="html">
     <div class="ps-page--single">
-        <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />
-        <div class="container">
-            <faqs />
-        </div>
+        <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth"/>
+        <after-sales />
     </div>
 </template>
 
 <script>
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import Faqs from '~/components/partials/page/Faqs';
+import AfterSales from '~/components/partials/page/website/AfterSales';
 
 export default {
     components: {
-        Faqs,
+        AfterSales,
         BreadCrumb
     },
-    transition: 'zoom',
     layout: 'layout-default-website',
+    transition: 'zoom',
     data: () => {
         return {
             breadCrumb: [
@@ -26,11 +24,11 @@ export default {
                     url: '/'
                 },
                 {
-                    text: 'After Sales',
-                    url: '/website/page/after-sales'
+                    text: 'Support',
+                    url: '/'
                 },
                 {
-                    text: 'Frequently Asked Questions'
+                    text: 'After Sales'
                 }
             ]
         };
