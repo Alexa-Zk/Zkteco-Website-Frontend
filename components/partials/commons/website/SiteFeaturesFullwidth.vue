@@ -5,11 +5,11 @@
             <div class="ps-block--site-features">
                 <div class="ps-block__item">
                     <div class="ps-block__left">
-                        <i class="icon-rocket"></i>
+                        <i class="icon-clock"></i>
                     </div>
                     <div class="ps-block__right">
                         <h4>
-                            {{ $t('common.siteFeatures.freeDelivery.key') }}
+                            {{ $t('Time Attendance') }}
                         </h4>
                         <p>
                             {{ $t('common.siteFeatures.freeDelivery.value') }}
@@ -18,11 +18,11 @@
                 </div>
                 <div class="ps-block__item">
                     <div class="ps-block__left">
-                        <i class="icon-sync"></i>
+                        <i class="icon-accessibility"></i>
                     </div>
                     <div class="ps-block__right">
                         <h4>
-                            {{ $t('common.siteFeatures.dateReturn.key') }}
+                            {{ $t('Access Control') }}
                         </h4>
                         <p>{{ $t('common.siteFeatures.dateReturn.value') }}</p>
                     </div>
@@ -30,11 +30,11 @@
 
                 <div class="ps-block__item">
                     <div class="ps-block__left">
-                        <i class="icon-credit-card"></i>
+                        <i class="icon-lock"></i>
                     </div>
                     <div class="ps-block__right">
                         <h4>
-                            {{ $t('common.siteFeatures.securePayment.key') }}
+                            {{ $t('Smart Lock') }}
                         </h4>
                         <p>
                             {{ $t('common.siteFeatures.securePayment.value') }}
@@ -43,11 +43,11 @@
                 </div>
                 <div class="ps-block__item">
                     <div class="ps-block__left">
-                        <i class="icon-bubbles"></i>
+                        <i class="icon-surveillance2"></i>
                     </div>
                     <div class="ps-block__right">
                         <h4>
-                            {{ $t('common.siteFeatures.support.key') }}
+                            {{ $t('Entrance Control') }}
                         </h4>
                         <p>
                             {{ $t('common.siteFeatures.support.value') }}
@@ -56,11 +56,11 @@
                 </div>
                 <div class="ps-block__item">
                     <div class="ps-block__left">
-                        <i class="icon-gift"></i>
+                        <i class="icon-surveillance"></i>
                     </div>
                     <div class="ps-block__right">
                         <h4>
-                            {{ $t('common.siteFeatures.giftService.key') }}
+                            {{ $t('Security Inspection') }}
                         </h4>
                         <p>
                             {{ $t('common.siteFeatures.giftService.value') }}
@@ -69,11 +69,11 @@
                 </div>
                 <div class="ps-block__item">
                     <div class="ps-block__left">
-                        <i class="icon-sync"></i>
+                        <i class="icon-camera"></i>
                     </div>
                     <div class="ps-block__right">
                         <h4>
-                            {{ $t('common.siteFeatures.dateReturn.key') }}
+                            {{ $t('CCTV') }}
                         </h4>
                         <p>{{ $t('common.siteFeatures.dateReturn.value') }}</p>
                     </div>

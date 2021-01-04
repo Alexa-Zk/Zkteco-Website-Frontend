@@ -2,7 +2,7 @@
     <div class="ps-page--single">
         <bread-crumb :breadcrumb="breadCrumb" />
         <div class="ps-page--404">
-            <div class="container">
+            <div class="ps-container">
                 <div class="ps-section__content">
                     <figure>
                         <img src="~/static/img/404.jpg" alt="" />
@@ -31,6 +31,7 @@ export default {
         BreadCrumb
     },
     transition: 'zoom',
+    layout: 'layout-default-website',
     data: () => {
         return {
             breadCrumb: [

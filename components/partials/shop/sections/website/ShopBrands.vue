@@ -2,7 +2,10 @@
     <div class="ps-container shop-brands-website">
         <h3>Our Partners</h3>
         <div class="ps-shop-brand">
-            <nuxt-link to="/shop">
+            <nuxt-link to="/shop" v-for="logo in partnersLogo" :key="logo.name">
+                <img :src="logo.image.url" alt="martfury" />
+            </nuxt-link>
+            <!-- <nuxt-link to="/shop">
                 <img src="~/static/img/brand/1.jpg" alt="martfury" />
             </nuxt-link>
             <nuxt-link to="/shop">
@@ -25,14 +28,15 @@
             </nuxt-link>
             <nuxt-link to="/shop">
                 <img src="~/static/img/brand/8.jpg" alt="martfury" />
-            </nuxt-link>
+            </nuxt-link> -->
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'ShopBrands'
+    name: 'ShopBrands',
+    props: ["partnersLogo"]
 };
 </script>
 
@@ -47,6 +51,16 @@ export default {
     }
     .ps-shop-brand {
         margin: 45px 0px;
+        a { 
+            height: 100px;
+            width: 200px;
+            img { 
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+            }
+        }
+        
     }
 }
 </style>
