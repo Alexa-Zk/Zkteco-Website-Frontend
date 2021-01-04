@@ -2,15 +2,9 @@
     <div class="ps-shop-banner" id="ps-shop-banner">
         <div class="ps-carousel" v-swiper:mySwiper="swiperOption">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
+                <div class="swiper-slide" v-for="slide in homeSlider" :key="slide.id">
                     <img
-                        src="~/static/img/slider/shop-default/1.jpg"
-                        alt="martfury"
-                    />
-                </div>
-                <div class="swiper-slide">
-                    <img
-                        src="~/static/img/slider/shop-default/2.jpg"
+                        :src="slide.image.url"
                         alt="martfury"
                     />
                 </div>
@@ -32,13 +26,16 @@
 <script>
 export default {
     name: 'HomeBanner',
+    props: ["homeSlider"],
     data() {
         return {
             swiperOption: {
                 loop: true,
-                speed: 700,
+                speed: 2000,
                 slidesPerView: 1,
                 spaceBetween: 1,
+                autoplay: true,
+                infinite: true,
                 navigation: {
                     nextEl: '.swiper-next',
                     prevEl: '.swiper-prev'

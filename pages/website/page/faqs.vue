@@ -2,7 +2,7 @@
     <div class="ps-page--single">
         <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />
         <div class="container">
-            <faqs />
+            <faqs :faqs="faqs"/>
         </div>
     </div>
 </template>
@@ -10,6 +10,9 @@
 <script>
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import Faqs from '~/components/partials/page/Faqs';
+
+// Queries
+import faqs from '~/apollo/queries/faq/faqs';
 
 export default {
     components: {
@@ -20,6 +23,7 @@ export default {
     layout: 'layout-default-website',
     data: () => {
         return {
+            faqs: [],
             breadCrumb: [
                 {
                     text: 'Home',
@@ -34,7 +38,13 @@ export default {
                 }
             ]
         };
-    }
+    },
+    apollo: {
+        faqs: {
+            prefetch: true,
+            query: faqs
+        }
+    },
 };
 </script>
 

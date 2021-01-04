@@ -11,24 +11,57 @@
                                     color="warning"
                                     class="ps-tab-list"
                                     grow
+                                    v-for="item in downloadCenters"
+                                    :key="item.id"
                                 >
                                     <v-tab tag="li" class="tab-label">
-                                        Software
+                                        {{ item.name }}
                                     </v-tab>
-                                    <v-tab tag="li" class="tab-label">
-                                        Manual
-                                    </v-tab>
+
                                     <v-tab-item>
                                         <form>
                                             <div class="ps-block__content">
-                                                No Software Uploaded
+                                                <div
+                                                    class="downloads_container"
+                                                    v-for="i in item.download"
+                                                    :key="i.id"
+                                                >
+                                                    <div class="download_left">
+                                                        <div class="row-left">
+                                                            <div
+                                                                class="download-avatar"
+                                                            >
+                                                                <img
+                                                                    src="~/static/img/website/download-2.png"
+                                                                    alt="Download"
+                                                                />
+                                                            </div>
+                                                            <div class="title">
+                                                                {{ i.name }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="size">
+                                                            Size:
+                                                            {{
+                                                                i.file[0].size
+                                                            }}MB
+                                                        </div>
+                                                    </div>
+                                                    <div class="download_right">
+                                                        <a class="" download
+                                                            >Download</a
+                                                        >
+
+                                                        <div class="date">
+                                                            Update Time：{{
+                                                                i.file[0]
+                                                                    .updated_at
+                                                            }}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </form>
-                                    </v-tab-item>
-                                    <v-tab-item>
-                                        <div class="ps-block__content">
-                                            No Manual Uploaded
-                                        </div>
                                     </v-tab-item>
                                 </v-tabs>
                             </div>
@@ -41,10 +74,62 @@
 </template>
 
 <script>
-
 export default {
     name: 'Downloads',
+    props: ['downloadCenters']
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.tab-label {
+    font-size: 16px;
+    text-transform: none;
+    color: $color-1st;
+}
+.downloads_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 25px 0;
+    border-bottom: 1px dashed #e6e6e6;
+    @include media('<sm') {
+        display: block;
+    }
+    @include media('<xs') {
+        display: block;
+    }
+    .download_left {
+        .row-left {
+            align-items: center;
+            display: flex;
+            .title {
+                margin-left: 20px;
+            }
+        }
+    }
+    .download_right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        a {
+            display: block;
+            width: 120px;
+            height: 40px;
+            line-height: 38px;
+            border: 1px solid #e6e6e6;
+            text-align: center;
+            margin-bottom: 10px;
+            float: right;
+            transition: all 0.5s;
+
+            &:hover {
+                color: white !important;
+                background: #7cbd27;
+                border: none;
+            }
+        }
+    }
+}
+</style>

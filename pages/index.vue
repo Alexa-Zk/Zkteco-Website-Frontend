@@ -1,98 +1,57 @@
 <template lang="html">
     <main id="homepage-1">
         <home-banner />
+        <home-banner :homeSlider="adSliders"/>
         <site-feautures-fullwidth />
-        <!-- 
-        <home-default-deal-of-day
-            v-if="collections !== null"
-            collection-slug="deal-of-the-day"
-        />
-        <home-ads-columns />
-        <home-default-top-categories /> -->
-        <!-- <template v-if="collections !== null">
-            <conumer-electronics collection-slug="consumer-electronics" />
-            <clothings collection-slug="clothings" />
-            <garden-and-kitchen collection-slug="garden-and-kitchen" />
-        </template>
-        <home-ads /> -->
-        <!-- <download-app /> -->
         <div class="ps-container">
             <related-posts />
         </div>
-        
-        <!-- <new-arrivals
-            v-if="collections !== null"
-            collection-slug="new-arrivals-products"
-        /> -->
-        <home-brand />
-        <newsletters layout="fullwidth"/>
+        <home-brand :partnersLogo="ourPartners" />
+        <newsletters layout="fullwidth" />
     </main>
 </template>
 <script>
 import { mapState } from 'vuex';
-import RelatedPosts from '~/components/partials/post/website/RelatedPosts';
-import DownloadApp from '~/components/partials/commons/DownloadApp';
-import FooterFullwidth from '~/components/shared/footers/FooterFullwidth';
-import Newsletters from '~/components/partials/commons/Newsletters';
-import SiteFeauturesFullwidth from '~/components/partials/commons/website/SiteFeaturesFullwidth';
-import HomeAdsColumns from '~/components/partials/homepage/default/HomeAdsColumns';
-import HomeAds from '~/components/partials/homepage/default/HomeAds';
-import NewArrivals from '~/components/partials/homepage/default/NewArrivals';
-import HomeDefaultTopCategories from '~/components/partials/homepage/default/HomeDefaultTopCategories';
-import GardenAndKitchen from '~/components/partials/homepage/default/GardenAndKitchen';
-import Clothings from '~/components/partials/homepage/default/Clothings';
-import ConumerElectronics from '~/components/partials/homepage/default/ConumerElectronics';
 import HomeBanner from '~/components/partials/homepage/website/default/HomeBanner';
 import HomeBrand from '~/components/partials/shop/sections/website/ShopBrands';
-import HeaderDefault from '~/components/shared/headers/HeaderDefault';
-import NavigationList from '~/components/shared/mobile/NavigationList';
-import HeaderMobile from '~/components/shared/mobile/HeaderMobile';
-import MobileDrawer from '~/components/shared/mobile/MobileDrawer';
-import HomeDefaultDealOfDay from '~/components/partials/homepage/default/HomeDefaultDealOfDay';
-import DemoPanel from '~/components/shared/DemoPanel';
+import Newsletters from '~/components/partials/commons/Newsletters';
+import SiteFeauturesFullwidth from '~/components/partials/commons/website/SiteFeaturesFullwidth';
+import RelatedPosts from '~/components/partials/post/website/RelatedPosts';
+
+// Queries
+import homePages from '~/apollo/queries/homePages';
 
 export default {
+    data() {
+        return {
+            homePages: '',
+            articles: ''
+        };
+    },
+    apollo: {
+        homePages: {
+            prefetch: true,
+            query: homePages
+        },
+    },
     components: {
-        DemoPanel,
-        HomeDefaultDealOfDay,
-        MobileDrawer,
-        HeaderMobile,
-        NavigationList,
-        HeaderDefault,
         HomeBanner,
         HomeBrand,
-        GardenAndKitchen,
-        HomeAdsColumns,
         SiteFeauturesFullwidth,
-        HomeAds,
-        FooterFullwidth,
-        DownloadApp,
         Newsletters,
-        RelatedPosts,
-        NewArrivals,
-        HomeDefaultTopCategories,
-        Clothings,
-        ConumerElectronics
+        RelatedPosts
     },
 
     transition: 'zoom',
     layout: 'layout-default-website',
 
     computed: {
-        ...mapState({
-            collections: state => state.collection.collections
-        })
+        adSliders() {
+            return this.homePages ? this.homePages[0].sliders: [];
+        },
+        ourPartners() {
+            return this.homePages ? this.homePages[0].partners.slice(0,8): [];
+        }
     },
-
-    async created() {
-        const queries = [
-            'deal-of-the-day',
-            'consumer-electronics',
-            'clothings',
-            'garden-and-kitchen',
-            'new-arrivals-products'
-        ];
-        await this.$store.dispatch('collection/getCollectionsBySlugs', queries);
-    }
 };
 </script>

@@ -1,7 +1,7 @@
 export default {
     head: {
-        titleTemplate: 'Martfury - Multi-purpose Ecomerce template with vuejs',
-        title: 'Martfury - Multi-purpose Ecomerce template with vuejs',
+        titleTemplate: 'ZKTeco - West Africa',
+        title: 'ZKTeco - West Africa',
         meta: [
             { charset: 'utf-8' },
             {
@@ -56,7 +56,14 @@ export default {
         background: 'green'
     },
 
-    modules: ['@nuxtjs/axios', 'nuxt-i18n'],
+    modules: ['@nuxtjs/axios', 'nuxt-i18n', '@nuxtjs/apollo'],
+		apollo: {
+			clientConfigs: {
+				default:{
+					httpEndpoint: "https://admin.zkteco-wa.com/graphql",
+				}
+			}
+		},
 
     i18n: {
         locales: [

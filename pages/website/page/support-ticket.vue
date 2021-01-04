@@ -144,6 +144,9 @@ export default {
 
 .ps-newsletter {
     .row {
+        .ps-form__left {
+            width: 100%;
+        }
         .ps-image {
             background-color: lighten($color: #78bc27, $amount: 3%);
             display: flex;
