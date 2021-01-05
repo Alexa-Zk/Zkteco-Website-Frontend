@@ -1,0 +1,14 @@
+query SolutionCategories($id: ID!) {
+    solutionCategories(where: { id: $id }) {
+        id
+        slug
+        name
+        solutions {
+            id
+            title
+            image {
+                url
+            }
+        }
+    }
+}

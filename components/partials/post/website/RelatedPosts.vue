@@ -45,6 +45,8 @@ export default {
 
 <style lang="scss" scoped>
 .ps-related-posts {
+    padding-top: 0px;
+    padding-bottom: 60px;
     .row {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
