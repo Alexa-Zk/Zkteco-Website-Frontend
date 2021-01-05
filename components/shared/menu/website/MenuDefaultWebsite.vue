@@ -73,83 +73,26 @@ export default {
                     ]
                 },
 
+               
                 {
-                    text: this.$i18n.t('Solution'),
-                    url: '/shop',
-                    extraClass: 'menu-item-has-children has-mega-menu',
+                    text: this.$i18n.t('Solutions'),
+                    url: '/website/vendor/store-list-2',
+                    extraClass: 'menu-item-has-children',
                     subClass: 'sub-menu',
-                    mega: 'true',
-                    megaContent: [
+                    subMenu: [
                         {
-                            heading: this.$i18n.t('Classified By Industry'),
-                            megaItems: [
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.mainMenu.shopDefault'
-                                    ),
-                                    url: '/shop'
-                                },
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.mainMenu.shopFullwidth'
-                                    ),
-                                    url: '/shop/shop-fullwidth'
-                                },
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.mainMenu.shopSidebar'
-                                    ),
-                                    url: '/shop/shop-sidebar'
-                                },
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.mainMenu.shopWithoutBanner'
-                                    ),
-                                    url: '/shop/shop-sidebar-without-banner'
-                                },
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.mainMenu.shopCarousel'
-                                    ),
-                                    url: '/shop/shop-carousel'
-                                }
-                            ]
+                            text: this.$i18n.t(
+                                'Classified By Industry'
+                            ),
+                            url: '/website/vendor/1'
                         },
                         {
-                            heading: this.$i18n.t('Classified By Application'),
-                            megaItems: [
-                                {
-                                    text: this.$i18n.t('menu.mainMenu.default'),
-                                    url: '/product/1'
-                                },
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.mainMenu.extended'
-                                    ),
-                                    url: '/product/extended'
-                                },
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.mainMenu.fullContent'
-                                    ),
-                                    url: '/product/full-content'
-                                },
-                                {
-                                    text: this.$i18n.t('menu.mainMenu.boxed'),
-                                    url: '/product/boxed'
-                                },
-                                {
-                                    text: this.$i18n.t('menu.mainMenu.sidebar'),
-                                    url: '/product/sidebar'
-                                },
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.mainMenu.fullwidth'
-                                    ),
-                                    url: '/product/1'
-                                }
-                            ]
-                        }
+                            text: this.$i18n.t(
+                                'Classified By Application'
+                            ),
+                            url: '/website/vendor/2'
+                        },
+                        
                     ]
                 },
 

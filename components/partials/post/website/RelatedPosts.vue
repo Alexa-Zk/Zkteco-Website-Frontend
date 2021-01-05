@@ -32,26 +32,27 @@ export default {
     apollo: {
         articles: {
             prefetch: true,
-            query: articles
-        },
+            query: articles,
+        }
     },
     computed: {
         ourArticles() {
-            return this.articles ? this.articles.slice(0,4): [];
+            return this.articles ? this.articles.slice(0, 4) : [];
         }
-    },
+    }
 };
 </script>
 
 <style lang="scss" scoped>
-
 .ps-related-posts {
+    padding-top: 0px;
+    padding-bottom: 60px;
     .row {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 20px;
         @include media('<sm') {
-           grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
         }
         @include media('<xs') {
             grid-template-columns: 1fr;

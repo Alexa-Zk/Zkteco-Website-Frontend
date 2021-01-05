@@ -1,14 +1,16 @@
 <template lang="html">
     <div class="ps-page--single ps-page--vendor">
         <bread-crumb :breadcrumb="breadCrumb" />
-        <store-list-2 />
+        <store-list-2 :formattedSolution="formattedSolution" />
     </div>
 </template>
 
 <script>
 import BreadCrumb from '~/components/elements/BreadCrumb';
+import StoreList2 from '~/components/partials/vendor/website/SolutionCategories';
 
-import StoreList2 from '~/components/partials/vendor/website/StoreList2';
+// Queries
+import singleArticles from '~/apollo/queries/solutions/allSolutionCategories';
 
 export default {
     components: {
@@ -18,6 +20,7 @@ export default {
     layout: 'layout-default-website',
     data: () => {
         return {
+            solutionCategories: '',
             breadCrumb: [
                 {
                     text: 'Home',
@@ -28,7 +31,20 @@ export default {
                 }
             ]
         };
-    }
+    },
+    apollo: {
+        solutionCategories: {
+            query: singleArticles,
+            variables() {
+                return { id: this.$route.params.id };
+            }
+        }
+    },
+    computed: {
+        formattedSolution () {
+            return this.solutionCategories[0]
+        }
+    },
 };
 </script>
 
