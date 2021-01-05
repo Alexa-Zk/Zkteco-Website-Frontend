@@ -1,0 +1,10 @@
+query Solutions {
+	solutions {
+    id
+    slug
+    title
+    image {
+      url
+    } 
+  }
+}

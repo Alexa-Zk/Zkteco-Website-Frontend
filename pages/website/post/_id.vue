@@ -1,9 +1,9 @@
 <template lang="html">
     <div>
-        <post-detail-has-background />
+        <post-detail-has-background :articles="formattedArticle" />
         <div class="container">
             <related-posts />
-            <post-comments />
+            <!-- <post-comments /> -->
         </div>
     </div>
 </template>
@@ -14,6 +14,9 @@ import PostDetailHasBackground from '~/components/elements/post/PostDetailHasBac
 import PostComments from '~/components/partials/post/PostComments';
 import RelatedPosts from '~/components/partials/post/RelatedPosts';
 
+// Queries
+import singleArticles from '~/apollo/queries/articles/singleArticles';
+
 export default {
     name: 'default',
     components: {
@@ -23,8 +26,10 @@ export default {
         BreadCrumb
     },
     transition: 'zoom',
+    layout: 'layout-default-website',
     data: () => {
         return {
+            articles: '',
             breadCrumb: [
                 {
                     text: 'Home',
@@ -35,7 +40,20 @@ export default {
                 }
             ]
         };
-    }
+    },
+    apollo: {
+        articles: {
+            query: singleArticles,
+            variables() {
+                return { id: this.$route.params.id };
+            }
+        }
+    },
+    computed: {
+        formattedArticle () {
+            return this.articles[0]
+        }
+    },
 };
 </script>
 
