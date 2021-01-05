@@ -1,0 +1,18 @@
+query Articles($id: ID!) {
+    articles(where: { id: $id }) {
+        id
+        title
+        slug
+        body
+        created_at
+        image {
+            url
+            name
+            width
+            height
+        }
+        categories {
+            name
+        }
+    }
+}

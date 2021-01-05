@@ -6,7 +6,7 @@
     >
         <div class="ps-blog__left">
             <PostSmallThumbnail
-                v-for="post in blogPosts"
+                v-for="post in articles"
                 :post="post"
                 :key="post.id"
             />
@@ -24,12 +24,17 @@ import Sidebar from './modules/Sidebar';
 import PostHorizontal from '../../elements/post/PostHorizontal';
 import PostSmallThumbnail from '../../elements/post/PostSmallThumbnail';
 import { posts } from '~/static/data/blog-grid.json';
+
+// Queries
+import articles from '~/apollo/queries/articles/homePageArticles';
+
 export default {
     name: 'BlogSidebar',
     components: { PostSmallThumbnail, PostHorizontal, Sidebar, Pagination },
     data() {
         return {
-            blogPosts: posts
+            blogPosts: posts,
+            articles: ''
         };
     },
     props: {
@@ -37,7 +42,18 @@ export default {
             type: String,
             default: 'left'
         }
-    }
+    },
+    apollo: {
+        articles: {
+            prefetch: true,
+            query: articles
+        },
+    },
+    computed: {
+        ourArticles() {
+            return this.articles ? this.articles : [];
+        }
+    },
 };
 </script>
 
