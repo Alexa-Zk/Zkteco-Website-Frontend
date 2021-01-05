@@ -1,0 +1,13 @@
+query Solutions($id: ID!) {
+    solutions(where: { id: $id }) {
+        id
+        title
+        slug
+        description
+        image {
+            url
+            name
+        }
+        content
+    }
+}

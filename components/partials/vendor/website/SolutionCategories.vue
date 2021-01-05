@@ -30,9 +30,10 @@
                                         alt="martfury"
                                     />
                                 </a>
-                                <a class="ps-btn" href="store-detail.html">
-                                    Learn More
-                                </a>
+                                <nuxt-link class="ps-btn" :to="`/website/vendor/solution-details/${item.id}`">
+                                     Learn More
+                                </nuxt-link>
+                               
                             </div>
                         </article>
                     </div>

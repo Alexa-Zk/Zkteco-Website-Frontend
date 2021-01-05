@@ -1,19 +1,20 @@
 <template lang="html">
     <div class="ps-vendor-banner bg--cover">
-        <div class="container">
+        <div class="container" v-if="formatted">
             <h2>
-                Millions Of Shoppers Can’t Wait To See What You Have In Store
+                {{formatted.title}}
             </h2>
-            <nuxt-link to="/vendor/store-list" class="ps-btn ps-btn--lg">
+            <!-- <nuxt-link to="/vendor/store-list" class="ps-btn ps-btn--lg">
                 Start Selling
-            </nuxt-link>
+            </nuxt-link> -->
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'VendorBanner'
+    name: 'VendorBanner',
+    props: ["formatted"]
 };
 </script>
 
