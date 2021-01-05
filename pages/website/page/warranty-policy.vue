@@ -1,8 +1,11 @@
 <template lang="html">
     <div class="ps-page--single">
         <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />
-        <div class="container">
-            <faqs :faqs="faqs"/>
+        <div class="ps-container">
+            <div class="guarantee-box">
+                <h2>{{ warranties.name }}</h2>
+                <p class="text" v-html="warranties.content"></p>
+            </div>
         </div>
     </div>
 </template>
@@ -12,7 +15,7 @@ import BreadCrumb from '~/components/elements/BreadCrumb';
 import Faqs from '~/components/partials/page/Faqs';
 
 // Queries
-import faqs from '~/apollo/queries/faq/faqs';
+import WarrantyPolicies from '~/apollo/queries/warranty/warranties';
 
 export default {
     components: {
@@ -23,7 +26,7 @@ export default {
     layout: 'layout-default-website',
     data: () => {
         return {
-            faqs: [],
+            warrantyPolicies: '',
             breadCrumb: [
                 {
                     text: 'Home',
@@ -34,18 +37,32 @@ export default {
                     url: '/website/page/after-sales'
                 },
                 {
-                    text: 'Frequently Asked Questions'
+                    text: 'Product Warranty Policy'
                 }
             ]
         };
     },
     apollo: {
-        faqs: {
+        warrantyPolicies: {
             prefetch: true,
-            query: faqs
+            query: WarrantyPolicies
         }
     },
+    computed: {
+        warranties() {
+            return this.warrantyPolicies ? this.warrantyPolicies[0] : {
+                name:  "Warranty",
+                content:  'No warranty'
+            };
+        }
+    }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-page--single {
+    .guarantee-box {
+        margin: 50px 0px;
+    }
+}
+</style>

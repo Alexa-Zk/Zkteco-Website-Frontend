@@ -1,0 +1,19 @@
+query DownloadCenters{
+    downloadCenters {
+        id
+        name
+        download {
+            id
+            name
+            file {
+                id
+                name
+                updated_at
+                size
+                url
+                ext
+                caption
+            }
+        }
+    }
+}

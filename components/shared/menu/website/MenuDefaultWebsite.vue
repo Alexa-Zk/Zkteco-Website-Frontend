@@ -161,34 +161,17 @@ export default {
                     subMenu: [
                         {
                             text: this.$i18n.t(
-                                'menu.mainMenu.marketplaceFullWidth'
+                                'Download Center'
                             ),
-                            url: '/'
+                            url: '/website/page/download-center'
                         },
                         {
                             text: this.$i18n.t(
-                                'menu.mainMenu.homeMarketplaceV1'
+                                'After Sales Service'
                             ),
-                            url: '/home/market-place'
+                            url: '/website/page/after-sales'
                         },
-                        {
-                            text: this.$i18n.t(
-                                'menu.mainMenu.homeMarketplaceV2'
-                            ),
-                            url: '/home/market-place-2'
-                        },
-                        {
-                            text: this.$i18n.t(
-                                'menu.mainMenu.homeMarketplaceV3'
-                            ),
-                            url: '/home/market-place-3'
-                        },
-                        {
-                            text: this.$i18n.t(
-                                'menu.mainMenu.homeMarketplaceV4'
-                            ),
-                            url: '/home/market-place-4'
-                        }
+                        
                     ]
                 },
 

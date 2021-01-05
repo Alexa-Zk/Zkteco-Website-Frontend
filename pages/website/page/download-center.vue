@@ -1,48 +1,47 @@
 <template lang="html">
     <div class="ps-page--single">
-        <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />
-        <div class="container">
-            <faqs :faqs="faqs"/>
-        </div>
+        <bread-crumb :breadcrumb="breadCrumb"  layout="fullwidth"/>
+        <downloads :downloadCenters="downloadCenters"/>
     </div>
 </template>
 
 <script>
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import Faqs from '~/components/partials/page/Faqs';
+import Downloads from '~/components/partials/page/website/Downloads';
 
 // Queries
-import faqs from '~/apollo/queries/faq/faqs';
+import downloadCenters from '~/apollo/queries/downloadCenters';
+
 
 export default {
     components: {
-        Faqs,
-        BreadCrumb
+        BreadCrumb,
+        Downloads
     },
-    transition: 'zoom',
     layout: 'layout-default-website',
+    transition: 'zoom',
     data: () => {
         return {
-            faqs: [],
+            downloadCenters: '',
             breadCrumb: [
                 {
                     text: 'Home',
                     url: '/'
                 },
                 {
-                    text: 'After Sales',
-                    url: '/website/page/after-sales'
+                    text: 'Support',
+                    url: '/'
                 },
                 {
-                    text: 'Frequently Asked Questions'
+                    text: 'Download Center'
                 }
             ]
         };
     },
     apollo: {
-        faqs: {
+        downloadCenters: {
             prefetch: true,
-            query: faqs
+            query: downloadCenters
         }
     },
 };

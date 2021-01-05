@@ -1,0 +1,19 @@
+query HomePages {
+    homePages {
+        sliders {
+            id
+            name
+            url
+            image {
+                url
+                name
+            }
+        }
+        partners {
+            name
+            image {
+                url
+            }
+        }
+    }
+}
