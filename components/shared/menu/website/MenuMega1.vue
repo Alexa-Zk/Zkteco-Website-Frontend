@@ -1,6 +1,6 @@
 <template>
     <li class=" menu-item-has-children has-mega-menu">
-        <nuxt-link :to="`/`">
+        <nuxt-link :to="`/website/shop/shop-sidebar-without-banner`">
             Products
         </nuxt-link>
         <div class="mega-menu">
