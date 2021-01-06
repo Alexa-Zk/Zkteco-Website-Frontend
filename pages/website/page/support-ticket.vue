@@ -13,7 +13,7 @@
                             <div class="row">
                                 <div class="col-lg-6 ps-image">
                                     <div class="ps-form__left">
-                                        <CustomerCare/>
+                                        <CustomerCare />
                                     </div>
                                 </div>
                                 <div class="col-lg-6 ps-form">
@@ -32,6 +32,7 @@
                                                         type="text"
                                                         placeholder=""
                                                         class="form-control"
+                                                        v-model="payload.company_name"
                                                     />
                                                 </div>
                                                 <div class="form-group">
@@ -42,6 +43,7 @@
                                                         type="text"
                                                         placeholder=""
                                                         class="form-control"
+                                                        v-model="payload.email"
                                                     />
                                                 </div>
                                                 <div class="form-group">
@@ -52,6 +54,7 @@
                                                         type="text"
                                                         placeholder=""
                                                         class="form-control"
+                                                        v-model="payload.phone_number"
                                                     />
                                                 </div>
                                                 <div class="form-group">
@@ -63,6 +66,7 @@
                                                         type="text"
                                                         placeholder=""
                                                         class="form-control"
+                                                        v-model="payload.serial_number"
                                                     />
                                                 </div>
                                                 <div class="form-group">
@@ -70,11 +74,17 @@
                                                         Issue Type
                                                         <sup>*</sup>
                                                     </label>
-                                                    <select class="form-control">
-                                                        <option>
+                                                    <select
+                                                        class="form-control"
+                                                        v-model="payload.issue_type"
+                                                    >
+                                                        <option value="">
+                                                            Select Issue type
+                                                        </option>
+                                                        <option value="hardware">
                                                             Hardware
                                                         </option>
-                                                        <option>
+                                                        <option value="software">
                                                             Software
                                                         </option>
                                                     </select>
@@ -83,16 +93,17 @@
                                                     <label>
                                                         Description <sup>*</sup>
                                                     </label>
-                                                   
+
                                                     <textarea
                                                         class="form-control"
                                                         rows="5"
                                                         placeholder="Message"
+                                                        v-model="payload.description"
                                                     ></textarea>
                                                 </div>
 
                                                 <div class="form-group submit">
-                                                    <button class="ps-btn">
+                                                    <button class="ps-btn" @click.prevent="supportTicket">
                                                         Submit Ticket
                                                     </button>
                                                 </div>
@@ -111,7 +122,7 @@
 
 <script>
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import CustomerCare from "@/static/svg/CustomerCare";
+import CustomerCare from '@/static/svg/CustomerCare';
 
 export default {
     components: {
@@ -122,6 +133,22 @@ export default {
     layout: 'layout-default-website',
     data: () => {
         return {
+            payload: {
+                company_name: '',
+                phone_number: '',
+                email: '',
+                serial_number: '',
+                issue_type: '',
+                description: ''
+            },
+            temp_payload: {
+                company_name: '',
+                phone_number: '',
+                email: '',
+                serial_number: '',
+                issue_type: '',
+                description: ''
+            },
             breadCrumb: [
                 {
                     text: 'Home',
@@ -136,12 +163,34 @@ export default {
                 }
             ]
         };
+    },
+    methods: {
+        async supportTicket() {
+            const ip = await this.$axios.$post(
+                'https://wslbackend.zkteco-wa.com/api/v1/integrations/supports',
+                this.payload
+            );
+            if (ip) {
+                this.$notify({
+                    group: 'addCartSuccess',
+                    title: 'Success!',
+                    text: `your message has been sent to cart!`
+                });
+                this.payload = this.temp_payload
+            } else {
+                this.$notify({
+                    group: 'addCartSuccess',
+                    title: 'Error!',
+                    text: `Some went wrong!`
+                });
+                this.payload = this.temp_payload
+            }
+        }
     }
 };
 </script>
 
 <style lang="scss" scoped>
-
 .ps-newsletter {
     .row {
         .ps-form__left {
@@ -161,7 +210,6 @@ export default {
             @include media('<xs') {
                 padding-left: 0px;
             }
-
         }
     }
 }

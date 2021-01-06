@@ -11,7 +11,7 @@
             </a>
         </div>
         <div class="ps-panel__content">
-            <div class="ps-site-actions">
+            <!-- <div class="ps-site-actions">
                 <div class="row">
                     <div class="col-6">
                         <mobile-currency-switcher />
@@ -20,7 +20,7 @@
                         <mobile-languge-switcher />
                     </div>
                 </div>
-            </div>
+            </div> -->
             <v-list class="menu--mobile">
                 <template v-for="menuItem in menu">
                     <v-list-group v-if="menuItem.subMenu" no-action>
@@ -95,10 +95,63 @@ export default {
         MobileCurrencySwitcher,
         MobileSubmenu
     },
-    computed: {
-        menu() {
-            return mainMenu;
-        }
+    data() {
+        return {
+            menu: [
+                {
+                    text: 'Solution',
+                    url: '/website/vendor/store-list-2',
+                    extraClass: 'menu-item-has-children',
+                    subClass: 'sub-menu',
+                    subMenu: [
+                        {
+                            text: 'Classified by Application',
+                            url: '/wesbite/vendor/1'
+                        },
+                        {
+                            text: 'Classified by Industry',
+                            url: '/website/vendor/2'
+                        }
+                    ]
+                },
+                {
+                    text: 'Support',
+                    url: '/',
+                    extraClass: 'menu-item-has-children',
+                    subClass: 'sub-menu',
+                    subMenu: [
+                        {
+                            text: 'Download Center',
+                            url: '/website/page/download-center',
+                        },
+                        {
+                            text: 'After Sales Service',
+                            url: '/website/page/after-sales'
+                        }
+                    ]
+                },
+                {
+                    text: 'About Us',
+                    url: '/website/page/about-us'
+                },
+                {
+                    text: 'News Center',
+                    url: '/website/blog/blog-right-sidebar'
+                },
+                {
+                    text: 'Contact Us',
+                    url: '/website/page/contact-us'
+                },
+                {
+                    text: 'Login',
+                    url: '/website/page/login'
+                },
+                {
+                    text: 'Register',
+                    url: '/website/page/register'
+                }
+            ]
+        };
     },
     methods: {
         handleClosePanel() {

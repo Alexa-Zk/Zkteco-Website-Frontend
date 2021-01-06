@@ -25,13 +25,13 @@
                 <span> Search</span>
             </a>
 
-            <a
+            <nuxt-link
                 class="navigation__item"
-                @click.prevent="handleOpenDrawer('cart')"
+                :to="`/store`"
             >
                 <i class="icon-bag2"></i>
                 <span> Store</span>
-            </a>
+            </nuxt-link>
         </div>
     </div>
 </template>

@@ -46,10 +46,10 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <a href="#">Our Mission</a>
+                    <nuxt-link :to="`/website/page/about-us`">Our Mission</nuxt-link>
                 </li>
                 <li>
-                    <a href="#">Our Vision</a>
+                    <nuxt-link :to="`/website/page/about-us`">Our Vision</nuxt-link>
                 </li>
             </ul>
         </aside>
@@ -59,36 +59,34 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <a href="#">Blogs</a>
+                    <nuxt-link :to="`/website/blog/blog-right-sidebar`">Blogs</nuxt-link>
                 </li>
                 <li>
-                    <a href="#">Newsletter</a>
+                    <nuxt-link :to="`/website/blog/blog-right-sidebar`">Newsletter</nuxt-link>
                 </li>
                 <li>
-                    <a href="#">Events</a>
+                    <nuxt-link :to="`/website/blog/blog-right-sidebar`">Events</nuxt-link>
                 </li>
                 <li>
-                    <a href="#">Notice</a>
+                    <nuxt-link :to="`/website/blog/blog-right-sidebar`">Notice</nuxt-link>
                 </li>
                 <li>
-                    <a href="#">Security Bulletins</a>
+                    <nuxt-link :to="`/website/blog/blog-right-sidebar`">Security Bulletins</nuxt-link>
                 </li>
             </ul>
         </aside>
         <aside class="widget widget_footer">
             <h4 class="widget-title">
-                {{ $t('Contact Us') }}
+                {{ $t('Solutions') }}
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <a href="#">Project Consultation</a>
+                    <nuxt-link :to="`/website/vendor/1`">Classified by Industry</nuxt-link>
                 </li>
                 <li>
-                    <a href="#">Online Purchase</a>
+                    <nuxt-link :to="`/website/vendor/2`">Classified by Application</nuxt-link>
                 </li>
-                <li>
-                    <a href="#">Sales Consultation</a>
-                </li>
+                
             </ul>
         </aside>
         <aside class="widget widget_footer">
@@ -97,10 +95,11 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <a href="#">Download Center</a>
+                    <nuxt-link :to="`/website/page/download-center`">Download Center</nuxt-link>
                 </li>
                 <li>
-                    <a href="#">After Sales</a>
+                    <nuxt-link :to="`/website/page/after-sales`">After Sales</nuxt-link>
+                    
                 </li>
                 
             </ul>
