@@ -1,0 +1,8 @@
+query ProductCategories {
+	productCategories {
+        id
+        name
+        created_at
+        slug
+  }
+}

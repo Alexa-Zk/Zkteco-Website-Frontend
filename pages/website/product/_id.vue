@@ -5,25 +5,13 @@
             <div class="ps-container">
                 <div class="ps-page__container">
                     <div class="ps-page__left">
-                        <product-detail-fullwidth v-if="product !== null" />
+                        <product-detail-fullwidth :singleProduct="singleProduct" />
                     </div>
                     <div class="ps-page__right">
-                        <product-widgets
-                            v-if="collections !== null"
-                            collection-slug="widget_same_brand"
-                        />
+                        <product-widgets collection-slug="widget_same_brand"/>
                     </div>
                 </div>
-                <customer-bought
-                    v-if="collections !== null"
-                    layout="fullwidth"
-                    collection-slug="customer_bought"
-                />
-                <related-product
-                    v-if="collections !== null"
-                    layout="fullwidth"
-                    collection-slug="shop-recommend-items"
-                />
+                <!-- <related-product layout="fullwidth" collection-slug="shop-recommend-items"/> -->
             </div>
         </div>
         <newsletters layout="fullwidth"/>
@@ -32,15 +20,20 @@
 
 <script>
 import { mapState } from 'vuex';
-import ProductDetailFullwidth from '~/components/elements/detail/ProductDetailFullwidth';
+import ProductDetailFullwidth from '~/components/elements/detail/website/ProductDetailFullwidth';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import CustomerBought from '~/components/partials/product/CustomerBought';
 import RelatedProduct from '~/components/partials/product/RelatedProduct';
 import ProductWidgets from '~/components/partials/product/ProductWidgets';
 import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
+
+// Queries
+import Products from '~/apollo/queries/products/singleProduct';
+
+
 export default {
-    layout: 'layout-product',
+    layout: 'layout-default-website',
     transition: 'zoom',
     components: {
         Newsletters,
@@ -53,38 +46,29 @@ export default {
     },
 
     computed: {
-        ...mapState({
-            collections: state => state.collection.collections,
-            product: state => state.product.product
-        })
+        singleProduct() {
+            return this.products[0];
+        }
+    },
+    apollo: {
+        products: {
+            prefetch: true,
+            query: Products,
+            variables() {
+                return { id: this.$route.params.id };
+            }
+        }
     },
     data() {
         return {
             productId: this.$route.params.id,
             breadCrumb: null,
-            pageLoading: true
+            pageLoading: true,
+            products: ''
         };
     },
     async created() {
-        const queries = [
-            'customer_bought',
-            'shop-recommend-items',
-            'widget_same_brand'
-        ];
-        setTimeout(
-            function() {
-                this.pageLoading = false;
-            }.bind(this),
-            2000
-        );
-        const collections = await this.$store.dispatch(
-            'collection/getCollectionsBySlugs',
-            queries
-        );
-        const product = await this.$store.dispatch(
-            'product/getProductsById',
-            this.productId
-        );
+        
         this.breadCrumb = [
             {
                 text: 'Home',
@@ -95,13 +79,10 @@ export default {
                 url: '/shop'
             },
             {
-                text: product.title
+                text: ""
             }
         ];
     },
-    mounted() {
-        this.$store.commit('app/setAppDrawer', false);
-    }
 };
 </script>
 
