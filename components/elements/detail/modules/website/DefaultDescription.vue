@@ -7,6 +7,9 @@
             <v-tab :ripple="false" tag="li">
                 <a class="list-item">Downloads</a>
             </v-tab>
+            <v-tab :ripple="false" tag="li">
+                <a class="list-item">Related Products</a>
+            </v-tab>
 
             <v-tab-item>
                 <div class="tab-content">
@@ -20,6 +23,12 @@
                     <!-- <partial-specification :product="product_information"/> -->
                 </div>
             </v-tab-item>
+            <v-tab-item>
+                <div class="tab-content">
+                
+                    <related-product layout="fullwidth" collection-slug="shop-recommend-items"/>
+                </div>
+            </v-tab-item>
         </v-tabs>
     </div>
 </template>
@@ -27,11 +36,14 @@
 <script>
 import PartialDescription from '~/components/elements/detail/modules/website/PartialDescription';
 import PartialSpecification from '~/components/elements/detail/modules/website/PartialSpecification';
+
+import RelatedProduct from '~/components/partials/product/RelatedProduct';
 export default {
     name: 'DefaultDescription',
     components: {
         PartialSpecification,
-        PartialDescription
+        PartialDescription,
+        RelatedProduct
     },
     props: {
         product_information: {
