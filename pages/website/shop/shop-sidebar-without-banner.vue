@@ -11,7 +11,7 @@
                     </div>
                     <div class="ps-layout__right">
                         <div class="ps-page__header">
-                            <h1 class="text-uppercase">Shop Sidebar</h1>
+                            <h1 class="text-uppercase">Products</h1>
                         </div>
                         <layout-shop-sidebar v-if="collections !== null" />
                     </div>
@@ -24,30 +24,19 @@
 <script>
 import { mapState } from 'vuex';
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import LayoutShop from '~/components/partials/shop/LayoutShop';
-import ShopWidget from '~/components/partials/shop/modules/ShopWidget';
-import ShopBanner from '~/components/partials/shop/sections/ShopBanner';
-import ShopBrands from '~/components/partials/shop/sections/ShopBrands';
-import ShopCategories from '~/components/partials/shop/sections/ShopCategories';
-import ShopSidebarBestSeller from '~/components/partials/shop/sections/ShopSidebarBestSeller';
-import LayoutShopSidebar from '~/components/partials/shop/LayoutShopSidebar';
-import ShopSidebarBanner from '~/components/partials/shop/sections/ShopSidebarBanner';
+import ShopWidget from '~/components/partials/shop/modules/website/ShopWidget';
+import LayoutShopSidebar from '~/components/partials/shop/website/LayoutShopSidebar';
 
 export default {
     components: {
-        ShopSidebarBanner,
         LayoutShopSidebar,
-        ShopSidebarBestSeller,
-        ShopCategories,
-        ShopBrands,
-        ShopBanner,
         ShopWidget,
-        LayoutShop,
         BreadCrumb
     },
     transition() {
         return 'fadeIn';
     },
+    layout: 'layout-default-website',
     data() {
         return {
             breadCrumb: [
@@ -56,7 +45,7 @@ export default {
                     url: '/'
                 },
                 {
-                    text: 'Shop Sidebar'
+                    text: 'All Products'
                 }
             ]
         };

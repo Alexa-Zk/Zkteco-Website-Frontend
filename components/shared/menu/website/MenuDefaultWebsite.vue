@@ -29,7 +29,7 @@ export default {
             mainMenu: [
                 {
                     text: this.$i18n.t('Products'),
-                    url: '/shop',
+                    url: '/website/shop/shop-sidebar-without-banner',
                     extraClass: 'menu-item-has-children has-mega-menu',
                     subClass: 'sub-menu',
                     mega: 'true',

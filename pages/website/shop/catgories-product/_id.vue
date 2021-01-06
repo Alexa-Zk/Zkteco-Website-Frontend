@@ -1,0 +1,73 @@
+<template lang="html">
+    <div>
+        <bread-crumb :breadcrumb="breadCrumb" />
+        <div class="ps-page--shop" id="shop-sidebar" v-if="ProductCategories">
+            <div class="container">
+                <div class="ps-layout--shop">
+                    <div class="ps-layout__left">
+                        <shop-widget />
+                    </div>
+                    <div class="ps-layout__right">
+                        <div class="ps-page__header">
+                            <h1 class="text-uppercase">{{ProductCategories.name}}</h1>
+                        </div>
+                        <layout-shop-sidebar :products="ProductCategories.products" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import { mapState } from 'vuex';
+import BreadCrumb from '~/components/elements/BreadCrumb';
+import ShopWidget from '~/components/partials/shop/modules/website/ShopWidget';
+import LayoutShopSidebar from '~/components/partials/shop/website/LayoutShopSidebarCategories';
+
+// Queries
+import CategoriesWithProduct from '~/apollo/queries/products/categoriesWithProduct';
+
+
+export default {
+    components: {
+        LayoutShopSidebar,
+        ShopWidget,
+        BreadCrumb
+    },
+    transition() {
+        return 'fadeIn';
+    },
+    layout: 'layout-default-website',
+    data() {
+        return {
+            productCategories: '',
+            breadCrumb: [
+                {
+                    text: 'Home',
+                    url: '/'
+                },
+                {
+                    text: 'All Products'
+                }
+            ]
+        };
+    },
+    apollo: {
+        productCategories: {
+            prefetch: true,
+            query: CategoriesWithProduct,
+            variables() {
+                return { id: this.$route.params.id };
+            }
+        }
+    },
+    computed: {
+        ProductCategories() {
+            return this.productCategories[0];
+        }
+    },
+};
+</script>
+
+<style lang="scss" scoped></style>
