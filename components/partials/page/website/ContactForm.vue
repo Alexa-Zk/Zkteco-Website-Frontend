@@ -10,6 +10,7 @@
                                 class="form-control"
                                 type="text"
                                 placeholder="Name *"
+                                v-model="name"
                             />
                         </div>
                     </div>
@@ -19,6 +20,7 @@
                                 class="form-control"
                                 type="text"
                                 placeholder="Email *"
+                                v-model="email"
                             />
                         </div>
                     </div>
@@ -41,12 +43,15 @@
                                 class="form-control"
                                 rows="5"
                                 placeholder="Message"
+                                v-model="message"
                             ></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="form-group submit">
-                    <button class="ps-btn">Send message</button>
+                    <button @click.prevent="willContactUs" class="ps-btn">
+                        Send message
+                    </button>
                 </div>
             </form>
         </div>
@@ -55,7 +60,46 @@
 
 <script>
 export default {
-    name: 'ContactForm'
+    name: 'ContactForm',
+    data() {
+        return {
+            email: '',
+            name: '',
+            message: ''
+        };
+    },
+    methods: {
+        async willContactUs() {
+            let payload = {
+                email: this.email,
+                full_name: this.name,
+                message: this.message
+            };
+            const ip = await this.$axios.$post(
+                'https://admin.zkteco-wa.com/contact-pages',
+                payload
+            );
+            if (ip) {
+                this.$notify({
+                    group: 'addCartSuccess',
+                    title: 'Success!',
+                    text: `your message has been sent to cart!`
+                });
+                this.email = '';
+                this.name = '';
+                this.message = '';
+            } else {
+                this.$notify({
+                    group: 'addCartSuccess',
+                    title: 'Error!',
+                    text: `Some went wrong!`
+                });
+                this.email = '';
+                this.name = '';
+                this.message = ''
+            }
+        }
+    }
 };
 </script>
 

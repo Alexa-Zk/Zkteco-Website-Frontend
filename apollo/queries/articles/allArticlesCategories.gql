@@ -1,0 +1,18 @@
+query Categories {
+    categories {
+        id
+        name
+        articles {
+            id
+            title
+            slug
+            body
+            created_at
+            image {
+                url
+                name
+                formats
+            }
+        }
+    }
+}
