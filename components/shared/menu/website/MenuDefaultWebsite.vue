@@ -1,5 +1,6 @@
 <template lang="html">
     <ul :class="className">
+        <MenuMega1 />
         <template v-for="item in mainMenu">
             <MenuDropdown v-if="item.subMenu" :menu-data="item" />
             <MenuMega v-else-if="item.mega" :menu-data="item" />
@@ -15,9 +16,10 @@
 <script>
 import MenuDropdown from './MenuDropdown';
 import MenuMega from './MenuMega';
+import MenuMega1 from './MenuMega1';
 export default {
     name: 'MenuDefault',
-    components: { MenuMega, MenuDropdown },
+    components: { MenuMega, MenuDropdown, MenuMega1 },
     props: {
         className: {
             type: String,
@@ -27,52 +29,6 @@ export default {
     data() {
         return {
             mainMenu: [
-                {
-                    text: this.$i18n.t('Products'),
-                    url: '/website/shop/shop-sidebar-without-banner',
-                    extraClass: 'menu-item-has-children has-mega-menu',
-                    subClass: 'sub-menu',
-                    mega: 'true',
-                    megaContent: [
-                        {
-                            heading: this.$i18n.t('Categories'),
-                            megaItems: [
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.mainMenu.shopDefault'
-                                    ),
-                                    url: '/shop'
-                                },
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.mainMenu.shopFullwidth'
-                                    ),
-                                    url: '/shop/shop-fullwidth'
-                                },
-
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.mainMenu.shopSidebar'
-                                    ),
-                                    url: '/shop/shop-sidebar'
-                                },
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.mainMenu.shopWithoutBanner'
-                                    ),
-                                    url: '/shop/shop-sidebar-without-banner'
-                                },
-                                {
-                                    text: this.$i18n.t(
-                                        'menu.mainMenu.shopCarousel'
-                                    ),
-                                    url: '/shop/shop-carousel'
-                                }
-                            ]
-                        }
-                    ]
-                },
-
                
                 {
                     text: this.$i18n.t('Solutions'),

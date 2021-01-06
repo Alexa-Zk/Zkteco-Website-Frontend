@@ -29,7 +29,7 @@ import HeaderDefault from '~/components/shared/headers/HeaderDefault';
 import FooterDefault from '~/components/shared/footers/FooterDefault';
 export default {
     components: { FooterDefault, HeaderDefault },
-    layout: 'empty',
+    layout: 'layout-default-website',
     props: {
         error: {
             type: Object,
