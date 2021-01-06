@@ -1,0 +1,16 @@
+query Products {
+	products {
+    id
+    name
+    updated_at
+    slug
+    created_at
+    product_category{
+      name
+    }
+    images {
+      url
+      name
+    }
+  }
+}

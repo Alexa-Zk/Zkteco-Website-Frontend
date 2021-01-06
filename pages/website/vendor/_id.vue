@@ -34,6 +34,7 @@ export default {
     },
     apollo: {
         solutionCategories: {
+            prefetch: true,
             query: singleArticles,
             variables() {
                 return { id: this.$route.params.id };

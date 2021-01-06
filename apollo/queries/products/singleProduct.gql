@@ -1,0 +1,30 @@
+query Products($id: ID!) {
+    products(where: { id: $id }) {
+        id
+        name
+        slug
+        description
+        product_details
+        created_at
+        product_category{
+            name
+        }
+        downloads {
+            id
+            name
+            file {
+                url
+                size
+                alternativeText
+                caption
+            }
+        }
+        images {
+            id
+            name
+            url
+            width
+            height
+        }
+    }
+}
