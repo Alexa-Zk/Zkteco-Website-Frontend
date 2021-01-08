@@ -24,7 +24,7 @@ import ProductDetailFullwidth from '~/components/elements/detail/website/Product
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import CustomerBought from '~/components/partials/product/CustomerBought';
 import RelatedProduct from '~/components/partials/product/RelatedProduct';
-import ProductWidgets from '~/components/partials/product/ProductWidgets';
+import ProductWidgets from '~/components/partials/product/website/ProductWidgets';
 import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
 

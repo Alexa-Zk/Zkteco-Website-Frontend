@@ -29,39 +29,27 @@
             </div>
         </aside>
         <aside class="widget widget--blog widget--recent-post">
-            <h3 class="widget__title">Recent Posts</h3>
-            <div class="widget__content">
-                <template v-if="recentPosts.length > 0">
-                    <nuxt-link
-                        v-for="post in recentPosts"
-                        :to="`/website/post/${post.id}`"
-                        :key="post.id"
-                    >
-                        {{ post.title }}
-                    </nuxt-link>
-                </template>
-                <p v-else>No post.</p>
-            </div>
+            <recent-sidebar />
         </aside>
 
     </div>
 </template>
 
 <script>
-import blogGrid from '~/static/data/blog-grid.json';
+import RecentSidebar from "./RecentSidebar";
 
 // Queries
 import Categories from '~/apollo/queries/articles/allArticlesCategories';
 import Articles from '~/apollo/queries/articles/homePageArticles';
 
 
+
 export default {
     name: 'Sidebar',
+    components: { RecentSidebar },
     data() {
         return {
             categories: '',
-            // articles: '',
-            recentPosts: blogGrid.recentPosts
         };
     },
     apollo: {
@@ -69,18 +57,11 @@ export default {
             prefetch: true,
             query: Categories,
         },
-        // articles: {
-        //     prefetch: true,
-        //     query: Articles,
-        // }
     },
     computed: {
         Categories() {
             return this.categories;
         },
-        // Articles() {
-        //     return this.articles;
-        // }
     },
 };
 </script>

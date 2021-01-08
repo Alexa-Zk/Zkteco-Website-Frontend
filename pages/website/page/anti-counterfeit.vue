@@ -7,9 +7,7 @@
                     <h1>Page Heading</h1>
                 </div> -->
                 <section class="ps-newsletter">
-                    <div
-                        class="container"
-                    >
+                    <div class="container">
                         <form
                             class="ps-form--newsletter"
                             action="do_action"
@@ -19,13 +17,13 @@
                                 <div class="col-lg-5">
                                     <div class="ps-form__left">
                                         <h3>
-                                            {{
-                                                $t('Product Verification')
-                                            }}
+                                            {{ $t('Product Verification') }}
                                         </h3>
                                         <p>
                                             {{
-                                                $t('Check if product is authentic and is covered by warranty')
+                                                $t(
+                                                    'Check if product is authentic and is covered by warranty'
+                                                )
                                             }}
                                         </p>
                                     </div>
@@ -37,15 +35,25 @@
                                                 class="form-control"
                                                 type="text"
                                                 placeholder="Input Serial Number"
+                                                v-model="serial_number"
                                             />
-                                            <button class="ps-btn">
-                                                {{ $t('Search') }}
+                                            <button
+                                                class="ps-btn"
+                                                @click.prevent="
+                                                    ProductAuthentication
+                                                "
+                                            >
+                                                Search
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
+
+                        <div class="conterfeit-table">
+                            <authentication-card :productData="productData" />
+                        </div>
                     </div>
                 </section>
             </div>
@@ -55,15 +63,19 @@
 
 <script>
 import BreadCrumb from '~/components/elements/BreadCrumb';
+import AuthenticationCard from '@/components/partials/product/ProductAuthenticationCard';
 
 export default {
     components: {
-        BreadCrumb
+        BreadCrumb,
+        AuthenticationCard
     },
     transition: 'zoom',
     layout: 'layout-default-website',
     data: () => {
         return {
+            serial_number: '',
+            productData: '',
             breadCrumb: [
                 {
                     text: 'Home',
@@ -78,6 +90,27 @@ export default {
                 }
             ]
         };
+    },
+    methods: {
+        async ProductAuthentication() {
+            try {
+                const payload = {
+                    serial_number: this.serial_number
+                };
+                const response = await this.$axios.$post(
+                    'https://wslbackend.zkteco-wa.com/api/v1/integrations/devices',
+                    payload
+                );
+                if (response) {
+                    this.serial_number = '';
+
+                    this.productData = response.data;
+                }
+            } catch (error) {
+                this.serial_number = '';
+                this.productData = error.response.data;
+            }
+        }
     }
 };
 </script>

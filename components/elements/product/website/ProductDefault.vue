@@ -13,7 +13,7 @@
                         to="#"
                         data-toggle="tooltip"
                         data-placement="top"
-                        title="Add to cart"
+                        title="View in Store "
                         @click.prevent="handleAddToCart"
                     >
                         <i class="icon-bag2"></i>
@@ -30,32 +30,11 @@
                         <i class="icon-eye"></i>
                     </a>
                 </li>
-                <li>
-                    <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Add to wishlist"
-                        @click.prevent="handleAddItemToWishlist"
-                    >
-                        <i class="icon-heart"></i>
-                    </a>
-                </li>
-                <li>
-                    <a
-                        to="#"
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Compare"
-                        @click.prevent="handleAddItemToCompare"
-                    >
-                        <i class="icon-chart-bars"></i>
-                    </a>
-                </li>
+                
             </ul>
         </div>
         <div class="ps-product__container">
-            <nuxt-link to="/website/shop/shop-sidebar-without-banner" class="ps-product__vendor">
+            <nuxt-link :to="`/website/shop/catgories-product/${product.product_category.id}`" class="ps-product__vendor">
                 {{ product.product_category.name}}
             </nuxt-link>
             <div class="ps-product__content">
@@ -93,7 +72,7 @@
 import { mapState } from 'vuex';
 import { baseUrl } from '~/repositories/Repository';
 import Rating from '../../Rating';
-import ProductQuickview from '~/components/elements/detail/ProductQuickview';
+import ProductQuickview from '~/components/elements/detail/website/ProductQuickview';
 
 export default {
     components: { ProductQuickview, Rating },

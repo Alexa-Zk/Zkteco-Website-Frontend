@@ -1,39 +1,65 @@
 <template lang="html">
     <div class="ps-page--blog">
-        <div class="container">
+        <div class="container" v-if="formattedCatArticle">
             <div class="ps-page__header">
-                <h1>Our Press</h1>
+                <h1>{{ formattedCatArticle.name }}</h1>
                 <bread-crumb2 :breadcrumb="breadCrumb" />
             </div>
-            <blog-grid />
+            <!-- <template v-if="loading > 0">
+                Loading
+            </template> -->
+            <blog-sidebar
+                layout="right"
+                :articles="formattedCatArticle.articles"
+            />
         </div>
     </div>
 </template>
 
 <script>
 import BreadCrumb2 from '~/components/elements/BreadCrumb2';
-import BlogGrid from '~/components/partials/blog/BlogGrid';
-import HeaderMobile from '~/components/shared/mobile/HeaderMobile';
+import BlogList from '~/components/partials/blog/BlogList';
+import BlogSidebar from '~/components/partials/blog/BlogSidebar2';
+
+// Queries
+import CategoriesArticles from '~/apollo/queries/articles/categoriesArticles';
 
 export default {
     transition: 'zoom',
+    layout: 'layout-default-website',
     components: {
-        BlogGrid,
+        BlogSidebar,
+        BlogList,
         BreadCrumb2
     },
-
     data: () => {
         return {
+            categories: '',
+            loading: 0,
             breadCrumb: [
                 {
                     text: 'Home',
                     url: '/'
                 },
                 {
-                    text: 'Blog'
+                    text: 'Our Press'
                 }
             ]
         };
+    },
+    apollo: {
+        categories: {
+            query: CategoriesArticles,
+            variables() {
+                return { id: this.$route.params.id };
+            },
+            loadingKey: 'loading'
+        }
+    },
+    computed: {
+        formattedCatArticle() {
+            return this.categories[0];
+        }
     }
 };
 </script>

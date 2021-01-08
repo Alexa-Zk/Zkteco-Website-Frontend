@@ -174,7 +174,7 @@ export default {
                 this.$notify({
                     group: 'addCartSuccess',
                     title: 'Success!',
-                    text: `your message has been sent to cart!`
+                    text: `your support ticket has been sent!`
                 });
                 this.payload = this.temp_payload
             } else {

@@ -2,7 +2,7 @@
     <div class="ps-page--blog">
         <div class="container">
             <div class="ps-page__header">
-                <h1>Our Press</h1>
+                <h1>News Center</h1>
                 <bread-crumb2 :breadcrumb="breadCrumb" />
             </div>
             <blog-sidebar layout="right" />
@@ -31,7 +31,7 @@ export default {
                     url: '/'
                 },
                 {
-                    text: 'Our Press'
+                    text: 'Our Blog'
                 }
             ]
         };
@@ -39,4 +39,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-page-blog {
+    .ps-page__header {
+        padding: 30px 0 70px;
+    }
+}
+</style>

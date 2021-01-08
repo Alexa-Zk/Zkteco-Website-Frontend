@@ -51,6 +51,9 @@
                 <li>
                     <nuxt-link :to="`/website/page/about-us`">Our Vision</nuxt-link>
                 </li>
+                <li>
+                    <nuxt-link :to="`/website/page/about-us`">Our Values</nuxt-link>
+                </li>
             </ul>
         </aside>
         <aside class="widget widget_footer">
@@ -58,21 +61,10 @@
                 {{ $t('News Center') }}
             </h4>
             <ul class="ps-list--link">
-                <li>
-                    <nuxt-link :to="`/website/blog/blog-right-sidebar`">Blogs</nuxt-link>
+                <li v-for="item in categories" :key="item.id">
+                    <nuxt-link :to="`/website/blog/${item.id}`">{{item.name}}</nuxt-link>
                 </li>
-                <li>
-                    <nuxt-link :to="`/website/blog/blog-right-sidebar`">Newsletter</nuxt-link>
-                </li>
-                <li>
-                    <nuxt-link :to="`/website/blog/blog-right-sidebar`">Events</nuxt-link>
-                </li>
-                <li>
-                    <nuxt-link :to="`/website/blog/blog-right-sidebar`">Notice</nuxt-link>
-                </li>
-                <li>
-                    <nuxt-link :to="`/website/blog/blog-right-sidebar`">Security Bulletins</nuxt-link>
-                </li>
+                
             </ul>
         </aside>
         <aside class="widget widget_footer">
@@ -104,12 +96,36 @@
                 
             </ul>
         </aside>
+        <aside class="widget widget_footer">
+            <h4 class="widget-title">
+                {{ $t('Related Website') }}
+            </h4>
+            <ul class="ps-list--link">
+                <li>
+                    <nuxt-link :to="`https://zktecopos.com`">ZKTeco POS Website</nuxt-link>
+                </li>    
+            </ul>
+        </aside>
     </div>
 </template>
 
 <script>
+
+// Queries
+import Categories from '~/apollo/queries/articles/allArticlesCategories';
 export default {
-    name: 'FooterWidgets'
+    name: 'FooterWidgets',
+    data() {
+        return {
+            categories: '',
+        };
+    },
+    apollo: {
+        categories: {
+            prefetch: true,
+            query: Categories,
+        },
+    },
 };
 </script>
 
@@ -132,6 +148,40 @@ export default {
     .widget_content {
         p {
             color: #e5e5e5;
+        }
+    }
+    .ps-list--social {
+        .facebook {
+            i {
+                color: #ffffff;
+                &:hover {
+                    color: #3b5998;
+                }
+            }
+        }
+        .twitter {
+            i {
+                color: #ffffff;
+                &:hover {
+                    color: #0084b4;
+                }
+            }
+        }
+        .instagram {
+            i {
+                color: #ffffff;
+                &:hover {
+                    color: #c32aa3;
+                }
+            }
+        }
+        .linkedin {
+            i {
+                color: #ffffff;
+                &:hover {
+                    color: #0e76a8;
+                }
+            }
         }
     }
 } 

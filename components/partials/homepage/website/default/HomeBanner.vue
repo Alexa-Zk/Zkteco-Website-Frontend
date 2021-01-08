@@ -2,11 +2,13 @@
     <div class="ps-shop-banner" id="ps-shop-banner">
         <div class="ps-carousel" v-swiper:mySwiper="swiperOption">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="slide in homeSlider" :key="slide.id">
-                    <img
-                        :src="slide.image.url"
-                        alt="martfury"
-                    />
+                <div
+                    class="swiper-slide"
+                    v-for="slide in homeSlider"
+                    :key="slide.id"
+                    @click="openSlider(slide.url)"
+                >
+                    <img :src="slide.image.url" alt="martfury" />
                 </div>
             </div>
             <!--Carousel controls-->
@@ -26,14 +28,14 @@
 <script>
 export default {
     name: 'HomeBanner',
-    props: ["homeSlider"],
+    props: ['homeSlider'],
     data() {
         return {
             swiperOption: {
                 loop: true,
                 speed: 2000,
                 slidesPerView: 1,
-                spaceBetween: 1,
+                spaceBetween: -3,
                 autoplay: true,
                 infinite: true,
                 navigation: {
@@ -42,12 +44,17 @@ export default {
                 }
             }
         };
+    },
+    methods: {
+        openSlider(url) {
+            window.open(url, '_blank');
+        }
     }
 };
 </script>
 
 <style lang="scss" scoped>
-ps-home-banner {
+.ps-home-banner {
     padding-top: 0px !important;
     .ps-container {
         padding: 0px;
@@ -65,6 +72,7 @@ ps-home-banner {
     .swiper-slide {
         width: 100%;
         height: 518px;
+        cursor: pointer;
     }
     img {
         height: 100%;

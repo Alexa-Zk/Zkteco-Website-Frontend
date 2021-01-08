@@ -43,4 +43,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.ps-related-post {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+</style>

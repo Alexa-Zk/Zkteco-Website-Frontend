@@ -1,14 +1,7 @@
 <template lang="html">
     <div class="ps-product__desc">
-        <!-- <p>
-            Categories:
-            <nuxt-link to="/shop">
-                <strong> {{ product.product_category.name }}</strong>
-            </nuxt-link>
-        </p> -->
         <ul class="ps-list--dot">
-            <p>{{product.description}}</p>
-           
+            <p v-html="product.description"></p>
         </ul>
     </div>
 </template>

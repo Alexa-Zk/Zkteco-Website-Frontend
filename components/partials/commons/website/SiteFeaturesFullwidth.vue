@@ -12,7 +12,7 @@
                             {{ $t('Time Attendance') }}
                         </h4>
                         <p>
-                            {{ $t('common.siteFeatures.freeDelivery.value') }}
+                            {{ $t('Time Attendance Solution') }}
                         </p>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                         <h4>
                             {{ $t('Access Control') }}
                         </h4>
-                        <p>{{ $t('common.siteFeatures.dateReturn.value') }}</p>
+                        <p>{{ $t('Restriction to certain areas') }}</p>
                     </div>
                 </div>
 
@@ -37,7 +37,7 @@
                             {{ $t('Smart Lock') }}
                         </h4>
                         <p>
-                            {{ $t('common.siteFeatures.securePayment.value') }}
+                            {{ $t('100% Secure locks') }}
                         </p>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                             {{ $t('Entrance Control') }}
                         </h4>
                         <p>
-                            {{ $t('common.siteFeatures.support.value') }}
+                            {{ $t('Dedicated System for entrance control') }}
                         </p>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                             {{ $t('Security Inspection') }}
                         </h4>
                         <p>
-                            {{ $t('common.siteFeatures.giftService.value') }}
+                            {{ $t('Support security essentials') }}
                         </p>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                         <h4>
                             {{ $t('CCTV') }}
                         </h4>
-                        <p>{{ $t('common.siteFeatures.dateReturn.value') }}</p>
+                        <p>{{ $t('Monitor everywhere at once ') }}</p>
                     </div>
                 </div>
             </div>

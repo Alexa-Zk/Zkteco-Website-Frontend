@@ -61,4 +61,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-newsletter {
+    background: ghostwhite;
+    // border-top: 1px solid #e1e1e1;
+    // border-bottom: 1px solid #e1e1e1;
+}
+</style>

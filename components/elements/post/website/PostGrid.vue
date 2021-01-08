@@ -11,7 +11,7 @@
             <div class="ps-post__meta">
                 <nuxt-link
                     v-for="category in post.categories"
-                    to="/website/blog"
+                    :to="`/website/blog/${category.id}`"
                     :key="category.id"
                 >
                     {{ category.name }}
@@ -20,12 +20,12 @@
             <nuxt-link :to="`/website/post/${post.id}`" class="ps-post__title">
                 {{ post.title }}
             </nuxt-link>
-            <p>
+            <!-- <p>
                 {{ post.updated_at }}
-                <!-- <nuxt-link to="/blog">
+                <nuxt-link to="/blog">
                     drfurion
-                </nuxt-link> -->
-            </p>
+                </nuxt-link>
+            </p> -->
         </div>
     </article>
 </template>
