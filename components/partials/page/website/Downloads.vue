@@ -48,15 +48,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="download_right">
-                                                        <a class="" download
+                                                        <a :href="i.file[0].url" download
                                                             >Download</a
                                                         >
 
                                                         <div class="date">
-                                                            Update Time：{{
-                                                                i.file[0]
-                                                                    .updated_at
-                                                            }}
+                                                            Uploaded on: {{formatDate(i.file[0].updated_at)}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -76,7 +73,13 @@
 <script>
 export default {
     name: 'Downloads',
-    props: ['downloadCenters']
+		props: ['downloadCenters'],
+		methods: {
+			formatDate(date) {
+            let formated = new Date(date);
+            return formated.toDateString();
+        }
+		}
 };
 </script>
 
@@ -104,7 +107,11 @@ export default {
             align-items: center;
             display: flex;
             .title {
-                margin-left: 20px;
+								margin-left: 20px;
+								margin-left: 20px;
+								font-size: 20px!important;
+								font-family: 'Work Sans', sans-serif !important;
+
             }
         }
     }

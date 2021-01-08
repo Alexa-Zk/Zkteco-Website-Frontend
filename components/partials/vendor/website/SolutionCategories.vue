@@ -15,8 +15,9 @@
                         <article class="ps-block--store-2">
                             <div
                                 class="ps-block__content bg--cover"
+                                
                                 :style="{
-                                    backgroundImage: `url(${item.image[0].url})`
+                                    backgroundImage: `linear-gradient(to right bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${item.image[0].url})`
                                 }"
                             >
                                 <figure>
@@ -57,12 +58,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.ps-store-list {
+    padding-top: 10px;
+    .ps-section__header {
+        padding: 10px 0 20px;
+    }
+}
 .ps-block--store-2 {
     height: 340px;
     .ps-block__content {
         height: 80%;
         h4 {
-            color: #78bc27;
+
+            color: white;
+            font-size: 22px;
         }
     }
 }

@@ -8,13 +8,13 @@
 
         <module-product-detail-specification :product="product_information"/>
 
-        <module-product-detail-sharing />
+        <module-product-detail-sharing :product="product_information" />
     </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import ModuleProductDetailSharing from '~/components/elements/detail/information/modules/ModuleProductDetailSharing';
+import ModuleProductDetailSharing from '~/components/elements/detail/information/modules/website/ModuleProductDetailSharing';
 import ModuleProductDetailSpecification from '~/components/elements/detail/information/modules/website/ModuleProductDetailSpecification';
 import ModuleProductDetailDesc from '~/components/elements/detail/information/modules/website/ModuleProductDetailDesc';
 import Rating from '~/components/elements/Rating';

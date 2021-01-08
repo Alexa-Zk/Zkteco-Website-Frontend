@@ -8,6 +8,7 @@ query ProductCategories($id: ID!) {
             name
             product_category {
                 name
+                id
             }
             created_at
             updated_at

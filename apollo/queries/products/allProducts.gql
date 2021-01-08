@@ -5,8 +5,10 @@ query Products {
     updated_at
     slug
     created_at
+    description
     product_category{
       name
+      id
     }
     images {
       url

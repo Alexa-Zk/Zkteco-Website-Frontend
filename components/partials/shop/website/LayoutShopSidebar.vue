@@ -5,7 +5,7 @@
                 <strong class="mr-2">{{ totals }}</strong>
                 Products found
             </p>
-            <div class="ps-shopping__actions">
+            <!-- <div class="ps-shopping__actions">
                 
                 <div class="ps-shopping__view">
                     <p>View</p>
@@ -22,7 +22,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="ps-shopping__content">
             

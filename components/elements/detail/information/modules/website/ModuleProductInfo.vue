@@ -4,7 +4,7 @@
         <div class="ps-product__meta">
             <p>
                 Categories:
-                <nuxt-link to="/store/shop">
+                <nuxt-link :to="`/website/shop/catgories-product/${product.product_category.id}`">
                     <a class="ml-2 text-capitalize">
                         {{product.product_category.name}}
                     </a>

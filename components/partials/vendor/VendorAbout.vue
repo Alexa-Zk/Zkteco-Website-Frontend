@@ -2,22 +2,11 @@
     <div class="ps-section--vendor ps-vendor-about">
         <div class="container" v-if="formatted">
             <div class="ps-section__header">
-                <!-- <p>WHY SELL ON MARTFURY</p> -->
                 <h4 v-html="formatted.description"></h4>
             </div>
             <div class="ps-section__content">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 ">
-                        <div class="ps-block--icon-box-2">
-                            <div class="ps-block__thumbnail">
-                                <img
-                                    :src="formatted.image[0].url"
-                                    alt="martfury"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div v-html="formatted.content"></div>
+                    <div class=" ps-content " v-html="formatted.content"></div>
                 </div>
             </div>
         </div>
@@ -31,4 +20,24 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.ps-vendor-about {
+    .container {
+        max-width: 850px !important;
+        .ps-section__header {
+            margin-bottom: 20px;
+        }
+        .ps-section__content {
+            .row {
+                .ps-content {
+                    .image {
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+</style>

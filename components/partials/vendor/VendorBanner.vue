@@ -1,8 +1,14 @@
 <template lang="html">
-    <div class="ps-vendor-banner bg--cover">
+    <div
+        class="ps-vendor-banner bg--cover"
+        :style="{
+            backgroundImage: `url(${formatted.image[0].url})`
+        }"
+        v-if="formatted"
+    >
         <div class="container" v-if="formatted">
             <h2>
-                {{formatted.title}}
+                {{ formatted.title }}
             </h2>
             <!-- <nuxt-link to="/vendor/store-list" class="ps-btn ps-btn--lg">
                 Start Selling
@@ -14,12 +20,16 @@
 <script>
 export default {
     name: 'VendorBanner',
-    props: ["formatted"]
+    props: ['formatted']
 };
 </script>
 
 <style lang="scss" scoped>
 .ps-vendor-banner {
-    background: url('/img/bg/vendor.jpg');
+    padding: 60px 0;
+    h2 {
+        color: black;
+    }
+    // background: url('/img/bg/vendor.jpg');
 }
 </style>

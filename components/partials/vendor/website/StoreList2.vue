@@ -3,7 +3,10 @@
         <div class="container">
             <div class="ps-section__header">
                 <h3>ZKTeco Solutions</h3>
-                <p>ZKTeco has developed professional industry solutions for different industries' properties and scale</p>
+                <p>
+                    ZKTeco has developed professional industry solutions for
+                    different industries' properties and scale
+                </p>
             </div>
             <div class="ps-section__content">
                 <div class="row">
@@ -16,7 +19,7 @@
                             <div
                                 class="ps-block__content bg--cover"
                                 :style="{
-                                    backgroundImage: `url(${item.image[0].url})`
+                                    backgroundImage: `linear-gradient(to right bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${item.image[0].url})`
                                 }"
                             >
                                 <figure>
@@ -30,9 +33,14 @@
                                         alt="martfury"
                                     />
                                 </a>
-                                
-                                <nuxt-link class="ps-btn" :to="`/website/vendor/solution-details/${item.id}`">
-                                     Learn More
+
+                                <nuxt-link
+                                    class="ps-btn"
+                                    :to="
+                                        `/website/vendor/solution-details/${item.id}`
+                                    "
+                                >
+                                    Learn More
                                 </nuxt-link>
                             </div>
                         </article>
@@ -64,12 +72,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.ps-store-list {
+    padding-top: 10px;
+    .ps-section__header {
+        padding: 10px 0 20px;
+    }
+}
 .ps-block--store-2 {
     height: 340px;
     .ps-block__content {
         height: 80%;
         h4 {
-            color: #78bc27;
+            color: white;
+            font-size: 22px;
         }
     }
 }

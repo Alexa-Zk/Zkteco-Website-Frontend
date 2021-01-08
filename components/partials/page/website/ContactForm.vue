@@ -83,7 +83,7 @@ export default {
                 this.$notify({
                     group: 'addCartSuccess',
                     title: 'Success!',
-                    text: `your message has been sent to cart!`
+                    text: `Message sent! We will get in touch Shortly`
                 });
                 this.email = '';
                 this.name = '';
@@ -92,7 +92,7 @@ export default {
                 this.$notify({
                     group: 'addCartSuccess',
                     title: 'Error!',
-                    text: `Some went wrong!`
+                    text: `Something went wrong!`
                 });
                 this.email = '';
                 this.name = '';
@@ -103,4 +103,16 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-contact-form {
+    padding: 30px 0px;
+    .container {
+        max-width: 1000px!important;
+
+        h3 {
+            margin-bottom: 30px;
+        }
+    }
+
+}
+</style>

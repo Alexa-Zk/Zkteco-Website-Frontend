@@ -18,7 +18,7 @@
                 {{ post.title }}
             </nuxt-link>
             <p>
-                {{post.updated_at}}
+                {{formatDate(post.updated_at)}}
                 <!-- <nuxt-link to="/blog">
                     drfurion
                 </nuxt-link> -->
@@ -32,6 +32,12 @@ export default {
         post: {
             type: Object,
             default: {}
+        }
+    },
+    methods: {
+        formatDate(date) {
+            let formated = new Date(date);
+            return formated.toDateString();
         }
     }
 };
