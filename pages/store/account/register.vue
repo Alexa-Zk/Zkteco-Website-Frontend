@@ -6,12 +6,12 @@
                 <div class="ps-form--account">
                     <ul class="ps-tab-list">
                         <li>
-                            <nuxt-link to="/account/login">
+                            <nuxt-link to="/store/account/login">
                                 Login
                             </nuxt-link>
                         </li>
                         <li class="active">
-                            <nuxt-link to="/account/register">
+                            <nuxt-link to="/store/account/register">
                                 Register
                             </nuxt-link>
                         </li>

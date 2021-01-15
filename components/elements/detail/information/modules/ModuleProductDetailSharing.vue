@@ -20,7 +20,13 @@
 
 <script>
 export default {
-    name: 'ModuleProductDetailSharing'
+    name: 'ModuleProductDetailSharing',
+    props: {
+        product: {
+            type: Object,
+            default: {}
+        }
+    }
 };
 </script>
 

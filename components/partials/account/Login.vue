@@ -4,11 +4,11 @@
             <h5>Log In Your Account</h5>
             <div class="form-group">
                 <v-text-field
-                    v-model="username"
+                    v-model="email"
                     class="ps-text-field"
-                    :error-messages="usernameErrors"
-                    @input="$v.username.$touch()"
-                    placeholder="Usernamer or email"
+                    :error-messages="emailErrors"
+                    @input="$v.email.$touch()"
+                    placeholder="email"
                     height="50"
                     outlined
                 />
@@ -38,7 +38,7 @@
                 </button>
             </div>
         </div>
-        <div class="ps-form__footer">
+        <!-- <div class="ps-form__footer">
             <p>Connect with:</p>
             <ul class="ps-list--social">
                 <li>
@@ -62,7 +62,7 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div> -->
     </form>
 </template>
 
@@ -75,8 +75,8 @@ export default {
     computed: {
         usernameErrors() {
             const errors = [];
-            if (!this.$v.username.$dirty) return errors;
-            !this.$v.username.required && errors.push('This field is required');
+            if (!this.$v.email.$dirty) return errors;
+            !this.$v.email.required && errors.push('This field is required');
             return errors;
         },
         passwordErrors() {
@@ -88,20 +88,20 @@ export default {
     },
     data() {
         return {
-            username: null,
+            email: null,
             password: null
         };
     },
     validations: {
-        username: { required },
+        email: { required },
         password: { required }
     },
     methods: {
         handleSubmit() {
             this.$v.$touch();
             if (!this.$v.$invalid) {
-                this.$store.dispatch('auth/setAuthStatus', true);
-                this.$router.push('/');
+                this.$store.dispatch('auth/login', true);
+                this.$router.push('/store/account/checkout');
             }
         }
     }

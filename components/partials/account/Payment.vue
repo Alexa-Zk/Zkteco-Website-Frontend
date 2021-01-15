@@ -8,10 +8,10 @@
                 <div class="row">
                     <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
                         <div class="ps-block--shipping">
-                            <div class="ps-block__panel">
+                            <div class="ps-block__panel" v-if="personalDetails">
                                 <figure>
                                     <small>Contact</small>
-                                    <p>test@gmail.com</p>
+                                    <p>{{personalDetails.email}}</p>
                                     <nuxt-link to="/store/account/checkout">
                                         <a>Change</a>
                                     </nuxt-link>
@@ -19,7 +19,7 @@
                                 <figure>
                                     <small>Ship to</small>
                                     <p>
-                                        2015 South Street, Midland, Texas
+                                        {{personalDetails.address}} {{personalDetails.apartment}}
                                     </p>
                                     <nuxt-link to="/store/account/checkout">
                                         <a>Change</a>
@@ -30,7 +30,7 @@
                             <div class="ps-block__panel">
                                 <figure>
                                     <small>
-                                        International Shipping
+                                        Local Shipping
                                     </small>
                                     <strong>$20.00</strong>
                                 </figure>
@@ -55,11 +55,18 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 import ModuleOrderSummary from '~/components/partials/account/modules/ModuleOrderSummary';
 import PaymentMethods from '~/components/partials/account/modules/PaymentMethods';
 export default {
     name: 'Payment',
-    components: { PaymentMethods, ModuleOrderSummary }
+    components: { PaymentMethods, ModuleOrderSummary },
+    computed: {
+        ...mapState({
+            personalDetails: state => state.shipping.personalDetails
+        })
+    }
 };
 </script>
 

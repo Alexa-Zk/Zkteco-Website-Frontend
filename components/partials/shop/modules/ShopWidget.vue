@@ -20,39 +20,7 @@
                 </li>
             </ul>
         </aside>
-        <aside class="widget widget_shop">
-            <h4 class="widget-title">
-                {{ $t('shop.widget.byBrands') }}
-            </h4>
-            <figure>
-                <v-checkbox
-                    v-for="brand in brands"
-                    v-model="selectedBrands"
-                    :value="brand.slug"
-                    :label="brand.name"
-                    :key="brand.id"
-                    @click="handleFilterByBrand"
-                />
-            </figure>
-            <figure>
-                <h4 class="widget-title">
-                    {{ $t('shop.widget.byBrands') }}
-                </h4>
-                <v-range-slider
-                    v-model="priceRange"
-                    color="warning"
-                    min="0"
-                    max="1500"
-                    track-color="#dddddd"
-                    @end="handleFilterByPriceRagne"
-                />
-                <p>
-                    Price: ${{ priceRange[0].toFixed(2) }} - ${{
-                        priceRange[1].toFixed(2)
-                    }}
-                </p>
-            </figure>
-        </aside>
+        
     </div>
 </template>
 

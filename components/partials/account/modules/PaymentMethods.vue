@@ -7,15 +7,15 @@
             grow
         >
             <v-tab tag="li" class="tab-label">
-                Visa / Master Card
+                Pay Now
             </v-tab>
             <v-tab tag="li" class="tab-label">
-                Paypal
+                Contact Us
             </v-tab>
             <v-tab-item>
                 <form>
                     <div class="ps-block__content">
-                        <visa-method />
+                        <flutterwave-method />
                     </div>
                 </form>
             </v-tab-item>
@@ -30,10 +30,11 @@
 
 <script>
 import PaypalMethod from '~/components/partials/account/modules/PaypalMethod';
+import FlutterwaveMethod from '~/components/partials/account/modules/FlutterwaveMethod';
 import VisaMethod from '~/components/partials/account/modules/VisaMethod';
 export default {
     name: 'PaymentMethods',
-    components: { VisaMethod, PaypalMethod }
+    components: { VisaMethod, PaypalMethod, FlutterwaveMethod }
 };
 </script>
 

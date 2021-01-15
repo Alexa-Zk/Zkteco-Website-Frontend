@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="ps-product__thumbnail">
         <figure>
-            <div class="ps-wrapper">
+            <div class="ps-wrapper" v-if="product.images">
                 <div
                     class="ps-product__gallery ps-carousel inside swiper"
                     v-swiper:mySwiper="swiperOptionTop"
@@ -12,7 +12,7 @@
                             class="swiper-slide"
                             v-for="image in product.images"
                         >
-                            <img :src="`${baseURL}${image.url}`" />
+                            <img :src="image.src" />
                         </div>
                     </div>
                     <div class="swiper-nav">

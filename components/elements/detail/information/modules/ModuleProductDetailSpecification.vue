@@ -3,26 +3,14 @@
         
         <p class="categories">
             <strong> Categories:</strong>
-            <nuxt-link to="/shop">
-                <a>Consumer Electronics</a>
-            </nuxt-link>
-            <nuxt-link to="/shop">
-                <a>Refrigerator</a>
-            </nuxt-link>
-            <nuxt-link to="/shop">
-                <a>Babies & Moms</a>
+            <nuxt-link v-for="category in product.categories" :key="category.id" :to="`/shop/${category.slug}`">
+                <a>{{category.name}}</a>
             </nuxt-link>
         </p>
         <p class="tags">
             <strong> Tags</strong>
-            <nuxt-link to="/shop">
-                <a>sofa</a>
-            </nuxt-link>
-            <nuxt-link to="/shop">
-                <a>technologies</a>
-            </nuxt-link>
-            <nuxt-link to="/shop">
-                <a>wireless</a>
+            <nuxt-link v-for="tag in product.tags" :key="tag.slug" :to="`/shop/${tag.slug}`" >
+                <a>{{tag.name}}</a>
             </nuxt-link>
         </p>
     </div>
@@ -30,7 +18,13 @@
 
 <script>
 export default {
-    name: 'ModuleProductDetailSpecification'
+    name: 'ModuleProductDetailSpecification',
+    props: {
+        product: {
+            type: Object,
+            default: {}
+        }
+    }
 };
 </script>
 

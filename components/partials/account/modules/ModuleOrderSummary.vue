@@ -16,10 +16,10 @@
                         :key="product.id"
                         class="ps-product__title"
                     >
-                        {{ product.title }}
+                        {{ product.name }}
                         <br />
                         {{ cartItems[index].quantity }} x ${{
-                            product.price.toFixed(2)
+                            product.price
                         }}
                     </nuxt-link>
                 </figure>

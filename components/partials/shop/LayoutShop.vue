@@ -36,11 +36,6 @@
             </div>
         </div>
         <div class="ps-shopping__content">
-            <div v-if="queries" class="ps-shopping__queries">
-                <a v-for="query in queries" href="#" @click.prevent="">
-                    {{ query }}
-                </a>
-            </div>
             <div v-if="listView === false" class="ps-shopping-product">
                 <div class="row">
                     <div
@@ -95,7 +90,7 @@ export default {
         ...mapState({
             products: state => state.product.products,
             total: state => state.product.total,
-            queries: state => state.collection.queries
+            // queries: state => state.collection.queries
         }),
         paginationLenght() {
             if (this.total % 12 === 0) {

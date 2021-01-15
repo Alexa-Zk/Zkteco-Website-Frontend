@@ -53,7 +53,7 @@
                                                 :to="`/store/product/${product.id}`"
                                                 class="ps-product__title"
                                             >
-                                                {{ product.title }}
+                                                {{ product.name }}
                                                 <br />
                                                 x
                                                 {{ cartItems[index].quantity }}

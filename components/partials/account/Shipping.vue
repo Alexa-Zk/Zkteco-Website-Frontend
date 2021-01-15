@@ -11,7 +11,7 @@
                             <div class="ps-block__panel">
                                 <figure>
                                     <small>Contact</small>
-                                    <p>test@gmail.com</p>
+                                    <p>{{personalDetails.email}}</p>
                                     <nuxt-link to="/store/account/checkout">
                                         <a>Change</a>
                                     </nuxt-link>
@@ -19,7 +19,7 @@
                                 <figure>
                                     <small>Ship to</small>
                                     <p>
-                                        2015 South Street, Midland, Texas
+                                        {{personalDetails.address}} {{personalDetails.apartment}}
                                     </p>
                                     <nuxt-link to="/store/account/checkout">
                                         <a>Change</a>
@@ -30,7 +30,7 @@
                             <div class="ps-block__panel">
                                 <figure>
                                     <small>
-                                        International Shipping
+                                        Local Shipping
                                     </small>
                                     <strong>$20.00</strong>
                                 </figure>
@@ -42,7 +42,10 @@
                                         Return to information
                                     </a>
                                 </nuxt-link>
-                                <nuxt-link to="/store/account/payment" class="ps-btn">
+                                <nuxt-link
+                                    to="/store/account/payment"
+                                    class="ps-btn"
+                                >
                                     Continue to payment
                                 </nuxt-link>
                             </div>
@@ -60,10 +63,17 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 import ModuleOrderSummary from '~/components/partials/account/modules/ModuleOrderSummary';
 export default {
     name: 'Shipping',
-    components: { ModuleOrderSummary }
+    components: { ModuleOrderSummary },
+    computed: {
+        ...mapState({
+            personalDetails: state => state.shipping.personalDetails
+        })
+    }
 };
 </script>
 

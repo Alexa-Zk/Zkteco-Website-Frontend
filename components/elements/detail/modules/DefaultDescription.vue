@@ -7,60 +7,23 @@
             <v-tab :ripple="false" tag="li">
                 <a class="list-item">Specification</a>
             </v-tab>
-            <!-- <v-tab :ripple="false" tag="li">
-                <a class="list-item">
-                    Vendor
-                </a>
-            </v-tab> -->
-            <!-- <v-tab :ripple="false" tag="li">
-                <a class="list-item">Reviews (1)</a>
-            </v-tab> -->
-            <!-- <v-tab :ripple="false" tag="li">
-                <a class="list-item">Questions and Answers</a>
-            </v-tab> -->
-            <!-- <v-tab :ripple="false" tag="li">
-                <a class="list-item">More Offers</a>
-            </v-tab> -->
-
             <v-tab-item>
                 <div class="tab-content">
-                    <partial-description />
+                    <partial-description :product="product" />
                 </div>
             </v-tab-item>
 
             <v-tab-item>
                 <div class="tab-content">
-                    <partial-specification />
+                    <partial-specification :product="product" />
                 </div>
             </v-tab-item>
-
-            <!-- <v-tab-item>
-                <div class="tab-content">
-                    <partial-vendor />
-                </div>
-            </v-tab-item> -->
-
-            <!-- <v-tab-item>
-                <div class="tab-content">
-                    <partial-review />
-                </div>
-            </v-tab-item> -->
-
-            <!-- <v-tab-item>
-                <div class="tab-content">
-                    <p>No Content</p>
-                </div>
-            </v-tab-item> -->
-            <!-- <v-tab-item>
-                <div class="tab-content">
-                    <partial-offer />
-                </div>
-            </v-tab-item> -->
         </v-tabs>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import PartialDescription from '~/components/elements/detail/modules/PartialDescription';
 import PartialSpecification from '~/components/elements/detail/modules/PartialSpecification';
 import PartialVendor from '~/components/elements/detail/modules/PartialVendor';
@@ -74,6 +37,11 @@ export default {
         PartialVendor,
         PartialSpecification,
         PartialDescription
+    },
+    computed: {
+        ...mapState({
+            product: state => state.product.product
+        })
     }
 };
 </script>

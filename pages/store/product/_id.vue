@@ -9,16 +9,15 @@
                     </div>
                     <div class="ps-page__right">
                         <product-widgets
-                            v-if="collections !== null"
                             collection-slug="widget_same_brand"
                         />
                     </div>
                 </div>
-                <!-- <customer-bought
+                <customer-bought
                     v-if="collections !== null"
                     layout="fullwidth"
                     collection-slug="customer_bought"
-                /> -->
+                />
                 <related-product
                     v-if="collections !== null"
                     layout="fullwidth"
@@ -85,6 +84,9 @@ export default {
             'product/getProductsById',
             this.productId
         );
+
+        this.$store.dispatch('cart/getQuantity', this.productId);
+
         this.breadCrumb = [
             {
                 text: 'Home',
@@ -95,7 +97,7 @@ export default {
                 url: '/store/shop'
             },
             {
-                text: product.title
+                text: product.name
             }
         ];
     },

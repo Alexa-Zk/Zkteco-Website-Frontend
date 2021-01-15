@@ -3,7 +3,7 @@
         <div class="ps-product__thumbnail">
             <nuxt-link :to="`/product/${product.id}`">
                 <img
-                    :src="`${baseUrl}${product.thumbnail.url}`"
+                    :src="product.images[0].src"
                     alt="martfury"
                 />
             </nuxt-link>
@@ -14,35 +14,30 @@
                     :to="`/product/${product.id}`"
                     class="ps-product__title"
                 >
-                    {{ product.title }}
+                    {{ product.name }}
                 </nuxt-link>
                 <p class="ps-product__vendor">
                     Sold by:
                     <nuxt-link to="/shop">
-                        {{ product.vendor }}
+                        {{ product.categories[0].name }}
                     </nuxt-link>
                 </p>
                 <ul class="ps-product__desc">
-                    <li>
-                        Unrestrained and portable active stereo speaker
+                    <li v-html="product.description">
+                        
                     </li>
-                    <li>Free from the confines of wires and chords</li>
-                    <li>20 hours of portable capabilities</li>
-                    <li>
-                        Double-ended Coil Cord with 3.5mm Stereo Plugs Included
-                    </li>
-                    <li>3/4″ Dome Tweeters: 2X and 4″ Woofer: 1X</li>
+                    
                 </ul>
             </div>
             <div class="ps-product__shopping">
-                <p v-if="product.sale === true" class="ps-product__price sale">
-                    ${{ product.price.toFixed(2) }}
+                <p v-if="product.backedorders === true" class="ps-product__price sale">
+                    ${{ product.price }}
                     <del class="ml-2">
-                        ${{ product.sale_price.toFixed(2) }}
+                        ${{ product.price }}
                     </del>
                 </p>
                 <p v-else class="ps-product__price">
-                    ${{ product.price.toFixed(2) }}
+                    ${{ product.price }}
                 </p>
                 <a class="ps-btn" href="#" @click.prevent="handleAddToCart">
                     Add to cart
@@ -155,4 +150,15 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-product--wide {
+    .ps-product__thumbnail {
+        min-width: auto;
+    }
+
+    .ps-product__content {
+        width: 70%;
+    }
+} 
+
+</style>

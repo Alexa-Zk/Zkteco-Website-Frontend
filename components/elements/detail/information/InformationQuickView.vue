@@ -6,7 +6,7 @@
                 Categories:
                 <nuxt-link to="/shop">
                     <a class="ml-2 text-capitalize">
-                        {{ product.vendor }}
+                        {{ product.categories[0].name }}
                     </a>
                 </nuxt-link>
             </p>
@@ -56,6 +56,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Rating from '~/components/elements/Rating';
 import ModuleProductDetailDesc from '~/components/elements/detail/information/modules/ModuleProductDetailDesc';
 export default {
@@ -66,6 +67,11 @@ export default {
             type: Object,
             default: {}
         }
+    },
+    computed: {
+        ...mapState({
+            cartItems: state => state.cart.cartItems
+        }),
     },
     methods: {
         handleAddToCart() {
@@ -79,7 +85,7 @@ export default {
             this.$notify({
                 group: 'addCartSuccess',
                 title: 'Success!',
-                text: `${this.product.title} has been added to your cart!`
+                text: `${this.product.name} has been added to your cart!`
             });
         },
 
@@ -94,11 +100,11 @@ export default {
             this.$notify({
                 group: 'addCartSuccess',
                 title: 'Success!',
-                text: `${this.product.title} has been added to your cart!`
+                text: `${this.product.name} has been added to your cart!`
             });
             setTimeout(
                 function() {
-                    this.$router.push('/account/checkout');
+                    this.$router.push('/store/account/checkout');
                 }.bind(this),
                 500
             );
