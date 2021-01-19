@@ -11,7 +11,9 @@
                     <loading v-else />
                 </div>
                 <div class="ps-layout__right">
-                    <layout-shop v-if="collections !== null" />
+                    <!-- <layout-shop v-if="collections !== null" /> -->
+
+                    <layout-shop v-if="products !== null" />
                 </div>
             </div>
         </div>
@@ -44,14 +46,14 @@ export default {
     },
     computed: {
         ...mapState({
-            collections: state => state.collection.collections,
             categories: state => state.product.categories,
-            brands: state => state.product.brands
+            products: state => state.product.products
         }),
         categorySlug() {
             return this.$route.query.category;
         }
     },
+    layout: 'default-layout',
     data() {
         return {
             widgetLoading: true,
@@ -72,32 +74,23 @@ export default {
             _start: 1,
             _limit: 12
         };
-        const collectionsParams = [
-            'shop-best-seller-items',
-            'shop-recommend-items'
-        ];
-        const collections = await this.$store.dispatch(
-            'collection/getCollectionsBySlugs',
-            collectionsParams
-        );
+
+        const payload = {};
+        
         const products = await this.$store.dispatch(
             'product/getProducts',
-            params
+            payload
         );
         const total = await this.$store.dispatch(
             'product/getTotalRecords',
             params
         );
-
-        const brands = await this.$store.dispatch(
-            'product/getProductBrands',
-            params
-        );
+        
         const categories = await this.$store.dispatch(
             'product/getProductCategories',
             params
         );
-        if (brands && categories) {
+        if (categories) {
             setTimeout(
                 function() {
                     this.widgetLoading = false;

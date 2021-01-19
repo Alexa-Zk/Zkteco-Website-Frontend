@@ -1,32 +1,21 @@
 <template lang="html">
-    <div class="ps-product--cart-mobile">
-        <div class="ps-product__thumbnail">
-            <nuxt-link :to="`store/product/${product.id}`">
-                <img
-                    :src="product.images[0].src"
-                    alt="martfury"
-                />
-            </nuxt-link>
-        </div>
-        <div class="ps-product__content">
-            <a
-                class="ps-product__remove"
-                href="#"
-                @click.prevent="handleRemoveProductFromCart(product)"
-            >
-                <i class="icon-cross"></i>
-            </a>
-            <nuxt-link :to="`store/product/${product.id}`" class="ps-product__title">
-                {{ product.name }}
-            </nuxt-link>
-            <p>
-                <strong>Sold by:</strong>
-                {{ product.categories[0].name }}
-            </p>
-            <small v-if="quantity !== null">
-                {{ quantity }} x {{currency}} {{ product.price }}
-            </small>
-        </div>
+    <div class="form-group--number">
+        <button class="up" @click.prevent="handleIncreaseQuantity(product.id)">
+            +
+        </button>
+        <button
+            class="down"
+            @click.prevent="handleDescreaseQuantity(product.id)"
+        >
+            -
+        </button>
+        <input
+            class="form-control"
+            type="text"
+            placeholder="1"
+            value="1"
+            v-model="quantity"
+        />
     </div>
 </template>
 
@@ -34,19 +23,22 @@
 import { mapState } from 'vuex';
 import { baseUrl } from '~/repositories/Repository';
 export default {
-    name: 'ProductMiniCart',
+    name: 'ProductShoppingQuantity',
     props: {
         product: {
             type: Object,
             default: () => {}
         }
     },
+    data() {
+        return {};
+    },
     computed: {
         ...mapState({
-            total: state => state.cart.total,
             cartItems: state => state.cart.cartItems,
-            cartProducts: state => state.product.cartProducts,
-            currency: state => state.app.currency
+            total: state => state.cart.total,
+            amount: state => state.cart.amount,
+            cartProducts: state => state.product.cartProducts
         }),
         quantity() {
             if (this.cartItems !== null) {
@@ -61,9 +53,6 @@ export default {
             } else {
                 return null;
             }
-        },
-        baseUrl() {
-            return baseUrl;
         }
     },
     methods: {
@@ -73,13 +62,8 @@ export default {
             cookieCart.cartItems.forEach(item => {
                 queries.push(item.id);
             });
-            console.log(queries);
             if (this.cartItems.length > 0) {
-                const response = await this.$store.dispatch(
-                    'product/getCartProducts',
-                    queries
-                );
-                this.$store.commit('cart/setLoading', false);
+                await this.$store.dispatch('product/getCartProducts', queries);
             } else {
                 this.$store.commit('product/setCartProducts', null);
             }
@@ -89,11 +73,22 @@ export default {
                 item => item.id === product.id
             );
             this.$store.dispatch('cart/removeProductFromCart', cartItem);
-            this.$store.commit('cart/setLoading', true);
             this.loadCartProducts();
+        },
+        handleIncreaseQuantity(payload) {
+            this.$store.dispatch('cart/increaseCartItemQuantity', payload);
+            this.loadCartProducts();
+            this.quantity++;
+        },
+
+        handleDescreaseQuantity(payload) {
+            this.$store.dispatch('cart/decreaseCartItemQuantity', payload);
+            this.loadCartProducts();
+            if (this.quantity > 1) {
+                this.quantity--;
+            }
         }
-    },
-    
+    }
 };
 </script>
 

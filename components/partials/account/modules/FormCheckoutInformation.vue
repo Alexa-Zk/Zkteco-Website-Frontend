@@ -9,6 +9,7 @@
                 placeholder="Email or phone number"
                 outlined
                 height="50"
+                v-model="payload.email"
             />
         </div>
         <div class="form-group">
@@ -28,6 +29,7 @@
                         placeholder="First Name"
                         outlined
                         height="50"
+                        v-model="payload.firstName"
                     />
                 </div>
             </div>
@@ -38,27 +40,55 @@
                         placeholder="Last Name"
                         outlined
                         height="50"
+                        v-model="payload.lastName"
                     />
                 </div>
             </div>
         </div>
         <div class="form-group">
             <label>Address</label>
-            <v-text-field placeholder="Address" outlined height="50" />
-        </div>
-        <div class="form-group">
-            <label>Apartment</label>
             <v-text-field
-                placeholder="Apartment, suite, etc. (optional)"
+                placeholder="Address"
+                v-model="payload.address"
                 outlined
                 height="50"
             />
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Apartment</label>
+                    <v-text-field
+                        placeholder="Apartment, suite, etc. (optional)"
+                        outlined
+                        height="50"
+                        v-model="payload.apartment"
+                    />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <v-text-field
+                        placeholder="Phone Number"
+                        outlined
+                        height="50"
+                        v-model="payload.phoneNumber"
+                    />
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>City</label>
-                    <v-text-field placeholder="City" outlined height="50" />
+                    <v-text-field
+                        placeholder="City"
+                        v-model="payload.city"
+                        outlined
+                        height="50"
+                    />
                 </div>
             </div>
             <div class="col-sm-6">
@@ -68,6 +98,7 @@
                         placeholder="Postal Code"
                         outlined
                         height="50"
+                        v-model="payload.postalCode"
                     />
                 </div>
             </div>
@@ -93,12 +124,42 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
     name: 'FormCheckoutInformation',
+    data() {
+        return {
+            payload: {
+                email: '',
+                firstName: '',
+                lastName: '',
+                address: '',
+                apartment: '',
+                city: '',
+                postalCode: '',
+                phoneNumber: ''
+            }
+        };
+    },
     methods: {
-        handleToShipping() {
+        async handleToShipping() {
+            const response = await this.$store.dispatch(
+                'shipping/getpersonalDetails',
+                this.payload
+            );
             this.$router.push('/store/account/shipping');
         }
+    },
+    mounted() {
+        this.personalDetails
+            ? (this.payload = this.personalDetails)
+            : (this.payload = this.payload);
+    },
+    computed: {
+        ...mapState({
+            personalDetails: state => state.shipping.personalDetails
+        })
     }
 };
 </script>

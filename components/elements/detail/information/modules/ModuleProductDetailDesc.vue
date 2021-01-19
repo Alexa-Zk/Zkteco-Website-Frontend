@@ -3,17 +3,12 @@
         <p>
             Categories:
             <nuxt-link to="/shop">
-                <strong> {{ product.vendor }}</strong>
+                <strong> {{ product.categories[0].name }}</strong>
             </nuxt-link>
         </p>
         <ul class="ps-list--dot">
-            <li>Unrestrained and portable active stereo speaker</li>
-            <li>Free from the confines of wires and chords</li>
-            <li>20 hours of portable capabilities</li>
-            <li>
-                Double-ended Coil Cord with 3.5mm Stereo Plugs Included
-            </li>
-            <li>3/4″ Dome Tweeters: 2X and 4″ Woofer: 1X</li>
+            <p v-html="product.description"></p>
+            <!-- <p v-html="product.short_description"></p> -->
         </ul>
     </div>
 </template>

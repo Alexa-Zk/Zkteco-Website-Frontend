@@ -4,11 +4,11 @@
 
         <module-product-detail-desc :product="product" />
 
-        <module-product-shopping :product="product" />
+        <module-product-shopping :product="product"  :quantity="quantity"/>
 
-        <module-product-detail-specification />
+        <module-product-detail-specification :product="product"/>
 
-        <module-product-detail-sharing />
+        <module-product-detail-sharing :product="product"/>
     </div>
 </template>
 
@@ -33,7 +33,8 @@ export default {
     },
     computed: {
         ...mapState({
-            product: state => state.product.product
+            product: state => state.product.product,
+            quantity: state => state.cart.quantity
         })
     }
 };

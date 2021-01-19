@@ -4,9 +4,31 @@
             <h5>Register An Account</h5>
             <div class="form-group">
                 <v-text-field
-                    v-model="username"
-                    :error-messages="usernameErrors"
-                    @input="$v.username.$touch()"
+                    v-model="firstname"
+                    :error-messages="firstnameErrors"
+                    @input="$v.firstname.$touch()"
+                    placeholder="First Name"
+                    class="ps-text-field"
+                    outlined
+                    height="50"
+                />
+            </div>
+            <div class="form-group">
+                <v-text-field
+                    v-model="lastname"
+                    :error-messages="lastnameErrors"
+                    @input="$v.lastname.$touch()"
+                    placeholder="Last Name"
+                    class="ps-text-field"
+                    outlined
+                    height="50"
+                />
+            </div>
+            <div class="form-group">
+                <v-text-field
+                    v-model="email"
+                    :error-messages="emailErrors"
+                    @input="$v.email.$touch()"
                     placeholder="Email Address"
                     class="ps-text-field"
                     outlined
@@ -16,6 +38,7 @@
             <div class="form-group">
                 <v-text-field
                     v-model="password"
+                    type="password"
                     :error-messages="passwordErrors"
                     @input="$v.password.$touch()"
                     placeholder="Password"
@@ -24,6 +47,7 @@
                     height="50"
                 />
             </div>
+
             <div class="form-group submit">
                 <button
                     type="submit"
@@ -34,7 +58,7 @@
                 </button>
             </div>
         </div>
-        <div class="ps-form__footer">
+        <!-- <div class="ps-form__footer">
             <p>Connect with:</p>
 
             <ul class="ps-list--social">
@@ -59,7 +83,7 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div> -->
     </form>
 </template>
 
@@ -70,10 +94,23 @@ import { validationMixin } from 'vuelidate';
 export default {
     name: 'Register',
     computed: {
-        usernameErrors() {
+        firstnameErrors() {
             const errors = [];
-            if (!this.$v.username.$dirty) return errors;
-            !this.$v.username.required && errors.push('This field is required');
+            if (!this.$v.firstname.$dirty) return errors;
+            !this.$v.firstname.required &&
+                errors.push('This field is required');
+            return errors;
+        },
+        lastnameErrors() {
+            const errors = [];
+            if (!this.$v.lastname.$dirty) return errors;
+            !this.$v.lastname.required && errors.push('This field is required');
+            return errors;
+        },
+        emailErrors() {
+            const errors = [];
+            if (!this.$v.email.$dirty) return errors;
+            !this.$v.email.required && errors.push('This field is required');
             return errors;
         },
         passwordErrors() {
@@ -85,19 +122,50 @@ export default {
     },
     data() {
         return {
-            username: null,
+            firstname: null,
+            lastname: null,
+            email: null,
             password: null
         };
     },
     validations: {
-        username: { required },
+        firstname: { required },
+        lastname: { required },
+        email: { required },
         password: { required }
     },
     methods: {
-        handleSubmit() {
+        async handleSubmit() {
             this.$v.$touch();
             if (!this.$v.$invalid) {
-                this.$router.push('/account/login');
+                try {
+                    const payload = {
+                        first_name: this.firstname,
+                        last_name: this.lastname,
+                        email: this.email,
+                        password: this.password
+                    };
+                    const response = await this.$store.dispatch(
+                        'auth/register',
+                        payload
+                    );
+                    if (response.data.status) {
+                        this.$notify({
+                            group: 'addCartSuccess',
+                            title: 'Success!',
+                            text: `${response.data.message}!`
+                        });
+                        this.$router.push('/store/account/checkout');
+                    } else {
+                        return;
+                    }
+                } catch (error) {
+                    this.$notify({
+                        group: 'addCartSuccess',
+                        title: 'Error!',
+                        text: `Something went wrong!`
+                    });
+                }
             }
         }
     }

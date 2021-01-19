@@ -3,10 +3,10 @@
         <figure>
             <figcaption>Quantity</figcaption>
             <div class="form-group--number">
-                <button class="up" @click.prevent="handleIncreaseQuantity">
+                <button class="up" @click.prevent="handleIncreaseQuantity(product.id)">
                     <i class="fa fa-plus"></i>
                 </button>
-                <button class="down" @click.prevent="handleDescreaseQuantity">
+                <button class="down" @click.prevent="handleDescreaseQuantity(product.id)">
                     <i class="fa fa-minus"></i>
                 </button>
                 <input
@@ -24,17 +24,9 @@
         >
             Add to cart
         </a>
-        <a class="ps-btn" href="#" @click.prevent="">
+        <a class="ps-btn" href="#" @click.prevent="handleBuyNow">
             Buy Now
         </a>
-        <!-- <div class="ps-product__actions">
-            <a href="#">
-                <i class="icon-heart"></i>
-            </a>
-            <a href="#">
-                <i class="icon-chart-bars"></i>
-            </a>
-        </div> -->
     </div>
 </template>
 
@@ -47,6 +39,10 @@ export default {
         product: {
             type: Object,
             default: () => {}
+        },
+        quantity: {
+            type: Number,
+            default: () => 0
         }
     },
     computed: {
@@ -56,15 +52,19 @@ export default {
     },
     data() {
         return {
-            quantity: 1
+            
         };
     },
     methods: {
-        handleIncreaseQuantity() {
+        handleIncreaseQuantity(payload) {
+            this.$store.dispatch('cart/increaseCartItemQuantity', payload);
+            this.loadCartProducts();
             this.quantity++;
         },
 
-        handleDescreaseQuantity() {
+        handleDescreaseQuantity(payload) {
+            this.$store.dispatch('cart/decreaseCartItemQuantity', payload);
+            this.loadCartProducts();
             if (this.quantity > 1) {
                 this.quantity--;
             }
@@ -107,6 +107,27 @@ export default {
             } else {
                 this.addItemToCart(item);
             }
+        },
+
+        handleBuyNow() {
+            let item = {
+                id: this.product.id,
+                quantity: 1,
+                price: this.product.price
+            };
+            this.$store.dispatch('cart/addProductToCart', item);
+            this.getCartProduct(this.cartItems);
+            this.$notify({
+                group: 'addCartSuccess',
+                title: 'Success!',
+                text: `${this.product.name} has been added to your cart!`
+            });
+            setTimeout(
+                function() {
+                    this.$router.push('/store/account/checkout');
+                }.bind(this),
+                500
+            );
         },
 
         addItemToCart(payload) {

@@ -6,10 +6,10 @@
                     <div class="ps-section__left">
                         <aside class="ps-widget--account-dashboard">
                             <div class="ps-widget__header">
-                                <img src="/img/users/3.jpg" />
+                                <img :src="user_information.avatar_url" />
                                 <figure>
                                     <figcaption>Hello</figcaption>
-                                    <p>username@gmail.com</p>
+                                    <p>{{user_information.email}}</p>
                                 </figure>
                             </div>
                             <div class="ps-widget__content">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <FormEditAddress />
+                    <FormEditAddress :billing="user_information.billing"/>
                 </div>
             </div>
         </div>
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import AccountLinks from './modules/AccountLinks';
 import FormEditAddress from '~/components/partials/account/modules/FormEditAddress';
 
@@ -38,37 +39,37 @@ export default {
             accountLinks: [
                 {
                     text: 'Account Information',
-                    url: '/account/user-information',
+                    url: '/store/account/user-information',
                     icon: 'icon-user'
                 },
                 {
-                    text: 'Notifications',
-                    url: '/account/notifications',
-                    icon: 'icon-alarm-ringing'
-                },
-                {
                     text: 'Invoices',
-                    url: '/account/invoices',
+                    url: '/store/account/invoices',
                     icon: 'icon-papers'
                 },
                 {
                     text: 'Address',
-                    url: '/account/addresses',
+                    url: '/store/account/addresses',
                     icon: 'icon-map-marker',
                     active: true
                 },
                 {
-                    text: 'Recent Viewed Product',
-                    url: '/account/recent-viewed-product',
+                    text: 'My Orders',
+                    url: '/store/account/recent-viewed-product',
                     icon: 'icon-store'
                 },
                 {
                     text: 'Wishlist',
-                    url: '/account/wishlist',
+                    url: '/store/account/wishlist',
                     icon: 'icon-heart'
                 }
             ]
         };
+    },
+    computed: {
+        ...mapState({
+            user_information: state => state.auth.userInfo
+        })
     }
 };
 </script>

@@ -37,61 +37,64 @@
         </aside>
         <aside class="widget widget_footer">
             <h4 class="widget-title">
-                {{ $t('footer.widgetHeading.quickLink') }}
+                {{ $t('Let us help you') }}
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <a href="#">Policy</a>
+                    <a href="/store/page/contact-us">Help Center</a>
                 </li>
                 <li>
-                    <a href="#">Term & Condition</a>
+                    <a href="/website/page/warranty-policy">Warranty</a>
+                </li>
+                 <li>
+                    <a href="/store/page/faqs">FAQs</a>
                 </li>
                 <li>
-                    <a href="#">Shipping</a>
+                    <a href="/store/page/how-to-shop">How to Shop</a>
                 </li>
                 <li>
-                    <a href="#">Return</a>
-                </li>
-                <li>
-                    <a href="faqs.html">FAQs</a>
+                    <a href="/website/page/warranty-policy">Return Policy</a>
                 </li>
             </ul>
         </aside>
         <aside class="widget widget_footer">
             <h4 class="widget-title">
-                {{ $t('footer.widgetHeading.company') }}
+                {{ $t('Get to know us') }}
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <a href="about-us.html">About Us</a>
+                    <a href="/website/page/about-us">About Us</a>
                 </li>
                 <li>
-                    <a href="#">Affilate</a>
+                    <a href="/website/page/warranty-policy">Privacy Policy</a>
                 </li>
                 <li>
-                    <a href="#">Career</a>
+                    <a href="/store/page/terms-conditions">Terms and Conditions</a>
                 </li>
                 <li>
-                    <a href="contact-us.html">Contact</a>
+                    <a href="/store/page/contact-us">Contact</a>
+                </li>
+                <li>
+                    <a href="#">Careers</a>
                 </li>
             </ul>
         </aside>
         <aside class="widget widget_footer">
             <h4 class="widget-title">
-                {{ $t('footer.widgetHeading.bussiness') }}
+                {{ $t('Business') }}
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <a href="#">Our Press</a>
+                    <a href="/store/account/wishlist">Wishlist</a>
                 </li>
                 <li>
-                    <a href="checkout.html">Checkout</a>
+                    <a href="/store/account/checkout">Checkout</a>
                 </li>
                 <li>
-                    <a href="my-account.html">My account</a>
+                    <a href="/store/account/user-information">My account</a>
                 </li>
                 <li>
-                    <a href="shop-default.html">Shop</a>
+                    <a href="/store/account/recent-viewed-product">My orders</a>
                 </li>
             </ul>
         </aside>

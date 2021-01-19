@@ -30,6 +30,7 @@ export default {
     components: {
         BreadCrumb
     },
+    layout: 'default-layout',
     transition: 'zoom',
     data: () => {
         return {

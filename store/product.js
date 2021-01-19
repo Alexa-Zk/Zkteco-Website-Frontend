@@ -1,4 +1,7 @@
-import Repository, { serializeQuery } from '~/repositories/Repository.js';
+import Repository, {
+    serializeQuery,
+    serializePayload
+} from '~/repositories/Repository.js';
 import { baseUrl } from '~/repositories/Repository';
 
 export const state = () => ({
@@ -10,7 +13,10 @@ export const state = () => ({
     compareItems: null,
     brands: null,
     categories: null,
-    total: 0
+    total: 0,
+    page: 1,
+    per_page: 12,
+    search: ''
 });
 
 export const mutations = {
@@ -50,33 +56,33 @@ export const mutations = {
 };
 
 export const actions = {
-    async getProducts({ commit }, payload) {
+    async getProducts({ state, commit }, payload) {
+        let params = {
+            page: state.page,
+            per_page: state.per_page
+        };
         const reponse = await Repository.get(
-            `${baseUrl}/products?${serializeQuery(payload)}`
+            `${baseUrl}/integrations/products?${serializeQuery(params)}`
         )
             .then(response => {
-                commit('setProducts', response.data);
+                commit('setProducts', response.data.data);
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
     },
 
-    async getTotalRecords({ commit }, payload) {
-        const reponse = await Repository.get(`${baseUrl}/products/count`)
-            .then(response => {
-                commit('setTotal', response.data);
-                return response.data;
-            })
-            .catch(error => ({ error: JSON.stringify(error) }));
-        return reponse;
+    async getTotalRecords({ commit, state }, payload) {
+        commit('setTotal', state.products.length);
     },
 
     async getProductsById({ commit }, payload) {
-        const reponse = await Repository.get(`${baseUrl}/products/${payload}`)
+        const reponse = await Repository.get(
+            `${baseUrl}/integrations/products/${payload}`
+        )
             .then(response => {
-                commit('setProduct', response.data);
-                return response.data;
+                commit('setProduct', response.data.data);
+                return response.data.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
@@ -95,19 +101,14 @@ export const actions = {
         return reponse;
     },
 
-    async getCartProducts({ commit }, payload) {
-        let query = '';
-        payload.forEach(item => {
-            if (query === '') {
-                query = `id=${item}`;
-            } else {
-                query = query + `&id=${item}`;
-            }
-        });
-        const reponse = await Repository.get(`${baseUrl}/products?${query}`)
+    getCartProducts({ commit }, payload) {
+        let params = {
+            include: payload
+        };
+        const reponse = Repository.get(`${baseUrl}/integrations/products`, { params })
             .then(response => {
-                commit('setCartProducts', response.data);
-                return response.data;
+                commit('setCartProducts', response.data.data);
+                return response.data.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
@@ -159,11 +160,19 @@ export const actions = {
         return reponse;
     },
 
-    async getProductCategories({ commit }) {
-        const reponse = await Repository.get(`${baseUrl}/product-categories`)
+    async getProductCategories({ state, commit }) {
+        let params = {
+            page: state.page,
+            per_page: state.per_page
+        };
+        const reponse = await Repository.get(
+            `${baseUrl}/integrations/products/categories?${serializeQuery(
+                params
+            )}`
+        )
             .then(response => {
-                commit('setCategories', response.data);
-                return response.data;
+                commit('setCategories', response.data.data);
+                return response.data.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;

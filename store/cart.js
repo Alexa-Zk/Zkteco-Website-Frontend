@@ -7,7 +7,8 @@ export const state = () => ({
     total: 0,
     amount: 0,
     cartItems: [],
-    loading: false
+    loading: false,
+    quantity: 0
 });
 
 export const mutations = {
@@ -19,6 +20,11 @@ export const mutations = {
 
     setLoading(state, payload) {
         state.loading = payload;
+    },
+
+    setQuantity(state, payload) {
+        let existItem = state.cartItems.find(item => item.id == payload);
+        state.quantity = existItem.quantity;
     },
 
     addItem(state, payload) {
@@ -50,7 +56,7 @@ export const mutations = {
     },
 
     increaseItemQuantity(state, payload) {
-        let selectedItem = state.cartItems.find(item => item.id === payload.id);
+        let selectedItem = state.cartItems.find(item => item.id == payload);
         if (selectedItem) {
             selectedItem.quantity++;
             state.total++;
@@ -59,7 +65,7 @@ export const mutations = {
     },
 
     decreaseItemQuantity(state, payload) {
-        let selectedItem = state.cartItems.find(item => item.id === payload.id);
+        let selectedItem = state.cartItems.find(item => item.id == payload);
         if (selectedItem && selectedItem.quantity > 1) {
             selectedItem.quantity--;
             state.total--;
@@ -77,6 +83,7 @@ export const mutations = {
 export const actions = {
     addProductToCart({ commit, state }, payload) {
         commit('addItem', payload);
+
         const cookieParams = {
             total: state.total,
             amount: state.amount,
@@ -84,13 +91,15 @@ export const actions = {
         };
 
         this.$cookies.set('cart', cookieParams, {
-            path: '/',
+            path: '/store',
             maxAge: 60 * 60 * 24 * 7
         });
+
     },
 
     removeProductFromCart({ commit, state }, payload) {
         commit('removeItem', payload);
+        
         const cookieParams = {
             total: state.total,
             amount: state.amount,
@@ -112,9 +121,13 @@ export const actions = {
         };
 
         this.$cookies.set('cart', cookieParams, {
-            path: '/',
+            path: '/store',
             maxAge: 60 * 60 * 24 * 7
         });
+    },
+
+    getQuantity({ commit }, payload) {
+        commit('setQuantity', payload);
     },
 
     decreaseCartItemQuantity({ commit, state }, payload) {
@@ -126,7 +139,7 @@ export const actions = {
         };
 
         this.$cookies.set('cart', cookieParams, {
-            path: '/',
+            path: '/store',
             maxAge: 60 * 60 * 24 * 7
         });
     },

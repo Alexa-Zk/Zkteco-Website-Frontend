@@ -3,14 +3,14 @@
         <div class="ps-product__thumbnail">
             <nuxt-link :to="`/store/product/${product.id}`">
                 <img
-                    :src="`${baseUrl}${product.thumbnail.url}`"
+                    :src="product.images[0].src"
                     alt="martfury"
                 />
             </nuxt-link>
         </div>
         <div class="ps-product__content">
             <nuxt-link :to="`/store/product/${product.id}`">
-                <a class="ps-product__title">{{ product.title }}</a>
+                <a class="ps-product__title">{{ product.name }}</a>
             </nuxt-link>
         </div>
     </div>

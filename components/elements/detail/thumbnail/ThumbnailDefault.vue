@@ -15,7 +15,7 @@
                                     class="swiper-slide"
                                     v-for="image in product.images"
                                 >
-                                    <img :src="`${baseURL}${image.url}`" />
+                                    <img :src="image.src" />
                                 </div>
                             </div>
                             <div class="swiper-nav">
@@ -49,7 +49,7 @@
                             "
                             @click="handleClickSlide(index)"
                         >
-                            <img :src="`${baseURL}${image.url}`" />
+                            <img :src="image.src" />
                         </div>
                     </div>
                 </div>

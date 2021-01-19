@@ -11,7 +11,7 @@
                             <div class="ps-block__panel">
                                 <figure>
                                     <small>Contact</small>
-                                    <p>test@gmail.com</p>
+                                    <p>{{ personalDetails.email }}</p>
                                     <nuxt-link to="/store/account/checkout">
                                         <a>Change</a>
                                     </nuxt-link>
@@ -19,20 +19,37 @@
                                 <figure>
                                     <small>Ship to</small>
                                     <p>
-                                        2015 South Street, Midland, Texas
+                                        {{ personalDetails.address }}
+                                        {{ personalDetails.apartment }}
                                     </p>
                                     <nuxt-link to="/store/account/checkout">
                                         <a>Change</a>
                                     </nuxt-link>
                                 </figure>
                             </div>
+
+                            <h4>Delivery Method</h4>
+                            <div class="ps-block__panel">
+                                <v-radio-group v-model="column" column>
+                                    <v-radio
+                                        label="Pay on delivery"
+                                        value="2"
+                                    ></v-radio>
+                                    <v-radio
+                                        label="Pick up(No shipping Fees)"
+                                        value="3"
+                                    ></v-radio>
+                                </v-radio-group>
+                            </div>
+
                             <h4>Shipping Method</h4>
                             <div class="ps-block__panel">
-                                <figure>
-                                    <small>
-                                        International Shipping
-                                    </small>
-                                    <strong>$20.00</strong>
+                                <div v-if="column === '2'">
+                                    <pay-on-delivery-method />
+                                </div>
+
+                                <figure v-else>
+                                    <pickup-delivery-method />
                                 </figure>
                             </div>
                             <div class="ps-block__footer">
@@ -42,7 +59,10 @@
                                         Return to information
                                     </a>
                                 </nuxt-link>
-                                <nuxt-link to="/store/account/payment" class="ps-btn">
+                                <nuxt-link
+                                    to="/store/account/payment"
+                                    class="ps-btn"
+                                >
                                     Continue to payment
                                 </nuxt-link>
                             </div>
@@ -51,7 +71,7 @@
                     <div
                         class="col-xl-4 col-lg-4 col-md-12 col-sm-12  ps-block--checkout-order"
                     >
-                        <module-order-summary :shipping="true" />
+                        <module-order-summary :shipping="true" :shipping-cost="shippingCost" />
                     </div>
                 </div>
             </div>
@@ -60,11 +80,63 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 import ModuleOrderSummary from '~/components/partials/account/modules/ModuleOrderSummary';
+import PayOnDeliveryMethod from '~/components/partials/account/modules/PayOnDeliveryMethod';
+import PickupDeliveryMethod from '~/components/partials/account/modules/PickupDeliveryMethod';
 export default {
     name: 'Shipping',
-    components: { ModuleOrderSummary }
+    components: {
+        ModuleOrderSummary,
+        PayOnDeliveryMethod,
+        PickupDeliveryMethod
+    },
+    data() {
+        return {
+            column: '2'
+        };
+    },
+    computed: {
+        ...mapState({
+            personalDetails: state => state.shipping.personalDetails,
+            shippingCost: state => state.shipping.shippingCost
+        })
+    },
+    created() {
+        const response = this.$store.dispatch(
+            'shipping/getDeliveryMethod',
+            this.column
+        );
+    },
+    watch: {
+        column: function(newAction, oldAction) {
+            const response = this.$store.dispatch(
+                'shipping/getDeliveryMethod',
+                this.column
+            );
+            const shipping = this.$store.dispatch(
+                'shipping/getShippingCost',
+                0
+            );
+        }
+    }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-block--shipping {
+    .ps-block__panel {
+        figure {
+            // display: block;
+        }
+        .ps-content-information {
+            display: flex;
+            justify-content: space-between;
+            small {
+                width: 50%;
+            }
+        }
+    }
+}
+</style>

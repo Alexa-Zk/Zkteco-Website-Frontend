@@ -1,6 +1,7 @@
 <template lang="html">
     <div class="table-responsive">
-        <table class="table table-bordered ps-table ps-table--specification">
+        <p>No Product Specification</p>
+        <!-- <table class="table table-bordered ps-table ps-table--specification">
             <tbody>
                 <tr>
                     <td>Color</td>
@@ -31,13 +32,19 @@
                     <td>Yes</td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
     </div>
 </template>
 
 <script>
 export default {
-    name: 'PartialSpecification'
+    name: 'PartialSpecification',
+    props: {
+        product: {
+            type: Object,
+            default: {}
+        }
+    }
 };
 </script>
 

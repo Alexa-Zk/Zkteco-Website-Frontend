@@ -6,21 +6,21 @@
                 Categories:
                 <nuxt-link to="/store/shop">
                     <a class="ml-2 text-capitalize">
-                        {{ product.vendor }}
+                        {{ product.categories[0].name }}
                     </a>
                 </nuxt-link>
             </p>
             <div class="ps-product__rating">
                 <rating />
-                <span>(1 review)</span>
+                <span>({{product.rating_count}} review)</span>
             </div>
         </div>
         <h4 v-if="product.is_sale === true" class="ps-product__price sale">
-            <del class="mr-2"> $ {{ product.sale_price.toFixed(2) }}</del>
-            ${{ product.price.toFixed(2) }}
+            <del class="mr-2"> $ {{ product.sale_price }}</del>
+            ${{ product.price }}
         </h4>
         <h4 v-else class="ps-product__price">
-            ${{ product.price.toFixed(2) }}
+            ${{ product.price }}
         </h4>
     </div>
 </template>

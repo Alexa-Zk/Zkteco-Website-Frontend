@@ -9,7 +9,7 @@
             </li>
         </template>
         <li>
-            <nuxt-link to="/account/my-account">
+            <nuxt-link to="/store/account/my-account">
                 <a>
                     <i class="icon-power-switch"></i>
                     Logout

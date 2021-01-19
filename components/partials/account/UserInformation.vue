@@ -6,14 +6,14 @@
                     <div class="ps-section__left">
                         <aside class="ps-widget--account-dashboard">
                             <div class="ps-widget__header">
-                                <img src="/img/users/3.jpg" />
+                                <img :src="user_information.avatar_url" />
                                 <figure>
                                     <figcaption>Hello</figcaption>
-                                    <p>username@gmail.com</p>
+                                    <p>{{user_information.email}}</p>
                                 </figure>
                             </div>
                             <div class="ps-widget__content">
-                                <AccountLinks :links="accountLinks" />
+                                <account-links :links="accountLinks" />
                             </div>
                         </aside>
                     </div>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex"
 import AccountLinks from './modules/AccountLinks';
 export default {
     name: 'UserInformation',
@@ -44,11 +45,6 @@ export default {
                     icon: 'icon-user',
                     active: true
                 },
-                // {
-                //     text: 'Notifications',
-                //     url: '/account/notifications',
-                //     icon: 'icon-alarm-ringing'
-                // },
                 {
                     text: 'Invoices',
                     url: '/store/account/invoices',
@@ -72,6 +68,12 @@ export default {
                 }
             ]
         };
+    },
+    computed: {
+        ...mapState({
+            user_information: state => state.auth.userInfo,
+            
+        })
     }
 };
 </script>

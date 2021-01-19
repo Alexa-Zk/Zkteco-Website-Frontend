@@ -20,6 +20,7 @@ export default {
         ContactMap,
         BreadCrumb
     },
+    layout: 'layout-default',
     transition: 'zoom',
     data: () => {
         return {

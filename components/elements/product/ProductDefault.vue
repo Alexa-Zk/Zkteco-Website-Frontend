@@ -3,7 +3,7 @@
         <div class="ps-product__thumbnail">
             <nuxt-link :to="`/store/product/${product.id}`">
                 <img
-                    :src="`${baseUrl}${product.thumbnail.url}`"
+                    :src="product.images[0].src"
                     alt="martfury"
                 />
             </nuxt-link>
@@ -42,55 +42,36 @@
                         <i class="icon-heart"></i>
                     </a>
                 </li>
-                <!-- <li>
-                    <a
-                        to="#"
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Compare"
-                        @click.prevent="handleAddItemToCompare"
-                    >
-                        <i class="icon-chart-bars"></i>
-                    </a>
-                </li> -->
             </ul>
         </div>
         <div class="ps-product__container">
             <nuxt-link to="/shop" class="ps-product__vendor">
-                {{ product.vendor }}
+                {{ product.categories[0].name }}
             </nuxt-link>
             <div class="ps-product__content">
                 <nuxt-link
                     :to="`/store/product/${product.id}`"
                     class="ps-product__title"
                 >
-                    {{ product.title }}
+                    {{ product.name }}
                 </nuxt-link>
                 <div class="ps-product__rating">
                     <rating />
-                    <span>{{ product.ratingCount }}</span>
+                    <span>{{ product.average_rating }}</span>
                 </div>
                 <p
                     class="ps-product__price"
                 >
                     {{ currency }}{{ product.price }}
-                    <!-- <del class="ml-2">
-                        {{ currency }}{{ product.sale_price }}
-                    </del> -->
+                    
                 </p>
             </div>
             <div class="ps-product__content hover">
                 <nuxt-link :to="`/store/product/${product.id}`">
-                    <a class="ps-product__title">{{ product.title }}</a>
+                    <a class="ps-product__title">{{ product.name }}</a>
                 </nuxt-link>
-                <p
-                    v-if="product.is_sale === true"
-                    class="ps-product__price sale"
-                >
-                    ${{ product.price }}
-                    <del class="ml-2"> ${{ product.sale_price }}</del>
-                </p>
-                <p v-else class="ps-product__price">${{ product.price }}</p>
+                
+                <p  class="ps-product__price sale">${{ product.price }}</p>
             </div>
         </div>
         <v-dialog v-model="quickviewDialog" width="1200">
@@ -154,10 +135,11 @@ export default {
             };
             this.$store.dispatch('cart/addProductToCart', item);
             this.getCartProduct(this.cartItems);
+            
             this.$notify({
                 group: 'addCartSuccess',
                 title: 'Success!',
-                text: `${this.product.title} has been added to your cart!`
+                text: `${this.product.name} has been added to your cart!`
             });
         },
 
@@ -202,3 +184,13 @@ export default {
     }
 };
 </script>
+
+
+<style lang="scss" scoped>
+.ps-product  {
+    .ps-product__thumbnail {
+        height: 165px;
+        width: 165px;
+    }
+}
+</style>
