@@ -32,7 +32,7 @@
                 <figure v-if="shipping === true">
                     <figcaption>
                         <strong>Shipping</strong>
-                        <small>$ 20.00</small>
+                        <small>$ {{shippingCost}}</small>
                     </figcaption>
                 </figure>
                 <figure v-else class="ps-block__shipping">
@@ -60,7 +60,8 @@ export default {
             cartItems: state => state.cart.cartItems,
             total: state => state.cart.total,
             amount: state => state.cart.amount,
-            cartProducts: state => state.product.cartProducts
+            cartProducts: state => state.product.cartProducts,
+            shippingCost: state => state.shipping.shippingCost
         })
     }
 };

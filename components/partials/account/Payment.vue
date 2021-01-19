@@ -32,7 +32,7 @@
                                     <small>
                                         Local Shipping
                                     </small>
-                                    <strong>$20.00</strong>
+                                    <strong>$ {{shippingCost}}</strong>
                                 </figure>
                             </div>
                             <h4>Payment Methods</h4>
@@ -64,7 +64,8 @@ export default {
     components: { PaymentMethods, ModuleOrderSummary },
     computed: {
         ...mapState({
-            personalDetails: state => state.shipping.personalDetails
+            personalDetails: state => state.shipping.personalDetails,
+            shippingCost: state => state.shipping.shippingCost
         })
     }
 };

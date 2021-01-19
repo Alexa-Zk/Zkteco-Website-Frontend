@@ -16,6 +16,7 @@ export default {
         Faqs,
         BreadCrumb
     },
+    layout: 'layout-default',
     transition: 'zoom',
     data: () => {
         return {

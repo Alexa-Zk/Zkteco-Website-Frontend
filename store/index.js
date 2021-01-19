@@ -7,6 +7,7 @@ export const actions = {
         const compareItems = this.$cookies.get('compare', { parseJSON: true });
         const auth = this.$cookies.get('auth', { parseJSON: true });
         const currency = this.$cookies.get('currency', { parseJSON: true });
+        const userInfo = this.$cookies.get('userInfo', {parseJSON: true});
         if (cartItems && cartItems.cartItems.length > 0) {
             commit('cart/initCart', {
                 cartItems: cartItems.cartItems,
@@ -37,5 +38,10 @@ export const actions = {
         if (currency) {
             commit('app/setCurrency', currency.data);
         }
+        if (userInfo) {
+            commit('auth/setUserInfo', userInfo);
+            commit('auth/setIsLoggedIn', true);
+        }
+
     }
 };

@@ -53,6 +53,7 @@ export default {
             return this.$route.query.category;
         }
     },
+    layout: 'default-layout',
     data() {
         return {
             widgetLoading: true,

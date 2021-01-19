@@ -41,11 +41,10 @@ export const actions = {
                 commit('setIsLoggedIn', response.data.status);
 
                 const cookieParams = {
-                    userInfo: state.userInfo,
-                    isLoggedIn: state.isLoggedIn
+                    userInfo: state.userInfo
                 };
         
-                this.$cookies.set('auth', cookieParams, {
+                this.$cookies.set('userInfo', cookieParams, {
                     path: '/store',
                     maxAge: 60 * 60 * 24 * 7
                 });

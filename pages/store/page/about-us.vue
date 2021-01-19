@@ -18,6 +18,7 @@ export default {
         OurTeam,
         BreadCrumb
     },
+    layout: 'layout-default',
     transition: 'zoom',
     data: () => {
         return {

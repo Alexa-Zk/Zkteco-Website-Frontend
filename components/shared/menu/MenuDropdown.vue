@@ -1,6 +1,6 @@
 <template>
     <li class=" menu-item-has-children dropdown">
-        <nuxt-link :to="menuData.url">
+        <!-- <nuxt-link :to="menuData.url">
             {{ menuData.text }}
         </nuxt-link>
         <ul v-if="menuData.subMenu" class="sub-menu">
@@ -9,7 +9,7 @@
                 :menu-data="item"
                 :key="item.text"
             />
-        </ul>
+        </ul> -->
     </li>
 </template>
 
@@ -20,6 +20,10 @@ export default {
         menuData: {
             type: Object,
             defaut: {}
+        },
+        categories: {
+            type: Array,
+            defaut: () => [] 
         }
     },
     data: () => {

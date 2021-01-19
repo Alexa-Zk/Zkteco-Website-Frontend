@@ -6,10 +6,10 @@
                     <div class="ps-section__left">
                         <aside class="ps-widget--account-dashboard">
                             <div class="ps-widget__header">
-                                <img src="/img/users/3.jpg" />
+                                <img :src="user_information.avatar_url" />
                                 <figure>
                                     <figcaption>Hello</figcaption>
-                                    <p>username@gmail.com</p>
+                                    <p>{{user_information.email}}</p>
                                 </figure>
                             </div>
                             <div class="ps-widget__content">
@@ -29,11 +29,10 @@
                                         </figcaption>
                                         <div class="ps-block__content">
                                             <p>
-                                                You Have Not Set Up This Type Of
-                                                Address Yet.
+                                                Set Up This Type Of Address.
                                             </p>
                                             <nuxt-link
-                                                to="/account/edit-address"
+                                                to="/store/account/edit-address"
                                             >
                                                 <a>Edit</a>
                                             </nuxt-link>
@@ -47,11 +46,10 @@
                                         </figcaption>
                                         <div class="ps-block__content">
                                             <p>
-                                                You Have Not Set Up This Type Of
-                                                Address Yet.
+                                               Set Up This Type Of Address.
                                             </p>
                                             <nuxt-link
-                                                to="/account/edit-address"
+                                                to="/store/account/edit-address"
                                             >
                                                 <a>Edit</a>
                                             </nuxt-link>
@@ -68,6 +66,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import AccountLinks from './modules/AccountLinks';
 export default {
     name: 'Addresses',
@@ -80,11 +79,6 @@ export default {
                     url: '/store/account/user-information',
                     icon: 'icon-user'
                 },
-                // {
-                //     text: 'Notifications',
-                //     url: '/account/notifications',
-                //     icon: 'icon-alarm-ringing'
-                // },
                 {
                     text: 'Invoices',
                     url: '/store/account/invoices',
@@ -110,6 +104,11 @@ export default {
                 }
             ]
         };
+    },
+    computed: {
+        ...mapState({
+            user_information: state => state.auth.userInfo,
+        })
     }
 };
 </script>

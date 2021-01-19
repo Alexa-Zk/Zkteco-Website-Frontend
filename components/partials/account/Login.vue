@@ -73,7 +73,7 @@ import { validationMixin } from 'vuelidate';
 export default {
     name: 'Login',
     computed: {
-        usernameErrors() {
+        emailErrors() {
             const errors = [];
             if (!this.$v.email.$dirty) return errors;
             !this.$v.email.required && errors.push('This field is required');
@@ -101,6 +101,8 @@ export default {
             this.$v.$touch();
             if (!this.$v.$invalid) {
                 this.$store.dispatch('auth/login', true);
+                this.$store.dispatch('auth/setAuthStatus', true);
+                
                 this.$router.push('/store/account/checkout');
             }
         }
