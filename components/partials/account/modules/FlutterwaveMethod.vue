@@ -4,7 +4,10 @@
             By making this purchase you agree to
             <a href="#" class="highlight">our terms and conditions</a>.
         </p>
-        <a href="#" class="ps-btn ps-btn--fullwidth" @click="payViaService"
+        <a href="#" class="ps-btn ps-btn--fullwidth" v-if="deliveryMethod ==='2' " @click="placeOrders"
+            >Make Orders</a
+        >
+        <a href="#" class="ps-btn ps-btn--fullwidth" v-else @click="payViaService"
             >Flutterwave</a
         >
     </div>
@@ -55,19 +58,23 @@ export default {
         generateReference() {
             let date = new Date();
             return date.getTime().toString();
+        },
+        placeOrders() {
+            console.log("Makes API Calls");
         }
     },
     computed: {
         ...mapState({
             personalDetails: state => state.shipping.personalDetails,
-            shippingCost: state => state.shipping.shippingCost
+            shippingCost: state => state.shipping.shippingCost,
+            deliveryMethod:  state => state.shipping.deliveryMethod
         })
     },
     mounted () {
         this.paymentData.customer = {
-            name: this.personalDetails.firstName,
-            email: this.personalDetails.email,
-            phone_number: this.personalDetails.phoneNumber
+            name: this.personalDetails ? this.personalDetails.firstName : '',
+            email: this.personalDetails ? this.personalDetails.email: '',
+            phone_number: this.personalDetails ? this.personalDetails.phoneNumber: ''
         }
     }
 };

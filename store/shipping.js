@@ -1,6 +1,6 @@
 export const state = () => ({
     personalDetails: null,
-    shippingCost: null,
+    shippingCost: 0,
     deliveryMethod: null
 });
 

@@ -2,7 +2,7 @@
     <div class="ps-page--shop">
         <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />
         <div class="ps-container">
-            <shop-banner />
+            <shop-banner :images="adImages" />
             <shop-brands />
             <!-- <shop-categories /> -->
             <div class="ps-layout--shop">
@@ -30,8 +30,18 @@ import ShopBrands from '~/components/partials/shop/sections/ShopBrands';
 import ShopCategories from '~/components/partials/shop/sections/ShopCategories';
 import Loading from '~/components/elements/commons/Loading';
 
+// Queries
+import EcommerceImages from '~/apollo/queries/storeHomePages';
+
+
 export default {
     name: 'index',
+    apollo: {
+        ecommerceImages: {
+            prefetch: true,
+            query: EcommerceImages
+        },
+    },
     components: {
         Loading,
         ShopCategories,
@@ -51,12 +61,16 @@ export default {
         }),
         categorySlug() {
             return this.$route.query.category;
-        }
+        },
+        adImages() {
+            return this.ecommerceImages ? this.ecommerceImages[0]: [];
+        },
     },
     layout: 'default-layout',
     data() {
         return {
             widgetLoading: true,
+            ecommerceImages: '',
             breadCrumb: [
                 {
                     text: 'Home',

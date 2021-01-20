@@ -24,7 +24,9 @@
                     <input
                         class="form-control"
                         type="email"
+                        v-model="searchText"
                         placeholder="Search"
+                        v-on:keyup.enter="submitQuery"
                     />
                 </div>
             </div>
@@ -46,8 +48,20 @@ export default {
         HeaderActions,
         MenuDefault
     },
+    data () {
+        return {
+            searchText: ''
+        }
+    },
     mounted() {
         window.addEventListener('scroll', stickyHeader);
+    },
+    methods: {
+        submitQuery () {
+            if (this.searchText !== null || this.searchText !== '') {
+                this.$router.push(`website/search?keyword=${this.searchText}`);
+            }
+        }
     }
 };
 </script>

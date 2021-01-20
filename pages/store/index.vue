@@ -1,25 +1,26 @@
 <template lang="html">
     <main id="homepage-1">
-        <home-banner />
+        <home-banner :images="adImages" />
         <site-feautures-fullwidth />
         <home-default-deal-of-day
             v-if="collections !== null"
             collection-slug="deal-of-the-day"
         />
-        <home-ads-columns />
+        <home-ads-columns :images="adImages"/>
         <!-- <home-default-top-categories /> -->
         <template v-if="collections !== null">
             <conumer-electronics collection-slug="consumer-electronics" />
             <clothings collection-slug="clothings" />
             <garden-and-kitchen collection-slug="garden-and-kitchen" />
         </template>
-        <home-ads />
+        <home-ads :images="adImages"/>
         <!-- <download-app /> -->
         <!-- <new-arrivals
             v-if="collections !== null"
             collection-slug="new-arrivals-products"
         /> -->
         <newsletters layout="fullwidth" />
+        <!-- <demo-panel />  -->
     </main>
 </template>
 <script>
@@ -43,7 +44,22 @@ import MobileDrawer from '~/components/shared/mobile/MobileDrawer';
 import HomeDefaultDealOfDay from '~/components/partials/homepage/default/HomeDefaultDealOfDay';
 import DemoPanel from '~/components/shared/DemoPanel';
 
+// Queries
+import EcommerceImages from '~/apollo/queries/storeHomePages';
+
 export default {
+     data() {
+        return {
+            ecommerceImages: '',
+            articles: ''
+        };
+    },
+    apollo: {
+        ecommerceImages: {
+            prefetch: true,
+            query: EcommerceImages
+        },
+    },
     components: {
         DemoPanel,
         HomeDefaultDealOfDay,
@@ -71,7 +87,10 @@ export default {
     computed: {
         ...mapState({
             collections: state => state.collection.collections
-        })
+        }),
+        adImages() {
+            return this.ecommerceImages ? this.ecommerceImages[0]: [];
+        },
     },
 
     async created() {
