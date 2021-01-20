@@ -29,7 +29,7 @@ export default {
                 },
                 {
                     text: 'Shopping Cart',
-                    url: '/account/shopping-cart'
+                    url: '/store/account/shopping-cart'
                 },
                 {
                     text: 'Shipping'

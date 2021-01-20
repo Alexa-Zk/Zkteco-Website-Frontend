@@ -38,7 +38,8 @@ export default {
         { src: '~/plugins/vue-notification.js', ssr: false },
         { src: '~/plugins/axios.js', ssr: false },
         { src: '~/plugins/lazyLoad.js', ssr: false },
-        { src: '~/plugins/flutterwave.js', ssr: false }
+        { src: '~/plugins/flutterwave.js', ssr: false },
+        { src: '~/plugins/vue-instantsearch.js', ssr: false }
     ],
 
     buildModules: [
