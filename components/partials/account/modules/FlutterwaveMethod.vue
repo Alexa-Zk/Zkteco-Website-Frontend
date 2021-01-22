@@ -8,14 +8,14 @@
             href=""
             class="ps-btn ps-btn--fullwidth"
             v-if="deliveryMethod === '2'"
-            @click="placeOrders"
+            @click.prevent="placeOrders"
             >Make Orders</a
         >
         <a
             href="#"
             class="ps-btn ps-btn--fullwidth"
             v-else
-            @click="payViaService"
+            @click.prevent="payViaService"
             >Flutterwave</a
         >
     </div>
@@ -95,6 +95,10 @@ export default {
                             title: 'Success!',
                             text: `Order Created`
                         });
+                        const response = await this.$store.dispatch(
+                            'app/removeCookie',
+                            payload
+                        );
                         this.$router.push('/store/shop');
                     } else {
                         return;
@@ -148,15 +152,15 @@ export default {
                     payload
                 );
                 if (response) {
-                    this.$cookies.remove("cart");
-                    this.$cookies.remove("shippingCost"),
-                    this.$cookies.remove("shippingInfo")
-                    alert("Got here")
                     this.$notify({
                         group: 'addCartSuccess',
                         title: 'Success!',
                         text: `Order Created. You will be contacted shortly`
                     });
+                    const response = await this.$store.dispatch(
+                        'app/removeCookie',
+                        payload
+                    );
                     this.$router.push('/store/shop');
                 } else {
                     return;
