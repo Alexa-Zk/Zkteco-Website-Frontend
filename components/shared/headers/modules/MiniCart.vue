@@ -22,7 +22,7 @@
             <div class="ps-cart__footer">
                 <h3>
                     {{ $t('header.miniCart.subTotal') }}
-                    <strong>${{ amount }}</strong>
+                    <strong>{{currency}} {{ amount }}</strong>
                 </h3>
                 <figure>
                     <div>
@@ -61,7 +61,8 @@ export default {
             amount: state => state.cart.amount,
             loading: state => state.cart.loading,
             cartItems: state => state.cart.cartItems,
-            cartProducts: state => state.product.cartProducts
+            cartProducts: state => state.product.cartProducts,
+            currency: state => state.app.currency
         }),
         baseUrl() {
             return baseUrl;

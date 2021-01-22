@@ -14,7 +14,7 @@
                 <td data-label="Product">
                     <product-shopping-cart :product="product" />
                 </td>
-                <td data-label="Price" class="price">$ {{ product.price }}</td>
+                <td data-label="Price" class="price"> {{currency}} {{ product.price }}</td>
                 <td data-label="Quantity">
                     <product-shopping-table :product="product" />
                     <!-- <div class="form-group--number">
@@ -30,7 +30,7 @@
                     </div> -->
                 </td>
                 <td data-label="Total">
-                    ${{
+                    {{currency}} {{
                         (cartItems[index].quantity * product.price).toFixed(2)
                     }}
                 </td>
@@ -57,7 +57,6 @@ export default {
     components: { ProductShoppingCart, ProductShoppingTable },
     data () {
         return {
-            quantity: 0
         }
     },
     computed: {
@@ -65,7 +64,8 @@ export default {
             cartItems: state => state.cart.cartItems,
             total: state => state.cart.total,
             amount: state => state.cart.amount,
-            cartProducts: state => state.product.cartProducts
+            cartProducts: state => state.product.cartProducts,
+            currency: state => state.app.currency
         }),
         quantity() {
             if (this.cartItems !== null) {

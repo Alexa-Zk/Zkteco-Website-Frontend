@@ -3,7 +3,7 @@
         <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />
         <div class="ps-container">
             <shop-banner :images="adImages" />
-            <shop-brands />
+            <shop-brands :partnersLogo="ourPartners"/>
             <!-- <shop-categories /> -->
             <div class="ps-layout--shop">
                 <div class="ps-layout__left">
@@ -32,6 +32,8 @@ import Loading from '~/components/elements/commons/Loading';
 
 // Queries
 import EcommerceImages from '~/apollo/queries/storeHomePages';
+// Queries
+import homePages from '~/apollo/queries/homePages';
 
 
 export default {
@@ -40,6 +42,10 @@ export default {
         ecommerceImages: {
             prefetch: true,
             query: EcommerceImages
+        },
+        homePages: {
+            prefetch: true,
+            query: homePages
         },
     },
     components: {
@@ -65,12 +71,16 @@ export default {
         adImages() {
             return this.ecommerceImages ? this.ecommerceImages[0]: [];
         },
+        ourPartners() {
+            return this.homePages ? this.homePages[0].partners.slice(0,8): [];
+        }
     },
     layout: 'default-layout',
     data() {
         return {
             widgetLoading: true,
             ecommerceImages: '',
+            homePages: '',
             breadCrumb: [
                 {
                     text: 'Home',

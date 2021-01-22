@@ -71,7 +71,6 @@ export const actions = {
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
     },
-
     async getTotalRecords({ commit, state }, payload) {
         commit('setTotal', state.products.length);
     },
@@ -108,6 +107,16 @@ export const actions = {
         const reponse = Repository.get(`${baseUrl}/integrations/products`, { params })
             .then(response => {
                 commit('setCartProducts', response.data.data);
+                return response.data.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    getOrders({ commit }, payload) {
+        const reponse = Repository.post(`${baseUrl}/integrations/orders`, payload)
+            .then(response => {
+                console.log(response)
                 return response.data.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
@@ -219,5 +228,5 @@ export const actions = {
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
-    }
+    },
 };

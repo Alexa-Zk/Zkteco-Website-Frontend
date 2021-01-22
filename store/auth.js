@@ -6,7 +6,8 @@ import { baseUrl } from '~/repositories/Repository';
 
 export const state = () => ({
     isLoggedIn: false,
-    userInfo: null
+    userInfo: null,
+    authToken: null
 });
 
 export const mutations = {
@@ -16,6 +17,9 @@ export const mutations = {
 
     setUserInfo(state, payload) {
         state.userInfo = payload;
+    },
+    setAuthToken(state, payload) {
+        state.authToken = payload;
     }
 };
 
@@ -31,20 +35,31 @@ export const actions = {
             maxAge: 60 * 60 * 24 * 7
         });
     },
+
+    getAuthToken({ commit }, payload) {
+        commit('setAuthToken', payload); 
+    },
     
     async login({ commit, state }, payload) {
 
-        const reponse = await Repository.get(`${baseUrl}/integrations/customers/6` )
+        const reponse = await Repository.post(`${baseUrl}/integrations/customers/login`, payload)
             .then(response => {
                 
+                console.log(response)
                 commit('setUserInfo', response.data.data);
                 commit('setIsLoggedIn', response.data.status);
+                commit('setAuthToken', response.data.data.token);
 
                 const cookieParams = {
                     userInfo: state.userInfo
                 };
-        
+
                 this.$cookies.set('userInfo', cookieParams, {
+                    path: '/store',
+                    maxAge: 60 * 60 * 24 * 7
+                });
+
+                this.$cookies.set('id_token', response.data.data.token, {
                     path: '/store',
                     maxAge: 60 * 60 * 24 * 7
                 });
@@ -62,7 +77,7 @@ export const actions = {
                 
                 commit('setUserInfo', response.data.data);
                 commit('setIsLoggedIn', response.data.status);
-
+                
                 const cookieParams = {
                     userInfo: state.userInfo
                 };

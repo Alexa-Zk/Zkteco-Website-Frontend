@@ -1,9 +1,9 @@
 <template lang="html">
     <div class="ps-product">
-        <div class="ps-product__thumbnail">
+        <div class="ps-product__thumbnail" >
             <nuxt-link :to="`/store/product/${product.id}`">
                 <img
-                    :src="product.images[0].src"
+                    :src="product.images[0] ? product.images[0].src : '' "
                     alt="martfury"
                 />
             </nuxt-link>

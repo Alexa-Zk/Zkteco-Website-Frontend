@@ -4,17 +4,25 @@
             By making this purchase you agree to
             <a href="#" class="highlight">our terms and conditions</a>.
         </p>
-        <a href="#" class="ps-btn ps-btn--fullwidth" v-if="deliveryMethod ==='2' " @click="placeOrders"
+        <a
+            href=""
+            class="ps-btn ps-btn--fullwidth"
+            v-if="deliveryMethod === '2'"
+            @click="placeOrders"
             >Make Orders</a
         >
-        <a href="#" class="ps-btn ps-btn--fullwidth" v-else @click="payViaService"
+        <a
+            href="#"
+            class="ps-btn ps-btn--fullwidth"
+            v-else
+            @click="payViaService"
             >Flutterwave</a
         >
     </div>
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import { mapState } from 'vuex';
 export default {
     name: 'FlutterwaveMethod',
     data() {
@@ -49,33 +57,135 @@ export default {
         payViaService() {
             this.payWithFlutterwave(this.paymentData);
         },
-        makePaymentCallback(response) {
-            console.log('Pay', response);
+        async makePaymentCallback(response) {
+            if (response) {
+                try {
+                    const productItem = this.cartItem.map(
+                        ({ id, quantity, price }) => ({
+                            product_id: id,
+                            quantity: quantity,
+                            product_cost: price ? price : 0
+                        })
+                    );
+                    const shipping = {
+                        first_name: this.personalDetails.firstName,
+                        last_name: this.personalDetails.lastName,
+                        address_1: this.personalDetails.address,
+                        address_2: this.personalDetails.apartment,
+                        city: this.personalDetails.city,
+                        postcode: this.personalDetails.postCode,
+                        phone: this.personalDetails.phoneNumber
+                    };
+                    const payload = {
+                        payment_method:
+                            this.deliveryMethod === '3' ? 'Pick up' : '',
+                        payment_method_title:
+                            this.deliveryMethod === '3' ? 'Pick up' : '',
+                        shipping_cost: this.shippingCost,
+                        products: productItem,
+                        shipping: shipping
+                    };
+                    const response = await this.$store.dispatch(
+                        'product/getOrders',
+                        payload
+                    );
+                    if (response) {
+                        this.$notify({
+                            group: 'addCartSuccess',
+                            title: 'Success!',
+                            text: `Order Created`
+                        });
+                        this.$router.push('/store/shop');
+                    } else {
+                        return;
+                    }
+                } catch (error) {
+                    this.$notify({
+                        group: 'addCartSuccess',
+                        title: 'Error!',
+                        text: `Something went wrong!`
+                    });
+                }
+            }
         },
         closedPaymentModal() {
             console.log('payment is closed');
+            this.$router.push('/store/shop');
         },
         generateReference() {
             let date = new Date();
             return date.getTime().toString();
         },
-        placeOrders() {
-            console.log("Makes API Calls");
+        async placeOrders() {
+            try {
+                const productItem = this.cartItem.map(
+                    ({ id, quantity, price }) => ({
+                        product_id: id,
+                        quantity: quantity,
+                        product_cost: price ? price : 0
+                    })
+                );
+                const shipping = {
+                    first_name: this.personalDetails.firstName,
+                    last_name: this.personalDetails.lastName,
+                    address_1: this.personalDetails.address,
+                    address_2: this.personalDetails.apartment,
+                    city: this.personalDetails.city,
+                    postcode: this.personalDetails.postCode,
+                    phone: this.personalDetails.phoneNumber
+                };
+                const payload = {
+                    payment_method:
+                        this.deliveryMethod === '2' ? 'Pay On Delivery' : '',
+                    payment_method_title:
+                        this.deliveryMethod === '2' ? 'Pay On Delivery' : '',
+                    shipping_cost: this.shippingCost,
+                    products: productItem,
+                    shipping: shipping
+                };
+                const response = await this.$store.dispatch(
+                    'product/getOrders',
+                    payload
+                );
+                if (response) {
+                    this.$cookies.remove("cart");
+                    this.$cookies.remove("shippingCost"),
+                    this.$cookies.remove("shippingInfo")
+                    alert("Got here")
+                    this.$notify({
+                        group: 'addCartSuccess',
+                        title: 'Success!',
+                        text: `Order Created. You will be contacted shortly`
+                    });
+                    this.$router.push('/store/shop');
+                } else {
+                    return;
+                }
+            } catch (error) {
+                this.$notify({
+                    group: 'addCartSuccess',
+                    title: 'Error!',
+                    text: `Orders not created. Something went wrong!`
+                });
+            }
         }
     },
     computed: {
         ...mapState({
             personalDetails: state => state.shipping.personalDetails,
             shippingCost: state => state.shipping.shippingCost,
-            deliveryMethod:  state => state.shipping.deliveryMethod
+            deliveryMethod: state => state.shipping.deliveryMethod,
+            cartItem: state => state.cart.cartItems
         })
     },
-    mounted () {
+    mounted() {
         this.paymentData.customer = {
             name: this.personalDetails ? this.personalDetails.firstName : '',
-            email: this.personalDetails ? this.personalDetails.email: '',
-            phone_number: this.personalDetails ? this.personalDetails.phoneNumber: ''
-        }
+            email: this.personalDetails ? this.personalDetails.email : '',
+            phone_number: this.personalDetails
+                ? this.personalDetails.phoneNumber
+                : ''
+        };
     }
 };
 </script>

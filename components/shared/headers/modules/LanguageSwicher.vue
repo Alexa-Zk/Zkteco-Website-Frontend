@@ -39,12 +39,6 @@ export default {
                     code: 'en',
                     image: '/img/flag/en.png',
                     text: 'English'
-                },
-                {
-                    id: 2,
-                    code: 'fr',
-                    image: '/img/flag/fr.png',
-                    text: 'Français'
                 }
             ]
         };
