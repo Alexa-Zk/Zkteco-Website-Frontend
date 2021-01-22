@@ -1,7 +1,7 @@
 export const state = () => ({
     appDrawer: false,
     currentDrawerContent: null,
-    currency: '$'
+    currency: '₦'
 });
 
 export const mutations = {
@@ -29,5 +29,10 @@ export const actions = {
             path: '/',
             maxAge: 60 * 60 * 24 * 7
         });
+    },
+    removeCookie ({commit}, payload) {
+        this.$cookies.remove("cart");
+        this.$cookies.remove("shippingCost"),
+        this.$cookies.remove("shippingInfo")
     }
 };

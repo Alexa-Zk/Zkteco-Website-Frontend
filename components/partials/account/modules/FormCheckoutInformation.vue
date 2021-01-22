@@ -4,12 +4,14 @@
             Contact information
         </h3>
         <div class="form-group">
-            <label>Email or phone number <sup>*</sup></label>
+            <label>Email <sup>*</sup></label>
             <v-text-field
                 placeholder="Email or phone number"
                 outlined
                 height="50"
-                v-model="payload.email"
+                v-model="email"
+                :error-messages="emailErrors"
+                @input="$v.email.$touch()"
             />
         </div>
         <div class="form-group">
@@ -29,7 +31,9 @@
                         placeholder="First Name"
                         outlined
                         height="50"
-                        v-model="payload.firstName"
+                        v-model="firstName"
+                        :error-messages="firstNameErrors"
+                        @input="$v.firstName.$touch()"
                     />
                 </div>
             </div>
@@ -40,7 +44,9 @@
                         placeholder="Last Name"
                         outlined
                         height="50"
-                        v-model="payload.lastName"
+                        v-model="lastName"
+                        :error-messages="lastNameErrors"
+                        @input="$v.lastName.$touch()"
                     />
                 </div>
             </div>
@@ -49,9 +55,11 @@
             <label>Address</label>
             <v-text-field
                 placeholder="Address"
-                v-model="payload.address"
+                v-model="address"
                 outlined
                 height="50"
+                :error-messages="addressErrors"
+                @input="$v.address.$touch()"
             />
         </div>
 
@@ -63,7 +71,9 @@
                         placeholder="Apartment, suite, etc. (optional)"
                         outlined
                         height="50"
-                        v-model="payload.apartment"
+                        v-model="apartment"
+                        :error-messages="apartmentErrors"
+                        @input="$v.apartment.$touch()"
                     />
                 </div>
             </div>
@@ -74,7 +84,9 @@
                         placeholder="Phone Number"
                         outlined
                         height="50"
-                        v-model="payload.phoneNumber"
+                        v-model="phoneNumber"
+                        :error-messages="phoneNumberErrors"
+                        @input="$v.phoneNumber.$touch()"
                     />
                 </div>
             </div>
@@ -85,9 +97,11 @@
                     <label>City</label>
                     <v-text-field
                         placeholder="City"
-                        v-model="payload.city"
+                        v-model="city"
                         outlined
                         height="50"
+                        :error-messages="cityErrors"
+                        @input="$v.city.$touch()"
                     />
                 </div>
             </div>
@@ -98,7 +112,9 @@
                         placeholder="Postal Code"
                         outlined
                         height="50"
-                        v-model="payload.postalCode"
+                        v-model="postalCode"
+                        :error-messages="postalCodeErrors"
+                        @input="$v.postalCode.$touch()"
                     />
                 </div>
             </div>
@@ -125,41 +141,123 @@
 
 <script>
 import { mapState } from 'vuex';
+import { email, required } from 'vuelidate/lib/validators';
+import { validationMixin } from 'vuelidate';
 
 export default {
     name: 'FormCheckoutInformation',
     data() {
         return {
-            payload: {
-                email: '',
-                firstName: '',
-                lastName: '',
-                address: '',
-                apartment: '',
-                city: '',
-                postalCode: '',
-                phoneNumber: ''
-            }
+            email: '',
+            firstName: '',
+            lastName: '',
+            address: '',
+            apartment: '',
+            city: '',
+            postalCode: '',
+            phoneNumber: ''
         };
     },
     methods: {
         async handleToShipping() {
-            const response = await this.$store.dispatch(
-                'shipping/getpersonalDetails',
-                this.payload
-            );
-            this.$router.push('/store/account/shipping');
+            let payload = {
+                email: this.email,
+                firstName: this.firstName,
+                lastName: this.lastName,
+                address: this.address,
+                apartment: this.apartment,
+                city: this.city,
+                postalCode: this.postalCode,
+                phoneNumber: this.phoneNumber
+            };
+            this.$v.$touch();
+            if (!this.$v.$invalid) {
+                const response = await this.$store.dispatch(
+                    'shipping/getpersonalDetails',
+                    payload
+                );
+                this.$router.push('/store/account/shipping');
+            }
         }
     },
     mounted() {
-        this.personalDetails
-            ? (this.payload = this.personalDetails)
-            : (this.payload = this.payload);
+        if (this.personalDetails) {
+            this.email = this.personalDetails.email,
+            this.firstName =  this.personalDetails.firstName,
+            this.lastName = this.personalDetails.lastName,
+            this.address = this.personalDetails.address,
+            this.apartment = this.personalDetails.apartment,
+            this.city = this.personalDetails.city,
+            this.postalCode = this.personalDetails.postalCode,
+            this.phoneNumber = this.personalDetails.phoneNumber
+        }
+    },
+    validations: {
+        email: { required },
+        firstName: { required },
+        lastName: { required },
+        address: { required },
+        apartment: { required },
+        city: { required },
+        postalCode: { required },
+        phoneNumber: { required }
     },
     computed: {
         ...mapState({
             personalDetails: state => state.shipping.personalDetails
-        })
+        }),
+        emailErrors() {
+            const errors = [];
+            if (!this.$v.email.$dirty) return errors;
+            !this.$v.email.required && errors.push('This field is required');
+            return errors;
+        },
+        firstNameErrors() {
+            const errors = [];
+            if (!this.$v.firstName.$dirty) return errors;
+            !this.$v.firstName.required &&
+                errors.push('This field is required');
+            return errors;
+        },
+        lastNameErrors() {
+            const errors = [];
+            if (!this.$v.lastName.$dirty) return errors;
+            !this.$v.lastName.required && errors.push('This field is required');
+            return errors;
+        },
+        addressErrors() {
+            const errors = [];
+            if (!this.$v.address.$dirty) return errors;
+            !this.$v.address.required && errors.push('This field is required');
+            return errors;
+        },
+        apartmentErrors() {
+            const errors = [];
+            if (!this.$v.apartment.$dirty) return errors;
+            !this.$v.apartment.required &&
+                errors.push('This field is required');
+            return errors;
+        },
+        cityErrors() {
+            const errors = [];
+            if (!this.$v.city.$dirty) return errors;
+            !this.$v.city.required && errors.push('This field is required');
+            return errors;
+        },
+        postalCodeErrors() {
+            const errors = [];
+            if (!this.$v.postalCode.$dirty) return errors;
+            !this.$v.postalCode.required &&
+                errors.push('This field is required');
+            return errors;
+        },
+        phoneNumberErrors() {
+            const errors = [];
+            if (!this.$v.phoneNumber.$dirty) return errors;
+            !this.$v.phoneNumber.required &&
+                errors.push('This field is required');
+            return errors;
+        }
     }
 };
 </script>

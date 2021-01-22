@@ -40,7 +40,7 @@
                         <div class="ps-block--shopping-total">
                             <div class="ps-block__header">
                                 <p>
-                                    Subtotal <span> ${{ total }}</span>
+                                    Product Quantity <span> {{ total }}</span>
                                 </p>
                             </div>
                             <div class="ps-block__content">
@@ -62,7 +62,7 @@
                                     </li>
                                 </ul>
                                 <h3>
-                                    Total <span>${{ amount }}</span>
+                                    Total <span> {{currency}} {{ amount }}</span>
                                 </h3>
                             </div>
                         </div>
@@ -92,7 +92,8 @@ export default {
             cartItems: state => state.cart.cartItems,
             total: state => state.cart.total,
             amount: state => state.cart.amount,
-            cartProducts: state => state.product.cartProducts
+            cartProducts: state => state.product.cartProducts,
+            currency: state => state.app.currency
         })
     }
 };

@@ -38,31 +38,6 @@
                 </button>
             </div>
         </div>
-        <!-- <div class="ps-form__footer">
-            <p>Connect with:</p>
-            <ul class="ps-list--social">
-                <li>
-                    <a href="#" class="facebook">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="google">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="twitter">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="instagram">
-                        <i class="fa fa-instagram"></i>
-                    </a>
-                </li>
-            </ul>
-        </div> -->
     </form>
 </template>
 
@@ -97,17 +72,51 @@ export default {
         password: { required }
     },
     methods: {
-        handleSubmit() {
+        async handleSubmit() {
             this.$v.$touch();
             if (!this.$v.$invalid) {
-                this.$store.dispatch('auth/login', true);
-                this.$store.dispatch('auth/setAuthStatus', true);
-                
-                this.$router.push('/store/account/checkout');
+                try {
+                    const payload = {
+                        username: this.email,
+                        password: this.password
+                    };
+                    const response = await this.$store.dispatch(
+                        'auth/login',
+                        payload
+                    );
+                    console.log(response);
+                    if (response.status) {
+                        this.$notify({
+                            group: 'addCartSuccess',
+                            title: 'Success!',
+                            text: `${response.message}!`
+                        });
+
+                        this.$store.dispatch('auth/setAuthStatus', true);
+                        this.$router.push('/store/account/checkout');
+                    } else {
+                        this.$notify({
+                            group: 'addCartSuccess',
+                            title: 'Error!',
+                            text: `User not Found`
+                        });
+                        return;
+                    }
+                } catch (error) {
+                    this.$notify({
+                        group: 'addCartSuccess',
+                        title: 'Error!',
+                        text: `Something went wrong!`
+                    });
+                }
             }
         }
     }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-form__content {
+    padding: 30px;
+}
+</style>

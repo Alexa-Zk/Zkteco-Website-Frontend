@@ -8,6 +8,9 @@ export const actions = {
         const auth = this.$cookies.get('auth', { parseJSON: true });
         const currency = this.$cookies.get('currency', { parseJSON: true });
         const userInfo = this.$cookies.get('userInfo', {parseJSON: true});
+        const shippingInfo = this.$cookies.get('shippingInfo', {parseJSON: true});
+        const shippingCost = this.$cookies.get('shippingCost', {parseJSON: true});
+
         if (cartItems && cartItems.cartItems.length > 0) {
             commit('cart/initCart', {
                 cartItems: cartItems.cartItems,
@@ -39,8 +42,15 @@ export const actions = {
             commit('app/setCurrency', currency.data);
         }
         if (userInfo) {
+            await dispatch('auth/getAuthToken', userInfo.token);
             commit('auth/setUserInfo', userInfo);
             commit('auth/setIsLoggedIn', true);
+        }
+        if (shippingInfo) {
+            commit('shipping/setPersonalDetails', shippingInfo);
+        }
+        if (shippingCost) {
+            commit('shipping/setShippingCost', shippingCost);
         }
 
     }

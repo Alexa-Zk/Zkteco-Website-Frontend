@@ -24,7 +24,7 @@ export const mutations = {
 
     setQuantity(state, payload) {
         let existItem = state.cartItems.find(item => item.id == payload);
-        state.quantity = existItem.quantity;
+        state.quantity = existItem ? existItem.quantity : 0;
     },
 
     addItem(state, payload) {

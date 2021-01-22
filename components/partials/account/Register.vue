@@ -37,6 +37,28 @@
             </div>
             <div class="form-group">
                 <v-text-field
+                    v-model="phone"
+                    :error-messages="phoneErrors"
+                    @input="$v.phone.$touch()"
+                    placeholder="Phone"
+                    class="ps-text-field"
+                    outlined
+                    height="50"
+                />
+            </div>
+            <div class="form-group">
+                <v-text-field
+                    v-model="username"
+                    :error-messages="usernameErrors"
+                    @input="$v.username.$touch()"
+                    placeholder="Username"
+                    class="ps-text-field"
+                    outlined
+                    height="50"
+                />
+            </div>
+            <div class="form-group">
+                <v-text-field
                     v-model="password"
                     type="password"
                     :error-messages="passwordErrors"
@@ -113,6 +135,18 @@ export default {
             !this.$v.email.required && errors.push('This field is required');
             return errors;
         },
+        phoneErrors() {
+            const errors = [];
+            if (!this.$v.phone.$dirty) return errors;
+            !this.$v.phone.required && errors.push('This field is required');
+            return errors;
+        },
+        usernameErrors() {
+            const errors = [];
+            if (!this.$v.username.$dirty) return errors;
+            !this.$v.username.required && errors.push('This field is required');
+            return errors;
+        },
         passwordErrors() {
             const errors = [];
             if (!this.$v.password.$dirty) return errors;
@@ -125,14 +159,18 @@ export default {
             firstname: null,
             lastname: null,
             email: null,
-            password: null
+            password: null,
+            phone: null,
+            username: null
         };
     },
     validations: {
         firstname: { required },
         lastname: { required },
         email: { required },
-        password: { required }
+        password: { required },
+        phone: { required},
+        username: { required }
     },
     methods: {
         async handleSubmit() {
@@ -143,20 +181,27 @@ export default {
                         first_name: this.firstname,
                         last_name: this.lastname,
                         email: this.email,
-                        password: this.password
+                        password: this.password,
+                        phone: this.phone,
+                        username: this.username
                     };
                     const response = await this.$store.dispatch(
                         'auth/register',
                         payload
                     );
-                    if (response.data.status) {
+                    if (response.status) {
                         this.$notify({
                             group: 'addCartSuccess',
                             title: 'Success!',
-                            text: `${response.data.message}!`
+                            text: `${response.message}!`
                         });
                         this.$router.push('/store/account/checkout');
                     } else {
+                        this.$notify({
+                            group: 'addCartSuccess',
+                            title: 'Error!',
+                            text: `Missing Input, Please fill all input`
+                        });
                         return;
                     }
                 } catch (error) {
@@ -172,4 +217,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-form__content {
+    padding: 30px;
+}
+</style>
