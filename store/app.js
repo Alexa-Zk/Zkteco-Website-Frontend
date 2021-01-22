@@ -30,9 +30,18 @@ export const actions = {
             maxAge: 60 * 60 * 24 * 7
         });
     },
-    removeCookie ({commit}, payload) {
-        this.$cookies.remove("cart");
-        this.$cookies.remove("shippingCost"),
-        this.$cookies.remove("shippingInfo")
+    removeCookie ({commit}) {
+        this.$cookies.remove('cart', {
+            path: '/store',
+            maxAge: 60 * 60 * 24 * 7
+        });
+        this.$cookies.remove('shippingCost', {
+            path: '/store',
+            maxAge: 60 * 60 * 24 * 7
+        });
+        this.$cookies.remove('shippingInfo', {
+            path: '/store',
+            maxAge: 60 * 60 * 24 * 7
+        });
     }
 };

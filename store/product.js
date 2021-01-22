@@ -116,7 +116,6 @@ export const actions = {
     getOrders({ commit }, payload) {
         const reponse = Repository.post(`${baseUrl}/integrations/orders`, payload)
             .then(response => {
-                console.log(response)
                 return response.data.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
