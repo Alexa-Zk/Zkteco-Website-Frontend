@@ -16,7 +16,8 @@ export const state = () => ({
     total: 0,
     page: 1,
     per_page: 12,
-    search: ''
+    search: '',
+    userOrders: ''
 });
 
 export const mutations = {
@@ -52,6 +53,10 @@ export const mutations = {
 
     setTotal(state, payload) {
         state.total = payload;
+    },
+
+    setAllUserOrders(state, payload) {
+        state.userOrders = payload
     }
 };
 
@@ -65,8 +70,8 @@ export const actions = {
             `${baseUrl}/integrations/products?${serializeQuery(params)}`
         )
             .then(response => {
-                commit('setProducts', response.data.data);
-                return response.data;
+                commit('setProducts', response.data.data.data);
+                return response.data.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
@@ -80,7 +85,7 @@ export const actions = {
             `${baseUrl}/integrations/products/${payload}`
         )
             .then(response => {
-                commit('setProduct', response.data.data);
+                commit('setProduct', response.data.data.data);
                 return response.data.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
@@ -106,8 +111,8 @@ export const actions = {
         };
         const reponse = Repository.get(`${baseUrl}/integrations/products`, { params })
             .then(response => {
-                commit('setCartProducts', response.data.data);
-                return response.data.data;
+                commit('setCartProducts', response.data.data.data);
+                return response.data.data.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
@@ -122,10 +127,10 @@ export const actions = {
         return reponse;
     },
 
-    getUserOrders({ commit }, payload) {
-        const reponse = Repository.get(`${baseUrl}/integrations/orders/${payload}`)
+    getAllUserOrders({ commit }, payload) {
+        const reponse = Repository.get(`${baseUrl}/integrations/orders`)
             .then(response => {
-                console.log(response)
+                commit('setAllUserOrders', response.data.data);
                 return response.data.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));

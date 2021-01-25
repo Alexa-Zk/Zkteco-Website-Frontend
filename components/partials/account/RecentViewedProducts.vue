@@ -25,7 +25,27 @@
                 <div class="col-lg-8">
                     <section class="ps-section--account-setting">
                         <div class="ps-section__content">
-                            <p>No product here.</p>
+													<div class="ps-product ps-product--wide ps-product--search-result" v-for="order in user_orders" :key="order.id">
+														<div class="ps-product__content">
+																<nuxt-link :to="`#`" class="ps-product__title">
+																		{{ order.payment_method_title }}
+																</nuxt-link>
+																<div class="ps-product__rating">
+																		<span> Status: {{order.status}} </span>
+																		<span> On: {{order.created_at}} </span>
+																</div>
+														
+																<p class="ps-product__price sale">
+																		Cost: {{ currency }}{{ order.product_cost + order.shipping_cost }}
+																</p>
+																
+														</div>
+														<nuxt-link :to="`#`" class="ps-product__title">
+																	See Details
+															</nuxt-link>
+													</div>
+                          <p>No product here.</p>
+                            
                         </div>
                     </section>
                 </div>
@@ -36,6 +56,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import { state } from '~/store/app';
 import AccountLinks from './modules/AccountLinks';
 export default {
     name: 'RecentViewedProducts',
@@ -76,16 +97,25 @@ export default {
     },
     computed: {
         ...mapState({
-            user_information: state => state.auth.userInfo
+            user_information: state => state.auth.userInfo,
+						user_orders: state => state.product.userOrders,
+            currency: state => state.app.currency
         })
     },
     created() {
-        // const response = this.$store.dispatch(
-        //     'product/getUserOrders',
-        //     this.column
-        // );
+        const response = this.$store.dispatch('product/getAllUserOrders',true );
     },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-product--search-result {
+	border: 1px solid #f0f0f0;  
+	padding: 20px 0px;
+	margin-bottom: 0px;
+	.ps-product__price {
+		font-size: 18px;
+	}
+}
+
+</style>
