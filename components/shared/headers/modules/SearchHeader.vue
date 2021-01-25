@@ -72,27 +72,6 @@ export default {
             exampleCategories: [
                 'All',
                 'Accessories',
-                'Readers',
-                'Face',
-                'Recognition',
-                'Panel',
-                'Software',
-                'Control Devices',
-                'POS Terminal',
-                'Object Inspection',
-                'Vehicle Inspection',
-                'Pedestrian',
-                'Vehicle Product',
-                'Time Attendance',
-                'Access Control',
-                'Green Label',
-                'Smart Camera',
-                'Network Camera',
-                'Video Recorder',
-                'DVR Kit',
-                'Bluetooth',
-                'Padlock',
-                'Fingerprint',
             ],
             isSearching: false,
             isLoading: false,
@@ -104,7 +83,7 @@ export default {
             if (e.target.value !== '') {
                 this.isSearching = true;
                 const query = {
-                    title_contains: e.target.value
+                    search: e.target.value
                 };
                 this.isLoading = true;
                 const result = await this.$store.dispatch(
@@ -131,7 +110,7 @@ export default {
 
         handleSubmit() {
             if (this.searchText !== null || this.searchText !== '') {
-                this.$router.push(`store/search?keyword=${this.searchText}`);
+                this.$router.push(`/store/search?keyword=${this.searchText}`);
             }
         }
     }

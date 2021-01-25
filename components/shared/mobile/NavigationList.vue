@@ -3,11 +3,11 @@
         <div class="navigation__content">
             <a
                 class="navigation__item"
-                href="#"
-                @click.prevent="handleOpenDrawer('menu')"
+                href="/website"
+                
             >
                 <i class="icon-menu"></i>
-                <span> Menu</span>
+                <span> Website</span>
             </a>
             <a
                 class="navigation__item"

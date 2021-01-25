@@ -3,18 +3,25 @@
         <nuxt-link to="/store/account/shopping-cart" class="header__extra">
             <i class="icon-bag2"></i>
             <span>
-                <i>0</i>
+                <i>{{ total }}</i>
             </span>
         </nuxt-link>
-        <nuxt-link to="/store/account/login" class="header__extra">
+        <nuxt-link v-if="!isLoggedIn" to="/store/account/login" class="header__extra">
             <i class="icon-user"></i>
         </nuxt-link>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
-    name: 'MobileHeaderActions'
+    name: 'MobileHeaderActions',
+    computed: {
+        ...mapState({
+            total: state => state.cart.total,
+            isLoggedIn: state => state.auth.isLoggedIn
+        })
+    }
 };
 </script>
 
@@ -24,7 +31,7 @@ export default {
         i {
             color: white;
         }
-        span {    
+        span {
             background: white;
             i {
                 color: #78bc27;
@@ -32,5 +39,4 @@ export default {
         }
     }
 }
-
 </style>

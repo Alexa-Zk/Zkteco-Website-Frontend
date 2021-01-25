@@ -20,7 +20,7 @@
             collection-slug="new-arrivals-products"
         />
         <newsletters layout="fullwidth" />
-        <demo-panel />
+        <!-- <demo-panel /> -->
     </main>
 </template>
 <script>

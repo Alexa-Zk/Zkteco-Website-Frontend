@@ -3,25 +3,22 @@
         <div class="ps-product__thumbnail">
             <nuxt-link :to="`/store/product/${product.id}`">
                 <img
-                    :src="`${baseUrl}${product.thumbnail.url}`"
+                    :src="product.images[0] ? product.images[0].src : '' "
                     alt="martfury"
                 />
             </nuxt-link>
         </div>
         <div class="ps-product__content">
             <nuxt-link :to="`/store/product/${product.id}`" class="ps-product__title">
-                {{ product.title }}
+                {{ product.name }}
             </nuxt-link>
             <div class="ps-product__rating">
                 <rating />
-                <span>{{ product.ratingCount }}</span>
+                <span>{{ product.rating_count }}</span>
             </div>
-            <p v-if="product.sale === true" class="ps-product__price sale">
+            <p class="ps-product__price sale">
                 {{ currency }}{{ product.price }}
-                <del class="ml-2"> {{ currency }}{{ product.sale_price }} </del>
-            </p>
-            <p v-else class="ps-product__price">
-                {{ currency }}{{ product.price }}
+                
             </p>
         </div>
     </div>

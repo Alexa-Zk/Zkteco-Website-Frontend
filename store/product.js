@@ -89,11 +89,11 @@ export const actions = {
 
     async getProductByKeyword({ commit }, payload) {
         const reponse = await Repository.get(
-            `${baseUrl}/products?${serializeQuery(payload)}`
+            `${baseUrl}/integrations/products?${serializeQuery(payload)}`
         )
             .then(response => {
-                commit('setSearchResults', response.data);
-                commit('setTotal', response.data.length);
+                commit('setSearchResults', response.data.data);
+                commit('setTotal', response.data.data.length);
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
@@ -116,6 +116,16 @@ export const actions = {
     getOrders({ commit }, payload) {
         const reponse = Repository.post(`${baseUrl}/integrations/orders`, payload)
             .then(response => {
+                return response.data.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    getUserOrders({ commit }, payload) {
+        const reponse = Repository.get(`${baseUrl}/integrations/orders/${payload}`)
+            .then(response => {
+                console.log(response)
                 return response.data.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));

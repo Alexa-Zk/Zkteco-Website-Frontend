@@ -2,8 +2,8 @@
     <div class="ps-page--single">
         <img src="~/static/img/bg/about-us.jpg" alt="" />
         <bread-crumb :breadcrumb="breadCrumb" />
-        <our-team />
-        <about-awards />
+        <!-- <our-team />
+        <about-awards /> -->
     </div>
 </template>
 

@@ -9,9 +9,9 @@
 
 <script>
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import ContactMap from '~/components/partials/page/ContactMap';
-import ContactInfo from '~/components/partials/page/ContactInfo';
-import ContactForm from '~/components/partials/page/ContactForm';
+import ContactMap from '~/components/partials/page/website/ContactMap';
+import ContactInfo from '~/components/partials/page/website/ContactInfo';
+import ContactForm from '~/components/partials/page/website/ContactForm';
 
 export default {
     components: {

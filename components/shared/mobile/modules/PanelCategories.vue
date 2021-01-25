@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="ps-panel--sidebar">
         <div class="ps-panel__header">
-            <h3>Categores</h3>
+            <h3>Categories</h3>
             <a
                 href="#"
                 class="ps-panel__close"
@@ -21,20 +21,21 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
 import categories from '~/static/data/static-categories.json';
 
 export default {
     name: 'PanelCategories',
-    computed: {
-        categories() {
-            return categories;
-        }
-    },
     methods: {
         handleClosePanel() {
             this.$store.commit('app/setCurrentDrawerContent', null);
             this.$store.commit('app/setAppDrawer', false);
         }
+    },
+    computed: {
+        ...mapState({
+            categories: state => state.product.categories
+        })
     }
 };
 </script>

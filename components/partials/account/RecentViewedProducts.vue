@@ -6,10 +6,14 @@
                     <div class="ps-section__left">
                         <aside class="ps-widget--account-dashboard">
                             <div class="ps-widget__header">
-                                <img src="/img/users/3.jpg" />
                                 <figure>
                                     <figcaption>Hello</figcaption>
-                                    <p>username@gmail.com</p>
+                                    <p>
+                                        {{
+                                            user_information.userInfo.payload
+                                                .email
+                                        }}
+                                    </p>
                                 </figure>
                             </div>
                             <div class="ps-widget__content">
@@ -31,6 +35,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import AccountLinks from './modules/AccountLinks';
 export default {
     name: 'RecentViewedProducts',
@@ -43,11 +48,6 @@ export default {
                     url: '/store/account/user-information',
                     icon: 'icon-user'
                 },
-                // {
-                //     text: 'Notifications',
-                //     url: '/account/notifications',
-                //     icon: 'icon-alarm-ringing'
-                // },
                 {
                     text: 'Invoices',
                     url: '/store/account/invoices',
@@ -73,7 +73,18 @@ export default {
                 }
             ]
         };
-    }
+    },
+    computed: {
+        ...mapState({
+            user_information: state => state.auth.userInfo
+        })
+    },
+    created() {
+        // const response = this.$store.dispatch(
+        //     'product/getUserOrders',
+        //     this.column
+        // );
+    },
 };
 </script>
 
