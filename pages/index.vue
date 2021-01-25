@@ -8,7 +8,7 @@
         </div>
         <home-brand :partnersLogo="ourPartners" />
         <newsletters layout="fullwidth" />
-        <subscriber-panel />
+        <!-- <subscriber-panel /> -->
     </main>
 </template>
 <script>

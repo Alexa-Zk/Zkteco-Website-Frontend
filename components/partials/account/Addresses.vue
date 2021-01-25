@@ -6,10 +6,15 @@
                     <div class="ps-section__left">
                         <aside class="ps-widget--account-dashboard">
                             <div class="ps-widget__header">
-                                <img :src="user_information.avatar_url" />
+                                <!-- <img :src="user_information.avatar_url" /> -->
                                 <figure>
                                     <figcaption>Hello</figcaption>
-                                    <p>{{user_information.email}}</p>
+                                    <p>
+                                        {{
+                                            user_information.userInfo.payload
+                                                .email
+                                        }}
+                                    </p>
                                 </figure>
                             </div>
                             <div class="ps-widget__content">
@@ -46,7 +51,7 @@
                                         </figcaption>
                                         <div class="ps-block__content">
                                             <p>
-                                               Set Up This Type Of Address.
+                                                Set Up This Type Of Address.
                                             </p>
                                             <nuxt-link
                                                 to="/store/account/edit-address"
@@ -66,7 +71,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
 import AccountLinks from './modules/AccountLinks';
 export default {
     name: 'Addresses',
@@ -83,7 +88,6 @@ export default {
                     text: 'Invoices',
                     url: '/store/account/invoices',
                     icon: 'icon-papers'
-                    
                 },
                 {
                     text: 'Address',
@@ -94,8 +98,7 @@ export default {
                 {
                     text: 'My Orders',
                     url: '/store/account/recent-viewed-product',
-                    icon: 'icon-store',
-                    
+                    icon: 'icon-store'
                 },
                 {
                     text: 'Wishlist',
@@ -107,7 +110,7 @@ export default {
     },
     computed: {
         ...mapState({
-            user_information: state => state.auth.userInfo,
+            user_information: state => state.auth.userInfo
         })
     }
 };
