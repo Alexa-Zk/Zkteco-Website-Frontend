@@ -80,32 +80,6 @@
                 </button>
             </div>
         </div>
-        <!-- <div class="ps-form__footer">
-            <p>Connect with:</p>
-
-            <ul class="ps-list--social">
-                <li>
-                    <a href="#" class="facebook">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="google">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="twitter">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="instagram">
-                        <i class="fa fa-instagram"></i>
-                    </a>
-                </li>
-            </ul>
-        </div> -->
     </form>
 </template>
 
@@ -193,9 +167,9 @@ export default {
                         this.$notify({
                             group: 'addCartSuccess',
                             title: 'Success!',
-                            text: `${response.message}!`
+                            text: `${response.message}! Please Login`
                         });
-                        this.$router.push('/store/account/checkout');
+                        this.$router.push('/store/account/login');
                     } else {
                         this.$notify({
                             group: 'addCartSuccess',

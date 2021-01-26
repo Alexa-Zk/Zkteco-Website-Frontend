@@ -17,6 +17,7 @@ export const state = () => ({
     overallTotal: 0,
     page: 1,
     per_page: 12,
+    order: 'asc',
     search: '',
     userOrders: '',
     singleUserOrders: ''
@@ -73,9 +74,9 @@ export const mutations = {
 export const actions = {
     async getProducts({ state, commit }, payload) {
         let params = {
-            page: payload ? payload.page : state.page,
-            per_page: payload ? payload.per_page : state.per_page,
-            order: payload ? payload.order : 'asc'
+            page: Object.keys(payload).length === 0 ? state.page : payload.page,
+            per_page: Object.keys(payload).length === 0 ? state.per_page : payload.per_page,
+            order: Object.keys(payload).length === 0 ? state.order : 'asc'
         };
         const reponse = await Repository.get(
             `${baseUrl}/integrations/products?${serializeQuery(params)}`
