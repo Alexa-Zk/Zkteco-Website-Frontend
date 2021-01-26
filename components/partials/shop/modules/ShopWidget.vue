@@ -13,7 +13,7 @@
                 <li v-for="category in categories" :key="category.id">
                     <a
                         href="#"
-                        @click.prevent="handleGotoCategory(category.slug)"
+                        @click.prevent="handleGotoCategory(category.id)"
                     >
                         {{ category.name }}
                     </a>
@@ -48,26 +48,21 @@ export default {
         };
     },
     methods: {
-        async handleGotoCategory(slug) {
-            if (slug) {
-                const url = `/shop?category=${slug}`;
-                const products = getColletionBySlug(this.categories, slug);
-                this.$store.commit('product/setProducts', products);
-                this.$store.commit('product/setProducts', products);
-                this.$store.commit('product/setTotal', products.length);
-                this.$store.commit('collection/setQueries', [slug]);
-                this.$router.push(url);
-            } else {
-                const params = {
-                    _start: 1,
-                    _limit: 12
-                };
-                await this.$store.commit('collection/setQueries', null);
-                await this.$store.dispatch('product/getTotalRecords', params);
-                await this.$store.dispatch('product/getProducts', params);
+        async handleGotoCategory(id) {
+            if (id) {
+                const url = `/shop?category=${id}`;
+                const products = await this.$store.dispatch("product/getProductByCategoriesId", id)
+                this.$store.commit('product/setProducts', products[0].product);
+                this.$store.commit('product/setProducts', products[0].product);
+                this.$store.commit('product/setTotalProducts', products[0].product.length);
+                this.$store.commit('product/setTotal', products[0].product.length);
+            } else {                
+                const allProducts = await this.$store.dispatch('product/getProducts');
+                this.$store.commit('product/setProducts', allProducts);
+                await this.$store.dispatch('product/getTotalRecords');
             }
         },
-
+    
         async handleFilterByBrand() {
             if (this.selectedBrands) {
                 await this.$store.commit(

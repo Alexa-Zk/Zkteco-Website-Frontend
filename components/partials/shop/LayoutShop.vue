@@ -4,7 +4,7 @@
         <recommend-items collectionSlug="shop-recommend-items" /> -->
         <div class="ps-shopping__header">
             <p>
-                <strong class="mr-2">{{ total }}</strong>
+                <strong class="mr-2">{{ overallTotal }}</strong>
                 Products found
             </p>
             <div class="ps-shopping__actions">
@@ -13,10 +13,8 @@
                     data-placeholder="Sort Items"
                 >
                     <option>Sort by latest</option>
-                    <option>Sort by popularity</option>
-                    <option>Sort by average rating</option>
-                    <option>Sort by price: low to high</option>
-                    <option>Sort by price: high to low</option>
+                    <!-- <option>Sort by price: low to high</option>
+                    <option>Sort by price: high to low</option> -->
                 </select>
                 <div class="ps-shopping__view">
                     <p>View</p>
@@ -90,13 +88,13 @@ export default {
         ...mapState({
             products: state => state.product.products,
             total: state => state.product.total,
-            // queries: state => state.collection.queries
+            overallTotal: state => state.product.overallTotal
         }),
         paginationLenght() {
-            if (this.total % 12 === 0) {
-                return parseInt(this.total / this.pageSize);
+            if (this.overallTotal % 12 === 0) {
+                return parseInt(this.overallTotal / this.pageSize);
             } else {
-                return parseInt(this.total / 12 + 1);
+                return parseInt(this.overallTotal / 12 + 1);
             }
         }
     },
@@ -110,8 +108,9 @@ export default {
     methods: {
         async handleChangePagination(value) {
             const params = {
-                _start: value === 1 ? 0 : (value - 1) * 12,
-                _limit: 12
+                page: value,
+                per_page: 12,
+                order: 'asc'
             };
             await this.$store.dispatch('product/getProducts', params);
         },

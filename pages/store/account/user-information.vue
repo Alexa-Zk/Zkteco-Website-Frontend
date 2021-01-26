@@ -29,6 +29,9 @@ export default {
                 }
             ]
         };
+    },
+    created () {
+        const user = this.$store.dispatch("auth/getUserInformation")
     }
 };
 </script>

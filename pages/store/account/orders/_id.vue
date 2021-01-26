@@ -1,32 +1,40 @@
 <template lang="html">
     <section class="ps-page--my-account">
         <bread-crumb :breadcrumb="breadCrumb" />
-        <recent-viewed-products />
+        <view-order-details />
     </section>
 </template>
 <script>
+import {mapState} from 'vuex'
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import RecentViewedProducts from '~/components/partials/account/RecentViewedProducts';
+import ViewOrderDetails from '~/components/partials/account/ViewOrderDetails';
 
 export default {
     transition: 'zoom',
     middleware: 'authentication',
     components: {
-        RecentViewedProducts,
+        ViewOrderDetails,
         BreadCrumb
     },
-    data: () => {
+    data() {
         return {
+            orderId: this.$route.params.id,
             breadCrumb: [
                 {
                     text: 'Home',
                     url: '/'
                 },
                 {
-                    text: 'Recent Viewed Products'
+                    text: 'Order Details'
                 }
             ]
         };
+    },
+    async created () {
+        const orderDetails = await this.$store.dispatch(
+            'product/getOrderDetails',
+            this.orderId
+        );
     }
 };
 </script>

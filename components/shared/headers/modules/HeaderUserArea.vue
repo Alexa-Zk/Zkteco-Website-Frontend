@@ -79,4 +79,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-block__right {
+    a {
+        color: #000;
+    }
+}
+</style>
