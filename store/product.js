@@ -17,7 +17,8 @@ export const state = () => ({
     page: 1,
     per_page: 12,
     search: '',
-    userOrders: ''
+    userOrders: '',
+    singleUserOrders: ''
 });
 
 export const mutations = {
@@ -57,6 +58,10 @@ export const mutations = {
 
     setAllUserOrders(state, payload) {
         state.userOrders = payload
+    },
+
+    setSingleUserOrders(state, payload) {
+        state.singleUserOrders = payload
     }
 };
 
@@ -85,7 +90,7 @@ export const actions = {
             `${baseUrl}/integrations/products/${payload}`
         )
             .then(response => {
-                commit('setProduct', response.data.data.data);
+                commit('setProduct', response.data.data);
                 return response.data.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
@@ -131,6 +136,16 @@ export const actions = {
         const reponse = Repository.get(`${baseUrl}/integrations/orders`)
             .then(response => {
                 commit('setAllUserOrders', response.data.data);
+                return response.data.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    getOrderDetails({ commit }, payload) {
+        const reponse = Repository.get(`${baseUrl}/integrations/orders/${payload}`)
+            .then(response => {
+                commit('setSingleUserOrders', response.data.data.data);
                 return response.data.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));

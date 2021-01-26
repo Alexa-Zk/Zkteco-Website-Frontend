@@ -25,12 +25,12 @@
                 </div>
                 <div class="col-lg-8">
                     <section class="ps-section--account-setting">
-                        <div class="ps-section__content">
+                        <div class="ps-section__content" v-if="single_user_information">
                             <figure>
                                 <figcaption>First Name</figcaption>
                                 <p>
                                     {{
-                                        user_information.userInfo.payload.first_name
+                                        single_user_information.first_name
                                     }}
                                 </p>
                             </figure>
@@ -38,7 +38,23 @@
                                 <figcaption>Last Name</figcaption>
                                 <p>
                                     {{
-                                        user_information.userInfo.payload.last_name
+                                        single_user_information.last_name
+                                    }}
+                                </p>
+                            </figure>
+                            <figure>
+                                <figcaption>Username</figcaption>
+                                <p>
+                                    {{
+                                        single_user_information.username
+                                    }}
+                                </p>
+                            </figure>
+                            <figure>
+                                <figcaption>Phone</figcaption>
+                                <p>
+                                    {{
+                                        single_user_information.phone
                                     }}
                                 </p>
                             </figure>
@@ -52,6 +68,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import { state } from '~/store/app';
 import AccountLinks from './modules/AccountLinks';
 export default {
     name: 'UserInformation',
@@ -90,9 +107,10 @@ export default {
     },
     computed: {
         ...mapState({
-            user_information: state => state.auth.userInfo
+            user_information: state => state.auth.userInfo,
+            single_user_information: state => state.auth.singleUserInformation
         })
-    }
+    },
 };
 </script>
 

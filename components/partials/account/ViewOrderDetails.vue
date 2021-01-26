@@ -25,28 +25,47 @@
                 <div class="col-lg-8">
                     <section class="ps-section--account-setting">
                         <div class="ps-section__content">
-													<div class="ps-product ps-product--wide ps-product--search-result" v-for="order in user_orders.results" :key="order.id">
-														<div class="ps-product__content">
-																<nuxt-link :to="`#`" class="ps-product__title">
-																		{{ order.payment_method_title }}
-																</nuxt-link>
-																<div class="ps-product__rating">
-																		<span> Status: {{order.status}} </span>
-																		<span> On: {{order.created_at}} </span>
-																</div>
-														
-																<p class="ps-product__price sale">
-																		Cost: {{ currency }}{{ order.product_cost + order.shipping_cost }}
-																</p>
-																
-														</div>
-														<nuxt-link :to="`/store/account/orders/${order.id}`" class="ps-orders__more">
-																	See Details
-														</nuxt-link>
-													</div>
+                            <h3>Order Details.</h3>
 
-                          <p v-if="user_orders.length < 0">No product here.</p>
-                            
+                            <div
+                                class="ps-product ps-product--wide ps-product--search-result"
+                                v-for="product in order_datails"
+                                :key="product.id"
+                            >
+                                <div class="ps-product__content">
+                                    <nuxt-link
+                                        :to="`#`"
+                                        class="ps-product__title"
+                                    >
+                                        {{ product.name }}
+                                    </nuxt-link>
+                                    <div class="ps-product__rating">
+                                        <span>
+                                            Stock Status: {{ product.stock_status }}
+                                        </span>
+                                        <span>
+                                            Categories: {{ product.categories[0].name }}
+                                        </span>
+                                    </div>
+
+                                    <p class="ps-product__price sale">
+                                        Price: {{ currency
+                                        }}{{
+                                            product.price
+                                        }}
+                                    </p>
+                                </div>
+                                <nuxt-link
+                                    :to="`/store/product/${product.id}`"
+                                    class="ps-orders__more"
+                                >
+                                    See Product
+                                </nuxt-link>
+                            </div>
+
+                            <p v-if="order_datails.length < 0">
+                                No product here.
+                            </p>
                         </div>
                     </section>
                 </div>
@@ -74,13 +93,11 @@ export default {
                     text: 'Invoices',
                     url: '/store/account/invoices',
                     icon: 'icon-papers'
-                    
                 },
                 {
                     text: 'Address',
                     url: '/store/account/addresses',
                     icon: 'icon-map-marker'
-                    
                 },
                 {
                     text: 'My Orders',
@@ -99,13 +116,10 @@ export default {
     computed: {
         ...mapState({
             user_information: state => state.auth.userInfo,
-						user_orders: state => state.product.userOrders,
-            currency: state => state.app.currency
+            currency: state => state.app.currency,
+            order_datails: state => state.product.singleUserOrders
         })
-    },
-    created() {
-        const response = this.$store.dispatch('product/getAllUserOrders',true );
-    },
+    }
 };
 </script>
 

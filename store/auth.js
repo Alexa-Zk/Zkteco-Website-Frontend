@@ -7,19 +7,22 @@ import { baseUrl } from '~/repositories/Repository';
 export const state = () => ({
     isLoggedIn: false,
     userInfo: null,
-    authToken: null
+    authToken: null,
+    singleUserInformation: null
 });
 
 export const mutations = {
     setIsLoggedIn(state, payload) {
         state.isLoggedIn = payload;
     },
-
     setUserInfo(state, payload) {
         state.userInfo = payload;
     },
     setAuthToken(state, payload) {
         state.authToken = payload;
+    },
+    setUserInformation(state, payload) {
+        state.singleUserInformation = payload;
     }
 };
 
@@ -86,6 +89,17 @@ export const actions = {
                     path: '/store',
                     maxAge: 60 * 60 * 24 * 7
                 });
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getUserInformation({ commit }, payload) {
+        const reponse = await Repository.get(`${baseUrl}/integrations/customers/logged-in`)
+            .then(response => {
+                
+                commit('setUserInformation', response.data.data);  
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
