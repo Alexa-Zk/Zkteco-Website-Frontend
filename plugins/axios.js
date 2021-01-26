@@ -10,6 +10,5 @@ export default function({ $axios, redirect }) {
     });
     $axios.onRequest(config => {
         $axios.setHeader('Authorization', token )
-        console.log('Making request to ' + config.url)
     })
 }
