@@ -10,8 +10,7 @@
                                     <figcaption>Hello</figcaption>
                                     <p>
                                         {{
-                                            user_information.userInfo.payload
-                                                .email
+                                            single_user_information.email
                                         }}
                                     </p>
                                 </figure>
@@ -25,25 +24,25 @@
                 <div class="col-lg-8">
                     <section class="ps-section--account-setting">
                         <div class="ps-section__content">
-													<div class="ps-product ps-product--wide ps-product--search-result" v-for="order in user_orders.results" :key="order.id">
-														<div class="ps-product__content">
-																<nuxt-link :to="`#`" class="ps-product__title">
-																		{{ order.payment_method_title }}
-																</nuxt-link>
-																<div class="ps-product__rating">
-																		<span> Status: {{order.status}} </span>
-																		<span> On: {{order.created_at}} </span>
-																</div>
-														
-																<p class="ps-product__price sale">
-																		Cost: {{ currency }}{{ order.product_cost + order.shipping_cost }}
-																</p>
-																
-														</div>
-														<nuxt-link :to="`/store/account/orders/${order.id}`" class="ps-orders__more">
-																	See Details
-														</nuxt-link>
-													</div>
+                        <div class="ps-product ps-product--wide ps-product--search-result" v-for="order in user_orders.results" :key="order.id">
+                            <div class="ps-product__content">
+                                    <nuxt-link :to="`#`" class="ps-product__title">
+                                            {{ order.payment_method_title }}
+                                    </nuxt-link>
+                                    <div class="ps-product__rating">
+                                            <span> Status: {{order.status}} </span>
+                                            <span> On: {{order.created_at}} </span>
+                                    </div>
+                            
+                                    <p class="ps-product__price sale">
+                                            Cost: {{ currency }}{{ order.product_cost + order.shipping_cost }}
+                                    </p>
+                                    
+                            </div>
+                            <nuxt-link :to="`/store/account/orders/${order.id}`" class="ps-orders__more">
+                                        See Details
+                            </nuxt-link>
+                        </div>
 
                           <p v-if="user_orders.length < 0">No product here.</p>
                             
@@ -98,9 +97,9 @@ export default {
     },
     computed: {
         ...mapState({
-            user_information: state => state.auth.userInfo,
 			user_orders: state => state.product.userOrders,
-            currency: state => state.app.currency
+            currency: state => state.app.currency,
+            single_user_information: state => state.auth.singleUserInformation
         })
     },
     created() {

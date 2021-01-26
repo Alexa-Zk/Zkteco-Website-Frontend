@@ -11,8 +11,7 @@
                                     <figcaption>Hello</figcaption>
                                     <p>
                                         {{
-                                            user_information.userInfo.payload
-                                                .email
+                                            single_user_information.email
                                         }}
                                     </p>
                                 </figure>
@@ -110,7 +109,7 @@ export default {
     },
     computed: {
         ...mapState({
-            user_information: state => state.auth.userInfo
+            single_user_information: state => state.auth.singleUserInformation
         })
     }
 };
