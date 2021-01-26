@@ -17,17 +17,6 @@
                 <td data-label="Price" class="price"> {{currency}} {{ product.price }}</td>
                 <td data-label="Quantity">
                     <product-shopping-table :product="product" />
-                    <!-- <div class="form-group--number">
-                        <button class="up" @click.prevent="handleIncreaseQuantity(product.id)">+</button>
-                        <button class="down" @click.prevent="handleDescreaseQuantity(product.id)">-</button>
-                        <input
-                            class="form-control"
-                            type="text"
-                            placeholder="1"
-                            value="1"
-                            v-model="quantity"
-                        />
-                    </div> -->
                 </td>
                 <td data-label="Total">
                     {{currency}} {{
@@ -99,8 +88,9 @@ export default {
             const cartItem = this.cartItems.find(
                 item => item.id === product.id
             );
+            console.log(cartItem)
             this.$store.dispatch('cart/removeProductFromCart', cartItem);
-            this.loadCartProducts();
+            // this.loadCartProducts();
         },
         handleIncreaseQuantity(payload) {
             this.$store.dispatch('cart/increaseCartItemQuantity', payload);

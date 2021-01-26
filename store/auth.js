@@ -47,8 +47,7 @@ export const actions = {
 
         const reponse = await Repository.post(`${baseUrl}/integrations/customers/login`, payload)
             .then(response => {
-                
-                console.log(response)
+
                 commit('setUserInfo', response.data.data);
                 commit('setIsLoggedIn', response.data.status);
                 commit('setAuthToken', response.data.data.token);
@@ -77,18 +76,6 @@ export const actions = {
     async register({ commit }, payload) {
         const reponse = await Repository.post(`${baseUrl}/integrations/customers`, payload )
             .then(response => {
-                
-                commit('setUserInfo', response.data.data);
-                commit('setIsLoggedIn', response.data.status);
-                
-                const cookieParams = {
-                    userInfo: state.userInfo
-                };
-        
-                this.$cookies.set('userInfo', cookieParams, {
-                    path: '/store',
-                    maxAge: 60 * 60 * 24 * 7
-                });
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));

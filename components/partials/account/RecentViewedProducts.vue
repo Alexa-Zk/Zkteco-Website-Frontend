@@ -99,7 +99,7 @@ export default {
     computed: {
         ...mapState({
             user_information: state => state.auth.userInfo,
-						user_orders: state => state.product.userOrders,
+			user_orders: state => state.product.userOrders,
             currency: state => state.app.currency
         })
     },

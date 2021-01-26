@@ -84,7 +84,6 @@ export default {
                         'auth/login',
                         payload
                     );
-                    console.log(response);
                     if (response.status) {
                         this.$notify({
                             group: 'addCartSuccess',
