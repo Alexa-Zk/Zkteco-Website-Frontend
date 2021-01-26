@@ -14,6 +14,7 @@ export const state = () => ({
     brands: null,
     categories: null,
     total: 0,
+    overallTotal: 0,
     page: 1,
     per_page: 12,
     search: '',
@@ -56,27 +57,33 @@ export const mutations = {
         state.total = payload;
     },
 
+    setTotalProducts(state, payload) {
+        state.overallTotal = payload
+    },
+
     setAllUserOrders(state, payload) {
-        state.userOrders = payload
+        state.userOrders = payload;
     },
 
     setSingleUserOrders(state, payload) {
-        state.singleUserOrders = payload
+        state.singleUserOrders = payload;
     }
 };
 
 export const actions = {
     async getProducts({ state, commit }, payload) {
         let params = {
-            page: state.page,
-            per_page: state.per_page
+            page: payload ? payload.page : state.page,
+            per_page: payload ? payload.per_page : state.per_page,
+            order: payload ? payload.order : 'asc'
         };
         const reponse = await Repository.get(
             `${baseUrl}/integrations/products?${serializeQuery(params)}`
         )
             .then(response => {
                 commit('setProducts', response.data.data.data);
-                return response.data.data;
+                commit('setTotalProducts', response.data.data.total);
+                return response.data.data.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
@@ -114,7 +121,9 @@ export const actions = {
         let params = {
             include: payload
         };
-        const reponse = Repository.get(`${baseUrl}/integrations/products`, { params })
+        const reponse = Repository.get(`${baseUrl}/integrations/products`, {
+            params
+        })
             .then(response => {
                 commit('setCartProducts', response.data.data.data);
                 return response.data.data.data;
@@ -124,7 +133,10 @@ export const actions = {
     },
 
     getOrders({ commit }, payload) {
-        const reponse = Repository.post(`${baseUrl}/integrations/orders`, payload)
+        const reponse = Repository.post(
+            `${baseUrl}/integrations/orders`,
+            payload
+        )
             .then(response => {
                 return response.data.data;
             })
@@ -143,7 +155,9 @@ export const actions = {
     },
 
     getOrderDetails({ commit }, payload) {
-        const reponse = Repository.get(`${baseUrl}/integrations/orders/${payload}`)
+        const reponse = Repository.get(
+            `${baseUrl}/integrations/orders/${payload}`
+        )
             .then(response => {
                 commit('setSingleUserOrders', response.data.data.data);
                 return response.data.data;
@@ -216,6 +230,21 @@ export const actions = {
         return reponse;
     },
 
+    async getProductByCategoriesId({ state, commit }, payload) {
+        let params = {
+            per_page: state.per_page,
+            order: 'asc'
+        };
+        const reponse = await Repository.get(
+            `${baseUrl}/integrations/trend-categories-products/?${serializeQuery(params)}&category_id=[${payload}]`
+        )
+            .then(response => {
+                return response.data.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
     async getProductsByBrands({ commit }, payload) {
         let query = '';
         payload.forEach(item => {
@@ -257,5 +286,5 @@ export const actions = {
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
-    },
+    }
 };
