@@ -24,7 +24,7 @@
                 {{ product.categories[0].name }}
             </p>
             <small v-if="quantity !== null">
-                {{ quantity }} x {{currency}} {{ product.price }}
+                {{ quantity }} x {{currency}} {{ product.price | formatMoney }}
             </small>
         </div>
     </div>

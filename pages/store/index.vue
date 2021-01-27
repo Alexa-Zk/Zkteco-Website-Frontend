@@ -7,18 +7,13 @@
             collection-slug="deal-of-the-day"
         />
         <home-ads-columns :images="adImages"/>
-        <!-- <home-default-top-categories /> -->
-        <template v-if="collections !== null">
-            <conumer-electronics collection-slug="consumer-electronics" />
-            <clothings collection-slug="clothings" />
-            <garden-and-kitchen collection-slug="garden-and-kitchen" />
+
+        <template>
+            <conumer-electronics :collection-id="this.id" />
+            <clothings :collection-id="this.id1" />
+            <!-- <garden-and-kitchen collection-slug="garden-and-kitchen" /> -->
         </template>
         <home-ads :images="adImages"/>
-        <!-- <download-app /> -->
-        <!-- <new-arrivals
-            v-if="collections !== null"
-            collection-slug="new-arrivals-products"
-        /> -->
         <newsletters layout="fullwidth" />
         <!-- <demo-panel />  -->
     </main>
@@ -51,7 +46,9 @@ export default {
      data() {
         return {
             ecommerceImages: '',
-            articles: ''
+            articles: '',
+            id: 15,
+            id1: 26
         };
     },
     apollo: {
@@ -101,6 +98,7 @@ export default {
             'garden-and-kitchen',
             'new-arrivals-products'
         ];
+        await this.$store.dispatch('collection/getCollectionById')
         await this.$store.dispatch('collection/getCollectionsBySlugs', queries);
     }
 };

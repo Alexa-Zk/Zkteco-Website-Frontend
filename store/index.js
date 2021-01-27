@@ -44,7 +44,6 @@ export const actions = {
         if (userInfo) {
             await dispatch('auth/getAuthToken', userInfo.token);
             commit('auth/setUserInfo', userInfo);
-            commit('auth/setIsLoggedIn', true);
         }
         if (shippingInfo) {
             commit('shipping/setPersonalDetails', shippingInfo);

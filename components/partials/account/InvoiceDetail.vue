@@ -6,10 +6,11 @@
                     <div class="ps-section__left">
                         <aside class="ps-widget--account-dashboard">
                             <div class="ps-widget__header">
-                                <img src="/img/users/3.jpg" />
                                 <figure>
                                     <figcaption>Hello</figcaption>
-                                    <p>username@gmail.com</p>
+                                    <p>{{
+                                            single_user_information.email
+                                        }}</p>
                                 </figure>
                             </div>
                             <div class="ps-widget__content">
@@ -20,14 +21,14 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="ps-section--account-setting">
-                        <div class="ps-section__header">
+                        <!-- <div class="ps-section__header">
                             <h3>
                                 Invoice #500884010 -
                                 <strong>Successful delivery</strong>
                             </h3>
-                        </div>
+                        </div> -->
                         <div class="ps-section__content">
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-md-4 col-12">
                                     <figure class="ps-block--invoice">
                                         <figcaption>
@@ -71,11 +72,11 @@
                                         </div>
                                     </figure>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="table-responsive">
-                                <TableInvoice :products="invoiceProducts" />
+                                <!-- <TableInvoice :products="invoiceProducts" /> -->
                             </div>
-                            <nuxt-link to="/account/invoices">
+                            <nuxt-link to="/store/account/invoices">
                                 <a class="ps-btn ps-btn--sm ">
                                     Back to invoices
                                 </a>
@@ -89,43 +90,45 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import AccountLinks from './modules/AccountLinks';
 import TableInvoice from './modules/TableInvoice';
 export default {
     name: 'InvoiceDetail',
     components: { TableInvoice, AccountLinks },
+    computed: {
+        ...mapState({
+            single_user_information: state => state.auth.singleUserInformation
+        })
+    },
     data() {
         return {
             accountLinks: [
                 {
                     text: 'Account Information',
-                    url: '/account/user-information',
+                    url: '/store/account/user-information',
                     icon: 'icon-user'
                 },
                 {
-                    text: 'Notifications',
-                    url: '/account/notifications',
-                    icon: 'icon-alarm-ringing'
-                },
-                {
                     text: 'Invoices',
-                    url: '/account/invoices',
+                    url: '/store/account/invoices',
                     icon: 'icon-papers',
                     active: true
                 },
                 {
                     text: 'Address',
-                    url: '/account/addresses',
+                    url: '/store/account/addresses',
                     icon: 'icon-map-marker'
                 },
                 {
-                    text: 'Recent Viewed Product',
-                    url: '/account/recent-viewed-product',
-                    icon: 'icon-store'
+                    text: 'My Orders',
+                    url: '/store/account/recent-viewed-product',
+                    icon: 'icon-store',
+                    
                 },
                 {
                     text: 'Wishlist',
-                    url: '/account/wishlist',
+                    url: '/store/account/wishlist',
                     icon: 'icon-heart'
                 }
             ],

@@ -16,16 +16,17 @@
             </div>
         </div>
         <h4 v-if="product.is_sale === true" class="ps-product__price sale">
-            <del class="mr-2"> $ {{ product.sale_price }}</del>
-            ${{ product.price }}
+            <del class="mr-2"> {{currency}} {{ product.sale_price | formatMoney }}</del>
+            {{currency}} {{ product.price | formatMoney }}
         </h4>
         <h4 v-else class="ps-product__price">
-            ${{ product.price }}
+            {{currency}} {{ product.price | formatMoney }}
         </h4>
     </div>
 </template>
 
 <script>
+import {mapState} from 'vuex';
 import Rating from '~/components/elements/Rating';
 export default {
     name: 'ModuleProductInfo',
@@ -35,6 +36,11 @@ export default {
             type: Object,
             default: () => {}
         }
+    },
+    computed: {
+        ...mapState({
+            currency: state => state.app.currency
+        })
     }
 };
 </script>

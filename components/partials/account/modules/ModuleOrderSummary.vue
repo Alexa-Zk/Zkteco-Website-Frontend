@@ -18,21 +18,21 @@
                     >
                         {{ product.name }}
                         <br />
-                        {{ cartItems[index].quantity }} x ${{
-                            product.price
+                        {{ cartItems[index].quantity }} x {{currency}} {{
+                            product.price | formatMoney
                         }}
                     </nuxt-link>
                 </figure>
                 <figure>
                     <figcaption>
                         <strong>Subtotal</strong>
-                        <small>{{currency}} {{ amount }}</small>
+                        <small>{{currency}} {{ amount | formatMoney }}</small>
                     </figcaption>
                 </figure>
                 <figure v-if="shipping === true">
                     <figcaption>
                         <strong>Shipping</strong>
-                        <small>{{currency}} {{shippingCost}}</small>
+                        <small>{{currency}} {{shippingCost | formatMoney}}</small>
                     </figcaption>
                 </figure>
                 <figure v-else class="ps-block__shipping">

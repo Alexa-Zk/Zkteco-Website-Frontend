@@ -9,10 +9,7 @@
                                 <figure>
                                     <figcaption>Hello</figcaption>
                                     <p>
-                                        {{
-                                            user_information.userInfo.payload
-                                                .email
-                                        }}
+                                        {{ single_user_information.email }}
                                     </p>
                                 </figure>
                             </div>
@@ -29,7 +26,7 @@
 
                             <div
                                 class="ps-product ps-product--wide ps-product--search-result"
-                                v-for="product in order_datails"
+                                v-for="product in order_details"
                                 :key="product.id"
                             >
                                 <div class="ps-product__content">
@@ -41,18 +38,17 @@
                                     </nuxt-link>
                                     <div class="ps-product__rating">
                                         <span>
-                                            Stock Status: {{ product.stock_status }}
+                                            Stock Status:
+                                            {{ product.stock_status }}
                                         </span>
                                         <span>
-                                            Categories: {{ product.categories[0].name }}
+                                            Categories:
+                                            {{ product.categories[0].name }}
                                         </span>
                                     </div>
 
                                     <p class="ps-product__price sale">
-                                        Price: {{ currency
-                                        }}{{
-                                            product.price
-                                        }}
+                                        Price: {{ currency }}{{ product.price }}
                                     </p>
                                 </div>
                                 <nuxt-link
@@ -63,7 +59,7 @@
                                 </nuxt-link>
                             </div>
 
-                            <p v-if="order_datails.length < 0">
+                            <p v-if="order_details.length < 0">
                                 No product here.
                             </p>
                         </div>
@@ -115,9 +111,9 @@ export default {
     },
     computed: {
         ...mapState({
-            user_information: state => state.auth.userInfo,
+            single_user_information: state => state.auth.singleUserInformation,
             currency: state => state.app.currency,
-            order_datails: state => state.product.singleUserOrders
+            order_details: state => state.product.singleUserOrders
         })
     }
 };
@@ -125,28 +121,27 @@ export default {
 
 <style lang="scss" scoped>
 .ps-product--search-result {
-	border: 1px solid #f0f0f0;  
-	padding: 20px 20px;
-	margin-bottom: 0px;
-	.ps-product__price {
-		font-size: 18px;
-	}
-	.ps-product__content {
-    padding-left: 0px;
-	}
-	.ps-orders__more {
-		flex-basis: unset;
-		width: 20%;
-		text-transform: uppercase;
-		color: green;
-		transition: all .5s;
-		border-radius: 4px;
-		padding: 10px;
-		font-weight: bold;
-		&:hover {
-			background: lighten($color: green, $amount: 30%);
-		}
-	}
+    border: 1px solid #f0f0f0;
+    padding: 20px 20px;
+    margin-bottom: 0px;
+    .ps-product__price {
+        font-size: 18px;
+    }
+    .ps-product__content {
+        padding-left: 0px;
+    }
+    .ps-orders__more {
+        flex-basis: unset;
+        width: 20%;
+        text-transform: uppercase;
+        color: green;
+        transition: all 0.5s;
+        border-radius: 4px;
+        padding: 10px;
+        font-weight: bold;
+        &:hover {
+            background: lighten($color: green, $amount: 30%);
+        }
+    }
 }
-
 </style>

@@ -1,7 +1,7 @@
 <template lang="html">
     <section class="ps-my-account ps-page--account">
         <div class="container">
-            <div class="row">
+            <div class="row" v-if="single_user_information">
                 <div class="col-lg-4">
                     <div class="ps-section__left">
                         <aside class="ps-widget--account-dashboard">
@@ -53,12 +53,12 @@ export default {
                     url: '/store/account/user-information',
                     icon: 'icon-user'
                 },
-                {
-                    text: 'Invoices',
-                    url: '/store/account/invoices',
-                    icon: 'icon-papers',
-                    active: true
-                },
+                // {
+                //     text: 'Invoices',
+                //     url: '/store/account/invoices',
+                //     icon: 'icon-papers',
+                //     active: true
+                // },
                 {
                     text: 'Address',
                     url: '/store/account/addresses',
@@ -83,7 +83,6 @@ export default {
             single_user_information: state => state.auth.singleUserInformation
         })
     },
-    
 };
 </script>
 

@@ -1,6 +1,6 @@
 export const carouselFullwidth = {
     loop: true,
-    slidesPerView: 7,
+    slidesPerView: 4,
     spaceBetween: 1,
     scrollbar: {
         draggable: true

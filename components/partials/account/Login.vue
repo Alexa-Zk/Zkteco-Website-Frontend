@@ -8,7 +8,7 @@
                     class="ps-text-field"
                     :error-messages="emailErrors"
                     @input="$v.email.$touch()"
-                    placeholder="email"
+                    placeholder="Please enter email"
                     height="50"
                     outlined
                 />

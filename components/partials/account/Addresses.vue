@@ -1,12 +1,11 @@
 <template lang="html">
     <section class="ps-my-account ps-page--account">
         <div class="container">
-            <div class="row">
+            <div class="row" v-if="single_user_information">
                 <div class="col-lg-4">
                     <div class="ps-section__left">
                         <aside class="ps-widget--account-dashboard">
                             <div class="ps-widget__header">
-                                <!-- <img :src="user_information.avatar_url" /> -->
                                 <figure>
                                     <figcaption>Hello</figcaption>
                                     <p>
@@ -83,11 +82,11 @@ export default {
                     url: '/store/account/user-information',
                     icon: 'icon-user'
                 },
-                {
-                    text: 'Invoices',
-                    url: '/store/account/invoices',
-                    icon: 'icon-papers'
-                },
+                // {
+                //     text: 'Invoices',
+                //     url: '/store/account/invoices',
+                //     icon: 'icon-papers'
+                // },
                 {
                     text: 'Address',
                     url: '/store/account/addresses',

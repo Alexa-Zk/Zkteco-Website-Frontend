@@ -39,7 +39,8 @@ export default {
         { src: '~/plugins/axios.js', ssr: false },
         { src: '~/plugins/lazyLoad.js', ssr: false },
         { src: '~/plugins/flutterwave.js', ssr: false },
-        { src: '~/plugins/vue-instantsearch.js', ssr: false }
+        { src: '~/plugins/vue-instantsearch.js', ssr: false },
+        { src: '~/plugins/filters.js', ssr: false }
     ],
 
     buildModules: [
@@ -59,13 +60,13 @@ export default {
     },
 
     modules: ['@nuxtjs/axios', 'nuxt-i18n', '@nuxtjs/apollo'],
-		apollo: {
-			clientConfigs: {
-				default:{
-					httpEndpoint: "https://admin.zkteco-wa.com/graphql",
-				}
-			}
-		},
+    apollo: {
+        clientConfigs: {
+            default: {
+                httpEndpoint: 'https://admin.zkteco-wa.com/graphql'
+            }
+        }
+    },
 
     i18n: {
         locales: [

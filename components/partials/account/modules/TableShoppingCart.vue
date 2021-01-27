@@ -14,13 +14,13 @@
                 <td data-label="Product">
                     <product-shopping-cart :product="product" />
                 </td>
-                <td data-label="Price" class="price"> {{currency}} {{ product.price }}</td>
+                <td data-label="Price" class="price"> {{currency}} {{ product.price | formatMoney }}</td>
                 <td data-label="Quantity">
                     <product-shopping-table :product="product" />
                 </td>
                 <td data-label="Total">
                     {{currency}} {{
-                        (cartItems[index].quantity * product.price).toFixed(2)
+                        (cartItems[index].quantity * product.price).toFixed(2) | formatMoney
                     }}
                 </td>
                 <td data-label="Action">

@@ -2,36 +2,8 @@
     <div class="ps-product-list ps-garden-kitchen ps-section--carousel-outside">
         <div class="ps-container">
             <div class="ps-section__header">
-                <!-- <h3>{{ $t('homeDefault.consumerElectronics.heading') }}</h3> -->
-                <h3>Time Attendance</h3>
+                <h3>{{productName}}</h3>
                 <ul class="ps-section__links">
-                    <!-- <li>
-                        <nuxt-link :to="localePath('/shop')">
-                            {{
-                                $t(
-                                    'homeDefault.consumerElectronics.links.newArrivals'
-                                )
-                            }}
-                        </nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link :to="localePath('/shop')">
-                            {{
-                                $t(
-                                    'homeDefault.consumerElectronics.links.bestSeller'
-                                )
-                            }}
-                        </nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link :to="localePath('/shop')">
-                            {{
-                                $t(
-                                    'homeDefault.consumerElectronics.links.bestSeller'
-                                )
-                            }}
-                        </nuxt-link>
-                    </li> -->
                     <li>
                         <nuxt-link :to="localePath('/store/shop')">
                             {{ $t('common.viewAll') }}
@@ -39,7 +11,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="ps-section__content">
+            <div class="ps-section__content" v-if="products">
                 <carousel-arrows type="simple" />
                 <div
                     class="ps-carousel"
@@ -50,7 +22,6 @@
                             <product-default :product="product" />
                         </div>
                     </div>
-                    <!--Carousel controls-->
                     <div
                         class="swiper-pagination swiper-pagination-bullets"
                     ></div>
@@ -64,24 +35,34 @@
 import { mapState } from 'vuex';
 import { carouselFullwidth } from '~/utilities/carousel-helpers.js';
 import ProductDefault from '../../../elements/product/ProductDefault';
-import { getColletionBySlug } from '../../../../utilities/product-helper';
+import { getColletionById, getCollectionName } from '../../../../utilities/product-helper';
 import CarouselArrows from '~/components/elements/commons/CarouselArrows';
 
 export default {
     components: { CarouselArrows, ProductDefault },
     props: {
-        collectionSlug: {
-            type: String,
-            default: ''
+        collectionId: {
+            type: Number,
+            default: 1
         }
     },
     computed: {
         ...mapState({
-            collections: state => state.collection.collections
+            collections: state => state.collection.productCategories
         }),
-
         products() {
-            return getColletionBySlug(this.collections, this.collectionSlug);
+            if (this.collections) {
+                return getColletionById(this.collections, this.collectionId);
+            } else {
+                return []
+            }
+        },
+        productName() {
+            if (this.collections) {
+                return getCollectionName(this.collections, this.collectionId);
+            } else {
+                return "No name"
+            }
         }
     },
     data() {
