@@ -1,7 +1,7 @@
 export default {
     head: {
-        titleTemplate: 'ZKTeco - West Africa',
-        title: 'ZKTeco - West Africa',
+        titleTemplate: 'ZKTeco West Africa',
+        title: 'ZKTeco West Africa',
         meta: [
             { charset: 'utf-8' },
             {
@@ -12,7 +12,7 @@ export default {
                 hid: 'description',
                 name: 'description',
                 content:
-                    'Martfury - Multipurpose Marketplace Vuejs Ecommerce Template'
+                    'ZKTeco is a globally-renowned provider of security, access control and time management solutions. ZKTeco focus on Biometrics of fingerprint, face recognition, ..'
             }
         ],
         link: [

@@ -4,9 +4,9 @@
             <!-- <menu-dropdown v-if="item.parent !== 0" :menu-data="item" :categories="categories" /> -->
             <!-- <menu-mega v-else-if="item.mega" :menu-data="item" /> -->
             <li :key="item.id" >
-                <nuxt-link :to="`/store/shop/categories/${item.id}`">
+                <a href="#" @click.prevent="handleGotoCategory(item.id)">
                     {{ item.name }}
-                </nuxt-link>
+                </a>
             </li>
         </template>
     </ul>
@@ -29,6 +29,23 @@ export default {
         ...mapState({
             categories: state => state.product.categories
         }),
+    },
+    methods: {
+        async handleGotoCategory(id) {
+            if (id) {
+                const url = `/store/shop`;
+                const products = await this.$store.dispatch("product/getProductByCategoriesId", id)
+                this.$store.commit('product/setProducts', products[0].product);
+                this.$store.commit('product/setProducts', products[0].product);
+                this.$store.commit('product/setTotalProducts', products[0].product.length);
+                this.$store.commit('product/setTotal', products[0].product.length);
+                await this.$router.push(url);
+            } else {                
+                const allProducts = await this.$store.dispatch('product/getProducts');
+                this.$store.commit('product/setProducts', allProducts);
+                await this.$store.dispatch('product/getTotalRecords');
+            }
+        },
     },
     async created() {
         const params = {
