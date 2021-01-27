@@ -3,16 +3,16 @@
         <div class="ps-shopping__header">
             <p>
                 <strong class="mr-2">{{
-                    searchResults !== null ? searchResults.length : 0
+                    searchResults !== null ? searchResults.data.length : 0
                 }}</strong>
                 Product(s) found
             </p>
         </div>
         <div class="ps-shopping__content">
-            <template v-if="searchResults && searchResults.length > 0">
+            <template v-if="searchResults && searchResults.data.length > 0">
                 <div class="row">
                     <div
-                        v-for="product in searchResults"
+                        v-for="product in searchResults.data"
                         class="col-md-3"
                         :key="product.id"
                     >

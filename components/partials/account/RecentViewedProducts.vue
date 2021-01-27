@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="ps-section__left">
-                        <aside class="ps-widget--account-dashboard">
+                        <aside class="ps-widget--account-dashboard" v-if="single_user_information">
                             <div class="ps-widget__header">
                                 <figure>
                                     <figcaption>Hello</figcaption>

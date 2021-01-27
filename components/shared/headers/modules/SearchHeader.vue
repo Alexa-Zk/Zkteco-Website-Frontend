@@ -37,9 +37,9 @@
             "
         >
             <div class="ps-panel__content">
-                <template v-if="searchResults && searchResults.length > 0">
+                <template v-if="searchResults && searchResults.data.length > 0">
                     <product-result
-                        v-for="product in searchResults"
+                        v-for="product in searchResults.data"
                         :product="product"
                         :key="product.id"
                     />
@@ -71,7 +71,7 @@ export default {
         return {
             exampleCategories: [
                 'All',
-                'Accessories',
+                'Products',
             ],
             isSearching: false,
             isLoading: false,
