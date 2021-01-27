@@ -6,7 +6,7 @@
                     <div class="ps-section__left">
                         <aside class="ps-widget--account-dashboard">
                             <div class="ps-widget__header">
-                                <img :src="user_information.avatar_url" />
+                                <!-- <img :src="user_information.avatar_url" /> -->
                                 <figure>
                                     <figcaption>Hello</figcaption>
                                     <p>{{user_information.email}}</p>
@@ -68,6 +68,7 @@ export default {
     },
     computed: {
         ...mapState({
+            single_user_information: state => state.auth.singleUserInformation,
             user_information: state => state.auth.userInfo
         })
     }

@@ -54,7 +54,8 @@ export default {
     computed: {
         ...mapState({
             collections: state => state.collection.collections,
-            product: state => state.product.product
+            product: state => state.product.product,
+            
         })
     },
     data() {

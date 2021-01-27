@@ -30,7 +30,10 @@ export default {
                 }
             ]
         };
-    }
+    },
+    created() {
+        const response = this.$store.dispatch('product/getAllUserOrders', true);
+    },
 };
 </script>
 

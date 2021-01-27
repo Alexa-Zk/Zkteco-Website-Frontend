@@ -52,10 +52,10 @@ export default {
                 //     text: 'Notifications',
                 //     url: '/store/account/notifications'
                 // },
-                {
-                    text: 'Invoices',
-                    url: '/store/account/invoices'
-                },
+                // {
+                //     text: 'Invoices',
+                //     url: '/store/account/invoices'
+                // },
                 {
                     text: 'Address',
                     url: '/store/account/addresses'

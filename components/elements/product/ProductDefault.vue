@@ -62,7 +62,7 @@
                 <p
                     class="ps-product__price"
                 >
-                    {{ currency }}{{ product.price }}
+                    {{ currency }}{{ product.price | formatMoney }}
                     
                 </p>
             </div>
@@ -71,7 +71,7 @@
                     <a class="ps-product__title">{{ product.name }}</a>
                 </nuxt-link>
                 
-                <p  class="ps-product__price sale">${{ product.price }}</p>
+                <p  class="ps-product__price sale"> {{currency}} {{ product.price | formatMoney }}</p>
             </div>
         </div>
         <v-dialog v-model="quickviewDialog" width="1200">

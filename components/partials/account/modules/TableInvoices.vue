@@ -13,7 +13,7 @@
             <tbody>
                 <tr v-for="item in tableData" :key="item.id">
                     <td>
-                        <nuxt-link to="/account/invoice-detail">{{
+                        <nuxt-link to="/store/account/invoice-detail">{{
                             item.invoiceId
                         }}</nuxt-link>
                     </td>

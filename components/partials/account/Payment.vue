@@ -32,7 +32,7 @@
                                     <small>
                                         Local Shipping
                                     </small>
-                                    <strong>$ {{shippingCost}}</strong>
+                                    <strong>{{currency}} {{shippingCost | formatMoney}}</strong>
                                 </figure>
                             </div>
                             <h4>Payment Methods</h4>
@@ -59,13 +59,15 @@ import { mapState } from 'vuex';
 
 import ModuleOrderSummary from '~/components/partials/account/modules/ModuleOrderSummary';
 import PaymentMethods from '~/components/partials/account/modules/PaymentMethods';
+import { state } from '~/store/app';
 export default {
     name: 'Payment',
     components: { PaymentMethods, ModuleOrderSummary },
     computed: {
         ...mapState({
             personalDetails: state => state.shipping.personalDetails,
-            shippingCost: state => state.shipping.shippingCost
+            shippingCost: state => state.shipping.shippingCost,
+            currency: state => state.app.currency
         })
     }
 };

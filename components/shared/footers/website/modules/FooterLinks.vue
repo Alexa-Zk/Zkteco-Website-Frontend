@@ -88,43 +88,16 @@ export default {
             rgba(0, 0, 0, 0.7),
             rgba(0, 0, 0, 0.7)
         ),
-        url('/img/bg/about-us.jpg');
+        url('/img/website/zkteco.staff.jpeg');
     height: 361px;
     background-position: center;
-    background-size: cover;
+    background-size: inherit;
     display: flex;
-
     align-items: center;
     justify-content: center;
 }
 
 .text-box {
-    // position: absolute;
-    // transform: translate(-50%, -50%);
-
-    // @include media('>lg') {
-    //     top: 40%;
-    //     left: 50%;
-    //     width: 100%;
-    //     max-width: 100%;
-    // }
-    // @include media('<md') {
-    //     top: 40%;
-    //     left: 50%;
-    //     width: 100%;
-    //     max-width: 100%;
-    // }
-    // @include media('<sm') {
-    //     max-width: 50%;
-    // }
-    // @include media('<xs') {
-    //     top: 26%;
-    //     left: 50%;
-    //     max-width: 100%;
-    //     width: 100%;
-    //     padding: 0px 10px;
-
-    // }
 }
 
 .heading-primary {

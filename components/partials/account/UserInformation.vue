@@ -1,12 +1,11 @@
 <template lang="html">
     <section class="ps-my-account ps-page--account">
         <div class="container">
-            <div class="row">
+            <div class="row" v-if="single_user_information">
                 <div class="col-lg-4">
                     <div class="ps-section__left">
                         <aside class="ps-widget--account-dashboard">
                             <div class="ps-widget__header">
-                                <!-- <img :src="user_information.userInfo.payload.avatar_url" /> -->
                                 <figure>
                                     <figcaption>Hello</figcaption>
                                     <p>
@@ -24,7 +23,7 @@
                 </div>
                 <div class="col-lg-8">
                     <section class="ps-section--account-setting">
-                        <div class="ps-section__content" v-if="single_user_information">
+                        <div class="ps-section__content" >
                             <figure>
                                 <figcaption>First Name</figcaption>
                                 <p>
@@ -81,11 +80,11 @@ export default {
                     icon: 'icon-user',
                     active: true
                 },
-                {
-                    text: 'Invoices',
-                    url: '/store/account/invoices',
-                    icon: 'icon-papers'
-                },
+                // {
+                //     text: 'Invoices',
+                //     url: '/store/account/invoices',
+                //     icon: 'icon-papers'
+                // },
                 {
                     text: 'Address',
                     url: '/store/account/addresses',

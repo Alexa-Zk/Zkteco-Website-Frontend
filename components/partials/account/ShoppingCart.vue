@@ -62,7 +62,7 @@
                                     </li>
                                 </ul>
                                 <h3>
-                                    Total <span> {{currency}} {{ amount }}</span>
+                                    Total <span> {{currency}} {{ amount | formatMoney }}</span>
                                 </h3>
                             </div>
                         </div>

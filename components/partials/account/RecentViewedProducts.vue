@@ -1,17 +1,18 @@
 <template lang="html">
     <section class="ps-my-account ps-page--account">
         <div class="container">
-            <div class="row">
+            <div class="row" v-if="single_user_information">
                 <div class="col-lg-4">
                     <div class="ps-section__left">
-                        <aside class="ps-widget--account-dashboard" v-if="single_user_information">
+                        <aside
+                            class="ps-widget--account-dashboard"
+                            v-if="single_user_information"
+                        >
                             <div class="ps-widget__header">
                                 <figure>
                                     <figcaption>Hello</figcaption>
                                     <p>
-                                        {{
-                                            single_user_information.email
-                                        }}
+                                        {{ single_user_information.email }}
                                     </p>
                                 </figure>
                             </div>
@@ -24,28 +25,46 @@
                 <div class="col-lg-8">
                     <section class="ps-section--account-setting">
                         <div class="ps-section__content">
-                        <div class="ps-product ps-product--wide ps-product--search-result" v-for="order in user_orders.results" :key="order.id">
-                            <div class="ps-product__content">
-                                    <nuxt-link :to="`#`" class="ps-product__title">
-                                            {{ order.payment_method_title }}
+                            <div
+                                class="ps-product ps-product--wide ps-product--search-result"
+                                v-for="order in user_orders.results"
+                                :key="order.id"
+                            >
+                                <div class="ps-product__content">
+                                    <nuxt-link
+                                        :to="`#`"
+                                        class="ps-product__title"
+                                    >
+                                        {{ order.payment_method_title }}
                                     </nuxt-link>
                                     <div class="ps-product__rating">
-                                            <span> Status: {{order.status}} </span>
-                                            <span> On: {{order.created_at}} </span>
+                                        <span>
+                                            Status: {{ order.status }}
+                                        </span>
+                                        <span>
+                                            On: {{ order.created_at }}
+                                        </span>
                                     </div>
-                            
-                                    <p class="ps-product__price sale">
-                                            Cost: {{ currency }}{{ order.product_cost + order.shipping_cost }}
-                                    </p>
-                                    
-                            </div>
-                            <nuxt-link :to="`/store/account/orders/${order.id}`" class="ps-orders__more">
-                                        See Details
-                            </nuxt-link>
-                        </div>
 
-                          <p v-if="user_orders.length < 0">No product here.</p>
-                            
+                                    <p class="ps-product__price sale">
+                                        Cost: {{ currency
+                                        }}{{
+                                            order.product_cost +
+                                                order.shipping_cost
+                                        }}
+                                    </p>
+                                </div>
+                                <nuxt-link
+                                    :to="`/store/account/orders/${order.id}`"
+                                    class="ps-orders__more"
+                                >
+                                    See Details
+                                </nuxt-link>
+                            </div>
+
+                            <p v-if="user_orders.length < 0">
+                                No product here.
+                            </p>
                         </div>
                     </section>
                 </div>
@@ -69,17 +88,16 @@ export default {
                     url: '/store/account/user-information',
                     icon: 'icon-user'
                 },
-                {
-                    text: 'Invoices',
-                    url: '/store/account/invoices',
-                    icon: 'icon-papers'
-                    
-                },
+                // {
+                //     text: 'Invoices',
+                //     url: '/store/account/invoices',
+                //     icon: 'icon-papers'
+
+                // },
                 {
                     text: 'Address',
                     url: '/store/account/addresses',
                     icon: 'icon-map-marker'
-                    
                 },
                 {
                     text: 'My Orders',
@@ -97,41 +115,37 @@ export default {
     },
     computed: {
         ...mapState({
-			user_orders: state => state.product.userOrders,
+            user_orders: state => state.product.userOrders,
             currency: state => state.app.currency,
             single_user_information: state => state.auth.singleUserInformation
         })
-    },
-    created() {
-        const response = this.$store.dispatch('product/getAllUserOrders',true );
-    },
+    }
 };
 </script>
 
 <style lang="scss" scoped>
 .ps-product--search-result {
-	border: 1px solid #f0f0f0;  
-	padding: 20px 20px;
-	margin-bottom: 0px;
-	.ps-product__price {
-		font-size: 18px;
-	}
-	.ps-product__content {
-    padding-left: 0px;
-	}
-	.ps-orders__more {
-		flex-basis: unset;
-		width: 20%;
-		text-transform: uppercase;
-		color: green;
-		transition: all .5s;
-		border-radius: 4px;
-		padding: 10px;
-		font-weight: bold;
-		&:hover {
-			background: lighten($color: green, $amount: 30%);
-		}
-	}
+    border: 1px solid #f0f0f0;
+    padding: 20px 20px;
+    margin-bottom: 0px;
+    .ps-product__price {
+        font-size: 18px;
+    }
+    .ps-product__content {
+        padding-left: 0px;
+    }
+    .ps-orders__more {
+        flex-basis: unset;
+        width: 20%;
+        text-transform: uppercase;
+        color: green;
+        transition: all 0.5s;
+        border-radius: 4px;
+        padding: 10px;
+        font-weight: bold;
+        &:hover {
+            background: lighten($color: green, $amount: 30%);
+        }
+    }
 }
-
 </style>

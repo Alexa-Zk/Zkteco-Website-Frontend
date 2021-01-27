@@ -6,7 +6,8 @@ import Repository, {
 export const state = () => ({
     collections: null,
     categories: null,
-    queries: null
+    queries: null,
+    productCategories: null
 });
 
 export const mutations = {
@@ -19,6 +20,10 @@ export const mutations = {
     },
     setQueries(state, payload) {
         state.queries = payload;
+    },
+
+    setProductCategories(state, payload) {
+        state.productCategories = payload;
     }
 };
 
@@ -58,5 +63,21 @@ export const actions = {
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
+    },
+    async getCollectionById({ commit }, payload) {
+        let params = {
+            order: 'asc',
+            per_page: 10,
+        }
+        const reponse = await Repository.get(
+            `${baseUrl}/integrations/trend-categories-products/?${serializeQuery(params)}&category_id=[15,26]`
+        )
+            .then(response => {
+                commit('setProductCategories', response.data.data);
+                return response.data.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
     }
+    
 };

@@ -7,7 +7,7 @@
                     v-model="firstname"
                     :error-messages="firstnameErrors"
                     @input="$v.firstname.$touch()"
-                    placeholder="First Name"
+                    placeholder="Please enter first name"
                     class="ps-text-field"
                     outlined
                     height="50"
@@ -18,7 +18,7 @@
                     v-model="lastname"
                     :error-messages="lastnameErrors"
                     @input="$v.lastname.$touch()"
-                    placeholder="Last Name"
+                    placeholder="Please enter last name"
                     class="ps-text-field"
                     outlined
                     height="50"
@@ -29,7 +29,7 @@
                     v-model="email"
                     :error-messages="emailErrors"
                     @input="$v.email.$touch()"
-                    placeholder="Email Address"
+                    placeholder="Please enter email address"
                     class="ps-text-field"
                     outlined
                     height="50"
@@ -40,18 +40,7 @@
                     v-model="phone"
                     :error-messages="phoneErrors"
                     @input="$v.phone.$touch()"
-                    placeholder="Phone"
-                    class="ps-text-field"
-                    outlined
-                    height="50"
-                />
-            </div>
-            <div class="form-group">
-                <v-text-field
-                    v-model="username"
-                    :error-messages="usernameErrors"
-                    @input="$v.username.$touch()"
-                    placeholder="Username"
+                    placeholder="Please enter phone"
                     class="ps-text-field"
                     outlined
                     height="50"
@@ -63,7 +52,7 @@
                     type="password"
                     :error-messages="passwordErrors"
                     @input="$v.password.$touch()"
-                    placeholder="Password"
+                    placeholder="Please enter password"
                     class="ps-text-field"
                     outlined
                     height="50"
@@ -115,12 +104,6 @@ export default {
             !this.$v.phone.required && errors.push('This field is required');
             return errors;
         },
-        usernameErrors() {
-            const errors = [];
-            if (!this.$v.username.$dirty) return errors;
-            !this.$v.username.required && errors.push('This field is required');
-            return errors;
-        },
         passwordErrors() {
             const errors = [];
             if (!this.$v.password.$dirty) return errors;
@@ -135,7 +118,6 @@ export default {
             email: null,
             password: null,
             phone: null,
-            username: null
         };
     },
     validations: {
@@ -143,8 +125,7 @@ export default {
         lastname: { required },
         email: { required },
         password: { required },
-        phone: { required},
-        username: { required }
+        phone: { required}
     },
     methods: {
         async handleSubmit() {
@@ -157,7 +138,7 @@ export default {
                         email: this.email,
                         password: this.password,
                         phone: this.phone,
-                        username: this.username
+                        username: this.email
                     };
                     const response = await this.$store.dispatch(
                         'auth/register',

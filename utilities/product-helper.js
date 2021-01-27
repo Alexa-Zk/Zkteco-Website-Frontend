@@ -20,6 +20,34 @@ export function getColletionBySlug(collections, slug) {
     }
 }
 
+export function getColletionById(collections, id) {
+    if (collections.length > 0) {
+        const result = collections.find(item => item.id === id);
+        if (result !== undefined) {
+            return result.product;
+        } else {
+            return [];
+        }
+    } else {
+        return [];
+    }
+}
+
+export function getCollectionName(collections, id) {
+    if (collections.length > 0) {
+        const result = collections.find(item => item.id === id);
+        if (result !== undefined) {
+            return result.category;
+        } else {
+            return "No name";
+        }
+    } else {
+        return 'No name';
+    }
+}
+
+
+
 export function getListOfProductId(products) {
     let queries = [];
     products.forEach(item => {
