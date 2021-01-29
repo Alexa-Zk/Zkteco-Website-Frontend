@@ -9,7 +9,7 @@
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody >
             <tr v-for="(product, index) in cartProducts" :key="product.id">
                 <td data-label="Product">
                     <product-shopping-cart :product="product" />
@@ -18,9 +18,10 @@
                 <td data-label="Quantity">
                     <product-shopping-table :product="product" />
                 </td>
-                <td data-label="Total">
-                    {{currency}} {{
-                        (cartItems[index].quantity * product.price).toFixed(2) | formatMoney
+                <td data-label="Total" v-if="cartItems">
+                    {{currency}}
+                    {{
+                        ( getCartItemIndex(product) * product.price) | formatMoney
                     }}
                 </td>
                 <td data-label="Action">
@@ -56,22 +57,12 @@ export default {
             cartProducts: state => state.product.cartProducts,
             currency: state => state.app.currency
         }),
-        quantity() {
-            if (this.cartItems !== null) {
-                const cartItem = this.cartItems.find(
-                    item => item.id === this.product.id
-                );
-                if (cartItem !== undefined) {
-                    return cartItem.quantity;
-                } else {
-                    return null;
-                }
-            } else {
-                return null;
-            }
-        },
     },
     methods: {
+        getCartItemIndex (product) {
+            const selected = this.cartItems.filter(item => item.id === product.id)
+            return selected[0] ? selected[0].quantity : 0
+        },
         async loadCartProducts() {
             const cookieCart = this.$cookies.get('cart', { parseJSON: true });
             let queries = [];
@@ -79,7 +70,10 @@ export default {
                 queries.push(item.id);
             });
             if (this.cartItems.length > 0) {
-                await this.$store.dispatch('product/getCartProducts', queries);
+                const response = await this.$store.dispatch(
+                    'product/getCartProducts',
+                    queries
+                );
             } else {
                 this.$store.commit('product/setCartProducts', null);
             }
@@ -88,22 +82,8 @@ export default {
             const cartItem = this.cartItems.find(
                 item => item.id === product.id
             );
-            console.log(cartItem)
             this.$store.dispatch('cart/removeProductFromCart', cartItem);
-            // this.loadCartProducts();
-        },
-        handleIncreaseQuantity(payload) {
-            this.$store.dispatch('cart/increaseCartItemQuantity', payload);
             this.loadCartProducts();
-            this.quantity++;
-        },
-
-        handleDescreaseQuantity(payload) {
-            this.$store.dispatch('cart/decreaseCartItemQuantity', payload);
-            this.loadCartProducts();
-            if (this.quantity > 1) {
-                this.quantity--;
-            }
         },
     }
 };

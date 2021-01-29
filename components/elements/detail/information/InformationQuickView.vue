@@ -24,7 +24,7 @@
         <module-product-detail-desc :product="product" />
 
         <div class="ps-product__shopping">
-            <figure>
+            <!-- <figure>
                 <figcaption>Quantity</figcaption>
                 <div class="form-group--number">
                     <button class="up">
@@ -40,7 +40,7 @@
                         value="1"
                     />
                 </div>
-            </figure>
+            </figure> -->
             <a
                 class="ps-btn ps-btn--black"
                 href="#"

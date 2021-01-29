@@ -9,13 +9,7 @@
         >
             -
         </button>
-        <input
-            class="form-control"
-            type="text"
-            placeholder="1"
-            value="1"
-            v-model="quantity"
-        />
+        <input class="form-control" v-model="quantityInput"  type="text" placeholder="1" value="1" />
     </div>
 </template>
 
@@ -31,7 +25,23 @@ export default {
         }
     },
     data() {
-        return {};
+        return {
+            quantityInput: 0
+        };
+    },
+    mounted() {
+        if (this.cartItems !== null) {
+            const cartItem = this.cartItems.find(
+                item => item.id === this.product.id
+            );
+            if (cartItem !== undefined) {
+                this.quantityInput = cartItem.quantity;
+            } else {
+                this.quanquantityInputtity1 = 0;
+            }
+        } else {
+            this.quantityInput = 0;
+        }
     },
     computed: {
         ...mapState({
@@ -45,12 +55,16 @@ export default {
                 const cartItem = this.cartItems.find(
                     item => item.id === this.product.id
                 );
+
                 if (cartItem !== undefined) {
+                    this.quantityInput = cartItem.quantity;
                     return cartItem.quantity;
                 } else {
+                    this.quantityInput = 0;
                     return null;
                 }
             } else {
+                this.quantityInput = 0;
                 return null;
             }
         }
@@ -67,13 +81,6 @@ export default {
             } else {
                 this.$store.commit('product/setCartProducts', null);
             }
-        },
-        handleRemoveProductFromCart(product) {
-            const cartItem = this.cartItems.find(
-                item => item.id === product.id
-            );
-            this.$store.dispatch('cart/removeProductFromCart', cartItem);
-            this.loadCartProducts();
         },
         handleIncreaseQuantity(payload) {
             this.$store.dispatch('cart/increaseCartItemQuantity', payload);

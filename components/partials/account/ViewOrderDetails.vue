@@ -86,11 +86,6 @@ export default {
                     icon: 'icon-user'
                 },
                 {
-                    text: 'Invoices',
-                    url: '/store/account/invoices',
-                    icon: 'icon-papers'
-                },
-                {
                     text: 'Address',
                     url: '/store/account/addresses',
                     icon: 'icon-map-marker'

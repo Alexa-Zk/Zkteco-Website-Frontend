@@ -91,7 +91,7 @@ export default {
         url('/img/website/zkteco.staff.jpeg');
     height: 361px;
     background-position: center;
-    background-size: inherit;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;

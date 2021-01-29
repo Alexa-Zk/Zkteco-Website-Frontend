@@ -31,7 +31,7 @@
                         <i class="icon-eye"></i>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a
                         href="#"
                         data-toggle="tooltip"
@@ -41,7 +41,7 @@
                     >
                         <i class="icon-heart"></i>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div class="ps-product__container">

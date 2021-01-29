@@ -56,8 +56,13 @@ export default {
                 this.$store.commit('product/setProducts', products[0].product);
                 this.$store.commit('product/setTotalProducts', products[0].product.length);
                 this.$store.commit('product/setTotal', products[0].product.length);
-            } else {                
-                const allProducts = await this.$store.dispatch('product/getProducts');
+            } else {              
+                let params = {
+                    page: 1,
+                    per_page: 12,
+                    order: 'asc'
+                };  
+                const allProducts = await this.$store.dispatch('product/getProducts', params );
                 this.$store.commit('product/setProducts', allProducts);
                 await this.$store.dispatch('product/getTotalRecords');
             }

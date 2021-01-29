@@ -8,13 +8,13 @@
                 </span>
             </a>
         </nuxt-link> -->
-        <nuxt-link to="/store/account/wishlist">
+        <!-- <nuxt-link to="/store/account/wishlist">
             <a class="header__extra">
                 <i class="icon-heart"></i>
                 <span>
                     <i>{{ wishlistTotal ? wishlistTotal : 0 }}</i>
                 </span>
-            </a>
+            </a> -->
         </nuxt-link>
         <mini-cart />
         <header-user-area />
