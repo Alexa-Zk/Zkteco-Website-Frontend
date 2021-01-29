@@ -46,7 +46,7 @@
                             <div class="ps-block__content">
                                 <ul class="ps-block__product">
                                     <li
-                                        v-for="(product, index) in cartProducts"
+                                        v-for="(product, index) in cartProducts "
                                     >
                                         <span class="ps-block__estimate">
                                             <nuxt-link
@@ -56,7 +56,7 @@
                                                 {{ product.name }}
                                                 <br />
                                                 x
-                                                {{ cartItems[index].quantity }}
+                                                {{ getCartItemIndex(product) *  product.price }}
                                             </nuxt-link>
                                         </span>
                                     </li>
@@ -81,12 +81,11 @@
 
 <script>
 import { mapState } from 'vuex';
-import ProductShoppingCart from '~/components/elements/product/ProductShoppingCart';
 import TableShoppingCart from '~/components/partials/account/modules/TableShoppingCart';
 
 export default {
     name: 'ShoppingCart',
-    components: { TableShoppingCart, ProductShoppingCart },
+    components: { TableShoppingCart },
     computed: {
         ...mapState({
             cartItems: state => state.cart.cartItems,
@@ -95,6 +94,12 @@ export default {
             cartProducts: state => state.product.cartProducts,
             currency: state => state.app.currency
         })
+    },
+    methods: {
+        getCartItemIndex (product) {
+            const selected = this.cartItems.filter(item => item.id === product.id)
+            return selected[0] ? selected[0].quantity : 0
+        }
     }
 };
 </script>

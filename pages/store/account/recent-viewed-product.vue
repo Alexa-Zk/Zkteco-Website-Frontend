@@ -30,6 +30,7 @@ export default {
     },
     created () {
         const user = this.$store.dispatch("auth/getUserInformation")
+        const response = this.$store.dispatch('product/getAllUserOrders', true);
     }
 };
 </script>

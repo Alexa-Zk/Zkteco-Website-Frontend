@@ -113,6 +113,7 @@ export const actions = {
     },
 
     increaseCartItemQuantity({ commit, state }, payload) {
+
         commit('increaseItemQuantity', payload);
         const cookieParams = {
             total: state.total,
@@ -156,4 +157,26 @@ export const actions = {
             maxAge: 60 * 60 * 24 * 7
         });
     }
+};
+
+export const getters = {
+    getCartQuantity: state => {
+        if (this.state.cartItems !== null) {
+            const cartItem = this.cartItems.find(
+                item => item.id === this.product.id
+            );
+
+            if (cartItem !== undefined) {
+                this.quantity1 = cartItem.quantity;
+                return cartItem.quantity;
+            } else {
+                this.quantity1 = 0;
+                return null;
+            }
+        } else {
+            this.quantity1 = 0;
+            return null;
+        }
+        return state.cartItems;
+    },
 };

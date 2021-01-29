@@ -1,6 +1,6 @@
 <template lang="html">
     <div>
-        <h1>{{ product.title }}</h1>
+        <h1>{{ product.name }}</h1>
         <div class="ps-product__meta">
             <p>
                 Categories:
