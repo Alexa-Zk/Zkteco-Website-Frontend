@@ -40,7 +40,7 @@ export default {
                 this.$store.commit('product/setTotalProducts', products[0].product.length);
                 this.$store.commit('product/setTotal', products[0].product.length);
                 await this.$router.push(url);
-            } else {                
+            } else {               
                 const allProducts = await this.$store.dispatch('product/getProducts');
                 this.$store.commit('product/setProducts', allProducts);
                 await this.$store.dispatch('product/getTotalRecords');

@@ -9,6 +9,9 @@
         <nuxt-link v-if="!isLoggedIn" to="/store/account/login" class="header__extra">
             <i class="icon-user"></i>
         </nuxt-link>
+        <nuxt-link v-if="isLoggedIn" to="/store/account/user-information" class="header__extra">
+            <i class="icon-user"></i>
+        </nuxt-link>
     </div>
 </template>
 

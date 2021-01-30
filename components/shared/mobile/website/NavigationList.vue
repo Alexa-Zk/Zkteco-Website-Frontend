@@ -11,7 +11,7 @@
             </a>
             <a
                 class="navigation__item"
-                @click.prevent="handleOpenDrawer('categories')"
+                @click.prevent="handleOpenDrawer('products')"
             >
                 <i class="icon-list4"></i>
                 <span> Products</span>

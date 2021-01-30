@@ -1,13 +1,21 @@
 <template lang="html">
     <div class="navigation--list">
         <div class="navigation__content">
+            <!-- <a
+                class="navigation__item"
+                href="/"
+                
+            >
+                <i class="icon-link2"></i>
+                <span> Website</span>
+            </a> -->
             <a
                 class="navigation__item"
-                href="/website"
+                @click.prevent="handleOpenDrawer('menu-store')"
                 
             >
                 <i class="icon-menu"></i>
-                <span> Website</span>
+                <span> Menu</span>
             </a>
             <a
                 class="navigation__item"

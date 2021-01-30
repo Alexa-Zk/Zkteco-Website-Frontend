@@ -44,18 +44,13 @@ export default {
             currencyItems: [
                 {
                     id: 1,
-                    code: '$',
-                    name: 'US Dollar'
+                    code: '₦',
+                    name: 'NGN Naira'
                 },
                 {
                     id: 2,
-                    code: '€',
-                    name: 'Euro'
-                },
-                {
-                    id: 3,
-                    code: '£',
-                    name: 'GBP'
+                    code: '$',
+                    name: 'US Dollar'
                 }
             ]
         };

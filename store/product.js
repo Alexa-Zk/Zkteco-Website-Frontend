@@ -28,6 +28,10 @@ export const mutations = {
         state.products = payload;
     },
 
+    clearState(state, payload) {
+        state.cartProducts = null
+    },
+
     setCartProducts(state, payload) {
         state.cartProducts = payload;
     },
@@ -91,6 +95,10 @@ export const actions = {
     },
     async getTotalRecords({ commit, state }, payload) {
         commit('setTotal', state.products.length);
+    },
+
+    async clearAllCartState({ commit, state }, payload) {
+        commit('clearState', payload);
     },
 
     async getProductsById({ commit }, payload) {

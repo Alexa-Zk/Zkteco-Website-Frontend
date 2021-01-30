@@ -1,7 +1,7 @@
 <template lang="html">
     <v-navigation-drawer v-model="drawer" width="100%" absolute temporary>
-        <panel-shopping-cart v-if="currentDrawerContent === 'cart'" />
-        <panel-categories v-if="currentDrawerContent === 'categories'" />
+        <panel-shopping-cart v-if="currentDrawerContent === 'store'" />
+        <panel-categories v-if="currentDrawerContent === 'products'" />
         <panel-menu v-if="currentDrawerContent === 'menu'" />
         <panel-search v-if="currentDrawerContent === 'search'" />
     </v-navigation-drawer>

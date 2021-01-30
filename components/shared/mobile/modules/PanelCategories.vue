@@ -12,8 +12,13 @@
         </div>
         <div class="navigation__content">
             <ul class="menu--mobile">
+                <li>
+                    <a href="#" @click.prevent="handleGotoCategory(null)">
+                        All Categories
+                    </a>
+                </li>
                 <li v-for="category in categories">
-                    <nuxt-link to="/shop">{{ category.name }}</nuxt-link>
+                    <a @click.prevent="handleGotoCategory(category.id)" href="#">{{ category.name }}</a>
                 </li>
             </ul>
         </div>
@@ -30,7 +35,29 @@ export default {
         handleClosePanel() {
             this.$store.commit('app/setCurrentDrawerContent', null);
             this.$store.commit('app/setAppDrawer', false);
-        }
+        },
+        async handleGotoCategory(id) {
+            if (id) {
+                const url = `/store/shop`;
+                const products = await this.$store.dispatch("product/getProductByCategoriesId", id)
+                this.$store.commit('product/setProducts', products[0].product);
+                this.$store.commit('product/setProducts', products[0].product);
+                this.$store.commit('product/setTotalProducts', products[0].product.length);
+                this.$store.commit('product/setTotal', products[0].product.length);
+                await this.$router.push(url);
+                this.handleClosePanel()
+            } else {      
+                let params = {
+                    page: 1,
+                    per_page: 12,
+                    order: 'asc'
+                };     
+                const allProducts = await this.$store.dispatch('product/getProducts', params);
+                this.$store.commit('product/setProducts', allProducts);
+                await this.$store.dispatch('product/getTotalRecords');
+                this.handleClosePanel()
+            }
+        },
     },
     computed: {
         ...mapState({

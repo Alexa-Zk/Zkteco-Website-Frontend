@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import { mainMenu } from '~/static/data/menu.json';
+import { mainMenuStore } from '~/static/data/menu.json';
 import MobileSubmenu from '~/components/shared/mobile/modules/MobileSubmenu';
 import MobileCurrencySwitcher from '~/components/shared/mobile/modules/MobileCurrencySwitcher';
 import MobileLangugeSwitcher from '~/components/shared/mobile/modules/MobileLangugeSwitcher';
@@ -97,12 +97,11 @@ export default {
     },
     computed: {
         menu() {
-            return mainMenu;
+            return mainMenuStore;
         }
     },
     methods: {
         handleClosePanel() {
-            console.log('test');
             this.$store.commit('app/setCurrentDrawerContent', null);
             this.$store.commit('app/setAppDrawer', false);
         }

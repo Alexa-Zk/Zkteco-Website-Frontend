@@ -1,12 +1,12 @@
 <template lang="html">
     <div class="ps-product">
-        <div class="ps-product__thumbnail" >
-            <nuxt-link :to="`/store/product/${product.id}`">
+        <div class="ps-product__thumbnail">
+            <a @click="handleAddToCart(product)" href="">
                 <img
-                    :src="product.images[0] ? product.images[0].src : '' "
+                    :src="product.images[0] ? product.images[0].src : ''"
                     alt="martfury"
                 />
-            </nuxt-link>
+            </a>
             <div v-if="isSale === true" class="ps-product__badge">sale</div>
             <ul class="ps-product__actions">
                 <li>
@@ -15,7 +15,7 @@
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Add to cart"
-                        @click.prevent="handleAddToCart"
+                        @click.prevent="handleAddToCart()"
                     >
                         <i class="icon-bag2"></i>
                     </a>
@@ -49,29 +49,29 @@
                 {{ product.categories[0].name }}
             </nuxt-link>
             <div class="ps-product__content">
-                <nuxt-link
-                    :to="`/store/product/${product.id}`"
+                <a
+                    @click="handleAddToCart(product)"
+                    href=""
                     class="ps-product__title"
                 >
                     {{ product.name }}
-                </nuxt-link>
+                </a>
                 <div class="ps-product__rating">
                     <rating />
                     <span>{{ product.average_rating }}</span>
                 </div>
-                <p
-                    class="ps-product__price"
-                >
+                <p class="ps-product__price">
                     {{ currency }}{{ product.price | formatMoney }}
-                    
                 </p>
             </div>
             <div class="ps-product__content hover">
-                <nuxt-link :to="`/store/product/${product.id}`">
+                <a @click="handleAddToCart(product)" href="">
                     <a class="ps-product__title">{{ product.name }}</a>
-                </nuxt-link>
-                
-                <p  class="ps-product__price sale"> {{currency}} {{ product.price | formatMoney }}</p>
+                </a>
+
+                <p class="ps-product__price sale">
+                    {{ currency }} {{ product.price | formatMoney }}
+                </p>
             </div>
         </div>
         <v-dialog v-model="quickviewDialog" width="1200">
@@ -127,7 +127,7 @@ export default {
         quickviewDialog: false
     }),
     methods: {
-        handleAddToCart() {
+        handleAddToCart(argument) {
             let item = {
                 id: this.product.id,
                 quantity: 1,
@@ -135,12 +135,16 @@ export default {
             };
             this.$store.dispatch('cart/addProductToCart', item);
             this.getCartProduct(this.cartItems);
-            
-            this.$notify({
-                group: 'addCartSuccess',
-                title: 'Success!',
-                text: `${this.product.name} has been added to your cart!`
-            });
+
+            if (argument) {
+                this.$router.push(`/store/product/${argument.id}`);
+            } else {
+                this.$notify({
+                    group: 'addCartSuccess',
+                    title: 'Success!',
+                    text: `${this.product.name} has been added to your cart!`
+                });
+            }
         },
 
         handleAddItemToWishlist() {
@@ -185,12 +189,19 @@ export default {
 };
 </script>
 
-
 <style lang="scss" scoped>
-.ps-product  {
+.ps-product {
     .ps-product__thumbnail {
         height: 165px;
         width: 165px;
+        @include media('<sm') {
+            height: 100%;
+            width: 100%;
+        }
+        @include media('<xs') {
+            height: 100%;
+            width: 100%;
+        }
     }
 }
 </style>

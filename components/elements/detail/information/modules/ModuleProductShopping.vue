@@ -1,6 +1,6 @@
 <template lang="html">
     <div class="ps-product__shopping">
-        <!-- <figure>
+        <figure>
             <figcaption>Quantity</figcaption>
             <div class="form-group--number">
                 <button class="up" @click.prevent="handleIncreaseQuantity(product.id)">
@@ -16,7 +16,7 @@
                     disabled
                 />
             </div>
-        </figure> -->
+        </figure>
         <a
             class="ps-btn ps-btn--black"
             href="#"
@@ -55,21 +55,19 @@ export default {
         };
     },
     methods: {
-        // handleIncreaseQuantity(payload) {
-        //     this.handleAddToCart()
-        //     this.$store.dispatch('cart/increaseCartItemQuantity', payload);
-        //     this.loadCartProducts();
-        //     this.quantity++;
-        // },
+        handleIncreaseQuantity(payload) {
+            this.$store.dispatch('cart/increaseCartItemQuantity', payload);
+            this.loadCartProducts();
+            this.quantity++;
+        },
 
-        // handleDescreaseQuantity(payload) {
-        //     this.handleAddToCart()
-        //     this.$store.dispatch('cart/decreaseCartItemQuantity', payload);
-        //     this.loadCartProducts();
-        //     if (this.quantity > 1) {
-        //         this.quantity--;
-        //     }
-        // },
+        handleDescreaseQuantity(payload) {
+            this.$store.dispatch('cart/decreaseCartItemQuantity', payload);
+            this.loadCartProducts();
+            if (this.quantity > 1) {
+                this.quantity--;
+            }
+        },
 
         handleAddToCart(isBuyNow) {
             const cartItemsOnCookie = this.$cookies.get('cart', {
@@ -87,16 +85,6 @@ export default {
                 price: this.product.price
             };
             if (existItem !== undefined) {
-                if (this.quantity + existItem.quantity > 10) {
-                    this.$notify({
-                        group: 'addCartSuccess',
-                        title: 'Waring!',
-                        text: `Can't add more than 10 items`
-                    });
-                } else {
-                    this.addItemToCart(item);
-                }
-            } else {
                 this.addItemToCart(item);
             }
         },
@@ -122,8 +110,8 @@ export default {
             );
         },
 
-        addItemToCart(payload) {
-            this.$store.dispatch('cart/addProductToCart', payload);
+        async addItemToCart(payload) {
+            await this.$store.dispatch('cart/addProductToCart', payload);
             this.getCartProduct(this.cartItems);
             this.$notify({
                 group: 'addCartSuccess',

@@ -15,7 +15,7 @@
                                     class="swiper-slide"
                                     v-for="image in product.images"
                                 >
-                                    <img :src="image.src" />
+                                    <img style="width:100%;" :src="image.src" />
                                 </div>
                             </div>
                             <div class="swiper-nav">

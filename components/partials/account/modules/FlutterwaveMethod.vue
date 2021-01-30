@@ -95,11 +95,19 @@ export default {
                             title: 'Success!',
                             text: `Order Created`
                         });
-                        const response = await this.$store.dispatch(
+                        const ClearCartCookies = await this.$store.dispatch(
                             'app/removeCookie',
                             payload
                         );
-                        this.$router.push('/store/shop');
+                        const clearCart = await this.$store.dispatch(
+                            'cart/clearAllCartState',
+                            payload
+                        );
+                        const clearCartProduct = await this.$store.dispatch(
+                            'product/clearAllCartState',
+                            payload
+                        );
+                        // this.$router.push('/store/shop');
                     } else {
                         return;
                     }
@@ -113,7 +121,6 @@ export default {
             }
         },
         closedPaymentModal() {
-            console.log('payment is closed');
             this.$router.push('/store/shop');
         },
         generateReference() {
@@ -159,6 +166,18 @@ export default {
                     });
                     const response = await this.$store.dispatch(
                         'app/removeCookie',
+                        payload
+                    );
+                    const ClearCartCookies = await this.$store.dispatch(
+                        'app/removeCookie',
+                        payload
+                    );
+                    const clearCart = await this.$store.dispatch(
+                        'cart/clearAllCartState',
+                        payload
+                    );
+                    const clearCartProduct = await this.$store.dispatch(
+                        'product/clearAllCartState',
                         payload
                     );
                     this.$router.push('/store/shop');
