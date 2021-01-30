@@ -1,4 +1,63 @@
 {
+    "mainMenuStore": [
+        {
+            "text": "Website",
+            "url": "/",
+            "extraClass": "menu-item-has-children has-mega-menu"
+        },
+        {
+            "text": "Product",
+            "url": "/store/shop",
+            "extraClass": "menu-item-has-children has-mega-menu"
+        },
+        {
+            "text": "Quick Link",
+            "url": "",
+            "extraClass": "menu-item-has-children has-mega-menu",
+            "subClass": "sub-menu",
+            "mega": "true",
+            "megaContent": [
+                {
+                    "heading": "Basic Page",
+                    "megaItems": [
+                        {
+                            "text": "About Us",
+                            "url": "/store/page/about-us"
+                        },
+                        {
+                            "text": "Contact",
+                            "url": "/store/page/contact-us"
+                        },
+                        {
+                            "text": "Faqs",
+                            "url": "/store/page/faqs"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Vendor Pages",
+                    "megaItems": [
+                        {
+                            "text": "Become a Vendor",
+                            "url": "/vendor/become-a-vendor"
+                        },
+                        {
+                            "text": "Vendor Store",
+                            "url": "/vendor/vendor-store"
+                        },
+                        {
+                            "text": "Store List",
+                            "url": "/vendor/store-list"
+                        },
+                        {
+                            "text": "Store List 2",
+                            "url": "/vendor/store-list-2"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
     "mainMenu": [
         {
             "text": "Home",

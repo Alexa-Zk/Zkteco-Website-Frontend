@@ -22,6 +22,13 @@ export const mutations = {
         state.loading = payload;
     },
 
+    clearState(state, payload) {
+        state.total = 0;
+        state.amount = 0;
+        state.cartItems = [];
+        state.quantity = 0
+    },
+
     setQuantity(state, payload) {
         let existItem = state.cartItems.find(item => item.id == payload);
         state.quantity = existItem ? existItem.quantity : 0;
@@ -97,6 +104,10 @@ export const actions = {
 
     },
 
+    clearAllCartState({ commit, state }, payload) {
+        commit('clearState', payload);
+    },
+
     removeProductFromCart({ commit, state }, payload) {
         commit('removeItem', payload);
         
@@ -162,21 +173,18 @@ export const actions = {
 export const getters = {
     getCartQuantity: state => {
         if (this.state.cartItems !== null) {
-            const cartItem = this.cartItems.find(
+            const cartItem = this.state.cartItems.find(
                 item => item.id === this.product.id
             );
 
             if (cartItem !== undefined) {
-                this.quantity1 = cartItem.quantity;
                 return cartItem.quantity;
             } else {
-                this.quantity1 = 0;
                 return null;
             }
         } else {
-            this.quantity1 = 0;
             return null;
         }
-        return state.cartItems;
+        return this.state.cartItems;
     },
 };
