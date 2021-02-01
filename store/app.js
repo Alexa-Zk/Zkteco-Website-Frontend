@@ -1,7 +1,8 @@
 export const state = () => ({
     appDrawer: false,
     currentDrawerContent: null,
-    currency: '₦'
+    currency: '₦',
+    preloader: false
 });
 
 export const mutations = {
@@ -15,6 +16,10 @@ export const mutations = {
 
     setCurrency(state, payload) {
         state.currency = payload;
+    },
+
+    setPreloader(state, payload) {
+        state.preloader = payload;
     }
 };
 
@@ -43,5 +48,5 @@ export const actions = {
             path: '/store',
             maxAge: 60 * 60 * 24 * 7
         });
-    }
+    },
 };

@@ -41,7 +41,8 @@ export default {
         { src: '~/plugins/flutterwave.js', ssr: false },
         { src: '~/plugins/vue-instantsearch.js', ssr: false },
         { src: '~/plugins/filters.js', ssr: false },
-        { src: '~/plugins/routes.js', ssr: false }
+        { src: '~/plugins/routes.js', ssr: false },
+        { src: '~/plugins/before-each.js', ssr: false }
     ],
 
     buildModules: [
