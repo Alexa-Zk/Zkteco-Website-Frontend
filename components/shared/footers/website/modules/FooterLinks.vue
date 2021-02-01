@@ -19,7 +19,7 @@
                                     v-on="on"
                                     class="mx-2"
                                 >
-                                    <a href="2348175555512"><Call /></a>
+                                    <a href="tel:2348175555512"><Call /></a>
                                 </span>
                             </template>
                             <span>Call Us</span>
@@ -33,7 +33,7 @@
                                     class="mx-2"
                                 >
                                     <a
-                                        href=" https://api.whatsapp.com/send?phone=2348175555514&text=&source=&data=&app_absent="
+                                        href="https://wa.me/2348175555514?text=I%20am%20interested%20in%20your%20product%20for%20sale"
                                     >
                                         <User
                                     /></a>

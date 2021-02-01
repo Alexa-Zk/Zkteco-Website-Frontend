@@ -1,0 +1,23 @@
+query Categories($id: ID!) {
+    categories(where: { id: $id }) {
+        id
+        name
+        articles {
+            id
+            title
+            slug
+            body
+            created_at
+            updated_at
+            categories {
+                name
+                id
+            }
+            image {
+                url
+                name
+                formats
+            }
+        }
+    }
+}

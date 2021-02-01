@@ -4,7 +4,7 @@
         <div class="row">
             <div
                 v-for="post in ourArticles"
-                class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12"
+                class="col-ps col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12"
                 :key="post.id"
             >
                 <post-grid :post="post" />
@@ -14,38 +14,57 @@
 </template>
 
 <script>
-import { relatedPosts } from '~/static/data/posts';
 import PostGrid from '../../elements/post/PostGrid';
 
 // Queries
-import articles from '~/apollo/queries/articles/homePageArticles';
+import relatedArticles from '~/apollo/queries/articles/relatedArticles';
 
 export default {
     name: 'RelatedPosts',
     components: { PostGrid },
     data() {
         return {
-            posts: relatedPosts,
-            articles: ''
+            articles: '',
+            categories: ''
         };
     },
     apollo: {
-        articles: {
+        categories: {
             prefetch: true,
-            query: articles,
+            query: relatedArticles,
+            variables() {
+                return { id: this.id };
+            }
+        }
+    },
+    props: {
+        id: {
+            type: Number
         }
     },
     computed: {
         ourArticles() {
-            return this.articles ? this.articles.slice(0, 3) : [];
+            return this.categories[0]
+                ? this.categories[0].articles.slice(0, 3)
+                : [];
         }
     }
 };
 </script>
 
-<style scoped>
-.ps-related-post {
+<style lang="scss" scoped>
+.ps-related-posts {
     padding-top: 60px;
     padding-bottom: 60px;
+    .row {
+        .col-ps {
+            @include media('<sm') {
+                margin-bottom: 40px!important;
+            }
+            @include media('<xs') {
+                margin-bottom: 40px;
+            }
+        }
+    }
 }
 </style>

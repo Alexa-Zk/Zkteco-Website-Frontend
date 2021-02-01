@@ -2,7 +2,7 @@
     <div>
         <post-detail-has-background :articles="formattedArticle" />
         <div class="container">
-            <related-posts />
+            <related-posts :id="categoriesId" />
             <!-- <post-comments /> -->
         </div>
     </div>
@@ -16,6 +16,7 @@ import RelatedPosts from '~/components/partials/post/RelatedPosts';
 
 // Queries
 import singleArticles from '~/apollo/queries/articles/singleArticles';
+import relatedArticles from '~/apollo/queries/articles/relatedArticles';
 
 export default {
     name: 'default',
@@ -52,6 +53,9 @@ export default {
     computed: {
         formattedArticle () {
             return this.articles[0]
+        },
+        categoriesId() {
+            return Number(this.articles[0] ? this.articles[0].categories[0].id : 1)
         }
     },
 };
