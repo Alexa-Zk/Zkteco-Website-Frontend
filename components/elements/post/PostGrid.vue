@@ -55,6 +55,7 @@ export default {
             object-fit: cover;
         }
     }
+    
     .ps-post__content {
         p {
             position: absolute;

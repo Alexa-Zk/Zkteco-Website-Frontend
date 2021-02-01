@@ -6,14 +6,14 @@
     >
         <div class="ps-blog__left">
             <PostSmallThumbnail
-                v-for="post in articles"
+                v-for="post in filteredList"
                 :post="post"
                 :key="post.id"
             />
             <!-- <Pagination /> -->
         </div>
         <div class="ps-blog__right">
-            <Sidebar />
+            <Sidebar @searchBlogs="filterBlogs" />
         </div>
     </div>
 </template>
@@ -34,7 +34,8 @@ export default {
     data() {
         return {
             blogPosts: posts,
-            articles: ''
+            articles: '',
+            searchQuery: ''
         };
     },
     props: {
@@ -47,13 +48,25 @@ export default {
         articles: {
             prefetch: true,
             query: articles
-        },
+        }
+    },
+    methods: {
+        filterBlogs(value) {
+            this.searchQuery = value;
+        }
     },
     computed: {
         ourArticles() {
             return this.articles ? this.articles : [];
+        },
+        filteredList() {
+            return this.ourArticles.filter(res => {
+                return res.title
+                    .toLowerCase()
+                    .includes(this.searchQuery.toLowerCase());
+            });
         }
-    },
+    }
 };
 </script>
 

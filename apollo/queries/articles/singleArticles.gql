@@ -13,6 +13,7 @@ query Articles($id: ID!) {
         }
         categories {
             name
+            id
         }
     }
 }

@@ -10,6 +10,7 @@
                     class="form-control"
                     type="text"
                     placeholder="Search..."
+                    v-model="searchQuery"
                 />
                 <button>
                     <i class="icon-magnifier"></i>
@@ -50,6 +51,7 @@ export default {
     data() {
         return {
             categories: '',
+            searchQuery: ''
         };
     },
     apollo: {
@@ -63,6 +65,11 @@ export default {
             return this.categories;
         },
     },
+    watch: {
+        searchQuery: function (newQuestion, oldQuestion) {
+            this.$emit('searchBlogs', newQuestion)
+        }
+    }
 };
 </script>
 

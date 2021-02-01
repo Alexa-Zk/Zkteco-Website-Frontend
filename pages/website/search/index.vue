@@ -6,46 +6,6 @@
                 <div class="ps-layout__right">
                     <search-result />
                     <div class="search-container" id="search-container">
-										<!-- <ais-instant-search
-											:search-client="searchClient"
-											index-name="dev_zkteco"
-										>
-											<div class="search-panel">
-												<div class="search-panel__results">
-													<ais-search-box
-														placeholder="Search here…"
-														class="searchbox"
-														v-model="search"
-													/>
-													<ais-hits>
-														<template slot="item" slot-scope="{ item }">
-															<g-link :to="`/product/${item.slug}`" style="display: flex;">
-																<div v-if="item.images" class="template-image">
-																	
-																</div>
-
-																<div class="template-text">
-																	<h1>
-																		<ais-highlight :hit="item" attribute="name" />
-																	</h1>
-																	<p v-html="item.description">
-																		<ais-highlight
-																			:hit="item"
-																			attribute="description"
-																		/>
-																	</p>
-																	<div>
-																		<ais-highlight :hit="item" attribute="created_at" />
-																	</div>
-																</div>
-															</g-link>
-														</template>
-													</ais-hits>
-
-													<div class="pagination"><ais-pagination /></div>
-												</div>
-											</div>
-										</ais-instant-search> -->
 									</div>
                 </div>
             </div>
@@ -54,8 +14,6 @@
 </template>
 
 <script>
-// import algoliasearch from 'algoliasearch/lite';
-// import 'instantsearch.css/themes/algolia-min.css';
 
 import { mapState } from 'vuex';
 import BreadCrumb from '~/components/elements/BreadCrumb';
@@ -73,10 +31,7 @@ export default {
     data() {
         return {
             keyword: '',
-            searchClient: algoliasearch(
-                'PU7YBKHAE1',
-                'faec1fbb3f516cc1c73d800b79f3c779'
-            )
+            
         };
     },
     computed: {

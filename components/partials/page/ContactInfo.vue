@@ -37,7 +37,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 ">
+                    <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 ">
                         <div class="ps-block--contact-info">
                             <h4>Customer Service</h4>
                             <p>
@@ -63,7 +63,7 @@
                                 <span>(801) 947-3100</span>
                             </p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

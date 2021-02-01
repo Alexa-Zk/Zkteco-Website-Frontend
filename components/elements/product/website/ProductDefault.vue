@@ -104,7 +104,9 @@ export default {
         quickviewDialog: false
     }),
     methods: {
-       
+       handleAddToCart () {
+           this.$router.push('/store/shop')
+       }
     }
 };
 </script>

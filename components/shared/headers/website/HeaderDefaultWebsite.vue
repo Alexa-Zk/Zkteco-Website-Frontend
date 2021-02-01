@@ -59,7 +59,7 @@ export default {
     methods: {
         submitQuery () {
             if (this.searchText !== null || this.searchText !== '') {
-                this.$router.push(`website/search?keyword=${this.searchText}`);
+                this.$router.push(`/website/search?keyword=${this.searchText}`);
             }
         }
     }
