@@ -1,11 +1,6 @@
 <template lang="html">
     <main id="homepage-1">
-        <loading
-            :active.sync="preloader"
-            :can-cancel="true"
-            :on-cancel="onCancel"
-            :is-full-page="fullPage"
-        ></loading>
+        
         <!-- <home-banner /> -->
         <home-banner :homeSlider="adSliders" />
         <site-feautures-fullwidth />
@@ -18,12 +13,6 @@
     </main>
 </template>
 <script>
-// Import component
-import Loading from 'vue-loading-overlay';
-// Import stylesheet
-import 'vue-loading-overlay/dist/vue-loading.css';
-
-import { mapState } from 'vuex';
 import HomeBanner from '~/components/partials/homepage/website/default/HomeBanner';
 import HomeBrand from '~/components/partials/shop/sections/website/ShopBrands';
 import Newsletters from '~/components/partials/commons/website/Newsletters';
@@ -38,7 +27,7 @@ export default {
         return {
             homePages: '',
             articles: '',
-            fullPage: true
+            fullPage: true,
         };
     },
     apollo: {
@@ -48,7 +37,6 @@ export default {
         }
     },
     components: {
-        Loading,
         HomeBanner,
         HomeBrand,
         SiteFeauturesFullwidth,
@@ -61,9 +49,6 @@ export default {
     layout: 'layout-default-website',
 
     computed: {
-        ...mapState({
-            preloader: state => state.app.preloader
-        }),
         adSliders() {
             return this.homePages ? this.homePages[0].sliders : [];
         },
@@ -71,10 +56,5 @@ export default {
             return this.homePages ? this.homePages[0].partners.slice(0, 8) : [];
         }
     },
-     methods: {
-        onCancel() {
-            console.log('User cancelled the loader.')
-        }
-    }
 };
 </script>

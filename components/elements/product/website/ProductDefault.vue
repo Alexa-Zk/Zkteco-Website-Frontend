@@ -8,7 +8,7 @@
                 />
             </nuxt-link>
             <ul class="ps-product__actions">
-                <li>
+                <!-- <li>
                     <a
                         to="#"
                         data-toggle="tooltip"
@@ -18,7 +18,7 @@
                     >
                         <i class="icon-bag2"></i>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a
                         to="#"

@@ -2,7 +2,8 @@ export const state = () => ({
     appDrawer: false,
     currentDrawerContent: null,
     currency: '₦',
-    preloader: false
+    preloader: false,
+    preloaderStore: false
 });
 
 export const mutations = {
@@ -20,6 +21,10 @@ export const mutations = {
 
     setPreloader(state, payload) {
         state.preloader = payload;
+    },
+
+    setPreloaderStore(state, payload) {
+        state.preloaderStore = payload;
     }
 };
 

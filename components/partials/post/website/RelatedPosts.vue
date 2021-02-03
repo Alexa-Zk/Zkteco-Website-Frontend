@@ -2,13 +2,13 @@
     <div class="ps-related-posts">
         <h3>News Center</h3>
         <div class="row">
-            <!-- <div
+            <div
                 v-for="post in ourArticles"
                 class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12"
                 :key="post.id"
             >
                 <post-grid :post="post" />
-            </div> -->
+            </div>
         </div>
     </div>
 </template>
@@ -17,8 +17,8 @@
 import { newsPostsWebsite } from '~/static/data/posts';
 import PostGrid from '~/components/elements/post/website/PostGrid';
 
-// Queries
-import CategoriesArticles from '~/apollo/queries/articles/categoriesArticles';
+// Queriest
+import Articles from '~/apollo/queries/articles/homePageArticles';
 
 
 export default {
@@ -27,24 +27,20 @@ export default {
     data() {
         return {
             posts: newsPostsWebsite,
-            categories: ''
+            articles: ''
         };
     },
     apollo: {
-        categories: {
-            query: CategoriesArticles,
-            variables() {
-                return { id: this.id };
-            },
+        articles: {
+            query: Articles,
+            prefetch: true,
             loadingKey: 'loading'
         }
     },
-    props: {
-        id: {
-            type: Number
-        }
-    },
     computed: {
+        ourArticles() {
+            return this.articles.slice(0, 4)
+        }
     }
 };
 </script>

@@ -192,8 +192,8 @@ export default {
 <style lang="scss" scoped>
 .ps-product {
     .ps-product__thumbnail {
-        height: 165px;
-        width: 165px;
+        height: 100%;
+        width: 100%;
         @include media('<sm') {
             height: 100%;
             width: 100%;

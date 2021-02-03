@@ -9,7 +9,7 @@
                     :to="`/website/post/${post.id}`"
                     :key="post.id"
                 >
-                    {{ post.title }}
+                    <span>&#8226;</span> {{ post.title }}
                 </nuxt-link>
             </template>
             <p v-else>No post.</p>
