@@ -4,7 +4,7 @@ import axios from 'axios';
 const token = Cookies.get('id_token');
 const baseHost = "https://wslbackend.zkteco-wa.com/api/v1"
 
-console.log(token)
+
 export const customHeaders = {
     'Content-Type': 'application/json',
     Accept: 'application/json',

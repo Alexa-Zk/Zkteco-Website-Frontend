@@ -93,6 +93,7 @@ export default {
         .ps-btn {
             width: 100%;
             text-align: center;
+            color: white;
         }
     }
 }

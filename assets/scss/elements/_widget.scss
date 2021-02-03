@@ -250,6 +250,9 @@
     .widget_content {
         h3 {
             color: $color-1st;
+            a {
+                color: $color-1st;
+            }
         }
 
         .ps-list--social {
