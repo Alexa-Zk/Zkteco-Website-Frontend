@@ -42,8 +42,8 @@ export const actions = {
             commit('app/setCurrency', currency.data);
         }
         if (userInfo) {
-            await dispatch('auth/getAuthToken', userInfo.token);
-            commit('auth/setUserInfo', userInfo);
+            await dispatch('auth/getAuthToken', userInfo.userInfo.token);
+            commit('auth/setUserInfo', userInfo.userInfo);
         }
         if (shippingInfo) {
             commit('shipping/setPersonalDetails', shippingInfo);

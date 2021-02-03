@@ -90,7 +90,7 @@ export default {
         ),
         url('/img/website/zkteco.staff.jpeg');
     height: 361px;
-    background-position: center;
+    background-position: top;
     background-size: cover;
     display: flex;
     align-items: center;

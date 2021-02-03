@@ -1,5 +1,4 @@
 import Cookies from 'js-cookie';
-const token = Cookies.get('id_token');
 
 export default function({ $axios, redirect }) {
     $axios.onError(error => {
@@ -9,6 +8,6 @@ export default function({ $axios, redirect }) {
         }
     });
     $axios.onRequest(config => {
-        $axios.setHeader('Authorization', token )
+        console.log(config)
     })
 }

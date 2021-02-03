@@ -1,5 +1,5 @@
 <template lang="html">
-    <div >
+    <div>
         <bread-crumb :breadcrumb="breadCrumb" />
         <div class="ps-page--shop" id="shop-sidebar">
             <div class="container">
@@ -9,9 +9,9 @@
                     </div>
                     <div class="ps-layout__right" v-if="!loading">
                         <div class="ps-page__header">
-                            <h1 class="text-uppercase">{{ProductCategories.name}}</h1>
+                            <h1 class="text-uppercase">{{SubProductCategories.name}}</h1>
                         </div>
-                        <layout-shop-sidebar :products="ProductCategories.products" />
+                        <layout-shop-sidebar :products="SubProductCategories.products" />
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@ import ShopWidget from '~/components/partials/shop/modules/website/ShopWidget';
 import LayoutShopSidebar from '~/components/partials/shop/website/LayoutShopSidebarCategories';
 
 // Queries
-import CategoriesWithProduct from '~/apollo/queries/products/categoriesWithProduct';
+import SubCategoriesWithProduct from '~/apollo/queries/products/subCategoriesWithProduct';
 
 
 export default {
@@ -41,7 +41,7 @@ export default {
     layout: 'layout-default-website',
     data() {
         return {
-            productCategories: '',
+            subProductCategories: '',
             breadCrumb: [
                 {
                     text: 'Home',
@@ -56,17 +56,17 @@ export default {
     },
     apollo: {
         $loadingKey: 'loading',
-        productCategories: {
+        subProductCategories: {
             prefetch: true,
-            query: CategoriesWithProduct,
+            query: SubCategoriesWithProduct,
             variables() {
                 return { id: this.$route.params.id };
             }
         }
     },
     computed: {
-        ProductCategories() {
-            return this.productCategories[0];
+        SubProductCategories() {
+            return this.subProductCategories[0];
         }
     },
     watch: {

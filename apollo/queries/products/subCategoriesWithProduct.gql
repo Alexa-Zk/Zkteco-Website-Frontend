@@ -1,0 +1,21 @@
+query ProductCategories($id: ID!) {
+    subProductCategories(where: { id: $id }) {
+        id
+        name
+        slug
+        products {
+            id
+            name
+            product_category {
+                name
+                id
+            }
+            created_at
+            updated_at
+            slug
+            images {
+                url
+            }
+        }
+    }
+}

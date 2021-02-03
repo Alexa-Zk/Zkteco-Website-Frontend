@@ -1,6 +1,5 @@
 export default async ({ app, store }) => {
     app.router.afterEach((to, from) => {
-      console.log(to.path)
       if (to.path.includes("/website") || to.path === "/") {
         setTimeout(() => {
           store.commit('app/setPreloader', false)
