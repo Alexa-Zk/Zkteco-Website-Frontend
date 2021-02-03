@@ -1,8 +1,10 @@
+import Cookies from 'js-cookie';
 import Repository, {
     serializeQuery,
     serializePayload
 } from '~/repositories/Repository.js';
 import { baseUrl } from '~/repositories/Repository';
+
 
 export const state = () => ({
     product: null,
@@ -154,7 +156,10 @@ export const actions = {
     },
 
     getAllUserOrders({ commit }, payload) {
-        const reponse = Repository.get(`${baseUrl}/integrations/orders`)
+        const params = {
+            per_page: 100,
+        };
+        const reponse = Repository.get(`${baseUrl}/integrations/orders/?${serializeQuery(params)}`)
             .then(response => {
                 commit('setAllUserOrders', response.data.data);
                 return response.data.data;
