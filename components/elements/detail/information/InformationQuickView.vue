@@ -126,4 +126,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-product__shopping {
+    .ps-btn {
+        color: white;
+    }
+}
+</style>

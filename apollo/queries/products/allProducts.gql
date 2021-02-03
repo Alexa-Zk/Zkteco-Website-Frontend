@@ -1,5 +1,5 @@
 query Products {
-	products (limit: 3000){
+	products (limit: 101){
     id
     name
     updated_at
