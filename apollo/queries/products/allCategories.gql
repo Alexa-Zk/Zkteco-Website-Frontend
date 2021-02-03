@@ -1,8 +1,13 @@
 query ProductCategories {
 	productCategories {
-        id
-        name
-        created_at
-        slug
+    id
+    name
+    created_at
+    slug
+    product_sub_categories {
+      id
+      name
+      slug
+    }
   }
 }

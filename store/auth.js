@@ -3,6 +3,7 @@ import Repository, {
     serializePayload
 } from '~/repositories/Repository.js';
 import { baseUrl } from '~/repositories/Repository';
+import axios from 'axios';
 
 export const state = () => ({
     isLoggedIn: false,
@@ -20,6 +21,12 @@ export const mutations = {
     },
     setAuthToken(state, payload) {
         state.authToken = payload;
+
+        this.$cookies.set('id_token', payload, {
+            path: '/store',
+            maxAge: 60 * 60 * 24 * 7
+        });
+        axios.defaults.headers.common['Authorization'] = payload;
     },
     setUserInformation(state, payload) {
         state.singleUserInformation = payload;
@@ -29,6 +36,7 @@ export const mutations = {
 export const actions = {
     setAuthStatus({ commit, state }, payload) {
         commit('setIsLoggedIn', payload);
+
         const cookieParams = {
             isLoggedIn: state.isLoggedIn
         };
@@ -51,7 +59,7 @@ export const actions = {
                 commit('setUserInfo', response.data.data);
                 commit('setIsLoggedIn', response.data.status);
                 commit('setAuthToken', response.data.data.token);
-
+            
                 const cookieParams = {
                     userInfo: state.userInfo
                 };
@@ -61,11 +69,8 @@ export const actions = {
                     maxAge: 60 * 60 * 24 * 7
                 });
 
-                this.$cookies.set('id_token', response.data.data.token, {
-                    path: '/store',
-                    maxAge: 60 * 60 * 24 * 7
-                });
-                
+                axios.defaults.headers.common['Authorization'] = response.data.data.token;
+                                
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
