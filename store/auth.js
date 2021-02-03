@@ -26,7 +26,7 @@ export const mutations = {
             path: '/store',
             maxAge: 60 * 60 * 24 * 7
         });
-        axios.defaults.headers.common['Authorization'] = payload;
+
     },
     setUserInformation(state, payload) {
         state.singleUserInformation = payload;
@@ -68,8 +68,6 @@ export const actions = {
                     path: '/store',
                     maxAge: 60 * 60 * 24 * 7
                 });
-
-                axios.defaults.headers.common['Authorization'] = response.data.data.token;
                                 
                 return response.data;
             })
@@ -87,8 +85,12 @@ export const actions = {
         return reponse;
     },
 
-    async getUserInformation({ commit }, payload) {
-        const reponse = await Repository.get(`${baseUrl}/integrations/customers/logged-in`)
+    async getUserInformation({ commit, state }, payload) {
+        const reponse = await Repository.get(`${baseUrl}/integrations/customers/logged-in`, {
+            headers: {
+                Authorization: state.authToken
+              }
+            })
             .then(response => {
                 
                 commit('setUserInformation', response.data.data);  
