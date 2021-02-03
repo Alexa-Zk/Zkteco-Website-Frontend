@@ -116,6 +116,9 @@ export default {
                     justify-content: space-between;
                     a {
                         width: 70%;
+                        .v-list-item__title {
+                            color: $color-1st;
+                        }
                     }
                 }
             }

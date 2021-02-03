@@ -115,6 +115,7 @@ export default {
                     line-height: 50px;
                     transition: all 0.8s;
                     font-weight: 600;
+                    color: $color-1st;
                 }
             }
         }
