@@ -3,7 +3,7 @@
         <div class="ps-panel__header">
             <h3>Categores</h3>
             <a
-                href="#"
+                href="/product"
                 class="ps-panel__close"
                 @click.prevent="handleClosePanel"
             >
@@ -13,7 +13,7 @@
         <div class="navigation__content">
             <ul class="menu--mobile">
                 <li v-for="category in ProductCategories">
-                    <nuxt-link :to="`/website/shop/catgories-product/${category.id}`">{{ category.name }}</nuxt-link>
+                    <nuxt-link :to="`/product-categories/${category.slug}`">{{ category.name }}</nuxt-link>
                 </li>
             </ul>
         </div>
