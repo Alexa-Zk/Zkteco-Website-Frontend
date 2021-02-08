@@ -323,6 +323,14 @@
                 background-color: #dd4b39;
             }
 
+            &.instagram {
+                background-color: $color-instagram
+            }
+            
+            &.whatsapp {
+                background-color: $color-whatsapp;
+            }
+            
             &.linkedin {
                 background-color: #0077b5;
             }

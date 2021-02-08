@@ -60,7 +60,7 @@ export default {
             prefetch: true,
             query: CategoriesWithProduct,
             variables() {
-                return { id: this.$route.params.id };
+                return { id: this.$route.params.id, };
             }
         }
     },

@@ -1,6 +1,6 @@
 <template>
     <li class=" menu-item-has-children has-mega-menu">
-        <nuxt-link :to="`/website/shop/shop-sidebar-without-banner`">
+        <nuxt-link :to="`/product`">
             Products
         </nuxt-link>
         <div class="mega-menu">
@@ -11,7 +11,7 @@
             >
                 <ul class="mega-menu__list">
                     <li >
-                        <nuxt-link :to="`/website/shop/catgories-product/${item.id}`">
+                        <nuxt-link :to="`/product-categories/${item.slug}`">
                             {{ item.name }}
                         </nuxt-link>
                     </li>

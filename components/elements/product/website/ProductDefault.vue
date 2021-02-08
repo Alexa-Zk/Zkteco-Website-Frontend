@@ -8,17 +8,6 @@
                 />
             </nuxt-link>
             <ul class="ps-product__actions">
-                <!-- <li>
-                    <a
-                        to="#"
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="View in Store "
-                        @click.prevent="handleAddToCart"
-                    >
-                        <i class="icon-bag2"></i>
-                    </a>
-                </li> -->
                 <li>
                     <a
                         to="#"
@@ -34,8 +23,8 @@
             </ul>
         </div>
         <div class="ps-product__container">
-            <nuxt-link :to="`/website/shop/catgories-product/${product.product_category.id}`" class="ps-product__vendor">
-                {{ product.product_category.name}}
+            <nuxt-link :to="`/website/shop/catgories-product/${product.product_category ? product.product_category.id : 0}`" class="ps-product__vendor">
+                {{ product.product_category ? product.product_category.name : 'NILL'}}
             </nuxt-link>
             <div class="ps-product__content">
                 <nuxt-link
@@ -113,6 +102,14 @@ export default {
 
 <style lang="scss" scoped>
 .ps-product {
+    .ps-product__thumbnail {
+        width: 208px;
+        height: 208px;
+        img {
+            height: 100%;
+            object-fit: contain;
+        }
+    }
     .hover {
         padding: 0 20px 0px;
         .ps-product__title {

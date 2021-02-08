@@ -1,5 +1,5 @@
 <template lang="html">
-    <div class="ps-product ps-product--wide">
+    <div class="ps-product ps-product--wide" v-if="product">
         <div class="ps-product__thumbnail">
             <nuxt-link :to="`/product/${product.id}`">
                 <img

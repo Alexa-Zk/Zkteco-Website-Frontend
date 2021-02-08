@@ -1,11 +1,12 @@
 query ProductCategories($id: ID!) {
-    subProductCategories(where: { id: $id }) {
+    subProductCategories(where: { slug: $id }) {
         id
         name
         slug
         products {
             id
             name
+            description
             product_category {
                 name
                 id

@@ -5,8 +5,7 @@
             <div class="ps-layout--shop">
                 <div class="ps-layout__right">
                     <search-result />
-                    <div class="search-container" id="search-container">
-									</div>
+                    <div class="search-container" id="search-container"></div>
                 </div>
             </div>
         </div>
@@ -14,7 +13,6 @@
 </template>
 
 <script>
-
 import { mapState } from 'vuex';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import SearchResult from '~/components/partials/search/WebsiteSearchResult';
@@ -30,17 +28,13 @@ export default {
     },
     data() {
         return {
-            keyword: '',
-            
+            keyword: ''
         };
     },
     computed: {
         ...mapState({
-            searchResults: state => state.product.searchResults
+            searchResults: state => state.website.searchResults
         }),
-        keyword() {
-            return this.$route.query.keyword;
-        }
     },
 
     data() {
@@ -59,6 +53,18 @@ export default {
 
     async created() {
         this.keyword = this.$route.query.keyword;
+        const params = {
+            query: this.$route.query.keyword
+        };
+        await this.$store.dispatch('website/getSearchResults', params);
+    },
+    watch: {
+        $route(to, from) {
+            const params = {
+                query: to.query.keyword
+            };
+            this.$store.dispatch('website/getSearchResults', params);
+        }
     }
 };
 </script>

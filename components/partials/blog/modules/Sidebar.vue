@@ -24,7 +24,9 @@
                     <li v-for="category in Categories" :key="category.id">
                         <nuxt-link :to="`/website/blog/${category.id}`">
                             {{ category.name }}
+                            <span class="widget__content_value">{{category.articles.length}}</span>
                         </nuxt-link>
+                        
                     </li>
                 </ul>
             </div>
@@ -73,4 +75,13 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.widget__content {
+    .widget__content_value {
+        background: green;
+        color: white;
+        padding: 2px 5px;
+        margin-left: 10px;
+    }   
+}
+</style>

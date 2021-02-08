@@ -48,6 +48,17 @@ export default {
             ]
         };
     },
+    created() {
+        let payload = {};
+        const response = this.$store.dispatch(
+            'website/getProducts',
+            payload
+        );
+         const responseTotal = this.$store.dispatch(
+            'website/getProductsTotal',
+            payload
+        );
+    },
 };
 </script>
 

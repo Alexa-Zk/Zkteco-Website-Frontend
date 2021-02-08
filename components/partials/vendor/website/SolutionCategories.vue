@@ -74,5 +74,8 @@ export default {
             font-size: 22px;
         }
     }
+    .ps-block__user {
+        opacity: 0;
+    }
 }
 </style>

@@ -6,7 +6,10 @@
             </h4>
             <div class="widget_content">
                 <p>Call us 24/7</p>
-                <h3> <a style="font-weight: inherit;" href="tel:2348175555512"> +234 817 5555 512 </a></h3>
+                <h3> 
+                    <a style="font-weight: inherit;" href="tel:2348175555512"> +234 817 5555 512 </a> <br>
+                    <a style="font-weight: inherit;" href="tel:2348175555513"> +234 817 5555 513 </a>
+                </h3>
                 <p>
                     64 Adetokunbo Ademola Street, Victoria Island, Lagos<br />
                     <a href="mailto:sales@zkteco-wa.com">sales@zkteco-wa.com</a>
@@ -28,7 +31,7 @@
                         </a>
                     </li> -->
                     <li>
-                        <a class="instagram" href="https://www.instagram.com/zkteco_wa/">
+                        <a class="instagram" href="https://www.instagram.com/zktecowa/">
                             <i class="fa fa-instagram"></i>
                         </a>
                     </li>

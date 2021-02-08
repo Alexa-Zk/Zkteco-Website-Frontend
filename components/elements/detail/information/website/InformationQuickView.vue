@@ -12,17 +12,18 @@
             </p>
         
         </div>
-        <module-product-detail-desc :product="product" />
-
+        <!-- <module-product-detail-desc :product="product"/> -->
+        <module-product-detail-desc-two :product="product" />
     </div>
 </template>
 
 <script>
 import Rating from '~/components/elements/Rating';
-import ModuleProductDetailDesc from '~/components/elements/detail/information/modules/website/ModuleProductDetailDesc2';
+import ModuleProductDetailDesc from '~/components/elements/detail/information/modules/website/ModuleProductDetailDesc';
+import ModuleProductDetailDescTwo from '~/components/elements/detail/information/modules/website/ModuleProductDetailDesc2';
 export default {
     name: 'InformationQuickView',
-    components: { ModuleProductDetailDesc, Rating },
+    components: { ModuleProductDetailDescTwo, Rating, ModuleProductDetailDesc },
     props: {
         product: {
             type: Object,
@@ -82,4 +83,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-product__info {
+    position: relative;
+}
+</style>
