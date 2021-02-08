@@ -24,10 +24,6 @@ export default {
                     url: '/'
                 },
                 {
-                    text: 'Support',
-                    url: '/'
-                },
-                {
                     text: 'After Sales'
                 }
             ]

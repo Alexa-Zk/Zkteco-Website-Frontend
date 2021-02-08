@@ -34,7 +34,7 @@
                                 <nuxt-link
                                     class="ps-btn"
                                     :to="
-                                        `/website/vendor/solution-details/${item.id}`
+                                        `/solution-details/${item.slug}`
                                     "
                                 >
                                     Learn More

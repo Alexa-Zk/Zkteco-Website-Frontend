@@ -1,5 +1,5 @@
 query Solutions($id: ID!) {
-    solutions(where: { id: $id }) {
+    solutions(where: { slug: $id }) {
         id
         title
         slug

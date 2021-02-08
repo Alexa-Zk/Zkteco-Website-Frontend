@@ -75,8 +75,8 @@ export default {
                 url: '/'
             },
             {
-                text: 'Shop',
-                url: '/shop'
+                text: 'Products',
+                url: '/product'
             },
             {
                 text: ""

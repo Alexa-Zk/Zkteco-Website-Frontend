@@ -8,6 +8,7 @@ query Products($id: ID!) {
         created_at
         product_category{
             name
+            slug
             id
         }
         downloads {

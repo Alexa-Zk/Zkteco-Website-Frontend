@@ -2,7 +2,7 @@
     <article class="ps-post">
         <div class="ps-post__thumbnail">
             <nuxt-link
-                :to="`/website/post/${post.id}`"
+                :to="`/blog/${post.id}`"
                 class="ps-post__overlay"
             />
             <img :src="post.image[0].formats.thumbnail.url" :alt="post.title" />
@@ -11,21 +11,15 @@
             <div class="ps-post__meta">
                 <nuxt-link
                     v-for="category in post.categories"
-                    :to="`/website/blog/${category.id}`"
+                    :to="`/news-center/categories/${category.id}`"
                     :key="category.id"
                 >
                     {{ category.name }}
                 </nuxt-link>
             </div>
-            <nuxt-link :to="`/website/post/${post.id}`" class="ps-post__title">
+            <nuxt-link :to="`/blog/${post.id}`" class="ps-post__title">
                 {{ post.title }}
             </nuxt-link>
-            <!-- <p>
-                {{ post.updated_at }}
-                <nuxt-link to="/blog">
-                    drfurion
-                </nuxt-link>
-            </p> -->
         </div>
     </article>
 </template>

@@ -9,6 +9,7 @@ query ProductCategories($id: ID!) {
             description
             product_category {
                 name
+                slug
                 id
             }
             created_at

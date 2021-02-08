@@ -3,7 +3,7 @@
         
         <p class="categories">
             <strong> Categories:</strong>
-            <nuxt-link :to="`/website/shop/catgories-product/${product.product_category.id}`">
+            <nuxt-link :to="`/product-categories/${product.product_category.slug}`">
                 <a class="ml-2 text-capitalize">
                     {{product.product_category.name}}
                 </a>

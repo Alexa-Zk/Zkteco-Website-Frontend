@@ -1,11 +1,12 @@
 query SolutionCategories($id: ID!) {
-    solutionCategories(where: { id: $id }) {
+    solutionCategories(where: { slug: $id }) {
         id
         slug
         name
         solutions {
             id
             title
+            slug
             image {
                 url
             }

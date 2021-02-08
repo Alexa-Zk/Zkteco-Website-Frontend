@@ -25,11 +25,6 @@
                             <i class="fa fa-twitter"></i>
                         </a>
                     </li>
-                    <!-- <li>
-                        <a class="whatsapp" href="#">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                    </li> -->
                     <li>
                         <a class="instagram" href="https://www.instagram.com/zktecowa/">
                             <i class="fa fa-instagram"></i>
@@ -49,13 +44,13 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <nuxt-link :to="`/website/page/about-us`">Our Mission</nuxt-link>
+                    <nuxt-link to="/about">Our Mission</nuxt-link>
                 </li>
                 <li>
-                    <nuxt-link :to="`/website/page/about-us`">Our Vision</nuxt-link>
+                    <nuxt-link to="/about">Our Vision</nuxt-link>
                 </li>
                 <li>
-                    <nuxt-link :to="`/website/page/about-us`">Our Values</nuxt-link>
+                    <nuxt-link to="/about">Our Values</nuxt-link>
                 </li>
             </ul>
         </aside>
@@ -65,7 +60,7 @@
             </h4>
             <ul class="ps-list--link">
                 <li v-for="item in categories" :key="item.id">
-                    <nuxt-link :to="`/website/blog/${item.id}`">{{item.name}}</nuxt-link>
+                    <nuxt-link :to="`/news-center/categories/${item.id}`">{{item.name}}</nuxt-link>
                 </li>
                 
             </ul>
@@ -76,10 +71,10 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <nuxt-link :to="`/website/vendor/1`">Classified by Industry</nuxt-link>
+                    <nuxt-link to="/solution-categories/classified-by-industry">Classified by Industry</nuxt-link>
                 </li>
                 <li>
-                    <nuxt-link :to="`/website/vendor/2`">Classified by Application</nuxt-link>
+                    <nuxt-link to="/solution-categories/classified-by-application">Classified by Application</nuxt-link>
                 </li>
                 
             </ul>
@@ -90,10 +85,10 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <nuxt-link :to="`/website/page/download-center`">Download Center</nuxt-link>
+                    <nuxt-link to="/support/download-center">Download Center</nuxt-link>
                 </li>
                 <li>
-                    <nuxt-link :to="`/website/page/after-sales`">After Sales</nuxt-link>
+                    <nuxt-link to="/support/after-sale">After Sales</nuxt-link>
                     
                 </li>
                 

@@ -4,19 +4,19 @@
             <div class="navigation__right">
                 <ul class="mega-menu__list">
                     <li class="menu-item-has-dropdown">
-                        <nuxt-link to="/website/page/about-us">
+                        <nuxt-link to="/about">
                             About Us
                         </nuxt-link>
                     </li>
                     |
                     <li class="menu-item-has-dropdown">
-                        <nuxt-link to="/website/blog/blog-right-sidebar">
+                        <nuxt-link to="/news-center">
                             News Center
                         </nuxt-link>
                     </li>
                     |
                     <li class="menu-item-has-dropdown">
-                        <nuxt-link to="/website/page/contact-us">
+                        <nuxt-link to="/contact">
                             Contact Us
                         </nuxt-link>
                     </li>

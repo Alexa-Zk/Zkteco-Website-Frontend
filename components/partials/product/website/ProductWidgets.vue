@@ -17,13 +17,13 @@
         <aside class="widget widget_sell-on-site">
             <p>
                 <i class="icon-store"></i>Buy Products?
-                <nuxt-link to="/store/">
+                <nuxt-link to="/store">
                     <a> Click Here !</a>
                 </nuxt-link>
             </p>
         </aside>
         <aside class="widget widget_ads">
-            <nuxt-link to="/shop">
+            <nuxt-link to="/store">
                 <a>
                     <img
                         src="~/static/img/collection/cctv.png"
