@@ -15,12 +15,12 @@
             <i class="fa fa-twitter"></i>
         </a>
         <a
-            class="google"
+            class="instagram"
             :href="
                 `https://api.whatsapp.com/send?url=${url}?title=${product.name}`
             "
         >
-            <i class="fa fa-google-plus"></i>
+            <i class="fa fa-instagram"></i>
         </a>
         <a
             class="linkedin"
@@ -29,6 +29,15 @@
             "
         >
             <i class="fa fa-linkedin"></i>
+        </a>
+        <a
+            class="whatsapp"
+            :href="
+            
+                `https://wa.me/2348175555514?text=I%20am%20interested%20in%20your%20product%20for%20sale%20url=${url}%20title=${product.name}`
+            "
+        >
+            <i class="fa fa-whatsapp"></i>
         </a>
     </div>
 </template>

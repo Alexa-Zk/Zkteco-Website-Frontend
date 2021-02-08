@@ -27,6 +27,27 @@
                         </nuxt-link>
                     </li>
                     |
+                    <li>
+                        <v-menu open-on-hover bottom offset-y>
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-btn dark icon v-bind="attrs" v-on="on">
+                                    <v-icon>mdi-earth</v-icon>
+                                </v-btn>
+                            </template>
+
+                            <v-list>
+                                <v-list-item
+                                    v-for="(item, i) in items"
+                                    :key="i"
+                                >
+                                    <v-list-item-title>
+                                        <a :href="item.url">{{item.title}}</a>  
+                                    </v-list-item-title>
+                                </v-list-item>
+                            </v-list>
+                        </v-menu>
+                    </li>
+                    |
                     <li class="menu-item-has-dropdown">
                         <nuxt-link to="/website/account/register">
                             Register
@@ -50,6 +71,14 @@ export default {
         // MenuDefault,
         LanguageSwicher,
         CurrencyDropdown
+    },
+    data() {
+        return {
+            items: [
+                { title: 'International', url: 'https://www.zkteco.com/en/' },
+                { title: 'Turkey', url: 'https://zkteco.com.tr/' },
+            ]
+        };
     }
 };
 </script>
@@ -64,6 +93,11 @@ export default {
                 display: flex;
                 li {
                     margin: 0px 16px;
+                    .v-btn--icon {
+                        height: 0;
+                        width: 0;
+                        color: green;
+                    }
                     a {
                         color: black;
                     }

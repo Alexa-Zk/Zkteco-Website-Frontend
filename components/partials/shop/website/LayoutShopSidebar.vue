@@ -1,28 +1,10 @@
 <template lang="html">
-    <div class="ps-shopping">
+    <div class="ps-shopping" v-if="products">
         <div class="ps-shopping__header">
             <p>
-                <strong class="mr-2">{{ totals }}</strong>
+                <strong class="mr-2">{{ productsTotal }}</strong>
                 Products found
             </p>
-            <!-- <div class="ps-shopping__actions">
-                
-                <div class="ps-shopping__view">
-                    <p>View</p>
-                    <ul class="ps-tab-list">
-                        <li :class="listView === true ? 'active' : ''">
-                            <a href="#" @click.prevent="handleChangeViewMode">
-                                <i class="icon-grid"></i>
-                            </a>
-                        </li>
-                        <li :class="listView !== true ? 'active' : ''">
-                            <a href="#" @click.prevent="handleChangeViewMode">
-                                <i class="icon-list4"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div> -->
         </div>
         <div class="ps-shopping__content">
             
@@ -36,12 +18,14 @@
                         <product-default :product="product" />
                     </div>
                 </div>
-                <footer class="mt-30">
-                    <!-- <v-pagination
+                <footer class="mt-60">
+                    <v-pagination
                         v-model="page"
+                        :total-visible="7"
+                        color="green"
                         :length="paginationLenght"
                         @input="handleChangePagination"
-                    /> -->
+                    />
                 </footer>
             </div>
             <div v-else class="ps-shopping-product">
@@ -51,11 +35,12 @@
                     :key="product.id"
                 />
                 <footer class="mt-30">
-                    <!-- <v-pagination
+                    <v-pagination
+                        :total-visible="7"
                         v-model="page"
                         :length="paginationLenght"
                         @input="handleChangePagination"
-                    /> -->
+                    />
                 </footer>
             </div>
         </div>
@@ -67,10 +52,6 @@ import { mapState } from 'vuex';
 import ProductDefault from '~/components/elements/product/website/ProductDefault';
 import ProductWide from '~/components/elements/product/ProductWide';
 
-// Queries
-import Products from '~/apollo/queries/products/allProducts';
-
-
 export default {
     name: 'LayoutShopSidebar',
     components: { ProductWide, ProductDefault },
@@ -79,26 +60,37 @@ export default {
             listView: false,
             page: 1,
             pageSize: 12,
-            products: ''
         };
-    },
-    apollo: {
-        products: {
-            prefetch: true,
-            query: Products,
-        }
     },
     methods: {
         handleChangeViewMode() {
             this.listView = !this.listView;
-        }
+        },
+        async handleChangePagination(value) {
+            const params = {
+                page: value * this.pageSize,
+                sort_by: 'created_at:desc',
+                perPage: 12,
+            };
+            await this.$store.dispatch('website/getProducts', params);
+        },
     },
     computed: {
-        totals() {
-            return this.products.length
+        ...mapState({
+            products: state => state.website.products,
+            productsTotal: state => state.website.productsTotal,
+        
+        }),
+        paginationLenght() {
+            if (this.productsTotal % 12 === 0) {
+                return parseInt(this.productsTotal / this.pageSize);
+            } else {
+                return parseInt(this.productsTotal / 12 + 1);
+            }
         }
     }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+</style>

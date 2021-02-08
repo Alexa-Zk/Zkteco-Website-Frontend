@@ -20,12 +20,12 @@
                     <i class="fa fa-twitter"></i>
                 </a>
                 <a
-                    class="google"
+                    class="instagram"
                     :href="
                         `https://api.whatsapp.com/send?url=${url}?title=${product.name}`
                     "
                 >
-                    <i class="fa fa-google-plus"></i>
+                    <i class="fa fa-instagram"></i>
                 </a>
                 <a
                     class="linkedin"
@@ -34,6 +34,14 @@
                     "
                 >
                     <i class="fa fa-linkedin"></i>
+                </a>
+                <a
+                    class="whatsapp"
+                    :href="
+                        `https://wa.me/2348175555514?text=I%20am%20interested%20in%20your%20product%20for%20sale%20url=${url}%20title=${product.name}`
+                    "
+                >
+                    <i class="fa fa-whatsapp"></i>
                 </a>
             </div>
         </div>
@@ -61,8 +69,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.ps-post__social {
-    margin-top: 100px;
-    display: flex;
+.ps-product__desc {
+    // position: absolute;
+    // bottom: 0;
+}
+.ps-post__footer {
+    padding-bottom: 19px;
+    .ps-post__social {
+        // margin-top: 100px;
+        display: flex;
+    }
 }
 </style>

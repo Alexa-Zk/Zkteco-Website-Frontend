@@ -30,14 +30,14 @@
 
 <script>
 import { mapState } from 'vuex';
-import ProductDefault from '~/components/elements/product/ProductDefault';
+import ProductDefault from '~/components/elements/product/website/ProductDefault';
 
 export default {
     name: 'SearchResult',
     components: { ProductDefault },
     computed: {
         ...mapState({
-            searchResults: state => state.product.searchResults
+            searchResults: state => state.website.searchResults
         })
     }
 };

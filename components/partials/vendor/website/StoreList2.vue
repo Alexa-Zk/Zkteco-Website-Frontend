@@ -28,10 +28,7 @@
                             </div>
                             <div class="ps-block__author">
                                 <a class="ps-block__user" href="#">
-                                    <img
-                                        src="/static/img/vendor/store/vendor-150x150.jpg"
-                                        alt="martfury"
-                                    />
+                                    
                                 </a>
 
                                 <nuxt-link
@@ -86,6 +83,9 @@ export default {
             color: white;
             font-size: 22px;
         }
+    }
+    .ps-block__user {
+        opacity: 0;
     }
 }
 </style>

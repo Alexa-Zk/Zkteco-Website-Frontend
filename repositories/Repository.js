@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const token = Cookies.get('id_token');
 const baseHost = "https://wslbackend.zkteco-wa.com/api/v1"
+const subBaseHost = "https://admin.zkteco-wa.com"
 
 
 export const customHeaders = {
@@ -12,6 +13,7 @@ export const customHeaders = {
 };
 
 export const baseUrl = `${baseHost}`;
+export const subBaseUrl = `${subBaseHost}`;
 
 export default axios.create({
     baseUrl,

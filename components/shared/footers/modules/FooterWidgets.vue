@@ -23,7 +23,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="instagram" href="https://www.instagram.com/zkteco_wa/">
+                        <a class="instagram" href="https://www.instagram.com/zktecowa/">
                             <i class="fa fa-instagram"></i>
                         </a>
                     </li>

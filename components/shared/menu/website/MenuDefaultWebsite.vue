@@ -4,6 +4,11 @@
         <template v-for="item in mainMenu">
             <MenuDropdown v-if="item.subMenu" :menu-data="item" />
             <MenuMega v-else-if="item.mega" :menu-data="item" />
+            <li class="menu-item-has-dropdown" v-else-if="item.redirect" :key="item.text">
+                <a href="https://ngteco.ng/">
+                    {{ item.text }}
+                </a>
+            </li>
             <li class="menu-item-has-dropdown" v-else :key="item.text">
                 <nuxt-link :to="item.url">
                     {{ item.text }}
@@ -73,7 +78,10 @@ export default {
                         
                     ]
                 },
-
+                {
+                    text: this.$i18n.t('Smart Home'),
+                    redirect: true
+                },
                 {
                     text: this.$i18n.t('Store'),
                     url: '/store',

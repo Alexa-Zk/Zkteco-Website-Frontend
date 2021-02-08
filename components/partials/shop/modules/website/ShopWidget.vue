@@ -8,20 +8,20 @@
                 v-if="categories !== undefined"
                 class="ps-list--categories--website"
             >
-                <!-- <li>
+                <li>
                     <nuxt-link
-                        :to="`/website/shop/shop-sidebar-without-banner`"
+                        :to="`/product`"
                     >
                         All Categories
                     </nuxt-link>
-                </li> -->
+                </li>
                 <li v-for="category in productCategories" :key="category.id">
-                    <v-list class="sidebar-border">
+                    <v-list class="sidebar-border" >
                         <v-list-group>
                             <template v-slot:activator>
                                 <nuxt-link
                                     :to="
-                                        `/website/shop/catgories-product/${category.id}`
+                                        `/product-categories/${category.slug}`
                                     "
                                 >
                                     <v-list-item-title>{{
@@ -40,7 +40,7 @@
                                     <v-list-item-content>
                                         <nuxt-link
                                             :to="
-                                                `/website/shop/sub-catgories-product/${product.id}`
+                                                `/sub-categories/${product.slug}`
                                             "
                                             ><v-list-item-title
                                                 >{{ product.name }}
@@ -117,7 +117,7 @@ export default {
                     a {
                         width: 70%;
                         .v-list-item__title {
-                            color: $color-1st;
+                            color: black;
                         }
                     }
                 }
