@@ -18,9 +18,10 @@
                             class="form-control"
                             type="text"
                             placeholder="Search something..."
+                            v-model="searchText"
                         />
                         <button>
-                            <i class="icon-magnifier"></i>
+                            <i class="icon-magnifier" @click.prevent="submitQuery"></i>
                         </button>
                     </div>
                 </form>
@@ -32,10 +33,20 @@
 <script>
 export default {
     name: 'PanelSearch',
+    data () {
+        return {
+            searchText: ''
+        }
+    },
     methods: {
         handleClosePanel() {
             this.$store.commit('app/setCurrentDrawerContent', null);
             this.$store.commit('app/setAppDrawer', false);
+        },
+        submitQuery () {
+            if (this.searchText !== null || this.searchText !== '') {
+                this.$router.push(`/website/search?keyword=${this.searchText}`);
+            }
         }
     }
 };

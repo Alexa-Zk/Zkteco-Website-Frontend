@@ -100,17 +100,17 @@ export default {
             menu: [
                 {
                     text: 'Solution',
-                    url: '/website/vendor/store-list-2',
+                    url: '/solution',
                     extraClass: 'menu-item-has-children',
                     subClass: 'sub-menu',
                     subMenu: [
                         {
-                            text: 'Classified by Application',
-                            url: '/wesbite/vendor/1'
+                            text: 'Classified by Industry',
+                            url: '/solution-categories/classified-by-industry'
                         },
                         {
-                            text: 'Classified by Industry',
-                            url: '/website/vendor/2'
+                            text: 'Classified by Application',
+                            url: '/solution-categories/classified-by-application'
                         }
                     ]
                 },
@@ -122,25 +122,25 @@ export default {
                     subMenu: [
                         {
                             text: 'Download Center',
-                            url: '/website/page/download-center',
+                            url: '/support/download-center',
                         },
                         {
                             text: 'After Sales Service',
-                            url: '/website/page/after-sales'
+                            url: '/support/after-sale'
                         }
                     ]
                 },
                 {
                     text: 'About Us',
-                    url: '/website/page/about-us'
+                    url: '/about'
                 },
                 {
                     text: 'News Center',
-                    url: '/website/blog/blog-right-sidebar'
+                    url: '/news-center'
                 },
                 {
                     text: 'Contact Us',
-                    url: '/website/page/contact-us'
+                    url: 'contact'
                 },
                 {
                     text: 'Login',
