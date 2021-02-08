@@ -29,7 +29,7 @@
             <div class="ps-post__footer">
                 <p class="ps-post__tags">
                     Tags:<a
-                        href="#"
+                        :href="`/news-center/categories/${category.id}`"
                         v-for="category in articles.categories"
                         :key="category.name"
                         >{{ category ? category.name : '' }}</a
@@ -45,20 +45,29 @@
                         <i class="fa fa-facebook"></i>
                     </a>
                     <a
+                        class="instagram"
+                        :href="
+                            `https://api.whatsapp.com/send?url=${url}?title=${articles.name}`
+                        "
+                    >
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a
+                        class="whatsapp"
+                        :href="
+                            `https://wa.me/2348175555514?text=I%20am%20interested%20in%20your%20product%20for%20sale%20url=${url}%20title=${articles.name}`
+                        "
+                    >
+                        <i class="fa fa-whatsapp"></i>
+                    </a>
+
+                    <a
                         class="twitter"
                         :href="
                             `https://twitter.com/intent/tweet?text=ZKTeco%20News%20Articles%20-%20${articles.title}%20-%20${url}`
                         "
                     >
                         <i class="fa fa-twitter"></i>
-                    </a>
-                    <a
-                        class="google"
-                        :href="
-                            `https://api.whatsapp.com/send?url=${url}?title=${articles.name}`
-                        "
-                    >
-                        <i class="fa fa-instagram"></i>
                     </a>
                     <a
                         class="linkedin"

@@ -37,7 +37,7 @@ export default {
                
                 {
                     text: this.$i18n.t('Solutions'),
-                    url: '/website/vendor/store-list-2',
+                    url: '/solution',
                     extraClass: 'menu-item-has-children',
                     subClass: 'sub-menu',
                     subMenu: [
@@ -45,13 +45,13 @@ export default {
                             text: this.$i18n.t(
                                 'Classified By Industry'
                             ),
-                            url: '/website/vendor/1'
+                            url: '/solution-categories/classified-by-industry'
                         },
                         {
                             text: this.$i18n.t(
                                 'Classified By Application'
                             ),
-                            url: '/website/vendor/2'
+                            url: '/solution-categories/classified-by-application'
                         },
                         
                     ]
@@ -67,13 +67,13 @@ export default {
                             text: this.$i18n.t(
                                 'Download Center'
                             ),
-                            url: '/website/page/download-center'
+                            url: '/support/download-center'
                         },
                         {
                             text: this.$i18n.t(
                                 'After Sales Service'
                             ),
-                            url: '/website/page/after-sales'
+                            url: '/support/after-sale'
                         },
                         
                     ]

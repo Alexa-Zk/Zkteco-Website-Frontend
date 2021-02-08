@@ -7,8 +7,8 @@
             <div class="ps-section__content">
                 <div class="ps-row">
                     <div class="ps-column">
-												<nuxt-link
-                            to="/website/page/warranty-policy"
+                        <nuxt-link
+                            to="/support/product-warranty"
                             class="ps-post__title"
                         >
                             <policy />
@@ -17,7 +17,7 @@
                     </div>
                     <div class="ps-column">
                         <nuxt-link
-                            to="/website/page/faqs"
+                            to="/support/faq"
                             class="ps-post__title"
                         >
                             <faq />
@@ -25,18 +25,17 @@
                         </nuxt-link>
                     </div>
                     <div class="ps-column">
-											<nuxt-link
-                            to="/website/page/anti-counterfeit"
+                        <nuxt-link
+                            to="/support/anti-counterfeiting"
                             class="ps-post__title"
                         >
                             <counterfeit />
                             Anti-counterfeit enquiry
                         </nuxt-link>
-                        
                     </div>
                     <div class="ps-column">
-												<nuxt-link
-                            to="/website/page/support-ticket"
+                        <nuxt-link
+                            to="/support/support"
                             class="ps-post__title"
                         >
                             <support />

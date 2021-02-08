@@ -31,7 +31,7 @@
                                         alt="martfury"
                                     />
                                 </a>
-                                <nuxt-link class="ps-btn" :to="`/website/vendor/solution-details/${item.id}`">
+                                <nuxt-link class="ps-btn" :to="`/solution-details/${item.slug}`">
                                      Learn More
                                 </nuxt-link>
                                

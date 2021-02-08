@@ -10,7 +10,7 @@ import BreadCrumb from '~/components/elements/BreadCrumb';
 import StoreList2 from '~/components/partials/vendor/website/SolutionCategories';
 
 // Queries
-import singleArticles from '~/apollo/queries/solutions/allSolutionCategories';
+import SolutionCategories from '~/apollo/queries/solutions/allSolutionCategories';
 
 export default {
     components: {
@@ -35,7 +35,7 @@ export default {
     apollo: {
         solutionCategories: {
             prefetch: true,
-            query: singleArticles,
+            query: SolutionCategories,
             variables() {
                 return { id: this.$route.params.id };
             }

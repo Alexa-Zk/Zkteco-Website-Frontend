@@ -10,6 +10,7 @@ query ProductCategories($id: String!) {
             product_category {
                 name
                 id
+                slug
             }
             created_at
             updated_at

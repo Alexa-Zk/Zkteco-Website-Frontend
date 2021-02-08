@@ -1,7 +1,5 @@
 <template lang="html">
     <main id="homepage-1">
-        
-        <!-- <home-banner /> -->
         <home-banner :homeSlider="adSliders" />
         <site-feautures-fullwidth />
         <div class="ps-container">
@@ -9,16 +7,14 @@
         </div>
         <home-brand :partnersLogo="ourPartners" />
         <newsletters layout="fullwidth" />
-        <!-- <subscriber-panel /> -->
     </main>
 </template>
 <script>
 import HomeBanner from '~/components/partials/homepage/website/default/HomeBanner';
-import HomeBrand from '~/components/partials/shop/sections/website/ShopBrands';
 import Newsletters from '~/components/partials/commons/website/Newsletters';
 import SiteFeauturesFullwidth from '~/components/partials/commons/website/SiteFeaturesFullwidth';
 import RelatedPosts from '~/components/partials/post/website/RelatedPosts';
-import SubscriberPanel from '~/components/shared/SubscriberPanel';
+
 // Queries
 import homePages from '~/apollo/queries/homePages';
 
@@ -38,11 +34,9 @@ export default {
     },
     components: {
         HomeBanner,
-        HomeBrand,
         SiteFeauturesFullwidth,
         Newsletters,
-        RelatedPosts,
-        SubscriberPanel
+        RelatedPosts
     },
 
     transition: 'zoom',

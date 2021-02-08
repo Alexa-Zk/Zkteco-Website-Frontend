@@ -22,7 +22,7 @@
             <div class="widget__content">
                 <ul>
                     <li v-for="category in Categories" :key="category.id">
-                        <nuxt-link :to="`/website/blog/${category.id}`">
+                        <nuxt-link :to="`/news-center/categories/${category.id}`">
                             {{ category.name }}
                             <span class="widget__content_value">{{category.articles.length}}</span>
                         </nuxt-link>

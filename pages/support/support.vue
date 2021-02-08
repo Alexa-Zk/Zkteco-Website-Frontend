@@ -156,7 +156,7 @@ export default {
                 },
                 {
                     text: 'After Sales',
-                    url: '/website/page/after-sales'
+                    url: '/support/after-sale'
                 },
                 {
                     text: 'Support Ticket'

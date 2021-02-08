@@ -9,6 +9,7 @@ query Products {
     product_category{
       name
       id
+      slug
     }
     images {
       url
