@@ -69,7 +69,17 @@ export default {
         background: 'green'
     },
 
-    modules: ['@nuxtjs/axios', 'nuxt-i18n', '@nuxtjs/apollo'],
+    modules: [
+        '@nuxtjs/axios', 
+        'nuxt-i18n', 
+        '@nuxtjs/apollo', 
+        '@nuxtjs/sitemap',
+        '@nuxtjs/robots'
+    ],
+    robots: {
+        Sitemap: 'https://zkteco-wa.com/sitemap.xml', 
+        UserAgent: '*'
+    },
     apollo: {
         clientConfigs: {
             default: {

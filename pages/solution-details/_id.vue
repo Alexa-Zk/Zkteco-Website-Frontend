@@ -2,7 +2,7 @@
     <div class="ps-page--single">
         <bread-crumb :breadcrumb="breadCrumb" />
         <vendor-banner :formatted="formattedSingleSolution" />
-        <vendor-about :formatted="formattedSingleSolution"  />
+        <vendor-about :formatted="formattedSingleSolution" />
     </div>
 </template>
 
@@ -21,6 +21,29 @@ export default {
         BreadCrumb
     },
     layout: 'layout-default-website',
+    head() {
+        const title = this.formattedSingleSolution
+            ? this.formattedSingleSolution.title
+            : 'Solutions Details';
+        const description = this.formattedSingleSolution
+            ? this.formattedSingleSolution.description
+            : 'Solutions Details - Description';
+        return {
+            title: title,
+            meta: [
+                {
+                    hid: 'title',
+                    name: 'title',
+                    content: title
+                },
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: description
+                }
+            ]
+        };
+    },
     data: () => {
         return {
             solutions: '',
@@ -44,10 +67,10 @@ export default {
         }
     },
     computed: {
-        formattedSingleSolution () {
-            return this.solutions[0]
+        formattedSingleSolution() {
+            return this.solutions[0];
         }
-    },
+    }
 };
 </script>
 

@@ -19,7 +19,26 @@ import singleArticles from '~/apollo/queries/articles/singleArticles';
 import relatedArticles from '~/apollo/queries/articles/relatedArticles';
 
 export default {
-    name: 'default',
+    name: 'BlogPost',
+    head() {
+				const title = this.formattedArticle ? this.formattedArticle.title : 'Blog Post'
+				const description = this.formattedArticle ? this.formattedArticle.body : 'Blog Post - Description'
+        return {
+            title: title,
+            meta: [
+								{
+                    hid: 'title',
+                    name: 'title',
+                    content: title
+                },
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: description
+                },
+            ]
+        };
+    },
     components: {
         RelatedPosts,
         PostComments,
@@ -51,13 +70,15 @@ export default {
         }
     },
     computed: {
-        formattedArticle () {
-            return this.articles[0]
+        formattedArticle() {
+            return this.articles[0];
         },
         categoriesId() {
-            return Number(this.articles[0] ? this.articles[0].categories[0].id : 1)
+            return Number(
+                this.articles[0] ? this.articles[0].categories[0].id : 1
+            );
         }
-    },
+    }
 };
 </script>
 

@@ -35,6 +35,21 @@ export default {
         ShopWidget,
         BreadCrumb
     },
+    head() {
+        const name = this.ProductCategories
+            ? this.ProductCategories.name
+            : 'Product Categories';
+        return {
+            title: name,
+            meta: [
+                {
+                    hid: 'title',
+                    name: 'title',
+                    content: name
+                },
+            ]
+        };
+    },
     transition() {
         return 'fadeIn';
     },

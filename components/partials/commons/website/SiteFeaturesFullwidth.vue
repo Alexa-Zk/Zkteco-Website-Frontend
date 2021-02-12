@@ -1,6 +1,7 @@
 <template lang="html">
     <div class="ps-site-features">
         <div class="ps-container">
+            <h1>ZKTeco Home Page</h1>
             <h3>ZKTeco Insight into the Market</h3>
             <div class="ps-block--site-features">
                 <div class="ps-block__item">
@@ -93,6 +94,10 @@ export default {
 .ps-site-features {
     padding-top: 60px!important;
     padding-bottom: 10px !important;
+    h1 {
+        opacity: 0;
+        font-size: 1px;
+    }
     h3 { 
         margin-bottom: 60px;
         text-align: center;
