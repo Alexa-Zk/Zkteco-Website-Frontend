@@ -35,7 +35,14 @@ export default {
                 }
             ]
         };
-    }
+    },
+    created() {
+        let payload = {};
+        const response = this.$store.dispatch(
+            'website/getArticles',
+            payload
+        );
+    },
 };
 </script>
 

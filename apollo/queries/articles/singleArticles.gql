@@ -5,12 +5,6 @@ query Articles($id: ID!) {
         slug
         body
         created_at
-        excerpt
-        SEO {
-            id
-            description
-            title
-        }
         image {
             url
             name

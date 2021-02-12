@@ -4,24 +4,36 @@ import { baseUrl, subBaseUrl } from '~/repositories/Repository';
 
 export const state = () => ({
     products: null,
+    products_related: null,
+    articles: null,
     productsTotal: 0,
     searchResults: null,
     loading: false,
     page: 1,
     perPage: 12,
     sort_by: 'created_at:desc'
-    // https://admin.zkteco-wa.com/products?_sort=created_at:desc&_limit=12&_start=0
+
 });
 
 export const mutations = {
     setProducts(state, payload) {
         state.products = payload;
     },
+
+    setArticles(state, payload) {
+        state.articles = payload;
+    },
+
     setProductsTotal(state, payload) {
         state.productsTotal = payload;
     },
+
     setSearchResults(state, payload) {
         state.searchResults = payload;
+    },
+
+    setRelatedProducts(state, payload) {
+        state.products_related = payload;
     }
 };
 
@@ -42,6 +54,39 @@ export const actions = {
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
     },
+
+    async getArticles({ commit }, payload) {
+        let params = {
+            _start: 0,
+            _sort: 'created_at:desc',
+            _limit: 100,
+        };
+        const reponse = await Repository.get(
+            `${subBaseUrl}/articles?${serializeQuery(params)}`
+        )
+            .then(response => {
+                commit('setArticles', response.data);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getRelatedProducts({ commit }, payload) {
+        let params = {
+            id_in: payload.id,
+        };
+        const reponse = await Repository.get(
+            `${subBaseUrl}/product-categories?${serializeQuery(params)}`
+        )
+            .then(response => {
+                commit('setRelatedProducts', response.data[0].products);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
     async getProductsTotal({ state, commit }, payload) {
         let params = {
             _limit: -1

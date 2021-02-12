@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
 import Pagination from '../../elements/Pagination';
 import Sidebar from './modules/Sidebar';
 import PostHorizontal from '../../elements/post/PostHorizontal';
@@ -56,8 +57,11 @@ export default {
         }
     },
     computed: {
+        ...mapState({
+            artic: state => state.website.articles
+        }),
         ourArticles() {
-            return this.articles ? this.articles : [];
+            return this.artic ? this.artic : [];
         },
         filteredList() {
             return this.ourArticles.filter(res => {
