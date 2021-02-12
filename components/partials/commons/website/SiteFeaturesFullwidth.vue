@@ -4,7 +4,7 @@
             <h1>ZKTeco Home Page</h1>
             <h3>ZKTeco Insight into the Market</h3>
             <div class="ps-block--site-features">
-                <div class="ps-block__item">
+                <nuxt-link to="/product-categories/time-attendance" class="ps-block__item">
                     <div class="ps-block__left">
                         <i class="icon-clock"></i>
                     </div>
@@ -16,8 +16,9 @@
                             {{ $t('Time Attendance Solution') }}
                         </p>
                     </div>
-                </div>
-                <div class="ps-block__item">
+                </nuxt-link>
+
+                <nuxt-link to="/product-categories/access-control" class="ps-block__item">
                     <div class="ps-block__left">
                         <i class="icon-accessibility"></i>
                     </div>
@@ -27,9 +28,9 @@
                         </h4>
                         <p>{{ $t('Restriction to certain areas') }}</p>
                     </div>
-                </div>
+                </nuxt-link>
 
-                <div class="ps-block__item">
+                <nuxt-link to="/product-categories/smart-lock" class="ps-block__item">
                     <div class="ps-block__left">
                         <i class="icon-lock"></i>
                     </div>
@@ -41,8 +42,9 @@
                             {{ $t('100% Secure locks') }}
                         </p>
                     </div>
-                </div>
-                <div class="ps-block__item">
+                </nuxt-link>
+
+                <nuxt-link to="product-categories/entrance-control" class="ps-block__item">
                     <div class="ps-block__left">
                         <i class="icon-surveillance2"></i>
                     </div>
@@ -54,8 +56,8 @@
                             {{ $t('Dedicated System for entrance control') }}
                         </p>
                     </div>
-                </div>
-                <div class="ps-block__item">
+                </nuxt-link>
+                <nuxt-link to="product-categories/security-inspection" class="ps-block__item">
                     <div class="ps-block__left">
                         <i class="icon-surveillance"></i>
                     </div>
@@ -67,8 +69,8 @@
                             {{ $t('Support security essentials') }}
                         </p>
                     </div>
-                </div>
-                <div class="ps-block__item">
+                </nuxt-link>
+                <nuxt-link to="/product-categories/cctv" class="ps-block__item">
                     <div class="ps-block__left">
                         <i class="icon-camera"></i>
                     </div>
@@ -78,7 +80,7 @@
                         </h4>
                         <p>{{ $t('Monitor everywhere at once ') }}</p>
                     </div>
-                </div>
+                </nuxt-link>
             </div>
         </div>
     </div>
@@ -92,19 +94,19 @@ export default {
 
 <style lang="scss" scoped>
 .ps-site-features {
-    padding-top: 60px!important;
+    padding-top: 60px !important;
     padding-bottom: 10px !important;
     h1 {
         opacity: 0;
         font-size: 1px;
     }
-    h3 { 
+    h3 {
         margin-bottom: 60px;
         text-align: center;
         font-size: 24px;
         color: #000;
     }
-    .ps-block--site-features{
+    .ps-block--site-features {
         border: 1px solid #78bc27;
     }
 }
