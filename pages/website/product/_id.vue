@@ -44,7 +44,29 @@ export default {
         BreadCrumb,
         ProductDetailFullwidth
     },
-
+    head() {
+        const title = this.singleProduct
+            ? this.singleProduct.name
+            : 'Product Details';
+        const description = this.singleProduct
+            ? this.singleProduct.description
+            : 'Product Details - Description';
+        return {
+            title: title,
+            meta: [
+                {
+                    hid: 'title',
+                    name: 'title',
+                    content: title
+                },
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: description
+                }
+            ]
+        };
+    },
     computed: {
         singleProduct() {
             return this.products[0];
