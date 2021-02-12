@@ -84,7 +84,7 @@ export default {
                 },
                 {
                     text: this.$i18n.t('Store'),
-                    url: '/store',
+                    url: '/website/page/coming-soon',
                     extraClass: 'menu-item-has-children',
                     subClass: 'sub-menu'
                 }
