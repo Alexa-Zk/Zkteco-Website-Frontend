@@ -21,12 +21,12 @@ import relatedArticles from '~/apollo/queries/articles/relatedArticles';
 export default {
     name: 'BlogPost',
     head() {
-				const title = this.formattedArticle ? this.formattedArticle.title : 'Blog Post'
-				const description = this.formattedArticle ? this.formattedArticle.body : 'Blog Post - Description'
+        const title = this.formattedArticle ? this.formattedArticle.title : 'Blog Post'
+        const description = this.formattedArticle ? this.formattedArticle.body : 'Blog Post - Description'
         return {
             title: title,
             meta: [
-								{
+				{
                     hid: 'title',
                     name: 'title',
                     content: title

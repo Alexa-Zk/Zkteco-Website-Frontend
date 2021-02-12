@@ -90,7 +90,6 @@ export default {
         };
     },
     async created() {
-        
         this.breadCrumb = [
             {
                 text: 'Home',
@@ -101,9 +100,16 @@ export default {
                 url: '/product'
             },
             {
-                text: ""
+                text: ''
             }
         ];
+        // let payload = {
+        //     id:  this.singleProduct ? this.singleProduct.product_category.id : ''
+        // };
+        // const response = this.$store.dispatch(
+        //     'website/getRelatedProducts',
+        //     payload
+        // );
     },
 };
 </script>
