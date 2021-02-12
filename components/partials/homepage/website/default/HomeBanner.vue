@@ -22,6 +22,17 @@
             </div>
             <div class="swiper-pagination swiper-pagination-bullets"></div>
         </div>
+
+        <!-- <div class="ps-carousel" v-swiper:mySwiper="swiperOption">
+            <swiper ref="mySwiper" :options="swiperOptions">
+                <swiper-slide>Slide 1</swiper-slide>
+                <swiper-slide>Slide 2</swiper-slide>
+                <swiper-slide>Slide 3</swiper-slide>
+                <swiper-slide>Slide 4</swiper-slide>
+                <swiper-slide>Slide 5</swiper-slide>
+                <div class="swiper-pagination" slot="pagination"></div>
+            </swiper>
+        </div> -->
     </div>
 </template>
 
@@ -49,6 +60,10 @@ export default {
         openSlider(url) {
             window.open(url, '_blank');
         }
+    },
+    mounted() {
+        // console.log('Current Swiper instance object', this.mySwiper);
+        // this.mySwiper.slideTo(3, 1000, false);
     }
 };
 </script>

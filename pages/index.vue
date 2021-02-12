@@ -14,7 +14,7 @@ import HomeBanner from '~/components/partials/homepage/website/default/HomeBanne
 import Newsletters from '~/components/partials/commons/website/Newsletters';
 import SiteFeauturesFullwidth from '~/components/partials/commons/website/SiteFeaturesFullwidth';
 import RelatedPosts from '~/components/partials/post/website/RelatedPosts';
-
+import HomeBrand from '~/components/partials/shop/sections/website/ShopBrands';
 // Queries
 import homePages from '~/apollo/queries/homePages';
 
@@ -34,6 +34,7 @@ export default {
     },
     components: {
         HomeBanner,
+        HomeBrand,
         SiteFeauturesFullwidth,
         Newsletters,
         RelatedPosts
