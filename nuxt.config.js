@@ -28,6 +28,9 @@ export default {
             }
         ]
     },
+    generate: {
+        fallback: true
+    },
 
     css: [
         'swiper/dist/css/swiper.css',
