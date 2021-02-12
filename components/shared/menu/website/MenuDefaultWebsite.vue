@@ -12,6 +12,7 @@
             <li class="menu-item-has-dropdown" v-else :key="item.text">
                 <nuxt-link :to="item.url">
                     {{ item.text }}
+                    <i :class="item.icon"></i>
                 </nuxt-link>
             </li>
         </template>
@@ -34,7 +35,6 @@ export default {
     data() {
         return {
             mainMenu: [
-               
                 {
                     text: this.$i18n.t('Solutions'),
                     url: '/solution',
@@ -86,7 +86,8 @@ export default {
                     text: this.$i18n.t('Store'),
                     url: '/website/page/coming-soon',
                     extraClass: 'menu-item-has-children',
-                    subClass: 'sub-menu'
+                    subClass: 'sub-menu',
+                    icon: 'icon-cart'
                 }
             ]
         };
