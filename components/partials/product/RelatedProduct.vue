@@ -6,9 +6,6 @@
             }`
         "
     >
-        <div class="ps-section__header">
-            <h3>Related products</h3>
-        </div>
         <div class="ps-section__content">
             <div
                 class="ps-carousel"
@@ -38,17 +35,12 @@
 
 <script>
 import { mapState } from 'vuex';
-import { getColletionBySlug } from '~/utilities/product-helper';
-import ProductDefault from '~/components/elements/product/ProductDefault';
+import ProductDefault from '~/components/elements/product/website/RelatedProductDefault';
 
 export default {
     name: 'RelatedProduct',
     components: { ProductDefault },
     props: {
-        collectionSlug: {
-            type: String,
-            default: ''
-        },
         layout: {
             type: String,
             default: ''
@@ -60,17 +52,14 @@ export default {
     },
     computed: {
         ...mapState({
-            collections: state => state.collection.collections
+            products: state => state.website.productsRelated
         }),
-        products() {
-            return getColletionBySlug(this.collections, this.collectionSlug);
-        }
     },
     data() {
         return {
             settingFullwidth: {
                 loop: true,
-                slidesPerView: 7,
+                slidesPerView: 4,
                 spaceBetween: 1,
                 navigation: {
                     nextEl: '.swiper-next',
@@ -78,10 +67,10 @@ export default {
                 },
                 breakpoints: {
                     1680: {
-                        slidesPerView: 6
+                        slidesPerView: 4
                     },
                     1366: {
-                        slidesPerView: 5,
+                        slidesPerView: 4,
                         pagination: {
                             el: '.swiper-pagination',
                             dynamicBullets: true
@@ -102,7 +91,7 @@ export default {
             },
             settingDefault: {
                 loop: true,
-                slidesPerView: 5,
+                slidesPerView: 4,
                 spaceBetween: 1,
                 navigation: {
                     nextEl: '.swiper-next',
@@ -110,10 +99,10 @@ export default {
                 },
                 breakpoints: {
                     1680: {
-                        slidesPerView: 5
+                        slidesPerView: 4
                     },
                     1366: {
-                        slidesPerView: 5,
+                        slidesPerView: 4,
                         pagination: {
                             el: '.swiper-pagination',
                             dynamicBullets: true

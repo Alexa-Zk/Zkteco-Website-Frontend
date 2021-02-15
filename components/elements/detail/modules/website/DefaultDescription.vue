@@ -25,8 +25,7 @@
             </v-tab-item>
             <v-tab-item>
                 <div class="tab-content">
-                    No Related Product Information
-                    <!-- <related-product layout="fullwidth" collection-slug="shop-recommend-items"/> -->
+                    <related-product layout="fullwidth" collection-slug="shop-recommend-items"/>
                 </div>
             </v-tab-item>
         </v-tabs>

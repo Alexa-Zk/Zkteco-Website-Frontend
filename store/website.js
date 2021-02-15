@@ -4,7 +4,8 @@ import { baseUrl, subBaseUrl } from '~/repositories/Repository';
 
 export const state = () => ({
     products: null,
-    products_related: null,
+    productsRelated: null,
+    singleProduct: null,
     articles: null,
     productsTotal: 0,
     searchResults: null,
@@ -33,7 +34,11 @@ export const mutations = {
     },
 
     setRelatedProducts(state, payload) {
-        state.products_related = payload;
+        state.productsRelated = payload;
+    },
+
+    setSingleProduct(state, payload) {
+        state.singleProduct = payload
     }
 };
 
@@ -67,6 +72,22 @@ export const actions = {
             .then(response => {
                 commit('setArticles', response.data);
                 return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getSingleProduct({ commit, dispatch }, payload) {
+        let params = {
+            id_in: payload.id,
+        };
+        const reponse = await Repository.get(
+            `${subBaseUrl}/products?${serializeQuery(params)}`
+        )
+            .then(response => {
+                commit('setSingleProduct', response.data[0]);
+                dispatch('getRelatedProducts', response.data[0].product_category)
+                return response.data[0];
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
