@@ -70,15 +70,20 @@ export default {
     },
 
     modules: [
-        '@nuxtjs/axios', 
-        'nuxt-i18n', 
-        '@nuxtjs/apollo', 
+        '@nuxtjs/axios',
+        'nuxt-i18n',
+        '@nuxtjs/apollo',
+        '@nuxtjs/robots',
         '@nuxtjs/sitemap',
-        '@nuxtjs/robots'
     ],
     robots: {
-        Sitemap: 'https://zkteco-wa.com/sitemap.xml', 
+        Sitemap: 'https://zkteco-wa.com/sitemap.xml',
         UserAgent: '*'
+    },
+    sitemap: {
+        hostname: 'https://zkteco-wa.com',
+        exclude: [],
+        routes: []
     },
     apollo: {
         clientConfigs: {
