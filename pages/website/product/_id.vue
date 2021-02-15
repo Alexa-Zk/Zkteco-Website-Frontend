@@ -5,16 +5,18 @@
             <div class="ps-container">
                 <div class="ps-page__container">
                     <div class="ps-page__left">
-                        <product-detail-fullwidth :singleProduct="singleProduct" />
+                        <product-detail-fullwidth
+                            :singleProduct="singleProduct"
+                        />
                     </div>
                     <div class="ps-page__right">
-                        <product-widgets collection-slug="widget_same_brand"/>
+                        <product-widgets collection-slug="widget_same_brand" />
                     </div>
                 </div>
                 <!-- <related-product layout="fullwidth" collection-slug="shop-recommend-items"/> -->
             </div>
         </div>
-        <newsletters layout="fullwidth"/>
+        <newsletters layout="fullwidth" />
     </div>
 </template>
 
@@ -30,7 +32,6 @@ import Newsletters from '~/components/partials/commons/Newsletters';
 
 // Queries
 import Products from '~/apollo/queries/products/singleProduct';
-
 
 export default {
     layout: 'layout-default-website',
@@ -103,14 +104,14 @@ export default {
                 text: ''
             }
         ];
-        // let payload = {
-        //     id:  this.singleProduct ? this.singleProduct.product_category.id : ''
-        // };
-        // const response = this.$store.dispatch(
-        //     'website/getRelatedProducts',
-        //     payload
-        // );
-    },
+        let payload = {
+            id: this.$route.params.id
+        };
+        const response = await this.$store.dispatch(
+            'website/getSingleProduct',
+            payload
+        );
+    }
 };
 </script>
 

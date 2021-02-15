@@ -2,14 +2,14 @@
     <client-only>
         <v-app>
             <v-main>
-                <loading
+                <!-- <loading
                     :active.sync="preloader"
                     :can-cancel="true"
                     :on-cancel="onCancel"
                     :is-full-page="fullPage"
                     loader="bars"
                     color="#78bc27"
-                ></loading>
+                ></loading> -->
                 <header-default />
                 <header-mobile />
                 <nuxt />
