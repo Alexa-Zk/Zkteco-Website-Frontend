@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="ps-site-features">
         <div class="ps-container">
-            <h1>ZKTeco Home Page</h1>
+            <h1>ZKTeco West Africa</h1>
             <h3>ZKTeco Insight into the Market</h3>
             <div class="ps-block--site-features">
                 <nuxt-link to="/product-categories/time-attendance" class="ps-block__item">

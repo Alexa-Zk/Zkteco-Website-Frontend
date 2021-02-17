@@ -10,7 +10,7 @@
                 <i class="icon-credit-card"></i> Pay online or when receiving
                 goods with
                 <nuxt-link to="/store">
-                    <a> Store!</a>
+                    Store!
                 </nuxt-link>
             </p>
         </aside>
@@ -18,18 +18,18 @@
             <p>
                 <i class="icon-store"></i>Buy Products?
                 <nuxt-link to="/store">
-                    <a> Click Here !</a>
+                    Click Here !
                 </nuxt-link>
             </p>
         </aside>
         <aside class="widget widget_ads">
             <nuxt-link to="/store">
-                <a>
+                
                     <img
                         src="~/static/img/collection/cctv.png"
-                        alt="martfury"
+                        alt="zkteco-product-ads"
                     />
-                </a>
+                
             </nuxt-link>
         </aside>
     </section>

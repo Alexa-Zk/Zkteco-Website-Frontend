@@ -26,6 +26,13 @@ export default {
                 href:
                     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
             }
+        ],
+        script: [
+            // {
+            //     id: 'ze-snippet',
+            //     src: 'https://static.zdassets.com/ekr/snippet.js?key=ebd1d5ac-b3c0-4bfe-a265-02e961779c67',
+            //     defer: true
+            // }
         ]
     },
     generate: {
@@ -48,7 +55,7 @@ export default {
         { src: '~/plugins/axios.js', ssr: false },
         { src: '~/plugins/lazyLoad.js', ssr: false },
         { src: '~/plugins/flutterwave.js', ssr: false },
-        { src: '~/plugins/filters.js', ssr: false },
+        { src: '~/plugins/filters.js', ssr: false }
     ],
 
     buildModules: [
@@ -72,7 +79,7 @@ export default {
         'nuxt-i18n',
         '@nuxtjs/apollo',
         '@nuxtjs/robots',
-        '@nuxtjs/sitemap',
+        '@nuxtjs/sitemap'
     ],
     robots: {
         Sitemap: 'https://zkteco-wa.com/sitemap.xml',
