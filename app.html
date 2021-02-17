@@ -26,40 +26,30 @@
     <!-- End Alexa Certify Javascript -->
     <script type='application/ld+json'>
         {
-            "@context": "http://www.schema.org",
-            "@type": "WebSite",
-            "name": "ZKTeco West Africa",
-            "url": "https://zkteco-wa.com/",
-            "sameAs": [
-                "https://www.zkteco-wa.com/product-categories/pos-terminal",
-                "https://www.zkteco-wa.com/product-categories/security-inspection",
-                "https://www.zkteco-wa.com/product-categories/time-attendance",
-                "https://www.zkteco-wa.com/product-categories/entrance-control",
-                "https://www.zkteco-wa.com/product-categories/green-label",
-                "https://www.zkteco-wa.com/product-categories/cctv",
-                "https://www.zkteco-wa.com/product-categories/smart-lock",
-                "https://www.zkteco-wa.com/product-categories/access-control"
-            ],
-            "logo": "https://storage.googleapis.com/zkteco_website_bucket/zkteco_west_africa_logo_76bb323fe3/zkteco-west-africa-logo.png_zkteco_west_africa_logo_76bb323fe3.png",
-            "image": "https://storage.googleapis.com/zkteco_website_bucket/zkteco_west_africa_logo_76bb323fe3/zkteco-west-africa-logo.png_zkteco_west_africa_logo_76bb323fe3.png",
-            "description": "ZKTeco is a globally-renowned provider of security, access control and time management solutions. ZKTeco focus on Biometrics of fingerprint, face recognition, ..",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "64 Adetokunbo Ademola Street",
-                "addressLocality": "Victoria Island",
-                "addressRegion": "Lagos",
-                "addressCountry": "Nigeria"
+            "@context": {
+                "name": "http://schema.org/name",
+                "description": "http://schema.org/description",
+                "image": {
+                    "@id": "http://schema.org/image",
+                    "@type": "@id"
+                },
+                "geo": "http://schema.org/geo",
+                "latitude": {
+                    "@id": "http://schema.org/latitude",
+                    "@type": "xsd:float"
+                },
+                "longitude": {
+                    "@id": "http://schema.org/longitude",
+                    "@type": "xsd:float"
+                },
+                "xsd": "http://www.w3.org/2001/XMLSchema#"
             },
+            "name": "ZKTeco West Africa",
+            "description": "ZKTeco is a globally-renowned provider of security, access control and time management solutions. ZKTeco focus on Biometrics of fingerprint, face recognition, time attendance, access control, cctv, entrance control ..",
+            "image": "https://storage.googleapis.com/zkteco_website_bucket/zkteco_west_africa_logo_76bb323fe3/zkteco-west-africa-logo.png_zkteco_west_africa_logo_76bb323fe3.png",
             "geo": {
-                "@type": "GeoCoordinates",
                 "latitude": "6.430860",
                 "longitude": "3.430130"
-            },
-            "hasMap": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2061.4848049834477!2d3.429039418716355!3d6.4296397024562175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf52561777163%3A0xc43e06f963fda87e!2s64%20Adetokunbo%20Ademola%20Street%2C%20Victoria%20Island%2C%20Lagos!5e0!3m2!1sen!2sng!4v1612695445722!5m2!1sen!2sng\" height=\"500\" frameborder=\"0\" style=\"border:0;\" allowfullscreen=\"\" aria-hidden=\"false\" tabindex=\"0\"></iframe>",
-            "openingHours": "Mo, Tu, We, Th, Fr 08:00-16:00",
-            "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+234 817 5555 512"
             }
         }
     </script>
