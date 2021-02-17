@@ -1,8 +1,8 @@
 <template lang="html">
     <div class="ps-page--blog">
-        <div class="container" v-if="formattedCatArticle">
+        <div class="container" v-if="news_categories">
             <div class="ps-page__header">
-                <h1>{{ formattedCatArticle.name }}</h1>
+                <h1>{{ news_categories.name }}</h1>
                 <bread-crumb2 :breadcrumb="breadCrumb" />
             </div>
             <!-- <template v-if="loading > 0">
@@ -10,19 +10,18 @@
             </template> -->
             <blog-sidebar
                 layout="right"
-                :articles="formattedCatArticle.articles"
+                :articles="news_categories.articles"
             />
         </div>
     </div>
 </template>
 
 <script>
+import {mapState} from 'vuex';
 import BreadCrumb2 from '~/components/elements/BreadCrumb2';
 import BlogList from '~/components/partials/blog/BlogList';
 import BlogSidebar from '~/components/partials/blog/BlogSidebar2';
 
-// Queries
-import CategoriesArticles from '~/apollo/queries/articles/categoriesArticles';
 
 export default {
     transition: 'zoom',
@@ -47,20 +46,16 @@ export default {
             ]
         };
     },
-    apollo: {
-        categories: {
-            query: CategoriesArticles,
-            variables() {
-                return { id: this.$route.params.id };
-            },
-            loadingKey: 'loading'
-        }
-    },
     computed: {
-        formattedCatArticle() {
-            return this.categories[0];
-        }
-    }
+        ...mapState({
+            news_categories: state => state.website.newsCategories,
+        }),
+    },
+    
+    created() {
+        const slug = this.$route.params.id
+        const response = this.$store.dispatch('website/getNewsCategories', slug);
+    },
 };
 </script>
 

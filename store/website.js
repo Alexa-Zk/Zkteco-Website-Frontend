@@ -6,8 +6,13 @@ export const state = () => ({
     products: null,
     productsRelated: null,
     singleProduct: null,
+    solutions: null,
     articles: null,
     productsTotal: 0,
+    productCategories: null,
+    subProductCategories: null,
+    solutionCategories: null,
+    newsCategories: null,
     searchResults: null,
     loading: false,
     page: 1,
@@ -17,6 +22,10 @@ export const state = () => ({
 });
 
 export const mutations = {
+    setLoading(state, payload) {
+        state.loading = payload;
+    },
+
     setProducts(state, payload) {
         state.products = payload;
     },
@@ -39,11 +48,32 @@ export const mutations = {
 
     setSingleProduct(state, payload) {
         state.singleProduct = payload
+    },
+
+    setProductCategories(state, payload) {
+        state.productCategories = payload
+    },
+
+    setSubProductCategories(state, payload) {
+        state.subProductCategories = payload
+    },
+
+    setSolutionCategories(state, payload) {
+        state.solutionCategories = payload
+    },
+
+    setNewsCategories(state, payload) {
+        state.newsCategories = payload
+    },
+
+    setSolutions(state, payload) {
+        state.solutions = payload
     }
 };
 
 export const actions = {
     async getProducts({ state, commit }, payload) {
+        commit('setLoading', true);
         let params = {
             _start: Object.keys(payload).length === 0 ? state.page : payload.page,
             _sort: Object.keys(payload).length === 0 ? state.sort_by : payload.sort_by,
@@ -54,6 +84,7 @@ export const actions = {
         )
             .then(response => {
                 commit('setProducts', response.data);
+                commit('setLoading', false);
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
@@ -61,6 +92,7 @@ export const actions = {
     },
 
     async getArticles({ commit }, payload) {
+        commit('setLoading', true);
         let params = {
             _start: 0,
             _sort: 'created_at:desc',
@@ -71,6 +103,26 @@ export const actions = {
         )
             .then(response => {
                 commit('setArticles', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getSolutions({ commit }, payload) {
+        commit('setLoading', true);
+        let params = {
+            _start: 0,
+            _sort: 'created_at:desc',
+            _limit: 100,
+        };
+        const reponse = await Repository.get(
+            `${subBaseUrl}/solutions?${serializeQuery(params)}`
+        )
+            .then(response => {
+                commit('setSolutions', response.data);
+                commit('setLoading', false);
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
@@ -101,7 +153,75 @@ export const actions = {
             `${subBaseUrl}/product-categories?${serializeQuery(params)}`
         )
             .then(response => {
-                commit('setRelatedProducts', response.data[0].products);
+                commit('setRelatedProducts', response.data[0]);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getProductCategories({ commit }, slug) {
+        commit('setLoading', true);
+        let params = {
+            slug_in: slug,
+        };
+        const reponse = await Repository.get(
+            `${subBaseUrl}/product-categories/?${serializeQuery(params)}`
+        )
+            .then(response => {
+                commit('setProductCategories', response.data[0]);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getSubProductCategories({ commit }, slug) {
+        commit('setLoading', true);
+        let params = {
+            slug_in: slug,
+        };
+        const reponse = await Repository.get(
+            `${subBaseUrl}/sub-product-categories/?${serializeQuery(params)}`
+        )
+            .then(response => {
+                commit('setSubProductCategories', response.data[0]);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getSolutionCategories({ commit }, slug) {
+        commit('setLoading', true);
+        let params = {
+            slug_in: slug,
+        };
+        const reponse = await Repository.get(
+            `${subBaseUrl}/solution-categories/?${serializeQuery(params)}`
+        )
+            .then(response => {
+                commit('setSolutionCategories', response.data[0]);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getNewsCategories({ commit }, slug) {
+        commit('setLoading', true);
+        let params = {
+            slug_in: slug,
+        };
+        const reponse = await Repository.get(
+            `${subBaseUrl}/categories/?${serializeQuery(params)}`
+        )
+            .then(response => {
+                commit('setNewsCategories', response.data[0]);
+                commit('setLoading', false);
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));

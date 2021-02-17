@@ -9,7 +9,13 @@
                 </p>
             </div>
             <div class="ps-section__content">
-                <div class="row">
+                <div class="placeholder-image-grid" v-if="loading">
+                    <content-placeholders :rounded="true" v-for="x in 9" :key="x">
+                        <content-placeholders-img />
+                        <content-placeholders-heading />
+                    </content-placeholders>
+                </div>
+                <div class="row" v-else>
                     <div
                         class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 "
                         v-for="item in solutions"
@@ -27,15 +33,11 @@
                                 </figure>
                             </div>
                             <div class="ps-block__author">
-                                <a class="ps-block__user" href="#">
-                                    
-                                </a>
+                                <a class="ps-block__user" href="#"> </a>
 
                                 <nuxt-link
                                     class="ps-btn"
-                                    :to="
-                                        `/solution-details/${item.slug}`
-                                    "
+                                    :to="`/solution-details/${item.slug}`"
                                 >
                                     Learn More
                                 </nuxt-link>
@@ -49,21 +51,16 @@
 </template>
 
 <script>
-// Queries
-import solutions from '~/apollo/queries/solutions/allSolutions';
+
+import { mapState } from 'vuex';
 
 export default {
     name: 'Solutions',
-    data() {
-        return {
-            solutions: ''
-        };
-    },
-    apollo: {
-        solutions: {
-            prefetch: true,
-            query: solutions
-        }
+    computed: {
+        ...mapState({
+            solutions: state => state.website.solutions,
+            loading: state => state.website.loading
+        })
     }
 };
 </script>
@@ -73,6 +70,9 @@ export default {
     padding-top: 10px;
     .ps-section__header {
         padding: 10px 0 20px;
+    }
+    .ps-section__content {
+        margin-bottom: 60px;
     }
 }
 .ps-block--store-2 {
@@ -87,5 +87,11 @@ export default {
     .ps-block__user {
         opacity: 0;
     }
+}
+
+.placeholder-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 40px;
 }
 </style>

@@ -31,17 +31,6 @@
                         <i class="icon-eye"></i>
                     </a>
                 </li>
-                <!-- <li>
-                    <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Add to wishlist"
-                        @click.prevent="handleAddItemToWishlist"
-                    >
-                        <i class="icon-heart"></i>
-                    </a>
-                </li> -->
             </ul>
         </div>
         <div class="ps-product__container">
@@ -60,7 +49,7 @@
                     <rating />
                     <span>{{ product.average_rating }}</span>
                 </div>
-                <p class="ps-product__price">
+                <p class="ps-product__price" v-if="product.price < 200000">
                     {{ currency }}{{ product.price | formatMoney }}
                 </p>
             </div>
@@ -69,7 +58,7 @@
                     <a class="ps-product__title">{{ product.name }}</a>
                 </a>
 
-                <p class="ps-product__price sale">
+                <p class="ps-product__price sale" v-if="product.price < 200000">
                     {{ currency }} {{ product.price | formatMoney }}
                 </p>
             </div>

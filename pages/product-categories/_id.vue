@@ -7,11 +7,8 @@
                     <div class="ps-layout__left">
                         <shop-widget />
                     </div>
-                    <div class="ps-layout__right" v-if="!loading">
-                        <div class="ps-page__header">
-                            <h1 class="text-uppercase">{{ProductCategories.name}}</h1>
-                        </div>
-                        <layout-shop-sidebar :products="ProductCategories.products" />
+                    <div class="ps-layout__right">
+                        <layout-shop-sidebar :categories_products="product ? product : []" />
                     </div>
                 </div>
             </div>
@@ -66,11 +63,9 @@ export default {
                     text: 'All Products'
                 }
             ],
-            loading: 0
         };
     },
     apollo: {
-        $loadingKey: 'loading',
         productCategories: {
             prefetch: true,
             query: CategoriesWithProduct,
@@ -82,17 +77,15 @@ export default {
     computed: {
         ProductCategories() {
             return this.productCategories[0];
-        }
+        },
+        ...mapState({
+            product: state => state.website.productCategories,
+        }),
     },
-    watch: {
-        loading(newState, OldState) {
-            if (this.loading === 1) {
-                 const response = this.$store.commit("app/setPreloader", true)
-            } else {
-                 const response = this.$store.commit("app/setPreloader", false)
-            }  
-        }
-    }
+    created() {
+        const slug = this.$route.params.id
+        const response = this.$store.dispatch('website/getProductCategories', slug);
+    },
 };
 </script>
 

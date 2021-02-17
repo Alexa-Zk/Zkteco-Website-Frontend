@@ -1,62 +1,31 @@
 <template lang="html">
-    <div class="ps-shopping" v-if="products">
+    <div class="ps-shopping" v-if="categories_products">
+        <div class="ps-page__header">
+            <h1 class="text-uppercase"> {{categories_products.name}}  </h1>
+        </div>
         <div class="ps-shopping__header">
             <p>
-                <strong class="mr-2">{{ totals }}</strong>
+                <strong class="mr-2">{{totals}}</strong>
                 Products found
             </p>
-            <!-- <div class="ps-shopping__actions">
-                
-                <div class="ps-shopping__view">
-                    <p>View</p>
-                    <ul class="ps-tab-list">
-                        <li :class="listView === true ? 'active' : ''">
-                            <a href="#" @click.prevent="handleChangeViewMode">
-                                <i class="icon-grid"></i>
-                            </a>
-                        </li>
-                        <li :class="listView !== true ? 'active' : ''">
-                            <a href="#" @click.prevent="handleChangeViewMode">
-                                <i class="icon-list4"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div> -->
         </div>
         <div class="ps-shopping__content">
-            
-            <div v-if="listView === false" class="ps-shopping-product">
+            <div class="placeholder-image-grid" v-if="loading">
+                <content-placeholders :rounded="true" v-for="x in 9" :key="x">
+                    <content-placeholders-img />
+                    <content-placeholders-heading />
+                </content-placeholders>
+            </div>
+            <div v-else class="ps-shopping-product">
                 <div class="row">
                     <div
-                        v-for="product in products"
+                        v-for="product in categories_products.products"
                         class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 "
                         :key="product.id"
                     >
                         <product-default :product="product" />
                     </div>
                 </div>
-                <footer class="mt-30">
-                    <!-- <v-pagination
-                        v-model="page"
-                        :length="paginationLenght"
-                        @input="handleChangePagination"
-                    /> -->
-                </footer>
-            </div>
-            <div v-else class="ps-shopping-product">
-                <product-wide
-                    v-for="product in products"
-                    :product="product"
-                    :key="product.id"
-                />
-                <footer class="mt-30">
-                    <!-- <v-pagination
-                        v-model="page"
-                        :length="paginationLenght"
-                        @input="handleChangePagination"
-                    /> -->
-                </footer>
             </div>
         </div>
     </div>
@@ -67,16 +36,15 @@ import { mapState } from 'vuex';
 import ProductDefault from '~/components/elements/product/website/ProductDefault';
 import ProductWide from '~/components/elements/product/ProductWide';
 
-
 export default {
     name: 'LayoutShopSidebar',
     components: { ProductWide, ProductDefault },
-    props: ["products"],
+    props: ['categories_products'],
     data() {
         return {
             listView: false,
             page: 1,
-            pageSize: 12,
+            pageSize: 12
         };
     },
     methods: {
@@ -86,10 +54,19 @@ export default {
     },
     computed: {
         totals() {
-            return this.products.length
-        }
+            return this.categories_products.products ? this.categories_products.products.length : 0;
+        },
+        ...mapState({
+            loading: state => state.website.loading
+        })
     }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.placeholder-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+}
+</style>

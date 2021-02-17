@@ -2,10 +2,23 @@
     <section class="ps-store-list">
         <div class="container" v-if="formattedSolution">
             <div class="ps-section__header">
-                <h3>{{formattedSolution.name}}</h3>
-                <p>ZKTeco has developed professional industry solutions for different industries' properties and scale</p>
+                <h3>{{ formattedSolution.name }}</h3>
+                <p>
+                    ZKTeco has developed professional industry solutions for
+                    different industries' properties and scale
+                </p>
             </div>
-            <div class="ps-section__content" >
+            <div class="ps-section__content">
+                <div class="placeholder-image-grid" v-if="loading">
+                    <content-placeholders
+                        :rounded="true"
+                        v-for="x in 9"
+                        :key="x"
+                    >
+                        <content-placeholders-img />
+                        <content-placeholders-heading />
+                    </content-placeholders>
+                </div>
                 <div class="row">
                     <div
                         class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 "
@@ -15,7 +28,6 @@
                         <article class="ps-block--store-2">
                             <div
                                 class="ps-block__content bg--cover"
-                                
                                 :style="{
                                     backgroundImage: `linear-gradient(to right bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${item.image[0].url})`
                                 }"
@@ -31,10 +43,12 @@
                                         alt="martfury"
                                     />
                                 </a>
-                                <nuxt-link class="ps-btn" :to="`/solution-details/${item.slug}`">
-                                     Learn More
+                                <nuxt-link
+                                    class="ps-btn"
+                                    :to="`/solution-details/${item.slug}`"
+                                >
+                                    Learn More
                                 </nuxt-link>
-                               
                             </div>
                         </article>
                     </div>
@@ -45,14 +59,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 
 export default {
     name: 'Solutions',
-    props: ["formattedSolution"],
-    data() {
-        return {
-            
-        };
+    props: ['formattedSolution'],
+    computed: {
+        ...mapState({
+            loading: state => state.website.loading
+        })
     }
 };
 </script>
@@ -69,7 +84,6 @@ export default {
     .ps-block__content {
         height: 80%;
         h4 {
-
             color: white;
             font-size: 22px;
         }
@@ -77,5 +91,10 @@ export default {
     .ps-block__user {
         opacity: 0;
     }
+}
+.placeholder-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 40px;
 }
 </style>
