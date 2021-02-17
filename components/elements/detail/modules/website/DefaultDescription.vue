@@ -2,13 +2,13 @@
     <div class="ps-product__content">
         <v-tabs background-color="white" color="warning" class="ps-tab-list">
             <v-tab :ripple="false" tag="li">
-                <a class="list-item">Description</a>
+                <span class="list-item">Description</span>
             </v-tab>
             <v-tab :ripple="false" tag="li">
-                <a class="list-item">Downloads</a>
+                <span class="list-item">Downloads</span>
             </v-tab>
             <v-tab :ripple="false" tag="li">
-                <a class="list-item">Related Products</a>
+                <span class="list-item">Related Products</span>
             </v-tab>
 
             <v-tab-item>
@@ -62,7 +62,7 @@ li[aria-selected='true'] {
         color: $color-heading !important;
     }
 }
-a.list-item {
+span.list-item {
     position: relative;
     display: block;
     color: #999999;

@@ -14,7 +14,7 @@
                                     class="swiper-slide"
                                     v-for="image in thumbnailImage"
                                 >
-                                    <img :src="image.url" />
+                                    <img :src="image.url" :alt="image.name"/>
                                 </div>
                             </div>
                             <div class="swiper-nav">
@@ -48,7 +48,7 @@
                             "
                             @click="handleClickSlide(index)"
                         >
-                            <img :src="image.url" />
+                            <img :src="image.url" :alt="image.name"/>
                         </div>
                     </div>
                 </div>

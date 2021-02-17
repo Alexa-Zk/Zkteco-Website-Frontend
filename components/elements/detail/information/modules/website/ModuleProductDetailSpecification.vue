@@ -4,9 +4,9 @@
         <p class="categories">
             <strong> Categories:</strong>
             <nuxt-link :to="`/product-categories/${product.product_category.slug}`">
-                <a class="ml-2 text-capitalize">
+                <span class="ml-2 text-capitalize">
                     {{product.product_category.name}}
-                </a>
+                </span>
             </nuxt-link>
         </p>
     </div>

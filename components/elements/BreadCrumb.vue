@@ -5,7 +5,7 @@
                 <template v-for="item in breadcrumb">
                     <li v-if="item.url" :key="item.text">
                         <nuxt-link :to="item.url">
-                            <a>{{ item.text }}</a>
+                            {{ item.text }}
                         </nuxt-link>
                     </li>
                     <li v-else>{{ item.text }}</li>
