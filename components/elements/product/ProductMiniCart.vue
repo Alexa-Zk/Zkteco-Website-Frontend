@@ -20,12 +20,15 @@
                 {{ product.name }}
             </nuxt-link>
             <p>
-                <strong>Sold by:</strong>
+                <strong>Categories</strong>
                 {{ product.categories[0].name }}
             </p>
-            <small v-if="quantity !== null">
-                {{ quantity }} x {{currency}} {{ product.price | formatMoney }}
+            <small v-if="quantity !== null"> quantity: 
+                {{ quantity }}
             </small>
+            <!-- <small v-if="quantity !== null">
+                {{ quantity }} x {{currency}} {{ product.price | formatMoney }}
+            </small> -->
         </div>
     </div>
 </template>

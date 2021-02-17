@@ -43,14 +43,12 @@ export default {
     plugins: [
         { src: '~plugins/vueliate.js', ssr: false },
         { src: '~/plugins/swiper-plugin.js', ssr: false },
+        { src: '~/plugins/contentPlaceholders.js', ssr: false },
         { src: '~/plugins/vue-notification.js', ssr: false },
         { src: '~/plugins/axios.js', ssr: false },
         { src: '~/plugins/lazyLoad.js', ssr: false },
         { src: '~/plugins/flutterwave.js', ssr: false },
-        { src: '~/plugins/vue-instantsearch.js', ssr: false },
         { src: '~/plugins/filters.js', ssr: false },
-        { src: '~/plugins/routes.js', ssr: false },
-        { src: '~/plugins/before-each.js', ssr: false }
     ],
 
     buildModules: [
@@ -64,9 +62,9 @@ export default {
     },
 
     loadingIndicator: {
-        name: 'chasing-dots',
-        color: 'purple',
-        background: 'green'
+        name: 'fading-circle',
+        color: 'white',
+        background: '#78bc27'
     },
 
     modules: [

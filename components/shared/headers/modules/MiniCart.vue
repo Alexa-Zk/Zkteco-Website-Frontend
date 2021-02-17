@@ -21,8 +21,8 @@
             </div>
             <div class="ps-cart__footer">
                 <h3>
-                    {{ $t('header.miniCart.subTotal') }}
-                    <strong>{{currency}} {{ amount | formatMoney }}</strong>
+                    <!-- {{ $t('header.miniCart.subTotal') }}
+                    <strong>{{currency}} {{ amount | formatMoney }}</strong> -->
                 </h3>
                 <figure>
                     <div>

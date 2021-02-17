@@ -5,6 +5,12 @@
         "
     >
         <div class="ps-blog__left">
+            <div class="placeholder-image" v-if="loading">
+                <content-placeholders v-for="x in 9" :key="x">
+                    <content-placeholders-heading :img="true" />
+                    <content-placeholders-text :lines="3" />
+                </content-placeholders>
+            </div>
             <PostSmallThumbnail
                 v-for="post in articles"
                 :post="post"
@@ -19,6 +25,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Pagination from '../../elements/Pagination';
 import Sidebar from './modules/Sidebar';
 import PostHorizontal from '../../elements/post/PostHorizontal';
@@ -44,8 +51,14 @@ export default {
             default: []
         }
     },
+    computed: {
+        ...mapState({
+            loading: state => state.website.loading
+        }),
+    }
     
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

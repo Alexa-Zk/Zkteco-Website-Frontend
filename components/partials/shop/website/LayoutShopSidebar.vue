@@ -1,5 +1,5 @@
 <template lang="html">
-    <div class="ps-shopping" v-if="products">
+    <div class="ps-shopping">
         <div class="ps-shopping__header">
             <p>
                 <strong class="mr-2">{{ productsTotal }}</strong>
@@ -7,9 +7,15 @@
             </p>
         </div>
         <div class="ps-shopping__content">
-            
-            <div v-if="listView === false" class="ps-shopping-product">
-                <div class="row">
+            <div class="ps-shopping-product">
+                <div class="placeholder-image-grid" v-if="loading">
+                    <content-placeholders :rounded="true" v-for="x in 9" :key="x">
+                        <content-placeholders-img />
+                        <content-placeholders-heading />
+                    </content-placeholders>
+                    
+                </div>
+                <div class="row" v-else>
                     <div
                         v-for="product in products"
                         class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 "
@@ -23,21 +29,6 @@
                         v-model="page"
                         :total-visible="7"
                         color="green"
-                        :length="paginationLenght"
-                        @input="handleChangePagination"
-                    />
-                </footer>
-            </div>
-            <div v-else class="ps-shopping-product">
-                <product-wide
-                    v-for="product in products"
-                    :product="product"
-                    :key="product.id"
-                />
-                <footer class="mt-30">
-                    <v-pagination
-                        :total-visible="7"
-                        v-model="page"
                         :length="paginationLenght"
                         @input="handleChangePagination"
                     />
@@ -57,10 +48,15 @@ export default {
     components: { ProductWide, ProductDefault },
     data() {
         return {
-            listView: false,
             page: 1,
-            pageSize: 12,
+            pageSize: 12
         };
+    },
+    props: {
+        loading: {
+            type: Boolean,
+            default: false
+        }
     },
     methods: {
         handleChangeViewMode() {
@@ -70,16 +66,15 @@ export default {
             const params = {
                 page: value * this.pageSize,
                 sort_by: 'created_at:desc',
-                perPage: 12,
+                perPage: 12
             };
             await this.$store.dispatch('website/getProducts', params);
-        },
+        }
     },
     computed: {
         ...mapState({
             products: state => state.website.products,
-            productsTotal: state => state.website.productsTotal,
-        
+            productsTotal: state => state.website.productsTotal
         }),
         paginationLenght() {
             if (this.productsTotal % 12 === 0) {
@@ -93,4 +88,9 @@ export default {
 </script>
 
 <style lang="scss">
+.placeholder-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+}
 </style>

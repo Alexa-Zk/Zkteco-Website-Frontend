@@ -6,8 +6,8 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
 import BreadCrumb from '~/components/elements/BreadCrumb';
-
 import StoreList2 from '~/components/partials/vendor/website/StoreList2';
 
 export default {
@@ -28,6 +28,10 @@ export default {
                 }
             ]
         };
+    },
+    async created () {
+        const payload = {}
+        const response = await this.$store.dispatch('website/getSolutions', payload)
     }
 };
 </script>

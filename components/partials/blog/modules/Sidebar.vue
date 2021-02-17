@@ -22,7 +22,7 @@
             <div class="widget__content">
                 <ul>
                     <li v-for="category in Categories" :key="category.id">
-                        <nuxt-link :to="`/news-center/categories/${category.id}`">
+                        <nuxt-link :to="`/news-center/categories/${category.slug}`">
                             {{ category.name }}
                             <span class="widget__content_value">{{category.articles.length}}</span>
                         </nuxt-link>
@@ -43,9 +43,6 @@ import RecentSidebar from "./RecentSidebar";
 
 // Queries
 import Categories from '~/apollo/queries/articles/allArticlesCategories';
-import Articles from '~/apollo/queries/articles/homePageArticles';
-
-
 
 export default {
     name: 'Sidebar',

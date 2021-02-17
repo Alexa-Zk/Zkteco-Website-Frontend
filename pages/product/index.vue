@@ -5,13 +5,13 @@
             <div class="container">
                 <div class="ps-layout--shop">
                     <div class="ps-layout__left">
-                        <shop-widget/>
+                        <shop-widget />
                     </div>
                     <div class="ps-layout__right">
                         <div class="ps-page__header">
                             <h1 class="text-uppercase">Products</h1>
                         </div>
-                        <layout-shop-sidebar/>
+                        <layout-shop-sidebar :loading="loading" />
                     </div>
                 </div>
             </div>
@@ -50,15 +50,17 @@ export default {
     },
     created() {
         let payload = {};
-        const response = this.$store.dispatch(
-            'website/getProducts',
-            payload
-        );
-         const responseTotal = this.$store.dispatch(
+        const response = this.$store.dispatch('website/getProducts', payload);
+        const responseTotal = this.$store.dispatch(
             'website/getProductsTotal',
             payload
         );
     },
+    computed: {
+        ...mapState({
+            loading: state => state.website.loading
+        })
+    }
 };
 </script>
 

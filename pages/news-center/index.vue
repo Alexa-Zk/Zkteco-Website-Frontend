@@ -5,12 +5,13 @@
                 <h1>News Center</h1>
                 <bread-crumb2 :breadcrumb="breadCrumb" />
             </div>
-            <blog-sidebar layout="right" />
+            <blog-sidebar layout="right" :loading="loading" />
         </div>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import BreadCrumb2 from '~/components/elements/BreadCrumb2';
 import BlogList from '~/components/partials/blog/BlogList';
 import BlogSidebar from '~/components/partials/blog/BlogSidebar';
@@ -36,13 +37,15 @@ export default {
             ]
         };
     },
+    computed: {
+        ...mapState({
+            loading: state => state.website.loading
+        })
+    },
     created() {
         let payload = {};
-        const response = this.$store.dispatch(
-            'website/getArticles',
-            payload
-        );
-    },
+        const response = this.$store.dispatch('website/getArticles', payload);
+    }
 };
 </script>
 

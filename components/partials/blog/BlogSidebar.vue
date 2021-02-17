@@ -5,9 +5,16 @@
         "
     >
         <div class="ps-blog__left">
+            <div class="placeholder-image" v-if="loading">
+                <content-placeholders v-for="x in 9" :key="x">
+                    <content-placeholders-heading :img="true" />
+                    <content-placeholders-text :lines="3" />
+                </content-placeholders>
+            </div>
             <PostSmallThumbnail
                 v-for="post in filteredList"
                 :post="post"
+                :loading="loading"
                 :key="post.id"
             />
             <!-- <Pagination /> -->
@@ -19,12 +26,11 @@
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import { mapState } from 'vuex';
 import Pagination from '../../elements/Pagination';
 import Sidebar from './modules/Sidebar';
 import PostHorizontal from '../../elements/post/PostHorizontal';
 import PostSmallThumbnail from '../../elements/post/PostSmallThumbnail';
-import { posts } from '~/static/data/blog-grid.json';
 
 // Queries
 import articles from '~/apollo/queries/articles/homePageArticles';
@@ -34,7 +40,6 @@ export default {
     components: { PostSmallThumbnail, PostHorizontal, Sidebar, Pagination },
     data() {
         return {
-            blogPosts: posts,
             articles: '',
             searchQuery: ''
         };
@@ -58,7 +63,8 @@ export default {
     },
     computed: {
         ...mapState({
-            artic: state => state.website.articles
+            artic: state => state.website.articles,
+            loading: state => state.website.loading
         }),
         ourArticles() {
             return this.artic ? this.artic : [];
@@ -74,4 +80,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.placeholder-image{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 35px;
+}
+</style>
