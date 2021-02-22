@@ -3,9 +3,9 @@
         <thead>
             <tr>
                 <th>Product</th>
-                <th>Price</th>
+                <!-- <th>Price</th> -->
                 <th>Quantity</th>
-                <th>Total</th>
+                <!-- <th>Total</th> -->
                 <th>Action</th>
             </tr>
         </thead>
@@ -14,16 +14,16 @@
                 <td data-label="Product">
                     <product-shopping-cart :product="product" />
                 </td>
-                <td data-label="Price" class="price"> {{currency}} {{ product.price | formatMoney }}</td>
+                <!-- <td data-label="Price" class="price"> {{currency}} {{ product.price | formatMoney }}</td> -->
                 <td data-label="Quantity">
                     <product-shopping-table :product="product" />
                 </td>
-                <td data-label="Total" v-if="cartItems">
+                <!-- <td data-label="Total" v-if="cartItems">
                     {{currency}}
                     {{
                         ( getCartItemIndex(product) * product.price) | formatMoney
                     }}
-                </td>
+                </td> -->
                 <td data-label="Action">
                     <a
                         href="#"

@@ -1,6 +1,6 @@
 <template lang="html">
     <div class="ps-form__orders ps-block--checkout-order">
-        <h3 v-if="shipping === false">Your Order</h3>
+        <h3>Your Order</h3>
         <div class="ps-block--checkout-order">
             <div class="ps-block__content">
                 <figure>
@@ -18,26 +18,25 @@
                     >
                         {{ product.name }}
                         <br />
-                        {{ cartItems[index].quantity }} x {{currency}} {{
-                            product.price | formatMoney
-                        }}
+                        Quantity: 
+                        {{ cartItems[index].quantity }} 
                     </nuxt-link>
                 </figure>
-                <figure>
+                <!-- <figure>
                     <figcaption>
                         <strong>Subtotal</strong>
                         <small>{{currency}} {{ amount | formatMoney }}</small>
                     </figcaption>
-                </figure>
-                <figure v-if="shipping === true">
+                </figure> -->
+                <!-- <figure v-if="shipping === true">
                     <figcaption>
                         <strong>Shipping</strong>
                         <small>{{currency}} {{shippingCost | formatMoney}}</small>
                     </figcaption>
-                </figure>
-                <figure v-else class="ps-block__shipping">
-                    <h3>Shipping</h3>
-                    <p>Calculated at next step</p>
+                </figure> -->
+                <figure class="ps-block__shipping">
+                    <h3>Orders</h3>
+                    <p>order would be created at next step</p>
                 </figure>
             </div>
         </div>

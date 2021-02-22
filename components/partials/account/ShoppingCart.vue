@@ -16,7 +16,7 @@
             </div>
             <div class="ps-section__footer">
                 <div class="row justify-content-end">
-                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 ">
+                    <!-- <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 ">
                         <figure>
                             <figcaption>Coupon Discount</figcaption>
                             <div class="form-group">
@@ -32,7 +32,7 @@
                                 </button>
                             </div>
                         </figure>
-                    </div>
+                    </div> -->
                     <div
                         class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 "
                     ></div>
@@ -55,15 +55,16 @@
                                             >
                                                 {{ product.name }}
                                                 <br />
-                                                x
-                                                {{ getCartItemIndex(product) *  product.price }}
+                                                Categories: {{product.categories[0].name}}
+                                                <br />
+                                                Quantity: {{ getCartItemIndex(product) }}
                                             </nuxt-link>
                                         </span>
                                     </li>
                                 </ul>
-                                <h3>
+                                <!-- <h3>
                                     Total <span> {{currency}} {{ amount | formatMoney }}</span>
-                                </h3>
+                                </h3> -->
                             </div>
                         </div>
                         <nuxt-link

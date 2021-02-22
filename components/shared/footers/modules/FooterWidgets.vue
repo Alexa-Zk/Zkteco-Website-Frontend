@@ -37,7 +37,7 @@
         </aside>
         <aside class="widget widget_footer">
             <h4 class="widget-title">
-                {{ $t('Let us help you') }}
+                Let us help you
             </h4>
             <ul class="ps-list--link">
                 <li>
@@ -59,7 +59,7 @@
         </aside>
         <aside class="widget widget_footer">
             <h4 class="widget-title">
-                {{ $t('Get to know us') }}
+                Get to know us
             </h4>
             <ul class="ps-list--link">
                 <li>
@@ -81,7 +81,7 @@
         </aside>
         <aside class="widget widget_footer">
             <h4 class="widget-title">
-                {{ $t('Business') }}
+                Business
             </h4>
             <ul class="ps-list--link">
                 <li>

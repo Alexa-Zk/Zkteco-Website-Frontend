@@ -148,11 +148,11 @@ export const actions = {
             `${baseUrl}/integrations/orders`,
             payload
         )
-            .then(response => {
-                return response.data.data;
-            })
-            .catch(error => ({ error: JSON.stringify(error) }));
-        return reponse;
+        .then(response => {
+            return response;
+        })
+        .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse
     },
 
     getAllUserOrders({ commit }, payload) {

@@ -17,14 +17,10 @@
                                 <div class="col-lg-5">
                                     <div class="ps-form__left">
                                         <h3>
-                                            {{ $t('Product Verification') }}
+                                            Product Verification
                                         </h3>
                                         <p>
-                                            {{
-                                                $t(
-                                                    'Check if product is authentic and is covered by warranty'
-                                                )
-                                            }}
+                                            Check if product is authentic and is covered by warranty
                                         </p>
                                     </div>
                                 </div>
