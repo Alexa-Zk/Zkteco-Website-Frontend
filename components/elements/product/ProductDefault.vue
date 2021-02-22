@@ -1,12 +1,12 @@
 <template lang="html">
     <div class="ps-product">
         <div class="ps-product__thumbnail">
-            <a @click="handleAddToCart(product)" href="">
+            <div style="cursor: pointer;" @click="handleAddToCart(product)">
                 <img
                     :src="product.images[0] ? product.images[0].src : ''"
                     alt="martfury"
                 />
-            </a>
+            </div>
             <div v-if="isSale === true" class="ps-product__badge">sale</div>
             <ul class="ps-product__actions">
                 <li>
@@ -38,13 +38,13 @@
                 {{ product.categories[0].name }}
             </nuxt-link>
             <div class="ps-product__content">
-                <a
+                <span
+                    style="cursor: pointer;"
                     @click="handleAddToCart(product)"
-                    href=""
                     class="ps-product__title"
                 >
                     {{ product.name }}
-                </a>
+                </span>
                 <div class="ps-product__rating">
                     <rating />
                     <span>{{ product.average_rating }}</span>
@@ -54,9 +54,12 @@
                 </p>
             </div>
             <div class="ps-product__content hover">
-                <a @click="handleAddToCart(product)" href="">
-                    <a class="ps-product__title">{{ product.name }}</a>
-                </a>
+                <span
+                    style="cursor: pointer;"
+                    @click="handleAddToCart(product)"
+                    class="ps-product__title"
+                    >{{ product.name }}</span
+                >
 
                 <p class="ps-product__price sale" v-if="product.price < 200000">
                     {{ currency }} {{ product.price | formatMoney }}

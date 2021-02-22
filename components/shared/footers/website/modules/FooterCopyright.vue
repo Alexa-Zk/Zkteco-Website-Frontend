@@ -1,13 +1,13 @@
 <template lang="html">
     <div class="ps-footer__copyright">
         <p>
-            Copyright © 2020 ZKTECO CO. LTD. All rights reserved
+            Copyright © {{new Date().getFullYear()}} ZKTECO CO. LTD. All rights reserved
         </p>
     </div>
 </template>
 <script>
 export default {
-    name: 'FooterCopyright'
+    name: 'FooterCopyright',
 };
 </script>
 
