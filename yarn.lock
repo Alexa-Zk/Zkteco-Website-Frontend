@@ -6960,11 +6960,6 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-flutterwave-vue-v3@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/flutterwave-vue-v3/-/flutterwave-vue-v3-1.0.5.tgz#2ebc2093cad01fe95245a5440282a03a533621ae"
-  integrity sha512-etYKOWRdZPXJAVAk3karFNfGl0MPzmg4917ZNU3BlSV82sMxsXqsu0L9D4SwPFehrsP+BPCYtnxuHaMRJAQOBQ==
-
 follow-redirects@1.5.10:
   version "1.5.10"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.10.tgz#7b7a9f9aea2fdff36786a94ff643ed07f4ff5e2a"
@@ -12736,6 +12731,11 @@ vue-client-only@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/vue-client-only/-/vue-client-only-2.0.0.tgz#ddad8d675ee02c761a14229f0e440e219de1da1c"
   integrity sha512-arhk1wtWAfLsJyxGMoEYhoBowM87/i6HLSG2LH/03Yog6i2d9JEN1peMP0Ceis+/n9DxdenGYZZTxbPPJyHciA==
+
+vue-content-placeholders@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/vue-content-placeholders/-/vue-content-placeholders-0.2.1.tgz#5876bda4577c80ff6d396fb33b2dbbf8b8cc140f"
+  integrity sha512-Q+HPjuY98R0fLQ45eOOCYeMY7vpjU1H/Qqs0ptdBI6xe3nDDsPE4r/kN5YA9rVxQFP/PKhG5qQR4rqy02xPabw==
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"

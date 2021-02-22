@@ -66,7 +66,7 @@ export default {
                     ]
                 },
                 {
-                    text: this.$i18n.t('Help'),
+                    text: 'Help',
                     url: '/store/',
                     extraClass: 'menu-item-has-children has-mega-menu',
                     subClass: 'sub-menu',

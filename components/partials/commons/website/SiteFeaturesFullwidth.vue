@@ -10,10 +10,10 @@
                     </div>
                     <div class="ps-block__right">
                         <h4>
-                            {{ $t('Time Attendance') }}
+                            Time Attendance
                         </h4>
                         <p>
-                            {{ $t('Time Attendance Solution') }}
+                            Time Attendance Solution
                         </p>
                     </div>
                 </nuxt-link>
@@ -24,9 +24,9 @@
                     </div>
                     <div class="ps-block__right">
                         <h4>
-                            {{ $t('Access Control') }}
+                            Access Control
                         </h4>
-                        <p>{{ $t('Restriction to certain areas') }}</p>
+                        <p>Restriction to certain areas</p>
                     </div>
                 </nuxt-link>
 
@@ -36,10 +36,10 @@
                     </div>
                     <div class="ps-block__right">
                         <h4>
-                            {{ $t('Smart Lock') }}
+                            Smart Lock
                         </h4>
                         <p>
-                            {{ $t('100% Secure locks') }}
+                            100% Secure locks
                         </p>
                     </div>
                 </nuxt-link>
@@ -50,10 +50,10 @@
                     </div>
                     <div class="ps-block__right">
                         <h4>
-                            {{ $t('Entrance Control') }}
+                            Entrance Control
                         </h4>
                         <p>
-                            {{ $t('Dedicated System for entrance control') }}
+                            Dedicated System for entrance control
                         </p>
                     </div>
                 </nuxt-link>
@@ -63,10 +63,10 @@
                     </div>
                     <div class="ps-block__right">
                         <h4>
-                            {{ $t('Security Inspection') }}
+                            Security Inspection
                         </h4>
                         <p>
-                            {{ $t('Support security essentials') }}
+                            Support security essentials
                         </p>
                     </div>
                 </nuxt-link>
@@ -76,9 +76,9 @@
                     </div>
                     <div class="ps-block__right">
                         <h4>
-                            {{ $t('CCTV') }}
+                            CCTV
                         </h4>
-                        <p>{{ $t('Monitor everywhere at once ') }}</p>
+                        <p>Monitor everywhere at once</p>
                     </div>
                 </nuxt-link>
             </div>

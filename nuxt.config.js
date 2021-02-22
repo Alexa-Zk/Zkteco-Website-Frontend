@@ -54,7 +54,6 @@ export default {
         { src: '~/plugins/vue-notification.js', ssr: false },
         { src: '~/plugins/axios.js', ssr: false },
         { src: '~/plugins/lazyLoad.js', ssr: false },
-        { src: '~/plugins/flutterwave.js', ssr: false },
         { src: '~/plugins/filters.js', ssr: false }
     ],
 
@@ -68,11 +67,11 @@ export default {
         scss: './assets/scss/env.scss'
     },
 
-    loadingIndicator: {
-        name: 'fading-circle',
-        color: 'white',
-        background: '#78bc27'
-    },
+    // loadingIndicator: {
+    //     name: 'fading-circle',
+    //     color: 'white',
+    //     background: '#78bc27'
+    // },
 
     modules: [
         '@nuxtjs/axios',

@@ -36,21 +36,17 @@ export default {
         return {
             mainMenu: [
                 {
-                    text: this.$i18n.t('Solutions'),
+                    text: 'Solutions',
                     url: '/solution',
                     extraClass: 'menu-item-has-children',
                     subClass: 'sub-menu',
                     subMenu: [
                         {
-                            text: this.$i18n.t(
-                                'Classified By Industry'
-                            ),
+                            text: 'Classified By Industry',
                             url: '/solution-categories/classified-by-industry'
                         },
                         {
-                            text: this.$i18n.t(
-                                'Classified By Application'
-                            ),
+                            text: 'Classified By Application',
                             url: '/solution-categories/classified-by-application'
                         },
                         
@@ -58,33 +54,29 @@ export default {
                 },
 
                 {
-                    text: this.$i18n.t('Support'),
+                    text: 'Support',
                     url: '/',
                     extraClass: 'menu-item-has-children',
                     subClass: 'sub-menu',
                     subMenu: [
                         {
-                            text: this.$i18n.t(
-                                'Download Center'
-                            ),
+                            text: 'Download Center',
                             url: '/support/download-center'
                         },
                         {
-                            text: this.$i18n.t(
-                                'After Sales Service'
-                            ),
+                            text: 'After Sales Service',
                             url: '/support/after-sale'
                         },
                         
                     ]
                 },
                 {
-                    text: this.$i18n.t('Smart Home'),
+                    text: 'Smart Home',
                     redirect: true
                 },
                 {
-                    text: this.$i18n.t('Store'),
-                    url: '/website/page/coming-soon',
+                    text: 'Store',
+                    url: '/store',
                     extraClass: 'menu-item-has-children',
                     subClass: 'sub-menu',
                     icon: 'icon-cart'

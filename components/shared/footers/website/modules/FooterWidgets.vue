@@ -40,7 +40,7 @@
         </aside>
         <aside class="widget widget_footer">
             <h4 class="widget-title">
-                {{ $t('About Us') }}
+                About Us
             </h4>
             <ul class="ps-list--link">
                 <li>
@@ -56,7 +56,7 @@
         </aside>
         <aside class="widget widget_footer">
             <h4 class="widget-title">
-                {{ $t('News Center') }}
+                News Center
             </h4>
             <ul class="ps-list--link">
                 <li v-for="item in categories" :key="item.id">
@@ -67,7 +67,7 @@
         </aside>
         <aside class="widget widget_footer">
             <h4 class="widget-title">
-                {{ $t('Solutions') }}
+                Solutions
             </h4>
             <ul class="ps-list--link">
                 <li>
@@ -81,7 +81,7 @@
         </aside>
         <aside class="widget widget_footer">
             <h4 class="widget-title">
-                {{ $t('Support') }}
+                Support
             </h4>
             <ul class="ps-list--link">
                 <li>
@@ -96,7 +96,7 @@
         </aside>
         <aside class="widget widget_footer">
             <h4 class="widget-title">
-                {{ $t('Related Website') }}
+                Related Website
             </h4>
             <ul class="ps-list--link">
                 <li>

@@ -132,7 +132,7 @@
             </nuxt-link>
             <div class="ps-block__footer">
                 <button class="ps-btn" @click="handleToShipping">
-                    Continue to shipping
+                    Continue to Summary
                 </button>
             </div>
         </div>
@@ -176,7 +176,7 @@ export default {
                     'shipping/getpersonalDetails',
                     payload
                 );
-                this.$router.push('/store/account/shipping');
+                this.$router.push('/store/account/order-invoice');
             }
         }
     },

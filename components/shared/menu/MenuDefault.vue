@@ -35,20 +35,20 @@ export default {
                     
                 },
                 {
-                    text: this.$i18n.t('Products'),
+                    text: 'Products',
                     url: '/store/shop',
                     extraClass: 'menu-item-has-children has-mega-menu',
                     subClass: 'sub-menu',
                 },
                 {
-                    text: this.$i18n.t('Help'),
+                    text: 'Help',
                     url: '/store/',
                     extraClass: 'menu-item-has-children has-mega-menu',
                     subClass: 'sub-menu',
                     mega: 'true',
                     megaContent: [
                         {
-                            heading: this.$i18n.t('Quick Links'),
+                            heading: 'Quick Links',
                             megaItems: [
                                 {
                                     text: this.$i18n.t('menu.mainMenu.aboutUs'),
@@ -67,7 +67,7 @@ export default {
                     ]
                 },
                 {
-                    text: this.$i18n.t('Website'),
+                    text: 'Website',
                     url: '/',
                     extraClass: 'menu-item-has-children',
                     subClass: 'sub-menu',
