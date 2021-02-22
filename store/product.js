@@ -19,7 +19,7 @@ export const state = () => ({
     overallTotal: 0,
     page: 1,
     per_page: 12,
-    order: 'asc',
+    order: 'desc',
     search: '',
     userOrders: '',
     singleUserOrders: ''

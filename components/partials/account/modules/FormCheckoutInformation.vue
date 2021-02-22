@@ -20,13 +20,13 @@
                 label="Keep me up to date on news and exclusive offers?"
             />
         </div>
-        <h3 class="ps-form__heading">
+        <h3 class="ps-form__heading mx-20">
             Shipping address
         </h3>
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label>First Name </label>
+                    <label>Fullname </label>
                     <v-text-field
                         placeholder="First Name"
                         outlined
@@ -39,7 +39,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label>Last Name </label>
+                    <label>Company Name </label>
                     <v-text-field
                         placeholder="Last Name"
                         outlined
@@ -262,4 +262,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.mx-20 {
+    margin: 20px 0px;
+}
+</style>
