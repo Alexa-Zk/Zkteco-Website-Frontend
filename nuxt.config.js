@@ -21,23 +21,23 @@ export default {
                 href:
                     'https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&amp;amp;subset=latin-ext'
             },
-            // {
-            //     rel: 'stylesheet',
-            //     href:
-            //         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
-            // }
+            {
+                rel: 'stylesheet',
+                href:
+                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
+            }
         ],
         script: [
-            // {
-            //     id: 'ze-snippet',
-            //     src: 'https://static.zdassets.com/ekr/snippet.js?key=ebd1d5ac-b3c0-4bfe-a265-02e961779c67',
-            //     defer: true
-            // }
+            {
+                id: 'ze-snippet',
+                src: 'https://static.zdassets.com/ekr/snippet.js?key=ebd1d5ac-b3c0-4bfe-a265-02e961779c67',
+                defer: true
+            }
         ]
     },
-    // generate: {
-    //     fallback: true
-    // },
+    generate: {
+        fallback: true
+    },
 
     css: [
         'swiper/dist/css/swiper.css',
@@ -67,11 +67,11 @@ export default {
         scss: './assets/scss/env.scss'
     },
 
-    // loadingIndicator: {
-    //     name: 'fading-circle',
-    //     color: 'white',
-    //     background: '#78bc27'
-    // },
+    loadingIndicator: {
+        name: 'fading-circle',
+        color: 'white',
+        background: '#78bc27'
+    },
 
     modules: [
         '@nuxtjs/axios',

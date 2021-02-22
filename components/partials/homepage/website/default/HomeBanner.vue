@@ -84,13 +84,30 @@ export default {
 }
 
 #ps-shop-banner {
+    .ps-carousel {
+        @include media('<sm') {
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+        @include media('<xs') {
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+    }
     .swiper-slide {
         width: 100%;
         height: 518px;
         cursor: pointer;
+        @include media('<sm') {
+            height: 200px;
+        }
+        @include media('<xs') {
+            height: 200px;
+        }
     }
     img {
         height: 100%;
+        width: 100%;
         object-fit: cover;
     }
 }
