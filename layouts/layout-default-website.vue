@@ -2,13 +2,13 @@
     <client-only>
         <v-app>
             <v-main>
-                <!-- <!-- <header-default /> -->
-                <!-- <header-mobile /> -->
+                <header-default />
+                <header-mobile />
                 <nuxt />
-                <!-- <footer-fullwidth /> -->
-                <!-- <navigation-list /> -->
-                <!-- <mobile-drawer /> -->
-                <!-- <notify /> -->
+                <footer-fullwidth />
+                <navigation-list />
+                <mobile-drawer />
+                <notify />
             </v-main>
         </v-app>
     </client-only>
