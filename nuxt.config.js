@@ -21,11 +21,11 @@ export default {
                 href:
                     'https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&amp;amp;subset=latin-ext'
             },
-            {
-                rel: 'stylesheet',
-                href:
-                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
-            }
+            // {
+            //     rel: 'stylesheet',
+            //     href:
+            //         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
+            // }
         ],
         script: [
             // {
@@ -35,9 +35,9 @@ export default {
             // }
         ]
     },
-    generate: {
-        fallback: true
-    },
+    // generate: {
+    //     fallback: true
+    // },
 
     css: [
         'swiper/dist/css/swiper.css',
