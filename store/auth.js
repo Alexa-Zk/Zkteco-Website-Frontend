@@ -23,7 +23,7 @@ export const mutations = {
         state.authToken = payload;
 
         this.$cookies.set('id_token', payload, {
-            path: '/store',
+            path: '/',
             maxAge: 60 * 60 * 24 * 7
         });
 
@@ -65,7 +65,7 @@ export const actions = {
                 };
 
                 this.$cookies.set('userInfo', cookieParams, {
-                    path: '/store',
+                    path: '/',
                     maxAge: 60 * 60 * 24 * 7
                 });
                                 

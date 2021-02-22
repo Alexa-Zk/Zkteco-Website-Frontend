@@ -19,7 +19,7 @@ export const mutations = {
 export const actions = {
     async getpersonalDetails({ commit }, payload) {
         this.$cookies.set('shippingInfo', payload, {
-            path: '/store',
+            path: '/',
             maxAge: 60 * 60 * 24 * 7
         });
 
@@ -27,7 +27,7 @@ export const actions = {
     },
     async getShippingCost({ commit }, payload) {
         this.$cookies.set('shippingCost', payload, {
-            path: '/store',
+            path: '/',
             maxAge: 60 * 60 * 24 * 7
         });
         commit('setShippingCost', payload);
