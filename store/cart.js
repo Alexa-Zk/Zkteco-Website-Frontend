@@ -98,7 +98,7 @@ export const actions = {
         };
 
         this.$cookies.set('cart', cookieParams, {
-            path: '/store',
+            path: '/',
             maxAge: 60 * 60 * 24 * 7
         });
 
@@ -118,7 +118,7 @@ export const actions = {
         };
 
         this.$cookies.set('cart', cookieParams, {
-            path: '/store',
+            path: '/',
             maxAge: 60 * 60 * 24 * 7
         });
     },
@@ -133,7 +133,7 @@ export const actions = {
         };
 
         this.$cookies.set('cart', cookieParams, {
-            path: '/store',
+            path: '/',
             maxAge: 60 * 60 * 24 * 7
         });
     },
@@ -151,7 +151,7 @@ export const actions = {
         };
 
         this.$cookies.set('cart', cookieParams, {
-            path: '/store',
+            path: '/',
             maxAge: 60 * 60 * 24 * 7
         });
     },

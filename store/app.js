@@ -42,15 +42,15 @@ export const actions = {
     },
     removeCookie ({commit}) {
         this.$cookies.remove('cart', {
-            path: '/store',
+            path: '/',
             maxAge: 60 * 60 * 24 * 7
         });
         this.$cookies.remove('shippingCost', {
-            path: '/store',
+            path: '/',
             maxAge: 60 * 60 * 24 * 7
         });
         this.$cookies.remove('shippingInfo', {
-            path: '/store',
+            path: '/',
             maxAge: 60 * 60 * 24 * 7
         });
     },

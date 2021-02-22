@@ -69,24 +69,31 @@ export default {
             }
         },
 
-        handleAddToCart(isBuyNow) {
-            const cartItemsOnCookie = this.$cookies.get('cart', {
-                parseJSON: true
-            });
-            let existItem;
-            if (cartItemsOnCookie) {
-                existItem = cartItemsOnCookie.cartItems.find(
-                    item => item.id === this.product.id
-                );
-            }
+        handleAddToCart() {
             let item = {
                 id: this.product.id,
                 quantity: 1,
                 price: this.product.price
             };
-            if (existItem !== undefined) {
-                this.addItemToCart(item);
-            }
+            this.addItemToCart(item);
+            // const cartItemsOnCookie = this.$cookies.get('cart', {
+            //     parseJSON: true
+            // });
+            // let existItem;
+            // if (cartItemsOnCookie) {
+            //     existItem = cartItemsOnCookie.cartItems.find(
+            //         item => item.id === this.product.id
+            //     );
+            // }
+            
+            // if (existItem !== undefined) {
+            //     let item = {
+            //         id: this.product.id,
+            //         quantity: 1,
+            //         price: this.product.price
+            //     };
+            //     this.addItemToCart(item);
+            // }
         },
 
         handleBuyNow() {
