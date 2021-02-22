@@ -22,7 +22,7 @@
                     </li>
                     |
                     <li class="menu-item-has-dropdown">
-                        <nuxt-link to="/website/account/login">
+                        <nuxt-link to="/store/account/login">
                             Login
                         </nuxt-link>
                     </li>
@@ -49,7 +49,7 @@
                     </li>
                     |
                     <li class="menu-item-has-dropdown">
-                        <nuxt-link to="/website/account/register">
+                        <nuxt-link to="/store/account/register">
                             Register
                         </nuxt-link>
                     </li>
