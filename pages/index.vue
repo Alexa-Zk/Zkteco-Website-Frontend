@@ -1,12 +1,12 @@
 <template lang="html">
     <main id="homepage-1">
-        <!-- <home-banner :homeSlider="adSliders" />
+        <home-banner :homeSlider="adSliders" />
         <site-feautures-fullwidth />
         <div class="ps-container">
             <related-posts />
         </div>
         <home-brand :partnersLogo="ourPartners" />
-        <newsletters layout="fullwidth" /> -->
+        <newsletters layout="fullwidth" />
     </main>
 </template>
 <script>
