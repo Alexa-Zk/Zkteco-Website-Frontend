@@ -100,3 +100,9 @@ export const actions = {
         return reponse;
     },
 };
+
+export const getters = {
+    getToken: state => {
+        return state.authToken
+    },
+};

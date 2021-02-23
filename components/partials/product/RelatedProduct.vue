@@ -58,6 +58,9 @@ export default {
     data() {
         return {
             settingFullwidth: {
+                speed: 400,
+                autoplay: true,
+                infinite: true,
                 loop: true,
                 slidesPerView: 4,
                 spaceBetween: 1,
@@ -90,6 +93,9 @@ export default {
                 }
             },
             settingDefault: {
+                speed: 400,
+                autoplay: true,
+                infinite: true,
                 loop: true,
                 slidesPerView: 4,
                 spaceBetween: 1,

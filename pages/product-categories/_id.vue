@@ -8,7 +8,7 @@
                         <shop-widget />
                     </div>
                     <div class="ps-layout__right">
-                        <layout-shop-sidebar :categories_products="product ? product : []" />
+                        <layout-shop-sidebar :categories_products="categoriesWithProduct ? categoriesWithProduct : []" />
                     </div>
                 </div>
             </div>
@@ -22,10 +22,6 @@ import BreadCrumb from '~/components/elements/BreadCrumb';
 import ShopWidget from '~/components/partials/shop/modules/website/ShopWidget';
 import LayoutShopSidebar from '~/components/partials/shop/website/LayoutShopSidebarCategories';
 
-// Queries
-import CategoriesWithProduct from '~/apollo/queries/products/categoriesWithProduct';
-
-
 export default {
     components: {
         LayoutShopSidebar,
@@ -33,8 +29,8 @@ export default {
         BreadCrumb
     },
     head() {
-        const name = this.ProductCategories
-            ? this.ProductCategories.name
+        const name = this.product
+            ? this.product.name
             : 'Product Categories';
         return {
             title: name,
@@ -53,7 +49,6 @@ export default {
     layout: 'layout-default-website',
     data() {
         return {
-            productCategories: '',
             breadCrumb: [
                 {
                     text: 'Home',
@@ -65,26 +60,18 @@ export default {
             ],
         };
     },
-    apollo: {
-        productCategories: {
-            prefetch: true,
-            query: CategoriesWithProduct,
-            variables() {
-                return { id: this.$route.params.id, };
-            }
-        }
-    },
+    
     computed: {
-        ProductCategories() {
-            return this.productCategories[0];
-        },
         ...mapState({
-            product: state => state.website.productCategories,
+            product: state => state.website.singleProductCategories,
         }),
+        categoriesWithProduct() {
+            return this.product ? this.product[0] : [];
+        },
     },
     created() {
         const slug = this.$route.params.id
-        const response = this.$store.dispatch('website/getProductCategories', slug);
+        const response = this.$store.dispatch('website/getSingleProductCategories', slug);
     },
 };
 </script>

@@ -9,7 +9,6 @@ const subBaseHost = "https://admin.zkteco-wa.com"
 export const customHeaders = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
-    Authorization: token ? token: ''
 };
 
 export const baseUrl = `${baseHost}`;

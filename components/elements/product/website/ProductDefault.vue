@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="ps-product">
         <div class="ps-product__thumbnail">
-            <nuxt-link :to="`/website/product/${product.slug}`">
+            <nuxt-link :to="`/product/${product.slug}`">
                 <img
                     :src="product.images[0].url"
                     alt="martfury"
@@ -28,7 +28,7 @@
             </nuxt-link>
             <div class="ps-product__content">
                 <nuxt-link
-                    :to="`/website/product/${product.slug}`"
+                    :to="`/product/${product.slug}`"
                     class="ps-product__title"
                 >
                     {{ product.name }}
@@ -38,7 +38,7 @@
             <div class="ps-product__content hover">
                 
                 <p class="ps-product__price sale">
-                    <nuxt-link :to="`/website/product/${product.slug}`">
+                    <nuxt-link :to="`/product/${product.slug}`">
                         <span class="ps-product__title">Learn More</span>
                     </nuxt-link>
                 </p>

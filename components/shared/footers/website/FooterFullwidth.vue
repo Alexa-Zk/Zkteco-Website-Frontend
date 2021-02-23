@@ -17,6 +17,13 @@ export default {
         FooterWidgets,
         FooterCopyright,
         FooterLinks
+    },
+    async created() {
+        let params = {}
+        const categories = await this.$store.dispatch(
+            'website/getArticlesCategories',
+            params
+        );
     }
 };
 </script>

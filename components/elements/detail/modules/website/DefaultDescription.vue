@@ -33,6 +33,7 @@
 </template>
 
 <script>
+
 import PartialDescription from '~/components/elements/detail/modules/website/PartialDescription';
 import PartialSpecification from '~/components/elements/detail/modules/website/PartialSpecification';
 
@@ -49,6 +50,15 @@ export default {
             type: Object,
             default: {}
         }
+    },
+    async created() {
+        let payload = {
+            id: this.product_information.product_category.slug
+        };
+        const response = await this.$store.dispatch(
+            'website/getRelatedProducts',
+            payload
+        );
     }
 };
 </script>

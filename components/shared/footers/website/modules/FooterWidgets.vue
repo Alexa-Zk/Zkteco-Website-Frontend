@@ -60,7 +60,7 @@
             </h4>
             <ul class="ps-list--link">
                 <li v-for="item in categories" :key="item.id">
-                    <nuxt-link :to="`/news-center/categories/${item.id}`">{{item.name}}</nuxt-link>
+                    <nuxt-link :to="`/news-center/categories/${item.slug}`">{{item.name}}</nuxt-link>
                 </li>
                 
             </ul>
@@ -108,22 +108,18 @@
 </template>
 
 <script>
-
-// Queries
-import Categories from '~/apollo/queries/articles/allArticlesCategories';
+import { mapState } from "vuex";
 export default {
     name: 'FooterWidgets',
     data() {
         return {
-            categories: '',
         };
     },
-    apollo: {
-        categories: {
-            prefetch: true,
-            query: Categories,
-        },
-    },
+    computed: {
+        ...mapState({
+            categories: state => state.website.articlesCategories
+        })
+    }
 };
 </script>
 

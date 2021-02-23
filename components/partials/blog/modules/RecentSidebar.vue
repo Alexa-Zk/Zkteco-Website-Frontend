@@ -6,7 +6,7 @@
             <template v-if="Articles.length > 0">
                 <nuxt-link
                     v-for="post in Articles"
-                    :to="`/blog/${post.id}`"
+                    :to="`/blog/${post.slug}`"
                     :key="post.id"
                 >
                     <span>&#8226;</span> {{ post.title }}
