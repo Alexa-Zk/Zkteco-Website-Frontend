@@ -2,7 +2,7 @@
     <article class="ps-post ps-post--small-thumbnail">
         <div class="ps-post__thumbnail">
             <nuxt-link
-                :to="`/blog/${post.id}`"
+                :to="`/blog/${post.slug}`"
                 class="ps-post__overlay"
             ></nuxt-link>
             <img :src="post.image[0].formats.thumbnail.url" :alt="post.title" />
@@ -21,7 +21,7 @@
                         {{ category.name }}
                     </nuxt-link>
                 </div>
-                <nuxt-link :to="`/blog/${post.id}`" class="ps-post__title">
+                <nuxt-link :to="`/blog/${post.slug}`" class="ps-post__title">
                     {{ post.title }}
                 </nuxt-link>
                 <div class="ps-post__desc">

@@ -14,10 +14,12 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import PostGrid from '../../elements/post/PostGrid';
 
 // Queries
 import relatedArticles from '~/apollo/queries/articles/relatedArticles';
+import { state } from '~/store/app';
 
 export default {
     name: 'RelatedPosts',

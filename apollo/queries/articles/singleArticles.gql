@@ -1,5 +1,5 @@
 query Articles($id: ID!) {
-    articles(where: { id: $id }) {
+    articles(where: { slug: $id }) {
         id
         title
         slug

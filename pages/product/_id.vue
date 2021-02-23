@@ -84,9 +84,6 @@ export default {
     },
     data() {
         return {
-            productId: this.$route.params.id,
-            breadCrumb: null,
-            pageLoading: true,
             products: ''
         };
     },

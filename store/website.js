@@ -8,9 +8,12 @@ export const state = () => ({
     singleProduct: null,
     solutions: null,
     articles: null,
+    articlesCategories: null,
     productsTotal: 0,
+    singleProductCategories: null,
     productCategories: null,
     subProductCategories: null,
+    homePage: null,
     solutionCategories: null,
     newsCategories: null,
     searchResults: null,
@@ -50,6 +53,14 @@ export const mutations = {
         state.singleProduct = payload
     },
 
+    setArticlesCategories(state, payload) {
+        state.articlesCategories = payload
+    },
+
+    setSingleProductCategories(state, payload) {
+        state.singleProductCategories = payload
+    },
+
     setProductCategories(state, payload) {
         state.productCategories = payload
     },
@@ -68,7 +79,12 @@ export const mutations = {
 
     setSolutions(state, payload) {
         state.solutions = payload
+    },
+
+    setHomepage(state, payload) {
+        state.homePage = payload
     }
+    
 };
 
 export const actions = {
@@ -147,20 +163,20 @@ export const actions = {
 
     async getRelatedProducts({ commit }, payload) {
         let params = {
-            id_in: payload.id,
+            slug_in: payload.id,
         };
         const reponse = await Repository.get(
             `${subBaseUrl}/product-categories?${serializeQuery(params)}`
         )
             .then(response => {
-                commit('setRelatedProducts', response.data[0]);
+                commit('setRelatedProducts', response.data[0].products);
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
     },
 
-    async getProductCategories({ commit }, slug) {
+    async getSingleProductCategories({ commit }, slug) {
         commit('setLoading', true);
         let params = {
             slug_in: slug,
@@ -169,7 +185,36 @@ export const actions = {
             `${subBaseUrl}/product-categories/?${serializeQuery(params)}`
         )
             .then(response => {
-                commit('setProductCategories', response.data[0]);
+                commit('setSingleProductCategories', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getAllProductCategories({ commit }, slug) {
+        commit('setLoading', true);
+        let params = {};
+        const reponse = await Repository.get(
+            `${subBaseUrl}/product-categories/?${serializeQuery(params)}`
+        )
+            .then(response => {
+                commit('setProductCategories', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getArticlesCategories({ commit }, slug) {
+        commit('setLoading', true);
+        const reponse = await Repository.get(
+            `${subBaseUrl}/categories/`
+        )
+            .then(response => {
+                commit('setArticlesCategories', response.data);
                 commit('setLoading', false);
                 return response.data;
             })
@@ -242,6 +287,7 @@ export const actions = {
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
     },
+
     async getSearchResults({ state, commit }, payload) {
         let params = {
             _q: payload.query
@@ -251,6 +297,21 @@ export const actions = {
         )
             .then(response => {
                 commit('setSearchResults', response.data);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getHomepage({ commit }, slug) {
+        commit('setLoading', true);
+        let params = {};
+        const reponse = await Repository.get(
+            `${subBaseUrl}/home-pages/?${serializeQuery(params)}`
+        )
+            .then(response => {
+                commit('setHomepage', response.data);
+                commit('setLoading', false);
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));

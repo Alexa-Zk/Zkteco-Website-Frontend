@@ -5,7 +5,6 @@ import Repository, {
 } from '~/repositories/Repository.js';
 import { baseUrl } from '~/repositories/Repository';
 
-
 export const state = () => ({
     product: null,
     products: null,
@@ -31,7 +30,7 @@ export const mutations = {
     },
 
     clearState(state, payload) {
-        state.cartProducts = null
+        state.cartProducts = null;
     },
 
     setCartProducts(state, payload) {
@@ -65,7 +64,7 @@ export const mutations = {
     },
 
     setTotalProducts(state, payload) {
-        state.overallTotal = payload
+        state.overallTotal = payload;
     },
 
     setAllUserOrders(state, payload) {
@@ -78,10 +77,14 @@ export const mutations = {
 };
 
 export const actions = {
+    
     async getProducts({ state, commit }, payload) {
         let params = {
             page: Object.keys(payload).length === 0 ? state.page : payload.page,
-            per_page: Object.keys(payload).length === 0 ? state.per_page : payload.per_page,
+            per_page:
+                Object.keys(payload).length === 0
+                    ? state.per_page
+                    : payload.per_page,
             order: Object.keys(payload).length === 0 ? state.order : 'asc'
         };
         const reponse = await Repository.get(
@@ -148,18 +151,27 @@ export const actions = {
             `${baseUrl}/integrations/orders`,
             payload
         )
-        .then(response => {
-            return response;
-        })
-        .catch(error => ({ error: JSON.stringify(error) }));
-        return reponse
+            .then(response => {
+                return response;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
     },
 
     getAllUserOrders({ commit }, payload) {
+        const token = this.getters['auth/getToken'];
+
         const params = {
-            per_page: 100,
+            per_page: 100
         };
-        const reponse = Repository.get(`${baseUrl}/integrations/orders/?${serializeQuery(params)}`)
+        const reponse = Repository.get(
+            `${baseUrl}/integrations/orders/?${serializeQuery(params)}`,
+            {
+                headers: {
+                    Authorization: token
+                }
+            }
+        )
             .then(response => {
                 commit('setAllUserOrders', response.data.data);
                 return response.data.data;
@@ -169,8 +181,15 @@ export const actions = {
     },
 
     getOrderDetails({ commit }, payload) {
+        const token = this.getters['auth/getToken'];
+
         const reponse = Repository.get(
-            `${baseUrl}/integrations/orders/${payload}`
+            `${baseUrl}/integrations/orders/${payload}`,
+            {
+                headers: {
+                    Authorization: token
+                }
+            }
         )
             .then(response => {
                 commit('setSingleUserOrders', response.data.data.data);
@@ -250,7 +269,9 @@ export const actions = {
             order: 'asc'
         };
         const reponse = await Repository.get(
-            `${baseUrl}/integrations/trend-categories-products/?${serializeQuery(params)}&category_id=[${payload}]`
+            `${baseUrl}/integrations/trend-categories-products/?${serializeQuery(
+                params
+            )}&category_id=[${payload}]`
         )
             .then(response => {
                 return response.data.data;
