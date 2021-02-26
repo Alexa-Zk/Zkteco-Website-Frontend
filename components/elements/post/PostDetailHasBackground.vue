@@ -8,7 +8,44 @@
                 backgroundSize: 'cover'
             }"
         ></div>
-        <div class="container">
+        <div class="container" id="content-scroll">
+            <div class="icon-bar hide" id="icon-bar">
+                <a
+                    :href="
+                        `https://www.facebook.com/sharer/sharer.php?u=${url}`
+                    "
+                    class="facebook"
+                    ><i class="fa fa-facebook"></i
+                ></a>
+                <a
+                    :href="
+                        `https://twitter.com/intent/tweet?text=ZKTeco%20News%20Articles%20-%20${articles.title}%20-%20${url}`
+                    "
+                    class="twitter"
+                    ><i class="fa fa-twitter"></i
+                ></a>
+                <a
+                    :href="
+                        `https://wa.me/2348175555514?text=I%20am%20interested%20in%20your%20product%20for%20sale%20url=${url}%20title=${articles.name}`
+                    "
+                    class="whatsapp"
+                    ><i class="fa fa-whatsapp"></i
+                ></a>
+                <a
+                    :href="
+                        `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${articles.name}&summary=${articles.body}`
+                    "
+                    class="linkedin"
+                    ><i class="fa fa-linkedin"></i
+                ></a>
+                <a
+                    :href="
+                        `https://api.whatsapp.com/send?url=${url}?title=${articles.name}`
+                    "
+                    class="instagram"
+                    ><i class="fa fa-instagram"></i
+                ></a>
+            </div>
             <div class="ps-post__content post-header ">
                 <h2>
                     {{ articles ? articles.title : '' }}
@@ -96,15 +133,102 @@ export default {
         formatDate(date) {
             let formated = new Date(date);
             return formated.toDateString();
+        },
+        handleScroll(event) {
+            const HEADLINE = 361.11;
+
+            const elmnt = document.getElementById('content-scroll');
+            const icons = document.querySelector('#icon-bar');
+
+            const divHeight = elmnt.offsetHeight;
+            const distanceToTop = elmnt.getBoundingClientRect().top - HEADLINE;
+            const scrollHeight = event.target.scrollingElement.scrollTop;
+
+            if (scrollHeight > 200) {
+                icons.classList.add('show');
+                icons.classList.remove('hide');
+            } else {
+                icons.classList.add('hide');
+                icons.classList.remove('show');
+            }
+
+            if (distanceToTop + divHeight - HEADLINE < 200) {
+                icons.classList.add('hide');
+                icons.classList.remove('show');
+            }
         }
     },
     mounted() {
         this.url = window.location.href;
+    },
+    created() {
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    destroyed() {
+        window.removeEventListener('scroll', this.handleScroll);
     }
+    
 };
 </script>
 
 <style lang="scss">
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
+.icon-bar {
+    position: fixed;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    @include media('<sm') {
+        display: none;
+    }
+    @include media('<xs') {
+        display: none;
+    }
+}
+
+.icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 20px;
+}
+
+.icon-bar a:hover {
+    background-color: #000;
+}
+
+.facebook {
+    background: #3b5998;
+    color: white;
+}
+
+.twitter {
+    background: #55acee;
+    color: white;
+}
+
+.instagram {
+    background: #e1306c;
+    color: white;
+}
+
+.linkedin {
+    background: #007bb5;
+    color: white;
+}
+
+.whatsapp {
+    background: #128c7e;
+    color: white;
+}
 .ps-post--parallax {
     .ps-post__header {
         // background-image: url('/img/bg/blog-detail.jpg');

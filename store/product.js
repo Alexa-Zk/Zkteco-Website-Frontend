@@ -147,9 +147,16 @@ export const actions = {
     },
 
     getOrders({ commit }, payload) {
+        const token = this.getters['auth/getToken'];
+
         const reponse = Repository.post(
             `${baseUrl}/integrations/orders`,
-            payload
+            payload,
+            {
+                headers: {
+                    Authorization: token
+                }
+            }
         )
             .then(response => {
                 return response;
