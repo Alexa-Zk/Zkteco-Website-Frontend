@@ -9,6 +9,7 @@
                 <navigation-list />
                 <mobile-drawer />
                 <notify />
+                <floating-action-button />
             </v-main>
         </v-app>
     </client-only>
@@ -21,6 +22,7 @@ import NavigationList from '~/components/shared/mobile/website/NavigationList';
 import MobileDrawer from '~/components/shared/mobile/website/MobileDrawer';
 import FooterFullwidth from '~/components/shared/footers/website/FooterFullwidth';
 import Notify from '~/components/elements/commons/notify';
+import FloatingActionButton from '~/components/elements/commons/FloatingActionButton';
 export default {
     name: 'layout-default-website',
     components: {
@@ -29,7 +31,8 @@ export default {
         NavigationList,
         HeaderMobile,
         HeaderDefault,
-        Notify
+        Notify,
+        FloatingActionButton
     }
 };
 </script>
