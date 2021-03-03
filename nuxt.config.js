@@ -3,11 +3,6 @@ export default {
         titleTemplate: 'ZKTeco West Africa',
         title: 'ZKTeco West Africa',
         meta: [
-            { charset: 'utf-8' },
-            {
-                name: 'viewport',
-                content: 'width=device-width, initial-scale=1'
-            },
             {
                 hid: 'description',
                 name: 'description',
@@ -19,7 +14,7 @@ export default {
             {
                 rel: 'stylesheet',
                 href:
-                    'https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&amp;amp;subset=latin-ext'
+                    'https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&display=swap&'
             },
             {
                 rel: 'stylesheet',
@@ -41,8 +36,6 @@ export default {
 
     css: [
         'swiper/dist/css/swiper.css',
-        '~/static/fonts/Linearicons/Font/demo-files/demo.css',
-        '~/static/fonts/font-awesome/css/font-awesome.css',
         '~/static/css/bootstrap.min.css',
         '~/assets/scss/style.scss'
     ],
@@ -67,11 +60,11 @@ export default {
         scss: './assets/scss/env.scss'
     },
 
-    loadingIndicator: {
-        name: 'fading-circle',
-        color: 'white',
-        background: '#78bc27'
-    },
+    // loadingIndicator: {
+    //     name: 'fading-circle',
+    //     color: 'white',
+    //     background: '#78bc27'
+    // },
 
     modules: [
         '@nuxtjs/axios',
@@ -80,15 +73,18 @@ export default {
         '@nuxtjs/robots',
         '@nuxtjs/sitemap'
     ],
+
     robots: {
         Sitemap: 'https://zkteco-wa.com/sitemap.xml',
         UserAgent: '*'
     },
+
     sitemap: {
         hostname: 'https://zkteco-wa.com',
         exclude: [],
         routes: []
     },
+
     apollo: {
         clientConfigs: {
             default: {
