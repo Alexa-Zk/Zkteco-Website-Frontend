@@ -46,9 +46,9 @@
 export default {
     data: () => ({
         direction: 'top',
-        fab: false,
+        fab: true,
         fling: false,
-        hover: false,
+        hover: true,
         tabs: null,
         top: false,
         right: true,
@@ -79,6 +79,7 @@ export default {
     position: fixed;
 }
 
+
 #create .v-btn--floating {
     position: relative;
 }
@@ -90,4 +91,9 @@ export default {
 #create .v-speed-dial--right {
     right: 19px;
 }
+
+#create .v-speed-dial .v-icon {
+    color: white;
+}
+
 </style>

@@ -2,33 +2,33 @@ export default {
     head: {
         titleTemplate: 'ZKTeco West Africa',
         title: 'ZKTeco West Africa',
-        meta: [
+        meta: [{
+                charset: 'utf-8'
+            },
+            {
+                name: 'viewport',
+                content: 'width=device-width, initial-scale=1'
+            },
             {
                 hid: 'description',
                 name: 'description',
-                content:
-                    'ZKTeco is a globally-renowned provider of security, access control and time management solutions. ZKTeco focus on Biometrics of fingerprint, face recognition, ..'
+                content: 'ZKTeco is a globally-renowned provider of security, access control and time management solutions. ZKTeco focus on Biometrics of fingerprint, face recognition, ..'
             }
         ],
-        link: [
-            {
+        link: [{
                 rel: 'stylesheet',
-                href:
-                    'https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&display=swap&'
+                href: 'https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&display=swap&'
             },
             {
                 rel: 'stylesheet',
-                href:
-                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
+                href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
             }
         ],
-        script: [
-            {
-                id: 'ze-snippet',
-                src: 'https://static.zdassets.com/ekr/snippet.js?key=ebd1d5ac-b3c0-4bfe-a265-02e961779c67',
-                defer: true
-            }
-        ]
+        script: [{
+            id: 'ze-snippet',
+            src: 'https://static.zdassets.com/ekr/snippet.js?key=ebd1d5ac-b3c0-4bfe-a265-02e961779c67',
+            defer: true
+        }]
     },
     generate: {
         fallback: true
@@ -36,18 +36,40 @@ export default {
 
     css: [
         'swiper/dist/css/swiper.css',
+        '~/static/fonts/Linearicons/Font/demo-files/demo.css',
+        '~/static/fonts/font-awesome/css/font-awesome.css',
         '~/static/css/bootstrap.min.css',
         '~/assets/scss/style.scss'
     ],
 
-    plugins: [
-        { src: '~plugins/vueliate.js', ssr: false },
-        { src: '~/plugins/swiper-plugin.js', ssr: false },
-        { src: '~/plugins/contentPlaceholders.js', ssr: false },
-        { src: '~/plugins/vue-notification.js', ssr: false },
-        { src: '~/plugins/axios.js', ssr: false },
-        { src: '~/plugins/lazyLoad.js', ssr: false },
-        { src: '~/plugins/filters.js', ssr: false }
+    plugins: [{
+            src: '~plugins/vueliate.js',
+            ssr: false
+        },
+        {
+            src: '~/plugins/swiper-plugin.js',
+            ssr: false
+        },
+        {
+            src: '~/plugins/contentPlaceholders.js',
+            ssr: false
+        },
+        {
+            src: '~/plugins/vue-notification.js',
+            ssr: false
+        },
+        {
+            src: '~/plugins/axios.js',
+            ssr: false
+        },
+        {
+            src: '~/plugins/lazyLoad.js',
+            ssr: false
+        },
+        {
+            src: '~/plugins/filters.js',
+            ssr: false
+        }
     ],
 
     buildModules: [
@@ -60,11 +82,11 @@ export default {
         scss: './assets/scss/env.scss'
     },
 
-    // loadingIndicator: {
-    //     name: 'fading-circle',
-    //     color: 'white',
-    //     background: '#78bc27'
-    // },
+    loadingIndicator: {
+        name: 'fading-circle',
+        color: 'white',
+        background: '#78bc27'
+    },
 
     modules: [
         '@nuxtjs/axios',
@@ -94,9 +116,14 @@ export default {
     },
 
     i18n: {
-        locales: [
-            { code: 'en', file: 'en.json' },
-            { code: 'fr', file: 'fr.json' }
+        locales: [{
+                code: 'en',
+                file: 'en.json'
+            },
+            {
+                code: 'fr',
+                file: 'fr.json'
+            }
         ],
         lazy: true,
         defaultLocale: 'en',
