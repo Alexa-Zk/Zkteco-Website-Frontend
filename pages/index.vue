@@ -10,17 +10,27 @@
     </main>
 </template>
 <script>
-import { mapState } from "vuex";
 import HomeBanner from '~/components/partials/homepage/website/default/HomeBanner';
 import Newsletters from '~/components/partials/commons/website/Newsletters';
 import SiteFeauturesFullwidth from '~/components/partials/commons/website/SiteFeaturesFullwidth';
 import RelatedPosts from '~/components/partials/post/website/RelatedPosts';
 import HomeBrand from '~/components/partials/shop/sections/website/ShopBrands';
+// Queries
+import homePages from '~/apollo/queries/homePages';
 
 export default {
     data() {
         return {
+            homePages: '',
+            articles: '',
+            fullPage: true,
         };
+    },
+    apollo: {
+        homePages: {
+            prefetch: true,
+            query: homePages
+        }
     },
     components: {
         HomeBanner,
@@ -34,21 +44,16 @@ export default {
     layout: 'layout-default-website',
 
     computed: {
-        ...mapState({
-            homePage: state => state.website.homePage
-        }),
         adSliders() {
-            return this.homePage ? this.homePage[0].sliders : [];
+            return this.homePages ? this.homePages[0].sliders : [];
         },
         ourPartners() {
-            return this.homePage ? this.homePage[0].partners.slice(0, 8) : [];
+            return this.homePages ? this.homePages[0].partners.slice(0, 8) : [];
         }
-        
     },
     created() {
         let payload = {};
         const response = this.$store.dispatch('website/getArticles', payload);
-        const homepage = this.$store.dispatch('website/getHomepage', payload);
     }
 };
 </script>
