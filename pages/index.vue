@@ -31,7 +31,7 @@ export default {
     },
 
     transition: 'zoom',
-    layout: 'empty',
+    layout: 'layout-default-website',
 
     computed: {
         ...mapState({
