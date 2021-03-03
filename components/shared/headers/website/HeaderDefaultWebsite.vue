@@ -64,8 +64,8 @@ export default {
         }
     },
     async created() {
-        let slug = {}
-        const response = await this.$store.dispatch('website/getAllProductCategories', slug);
+        // let slug = {}
+        // const response = await this.$store.dispatch('website/getAllProductCategories', slug);
     },
 };
 </script>

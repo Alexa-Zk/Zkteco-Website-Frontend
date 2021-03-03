@@ -5,7 +5,7 @@
         </nuxt-link>
         <div class="mega-menu">
             <div
-                v-for="item in productCategories"
+                v-for="item in ProductCategories"
                 class="mega-menu__column"
                 :key="item.id"
             >
@@ -22,18 +22,28 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+
+
+// Queries
+import Categories from '~/apollo/queries/products/allCategories';
 
 export default {
-    name: 'MenuMegaProduct',
+    name: 'MenuMega',
     data () {
         return {
+            productCategories: ''
+        }
+    },
+    apollo: {
+        productCategories: {
+            prefetch: true,
+            query: Categories,
         }
     },
     computed: {
-        ...mapState({
-            productCategories: state => state.website.productCategories
-        }),
+        ProductCategories() {
+            return this.productCategories;
+        }
     },
     
 };
