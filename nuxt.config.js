@@ -22,13 +22,13 @@ export default {
                     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
             }
         ],
-        script: [
-            {
-                id: 'ze-snippet',
-                src: 'https://static.zdassets.com/ekr/snippet.js?key=ebd1d5ac-b3c0-4bfe-a265-02e961779c67',
-                defer: true
-            }
-        ]
+        // script: [
+        //     {
+        //         id: 'ze-snippet',
+        //         src: 'https://static.zdassets.com/ekr/snippet.js?key=ebd1d5ac-b3c0-4bfe-a265-02e961779c67',
+        //         defer: true
+        //     }
+        // ]
     },
     generate: {
         fallback: true
