@@ -10,7 +10,7 @@
                         <p>
                             The store section is still under construction.
                             Perhaps take a look at our list of
-                            <nuxt-link to="/products">
+                            <nuxt-link to="/product">
                                 Products
                             </nuxt-link>
                             or go back to our home page
