@@ -6,7 +6,7 @@
             <div class="ps-block--site-features">
                 <nuxt-link to="/product-categories/time-attendance" class="ps-block__item">
                     <div class="ps-block__left">
-                        <img src="~/static/img/website/Time Attendance icon.png" alt="" />
+                        <img src="~/static/img/website/time-attendance-icon.png" alt="" />
                     </div>
                     <div class="ps-block__right">
                         <h4>
@@ -20,7 +20,7 @@
 
                 <nuxt-link to="/product-categories/access-control" class="ps-block__item">
                     <div class="ps-block__left">
-                        <img src="~/static/img/website/Access Control icon.png" alt="" />
+                        <img src="~/static/img/website/access-control-icon.png" alt="" />
                     </div>
                     <div class="ps-block__right">
                         <h4>
@@ -32,7 +32,7 @@
 
                 <nuxt-link to="/product-categories/smart-lock" class="ps-block__item">
                     <div class="ps-block__left">
-                        <img src="~/static/img/website/Smart lock.png" alt="" />
+                        <img src="~/static/img/website/smart-lock-icon.png" alt="" />
                     </div>
                     <div class="ps-block__right">
                         <h4>
@@ -46,7 +46,7 @@
 
                 <nuxt-link to="product-categories/entrance-control" class="ps-block__item">
                     <div class="ps-block__left">
-                        <img src="~/static/img/website/entrance control.png" alt="" />
+                        <img src="~/static/img/website/entrance-control-icon.png" alt="" />
                     </div>
                     <div class="ps-block__right">
                         <h4>
@@ -59,7 +59,7 @@
                 </nuxt-link>
                 <nuxt-link to="product-categories/security-inspection" class="ps-block__item">
                     <div class="ps-block__left">
-                        <img src="~/static/img/website/security inspection icon.png" alt="" />
+                        <img src="~/static/img/website/security-inspection-icon.png" alt="" />
                     </div>
                     <div class="ps-block__right">
                         <h4>
