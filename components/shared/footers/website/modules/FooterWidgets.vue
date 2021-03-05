@@ -52,6 +52,9 @@
                 <li>
                     <nuxt-link to="/about">Our Values</nuxt-link>
                 </li>
+                <li>
+                    <nuxt-link to="/careers">Careers</nuxt-link>
+                </li>
             </ul>
         </aside>
         <aside class="widget widget_footer">
@@ -85,11 +88,19 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
+                    <nuxt-link to="/support/anti-counterfeiting">Anti-counterfeit Enquiry</nuxt-link>
+                </li>
+                <li>
                     <nuxt-link to="/support/download-center">Download Center</nuxt-link>
+                </li>                
+                <li>
+                    <nuxt-link to="/support/support">Support Tickets</nuxt-link>
                 </li>
                 <li>
                     <nuxt-link to="/support/after-sale">After Sales</nuxt-link>
-                    
+                </li>
+                <li>
+                    <nuxt-link to="/support/faq">FAQs</nuxt-link>
                 </li>
                 
             </ul>
@@ -101,7 +112,7 @@
             <ul class="ps-list--link">
                 <li>
                     <a href="https://zktecopos.com">ZKTeco POS Website</a>
-                </li>    
+                </li> 
             </ul>
         </aside>
     </div>

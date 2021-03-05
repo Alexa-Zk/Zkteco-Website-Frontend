@@ -37,10 +37,10 @@ export default {
 <style lang="scss" scoped>
 .menu-item-has-children {
     a {
-				color: white;
-				&:hover {
-					color: #78bc27;
-				}
+        color: white;
+        &:hover {
+            color: #78bc27;
+        }
     }
     .mega-menu {
         border: none;
@@ -56,16 +56,16 @@ export default {
         }
 
         h4 {
-            color: white;
+            color: #78bc27;
         }
 
         .mega-menu__list {
             li {
                 a {
-										color: white;
-										&:hover {
-											color: #78bc27;
-										}
+                    color: white;
+                    &:hover {
+                        color: #78bc27;
+                    }
                 }
             }
         }
