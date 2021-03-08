@@ -4,7 +4,7 @@
             <i class="icon-bag2"></i>
             
         </nuxt-link> -->
-        <nuxt-link to="/website/account/login" class="header__extra">
+        <nuxt-link to="/" class="header__extra">
             <i class="icon-user"></i>
         </nuxt-link>
     </div>

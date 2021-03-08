@@ -41,19 +41,13 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <a href="/store/page/contact-us">Help Center</a>
+                    <a href="/contact">Help Center</a>
                 </li>
                 <li>
-                    <a href="/website/page/warranty-policy">Warranty</a>
+                    <a href="/support/product-warranty">Warranty</a>
                 </li>
                  <li>
-                    <a href="/store/page/faqs">FAQs</a>
-                </li>
-                <li>
-                    <a href="/store/page/how-to-shop">How to Shop</a>
-                </li>
-                <li>
-                    <a href="/website/page/warranty-policy">Return Policy</a>
+                    <a href="/support/faq">FAQs</a>
                 </li>
             </ul>
         </aside>
@@ -63,19 +57,19 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <a href="/website/page/about-us">About Us</a>
+                    <a href="/about">About Us</a>
                 </li>
                 <li>
-                    <a href="/website/page/warranty-policy">Privacy Policy</a>
+                    <a href="/support/product-warranty">Privacy Policy</a>
                 </li>
                 <li>
-                    <a href="/store/page/terms-conditions">Terms and Conditions</a>
+                    <a href="/support/product-warranty">Terms and Conditions</a>
                 </li>
                 <li>
-                    <a href="/store/page/contact-us">Contact</a>
+                    <a href="/contact">Contact</a>
                 </li>
                 <li>
-                    <a href="#">Careers</a>
+                    <a href="/careers">Careers</a>
                 </li>
             </ul>
         </aside>

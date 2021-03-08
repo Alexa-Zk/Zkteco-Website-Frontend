@@ -127,6 +127,22 @@ export default {
                         {
                             text: 'After Sales Service',
                             url: '/support/after-sale'
+                        },
+                        {
+                            text: 'FAQ',
+                            url: '/support/faq'
+                        },
+                        {
+                            text: 'Trouble Ticket',
+                            url: '/support/support'
+                        },
+                        {
+                            text: 'Warranty Policies',
+                            url: '/support/product-warranty'
+                        },
+                        {
+                            text: 'Anti Counterfeit Enquiry',
+                            url: '/support/anti-counterfeiting'
                         }
                     ]
                 },

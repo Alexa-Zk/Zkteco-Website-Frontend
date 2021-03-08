@@ -1,6 +1,6 @@
 <template lang="html">
     <ul :class="className">
-        <MenuMega1 />
+        <MenuProduct />
         <template v-for="item in mainMenu">
             <MenuDropdown v-if="item.subMenu" :menu-data="item" />
             <MenuMega v-else-if="item.mega" :menu-data="item" />
@@ -22,10 +22,10 @@
 <script>
 import MenuDropdown from './MenuDropdown';
 import MenuMega from './MenuMega';
-import MenuMega1 from './MenuMega1';
+import MenuProduct from './MenuProduct';
 export default {
     name: 'MenuDefault',
-    components: { MenuMega, MenuDropdown, MenuMega1 },
+    components: { MenuMega, MenuDropdown, MenuProduct },
     props: {
         className: {
             type: String,
@@ -52,22 +52,43 @@ export default {
                         
                     ]
                 },
-
                 {
                     text: 'Support',
-                    url: '/',
-                    extraClass: 'menu-item-has-children',
+                    url: '/store/',
+                    extraClass: 'menu-item-has-children has-mega-menu',
                     subClass: 'sub-menu',
-                    subMenu: [
+                    mega: 'true',
+                    megaContent: [
                         {
-                            text: 'Download Center',
-                            url: '/support/download-center'
+                            heading: 'Downloads',
+                            megaItems: [
+                                {
+                                    text: 'Resources Center',
+                                    url: '/support/download-center'
+                                },
+                            ]
                         },
                         {
-                            text: 'After Sales Service',
-                            url: '/support/after-sale'
+                            heading: 'After Sales',
+                            megaItems: [
+                                {
+                                    text: 'Anti-Counterfeit Enquiry',
+                                    url: '/support/anti-counterfeiting'
+                                },
+                                {
+                                    text: 'Trouble Ticket',
+                                    url: '/support/support'
+                                },
+                                {
+                                    text: 'Warranty Policy',
+                                    url: '/support/product-warranty'
+                                },
+                                {
+                                    text: 'FAQ',
+                                    url: '/support/faq'
+                                },
+                            ]
                         },
-                        
                     ]
                 },
                 {

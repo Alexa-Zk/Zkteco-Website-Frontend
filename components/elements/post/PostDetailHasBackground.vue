@@ -159,10 +159,8 @@ export default {
         }
     },
     mounted() {
-        this.url = window.location.href;
-    },
-    created() {
         window.addEventListener('scroll', this.handleScroll);
+        this.url = window.location.href;
     },
     destroyed() {
         window.removeEventListener('scroll', this.handleScroll);
