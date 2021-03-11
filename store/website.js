@@ -107,6 +107,18 @@ export const actions = {
         return reponse;
     },
 
+    async sendEnquiry({ commit }, payload) {
+        commit('setLoading', true);
+        
+        const reponse = await Repository.post(`${baseUrl}/integrations/enquiries`, payload)
+            .then(response => {
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
     async getArticles({ commit }, payload) {
         commit('setLoading', true);
         let params = {
@@ -191,7 +203,7 @@ export const actions = {
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
-    },
+    },  
 
     async getAllProductCategories({ commit }, slug) {
         commit('setLoading', true);
