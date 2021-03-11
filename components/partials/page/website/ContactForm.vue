@@ -9,8 +9,8 @@
                             <input
                                 class="form-control"
                                 type="text"
-                                placeholder="Name *"
-                                v-model="name"
+                                placeholder="Full Name *"
+                                v-model="payload.full_name"
                             />
                         </div>
                     </div>
@@ -20,7 +20,27 @@
                                 class="form-control"
                                 type="text"
                                 placeholder="Email *"
-                                v-model="email"
+                                v-model="payload.email"
+                            />
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
+                        <div class="form-group">
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder="Company Name *"
+                                v-model="payload.company"
+                            />
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
+                        <div class="form-group">
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder="Phone Number *"
+                                v-model="payload.phone"
                             />
                         </div>
                     </div>
@@ -32,6 +52,7 @@
                                 class="form-control"
                                 type="text"
                                 placeholder="Subject *"
+                                v-model="payload.subject"
                             />
                         </div>
                     </div>
@@ -43,15 +64,19 @@
                                 class="form-control"
                                 rows="5"
                                 placeholder="Message"
-                                v-model="message"
+                                v-model="payload.message"
                             ></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="form-group submit">
-                    <button @click.prevent="willContactUs" class="ps-btn">
+                    <el-button
+                        @click.prevent="willContactUs"
+                        :disabled="disabled"
+                        class="ps-btn"
+                    >
                         Send message
-                    </button>
+                    </el-button>
                 </div>
             </form>
         </div>
@@ -63,40 +88,44 @@ export default {
     name: 'ContactForm',
     data() {
         return {
-            email: '',
-            name: '',
-            message: ''
+            payload: {
+                full_name: '',
+                company: '',
+                email: '',
+                phone: '',
+                subject: '',
+                message: ''
+            },
+            disabled: false
         };
     },
     methods: {
         async willContactUs() {
-            let payload = {
-                email: this.email,
-                full_name: this.name,
-                message: this.message
-            };
-            const ip = await this.$axios.$post(
-                'https://admin.zkteco-wa.com/contact-pages',
-                payload
+            this.disabled = true;
+            const response = await this.$store.dispatch(
+                'website/sendEnquiry',
+                this.payload
             );
-            if (ip) {
+            if (response.data) {
+                this.disabled = false;
                 this.$notify({
                     group: 'addCartSuccess',
                     title: 'Success!',
-                    text: `Message sent! We will get in touch Shortly`
+                    text: `your enquiry has been sent! you would be contact shortly. Thank you`
                 });
-                this.email = '';
-                this.name = '';
-                this.message = '';
+                this.payload.full_name = '';
+                this.payload.company = '';
+                this.payload.email = '';
+                this.payload.phone = '';
+                this.payload.subject = '';
+                this.payload.message = '';
             } else {
+                this.disabled = false;
                 this.$notify({
-                    group: 'addCartSuccess',
-                    title: 'Error!',
-                    text: `Something went wrong!`
+                    title: 'Waring!',
+                    text: `All text field should be filled`,
+                    group: 'addCartSuccess'
                 });
-                this.email = '';
-                this.name = '';
-                this.message = ''
             }
         }
     }
@@ -107,12 +136,11 @@ export default {
 .ps-contact-form {
     padding: 30px 0px;
     .container {
-        max-width: 1000px!important;
+        max-width: 1000px !important;
 
         h3 {
             margin-bottom: 30px;
         }
     }
-
 }
 </style>
