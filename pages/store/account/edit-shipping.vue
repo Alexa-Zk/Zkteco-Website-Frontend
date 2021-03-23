@@ -1,21 +1,23 @@
 <template lang="html">
     <section class="ps-page--my-account">
         <bread-crumb :breadcrumb="breadCrumb" />
-        <addresses />
+        <edit-shipping />
     </section>
 </template>
 
 <script>
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import Addresses from '~/components/partials/account/Addresses';
+import Newsletters from '~/components/partials/commons/Newsletters';
+import EditShipping from '~/components/partials/account/EditShipping';
 
 export default {
-    components: {
-        Addresses,
-        BreadCrumb
-    },
     transition: 'zoom',
     middleware: 'authentication',
+    components: {
+        EditShipping,
+        Newsletters,
+        BreadCrumb
+    },
     data: () => {
         return {
             breadCrumb: [
@@ -24,15 +26,10 @@ export default {
                     url: '/'
                 },
                 {
-                    text: 'Addresses'
+                    text: 'Edit Address'
                 }
             ]
         };
-    },
-    async created () {
-        const user = await this.$store.dispatch("auth/getUserInformation")
-        const billing = await this.$store.dispatch('auth/getBilling');
-        const shipping = await this.$store.dispatch('auth/getShipping');
     }
 };
 </script>

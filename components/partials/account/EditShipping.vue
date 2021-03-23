@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <FormEditAddress />
+                    <FormEditShipping />
                 </div>
             </div>
         </div>
@@ -30,11 +30,11 @@
 <script>
 import { mapState } from 'vuex';
 import AccountLinks from './modules/AccountLinks';
-import FormEditAddress from '~/components/partials/account/modules/FormEditAddress';
+import FormEditShipping from '~/components/partials/account/modules/FormEditShipping';
 
 export default {
-    name: 'EditAddress',
-    components: { AccountLinks, FormEditAddress },
+    name: 'EditShipping',
+    components: { AccountLinks, FormEditShipping },
     data() {
         return {
             accountLinks: [

@@ -32,7 +32,7 @@
                                         </figcaption>
                                         <div class="ps-block__content">
                                             <p>
-                                                Set Up This Type Of Address.
+                                                Set up your billing address.
                                             </p>
                                             <nuxt-link
                                                 to="/store/account/edit-address"
@@ -49,10 +49,10 @@
                                         </figcaption>
                                         <div class="ps-block__content">
                                             <p>
-                                                Set Up This Type Of Address.
+                                                Set up your shipping address
                                             </p>
                                             <nuxt-link
-                                                to="/store/account/edit-address"
+                                                to="/store/account/edit-shipping"
                                             >
                                                 <a>Edit</a>
                                             </nuxt-link>
@@ -82,11 +82,6 @@ export default {
                     url: '/store/account/user-information',
                     icon: 'icon-user'
                 },
-                // {
-                //     text: 'Invoices',
-                //     url: '/store/account/invoices',
-                //     icon: 'icon-papers'
-                // },
                 {
                     text: 'Address',
                     url: '/store/account/addresses',
@@ -108,7 +103,7 @@ export default {
     },
     computed: {
         ...mapState({
-            single_user_information: state => state.auth.singleUserInformation
+            single_user_information: state => state.auth.singleUserInformation,
         })
     }
 };

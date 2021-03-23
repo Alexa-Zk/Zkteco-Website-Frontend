@@ -98,10 +98,10 @@ export default {
                     })
                 );
                 const shipping = {
-                    first_name: this.user.firstName,
-                    last_name: this.user.lastName,
+                    email: this.user.email,
+                    full_name: this.user.firstName,
+                    company: this.user.lastName,
                     address_1: this.user.address,
-                    address_2: this.user.apartment,
                     city: this.user.city,
                     postcode: this.user.postCode,
                     phone: this.user.phoneNumber
@@ -109,6 +109,7 @@ export default {
                 const payload = {
                     payment_method: 'Pay On Delivery',
                     payment_method_title: 'Pay On Delivery',
+                    use_exist_shipping: true,
                     shipping_cost: this.shippingCost,
                     products: productItem,
                     shipping: shipping
