@@ -28,33 +28,42 @@
                                                         Company Name
                                                         <sup>*</sup>
                                                     </label>
-                                                    <input
-                                                        type="text"
-                                                        placeholder=""
-                                                        class="form-control"
-                                                        v-model="payload.company_name"
+                                                    <v-text-field
+                                                        v-model="company_name"
+                                                        class="ps-text-field"
+                                                        :error-messages="companyErrors"
+                                                        @input="$v.company_name.$touch()"
+                                                        placeholder="Please enter company name"
+                                                        height="50"
+                                                        outlined
                                                     />
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
                                                         Email <sup>*</sup>
                                                     </label>
-                                                    <input
-                                                        type="text"
-                                                        placeholder=""
-                                                        class="form-control"
-                                                        v-model="payload.email"
+                                                    <v-text-field
+                                                        v-model="email_address"
+                                                        class="ps-text-field"
+                                                        :error-messages="emailErrors"
+                                                        @input="$v.email_address.$touch()"
+                                                        placeholder="Please enter email"
+                                                        height="50"
+                                                        outlined
                                                     />
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
                                                         Phone
                                                     </label>
-                                                    <input
-                                                        type="text"
-                                                        placeholder=""
-                                                        class="form-control"
-                                                        v-model="payload.phone_number"
+                                                    <v-text-field
+                                                        v-model="phone_number"
+                                                        class="ps-text-field"
+                                                        :error-messages="phoneNumberErrors"
+                                                        @input="$v.phone_number.$touch()"
+                                                        placeholder="Please enter phone number"
+                                                        height="50"
+                                                        outlined
                                                     />
                                                 </div>
                                                 <div class="form-group">
@@ -62,11 +71,14 @@
                                                         Device Serial Number
                                                         <sup>*</sup>
                                                     </label>
-                                                    <input
-                                                        type="text"
-                                                        placeholder=""
-                                                        class="form-control"
-                                                        v-model="payload.serial_number"
+                                                    <v-text-field
+                                                        v-model="serial_number"
+                                                        class="ps-text-field"
+                                                        :error-messages="serialNumberErrors"
+                                                        @input="$v.serial_number.$touch()"
+                                                        placeholder="Please enter serial number"
+                                                        height="50"
+                                                        outlined
                                                     />
                                                 </div>
                                                 <div class="form-group">
@@ -74,38 +86,40 @@
                                                         Issue Type
                                                         <sup>*</sup>
                                                     </label>
-                                                    <select
-                                                        class="form-control"
-                                                        v-model="payload.issue_type"
-                                                    >
-                                                        <option value="">
-                                                            Select Issue type
-                                                        </option>
-                                                        <option value="hardware">
-                                                            Hardware
-                                                        </option>
-                                                        <option value="software">
-                                                            Software
-                                                        </option>
-                                                    </select>
+                                                    <v-select
+                                                        v-model="issue_type"
+                                                        :items="issues"
+                                                        :error-messages="issueTypeErrors"
+                                                        @input="$v.issue_type.$touch()"
+                                                        class="ps-text-field"
+                                                        outlined
+                                                    ></v-select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
                                                         Description <sup>*</sup>
                                                     </label>
-
-                                                    <textarea
-                                                        class="form-control"
-                                                        rows="5"
-                                                        placeholder="Message"
-                                                        v-model="payload.description"
-                                                    ></textarea>
+                                                    <v-textarea
+                                                        outlined
+                                                        class="ps-text-field"
+                                                        placeholder="Please enter Description"
+                                                        rows="6"
+                                                        :error-messages="descriptionErrors"
+                                                        @input="$v.description.$touch()"
+                                                        v-model="description"
+                                                    ></v-textarea>
                                                 </div>
 
                                                 <div class="form-group submit">
                                                     <button class="ps-btn" @click.prevent="supportTicket">
                                                         Submit Ticket
                                                     </button>
+                                                    <v-progress-circular
+                                                        v-if="loading"
+                                                        :width="3"
+                                                        color="green"
+                                                        indeterminate
+                                                    ></v-progress-circular>
                                                 </div>
                                             </div>
                                         </form>
@@ -124,7 +138,13 @@
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import CustomerCare from '@/static/svg/CustomerCare';
 
+import { email, required } from 'vuelidate/lib/validators';
+import { validationMixin } from 'vuelidate';
+
+
 export default {
+    mixins: [validationMixin],
+    name: 'Support',
     components: {
         BreadCrumb,
         CustomerCare
@@ -133,22 +153,13 @@ export default {
     layout: 'layout-default-website',
     data: () => {
         return {
-            payload: {
-                company_name: '',
-                phone_number: '',
-                email: '',
-                serial_number: '',
-                issue_type: '',
-                description: ''
-            },
-            temp_payload: {
-                company_name: '',
-                phone_number: '',
-                email: '',
-                serial_number: '',
-                issue_type: '',
-                description: ''
-            },
+            company_name: '',
+            phone_number: '',
+            email_address: '',
+            serial_number: '',
+            issue_type: '',
+            description: '',
+            loading: false,
             breadCrumb: [
                 {
                     text: 'Home',
@@ -161,29 +172,98 @@ export default {
                 {
                     text: 'Support Ticket'
                 }
+            ],
+            issues: [
+                'hardware',
+                'software'
             ]
         };
     },
+    computed: {
+        companyErrors() {
+            const errors = [];
+            if (!this.$v.company_name.$dirty) return errors;
+            !this.$v.company_name.required && errors.push('This field is required');
+            return errors;
+        },
+        phoneNumberErrors() {
+            const errors = [];
+            if (!this.$v.phone_number.$dirty) return errors;
+            !this.$v.phone_number.required && errors.push('This field is required');
+            return errors;
+        },
+        emailErrors() {
+            const errors = [];
+            if (!this.$v.email_address.$dirty) return errors;
+            !this.$v.email_address.required && errors.push('E-mail is required')
+            !this.$v.email_address.email && errors.push('Must be valid e-mail')
+            return errors;
+        },
+        serialNumberErrors() {
+            const errors = [];
+            if (!this.$v.serial_number.$dirty) return errors;
+            !this.$v.serial_number.required && errors.push('This field is required');
+            return errors;
+        },
+        issueTypeErrors() {
+            const errors = [];
+            if (!this.$v.issue_type.$dirty) return errors;
+            !this.$v.issue_type.required && errors.push('This field is required');
+            return errors;
+        },
+        descriptionErrors() {
+            const errors = [];
+            if (!this.$v.description.$dirty) return errors;
+            !this.$v.description.required && errors.push('This field is required');
+            return errors;
+        }
+    },
+    validations: {
+        company_name: { required },
+        phone_number: { required },
+        email_address: { required, email },
+        serial_number: { required },
+        issue_type: { required },
+        description: { required },
+    },
     methods: {
         async supportTicket() {
-            const ip = await this.$axios.$post(
-                'https://wslbackend.zkteco-wa.com/api/v1/integrations/supports',
-                this.payload
-            );
-            if (ip) {
-                this.$notify({
-                    group: 'addCartSuccess',
-                    title: 'Success!',
-                    text: `your support ticket has been sent!`
-                });
-                this.payload = this.temp_payload
-            } else {
-                this.$notify({
-                    group: 'addCartSuccess',
-                    title: 'Error!',
-                    text: `Some went wrong!`
-                });
-                this.payload = this.temp_payload
+            this.$v.$touch();
+            if (!this.$v.$invalid) {
+                this.loading = true
+                let payload = {
+                    company_name: this.company_name,
+                    phone_number: this.phone_number,
+                    email: this.email_address,
+                    serial_number: this.serial_number,
+                    issue_type: this.issue_type,
+                    description: this.description,
+                }
+                const ip = await this.$axios.$post(
+                    'https://wslbackend.zkteco-wa.com/api/v1/integrations/supports',
+                    payload
+                );
+                if (ip) {
+                    this.$notify({
+                        group: 'addCartSuccess',
+                        title: 'Success!',
+                        text: `your support ticket has been sent!`
+                    });
+                    this.loading = false;
+                    this.company_name = '';
+                    this.phone_number = '';
+                    this.email = '';
+                    this.serial_number = '';
+                    this.issue_type = '';
+                    this.description = '';
+                } else {
+                    this.$notify({
+                        group: 'addCartSuccess',
+                        title: 'Error!',
+                        text: `Some went wrong!`
+                    });
+                    this.loading = false;
+                }   
             }
         }
     }

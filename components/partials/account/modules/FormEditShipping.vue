@@ -1,9 +1,34 @@
 <template lang="html">
-    <form class="ps-form--edit-address" v-if="billing">
+    <form class="ps-form--edit-address" v-if="shipping">
         <div class="ps-form__header">
-            <h3>Billing address</h3>
+            <h3>Shipping address</h3>
         </div>
         <div class="ps-form__content">
+
+            <div class="form-group">
+                <label>
+                    First Name <sup>*</sup>
+                </label>
+                <input
+                    type="text"
+                    placeholder=""
+                    v-model="shipping.first_name"
+                    class="form-control"
+                />
+            </div>
+
+            <div class="form-group">
+                <label>
+                    Last Name <sup>*</sup>
+                </label>
+                <input
+                    type="text"
+                    placeholder=""
+                    v-model="shipping.last_name"
+                    class="form-control"
+                />
+            </div>
+
             <div class="form-group">
                 <label>
                     Company Name <sup>*</sup>
@@ -11,7 +36,55 @@
                 <input
                     type="text"
                     placeholder=""
-                    v-model="billing.company"
+                    v-model="shipping.company"
+                    class="form-control"
+                />
+            </div>
+
+            <div class="form-group">
+                <label> Country <sup>*</sup> </label>
+                <input
+                    type="text"
+                    placeholder=""
+                    v-model="shipping.country"
+                    class="form-control"
+                />
+            </div>
+            <div class="form-group">
+                <label> State <sup>*</sup> </label>
+                <input
+                    type="text"
+                    placeholder=""
+                    v-model="shipping.state"
+                    class="form-control"
+                />
+            </div>
+            <div class="form-group">
+                <label> City <sup>*</sup> </label>
+                <input
+                    type="text"
+                    placeholder=""
+                    v-model="shipping.city"
+                    class="form-control"
+                />
+            </div>
+
+            <div class="form-group">
+                <label> Street Address <sup>*</sup> </label>
+                <input
+                    type="text"
+                    placeholder=""
+                    v-model="shipping.address_1"
+                    class="form-control"
+                />
+            </div>
+
+            <div class="form-group">
+                <label>Alternative Street Address</label>
+                <input
+                    type="text"
+                    placeholder=""
+                    v-model="shipping.address_2"
                     class="form-control"
                 />
             </div>
@@ -23,72 +96,24 @@
                 <input
                     type="text"
                     placeholder=""
-                    v-model="billing.phone"
+                    v-model="shipping.phone"
                     class="form-control"
                 />
             </div>
 
-            <div class="form-group">
-                <label> Country <sup>*</sup> </label>
-                <input
-                    type="text"
-                    placeholder=""
-                    v-model="billing.country"
-                    class="form-control"
-                />
-            </div>
-            <div class="form-group">
-                <label> State <sup>*</sup> </label>
-                <input
-                    type="text"
-                    placeholder=""
-                    v-model="billing.state"
-                    class="form-control"
-                />
-            </div>
-            <div class="form-group">
-                <label> City <sup>*</sup> </label>
-                <input
-                    type="text"
-                    placeholder=""
-                    v-model="billing.city"
-                    class="form-control"
-                />
-            </div>
-
-            <div class="form-group">
-                <label> Street Address <sup>*</sup> </label>
-                <input
-                    type="text"
-                    placeholder=""
-                    v-model="billing.address_1"
-                    class="form-control"
-                />
-            </div>
-
-            <div class="form-group">
-                <label>Alternative Street Address</label>
-                <input
-                    type="text"
-                    placeholder=""
-                    v-model="billing.address_2"
-                    class="form-control"
-                />
-            </div>
-            
             
             <div class="form-group">
                 <label> Postcode <sup>*</sup> </label>
                 <input
                     type="text"
                     placeholder=""
-                    v-model="billing.postcode"
+                    v-model="shipping.postcode"
                     class="form-control"
                 />
             </div>
             <div class="form-group submit">
                 <button class="ps-btn" @click.prevent="saveAddress">
-                    {{loading ? "Saving..." : "Save Billing"}}
+                    {{loading ? "Saving..." : "Save Shipping"}}
                 </button>
             </div>
         </div>
@@ -110,15 +135,18 @@ export default {
                 this.loading = true
 				try {
 					const payload = {
-                        company: this.billing.company,
-                        address_1: this.billing.address_1,
-                        address_2: this.billing.address_2,
-                        city: this.billing.city,
-                        state: this.billing.state,
-                        postcode: this.billing.postcode,
-                        country: this.billing.country 
+                        first_name: this.shipping.first_name,
+                        last_name: this.shipping.last_name,
+                        company: this.shipping.company,
+                        address_1: this.shipping.address_1,
+                        address_2: this.shipping.address_2 ? this.shipping.address_2: '',
+                        city: this.shipping.city,
+                        state: this.shipping.state,
+                        postcode: this.shipping.postcode,
+                        country: this.shipping.country,
+                        phone: this.shipping.phone 
 					}
-					const response = await this.$store.dispatch('auth/updateBilling', payload);
+					const response = await this.$store.dispatch('auth/updateShipping', payload);
 					if (response.data) {
 						this.$notify({
 							group: 'addCartSuccess',
@@ -140,7 +168,7 @@ export default {
     },
     computed: {
         ...mapState({
-            billing: state => state.auth.billing
+            shipping: state => state.auth.shipping
         })
     }
     
