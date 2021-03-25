@@ -109,7 +109,7 @@ export default {
                 const payload = {
                     payment_method: 'Pay On Delivery',
                     payment_method_title: 'Pay On Delivery',
-                    use_exist_shipping: true,
+                    use_exist_shipping: false,
                     shipping_cost: this.shippingCost,
                     products: productItem,
                     shipping: shipping
