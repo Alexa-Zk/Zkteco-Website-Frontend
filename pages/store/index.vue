@@ -9,9 +9,9 @@
         <home-ads-columns :images="adImages"/>
 
         <template>
-            <conumer-electronics :collection-id="this.id" />
-            <clothings :collection-id="this.id1" />
-            <!-- <garden-and-kitchen collection-slug="garden-and-kitchen" /> -->
+            <conumer-electronics :collection-id="this.access_control" />
+            <clothings :collection-id="this.home_automation" />
+            <clothings :collection-id="this.cctv" />
         </template>
         <home-ads :images="adImages"/>
         <newsletters layout="fullwidth" />
@@ -47,8 +47,9 @@ export default {
         return {
             ecommerceImages: '',
             articles: '',
-            id: 15,
-            id1: 26
+            access_control: 22,
+            home_automation: 26,
+            cctv: 24
         };
     },
     apollo: {
