@@ -35,7 +35,7 @@
         </div>
         <div class="ps-product__container">
             <nuxt-link to="/shop" class="ps-product__vendor">
-                {{ product.categories[0].name }}
+                {{ product.categories[0] ? product.categories[0].name: "" }}
             </nuxt-link>
             <div class="ps-product__content">
                 <span

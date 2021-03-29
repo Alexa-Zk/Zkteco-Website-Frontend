@@ -1,7 +1,6 @@
 <template lang="html">
     <div class="ps-document">
         <p v-html="product.description"></p>
-        <p v-html="product.short_description"></p>
     </div>
 </template>
 
