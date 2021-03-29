@@ -159,13 +159,21 @@ export default {
                     url: 'contact'
                 },
                 {
+                    text: 'Smart Home',
+                    url: 'http://ngteco.ng/'
+                },
+                {
+                    text: 'Store Locator',
+                    url: '/website/page/store-locator'
+                },
+                {
                     text: 'Login',
                     url: '/website/page/login'
                 },
                 {
                     text: 'Register',
                     url: '/website/page/register'
-                }
+                },
             ]
         };
     },

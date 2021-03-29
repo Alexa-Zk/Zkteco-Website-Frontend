@@ -573,6 +573,16 @@
     }
 }
 
+.ps-store--locator {
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+    padding: 30px 0px;
+
+    .personel_name {
+        font-weight: 600;
+    }
+}
+
 .ps-page--account {
     padding-top: 50px;
     padding-bottom: 50px;

@@ -1,0 +1,64 @@
+{
+    "stores": [
+        {
+            "id": "1",
+            "name": "Dreamworks Integrated Systems Limited",
+            "address": "No. 83, Adeniyi Jones Avenue, Ikeja Lagos State Nigeria",
+            "personel": [
+                {   
+                    "id": 1,
+                    "name": "Anthonia",
+                    "phone": ["07068223587"]
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "name": "Westgate Technologies Limited (Ikeja)",
+            "address": "No. 32, Oba Akran Avenue Ikeja, Lagos State, Nigeria",
+            "personel": [
+                {
+                    "id": 2,
+                    "name": "Judith",
+                    "phone": ["08136939352", "07017149979"]
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "name": "Westgate Technologies Limited (Computer Village)",
+            "address": "No. 17, Adepele Street, Ikeja, Lagos State, Nigeria",
+            "personel": [
+                {
+                    "id": 3,
+                    "name": "Samson",
+                    "phone": ["08188747679", "08147330201"]
+                }
+            ]
+        },
+        {
+            "id": "4",
+            "name": "Spar Market Nigeria",
+            "address": "33 Town Planning Way, Ilupeju, Lagos",
+            "personel": [
+                {
+                    "id": 4,
+                    "name": "",
+                    "phone": []
+                }
+            ]
+        },
+        {
+            "id": "5",
+            "name": "Spar Market Nigeria",
+            "address": "SPAR Lekki, Palm Springs Rd, Lekki Penninsula II, Lekki, Behind Nicon Town & Total Filling Station, Ikate Elegushi Layout",
+            "personel": [
+                {
+                    "id": 5,
+                    "name": "",
+                    "phone": []
+                }
+            ]
+        }
+    ]
+}
