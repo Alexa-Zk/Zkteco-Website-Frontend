@@ -1,12 +1,12 @@
 <template lang="html">
-    <div class="ps-container shop-brands-website">
+    <!-- <div class="ps-container shop-brands-website">
         <h3>Our Partners</h3>
         <div class="ps-shop-brand">
             <nuxt-link to="/" v-for="logo in partnersLogo" :key="logo.name">
                 <img :src="logo.image.url" alt="martfury" />
             </nuxt-link>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <script>

@@ -9,12 +9,26 @@
                         </div>
                     </div>
                     <div class="col-lg-11">
-                        <h3 class="store-name">{{ store.name }}</h3>
-                        <p>{{ store.address }}</p>
-                        <div v-for="item in store.personel" :key="item.id">
-                            <span class="personel_name" v-if="item.name">{{ item.name }}:</span>
-                            <span v-for="phone in item.phone" v-if="item.name">
-                                {{ phone }}
+                        <a
+                            :href="
+                                `http://maps.google.com/?q=${store.location}`
+                            "
+                            target="_blank"
+                        >
+                            <h3 class="store-name">
+                                {{ store.name }}
+                            </h3>
+                        </a>
+                        <p>{{ store.location }}</p>
+                        <div
+                            v-for="item in store.personal_information"
+                            :key="item.id"
+                        >
+                            <span class="personel_name" v-if="item.fullname"
+                                >{{ item.fullname }}:</span
+                            >
+                            <span v-if="item.fullname">
+                                {{ item.phone_number }}
                             </span>
                         </div>
                     </div>
@@ -25,7 +39,7 @@
 </template>
 
 <script>
-import Store from "~/static/svg/Store.vue";
+import Store from '~/static/svg/Store.vue';
 export default {
     name: 'StoreLocation',
     components: {
@@ -36,13 +50,13 @@ export default {
             type: Object,
             default: () => {}
         }
-    }
+    },
 };
 </script>
 
 <style lang="scss" scoped>
 .icon--store {
-    background: #F2F2F2;
+    background: #f2f2f2;
     height: 34px;
     width: 34px;
     display: flex;

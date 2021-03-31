@@ -14,6 +14,7 @@ export const state = () => ({
     productCategories: null,
     subProductCategories: null,
     homePage: null,
+    storeLocator:  null,
     solutionCategories: null,
     newsCategories: null,
     searchResults: null,
@@ -83,6 +84,10 @@ export const mutations = {
 
     setHomepage(state, payload) {
         state.homePage = payload
+    },
+
+    setStoreLocator(state, payload) {
+        state.storeLocator = payload
     }
     
 };
@@ -203,7 +208,7 @@ export const actions = {
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
-    },  
+    }, 
 
     async getAllProductCategories({ commit }, slug) {
         commit('setLoading', true);
@@ -323,6 +328,26 @@ export const actions = {
         )
             .then(response => {
                 commit('setHomepage', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getStoreLocator({ commit, state }, payload) {
+        commit('setLoading', true);
+        
+        let params = {
+            page: Object.keys(payload).length === 0 ? state.page : payload.page,
+            perPage: Object.keys(payload).length === 0 ? state.perPage : payload.perPage,
+            query: Object.keys(payload).length === 0 ? '' : payload.query,
+        };
+        const reponse = await Repository.get(
+            `${subBaseUrl}/store-locators/search?${serializeQuery(params)}`
+        )
+            .then(response => {
+                commit('setStoreLocator', response.data);
                 commit('setLoading', false);
                 return response.data;
             })
