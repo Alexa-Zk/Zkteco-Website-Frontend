@@ -40,10 +40,13 @@
                             <div class="ps-form__left">
                                 <div
                                     class=""
-                                    v-for="store in formattedStores"
+                                    v-for="store in storeLocator"
                                     :key="store.id"
                                 >
                                     <store-location :store="store" />
+                                </div>
+                                <div v-if="storeLocator.length === 0">
+                                    <span>No Store in your location</span>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +65,7 @@
 <script>
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import StoreLocation from '~/components/partials/store-location/StoreLocation';
-// import { stores } from '~/static/data/store-locator';
+import { mapActions, mapState } from 'vuex';
 
 export default {
     components: {
@@ -82,85 +85,38 @@ export default {
                 },
                 {
                     text: 'Contact Us',
-                    url: '/contact-us'
+                    url: '/contact'
                 },
                 {
                     text: 'Store Locator'
                 }
-            ],
-            stores: [
-                {
-                    id: '1',
-                    name: 'Dreamworks Integrated Systems Limited',
-                    address:
-                        'No. 83, Adeniyi Jones Avenue, Ikeja Lagos State Nigeria',
-                    personel: [
-                        {
-                            id: 1,
-                            name: 'Anthonia',
-                            phone: ['07068223587']
-                        }
-                    ]
-                },
-                {
-                    id: '2',
-                    name: 'Westgate Technologies Limited (Ikeja)',
-                    address:
-                        'No. 32, Oba Akran Avenue Ikeja, Lagos State, Nigeria',
-                    personel: [
-                        {
-                            id: 2,
-                            name: 'Judith',
-                            phone: ['08136939352', '07017149979']
-                        }
-                    ]
-                },
-                {
-                    id: '3',
-                    name: 'Westgate Technologies Limited (Computer Village)',
-                    address:
-                        'No. 17, Adepele Street, Ikeja, Lagos State, Nigeria',
-                    personel: [
-                        {
-                            id: 3,
-                            name: 'Samson',
-                            phone: ['08188747679', '08147330201']
-                        }
-                    ]
-                },
-                {
-                    id: '4',
-                    name: 'Spar Market Nigeria',
-                    address: '33 Town Planning Way, Ilupeju, Lagos',
-                    personel: [
-                        {
-                            id: 4,
-                            name: '',
-                            phone: []
-                        }
-                    ]
-                },
-                {
-                    id: '5',
-                    name: 'Spar Market Nigeria',
-                    address:
-                        'SPAR Lekki, Palm Springs Rd, Lekki Penninsula II, Lekki, Behind Nicon Town & Total Filling Station, Ikate Elegushi Layout',
-                    personel: [
-                        {
-                            id: 5,
-                            name: '',
-                            phone: []
-                        }
-                    ]
-                }
             ]
         };
     },
+    methods: {
+        ...mapActions(['getStoreLocator'])
+    },
     computed: {
-        formattedStores() {
-            return this.stores.filter(post => {
-                return post.name.toLowerCase().includes(this.location.toLowerCase());
-            });
+        ...mapState({
+            storeLocator: state => state.website.storeLocator
+        })
+    },
+    async created() {
+        const payload = {};
+        const storeLocation = await this.$store.dispatch(
+            'website/getStoreLocator',
+            payload
+        );
+    },
+    watch: {
+        async location() {
+            const payload = {
+                query: this.location
+            };
+            const storeLocation = await this.$store.dispatch(
+                'website/getStoreLocator',
+                payload
+            );
         }
     }
 };
