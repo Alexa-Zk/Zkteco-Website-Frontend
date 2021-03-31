@@ -61,7 +61,7 @@
                                                         class="ps-text-field"
                                                         :error-messages="phoneNumberErrors"
                                                         @input="$v.phone_number.$touch()"
-                                                        placeholder="Please enter phone number"
+                                                        placeholder="(+234) 8165391233"
                                                         height="50"
                                                         outlined
                                                     />
