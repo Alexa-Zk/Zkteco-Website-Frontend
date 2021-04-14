@@ -12,19 +12,20 @@
         </div>
         <div class="navigation__content">
             <div class="ps-panel__search-results">
-                <form class="ps-form--search-mobile" action="/" method="get">
+                <div class="ps-form--search-mobile">
                     <div class="form-group--nest">
                         <input
                             class="form-control"
                             type="text"
                             placeholder="Search something..."
                             v-model="searchText"
+                            v-on:keyup.enter="submitQuery"
                         />
                         <button>
                             <i class="icon-magnifier" @click.prevent="submitQuery"></i>
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>

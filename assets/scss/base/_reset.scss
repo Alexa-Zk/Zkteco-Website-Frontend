@@ -133,6 +133,16 @@ hr {
     overflow: visible;
 }
 
+.siq_bR {
+    @media (max-width: 768px) {
+        bottom: 73px !important;
+
+        .zsiq_cnt {
+            display: none !important;
+        }
+    }   
+}
+
 button,
 input,
 select,
