@@ -62,6 +62,18 @@ import BreadCrumb from '~/components/elements/BreadCrumb';
 import AuthenticationCard from '@/components/partials/product/ProductAuthenticationCard';
 
 export default {
+    head() {
+        return {
+            titleTemplate: 'Anti Counterfeiting - ZKTeco West Africa',
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'Anti Counterfeiting'
+                }
+            ]
+        };
+    },
     components: {
         BreadCrumb,
         AuthenticationCard

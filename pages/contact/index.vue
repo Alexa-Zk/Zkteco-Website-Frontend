@@ -14,6 +14,18 @@ import ContactInfo from '~/components/partials/page/website/ContactInfo';
 import ContactForm from '~/components/partials/page/website/ContactForm';
 
 export default {
+    head() {
+        return {
+            titleTemplate: 'Contact Us - ZKTeco West Africa',
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'Contact ZKTeco West Africa'
+                }
+            ]
+        };
+    },
     components: {
         ContactForm,
         ContactInfo,

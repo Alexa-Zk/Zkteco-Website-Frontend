@@ -1,6 +1,6 @@
 <template lang="html">
     <div class="ps-dropdown language">
-        <a href="#" @click.prevent>
+        <!-- <a href="#" @click.prevent>
             <img :src="selectedLocale.image" alt="" />
             {{ selectedLocale.text }}
         </a>
@@ -14,7 +14,7 @@
                     {{ language.text }}
                 </a>
             </li>
-        </ul>
+        </ul> -->
     </div>
 </template>
 
@@ -22,14 +22,14 @@
 export default {
     name: 'LanguageSwicher',
     computed: {
-        currentLocale() {
-            return this.$i18n.locale;
-        },
-        selectedLocale() {
-            return this.languages.find(
-                item => item.code === this.currentLocale
-            );
-        }
+        // currentLocale() {
+        //     return this.$i18n.locale;
+        // },
+        // selectedLocale() {
+        //     return this.languages.find(
+        //         item => item.code === this.currentLocale
+        //     );
+        // }
     },
     data() {
         return {

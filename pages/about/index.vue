@@ -16,14 +16,27 @@ import AboutVision from '~/components/partials/page/website/AboutVision';
 import AboutValue from '~/components/partials/page/website/AboutValue';
 
 export default {
+    head() {
+        return {
+            titleTemplate: 'About Us - ZKTeco West Africa',
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'About ZKTeco West Africa'
+                }
+            ]
+        };
+    },
     components: {
         AboutMission,
         AboutVision,
         AboutValue,
         BreadCrumb
     },
-    layout: "layout-default-website",
+    layout: 'layout-default-website',
     transition: 'zoom',
+
     data: () => {
         return {
             breadCrumb: [

@@ -41,6 +41,18 @@ import ShopWidget from '~/components/partials/shop/modules/website/ShopWidget';
 import LayoutShopSidebar from '~/components/partials/shop/website/LayoutShopSidebarPromotion';
 
 export default {
+    head() {
+        return {
+            titleTemplate: `${this.sub_product ? this.sub_product.name : '' } - ZKTeco West Africa`,
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: `${this.sub_product ? this.sub_product.name : ''} Promotion on ZKTeco West Africa`
+                }
+            ]
+        };
+    },
     transition: 'zoom',
     layout: 'layout-default-website',
     components: {

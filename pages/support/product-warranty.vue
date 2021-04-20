@@ -18,6 +18,18 @@ import Faqs from '~/components/partials/page/Faqs';
 import WarrantyPolicies from '~/apollo/queries/warranty/warranties';
 
 export default {
+    head() {
+        return {
+            titleTemplate: 'Warranty - ZKTeco West Africa',
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'Warranty/Return Policy'
+                }
+            ]
+        };
+    },
     components: {
         Faqs,
         BreadCrumb

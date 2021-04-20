@@ -15,6 +15,18 @@ import Faqs from '~/components/partials/page/Faqs';
 import faqs from '~/apollo/queries/faq/faqs';
 
 export default {
+    head() {
+        return {
+            titleTemplate: 'FAQ - ZKTeco West Africa',
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'Frequently asked questions'
+                }
+            ]
+        };
+    },
     components: {
         Faqs,
         BreadCrumb

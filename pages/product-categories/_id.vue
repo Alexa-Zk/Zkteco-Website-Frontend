@@ -29,18 +29,11 @@ export default {
         BreadCrumb
     },
     head() {
-        const name = this.product
-            ? this.product.name
+        const name = this.categoriesWithProduct
+            ? this.categoriesWithProduct.name
             : 'Product Categories';
         return {
-            title: name,
-            meta: [
-                {
-                    hid: 'title',
-                    name: 'title',
-                    content: name
-                },
-            ]
+            titleTemplate: name,
         };
     },
     transition() {

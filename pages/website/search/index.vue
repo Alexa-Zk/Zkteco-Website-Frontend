@@ -18,6 +18,18 @@ import BreadCrumb from '~/components/elements/BreadCrumb';
 import SearchResult from '~/components/partials/search/WebsiteSearchResult';
 
 export default {
+    head() {
+        return {
+            titleTemplate: 'Search Page - ZKTeco West Africa',
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'Search'
+                }
+            ]
+        };
+    },
     transition() {
         return 'fadeIn';
     },

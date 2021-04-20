@@ -143,6 +143,18 @@ import { validationMixin } from 'vuelidate';
 
 
 export default {
+    head() {
+        return {
+            titleTemplate: 'Support Tickets - ZKTeco West Africa',
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'Create Support Tickets'
+                }
+            ]
+        };
+    },
     mixins: [validationMixin],
     name: 'Support',
     components: {
