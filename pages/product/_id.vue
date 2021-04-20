@@ -53,7 +53,7 @@ export default {
             ? this.singleProduct.description
             : 'Product Details - Description';
         return {
-            title: title,
+            titleTemplate: title,
             meta: [
                 {
                     hid: 'title',

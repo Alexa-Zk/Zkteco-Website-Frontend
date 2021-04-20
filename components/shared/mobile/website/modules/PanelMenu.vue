@@ -133,7 +133,7 @@ export default {
                             url: '/support/faq'
                         },
                         {
-                            text: 'Trouble Ticket',
+                            text: 'Support Ticket',
                             url: '/support/support'
                         },
                         {

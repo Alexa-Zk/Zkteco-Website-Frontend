@@ -11,6 +11,18 @@ import BreadCrumb from '~/components/elements/BreadCrumb';
 import StoreList2 from '~/components/partials/vendor/website/StoreList2';
 
 export default {
+    head() {
+        return {
+            titleTemplate: 'Solutions - ZKTeco West Africa',
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'Solutions'
+                }
+            ]
+        };
+    },
     components: {
         StoreList2,
         BreadCrumb

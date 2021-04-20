@@ -14,6 +14,18 @@ import downloadCenters from '~/apollo/queries/downloadCenters';
 
 
 export default {
+    head() {
+        return {
+            titleTemplate: 'Download Resources - ZKTeco West Africa',
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'Download Center'
+                }
+            ]
+        };
+    },
     components: {
         BreadCrumb,
         Downloads

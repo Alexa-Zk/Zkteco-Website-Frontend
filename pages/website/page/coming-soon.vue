@@ -29,6 +29,18 @@
 import BreadCrumb from '~/components/elements/BreadCrumb';
 
 export default {
+    head() {
+        return {
+            titleTemplate: 'Coming Soon - ZKTeco West Africa',
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'Coming Soon'
+                }
+            ]
+        };
+    },
     components: {
         BreadCrumb
     },

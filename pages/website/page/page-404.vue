@@ -26,6 +26,18 @@
 import BreadCrumb from '~/components/elements/BreadCrumb';
 
 export default {
+    head() {
+        return {
+            titleTemplate: '404 - ZKTeco West Africa',
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'Page Not Found'
+                }
+            ]
+        };
+    },
     name: 'page-404',
     components: {
         BreadCrumb

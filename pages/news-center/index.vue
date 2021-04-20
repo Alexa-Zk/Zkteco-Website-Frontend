@@ -17,6 +17,18 @@ import BlogList from '~/components/partials/blog/BlogList';
 import BlogSidebar from '~/components/partials/blog/BlogSidebar';
 
 export default {
+    head() {
+        return {
+            titleTemplate: 'News Center - ZKTeco West Africa',
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'News Center'
+                }
+            ]
+        };
+    },
     transition: 'zoom',
     layout: 'layout-default-website',
     components: {

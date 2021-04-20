@@ -24,7 +24,7 @@ export default {
         const title = this.formattedArticle ? this.formattedArticle.title : 'Blog Post'
         const description = this.formattedArticle ? this.formattedArticle.body : 'Blog Post - Description'
         return {
-            title: title,
+            titleTemplate: title,
             meta: [
 				{
                     hid: 'title',

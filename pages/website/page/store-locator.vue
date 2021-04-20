@@ -45,9 +45,9 @@
                                 >
                                     <store-location :store="store" />
                                 </div>
-                                <div v-if="storeLocator.length === 0">
+                                <!-- <div v-if="storeLocator.length === 0">
                                     <span>No Store in your location</span>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="col-lg-5">
@@ -68,6 +68,11 @@ import StoreLocation from '~/components/partials/store-location/StoreLocation';
 import { mapActions, mapState } from 'vuex';
 
 export default {
+    head() {
+        return {
+            titleTemplate: 'Store Location',
+        };
+    },
     components: {
         BreadCrumb,
         StoreLocation

@@ -29,7 +29,7 @@ export default {
             ? this.formattedSingleSolution.description
             : 'Solutions Details - Description';
         return {
-            title: title,
+            titleTemplate: title,
             meta: [
                 {
                     hid: 'title',

@@ -26,6 +26,18 @@ import ShopWidget from '~/components/partials/shop/modules/website/ShopWidget';
 import LayoutShopSidebar from '~/components/partials/shop/website/LayoutShopSidebar';
 
 export default {
+    head() {
+        return {
+            titleTemplate: 'Products - ZKTeco West Africa',
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'Prodcuts'
+                }
+            ]
+        };
+    },
     components: {
         LayoutShopSidebar,
         ShopWidget,

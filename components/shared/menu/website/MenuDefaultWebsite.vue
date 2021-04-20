@@ -76,7 +76,7 @@ export default {
                                     url: '/support/anti-counterfeiting'
                                 },
                                 {
-                                    text: 'Trouble Ticket',
+                                    text: 'Support Ticket',
                                     url: '/support/support'
                                 },
                                 {

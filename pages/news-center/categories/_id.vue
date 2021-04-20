@@ -24,6 +24,18 @@ import BlogSidebar from '~/components/partials/blog/BlogSidebar2';
 
 
 export default {
+    head() {
+        return {
+            titleTemplate: `${this.news_categories ? this.news_categories.name : '' } - ZKTeco West Africa`,
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: `${this.news_categories ? this.news_categories.name : ''} About ZKTeco West Africa`
+                }
+            ]
+        };
+    },
     transition: 'zoom',
     layout: 'layout-default-website',
     components: {
