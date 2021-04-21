@@ -51,10 +51,10 @@
                 </div>
                 <div class="vision-images">
                     <div class="vision-images--item">
-                        <img src="~/static/img/website/about-vision-1.jpg" alt="" />
+                        <img data-src="/img/website/about-vision-1.jpg" class="lazyload" alt="" />
                     </div>
                     <div class="vision-images--item">
-                        <img src="~/static/img/website/about-vision-2.jpg" alt="" />
+                        <img data-src="/img/website/about-vision-2.jpg" class="lazyload" alt="" />
                     </div>
                 </div>
             </div>

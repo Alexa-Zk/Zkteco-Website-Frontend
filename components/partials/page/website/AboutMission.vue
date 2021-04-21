@@ -8,7 +8,7 @@
                 </p>
             </div>
             <div class="ps-section__content">
-              <img src="~/static/img/website/about-mission.jpg" alt="" />
+              <img data-src="/img/website/about-mission.jpg" class="lazyload" alt="enterprise mission" />
             </div>
         </div>
     </div>
