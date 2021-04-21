@@ -28,7 +28,7 @@ import LayoutShopSidebar from '~/components/partials/shop/website/LayoutShopSide
 export default {
     head() {
         return {
-            titleTemplate: 'Products - ZKTeco West Africa',
+            titleTemplate: 'Products',
             meta: [
                 {
                     hid: 'description',

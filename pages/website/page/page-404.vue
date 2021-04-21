@@ -28,7 +28,7 @@ import BreadCrumb from '~/components/elements/BreadCrumb';
 export default {
     head() {
         return {
-            titleTemplate: '404 - ZKTeco West Africa',
+            titleTemplate: '404',
             meta: [
                 {
                     hid: 'description',

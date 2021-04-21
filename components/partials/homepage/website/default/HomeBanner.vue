@@ -8,7 +8,7 @@
                     :key="slide.id"
                     @click="openSlider(slide.url)"
                 >
-                    <img :src="slide.image.url" alt="martfury" />
+                    <img loading="lazy" :src="slide.image.url" :alt="slide.image.name" />
                 </div>
             </div>
             <!--Carousel controls-->

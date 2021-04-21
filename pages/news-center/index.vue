@@ -19,7 +19,7 @@ import BlogSidebar from '~/components/partials/blog/BlogSidebar';
 export default {
     head() {
         return {
-            titleTemplate: 'News Center - ZKTeco West Africa',
+            titleTemplate: 'News Center',
             meta: [
                 {
                     hid: 'description',

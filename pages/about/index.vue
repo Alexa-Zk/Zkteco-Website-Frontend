@@ -18,7 +18,7 @@ import AboutValue from '~/components/partials/page/website/AboutValue';
 export default {
     head() {
         return {
-            titleTemplate: 'About Us - ZKTeco West Africa',
+            titleTemplate: 'About Us',
             meta: [
                 {
                     hid: 'description',
