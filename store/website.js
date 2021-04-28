@@ -163,8 +163,9 @@ export const actions = {
     },
 
     async getSingleProduct({ commit, dispatch }, payload) {
+        commit('setLoading', true);
         let params = {
-            id_in: payload.id,
+            slug_in: payload.id,
         };
         const reponse = await Repository.get(
             `${subBaseUrl}/products?${serializeQuery(params)}`
@@ -172,6 +173,7 @@ export const actions = {
             .then(response => {
                 commit('setSingleProduct', response.data[0]);
                 dispatch('getRelatedProducts', response.data[0].product_category)
+                commit('setLoading', false);
                 return response.data[0];
             })
             .catch(error => ({ error: JSON.stringify(error) }));

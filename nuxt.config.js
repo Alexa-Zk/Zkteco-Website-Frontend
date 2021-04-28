@@ -85,6 +85,14 @@ export default {
         'cookie-universal-nuxt'
     ],
 
+    build: {
+        analyze: true,
+    // or
+        analyze: {
+            analyzerMode: 'static'
+        }
+    },
+
     styleResources: {
         scss: './assets/scss/env.scss'
     },

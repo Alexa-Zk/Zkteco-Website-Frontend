@@ -2,10 +2,7 @@
     <div class="ps-product">
         <div class="ps-product__thumbnail">
             <nuxt-link :to="`/product/${product.slug}`">
-                <img
-                    :src="product.images[0].url"
-                    alt="martfury"
-                />
+                <img class="lazyload" :data-src="product.images[0].url" :alt="product.images[0].name" />
             </nuxt-link>
             <ul class="ps-product__actions">
                 <li>
@@ -19,12 +16,24 @@
                         <i class="icon-eye"></i>
                     </a>
                 </li>
-                
             </ul>
         </div>
         <div class="ps-product__container">
-            <nuxt-link :to="`/website/shop/catgories-product/${product.product_category ? product.product_category.id : 0}`" class="ps-product__vendor">
-                {{ product.product_category ? product.product_category.name : 'NILL'}}
+            <nuxt-link
+                :to="
+                    `/website/shop/catgories-product/${
+                        product.product_category
+                            ? product.product_category.id
+                            : 0
+                    }`
+                "
+                class="ps-product__vendor"
+            >
+                {{
+                    product.product_category
+                        ? product.product_category.name
+                        : 'NILL'
+                }}
             </nuxt-link>
             <div class="ps-product__content">
                 <nuxt-link
@@ -33,10 +42,8 @@
                 >
                     {{ product.name }}
                 </nuxt-link>
-                
             </div>
             <div class="ps-product__content hover">
-                
                 <p class="ps-product__price sale">
                     <nuxt-link :to="`/product/${product.slug}`">
                         <span class="ps-product__title">Learn More</span>
@@ -93,9 +100,9 @@ export default {
         quickviewDialog: false
     }),
     methods: {
-       handleAddToCart () {
-           this.$router.push('/store/shop')
-       }
+        handleAddToCart() {
+            this.$router.push('/store/shop');
+        }
     }
 };
 </script>
@@ -105,6 +112,9 @@ export default {
     .ps-product__thumbnail {
         width: 208px;
         height: 208px;
+        @media (max-width: 480px) {
+            width: 100%;
+        }
         img {
             height: 100%;
             object-fit: contain;
