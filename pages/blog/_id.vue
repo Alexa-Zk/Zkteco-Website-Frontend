@@ -24,13 +24,11 @@ export default {
         const title = this.formattedArticle
             ? this.formattedArticle.title
             : 'Blog Post';
-        const image = this.formattedArticle.image ? this.formattedArticle.image[0].url
-            : 'Blog Post - Images';
+        const image = this.formattedArticle ? this.formattedArticle.image[0].url
+            : 'https://www.zkteco-wa.com/img/zkteco-logo.png';
         const excerpt = this.formattedArticle
             ? this.formattedArticle.excerpt
             : 'Blog Post - excerpt';
-
-        console.log(image)
         return {
             titleTemplate: title,
             meta: [
