@@ -14,7 +14,7 @@ import StoreList2 from '~/components/partials/vendor/website/SolutionCategories'
 export default {
     head() {
         return {
-            titleTemplate: `${this.solution_categories ? this.solution_categories.name : '' } - ZKTeco West Africa`,
+            titleTemplate: `${this.solution_categories ? this.solution_categories.name : '' }`,
             meta: [
                 {
                     hid: 'description',

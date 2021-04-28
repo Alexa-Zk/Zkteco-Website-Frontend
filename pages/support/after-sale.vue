@@ -17,7 +17,7 @@ export default {
                 {
                     hid: 'description',
                     name: 'description',
-                    content: 'After Sales Service - ZKTeco West Africa'
+                    content: 'After Sales Service'
                 }
             ]
         };

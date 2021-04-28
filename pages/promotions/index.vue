@@ -43,7 +43,7 @@ import LayoutShopSidebar from '~/components/partials/shop/website/LayoutShopSide
 export default {
     head() {
         return {
-            titleTemplate: `${this.sub_product ? this.sub_product.name : '' } - ZKTeco West Africa`,
+            titleTemplate: `${this.sub_product ? this.sub_product.name : '' }`,
             meta: [
                 {
                     hid: 'description',

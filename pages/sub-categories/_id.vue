@@ -8,7 +8,16 @@
                         <shop-widget />
                     </div>
                     <div class="ps-layout__right">
-                        <layout-shop-sidebar :categories_products="sub_product ? sub_product : []" />
+                        <div class="ps-page__header">
+                            <h1 class="text-uppercase">
+                                {{ sub_product ? sub_product.name : 'Product Sub Categories' }}
+                            </h1>
+                        </div>
+                        <layout-shop-sidebar
+                            :categories_products="
+                                sub_product ? sub_product : []
+                            "
+                        />
                     </div>
                 </div>
             </div>
@@ -24,13 +33,17 @@ import LayoutShopSidebar from '~/components/partials/shop/website/LayoutShopSide
 
 export default {
     head() {
+        const name = this.sub_product
+            ? this.sub_product.name
+            : 'Product Sub Categories';
+        console.log(name);
         return {
-            titleTemplate: `${this.sub_product ? this.sub_product.name : '' } - ZKTeco West Africa`,
+            titleTemplate: name,
             meta: [
                 {
                     hid: 'description',
                     name: 'description',
-                    content: `${this.sub_product ? this.sub_product.name : ''} Solution`
+                    content: name
                 }
             ]
         };
@@ -55,20 +68,27 @@ export default {
                 {
                     text: 'All Products'
                 }
-            ],
+            ]
         };
     },
     computed: {
-         ...mapState({
-            sub_product: state => state.website.subProductCategories,
-        }),
+        ...mapState({
+            sub_product: state => state.website.subProductCategories
+        })
     },
-    
+
     created() {
-        const slug = this.$route.params.id
-        const response = this.$store.dispatch('website/getSubProductCategories', slug);
-    },
+        const slug = this.$route.params.id;
+        const response = this.$store.dispatch(
+            'website/getSubProductCategories',
+            slug
+        );
+    }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-page__header {
+    margin-bottom: 0px;
+}
+</style>

@@ -1,6 +1,6 @@
 <template lang="html">
     <div class="ps-page--single">
-        <img src="~/static/img/website/about-us-banner.jpg" alt="" />
+        <img data-src="/img/website/about-us-banner.jpg" class="lazyload" alt="" />
         <bread-crumb :breadcrumb="breadCrumb" />
         <!-- <our-team /> -->
         <about-value />
@@ -18,7 +18,7 @@ import AboutValue from '~/components/partials/page/website/AboutValue';
 export default {
     head() {
         return {
-            titleTemplate: 'About Us - ZKTeco West Africa',
+            titleTemplate: 'About Us',
             meta: [
                 {
                     hid: 'description',

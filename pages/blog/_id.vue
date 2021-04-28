@@ -21,12 +21,20 @@ import relatedArticles from '~/apollo/queries/articles/relatedArticles';
 export default {
     name: 'BlogPost',
     head() {
-        const title = this.formattedArticle ? this.formattedArticle.title : 'Blog Post'
-        const description = this.formattedArticle ? this.formattedArticle.body : 'Blog Post - Description'
+        const title = this.formattedArticle
+            ? this.formattedArticle.title
+            : 'Blog Post';
+        const image = this.formattedArticle.image ? this.formattedArticle.image[0].url
+            : 'Blog Post - Images';
+        const excerpt = this.formattedArticle
+            ? this.formattedArticle.excerpt
+            : 'Blog Post - excerpt';
+
+        console.log(image)
         return {
             titleTemplate: title,
             meta: [
-				{
+                {
                     hid: 'title',
                     name: 'title',
                     content: title
@@ -34,8 +42,53 @@ export default {
                 {
                     hid: 'description',
                     name: 'description',
-                    content: description
+                    content: excerpt
                 },
+                {
+                    hid: 'twitter:title',
+                    name: 'twitter:title',
+                    content: title
+                },
+                {
+                    hid: 'twitter:description',
+                    name: 'twitter:description',
+                    content: excerpt
+                },
+                {
+                    hid: 'twitter:image',
+                    name: 'twitter:image',
+                    content: image
+                },
+                {
+                    hid: 'twitter:image:alt',
+                    name: 'twitter:image:alt',
+                    content: title
+                },
+                {
+                    hid: 'og:title',
+                    property: 'og:title',
+                    content: title
+                },
+                {
+                    hid: 'og:description',
+                    property: 'og:description',
+                    content: excerpt
+                },
+                {
+                    hid: 'og:image',
+                    property: 'og:image',
+                    content: image
+                },
+                {
+                    hid: 'og:image:secure_url',
+                    property: 'og:image:secure_url',
+                    content: image
+                },
+                {
+                    hid: 'og:image:alt',
+                    property: 'og:image:alt',
+                    content: title
+                }
             ]
         };
     },

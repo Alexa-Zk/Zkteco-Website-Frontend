@@ -13,7 +13,7 @@ import StoreList2 from '~/components/partials/vendor/website/StoreList2';
 export default {
     head() {
         return {
-            titleTemplate: 'Solutions - ZKTeco West Africa',
+            titleTemplate: 'Solutions',
             meta: [
                 {
                     hid: 'description',

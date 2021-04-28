@@ -1,5 +1,14 @@
 <template lang="html">
     <div class="martfury">
+        <loading
+            :active.sync="loading"
+            :can-cancel="true"
+            :is-full-page="fullPage"
+            :width="width"
+            :height="height"
+            color="#78bc27"
+        ></loading>
+
         <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />
         <div class="ps-page--product">
             <div class="ps-container">
@@ -29,9 +38,8 @@ import RelatedProduct from '~/components/partials/product/RelatedProduct';
 import ProductWidgets from '~/components/partials/product/website/ProductWidgets';
 import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
-
-// Queries
-import Products from '~/apollo/queries/products/singleProduct';
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 export default {
     layout: 'layout-default-website',
@@ -43,7 +51,8 @@ export default {
         RelatedProduct,
         CustomerBought,
         BreadCrumb,
-        ProductDetailFullwidth
+        ProductDetailFullwidth,
+        Loading
     },
     head() {
         const title = this.singleProduct
@@ -69,23 +78,20 @@ export default {
         };
     },
     computed: {
-        singleProduct() {
-            return this.products[0];
-        }
-    },
-    apollo: {
-        products: {
-            prefetch: true,
-            query: Products,
-            variables() {
-                return { id: this.$route.params.id };
-            }
-        }
+        ...mapState({
+            singleProduct: state => state.website.singleProduct,
+            loading: state => state.website.loading,
+        }),
     },
     data() {
         return {
-            products: ''
+            fullPage: true,
+            height: 60,
+            width: 40
         };
+    },
+    methods: {
+        onCancel() {}
     },
     async created() {
         this.breadCrumb = [

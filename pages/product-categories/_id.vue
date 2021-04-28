@@ -29,9 +29,7 @@ export default {
         BreadCrumb
     },
     head() {
-        const name = this.categoriesWithProduct
-            ? this.categoriesWithProduct.name
-            : 'Product Categories';
+        const name = this.categoriesWithProduct ? this.categoriesWithProduct.name : 'Product Categories';
         return {
             titleTemplate: name,
         };
@@ -62,9 +60,9 @@ export default {
             return this.product ? this.product[0] : [];
         },
     },
-    created() {
+    async created() {
         const slug = this.$route.params.id
-        const response = this.$store.dispatch('website/getSingleProductCategories', slug);
+        const response = await this.$store.dispatch('website/getSingleProductCategories', slug);
     },
 };
 </script>

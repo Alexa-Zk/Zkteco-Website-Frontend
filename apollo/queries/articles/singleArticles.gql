@@ -3,6 +3,7 @@ query Articles($id: ID!) {
         id
         title
         slug
+        excerpt
         body
         created_at
         image {

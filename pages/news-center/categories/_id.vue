@@ -26,7 +26,7 @@ import BlogSidebar from '~/components/partials/blog/BlogSidebar2';
 export default {
     head() {
         return {
-            titleTemplate: `${this.news_categories ? this.news_categories.name : '' } - ZKTeco West Africa`,
+            titleTemplate: `${this.news_categories ? this.news_categories.name : '' }`,
             meta: [
                 {
                     hid: 'description',

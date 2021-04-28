@@ -1,8 +1,5 @@
 <template lang="html">
     <div class="ps-shopping" v-if="categories_products">
-        <div class="ps-page__header">
-            <h1 class="text-uppercase"> {{categories_products.name}}  </h1>
-        </div>
         <div class="ps-shopping__header">
             <p>
                 <strong class="mr-2">{{totals}}</strong>
