@@ -1,181 +1,117 @@
 <template lang="html">
-    <div class="ps-page--single">
-        <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />
-        <div class="ps-section--custom">
-            <div class="ps-container">
-                <section class="ps-newsletter">
-                    <div class="container">
-                        <form
-                            class="ps-form--newsletter"
-                            action="do_action"
-                            method="post"
-                        >
-                            <div class="row">
-                                <div class="col-lg-6 ps-image">
-                                    <div class="ps-form__left">
-                                        <CustomerCare />
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 ps-form">
-                                    <div class="ps-form__right">
-                                        <form class="ps-form--edit-address">
-                                            <div class="ps-form__header">
-                                                <h3>Support Ticket</h3>
-                                            </div>
-                                            <div class="ps-form__content">
-                                                <div class="form-group">
-                                                    <label>
-                                                        Company Name
-                                                        <sup>*</sup>
-                                                    </label>
-                                                    <v-text-field
-                                                        v-model="company_name"
-                                                        class="ps-text-field"
-                                                        :error-messages="
-                                                            companyErrors
-                                                        "
-                                                        @input="
-                                                            $v.company_name.$touch()
-                                                        "
-                                                        placeholder="Please enter company name"
-                                                        height="50"
-                                                        outlined
-                                                    />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Email <sup>*</sup>
-                                                    </label>
-                                                    <v-text-field
-                                                        v-model="email_address"
-                                                        class="ps-text-field"
-                                                        :error-messages="
-                                                            emailErrors
-                                                        "
-                                                        @input="
-                                                            $v.email_address.$touch()
-                                                        "
-                                                        placeholder="Please enter email"
-                                                        height="50"
-                                                        outlined
-                                                    />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Phone
-                                                    </label>
-                                                    <v-text-field
-                                                        v-model="phone_number"
-                                                        class="ps-text-field"
-                                                        :error-messages="
-                                                            phoneNumberErrors
-                                                        "
-                                                        @input="
-                                                            $v.phone_number.$touch()
-                                                        "
-                                                        placeholder="(+234) 8165391233"
-                                                        height="50"
-                                                        outlined
-                                                    />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Device Serial Number
-                                                        <sup>*</sup>
-                                                    </label>
-                                                    <v-text-field
-                                                        v-model="serial_number"
-                                                        class="ps-text-field"
-                                                        :error-messages="
-                                                            serialNumberErrors
-                                                        "
-                                                        @input="
-                                                            $v.serial_number.$touch()
-                                                        "
-                                                        placeholder="Please enter serial number"
-                                                        height="50"
-                                                        outlined
-                                                    />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Issue Type
-                                                        <sup>*</sup>
-                                                    </label>
-                                                    <v-radio-group
-                                                        :error-messages="
-                                                            issueTypeErrors
-                                                        "
-                                                        @input="
-                                                            $v.issue_type.$touch()
-                                                        "
-                                                        v-model="issue_type"
-                                                        column
-                                                    >
-                                                        <v-radio
-                                                            label="Hardware"
-                                                            value="hardware"
-                                                        ></v-radio>
-                                                        <v-radio
-                                                            label="Software"
-                                                            value="software"
-                                                        ></v-radio>
-                                                    </v-radio-group>
-                                                    <!-- <v-select
-                                                        v-model="issue_type"
-                                                        :items="issues"
-                                                        :error-messages="issueTypeErrors"
-                                                        @input="$v.issue_type.$touch()"
-                                                        class="ps-text-field"
-                                                        outlined
-                                                    ></v-select> -->
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        Description <sup>*</sup>
-                                                    </label>
-                                                    <v-textarea
-                                                        outlined
-                                                        class="ps-text-field"
-                                                        placeholder="Please enter Description"
-                                                        rows="6"
-                                                        :error-messages="
-                                                            descriptionErrors
-                                                        "
-                                                        @input="
-                                                            $v.description.$touch()
-                                                        "
-                                                        v-model="description"
-                                                    ></v-textarea>
-                                                </div>
-
-                                                <div class="form-group submit">
-                                                    <button
-                                                        class="ps-btn"
-                                                        @click.prevent="
-                                                            supportTicket
-                                                        "
-                                                    >
-                                                        Submit Ticket
-                                                    </button>
-                                                    <v-progress-circular
-                                                        v-if="loading"
-                                                        :width="3"
-                                                        color="green"
-                                                        indeterminate
-                                                    ></v-progress-circular>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
+	<div class="ps-page--single">
+		<bread-crumb :breadcrumb="breadCrumb" layout="fullwidth"> </bread-crumb>
+		<div class="ps-section--custom">
+			<div class="ps-container">
+				<section class="ps-newsletter">
+					<div class="container">
+						<form class="ps-form--newsletter">
+							<div class="row">
+								<div class="col-lg-6 ps-image">
+									<div class="ps-form__left">
+										<CustomerCare />
+									</div>
+								</div>
+								<div class="col-lg-6 ps-form">
+									<div class="ps-form__right">
+										<div class="ps-form__header">
+											<h3>Support Ticket</h3>
+											<div class="ps-form__content">
+												<div class="form-group"></div>
+												<div class="form-group">
+													<label> Company Name <sup>*</sup></label>
+													<v-text-field 
+														v-model="company_name" 
+														class="ps-text-field"
+														:error-messages="companyErrors"
+														@input="$v.company_name.$touch()"
+														placeholder="Please enter company name"
+														height="50"
+														outlined
+													/>
+												</div>
+												<div class="form-group">
+													<label> Email <sup>*</sup></label>
+													<v-text-field
+														v-model="email_address"
+														class="ps-text-field"
+														:error-messages="emailErrors"
+														@input="$v.email_address.$touch()"
+														placeholder="Please enter email"
+														height="50"
+														outlined
+													/>
+												</div>
+												<div class="form-group">
+													<label>Phone</label>
+													<v-text-field
+														v-model="phone_number"
+														class="ps-text-field"
+														:error-messages="phoneNumberErrors"
+														@input="$v.phone_number.$touch()"
+														placeholder="(+234) 8165391233"
+														height="50"
+														outlined
+													/>
+												</div>
+												<div class="form-group">
+													<label>Device Serial Number<sup>*</sup></label>
+													<v-text-field
+														v-model="serial_number"
+														class="ps-text-field"
+														:error-messages="serialNumberErrors"
+														@input="$v.serial_number.$touch()"
+														placeholder="Please enter serial number"
+														height="50"
+														outlined
+													/>
+												</div>
+												<div class="form-group">
+													<label>Issue Type <sup>*</sup></label>
+													<v-radio-group
+														:error-messages="issueTypeErrors"
+														@input="$v.issue_type.$touch()"
+														v-model="issue_type"
+														column
+													>
+														<v-radio label="Hardware" value="hardware"></v-radio>
+														<v-radio label="Software" value="software"></v-radio>
+													</v-radio-group>
+												</div>
+												<div class="form-group">
+													<label>Description <sup>*</sup></label>
+													<v-textarea
+														outlined
+														class="ps-text-field"
+														placeholder="Please enter Description"
+														rows="6"
+														:error-messages="descriptionErrors"
+														@input="$v.description.$touch()"
+														v-model="description"
+													></v-textarea>
+												</div>
+												<div class="form-group submit">
+													<button class="ps-btn" @click.prevent="supportTicket">
+														Submit Ticket
+													</button>
+													<v-progress-circular
+															v-if="loading"
+															:width="3"
+															color="green"
+															indeterminate
+													></v-progress-circular>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
