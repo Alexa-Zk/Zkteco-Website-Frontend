@@ -244,12 +244,14 @@ export default {
                         text: `your support ticket has been sent!`
                     });
                     this.loading = false;
+										this.$v.$reset();
                     this.company_name = '';
                     this.phone_number = '';
                     this.email = '';
                     this.serial_number = '';
                     this.issue_type = '';
                     this.description = '';
+										this.$v.$reset();
                 } else {
                     this.$notify({
                         group: 'addCartSuccess',
