@@ -50,12 +50,7 @@ export default {
             default: 'left'
         }
     },
-    apollo: {
-        articles: {
-            prefetch: true,
-            query: articles
-        }
-    },
+    
     methods: {
         filterBlogs(value) {
             this.searchQuery = value;
