@@ -27,8 +27,8 @@
                             <span class="personel_name" v-if="item.fullname"
                                 >{{ item.fullname }}:</span
                             >
-                            <span v-if="item.fullname">
-                                {{ item.phone_number }}
+                            <span v-for="data in item.phone_numbers">
+                                0{{ data.number }},
                             </span>
                         </div>
                     </div>

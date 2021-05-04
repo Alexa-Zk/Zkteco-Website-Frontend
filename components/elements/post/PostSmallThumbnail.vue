@@ -41,6 +41,9 @@
                 <p>
                     {{ formatDate(post.updated_at) }}
                 </p>
+                <p>
+                   By: {{ post.Author }}
+                </p>
             </div>
         </article>
         
