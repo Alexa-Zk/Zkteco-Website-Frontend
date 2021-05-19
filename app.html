@@ -24,7 +24,7 @@
 <body {{ BODY_ATTRS }}>
     {{ APP }}
     <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-168147757-1"></script>
-    <script>
+    <script defer>
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -33,7 +33,7 @@
         gtag('js', new Date());
         gtag('config', 'UA-168147757-1');
     </script>
-    <script>
+    <script defer>
         ! function (e, t, n, s, u, a) {
             e.twq || (s = e.twq = function () {
                     s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
@@ -44,7 +44,7 @@
         twq('init', 'o3h44');
         twq('track', 'PageView');
     </script>
-    <script>
+    <script defer>
         ! function (f, b, e, v, n, t, s) {
             if (f.fbq) return;
             n = f.fbq = function () {

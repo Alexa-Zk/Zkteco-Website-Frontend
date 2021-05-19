@@ -66,20 +66,11 @@ export default {
         };
     },
     async created() {
-        const queries = [
-            'customer_bought',
-            'shop-recommend-items',
-            'widget_same_brand'
-        ];
         setTimeout(
             function() {
                 this.pageLoading = false;
             }.bind(this),
             2000
-        );
-        const collections = await this.$store.dispatch(
-            'collection/getCollectionsBySlugs',
-            queries
         );
         const product = await this.$store.dispatch(
             'product/getProductsById',

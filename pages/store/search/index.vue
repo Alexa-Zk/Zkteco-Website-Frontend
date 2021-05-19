@@ -69,14 +69,6 @@ export default {
             _start: 1,
             _limit: 12
         };
-        const collectionsParams = [
-            'shop_best_sale_items',
-            'shop-recommend-items'
-        ];
-        const collections = await this.$store.dispatch(
-            'collection/getCollectionsBySlugs',
-            collectionsParams
-        );
         const products = await this.$store.dispatch(
             'product/getProducts',
             params

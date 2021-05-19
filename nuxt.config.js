@@ -44,7 +44,6 @@ export default {
     css: [
         'swiper/dist/css/swiper.css',
         '~/static/fonts/Linearicons/Font/demo-files/demo.css',
-        '~/static/fonts/font-awesome/css/font-awesome.css',
         '~/static/css/bootstrap.min.css',
         '~/assets/scss/style.scss'
     ],

@@ -77,8 +77,8 @@ export const mutations = {
 };
 
 export const actions = {
-    
     async getProducts({ state, commit }, payload) {
+        const token = this.getters['auth/getToken'];
         let params = {
             page: Object.keys(payload).length === 0 ? state.page : payload.page,
             per_page:
@@ -88,7 +88,14 @@ export const actions = {
             order: Object.keys(payload).length === 0 ? state.order : 'asc'
         };
         const reponse = await Repository.get(
-            `${baseUrl}/integrations/products?${serializeQuery(params)}`
+            `${baseUrl}/integrations/customers/products?${serializeQuery(
+                params
+            )}`,
+            {
+                headers: {
+                    Authorization: token
+                }
+            }
         )
             .then(response => {
                 commit('setProducts', response.data.data.data);
@@ -107,8 +114,14 @@ export const actions = {
     },
 
     async getProductsById({ commit }, payload) {
+        const token = this.getters['auth/getToken'];
         const reponse = await Repository.get(
-            `${baseUrl}/integrations/products/${payload}`
+            `${baseUrl}/integrations/customers/products/${payload}`,
+            {
+                headers: {
+                    Authorization: token
+                }
+            }
         )
             .then(response => {
                 commit('setProduct', response.data.data);
@@ -119,8 +132,16 @@ export const actions = {
     },
 
     async getProductByKeyword({ commit }, payload) {
+        const token = this.getters['auth/getToken'];
         const reponse = await Repository.get(
-            `${baseUrl}/integrations/products?${serializeQuery(payload)}`
+            `${baseUrl}/integrations/customers/products?${serializeQuery(
+                payload
+            )}`,
+            {
+                headers: {
+                    Authorization: token
+                }
+            }
         )
             .then(response => {
                 commit('setSearchResults', response.data.data);
@@ -132,12 +153,19 @@ export const actions = {
     },
 
     getCartProducts({ commit }, payload) {
+        const token = this.getters['auth/getToken'];
         let params = {
             include: payload
         };
-        const reponse = Repository.get(`${baseUrl}/integrations/products`, {
-            params
-        })
+        const reponse = Repository.get(
+            `${baseUrl}/integrations/customers/products`,
+            {
+                params,
+                headers: {
+                    Authorization: token
+                }
+            }
+        )
             .then(response => {
                 commit('setCartProducts', response.data.data.data);
                 return response.data.data.data;

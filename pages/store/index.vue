@@ -93,15 +93,6 @@ export default {
     },
 
     async created() {
-        const queries = [
-            'deal-of-the-day',
-            'consumer-electronics',
-            'clothings',
-            'garden-and-kitchen',
-            'new-arrivals-products'
-        ];
-        await this.$store.dispatch('collection/getCollectionById')
-        await this.$store.dispatch('collection/getCollectionsBySlugs', queries);
     }
 };
 </script>
