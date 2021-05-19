@@ -9,14 +9,12 @@
                                 <figure>
                                     <figcaption>Hello</figcaption>
                                     <p>
-                                        {{
-                                            single_user_information.email
-                                        }}
+                                        {{ single_user_information.email }}
                                     </p>
                                 </figure>
                             </div>
                             <div class="ps-widget__content">
-                                <AccountLinks :links="accountLinks" />
+                                <account-links :links="accountLinks" />
                             </div>
                         </aside>
                     </div>
@@ -34,6 +32,26 @@
                                             <p>
                                                 Set up your billing address.
                                             </p>
+                                            <div class="ps-block__addresses" v-if="billing">
+                                                <span class="company">
+                                                    {{billing.company}}
+                                                </span>
+                                                <span>
+                                                    {{billing.address_1}}
+                                                </span>
+                                                <span>
+                                                    {{billing.phone}}
+                                                </span>
+                                                <span>
+                                                    {{billing.country}}
+                                                </span>
+                                                <span>
+                                                    {{billing.state}}
+                                                </span>
+                                                <span>
+                                                    {{billing.city}}
+                                                </span>
+                                            </div>
                                             <nuxt-link
                                                 to="/store/account/edit-address"
                                             >
@@ -51,6 +69,29 @@
                                             <p>
                                                 Set up your shipping address
                                             </p>
+                                            <div class="ps-block__addresses" v-if="shipping">
+                                                <span class="company">
+                                                    {{shipping.company}}
+                                                </span>
+                                                <span>
+                                                    {{shipping.first_name}} {{shipping.last_name}}
+                                                </span>
+                                                <span>
+                                                    {{shipping.address_1}}
+                                                </span>
+                                                <span>
+                                                    {{shipping.phone}}
+                                                </span>
+                                                <span>
+                                                    {{shipping.country}}
+                                                </span>
+                                                <span>
+                                                    {{shipping.state}}
+                                                </span>
+                                                <span>
+                                                    {{shipping.city}}
+                                                </span>
+                                            </div>
                                             <nuxt-link
                                                 to="/store/account/edit-shipping"
                                             >
@@ -104,9 +145,22 @@ export default {
     computed: {
         ...mapState({
             single_user_information: state => state.auth.singleUserInformation,
+            shipping: state => state.auth.shipping,
+            billing: state => state.auth.billing
         })
     }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ps-block__addresses {
+    margin-bottom: 16px;
+    .company {
+        font-weight: 600;
+        font-size: medium;
+    }
+    span {
+        display: block;
+    }
+}
+</style>

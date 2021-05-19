@@ -14,13 +14,13 @@
                                 </figure>
                             </div>
                             <div class="ps-widget__content">
-                                <AccountLinks :links="accountLinks" />
+                                <account-links :links="accountLinks" />
                             </div>
                         </aside>
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <FormEditShipping />
+                    <form-edit-shipping />
                 </div>
             </div>
         </div>

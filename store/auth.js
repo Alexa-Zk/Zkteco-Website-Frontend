@@ -143,7 +143,7 @@ export const actions = {
             }
         )
             .then(response => {
-                commit('setBilling', response.data.data);
+                commit('setBilling', response.data.data !== '' ? response.data.data : {} );
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
@@ -160,7 +160,7 @@ export const actions = {
             }
         )
             .then(response => {
-                commit('setShipping', response.data.data);
+                commit('setShipping', response.data.data !== '' ? response.data.data : {} );
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));

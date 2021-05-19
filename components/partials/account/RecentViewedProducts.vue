@@ -62,7 +62,7 @@
                                 </nuxt-link>
                             </div>
 
-                            <p v-if="user_orders.length < 0">
+                            <p v-if="user_orders.total === 0">
                                 No product here.
                             </p>
                         </div>

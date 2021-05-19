@@ -169,7 +169,7 @@ export default {
     computed: {
         ...mapState({
             shipping: state => state.auth.shipping
-        })
+        }),
     }
     
 }

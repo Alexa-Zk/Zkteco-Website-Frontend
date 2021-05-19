@@ -1,7 +1,7 @@
 <template lang="html">
     <form>
         <div class="ps-form__content">
-            <h5>Log In Your Account</h5>
+            <h5>Partners Login</h5>
             <div class="form-group">
                 <v-text-field
                     v-model="email"
@@ -51,13 +51,13 @@ export default {
         emailErrors() {
             const errors = [];
             if (!this.$v.email.$dirty) return errors;
-            !this.$v.email.required && errors.push('This field is required');
+            !this.$v.email.required && errors.push('This email field is required');
             return errors;
         },
         passwordErrors() {
             const errors = [];
             if (!this.$v.password.$dirty) return errors;
-            !this.$v.password.required && errors.push('This field is required');
+            !this.$v.password.required && errors.push('This password field is required');
             return errors;
         }
     },
@@ -92,7 +92,7 @@ export default {
                         });
 
                         this.$store.dispatch('auth/setAuthStatus', true);
-                        this.$router.push('/store/account/checkout');
+                        this.$router.push('/store');
                     } else {
                         this.$notify({
                             group: 'addCartSuccess',

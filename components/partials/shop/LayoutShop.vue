@@ -40,7 +40,6 @@
                         v-for="product in products"
                         class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6 "
                         :key="product.id"
-                        v-if="product.images[0]"
                     >
                         <product-default :product="product" />
                     </div>

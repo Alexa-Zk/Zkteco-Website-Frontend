@@ -49,7 +49,7 @@ export default {
             articles: '',
             access_control: 22,
             home_automation: 26,
-            cctv: 24
+            cctv: 23
         };
     },
     apollo: {
@@ -58,6 +58,7 @@ export default {
             query: EcommerceImages
         },
     },
+    middleware: 'authentication',
     components: {
         DemoPanel,
         HomeDefaultDealOfDay,

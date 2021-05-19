@@ -48,14 +48,6 @@ export default {
                     text: 'Account Information',
                     url: '/store/account/user-information'
                 },
-                // {
-                //     text: 'Notifications',
-                //     url: '/store/account/notifications'
-                // },
-                // {
-                //     text: 'Invoices',
-                //     url: '/store/account/invoices'
-                // },
                 {
                     text: 'Address',
                     url: '/store/account/addresses'
@@ -74,6 +66,7 @@ export default {
     methods: {
         handleLogout() {
             this.$store.dispatch('auth/setAuthStatus', false);
+            this.$router.push('/store/account/login')
         }
     }
 };

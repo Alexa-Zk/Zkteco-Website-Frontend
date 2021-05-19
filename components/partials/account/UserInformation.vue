@@ -56,6 +56,14 @@
                                     }}
                                 </p>
                             </figure>
+                            <figure>
+                                <figcaption>Company Name</figcaption>
+                                <p>
+                                    {{
+                                        single_user_information.company_name
+                                    }}
+                                </p>
+                            </figure>
                         </div>
                     </section>
                 </div>
@@ -80,11 +88,6 @@ export default {
                     icon: 'icon-user',
                     active: true
                 },
-                // {
-                //     text: 'Invoices',
-                //     url: '/store/account/invoices',
-                //     icon: 'icon-papers'
-                // },
                 {
                     text: 'Address',
                     url: '/store/account/addresses',

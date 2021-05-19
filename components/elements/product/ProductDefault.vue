@@ -4,7 +4,7 @@
             <div style="cursor: pointer;" @click="handleAddToCart(product)">
                 <img
                     :src="product.images[0] ? product.images[0].src : ''"
-                    alt="martfury"
+                    :alt="product.name"
                 />
             </div>
             <div v-if="isSale === true" class="ps-product__badge">sale</div>
@@ -49,7 +49,7 @@
                     <rating />
                     <span>{{ product.average_rating }}</span>
                 </div>
-                <p class="ps-product__price" v-if="product.price < 200000">
+                <p class="ps-product__price">
                     {{ currency }}{{ product.price | formatMoney }}
                 </p>
             </div>
@@ -61,7 +61,7 @@
                     >{{ product.name }}</span
                 >
 
-                <p class="ps-product__price sale" v-if="product.price < 200000">
+                <p class="ps-product__price sale">
                     {{ currency }} {{ product.price | formatMoney }}
                 </p>
             </div>

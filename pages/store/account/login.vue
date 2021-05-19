@@ -4,7 +4,7 @@
         <div class="ps-my-account">
             <div class="container">
                 <div class="ps-form--account">
-                    <ul class="ps-tab-list">
+                    <!-- <ul class="ps-tab-list">
                         <li class="active">
                             <nuxt-link to="/store/account/login">
                                 Login
@@ -15,7 +15,7 @@
                                 Register
                             </nuxt-link>
                         </li>
-                    </ul>
+                    </ul> -->
                     <div class="ps-tab active">
                         <login />
                     </div>
@@ -37,12 +37,13 @@ export default {
         BreadCrumb
     },
     transition: 'zoom',
+    layout: 'empty',
     data: () => {
         return {
             breadCrumb: [
                 {
                     text: 'Home',
-                    url: '/store/'
+                    url: '/'
                 },
                 {
                     text: 'Login'

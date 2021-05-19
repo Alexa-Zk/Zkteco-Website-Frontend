@@ -70,7 +70,7 @@ export const actions = {
             per_page: 10,
         }
         const reponse = await Repository.get(
-            `${baseUrl}/integrations/trend-categories-products/?${serializeQuery(params)}&category_id=[26,22,24]`
+            `${baseUrl}/integrations/trend-categories-products/?${serializeQuery(params)}&category_id=[26,22,23]`
         )
             .then(response => {
                 commit('setProductCategories', response.data.data);
