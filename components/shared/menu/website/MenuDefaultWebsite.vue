@@ -95,13 +95,13 @@ export default {
                     text: 'Smart Home',
                     redirect: true
                 },
-                // {
-                //     text: 'Store',
-                //     url: '/store',
-                //     extraClass: 'menu-item-has-children',
-                //     subClass: 'sub-menu',
-                //     icon: 'icon-cart'
-                // },
+                {
+                    text: 'Store',
+                    url: '/store',
+                    extraClass: 'menu-item-has-children',
+                    subClass: 'sub-menu',
+                    icon: 'icon-cart'
+                },
                 {
                     text: 'Store Locator',
                     url: '/website/page/store-locator',

@@ -10,7 +10,7 @@
         </template>
         <li>
             <nuxt-link to="/store/account/my-account">
-                <a>
+                <a href="#" @click.prevent="handleLogout">
                     <i class="icon-power-switch"></i>
                     Logout
                 </a>
@@ -26,6 +26,12 @@ export default {
         links: {
             type: Array,
             default: () => []
+        }
+    },
+    methods: {
+        handleLogout() {
+            this.$store.dispatch('auth/setAuthStatus', false);
+            this.$router.push('/store/account/login')
         }
     }
 };
