@@ -94,7 +94,7 @@ export default {
                     ({ id, quantity, price }) => ({
                         product_id: id,
                         quantity: quantity,
-                        product_cost: price ? price : 0
+                        product_cost: price ? Number(price) : 0
                     })
                 );
                 const shipping = {
@@ -103,7 +103,9 @@ export default {
                     company: this.user.lastName,
                     address_1: this.user.address,
                     city: this.user.city,
-                    postcode: this.user.postCode,
+                    postcode: this.user.postalCode,
+                    country: this.user.country,
+                    state: this.user.state,
                     phone: this.user.phoneNumber
                 };
                 const payload = {

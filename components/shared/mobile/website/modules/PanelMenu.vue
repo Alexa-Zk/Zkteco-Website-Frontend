@@ -159,6 +159,10 @@ export default {
                     url: 'contact'
                 },
                 {
+                    text: 'Store',
+                    url: '/store'
+                },
+                {
                     text: 'Smart Home',
                     url: 'http://ngteco.ng/'
                 },
