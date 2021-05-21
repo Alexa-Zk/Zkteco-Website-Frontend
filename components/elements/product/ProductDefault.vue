@@ -50,7 +50,7 @@
                     <span>{{ product.average_rating }}</span>
                 </div>
                 <p class="ps-product__price">
-                    {{ currency }}{{ product.price | formatMoney }}
+                    {{ currency }}{{ product.type_price | formatMoney }}
                 </p>
             </div>
             <div class="ps-product__content hover">
@@ -62,7 +62,7 @@
                 >
 
                 <p class="ps-product__price sale">
-                    {{ currency }} {{ product.price | formatMoney }}
+                    {{ currency }} {{ product.type_price | formatMoney }}
                 </p>
             </div>
         </div>

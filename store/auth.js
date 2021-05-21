@@ -79,7 +79,7 @@ export const actions = {
 
                 return response.data;
             })
-            .catch(error => ({ error: JSON.stringify(error) }));
+            .catch(error => ({ error: error.response.data }));
         return reponse;
     },
 

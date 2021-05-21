@@ -81,12 +81,40 @@
                 <div class="form-group">
                     <label>Phone Number</label>
                     <v-text-field
-                        placeholder="Phone Number"
+                        placeholder="(+234) XXX XXXX XXX"
                         outlined
                         height="50"
                         v-model="phoneNumber"
                         :error-messages="phoneNumberErrors"
                         @input="$v.phoneNumber.$touch()"
+                    />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Country</label>
+                    <v-text-field
+                        placeholder="Country"
+                        v-model="country"
+                        outlined
+                        height="50"
+                        :error-messages="countryErrors"
+                        @input="$v.country.$touch()"
+                    />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>State</label>
+                    <v-text-field
+                        placeholder="State"
+                        outlined
+                        height="50"
+                        v-model="state"
+                        :error-messages="stateErrors"
+                        @input="$v.state.$touch()"
                     />
                 </div>
             </div>
@@ -154,6 +182,8 @@ export default {
             address: '',
             apartment: '',
             city: '',
+            state: '',
+            country: '',
             postalCode: '',
             phoneNumber: ''
         };
@@ -167,6 +197,8 @@ export default {
                 address: this.address,
                 apartment: this.apartment,
                 city: this.city,
+                state: this.state,
+                country: this.country,
                 postalCode: this.postalCode,
                 phoneNumber: this.phoneNumber
             };
@@ -188,6 +220,8 @@ export default {
             this.address = this.personalDetails.address,
             this.apartment = this.personalDetails.apartment,
             this.city = this.personalDetails.city,
+            this.state = this.personalDetails.state,
+            this.country = this.personalDetails.country,
             this.postalCode = this.personalDetails.postalCode,
             this.phoneNumber = this.personalDetails.phoneNumber
         }
@@ -199,6 +233,8 @@ export default {
         address: { required },
         apartment: { required },
         city: { required },
+        state: { required },
+        country: { required },
         postalCode: { required },
         phoneNumber: { required }
     },
@@ -242,6 +278,18 @@ export default {
             const errors = [];
             if (!this.$v.city.$dirty) return errors;
             !this.$v.city.required && errors.push('This field is required');
+            return errors;
+        },
+        stateErrors() {
+            const errors = [];
+            if (!this.$v.state.$dirty) return errors;
+            !this.$v.state.required && errors.push('This field is required');
+            return errors;
+        },
+        countryErrors() {
+            const errors = [];
+            if (!this.$v.country.$dirty) return errors;
+            !this.$v.country.required && errors.push('This field is required');
             return errors;
         },
         postalCodeErrors() {

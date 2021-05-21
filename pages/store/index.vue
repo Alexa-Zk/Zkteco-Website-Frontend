@@ -93,6 +93,7 @@ export default {
     },
 
     async created() {
+        await this.$store.dispatch('collection/getCollectionById')
     }
 };
 </script>
