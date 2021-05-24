@@ -15,27 +15,6 @@ export default {
                 content: 'ZKTeco is a globally-renowned provider of security, access control and time management solutions. ZKTeco focus on Biometrics of fingerprint, face recognition, ..'
             }
         ],
-        link: [{
-                rel: 'stylesheet',
-                href: 'https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&display=swap&'
-            },
-            {
-                rel: 'stylesheet',
-                href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
-            },
-        ],
-        script: 
-        [
-            {
-                src: 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.5/lazysizes.min.js',
-                defer: true
-            },
-            // {
-            //     id: 'ze-snippet',
-            //     src: 'https://static.zdassets.com/ekr/snippet.js?key=ebd1d5ac-b3c0-4bfe-a265-02e961779c67',
-            //     async: true
-            // }
-        ]
     },
     generate: {
         fallback: true
