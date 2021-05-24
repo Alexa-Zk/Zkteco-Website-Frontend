@@ -30,11 +30,11 @@ export default {
                 src: 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.5/lazysizes.min.js',
                 defer: true
             },
-            {
-                id: 'ze-snippet',
-                src: 'https://static.zdassets.com/ekr/snippet.js?key=ebd1d5ac-b3c0-4bfe-a265-02e961779c67',
-                async: true
-            }
+            // {
+            //     id: 'ze-snippet',
+            //     src: 'https://static.zdassets.com/ekr/snippet.js?key=ebd1d5ac-b3c0-4bfe-a265-02e961779c67',
+            //     async: true
+            // }
         ]
     },
     generate: {
