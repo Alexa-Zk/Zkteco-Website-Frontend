@@ -22,7 +22,7 @@ export default {
             {
                 rel: 'stylesheet',
                 href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
-            }
+            },
         ],
         script: 
         [
@@ -33,7 +33,7 @@ export default {
             {
                 id: 'ze-snippet',
                 src: 'https://static.zdassets.com/ekr/snippet.js?key=ebd1d5ac-b3c0-4bfe-a265-02e961779c67',
-                defer: true
+                async: true
             }
         ]
     },
@@ -85,11 +85,11 @@ export default {
     ],
 
     build: {
-        analyze: true,
-    // or
-        analyze: {
-            analyzerMode: 'static'
-        }
+    //     analyze: true,
+    // // or
+    //     analyze: {
+    //         analyzerMode: 'static'
+    //     }
     },
 
     styleResources: {
