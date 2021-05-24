@@ -97,7 +97,6 @@ export default {
                 _start: 1,
                 _limit: 999
             };
-            console.log(this.priceRange);
             await this.$store.dispatch(
                 'product/getProductsByPriceRange',
                 params

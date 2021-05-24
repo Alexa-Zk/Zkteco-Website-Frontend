@@ -8,10 +8,10 @@
                         <nuxt-link to="/shop">
                             <a class="ps-block__overlay"></a>
                         </nuxt-link>
-                        <img
+                        <!-- <img
                             src="~/static/img/categories/1.jpg"
                             alt="martfury"
-                        />
+                        /> -->
                         <p>Electronics</p>
                     </div>
                 </div>
@@ -20,10 +20,10 @@
                         <nuxt-link to="/shop">
                             <a class="ps-block__overlay"></a>
                         </nuxt-link>
-                        <img
+                        <!-- <img
                             src="~/static/img/categories/2.jpg"
                             alt="martfury"
-                        />
+                        /> -->
                         <p>Clothings</p>
                     </div>
                 </div>
@@ -32,10 +32,10 @@
                         <nuxt-link to="/shop">
                             <a class="ps-block__overlay"></a>
                         </nuxt-link>
-                        <img
+                        <!-- <img
                             src="~/static/img/categories/3.jpg"
                             alt="martfury"
-                        />
+                        /> -->
                         <p>Computers</p>
                     </div>
                 </div>
@@ -44,10 +44,10 @@
                         <nuxt-link to="/shop">
                             <a class="ps-block__overlay"></a>
                         </nuxt-link>
-                        <img
+                        <!-- <img
                             src="~/static/img/categories/4.jpg"
                             alt="martfury"
-                        />
+                        /> -->
                         <p>Home & Kitchen</p>
                     </div>
                 </div>
@@ -56,10 +56,10 @@
                         <nuxt-link to="/shop">
                             <a class="ps-block__overlay"></a>
                         </nuxt-link>
-                        <img
+                        <!-- <img
                             src="~/static/img/categories/5.jpg"
                             alt="martfury"
-                        />
+                        /> -->
                         <p>Health & Beauty</p>
                     </div>
                 </div>
@@ -68,10 +68,10 @@
                         <nuxt-link to="/shop">
                             <a class="ps-block__overlay"></a>
                         </nuxt-link>
-                        <img
+                        <!-- <img
                             src="~/static/img/categories/6.jpg"
                             alt="martfury"
-                        />
+                        /> -->
                         <p>Health & Beauty</p>
                     </div>
                 </div>
@@ -80,10 +80,10 @@
                         <nuxt-link to="/shop">
                             <a class="ps-block__overlay"></a>
                         </nuxt-link>
-                        <img
+                        <!-- <img
                             src="~/static/img/categories/7.jpg"
                             alt="martfury"
-                        />
+                        /> -->
                         <p>Jewelry & Watch</p>
                     </div>
                 </div>
@@ -92,10 +92,10 @@
                         <nuxt-link to="/shop">
                             <a class="ps-block__overlay"></a>
                         </nuxt-link>
-                        <img
+                        <!-- <img
                             src="~/static/img/categories/8.jpg"
                             alt="martfury"
-                        />
+                        /> -->
                         <p>Technology Toys</p>
                     </div>
                 </div>

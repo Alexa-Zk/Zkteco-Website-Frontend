@@ -34,11 +34,6 @@ export default {
                     code: '₦',
                     name: 'NGN Naira'
                 },
-                {
-                    id: 2,
-                    code: '$',
-                    name: 'US Dollar'
-                }
             ]
         };
     },

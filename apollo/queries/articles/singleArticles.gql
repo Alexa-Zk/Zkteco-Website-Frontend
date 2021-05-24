@@ -6,6 +6,7 @@ query Articles($id: ID!) {
         excerpt
         body
         created_at
+        Author
         image {
             url
             name

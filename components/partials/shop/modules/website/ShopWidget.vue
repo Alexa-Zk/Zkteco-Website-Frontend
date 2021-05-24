@@ -97,7 +97,6 @@ export default {
     },
     methods: {
         async handleGotoCategory(id) {
-            console.log(id);
         }
     }
 };

@@ -51,6 +51,9 @@
                     {{ articles ? articles.title : '' }}
                 </h2>
                 <p>{{ articles ? formatDate(articles.created_at) : '' }}</p>
+                <p>
+                   Written by: {{ articles.Author }}
+                </p>
                 <div class="category_tags">
                     <h4
                         v-for="category in articles.categories"

@@ -8,7 +8,7 @@
                             class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 "
                         >
                             <div class="ps-block__thumbnail">
-                                <img src="~/static/img/app.png" alt="" />
+                                <!-- <img src="~/static/img/app.png" alt="" /> -->
                             </div>
                         </div>
                         <div
@@ -39,18 +39,18 @@
                                     </div>
                                 </form>
                                 <p class="download-link">
-                                    <a href="#">
+                                    <!-- <a href="#">
                                         <img
                                             src="~/static/img/google-play.png"
                                             alt=""
                                         />
-                                    </a>
-                                    <a href="#">
+                                    </a> -->
+                                    <!-- <a href="#">
                                         <img
                                             src="~/static/img/app-store.png"
                                             alt=""
                                         />
-                                    </a>
+                                    </a> -->
                                 </p>
                             </div>
                         </div>

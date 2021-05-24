@@ -5,11 +5,11 @@
         </div>
         <div class="ps-blog__content">
             <div className="ps-box--posts">
-                <post-horizontal
+                <!-- <post-horizontal
                     v-for="post in blogListPosts"
                     :post="post"
                     :key="post.id"
-                />
+                /> -->
                 <PostHorizontal />
             </div>
             <pagination />
@@ -20,7 +20,7 @@
 <script>
 import Pagination from '../../elements/Pagination';
 import BlogLinks from './modules/BlogLinks';
-import { posts } from '~/static/data/blog-grid.json';
+// import { posts } from '~/static/data/blog-grid.json';
 import PostHorizontal from '../../elements/post/PostHorizontal';
 
 export default {
@@ -28,7 +28,7 @@ export default {
     components: { PostHorizontal, BlogLinks, Pagination },
     data() {
         return {
-            blogListPosts: posts
+            // blogListPosts: posts
         };
     }
 };

@@ -11,13 +11,13 @@
                 <template v-if="loading === true">
                     <loading />
                 </template>
-                <template v-else>
+                <div v-else>
                     <product-mini-cart
                         v-for="product in cartProducts"
                         :product="product"
                         :key="product.id"
                     />
-                </template>
+                </div>
             </div>
             <div class="ps-cart__footer">
                 <h3>
