@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="ps-shop-categories">
         <div class="row align-content-lg-stretch">
-            <div
+            <!-- <div
                 v-for="category in shopCategories"
                 class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 "
                 :key="category.id"
@@ -21,21 +21,21 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
 
 <script>
-import { categories } from '~/static/data/shopCategories.json';
+// import { categories } from '~/static/data/shopCategories.json';
 
 export default {
     name: 'ShopCategories',
-    computed: {
-        shopCategories() {
-            return categories;
-        }
-    }
+    // computed: {
+    //     shopCategories() {
+    //         return categories;
+    //     }
+    // }
 };
 </script>
 
