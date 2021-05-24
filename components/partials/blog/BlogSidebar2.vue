@@ -30,7 +30,7 @@ import Pagination from '../../elements/Pagination';
 import Sidebar from './modules/Sidebar';
 import PostHorizontal from '../../elements/post/PostHorizontal';
 import PostSmallThumbnail from '../../elements/post/website/PostSmallThumbnail';
-import { posts } from '~/static/data/blog-grid.json';
+// import { posts } from '~/static/data/blog-grid.json';
 
 
 export default {
@@ -38,7 +38,7 @@ export default {
     components: { PostSmallThumbnail, PostHorizontal, Sidebar, Pagination },
     data() {
         return {
-            blogPosts: posts,
+            // blogPosts: posts,
         };
     },
     props: {

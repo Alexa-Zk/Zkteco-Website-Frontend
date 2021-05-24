@@ -55,7 +55,6 @@ export default {
                 email: this.email
             }
             const ip = await this.$axios.$post('https://admin.zkteco-wa.com/maillists', payload);
-            console.log(ip)
         }
     }
 };

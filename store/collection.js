@@ -65,12 +65,20 @@ export const actions = {
         return reponse;
     },
     async getCollectionById({ commit }, payload) {
+        const token = this.getters['auth/getToken'];
         let params = {
             order: 'asc',
-            per_page: 10,
-        }
+            per_page: 10
+        };
         const reponse = await Repository.get(
-            `${baseUrl}/integrations/trend-categories-products/?${serializeQuery(params)}&category_id=[26,22,23]`
+            `${baseUrl}/integrations/customers/trend-categories-products/?${serializeQuery(
+                params
+            )}&category_id=[26,22,23]`,
+            {
+                headers: {
+                    Authorization: token
+                }
+            }
         )
             .then(response => {
                 commit('setProductCategories', response.data.data);
@@ -79,5 +87,4 @@ export const actions = {
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
     }
-    
 };

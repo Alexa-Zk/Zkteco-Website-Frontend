@@ -281,14 +281,20 @@ export const actions = {
     },
 
     async getProductCategories({ state, commit }) {
+        const token = this.getters['auth/getToken'];
         let params = {
             page: state.page,
             per_page: state.per_page
         };
         const reponse = await Repository.get(
-            `${baseUrl}/integrations/products/categories?${serializeQuery(
+            `${baseUrl}/integrations/customers/products/categories?${serializeQuery(
                 params
-            )}`
+            )}`,
+            {
+                headers: {
+                    Authorization: token
+                }
+            }
         )
             .then(response => {
                 commit('setCategories', response.data.data);
@@ -299,14 +305,20 @@ export const actions = {
     },
 
     async getProductByCategoriesId({ state, commit }, payload) {
+        const token = this.getters['auth/getToken'];
         let params = {
             per_page: state.per_page,
             order: 'asc'
         };
         const reponse = await Repository.get(
-            `${baseUrl}/integrations/trend-categories-products/?${serializeQuery(
+            `${baseUrl}/integrations/customers/trend-categories-products/?${serializeQuery(
                 params
-            )}&category_id=[${payload}]`
+            )}&category_id=[${payload}]`,
+            {
+                headers: {
+                    Authorization: token
+                }
+            }
         )
             .then(response => {
                 return response.data.data;

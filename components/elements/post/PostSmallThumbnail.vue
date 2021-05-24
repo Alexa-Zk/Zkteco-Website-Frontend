@@ -32,11 +32,6 @@
                     <nuxt-link :to="`/blog/${post.slug}`" class="ps-post__title">
                         {{ post.title }}
                     </nuxt-link>
-                    <div class="ps-post__desc">
-                        <p>
-                            {{ post.title }}
-                        </p>
-                    </div>
                 </div>
                 <p>
                     {{ formatDate(post.updated_at) }}

@@ -46,7 +46,6 @@ export default {
                     'product/getCompareProducts',
                     queries
                 );
-                console.log(products);
             }
         }
     }

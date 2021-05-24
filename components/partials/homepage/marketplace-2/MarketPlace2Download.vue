@@ -31,16 +31,16 @@
                             </form>
                             <p class="download-link">
                                 <a href="#">
-                                    <img
+                                    <!-- <img
                                         src="~/static/img/google-play.png"
                                         alt="martfury"
-                                    />
+                                    /> -->
                                 </a>
                                 <a href="#">
-                                    <img
+                                    <!-- <img
                                         src="~/static/img/app-store.png"
                                         alt="martfury"
-                                    />
+                                    /> -->
                                 </a>
                             </p>
                         </div>

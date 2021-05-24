@@ -36,7 +36,6 @@ export default {
         const name = this.sub_product
             ? this.sub_product.name
             : 'Product Sub Categories';
-        console.log(name);
         return {
             titleTemplate: name,
             meta: [

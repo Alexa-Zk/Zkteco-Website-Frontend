@@ -6,7 +6,6 @@ export const state = () => ({
 
 export const mutations = {
     initWishlist(state, payload) {
-        console.log('test');
         state.items = payload.items;
         state.total = payload.total;
     },
