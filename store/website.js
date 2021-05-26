@@ -8,6 +8,7 @@ export const state = () => ({
     singleProduct: null,
     solutions: null,
     articles: null,
+    articlesLimited: null,
     articlesCategories: null,
     productsTotal: 0,
     singleProductCategories: null,
@@ -36,6 +37,10 @@ export const mutations = {
 
     setArticles(state, payload) {
         state.articles = payload;
+    },
+
+    setArticlesLimited(state, payload) {
+        state.articlesLimited = payload;
     },
 
     setProductsTotal(state, payload) {
@@ -130,12 +135,33 @@ export const actions = {
             _start: 0,
             _sort: 'created_at:desc',
             _limit: 100,
+            
         };
         const reponse = await Repository.get(
             `${subBaseUrl}/articles?${serializeQuery(params)}`
         )
             .then(response => {
                 commit('setArticles', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getArticlesLimited({ commit }, payload) {
+        commit('setLoading', true);
+        let params = {
+            _start: 0,
+            _sort: 'created_at:desc',
+            _limit: 4,
+            
+        };
+        const reponse = await Repository.get(
+            `${subBaseUrl}/articles?${serializeQuery(params)}`
+        )
+            .then(response => {
+                commit('setArticlesLimited', response.data);
                 commit('setLoading', false);
                 return response.data;
             })
@@ -342,7 +368,7 @@ export const actions = {
         
         let params = {
             page: Object.keys(payload).length === 0 ? state.page : payload.page,
-            perPage: Object.keys(payload).length === 0 ? state.perPage : payload.perPage,
+            perPage: Object.keys(payload).length === 0 ? 100 : payload.perPage,
             query: Object.keys(payload).length === 0 ? '' : payload.query,
         };
         const reponse = await Repository.get(

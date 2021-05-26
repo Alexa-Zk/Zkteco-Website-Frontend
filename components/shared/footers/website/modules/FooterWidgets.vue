@@ -119,18 +119,21 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import articlesCat from '~/apollo/queries/articles/articlesCategories';
+
 export default {
     name: 'FooterWidgets',
     data() {
         return {
+            categories: ''
         };
     },
-    computed: {
-        ...mapState({
-            categories: state => state.website.articlesCategories
-        })
-    }
+    apollo: {
+        categories: {
+            prefetch: true,
+            query: articlesCat,
+        }
+    },
 };
 </script>
 

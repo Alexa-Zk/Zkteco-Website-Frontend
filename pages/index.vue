@@ -17,6 +17,7 @@ import RelatedPosts from '~/components/partials/post/website/RelatedPosts';
 import HomeBrand from '~/components/partials/shop/sections/website/ShopBrands';
 // Queries
 import homePages from '~/apollo/queries/homePages';
+import articlesCategories from '~/apollo/queries/articles/articlesCategories';
 
 export default {
     data() {
@@ -30,6 +31,10 @@ export default {
         homePages: {
             prefetch: true,
             query: homePages
+        },
+        categories: {
+            prefetch: true,
+            query: articlesCategories
         }
     },
     components: {
@@ -53,7 +58,7 @@ export default {
     },
     created() {
         let payload = {};
-        const response = this.$store.dispatch('website/getArticles', payload);
+        const response = this.$store.dispatch('website/getArticlesLimited', payload);
     }
 };
 </script>
