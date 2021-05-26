@@ -22,8 +22,8 @@ export default {
 
     css: [
         'swiper/dist/css/swiper.css',
-        // '~/static/fonts/Linearicons/Font/demo-files/demo.css',
-        // '~/static/css/bootstrap.min.css',
+        '~/static/fonts/Linearicons/Font/demo-files/demo.css',
+        '~/static/css/bootstrap.min.css',
         '~/assets/scss/style.scss'
     ],
 
