@@ -281,20 +281,14 @@ export const actions = {
     },
 
     async getProductCategories({ state, commit }) {
-        const token = this.getters['auth/getToken'];
         let params = {
             page: state.page,
             per_page: state.per_page
         };
         const reponse = await Repository.get(
-            `${baseUrl}/integrations/customers/products/categories?${serializeQuery(
+            `${baseUrl}/integrations/products/categories?${serializeQuery(
                 params
             )}`,
-            {
-                headers: {
-                    Authorization: token
-                }
-            }
         )
             .then(response => {
                 commit('setCategories', response.data.data);
