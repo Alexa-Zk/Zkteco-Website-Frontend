@@ -18,13 +18,11 @@ export default {
         FooterCopyright,
         FooterLinks
     },
-    async created() {
-        let params = {}
-        const categories = await this.$store.dispatch(
-            'website/getArticlesCategories',
-            params
-        );
-    }
+    data () {
+        return {
+            categories: ''
+        }
+    },
 };
 </script>
 

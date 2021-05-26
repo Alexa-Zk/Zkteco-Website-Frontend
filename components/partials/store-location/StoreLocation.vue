@@ -28,7 +28,7 @@
                                 >{{ item.fullname }}:</span
                             >
                             <span v-for="data in item.phone_numbers">
-                                0{{ data.number }},
+                                0{{ data.number }}
                             </span>
                         </div>
                     </div>
