@@ -54,6 +54,9 @@ export default {
         {
             src: '~/plugins/filters.js',
             ssr: false
+        },
+        {   src: "~/plugins/aos", 
+            ssr: false 
         }
     ],
 

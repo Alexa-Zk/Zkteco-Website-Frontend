@@ -6,18 +6,28 @@
     >
         <div class="ps-blog__left">
             <div class="placeholder-image" v-if="loading">
-                <content-placeholders v-for="x in 9" :key="x">
+                <content-placeholders v-for="x in 6" :key="x">
                     <content-placeholders-heading :img="true" />
                     <content-placeholders-text :lines="3" />
                 </content-placeholders>
             </div>
-            <PostSmallThumbnail
-                v-for="post in filteredList"
-                :post="post"
-                :loading="loading"
-                :key="post.id"
-            />
-            <!-- <Pagination /> -->
+            <div v-else>
+                <post-small-thumbnail
+                    v-for="post in filteredList"
+                    :post="post"
+                    :loading="loading"
+                    :key="post.id"
+                />
+                <footer class="mt-60">
+                    <v-pagination
+                        v-model="page"
+                        :total-visible="7"
+                        color="green"
+                        :length="paginationLenght"
+                        @input="handleChangePagination"
+                    />
+                </footer>
+            </div>
         </div>
         <div class="ps-blog__right">
             <Sidebar @searchBlogs="filterBlogs" />
@@ -41,7 +51,9 @@ export default {
     data() {
         return {
             articles: '',
-            searchQuery: ''
+            searchQuery: '',
+            page: 1,
+            pageSize: 12
         };
     },
     props: {
@@ -50,17 +62,33 @@ export default {
             default: 'left'
         }
     },
-    
+
     methods: {
         filterBlogs(value) {
             this.searchQuery = value;
+        },
+        async handleChangePagination(value) {
+            const params = {
+                page: value,
+                perPage: 12,
+                order: 'asc'
+            };
+            await this.$store.dispatch('website/getArticles', params);
         }
     },
     computed: {
         ...mapState({
             artic: state => state.website.articles,
-            loading: state => state.website.loading
+            loading: state => state.website.loading,
+            articlesTotal: state => state.website.articlesTotal
         }),
+        paginationLenght() {
+            if (this.articlesTotal % 12 === 0) {
+                return parseInt(this.articlesTotal / this.pageSize);
+            } else {
+                return parseInt(this.articlesTotal / 12 + 1);
+            }
+        },
         ourArticles() {
             return this.artic ? this.artic : [];
         },
@@ -76,7 +104,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.placeholder-image{
+.placeholder-image {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 35px;

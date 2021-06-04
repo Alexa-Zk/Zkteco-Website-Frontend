@@ -2,7 +2,7 @@
     <div class="ps-about-awards">
         <div class="ps-container">
             <div class="ps-section__header">
-                <h4>Enterprise Vision</h4>
+                <h4 data-aos="zoom-in">Enterprise Vision</h4>
             </div>
             <div class="ps-section__content">
                 <div class="vision-item">

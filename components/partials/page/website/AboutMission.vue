@@ -2,7 +2,7 @@
     <div class="ps-about-awards">
         <div class="ps-container">
             <div class="ps-section__header">
-                <h4>Enterprise Mission</h4>
+                <h4 data-aos="zoom-in">Enterprise Mission</h4>
                 <p>
                     ZKTeco's goal is to share our highly developed, revolutionary biometric technology to benefit businesses and people.
                 </p>

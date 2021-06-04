@@ -1,5 +1,7 @@
 <template lang="html">
-    <ul :class="className">
+    <ul 
+        :class="className" 
+    >
         <MenuProduct />
         <template v-for="item in mainMenu">
             <MenuDropdown v-if="item.subMenu" :menu-data="item" />
@@ -96,7 +98,7 @@ export default {
                     redirect: true
                 },
                 {
-                    text: 'Store',
+                    text: 'Partners Portal',
                     url: '/store',
                     extraClass: 'menu-item-has-children',
                     subClass: 'sub-menu',

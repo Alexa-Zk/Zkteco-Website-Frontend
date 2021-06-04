@@ -2,7 +2,10 @@
     <nav class="navigation">
         <div class="ps-container">
             <div class="navigation__right">
-                <ul class="mega-menu__list">
+                <ul 
+                    class="mega-menu__list"
+                    data-aos="fade-left"
+                >
                     <li class="menu-item-has-dropdown">
                         <nuxt-link to="/about">
                             About Us

@@ -13,7 +13,6 @@
 <script>
 import { mapState } from 'vuex';
 import BreadCrumb2 from '~/components/elements/BreadCrumb2';
-import BlogList from '~/components/partials/blog/BlogList';
 import BlogSidebar from '~/components/partials/blog/BlogSidebar';
 
 export default {
@@ -33,7 +32,6 @@ export default {
     layout: 'layout-default-website',
     components: {
         BlogSidebar,
-        BlogList,
         BreadCrumb2
     },
     data: () => {
@@ -55,7 +53,11 @@ export default {
         })
     },
     created() {
-        let payload = {};
+        let payload = {
+            page: 1,
+            perPage: 12
+        };
+        const responseTotal = this.$store.dispatch('website/getArticlesTotal', payload);
         const response = this.$store.dispatch('website/getArticles', payload);
     }
 };

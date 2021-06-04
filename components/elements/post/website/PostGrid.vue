@@ -1,6 +1,6 @@
 <template lang="html">
-    <article class="ps-post">
-        <div class="ps-post__thumbnail">
+    <article class="ps-post" data-aos="flip-down">
+        <div class="ps-post__thumbnail" >
             <nuxt-link
                 :to="`/blog/${post.slug}`"
                 class="ps-post__overlay"

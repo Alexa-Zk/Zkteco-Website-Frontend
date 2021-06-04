@@ -3,14 +3,21 @@
         <div class="ps-footer__images">
             <div class="text-box">
                 <h1 class="heading-primary">
-                    <span class="heading-primary-main">
+                    <span 
+                        class="heading-primary-main"
+                        data-aos="fade-up"
+                    >
                         Learn how ZKTeco helps you
                     </span>
-                    <span class="heading-primary-sub">
+                    <span 
+                        class="heading-primary-sub"
+                    >
                         ZKTeco is a globally-renowned provider of security,
                         access control and time management solutions
                     </span>
-                    <div class="footer-image-icon justify-center mt-10 d-flex">
+                    <div 
+                        class="footer-image-icon justify-center mt-10 d-flex"
+                    >
                         <v-tooltip bottom>
                             <template v-slot:activator="{ on, attrs }">
                                 <span
@@ -54,7 +61,7 @@
                                     /></a>
                                 </span>
                             </template>
-                            <span>Email</span>
+                            <span>Whatsapp</span>
                         </v-tooltip>
                     </div>
                 </h1>
