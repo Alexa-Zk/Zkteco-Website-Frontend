@@ -2,7 +2,7 @@
     <header class="header header--1" data-sticky="true" id="headerSticky">
         <navigation-default />
         <div class="header__top">
-            <div class="ps-container">
+            <div class="ps-container" data-aos="fade-right">
                 <div class="header__left">
                     <nuxt-link to="/" class="ps-logo">
                         <img loading="lazy" src="/img/zkteco-logo.png" width="133.64" height="32" alt="zkteco logo" />

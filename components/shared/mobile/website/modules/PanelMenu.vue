@@ -159,7 +159,7 @@ export default {
                     url: 'contact'
                 },
                 {
-                    text: 'Store',
+                    text: 'Partners Portal',
                     url: '/store'
                 },
                 {

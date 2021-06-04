@@ -11,6 +11,7 @@ export const state = () => ({
     articlesLimited: null,
     articlesCategories: null,
     productsTotal: 0,
+    articlesTotal: 0,
     singleProductCategories: null,
     productCategories: null,
     subProductCategories: null,
@@ -45,6 +46,10 @@ export const mutations = {
 
     setProductsTotal(state, payload) {
         state.productsTotal = payload;
+    },
+
+    setArticlesTotal(state, payload) {
+        state.articlesTotal = payload;
     },
 
     setSearchResults(state, payload) {
@@ -132,10 +137,9 @@ export const actions = {
     async getArticles({ commit }, payload) {
         commit('setLoading', true);
         let params = {
-            _start: 0,
+            _start: Object.keys(payload).length === 0 ? state.page : payload.page,
             _sort: 'created_at:desc',
-            _limit: 100,
-            
+            _limit: Object.keys(payload).length === 0 ? state.perPage : payload.perPage,
         };
         const reponse = await Repository.get(
             `${subBaseUrl}/articles?${serializeQuery(params)}`
@@ -327,6 +331,21 @@ export const actions = {
         )
             .then(response => {
                 commit('setProductsTotal', response.data.length);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getArticlesTotal({ state, commit }, payload) {
+        let params = {
+            _limit: -1
+        };
+        const reponse = await Repository.get(
+            `${subBaseUrl}/articles?${serializeQuery(params)}`
+        )
+            .then(response => {
+                commit('setArticlesTotal', response.data.length);
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));

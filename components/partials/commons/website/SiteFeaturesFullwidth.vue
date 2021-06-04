@@ -2,11 +2,22 @@
     <div class="ps-site-features">
         <div class="ps-container">
             <h1>ZKTeco West Africa</h1>
-            <h3>ZKTeco Insight into the Market</h3>
+            <h3 data-aos="zoom-out">ZKTeco Insight into the Market</h3>
             <div class="ps-block--site-features">
-                <nuxt-link to="/product-categories/time-attendance" class="ps-block__item">
+                <nuxt-link
+                    to="/product-categories/time-attendance"
+                    class="ps-block__item"
+                    data-aos="fade-up"
+                    data-aos-duration="1000"
+                    data-aos-easing="ease-in-out"
+                >
                     <div class="ps-block__left">
-                        <img src="~/static/img/website/time-attendance-icon.webp" alt="Time Attendance" width="60" height="60" />
+                        <img
+                            src="~/static/img/website/time-attendance-icon.webp"
+                            alt="Time Attendance"
+                            width="60"
+                            height="60"
+                        />
                     </div>
                     <div class="ps-block__right">
                         <h4>
@@ -18,9 +29,18 @@
                     </div>
                 </nuxt-link>
 
-                <nuxt-link to="/product-categories/access-control" class="ps-block__item">
+                <nuxt-link
+                    to="/product-categories/access-control"
+                    class="ps-block__item"
+                    data-aos="fade-up"
+                >
                     <div class="ps-block__left">
-                        <img src="~/static/img/website/access-control-icon.webp" alt="Access Control" width="60" height="60" />
+                        <img
+                            src="~/static/img/website/access-control-icon.webp"
+                            alt="Access Control"
+                            width="60"
+                            height="60"
+                        />
                     </div>
                     <div class="ps-block__right">
                         <h4>
@@ -30,9 +50,18 @@
                     </div>
                 </nuxt-link>
 
-                <nuxt-link to="/product-categories/smart-lock" class="ps-block__item">
+                <nuxt-link
+                    to="/product-categories/smart-lock"
+                    class="ps-block__item"
+                    data-aos="fade-up"
+                >
                     <div class="ps-block__left">
-                        <img src="~/static/img/website/smart-lock-icon.webp" alt="Smart Lock" width="60" height="60" />
+                        <img
+                            src="~/static/img/website/smart-lock-icon.webp"
+                            alt="Smart Lock"
+                            width="60"
+                            height="60"
+                        />
                     </div>
                     <div class="ps-block__right">
                         <h4>
@@ -44,9 +73,18 @@
                     </div>
                 </nuxt-link>
 
-                <nuxt-link to="product-categories/entrance-control" class="ps-block__item">
+                <nuxt-link
+                    to="product-categories/entrance-control"
+                    class="ps-block__item"
+                    data-aos="fade-up"
+                >
                     <div class="ps-block__left">
-                        <img src="~/static/img/website/entrance-control-icon.webp" alt="Entrance Control" width="60" height="60" />
+                        <img
+                            src="~/static/img/website/entrance-control-icon.webp"
+                            alt="Entrance Control"
+                            width="60"
+                            height="60"
+                        />
                     </div>
                     <div class="ps-block__right">
                         <h4>
@@ -57,9 +95,18 @@
                         </p>
                     </div>
                 </nuxt-link>
-                <nuxt-link to="product-categories/security-inspection" class="ps-block__item">
+                <nuxt-link
+                    to="product-categories/security-inspection"
+                    class="ps-block__item"
+                    data-aos="fade-up"
+                >
                     <div class="ps-block__left">
-                        <img src="~/static/img/website/security-inspection-icon.webp" alt="Security Inspection" width="60" height="60" />
+                        <img
+                            src="~/static/img/website/security-inspection-icon.webp"
+                            alt="Security Inspection"
+                            width="60"
+                            height="60"
+                        />
                     </div>
                     <div class="ps-block__right">
                         <h4>
@@ -70,9 +117,18 @@
                         </p>
                     </div>
                 </nuxt-link>
-                <nuxt-link to="/product-categories/cctv" class="ps-block__item">
+                <nuxt-link 
+                    to="/product-categories/cctv"
+                    class="ps-block__item"
+                    data-aos="fade-up"
+                >
                     <div class="ps-block__left">
-                        <img src="~/static/img/website/cctv.webp" alt="CCTV" width="60" height="60" />
+                        <img
+                            src="~/static/img/website/cctv.webp"
+                            alt="CCTV"
+                            width="60"
+                            height="60"
+                        />
                     </div>
                     <div class="ps-block__right">
                         <h4>
@@ -117,7 +173,6 @@ export default {
                 object-fit: cover;
             }
         }
-        
     }
 }
 </style>

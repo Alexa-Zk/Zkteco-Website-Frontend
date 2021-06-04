@@ -2,7 +2,7 @@
     <div class="ps-about-awards">
         <div class="ps-container">
             <div class="ps-section__header">
-                <h4>Enterprise Values</h4>
+                <h4 data-aos="zoom-in">Enterprise Values</h4>
                 <p>
                     We regard values as seeds, culture as trees and state of
                     mind as soil, without mind there is no seed, without core

@@ -1,6 +1,6 @@
 <template>
     <div class="ps-related-posts">
-        <h3>News Center</h3>
+        <h3 data-aos="zoom-out">News Center</h3>
         <div class="row">
             <div
                 v-for="post in formattedArticles"
