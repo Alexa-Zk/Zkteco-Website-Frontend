@@ -41,13 +41,13 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <a href="/contact">Help Center</a>
+                    <a href="/store/page/contact-us">Help Center</a>
                 </li>
                 <li>
                     <a href="/support/product-warranty">Warranty</a>
                 </li>
                  <li>
-                    <a href="/support/faq">FAQs</a>
+                    <a href="/store/page/faqs">FAQs</a>
                 </li>
             </ul>
         </aside>
@@ -78,9 +78,6 @@
                 Business
             </h4>
             <ul class="ps-list--link">
-                <li>
-                    <a href="/store/account/wishlist">Wishlist</a>
-                </li>
                 <li>
                     <a href="/store/account/checkout">Checkout</a>
                 </li>

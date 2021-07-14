@@ -53,12 +53,6 @@ export default {
                     url: '/store/account/user-information',
                     icon: 'icon-user'
                 },
-                // {
-                //     text: 'Invoices',
-                //     url: '/store/account/invoices',
-                //     icon: 'icon-papers',
-                //     active: true
-                // },
                 {
                     text: 'Address',
                     url: '/store/account/addresses',
@@ -70,11 +64,6 @@ export default {
                     icon: 'icon-store',
                     
                 },
-                {
-                    text: 'Wishlist',
-                    url: '/store/account/wishlist',
-                    icon: 'icon-heart'
-                }
             ]
         };
     },

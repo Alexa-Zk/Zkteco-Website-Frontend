@@ -174,10 +174,10 @@ export default {
                     text: 'Login',
                     url: '/website/page/login'
                 },
-                {
-                    text: 'Register',
-                    url: '/website/page/register'
-                },
+                // {
+                //     text: 'Register',
+                //     url: '/website/page/register'
+                // },
             ]
         };
     },

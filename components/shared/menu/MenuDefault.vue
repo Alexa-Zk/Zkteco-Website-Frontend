@@ -52,7 +52,7 @@ export default {
                             megaItems: [
                                 {
                                     text: this.$i18n.t('menu.mainMenu.aboutUs'),
-                                    url: '/store/page/about-us'
+                                    url: '/about'
                                 },
                                 {
                                     text: this.$i18n.t('menu.mainMenu.contact'),
@@ -65,6 +65,12 @@ export default {
                             ]
                         },
                     ]
+                },
+                {
+                    text: 'Support',
+                    url: '/support/support',
+                    extraClass: 'menu-item-has-children',
+                    subClass: 'sub-menu',
                 },
                 {
                     text: 'Website',

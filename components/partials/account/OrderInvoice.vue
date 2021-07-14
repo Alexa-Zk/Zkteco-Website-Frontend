@@ -54,7 +54,7 @@
                                 </nuxt-link>
                                 <div class="ps-block__footer">
                                     <button class="ps-btn" @click="handleCreateOrders">
-                                        Create orders
+                                        {{loading ? "Creating..." : "Create Orders"}}
                                     </button>
                                 </div>
                             </div>
@@ -84,12 +84,13 @@ export default {
     },
     data() {
         return {
-            
+            loading: false,
         };
     },
     methods: {
         async handleCreateOrders() {
             try {
+                this.loading = true;
                 const productItem = this.cartItem.map(
                     ({ id, quantity, price }) => ({
                         product_id: id,
@@ -143,13 +144,16 @@ export default {
                         payload
                     );
                     this.$router.push('/store/page/thank-you');
+                    this.loading = false;
                 } else {
                     this.$notify({
                         title: 'Error!',
                         text: `Order not created`
                     });
+                    this.loading = false;
                 }
             } catch (error) {
+                this.loading = false;
                 this.$notify({
                     group: 'addCartSuccess',
                     title: 'Error!',
