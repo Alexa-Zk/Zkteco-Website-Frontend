@@ -56,10 +56,6 @@ export default {
                     text: 'My Orders',
                     url: '/store/account/recent-viewed-product'
                 },
-                {
-                    text: 'Wishlist',
-                    url: '/store/account/wishlist'
-                }
             ]
         };
     },

@@ -95,6 +95,18 @@ export const actions = {
         return reponse;
     },
 
+    async updateUserInformation({ dispatch }, payload) {
+        const token = this.getters['auth/getToken'];
+        const reponse = await Repository.put(`${baseUrl}/integrations/customers`, payload ,
+            { headers: { Authorization: token }})
+            .then(response => {
+                dispatch('getUserInformation');
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
     async updateBilling({ commit, dispatch }, payload) {
         const token = this.getters['auth/getToken'];
         const reponse = await Repository.put(

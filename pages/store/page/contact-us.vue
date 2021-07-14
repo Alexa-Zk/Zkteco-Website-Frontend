@@ -1,9 +1,9 @@
 <template lang="html">
     <div class="ps-page--single">
         <bread-crumb :breadcrumb="breadCrumb" />
-        <contact-map />
-        <contact-info />
         <contact-form />
+        <contact-info />
+        <contact-map />
     </div>
 </template>
 
@@ -14,6 +14,18 @@ import ContactInfo from '~/components/partials/page/website/ContactInfo';
 import ContactForm from '~/components/partials/page/website/ContactForm';
 
 export default {
+    head() {
+        return {
+            titleTemplate: 'Contact Us',
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'Contact ZKTeco West Africa'
+                }
+            ]
+        };
+    },
     components: {
         ContactForm,
         ContactInfo,

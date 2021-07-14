@@ -96,11 +96,6 @@ export default {
                     icon: 'icon-store',
                     active: true
                 },
-                {
-                    text: 'Wishlist',
-                    url: '/store/account/wishlist',
-                    icon: 'icon-heart'
-                }
             ]
         };
     },

@@ -1,13 +1,14 @@
 <template lang="html">
     <section class="ps-page--my-account">
         <bread-crumb :breadcrumb="breadCrumb" />
-        <user-information />
+        <user-information :user="single_user_information" />
     </section>
 </template>
 <script>
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import UserInformation from '~/components/partials/account/UserInformation';
 import HeaderMobile from '~/components/shared/mobile/HeaderMobile';
+import { mapState } from 'vuex';
 
 export default {
     middleware: 'authentication',
@@ -32,7 +33,12 @@ export default {
     },
     created () {
         const user = this.$store.dispatch("auth/getUserInformation")
-    }
+    },
+    computed: {
+        ...mapState({
+            single_user_information: state => state.auth.singleUserInformation
+        }),
+    },
 };
 </script>
 

@@ -72,10 +72,9 @@
                 <div class="form-group submit">
                     <el-button
                         @click.prevent="willContactUs"
-                        :disabled="disabled"
                         class="ps-btn"
                     >
-                        Send message
+                        {{loading ? "Sending..." : "Send Message"}}
                     </el-button>
                 </div>
             </form>
@@ -88,6 +87,7 @@ export default {
     name: 'ContactForm',
     data() {
         return {
+            loading: '',
             payload: {
                 full_name: '',
                 company: '',
@@ -101,13 +101,13 @@ export default {
     },
     methods: {
         async willContactUs() {
-            this.disabled = true;
+            this.loading = true;
             const response = await this.$store.dispatch(
                 'website/sendEnquiry',
                 this.payload
             );
             if (response.data) {
-                this.disabled = false;
+                this.loading = false;
                 this.$notify({
                     group: 'addCartSuccess',
                     title: 'Success!',
@@ -120,7 +120,7 @@ export default {
                 this.payload.subject = '';
                 this.payload.message = '';
             } else {
-                this.disabled = false;
+                this.loading = false;
                 this.$notify({
                     title: 'Waring!',
                     text: `All text field should be filled`,

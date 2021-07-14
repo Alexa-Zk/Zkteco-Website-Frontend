@@ -34,7 +34,7 @@
                     class="ps-btn ps-btn--fullwidth"
                     @click.prevent="handleSubmit"
                 >
-                    Login
+                    {{loading ? "Authenticating..." : "Login"}}
                 </button>
             </div>
             <v-alert v-if="showAlert" class="mt-4" dense outlined type="error">
@@ -68,6 +68,7 @@ export default {
     },
     data() {
         return {
+            loading: false,
             username: null,
             password: null,
             error_alert: '',
@@ -82,6 +83,7 @@ export default {
         async handleSubmit() {
             this.$v.$touch();
             if (!this.$v.$invalid) {
+                this.loading = true;
                 const response = await this.$store.dispatch('auth/login', {
                     username: this.username,
                     password: this.password
@@ -89,10 +91,11 @@ export default {
                 if (response.status) {
                     this.$store.dispatch('auth/setAuthStatus', true);
                     this.$router.push('/store');
+                    this.loading = false;
                 } else {
-                    
-                    this.error_alert = response.error.message
-                    this.showAlert = true
+                    this.loading = false;
+                    this.error_alert = response.error.message;
+                    this.showAlert = true;
                 }
             }
         }

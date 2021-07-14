@@ -134,11 +134,6 @@ export default {
                     url: '/store/account/recent-viewed-product',
                     icon: 'icon-store'
                 },
-                {
-                    text: 'Wishlist',
-                    url: '/store/account/wishlist',
-                    icon: 'icon-heart'
-                }
             ]
         };
     },

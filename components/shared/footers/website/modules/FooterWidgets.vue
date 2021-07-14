@@ -111,7 +111,10 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <a href="https://zktecopos.com">ZKTeco POS Website</a>
+                    <a href="https://zktecopos.com" target="_blank">ZKTeco POS Website</a>
+                </li>
+                <li>
+                    <a href="https://sprout-ng.com/" target="_blank">Sprout API Docs</a>
                 </li> 
             </ul>
         </aside>
