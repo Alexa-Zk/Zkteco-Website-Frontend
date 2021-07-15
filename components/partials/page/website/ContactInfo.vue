@@ -11,7 +11,7 @@
                             <h4>Contact Directly</h4>
                             <p>
                                 <a href="mailto:contact@martfury.com">
-                                    sales@zkteco-wa.com
+                                    enquiry@zkteco-wa.com
                                 </a>
                                 <span>+234 817 5555 512</span>
                             </p>

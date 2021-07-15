@@ -56,7 +56,7 @@
                                     v-on="on"
                                     class="mx-2"
                                 >
-                                    <a href="mailto:sales@zkteco-wa.com">
+                                    <a href="mailto:enquiry@zkteco-wa.com">
                                         <Consultation
                                     /></a>
                                 </span>
