@@ -12,7 +12,7 @@
                 </h3>
                 <p>
                     64 Adetokunbo Ademola Street, Victoria Island, Lagos<br />
-                    <a href="mailto:sales@zkteco-wa.com">sales@zkteco-wa.com</a>
+                    <a href="mailto:enquiry@zkteco-wa.com">enquiry@zkteco-wa.com</a>
                 </p>
                 <ul class="ps-list--social">
                     <li>
