@@ -9,7 +9,7 @@
                 <h3>+234 817 5555 512</h3>
                 <p>
                     64 Adetokunbo Ademola Street, Victoria Island, Lagos<br />
-                    <a href="mailto:enquiry@zkteco-wa.com">enquiry@zkteco-wa.com</a>
+                    <a style="font-weight: bold;" href="mailto:enquiry@zkteco-wa.com">enquiry@zkteco-wa.com</a>
                 </p>
                 <ul class="ps-list--social">
                     <li>

@@ -21,21 +21,24 @@ import relatedArticles from '~/apollo/queries/articles/relatedArticles';
 export default {
     name: 'BlogPost',
     head() {
-        const title = this.formattedArticle
+        const name = this.formattedArticle
             ? this.formattedArticle.title
-            : 'Blog Post';
+            : '';
         const image = this.formattedArticle ? this.formattedArticle.image[0].url
             : 'https://www.zkteco-wa.com/img/zkteco-logo.png';
         const excerpt = this.formattedArticle
             ? this.formattedArticle.excerpt
             : 'Blog Post - excerpt';
         return {
-            titleTemplate: title,
+            title: 'Blog Post',
+            titleTemplate(title) {
+                return `${name} - ${title}`
+            },
             meta: [
                 {
                     hid: 'title',
                     name: 'title',
-                    content: title
+                    content: name
                 },
                 {
                     hid: 'description',
@@ -45,7 +48,7 @@ export default {
                 {
                     hid: 'twitter:title',
                     name: 'twitter:title',
-                    content: title
+                    content: name
                 },
                 {
                     hid: 'twitter:description',
@@ -60,12 +63,12 @@ export default {
                 {
                     hid: 'twitter:image:alt',
                     name: 'twitter:image:alt',
-                    content: title
+                    content: name
                 },
                 {
                     hid: 'og:title',
                     property: 'og:title',
-                    content: title
+                    content: name
                 },
                 {
                     hid: 'og:description',
@@ -85,7 +88,7 @@ export default {
                 {
                     hid: 'og:image:alt',
                     property: 'og:image:alt',
-                    content: title
+                    content: name
                 }
             ]
         };
