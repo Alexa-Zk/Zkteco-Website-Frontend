@@ -13,7 +13,7 @@
                         :src="slide.image.url"
                         :alt="slide.image.name"
                         :srcset="
-                            `${slide.image.formats.thumbnail.url} 245w, ${slide.image.formats.small.url} 500w,`
+                            `${slide.image.formats.thumbnail.url} 320w, ${slide.image.formats.small.url} 480w, ${slide.image.formats.large.url} 720w,`
                         "
                     />
                 </div>
