@@ -7,6 +7,7 @@ query HomePages {
             image {
                 url
                 name
+                formats
             }
         }
         partners {
