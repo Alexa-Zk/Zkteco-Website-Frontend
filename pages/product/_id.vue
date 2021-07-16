@@ -55,24 +55,73 @@ export default {
         Loading
     },
     head() {
-        const title = this.singleProduct
+        const name = this.singleProduct
             ? this.singleProduct.name
-            : 'Product Details';
+            : '';
         const description = this.singleProduct
             ? this.singleProduct.description
             : 'Product Details - Description';
+        const image = this.singleProduct ? this.singleProduct.images[0].url: ''
         return {
-            titleTemplate: title,
+            title: 'Product Details',
+            titleTemplate(title) {
+                return `${name} - ${title}`
+            },
             meta: [
                 {
                     hid: 'title',
                     name: 'title',
-                    content: title
+                    content: name
                 },
                 {
                     hid: 'description',
                     name: 'description',
                     content: description
+                },
+                {
+                    hid: 'twitter:title',
+                    name: 'twitter:title',
+                    content: name
+                },
+                {
+                    hid: 'twitter:description',
+                    name: 'twitter:description',
+                    content: description
+                },
+                {
+                    hid: 'twitter:image',
+                    name: 'twitter:image',
+                    content: image
+                },
+                {
+                    hid: 'twitter:image:alt',
+                    name: 'twitter:image:alt',
+                    content: name
+                },
+                {
+                    hid: 'og:title',
+                    property: 'og:title',
+                    content: name
+                },
+                {
+                    hid: 'og:description',
+                    property: 'og:description',
+                    content: description
+                },
+                {
+                    hid: 'og:image',
+                    property: 'og:image',
+                    content: image
+                },
+                {
+                    hid: 'og:image:secure_url',
+                    property: 'og:image:secure_url',
+                    content: image
+                },
+                {
+                    hid: 'og:image:alt',
+                    property: 'og:image:alt',
+                    content: name
                 }
             ]
         };

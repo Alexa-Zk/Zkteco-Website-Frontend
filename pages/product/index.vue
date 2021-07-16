@@ -33,7 +33,7 @@ export default {
                 {
                     hid: 'description',
                     name: 'description',
-                    content: 'Prodcuts'
+                    content: 'ZKTeco west africa all product list'
                 }
             ]
         };

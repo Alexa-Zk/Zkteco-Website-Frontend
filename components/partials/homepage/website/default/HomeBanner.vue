@@ -8,7 +8,14 @@
                     :key="slide.id"
                     @click="openSlider(slide.url)"
                 >
-                    <img loading="lazy" :src="slide.image.url" :alt="slide.image.name" />
+                    <img
+                        loading="lazy"
+                        :src="slide.image.url"
+                        :alt="slide.image.name"
+                        :srcset="
+                            `${slide.image.formats.thumbnail.url} 245w, ${slide.image.formats.small.url} 500w,`
+                        "
+                    />
                 </div>
             </div>
             <!--Carousel controls-->

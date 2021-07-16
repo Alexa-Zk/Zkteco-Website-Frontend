@@ -32,6 +32,19 @@ export default {
         const name = this.categoriesWithProduct ? this.categoriesWithProduct.name : 'Product Categories';
         return {
             titleTemplate: name,
+            title: name,
+            meta: [
+                {
+                    hid: 'title',
+                    name: 'title',
+                    content: name
+                },
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'ZKTeco west africa all product list'
+                },
+            ]
         };
     },
     transition() {

@@ -33,11 +33,12 @@ import LayoutShopSidebar from '~/components/partials/shop/website/LayoutShopSide
 
 export default {
     head() {
-        const name = this.sub_product
-            ? this.sub_product.name
-            : 'Product Sub Categories';
+        const name = this.sub_product ? this.sub_product.name : '';
         return {
-            titleTemplate: name,
+            title: 'Product Sub Categories',
+            titleTemplate(title) {
+                return `${name} - ${title}`
+            },
             meta: [
                 {
                     hid: 'description',
