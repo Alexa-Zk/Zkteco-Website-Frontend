@@ -8,13 +8,13 @@
                     :key="slide.id"
                     @click="openSlider(slide.url)"
                 >
+                <!-- :srcset="
+                            `${slide.image.formats.thumbnail.url} 320w, ${slide.image.formats.small.url} 480w, ${slide.image.formats.large.url} 720w,`
+                        " -->
                     <img
                         loading="lazy"
                         :src="slide.image.url"
                         :alt="slide.image.name"
-                        :srcset="
-                            `${slide.image.formats.thumbnail.url} 320w, ${slide.image.formats.small.url} 480w, ${slide.image.formats.large.url} 720w,`
-                        "
                     />
                 </div>
             </div>
@@ -29,17 +29,6 @@
             </div>
             <div class="swiper-pagination swiper-pagination-bullets"></div>
         </div>
-
-        <!-- <div class="ps-carousel" v-swiper:mySwiper="swiperOption">
-            <swiper ref="mySwiper" :options="swiperOptions">
-                <swiper-slide>Slide 1</swiper-slide>
-                <swiper-slide>Slide 2</swiper-slide>
-                <swiper-slide>Slide 3</swiper-slide>
-                <swiper-slide>Slide 4</swiper-slide>
-                <swiper-slide>Slide 5</swiper-slide>
-                <div class="swiper-pagination" slot="pagination"></div>
-            </swiper>
-        </div> -->
     </div>
 </template>
 
@@ -68,9 +57,6 @@ export default {
             window.open(url, '_blank');
         }
     },
-    mounted() {
-        // this.mySwiper.slideTo(3, 1000, false);
-    }
 };
 </script>
 
