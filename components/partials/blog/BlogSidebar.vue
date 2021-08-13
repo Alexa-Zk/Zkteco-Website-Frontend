@@ -68,8 +68,9 @@ export default {
             this.searchQuery = value;
         },
         async handleChangePagination(value) {
+            const compute = value - 1
             const params = {
-                page: value,
+                page: compute * 12 ,
                 perPage: 12,
                 order: 'asc'
             };
