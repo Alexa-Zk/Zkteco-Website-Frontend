@@ -91,7 +91,7 @@
 													></v-textarea>
 												</div>
 												<div class="form-group submit">
-													<button class="ps-btn" @click.prevent="supportTicket">
+													<button class="ps-btn" :disabled="disabled" @click.prevent="supportTicket">
 														Submit Ticket
 													</button>
 													<v-progress-circular
@@ -129,22 +129,23 @@ export default {
                 {
                     hid: 'description',
                     name: 'description',
-                    content: 'Create Support Tickets'
-                }
-            ]
+                    content: 'Create Support Tickets',
+                },
+            ],
         };
     },
     mixins: [validationMixin],
     name: 'Support',
     components: {
         BreadCrumb,
-        CustomerCare
+        CustomerCare,
     },
     transition: 'zoom',
     layout: 'layout-default-website',
     data: () => {
         return {
             company_name: '',
+            disabled: false,
             phone_number: '',
             email_address: '',
             serial_number: '',
@@ -154,17 +155,17 @@ export default {
             breadCrumb: [
                 {
                     text: 'Home',
-                    url: '/'
+                    url: '/',
                 },
                 {
                     text: 'After Sales',
-                    url: '/support/after-sale'
+                    url: '/support/after-sale',
                 },
                 {
-                    text: 'Support Ticket'
-                }
+                    text: 'Support Ticket',
+                },
             ],
-            issues: ['hardware', 'software']
+            issues: ['hardware', 'software'],
         };
     },
     computed: {
@@ -210,7 +211,7 @@ export default {
             !this.$v.description.required &&
                 errors.push('This field is required');
             return errors;
-        }
+        },
     },
     validations: {
         company_name: { required },
@@ -218,20 +219,30 @@ export default {
         email_address: { required, email },
         serial_number: { required },
         issue_type: { required },
-        description: { required }
+        description: { required },
     },
     methods: {
+        clearForm() {
+            this.company_name = '';
+            this.phone_number = '';
+            this.email = '';
+            this.serial_number = '';
+            this.description = '';
+						this.loading = false;
+						this.disabled = false;
+        },
         async supportTicket() {
             this.$v.$touch();
             if (!this.$v.$invalid) {
                 this.loading = true;
+                this.disabled = true;
                 let payload = {
                     company_name: this.company_name,
                     phone_number: this.phone_number,
                     email: this.email_address,
                     serial_number: this.serial_number,
                     issue_type: this.issue_type,
-                    description: this.description
+                    description: this.description,
                 };
                 const ip = await this.$axios.$post(
                     'https://wslbackend.zkteco-wa.com/api/v1/integrations/supports',
@@ -243,26 +254,18 @@ export default {
                         title: 'Success!',
                         text: `your support ticket has been sent!`
                     });
-                    this.loading = false;
-										this.$v.$reset();
-                    this.company_name = '';
-                    this.phone_number = '';
-                    this.email = '';
-                    this.serial_number = '';
-                    this.issue_type = '';
-                    this.description = '';
-										this.$v.$reset();
+                    this.clearForm();
                 } else {
                     this.$notify({
                         group: 'addCartSuccess',
                         title: 'Error!',
                         text: `Some went wrong!`
                     });
-                    this.loading = false;
+										this.clearForm();
                 }
             }
-        }
-    }
+        },
+    },
 };
 </script>
 
