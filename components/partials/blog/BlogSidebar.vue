@@ -68,7 +68,8 @@ export default {
             this.searchQuery = value;
         },
         async handleChangePagination(value) {
-            const compute = value - 1
+            window.scrollTo(0,0);
+            const compute = value - 1;
             const params = {
                 page: compute * 12 ,
                 perPage: 12,

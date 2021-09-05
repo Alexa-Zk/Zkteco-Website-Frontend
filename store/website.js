@@ -21,7 +21,7 @@ export const state = () => ({
     newsCategories: null,
     searchResults: null,
     loading: false,
-    page: 1,
+    page: 0,
     perPage: 12,
     sort_by: 'created_at:desc'
 
@@ -134,7 +134,7 @@ export const actions = {
         return reponse;
     },
 
-    async getArticles({ commit }, payload) {
+    async getArticles({ commit, state }, payload) {
         commit('setLoading', true);
         let params = {
             _start: Object.keys(payload).length === 0 ? state.page : payload.page,
