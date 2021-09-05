@@ -3,9 +3,9 @@
         
         <h3 class="widget__title">Recent Posts</h3>
         <div class="widget__content">
-            <template v-if="Articles.length > 0">
+            <template v-if="articles">
                 <nuxt-link
-                    v-for="post in Articles"
+                    v-for="post in formattedArticles"
                     :to="`/blog/${post.slug}`"
                     :key="post.id"
                 >
@@ -20,27 +20,22 @@
 </template>
 
 <script>
-// Queries
-import Articles from '~/apollo/queries/articles/homePageArticles';
-
+import { mapState } from "vuex";
 
 export default {
     name: 'Sidebar',
     data() {
         return {
-            articles: '',
         };
     },
-    apollo: {
-        articles: {
-            prefetch: true,
-            query: Articles,
-        },
-    },
+    
     computed: {
-        Articles() {
-            return this.articles.slice(0, 4);
-        },
+        ...mapState({
+            articles: state => state.website.articlesLimited
+        }),
+        formattedArticles() {
+            return this.articles ? this.articles: [];
+        }
     },
 };
 </script>

@@ -1,5 +1,5 @@
 <template id="post-with-background">
-    <div class="ps-post--detail ps-post--parallax" v-if="articles">
+    <div class="ps-post--detail ps-post--parallax" style="position: relative;" v-if="articles">
         <div
             class="ps-post__header bg--cover"
             :style="{
@@ -120,6 +120,8 @@
                 </div>
             </div>
         </div>
+        <button @click="scrollToPageTop" id="scroll-to-top" title="Go to top">Top</button>
+
     </div>
 </template>
 
@@ -133,6 +135,9 @@ export default {
         };
     },
     methods: {
+        scrollToPageTop() {
+            window.scrollTo(0,0);
+        },
         formatDate(date) {
             let formated = new Date(date);
             return formated.toDateString();
@@ -142,6 +147,7 @@ export default {
 
             const elmnt = document.getElementById('content-scroll');
             const icons = document.querySelector('#icon-bar');
+            const buttonTop = document.querySelector('#scroll-to-top');
 
             const divHeight = elmnt.offsetHeight;
             const distanceToTop = elmnt.getBoundingClientRect().top - HEADLINE;
@@ -150,14 +156,23 @@ export default {
             if (scrollHeight > 200) {
                 icons.classList.add('show');
                 icons.classList.remove('hide');
+                buttonTop.classList.add('show');
+                buttonTop.classList.remove('hide');
+                
             } else {
                 icons.classList.add('hide');
-                icons.classList.remove('show');
+                icons.classList.remove('show')
+                
+                buttonTop.classList.add('hide');
+                buttonTop.classList.remove('show');;
             }
 
             if (distanceToTop + divHeight - HEADLINE < 200) {
                 icons.classList.add('hide');
                 icons.classList.remove('show');
+
+                buttonTop.classList.add('hide');
+                buttonTop.classList.remove('show');
             }
         }
     },
@@ -173,6 +188,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#scroll-to-top {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #78bc27;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+  @include media('<sm') {
+        bottom: 120px;
+    }
+}
+
+#scroll-to-top:hover {
+  background-color: #555;
+}
+
 .hide {
     display: none;
 }

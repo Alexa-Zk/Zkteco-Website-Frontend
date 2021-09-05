@@ -5,7 +5,7 @@
                 :to="`/blog/${post.slug}`"
                 class="ps-post__overlay"
             ></nuxt-link>
-            <img :src="post.image[0].formats.thumbnail.url" :alt="post.title" />
+            <img :src="post.image[0].url" :alt="post.title" />
             <div v-if="post.badge" class="ps-post__badge">
                 <i class="{post.badge}"></i>
             </div>

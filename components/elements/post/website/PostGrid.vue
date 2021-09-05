@@ -5,7 +5,10 @@
                 :to="`/blog/${post.slug}`"
                 class="ps-post__overlay"
             />
-            <img :src="post.image[0].formats.thumbnail.url" :alt="post.title" />
+            <img 
+                :src="post.image[0].url"
+                :alt="post.title" 
+            />
         </div>
         <div class="ps-post__content">
             <div class="ps-post__meta">
