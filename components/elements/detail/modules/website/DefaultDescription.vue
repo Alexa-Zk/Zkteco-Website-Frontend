@@ -19,7 +19,37 @@
 
             <v-tab-item>
                 <div class="tab-content">
-                    No Downloads
+                    <div v-show="!product_information.downloads">No Downloads</div>
+                    <div class="ps-product__content"v-show="i"  v-for="i in product_information.downloads" :key="i.id">
+                        
+                        <div class="download_left">
+                            <div class="row-left">
+                                <div
+                                    class="download-avatar"
+                                >
+                                    <img
+                                        src="~/static/img/website/download-2.png"
+                                        alt="Download"
+                                    />
+                                </div>
+                                <div class="title">
+                                    {{ i.name }}
+                                </div>
+                            </div>
+                            <div class="size">
+                                Size:
+                                {{
+                                    i.file[0].size
+                                }}KB
+                            </div>
+                        </div>
+                        <div class="download_right">
+                            <a :href="i.file[0].url" download
+                                >Download</a
+                            >
+                        </div>
+                        
+                    </div>
                     <!-- <partial-specification :product="product_information"/> -->
                 </div>
             </v-tab-item>
@@ -52,6 +82,7 @@ export default {
         }
     },
     async created() {
+        console.log(this.product_information);
         let payload = {
             id: this.product_information.product_category.slug
         };
