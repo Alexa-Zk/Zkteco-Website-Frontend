@@ -105,7 +105,7 @@ export default {
                     icon: 'icon-cart'
                 },
                 {
-                    text: 'Store Locator',
+                    text: 'Authorised Partners',
                     url: '/website/page/store-locator',
                 },
             ]

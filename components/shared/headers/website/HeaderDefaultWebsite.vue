@@ -5,7 +5,7 @@
             <div class="ps-container">
                 <div class="header__left">
                     <nuxt-link to="/" class="ps-logo">
-                        <img loading="lazy" src="/img/zkteco-logo.png" width="133.64" height="32" alt="zkteco logo" />
+                        <img loading="lazy" src="/img/zkteco-logo1.png" width="133.64" height="32" alt="zkteco logo" />
                     </nuxt-link>
                     <div class="menu--product-categories">
                         <div class="menu__toggle">
