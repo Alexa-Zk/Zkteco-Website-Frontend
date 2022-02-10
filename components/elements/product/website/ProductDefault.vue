@@ -21,9 +21,9 @@
         <div class="ps-product__container">
             <nuxt-link
                 :to="
-                    `/website/shop/catgories-product/${
+                    `/product-categories/${
                         product.product_category
-                            ? product.product_category.id
+                            ? product.product_category.slug
                             : 0
                     }`
                 "
