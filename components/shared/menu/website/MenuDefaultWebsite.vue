@@ -108,6 +108,10 @@ export default {
                     text: 'Authorised Partners',
                     url: '/website/page/store-locator',
                 },
+                {
+                    text: 'BioTime Cloud',
+                    url: '/biotime-cloud',
+                },
             ]
         };
     }
