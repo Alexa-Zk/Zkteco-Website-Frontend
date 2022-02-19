@@ -10,10 +10,10 @@
             </p>
         </div>
 
-        <a class="btn-contact">
+        <nuxt-link class="btn-contact" to="#btc-contact">
             <i class="icon-telephone"></i>
             <span class="">Contact</span>
-        </a>
+        </nuxt-link>
     </div>
 </template>
 
@@ -37,6 +37,10 @@ h6 {
     color: #6c757d;
 }
 
+p {
+    margin: 0;
+    padding: 0;
+}
 .flex-center-center {
     display: flex;
     justify-content: center;
@@ -46,7 +50,7 @@ h6 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 150px 0px;
+    margin: 100px 0px;
     background: #f8f9fa;
     padding: 70px 60px;
     transition: all .4s cubic-bezier(.165,.84,.44,1);

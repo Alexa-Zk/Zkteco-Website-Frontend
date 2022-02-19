@@ -3,10 +3,10 @@
         <div class="header__top">
             <div class="ps-container">
                 <div class="bt-header-left">
-                    <nuxt-link to="/" class="ps-logo">
+                    <nuxt-link to="/biotime-cloud" class="ps-logo">
                         <img
                             loading="lazy"
-                            src="/img/biotime-cloud-logo.png"
+                            src="/img/ZKTECO-LOGO-NEW.png"
                             alt="biotime cloud logo"
                         />
                     </nuxt-link>
@@ -14,17 +14,20 @@
                 <div class="bt-header-right">
                     <ul>
                         <li>
-                            <nuxt-link to="/" class="ps-logo">
+                            <nuxt-link
+                                to="#btc-characteristics"
+                                class="ps-logo"
+                            >
                                 Characteristics
                             </nuxt-link>
                         </li>
                         <li>
-                            <nuxt-link to="/" class="ps-logo">
+                            <nuxt-link to="#btc-prices" class="ps-logo">
                                 Prices
                             </nuxt-link>
                         </li>
                         <li>
-                            <nuxt-link to="/" class="ps-logo">
+                            <nuxt-link to="#btc-contact" class="ps-logo">
                                 Contact
                             </nuxt-link>
                         </li>
@@ -94,7 +97,6 @@ export default {
                             font-weight: 600;
                             color: #6c757d;
                             font-size: 16px;
-
                         }
                     }
                 }
@@ -102,11 +104,11 @@ export default {
             .bt-header-left {
                 img {
                     height: 38px;
+                    width: 123px;
+                    object-fit: cover;
                 }
             }
         }
     }
 }
-
-
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="btc-pricing">
+    <div id="btc-prices" class="btc-pricing">
         <div class="header-text">
             <h2>
                 Query the planes available
