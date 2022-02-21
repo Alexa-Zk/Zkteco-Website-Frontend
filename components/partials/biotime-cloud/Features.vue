@@ -1,5 +1,5 @@
 <template>
-    <section class="ps-container section-btc-main-feature">
+    <section id="btc-characteristics" class="ps-container section-btc-main-feature">
         <div class="feature-container">
             <div class="ltf">
                 <div class="tag">
