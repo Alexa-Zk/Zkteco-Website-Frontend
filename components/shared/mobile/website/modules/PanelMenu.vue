@@ -170,10 +170,10 @@ export default {
                     text: 'Store Locator',
                     url: '/website/page/store-locator'
                 },
-                {
-                    text: 'BioTime Cloud',
-                    url: '/biotime-cloud',
-                },
+                // {
+                //     text: 'BioTime Cloud',
+                //     url: '/biotime-cloud',
+                // },
                 {
                     text: 'Login',
                     url: '/website/page/login'
