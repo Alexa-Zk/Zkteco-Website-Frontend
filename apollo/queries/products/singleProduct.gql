@@ -11,6 +11,16 @@ query Products($id: ID!) {
             slug
             id
         }
+        product_sub_category {
+            id
+            slug
+            name
+            product_category {
+                id
+                name
+                slug
+            }
+        }
         downloads {
             id
             name

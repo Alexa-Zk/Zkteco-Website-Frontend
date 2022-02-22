@@ -307,19 +307,17 @@ export const actions = {
 
     async getNewsCategories({ commit }, slug) {
         commit('setLoading', true);
-        let params = {
-            slug_in: slug,
-        };
-        const reponse = await Repository.get(
-                `${subBaseUrl}/categories/?${serializeQuery(params)}`
+        
+        const response = await Repository.get(
+                `${subBaseUrl}/getCategoriesBySlug/${slug}`
             )
             .then(response => {
-                commit('setNewsCategories', response.data[0]);
+                commit('setNewsCategories', response.data);
                 commit('setLoading', false);
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
-        return reponse;
+        return response;
     },
 
     async getProductsTotal({ state, commit }, payload) {

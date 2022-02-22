@@ -45,6 +45,7 @@ export default {
     },
     data: () => {
         return {
+
             categories: '',
             loading: 0,
             breadCrumb: [
@@ -64,9 +65,9 @@ export default {
         }),
     },
     
-    created() {
+   async created() {
         const slug = this.$route.params.id
-        const response = this.$store.dispatch('website/getNewsCategories', slug);
+        const response = await this.$store.dispatch('website/getNewsCategories', slug);
     },
 };
 </script>
