@@ -107,7 +107,9 @@ export default {
         })
     },
     async created() {
-        const payload = {};
+        const payload = {
+            query: ''
+        };
         const storeLocation = await this.$store.dispatch(
             'website/getStoreLocator',
             payload
