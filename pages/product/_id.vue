@@ -43,16 +43,6 @@ export default {
         BreadCrumb,
         ProductDetailFullwidth
     },
-
-    apollo: {
-        products: {
-            prefetch: true,
-            query: singleProduct,
-            variables() {
-                return { id: this.$route.params.id };
-            }
-        }
-    },
     head() {
         const name = this.formattedProducts ? this.formattedProducts.name : '';
         const description = this.formattedProducts
@@ -61,6 +51,9 @@ export default {
         const image = this.formattedProducts
             ? this.formattedProducts.images[0].url
             : 'https://www.zkteco-wa.com/img/zkteco-logo.png';
+        console.log(image)
+        console.log(description);
+        console.log(name);
         return {
             title: 'Product Details',
             titleTemplate(title) {
@@ -125,6 +118,16 @@ export default {
             ]
         };
     },
+    apollo: {
+        products: {
+            prefetch: true,
+            query: singleProduct,
+            variables() {
+                return { id: this.$route.params.id };
+            }
+        }
+    },
+    
     computed: {
         formattedProducts() {
             return this.products[0];
