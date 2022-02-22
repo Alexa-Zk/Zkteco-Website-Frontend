@@ -43,6 +43,7 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 
 export default {
     layout: 'layout-default-website',
+    name: 'Products',
     transition: 'zoom',
     components: {
         Newsletters,
@@ -54,18 +55,28 @@ export default {
         ProductDetailFullwidth,
         Loading
     },
+    async asyncData({ params, store, error }) {
+        let payload = {
+            id: params.id
+        };
+        try {
+            await store.dispatch(`website/getSingleProduct`, payload);
+        } catch (e) {
+            error(e || new Error('Could not connect to server'));
+        }
+    },
     head() {
-        const name = this.singleProduct
-            ? this.singleProduct.name
-            : '';
+        const name = this.singleProduct ? this.singleProduct.name : '';
         const description = this.singleProduct
             ? this.singleProduct.description
             : 'Product Details - Description';
-        const image = this.singleProduct ? this.singleProduct.images[0].url: ''
+        const image = this.singleProduct
+            ? this.singleProduct.images[0].url
+            : 'https://www.zkteco-wa.com/img/zkteco-logo.png';
         return {
             title: 'Product Details',
             titleTemplate(title) {
-                return `${name} - ${title}`
+                return `${name} - ${title}`;
             },
             meta: [
                 {
@@ -129,41 +140,29 @@ export default {
     computed: {
         ...mapState({
             singleProduct: state => state.website.singleProduct,
-            loading: state => state.website.loading,
-        }),
+            loading: state => state.website.loading
+        })
     },
     data() {
         return {
             fullPage: true,
             height: 60,
-            width: 40
+            width: 40,
+            breadCrumb: [
+                {
+                    text: 'Home',
+                    url: '/'
+                },
+                {
+                    text: 'Products',
+                    url: '/product'
+                },
+                {
+                    text: `${this.singleProduct ? this.singleProduct.name : ''}`
+                }
+            ]
         };
     },
-    methods: {
-        onCancel() {}
-    },
-    async created() {
-        this.breadCrumb = [
-            {
-                text: 'Home',
-                url: '/'
-            },
-            {
-                text: 'Products',
-                url: '/product'
-            },
-            {
-                text: ''
-            }
-        ];
-        let payload = {
-            id: this.$route.params.id
-        };
-        const response = await this.$store.dispatch(
-            'website/getSingleProduct',
-            payload
-        );
-    }
 };
 </script>
 

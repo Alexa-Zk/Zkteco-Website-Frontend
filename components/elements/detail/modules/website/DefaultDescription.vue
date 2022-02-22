@@ -82,7 +82,6 @@ export default {
         }
     },
     async created() {
-        console.log(this.product_information);
         let payload = {
             id: this.product_information.product_category.slug
         };
