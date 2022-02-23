@@ -19,8 +19,8 @@
 
             <v-tab-item>
                 <div class="tab-content">
-                    <div v-show="!product_information.downloads">No Downloads</div>
-                    <div class="ps-product__content"v-show="i"  v-for="i in product_information.downloads" :key="i.id">
+                    <div v-if="downloadStuff">No Downloads</div>
+                    <div class="" v-else  v-for="i in product_information.downloads" :key="i.id">
                         
                         <div class="download_left">
                             <div class="row-left">
@@ -89,6 +89,12 @@ export default {
             'website/getRelatedProducts',
             payload
         );
+    },
+    computed: {
+        downloadStuff() {
+            const isEmpty = Object.keys(this.product_information.downloads).length === 0;
+            return isEmpty
+        }
     }
 };
 </script>

@@ -1,21 +1,13 @@
 <template lang="html">
     <div class="martfury">
-        <loading
-            :active.sync="loading"
-            :can-cancel="true"
-            :is-full-page="fullPage"
-            :width="width"
-            :height="height"
-            color="#78bc27"
-        ></loading>
 
         <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />
         <div class="ps-page--product">
             <div class="ps-container">
                 <div class="ps-page__container">
-                    <div class="ps-page__left">
+                    <div class="ps-page__left" v-if="products">
                         <product-detail-fullwidth
-                            :singleProduct="singleProduct"
+                            :singleProduct="formattedProducts"
                         />
                     </div>
                     <div class="ps-page__right">
@@ -30,16 +22,14 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import ProductDetailFullwidth from '~/components/elements/detail/website/ProductDetailFullwidth';
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import CustomerBought from '~/components/partials/product/CustomerBought';
 import RelatedProduct from '~/components/partials/product/RelatedProduct';
 import ProductWidgets from '~/components/partials/product/website/ProductWidgets';
 import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
-import Loading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/vue-loading.css';
+import singleProduct from "~/apollo/queries/products/singleProduct";
+
 
 export default {
     layout: 'layout-default-website',
@@ -50,29 +40,20 @@ export default {
         LayoutProduct,
         ProductWidgets,
         RelatedProduct,
-        CustomerBought,
         BreadCrumb,
-        ProductDetailFullwidth,
-        Loading
-    },
-    async asyncData({ params, store, error }) {
-        let payload = {
-            id: params.id
-        };
-        try {
-            await store.dispatch(`website/getSingleProduct`, payload);
-        } catch (e) {
-            error(e || new Error('Could not connect to server'));
-        }
+        ProductDetailFullwidth
     },
     head() {
-        const name = this.singleProduct ? this.singleProduct.name : '';
-        const description = this.singleProduct
-            ? this.singleProduct.description
+        const name = this.formattedProducts ? this.formattedProducts.name : '';
+        const description = this.formattedProducts
+            ? this.formattedProducts.description
             : 'Product Details - Description';
-        const image = this.singleProduct
-            ? this.singleProduct.images[0].url
+        const image = this.formattedProducts
+            ? this.formattedProducts.images[0].url
             : 'https://www.zkteco-wa.com/img/zkteco-logo.png';
+        console.log(image)
+        console.log(description);
+        console.log(name);
         return {
             title: 'Product Details',
             titleTemplate(title) {
@@ -137,15 +118,25 @@ export default {
             ]
         };
     },
+    apollo: {
+        products: {
+            prefetch: true,
+            query: singleProduct,
+            variables() {
+                return { id: this.$route.params.id };
+            }
+        }
+    },
+    
     computed: {
-        ...mapState({
-            singleProduct: state => state.website.singleProduct,
-            loading: state => state.website.loading
-        })
+        formattedProducts() {
+            return this.products[0];
+        },
     },
     data() {
         return {
             fullPage: true,
+            products: [],
             height: 60,
             width: 40,
             breadCrumb: [
@@ -158,7 +149,7 @@ export default {
                     url: '/product'
                 },
                 {
-                    text: `${this.singleProduct ? this.singleProduct.name : ''}`
+                    text: ''
                 }
             ]
         };
