@@ -8,15 +8,27 @@
                     </span>
                 </div>
                 <h2>
-                    BioTime Cloud, you solution from weather Y assistance on the
-                    cloud
+                    BioTime Cloud, your cloud-based attendance management system
                 </h2>
                 <p>
-                    BioTime Cloud is a centralized attendance management
-                    platform that works in an AWS environment. With our platform
-                    you will be able to control work attendance in the largest
-                    cloud in the world regardless of whether your devices are
-                    within the same network. Start your free trial today!
+                    Biotime.ng is a smart cloud-based attendance management
+                    system that allows for efficient and safe data and
+                    information administration. The system provides cutting-edge
+                    features for running a successful business and enables you
+                    to connect with your peers in the most efficient manner
+                    possible.
+                </p>
+                <p>
+                    AWS cloud technology powers the Biotime.ng platform, making
+                    it the most flexible and secure cloud computing environment
+                    available today. The platform gives you total visibility
+                    into your business operations and makes it simple to
+                    collaborate with users.
+                </p>
+                <p>
+                    Employees and administrators can use the Biotime.ng software
+                    portal from anywhere and at any time using
+                    internet-connected devices like laptops or mobile apps
                 </p>
                 <div class="features-ctx">
                     <button
@@ -32,7 +44,7 @@
             <div class="rtf">
                 <img
                     loading="lazy"
-                    src="/img/btc-hero-image.jpeg"
+                    src="/img/biotime-ng.png"
                     alt="biotime cloud logo"
                 />
                 <div class="play-circle" @click.prevent="showVideoModal = true">
@@ -53,15 +65,15 @@
                     class="ps-dialog__close"
                     @click.prevent="showVideoModal = false"
                 >
-                    <i  style="font-weight: bold;" class="icon icon-cross"></i>
+                    <i style="font-weight: bold;" class="icon icon-cross"></i>
                 </a>
                 <div style="margin-top: 30px;">
                     <iframe
-                    width="420"
-                    height="420"
-                    src="https://www.youtube.com/embed/ySViUYsTUkg"
-                >
-                </iframe>
+                        width="420"
+                        height="420"
+                        src="https://www.youtube.com/embed/ySViUYsTUkg"
+                    >
+                    </iframe>
                 </div>
             </div>
         </v-dialog>
@@ -101,6 +113,7 @@ h6 {
     .hero-container {
         padding-bottom: 60px;
         display: flex;
+        align-items: center;
         @include media('<sm') {
             display: block;
         }

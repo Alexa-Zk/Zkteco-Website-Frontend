@@ -6,11 +6,13 @@
                 <p>
                     Download the BioTime Cloud app and enjoy all the features of
                     our attendance management software from your Android or iOS
-                    device.
+                    device
                 </p>
                 <div class="app-buttons">
-                    
-                    <button type="submit" class="ps-btn ps-btn--lg ps-btn--gray">
+                    <button
+                        type="submit"
+                        class="ps-btn ps-btn--lg ps-btn--gray"
+                    >
                         <i class="fa fa-apple"></i> IPhone
                     </button>
                     <button type="submit" class="ps-btn ps-btn--lg">
@@ -139,7 +141,6 @@ h6 {
         @include media('<sm') {
             display: block;
         }
-        
 
         .rtf {
             width: 58.33333333%;
