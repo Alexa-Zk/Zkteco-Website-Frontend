@@ -50,11 +50,34 @@ export default {
     },
     methods: {
         async subscribe() {
-            let payload = {
-                name: "From the Website",
-                email: this.email
+            const apiKey = "bf0c6c0c71996a12c3c3e71e4ad8d941-us19";
+            const server = "us6";
+            const listId = "a7d3efdd10";
+            const mailchimp = require("@mailchimp/mailchimp_marketing");
+            mailchimp.setConfig({
+                apiKey,
+                server
+            })
+        
+            try {
+                
+                const response = await mailchimp.lists.addListMember(listId, {
+                    email_address: this.email,
+                    status: 'subscribed',
+                    //email_type: 'html',
+                    merge_fields: {
+                        FNAME: 'ZKteco',
+                        LNAME: 'Website'
+                    },
+                     tags: ['newsletter']
+                })
+                
+                console.log(' Mail C ',response);
+            } catch (error) {
+                console.log(' Mail Error ',error);
             }
-            const ip = await this.$axios.$post('https://admin.zkteco-wa.com/maillists', payload);
+            
+            
         }
     }
 };
