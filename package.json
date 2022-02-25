@@ -11,6 +11,7 @@
         "generate": "nuxt generate"
     },
     "dependencies": {
+        "@mailchimp/mailchimp_marketing": "^3.0.74",
         "@nuxtjs/apollo": "^4.0.1-rc.5",
         "@nuxtjs/axios": "^5.3.6",
         "@nuxtjs/robots": "^2.4.2",
