@@ -2,11 +2,11 @@
     <div class="btc-contact">
         <div class="header-text">
             <h2>
-                Do you need a plan tailored to you?
+                Start your free trial today!
             </h2>
 
             <p>
-                Contact us to request a personalized quote
+                Also contact us to request a personalized quote
             </p>
         </div>
 

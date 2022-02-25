@@ -3,6 +3,7 @@
         <hero-section />
         <features />
         <div class="ps-container" style="background: #fafafa">
+            <Benefits />
             <pricing />
             <contact-us />
             <biotime-app />
@@ -18,6 +19,7 @@ import Features from "~/components/partials/biotime-cloud/Features";
 import Pricing from "~/components/partials/biotime-cloud/Pricing";
 import ContactUs from "~/components/partials/biotime-cloud/ContactUs";
 import Faqs from "~/components/partials/biotime-cloud/Faqs";
+import Benefits from "~/components/partials/biotime-cloud/Benefits";
 import ContactForm from "~/components/partials/biotime-cloud/ContactForm";
 
 import BiotimeApp from "~/components/partials/biotime-cloud/BiotimeApp";
@@ -31,7 +33,8 @@ export default {
         ContactUs,
         Faqs,
         ContactForm,
-        BiotimeApp
+        BiotimeApp,
+        Benefits
     }
 };
 </script>

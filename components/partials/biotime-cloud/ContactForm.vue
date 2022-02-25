@@ -7,7 +7,8 @@
                 </div>
                 <div class="card-text">
                     <h6>Call Us</h6>
-                    <p>(55) 5292 8418</p>
+                    <p><a href="tel:+2348177777512">(+234) 8177777512</a></p>
+                    <p><a href="tel:+2348177777513">(+234) 8177777513</a></p>
                 </div>
             </div>
             <div class="contact-form-card">
@@ -16,7 +17,8 @@
                 </div>
                 <div class="card-text">
                     <h6>Email</h6>
-                    <p>info@zkteco.mx</p>
+                    <p><a href = "mailto:enquiry@zkteco-wa.com?subject=Biotime Cloud&body=Enquiry">enquiry@zkteco-wa.com</a></p>
+                    <p><a href = "mailto:support@zkteco-wa.com?subject=Biotime Cloud&body=Support">support@zkteco-wa.com</a></p>
                 </div>
             </div>
             <div class="contact-form-card">
@@ -25,7 +27,7 @@
                 </div>
                 <div class="card-text">
                     <h6>Visit Us</h6>
-                    <p>Insurgentes Sur 553, CDMX</p>
+                    <p>64 Adetokunbo Ademola Street, Victoria Island, Lagos</p>
                 </div>
             </div>
         </div>
@@ -229,7 +231,7 @@ h6 {
                 p {
                     padding: 0;
                     margin: 0;
-                    font-size: 18px;
+                    font-size: 16px;
                 }
             }
         }

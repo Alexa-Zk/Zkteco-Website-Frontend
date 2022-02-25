@@ -12,22 +12,45 @@
                     <div class="features">
                         <i class="icon-checkmark-circle"></i>
                         <span>
-                            Attendance reports, from any device and at any time
+                            Cloud-Based Time Attendance Software
                         </span>
                     </div>
                     <div class="features">
                         <i class="icon-checkmark-circle"></i>
-                        <span>Reduce costs, time and space</span>
+                        <span>Flexible and Smart Shift Scheduling</span>
                     </div>
                     <div class="features">
                         <i class="icon-checkmark-circle"></i>
-                        <span>Create fixed and flexible schedules</span>
+                        <span>Auto-Synchronization of Biometric Templates and Real-Time Monitoring</span>
                     </div>
                     <div class="features">
                         <i class="icon-checkmark-circle"></i>
-                        <span
-                            >Home office and location control for
-                            employees</span
+                        <span>Employee Self-Service</span
+                        >
+                    </div>
+                    <div class="features">
+                        <i class="icon-checkmark-circle"></i>
+                        <span>Multi-Level Approvals and Automatic E-mail Notifications</span
+                        >
+                    </div>
+                    <div class="features">
+                        <i class="icon-checkmark-circle"></i>
+                        <span>Multiple Admin Privilege</span
+                        >
+                    </div>
+                    <div class="features">
+                        <i class="icon-checkmark-circle"></i>
+                        <span>Attendance Reports and Calculation</span
+                        >
+                    </div>
+                    <div class="features">
+                        <i class="icon-checkmark-circle"></i>
+                        <span>Seamless geo-location check-in</span
+                        >
+                    </div>
+                    <div class="features">
+                        <i class="icon-checkmark-circle"></i>
+                        <span>Mobile App</span
                         >
                     </div>
                 </div>
