@@ -32,6 +32,9 @@
                             {{ $t('common.subscribe') }}
                         </button>
                     </div>
+                    <div>
+                        <p class="message">{{ message }}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -46,7 +49,8 @@ export default {
     data() {
         return {
             demoDialog: true,
-            email: ''
+            email: '',
+            message: ''
         };
     },
     mounted() {
@@ -70,6 +74,8 @@ export default {
                     'https://admin.zkteco-wa.com/maillists',
                     payload
                 );
+                this.email = '';
+                this.message = 'Thanks for subscribing to our newsletter';
             }
         }
     }
@@ -119,5 +125,8 @@ export default {
             right: 42px;
         }
     }
+}
+.message {
+    color: green;
 }
 </style>

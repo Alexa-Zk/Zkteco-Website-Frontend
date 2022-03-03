@@ -1,12 +1,14 @@
 <template lang="html">
-    <ul 
-        :class="className" 
-    >
+    <ul :class="className">
         <MenuProduct />
         <template v-for="item in mainMenu">
             <MenuDropdown v-if="item.subMenu" :menu-data="item" />
             <MenuMega v-else-if="item.mega" :menu-data="item" />
-            <li class="menu-item-has-dropdown" v-else-if="item.redirect" :key="item.text">
+            <li
+                class="menu-item-has-dropdown"
+                v-else-if="item.redirect"
+                :key="item.text"
+            >
                 <a href="https://ngteco.ng/">
                     {{ item.text }}
                 </a>
@@ -49,9 +51,9 @@ export default {
                         },
                         {
                             text: 'Classified By Application',
-                            url: '/solution-categories/classified-by-application'
-                        },
-                        
+                            url:
+                                '/solution-categories/classified-by-application'
+                        }
                     ]
                 },
                 {
@@ -67,7 +69,7 @@ export default {
                                 {
                                     text: 'Resources Center',
                                     url: '/support/download-center'
-                                },
+                                }
                             ]
                         },
                         {
@@ -88,9 +90,9 @@ export default {
                                 {
                                     text: 'FAQ',
                                     url: '/support/faq'
-                                },
+                                }
                             ]
-                        },
+                        }
                     ]
                 },
                 {
@@ -106,11 +108,11 @@ export default {
                 },
                 {
                     text: 'Authorised Partners',
-                    url: '/website/page/store-locator',
-                },
+                    url: '/website/page/store-locator'
+                }
                 // {
-                //     text: 'BioTime Cloud',
-                //     url: '/biotime-cloud',
+                //     text: 'BioTime NG',
+                //     url: '/biotime-ng',
                 // },
             ]
         };

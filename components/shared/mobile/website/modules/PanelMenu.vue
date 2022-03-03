@@ -110,7 +110,8 @@ export default {
                         },
                         {
                             text: 'Classified by Application',
-                            url: '/solution-categories/classified-by-application'
+                            url:
+                                '/solution-categories/classified-by-application'
                         }
                     ]
                 },
@@ -122,7 +123,7 @@ export default {
                     subMenu: [
                         {
                             text: 'Download Center',
-                            url: '/support/download-center',
+                            url: '/support/download-center'
                         },
                         {
                             text: 'After Sales Service',
@@ -171,13 +172,13 @@ export default {
                     url: '/website/page/store-locator'
                 },
                 // {
-                //     text: 'BioTime Cloud',
-                //     url: '/biotime-cloud',
+                //     text: 'BioTime NG',
+                //     url: '/biotime-ng',
                 // },
                 {
                     text: 'Login',
                     url: '/website/page/login'
-                },
+                }
                 // {
                 //     text: 'Register',
                 //     url: '/website/page/register'

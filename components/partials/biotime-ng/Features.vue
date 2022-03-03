@@ -1,10 +1,13 @@
 <template>
-    <section id="btc-characteristics" class="ps-container section-btc-main-feature">
+    <section
+        id="btc-characteristics"
+        class="ps-container section-btc-main-feature"
+    >
         <div class="feature-container">
             <div class="ltf">
                 <div class="tag">
                     <span>
-                        main features
+                        Main Features
                     </span>
                 </div>
                 <h2>Your data from any device at any time</h2>
@@ -21,37 +24,37 @@
                     </div>
                     <div class="features">
                         <i class="icon-checkmark-circle"></i>
-                        <span>Auto-Synchronization of Biometric Templates and Real-Time Monitoring</span>
-                    </div>
-                    <div class="features">
-                        <i class="icon-checkmark-circle"></i>
-                        <span>Employee Self-Service</span
+                        <span
+                            >Auto-Synchronization of Biometric Templates and
+                            Real-Time Monitoring</span
                         >
                     </div>
                     <div class="features">
                         <i class="icon-checkmark-circle"></i>
-                        <span>Multi-Level Approvals and Automatic E-mail Notifications</span
+                        <span>Employee Self-Service</span>
+                    </div>
+                    <div class="features">
+                        <i class="icon-checkmark-circle"></i>
+                        <span
+                            >Multi-Level Approvals and Automatic E-mail
+                            Notifications</span
                         >
                     </div>
                     <div class="features">
                         <i class="icon-checkmark-circle"></i>
-                        <span>Multiple Admin Privilege</span
-                        >
+                        <span>Multiple Admin Privilege</span>
                     </div>
                     <div class="features">
                         <i class="icon-checkmark-circle"></i>
-                        <span>Attendance Reports and Calculation</span
-                        >
+                        <span>Attendance Reports and Calculation</span>
                     </div>
                     <div class="features">
                         <i class="icon-checkmark-circle"></i>
-                        <span>Seamless geo-location check-in</span
-                        >
+                        <span>Seamless geo-location check-in</span>
                     </div>
                     <div class="features">
                         <i class="icon-checkmark-circle"></i>
-                        <span>Mobile App</span
-                        >
+                        <span>Mobile App</span>
                     </div>
                 </div>
             </div>
@@ -96,7 +99,6 @@ h6 {
         .rtf {
             width: 50%;
             @include media('<sm') {
-                
                 width: 100%;
             }
         }
@@ -110,24 +112,24 @@ h6 {
         .ltf {
             .tag {
                 background: #7ac143;
-
                 padding: 3px 6px;
                 border-radius: 0.25rem;
                 width: fit-content;
                 span {
                     font-weight: 700;
                     letter-spacing: -0.03rem;
-                    font-size: 14px;
+                    font-size: 24px;
                     color: white;
                 }
             }
 
             h2 {
                 font-size: 30px;
-                padding: 40px 0px 50px;
+                padding: 20px 0px 50px;
             }
 
             .features-ctx {
+                margin-top: -48px;
                 .features {
                     padding: 8px 0px;
                     font-size: 16px;

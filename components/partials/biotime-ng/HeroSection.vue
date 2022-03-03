@@ -4,11 +4,11 @@
             <div class="ltf">
                 <div class="tag">
                     <span>
-                        BioTime Cloud
+                        BioTime NG
                     </span>
                 </div>
                 <h2>
-                    BioTime Cloud, your cloud-based attendance management system
+                    A smarter attendance solution for your business
                 </h2>
                 <p>
                     Biotime.ng is a smart cloud-based attendance management
@@ -18,18 +18,7 @@
                     to connect with your peers in the most efficient manner
                     possible.
                 </p>
-                <p>
-                    AWS cloud technology powers the Biotime.ng platform, making
-                    it the most flexible and secure cloud computing environment
-                    available today. The platform gives you total visibility
-                    into your business operations and makes it simple to
-                    collaborate with users.
-                </p>
-                <p>
-                    Employees and administrators can use the Biotime.ng software
-                    portal from anywhere and at any time using
-                    internet-connected devices like laptops or mobile apps
-                </p>
+
                 <div class="features-ctx">
                     <button
                         type="submit"
@@ -163,13 +152,13 @@ h6 {
             padding-bottom: 20px;
             .tag {
                 background-color: rgba(0, 0, 0, 0.2);
-                padding: 3px 6px;
+                padding: 5px 7px;
                 border-radius: 0.25rem;
                 width: fit-content;
                 span {
                     font-weight: 700;
                     letter-spacing: -0.03rem;
-                    font-size: 14px;
+                    font-size: 24px;
                     color: white;
                 }
             }

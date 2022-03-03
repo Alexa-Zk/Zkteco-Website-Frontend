@@ -22,9 +22,15 @@
                                     placeholder="Email address"
                                     v-model="email"
                                 />
-                                <button class="ps-btn" @click.prevent="subscribe">
+                                <button
+                                    class="ps-btn"
+                                    @click.prevent="subscribe"
+                                >
                                     {{ $t('common.subscribe') }}
                                 </button>
+                            </div>
+                            <div>
+                                <p class="message">{{ message }}</p>
                             </div>
                         </div>
                     </div>
@@ -39,7 +45,8 @@ export default {
     name: 'Newsletters',
     data() {
         return {
-            email: ''
+            email: '',
+            message: ''
         };
     },
     props: {
@@ -50,34 +57,17 @@ export default {
     },
     methods: {
         async subscribe() {
-            const apiKey = "bf0c6c0c71996a12c3c3e71e4ad8d941-us19";
-            const server = "us6";
-            const listId = "a7d3efdd10";
-            const mailchimp = require("@mailchimp/mailchimp_marketing");
-            mailchimp.setConfig({
-                apiKey,
-                server
-            })
-        
-            try {
-                
-                const response = await mailchimp.lists.addListMember(listId, {
-                    email_address: this.email,
-                    status: 'subscribed',
-                    //email_type: 'html',
-                    merge_fields: {
-                        FNAME: 'ZKteco',
-                        LNAME: 'Website'
-                    },
-                     tags: ['newsletter']
-                })
-                
-                console.log(' Mail C ',response);
-            } catch (error) {
-                console.log(' Mail Error ',error);
-            }
-            
-            
+            let payload = {
+                name: 'From the Website',
+                email: this.email
+            };
+            const ip = await this.$axios.$post(
+                'https://admin.zkteco-wa.com/maillists',
+                payload
+            );
+            console.log(' PlayLoad ', payload);
+            this.email = '';
+            this.message = 'Thanks for subscribing to our newsletter';
         }
     }
 };
@@ -88,5 +78,8 @@ export default {
     background: ghostwhite;
     // border-top: 1px solid #e1e1e1;
     // border-bottom: 1px solid #e1e1e1;
+}
+.message {
+    color: green;
 }
 </style>
