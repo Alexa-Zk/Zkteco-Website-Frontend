@@ -2,9 +2,9 @@
     <section class="section-btc-main-feature">
         <div class="feature-container">
             <div class="ltf">
-                <h2>ZKBioTime Cloud</h2>
+                <h2>ZKBioTime NG</h2>
                 <p>
-                    Download the BioTime Cloud app and enjoy all the features of
+                    Download the BioTime NG app and enjoy all the features of
                     our attendance management software from your Android or iOS
                     device
                 </p>
