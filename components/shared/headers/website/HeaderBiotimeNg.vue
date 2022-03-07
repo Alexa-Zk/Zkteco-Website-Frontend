@@ -30,8 +30,8 @@
                             </nuxt-link>
                         </li>
                         <li>
-                            <nuxt-link to="#btc-contact" class="ps-logo">
-                                Contact
+                            <nuxt-link to="#btc-faq" class="ps-logo">
+                                FAQ
                             </nuxt-link>
                         </li>
                     </ul>

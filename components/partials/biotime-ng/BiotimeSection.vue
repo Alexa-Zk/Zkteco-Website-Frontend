@@ -1,17 +1,24 @@
 <template>
     <div class="bitome-wrapper ">
-        <h3>Attendance Solution</h3>
-        <p>
-            AWS cloud technology powers the Biotime.ng platform, making it the
-            most flexible and secure cloud computing environment available
-            today. The platform gives you total visibility into your business
-            operations and makes it simple to collaborate with users.
-        </p>
-        <p>
-            Employees and administrators can use the Biotime.ng software portal
-            from anywhere and at any time using internet-connected devices like
-            laptops or mobile apps
-        </p>
+        <div class="wrapper">
+            <h2>Attendance Solution</h2>
+            <h3>Attendance Solution</h3>
+            <div class="cloud">
+                <img
+                    loading="lazy"
+                    src="/img/biotime/cloud.png"
+                    alt="biotime cloud"
+                />
+
+                <p>
+                    AWS cloud technology powers the Biotime.ng platform, making
+                    it the most flexible and secure cloud computing environment
+                    available today. The platform gives you total visibility
+                    into your business operations and makes it simple to
+                    collaborate with users.
+                </p>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -32,26 +39,57 @@ h6 {
 }
 
 .bitome-wrapper {
-    margin-top: 6rem;
-    padding: 0 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8rem;
     background-color: #fff;
-    padding: 2rem;
     border-radius: 2px;
-    text-align: left;
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05),
-        0 1.5rem 2.2rem rgba(0, 0, 0, 0.1);
+    text-align: center;
 
-    h3 {
-        background: #7ac143;
-        padding: 5px 6px;
-        color: #fff;
-        border-radius: 0.25rem;
-        width: fit-content;
-    }
+    .wrapper {
+        max-width: 70vw;
+        h2 {
+            font-size: 4.5em;
+            font-weight: 800;
+            background: linear-gradient(to top, transparent 0%, #0e2431 70%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0.1;
+        }
+        h3 {
+            color: #000;
+            font-size: 2.5em;
+            font-weight: 700;
+            transform: translateY(-50px);
 
-    p {
-        font-size: 2rem;
-        background-color: #fff;
+            &::before {
+                content: '';
+                position: absolute;
+                width: 70px;
+                height: 5px;
+                right: 34%;
+                bottom: 0;
+                background: #7ac143;
+            }
+        }
+        .cloud {
+            max-width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 4em;
+            transform: translateY(-35px);
+            i {
+                font-size: 6em;
+            }
+
+            p {
+                text-align: left;
+                font-size: 2rem;
+                background-color: #fff;
+            }
+        }
     }
 }
 </style>

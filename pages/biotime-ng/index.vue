@@ -10,7 +10,7 @@
             <biotime-app />
             <faqs />
         </div>
-        <contact-form />
+        <!--contact-form /-->
     </div>
 </template>
 

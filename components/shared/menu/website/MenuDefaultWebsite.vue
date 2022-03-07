@@ -58,7 +58,7 @@ export default {
                 },
                 {
                     text: 'Support',
-                    url: '/store/',
+                    url: '/support/support',
                     extraClass: 'menu-item-has-children has-mega-menu',
                     subClass: 'sub-menu',
                     mega: 'true',
@@ -99,21 +99,21 @@ export default {
                     text: 'Smart Home',
                     redirect: true
                 },
-                {
-                    text: 'Partners Portal',
-                    url: '/store',
-                    extraClass: 'menu-item-has-children',
-                    subClass: 'sub-menu',
-                    icon: 'icon-cart'
-                },
+                // {
+                //     text: 'Partners Portal',
+                //     url: '/store',
+                //     extraClass: 'menu-item-has-children',
+                //     subClass: 'sub-menu',
+                //     icon: 'icon-cart'
+                // },
                 {
                     text: 'Authorised Partners',
                     url: '/website/page/store-locator'
+                },
+                {
+                    text: 'BioTime NG',
+                    url: '/biotime-ng'
                 }
-                // {
-                //     text: 'BioTime NG',
-                //     url: '/biotime-ng',
-                // },
             ]
         };
     }
