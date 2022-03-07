@@ -5,7 +5,13 @@
             <div class="ps-container">
                 <div class="header__left">
                     <nuxt-link to="/" class="ps-logo">
-                        <img loading="lazy" src="/img/zkteco-logo.png" width="133.64" height="32" alt="zkteco logo" />
+                        <img
+                            loading="lazy"
+                            src="/img/zkteco-logo.png"
+                            width="133.64"
+                            height="32"
+                            alt="zkteco logo"
+                        />
                     </nuxt-link>
                     <div class="menu--product-categories">
                         <div class="menu__toggle">
@@ -48,16 +54,16 @@ export default {
         HeaderActions,
         MenuDefault
     },
-    data () {
+    data() {
         return {
             searchText: ''
-        }
+        };
     },
     mounted() {
         window.addEventListener('scroll', stickyHeader);
     },
     methods: {
-        submitQuery () {
+        submitQuery() {
             if (this.searchText !== null || this.searchText !== '') {
                 this.$router.push(`/website/search?keyword=${this.searchText}`);
             }
@@ -66,7 +72,7 @@ export default {
     async created() {
         // let slug = {}
         // const response = await this.$store.dispatch('website/getAllProductCategories', slug);
-    },
+    }
 };
 </script>
 

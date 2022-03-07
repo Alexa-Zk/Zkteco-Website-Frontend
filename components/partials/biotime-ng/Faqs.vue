@@ -1,6 +1,6 @@
 <template>
     <div class="btc-faq">
-        <div class="header-text">
+        <div class="header-text" id="btc-faq">
             <h2>
                 Questions frequent
             </h2>
