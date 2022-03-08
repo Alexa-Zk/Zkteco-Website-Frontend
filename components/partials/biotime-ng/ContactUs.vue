@@ -10,7 +10,7 @@
             </p>
         </div>
 
-        <nuxt-link class="btn-contact" to="#btc-contact">
+        <nuxt-link class="btn-contact" to="contact">
             <i class="icon-telephone"></i>
             <span class="">Contact</span>
         </nuxt-link>

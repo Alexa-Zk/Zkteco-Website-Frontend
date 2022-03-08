@@ -61,13 +61,14 @@ export default {
                 name: 'From the Website',
                 email: this.email
             };
-            const ip = await this.$axios.$post(
+            const response = await this.$axios.$post(
                 'https://admin.zkteco-wa.com/maillists',
                 payload
             );
-            console.log(' PlayLoad ', payload);
-            this.email = '';
-            this.message = 'Thanks for subscribing to our newsletter';
+            if (response) {
+                this.email = '';
+                this.message = 'Thanks for subscribing to our newsletter';
+            }
         }
     }
 };

@@ -23,10 +23,9 @@
                     <button
                         type="submit"
                         class="ps-btn ps-btn--lg ps-btn--gray"
+                        v-on:click="toBiotime"
                     >
-                        <nuxt-link to="#btc-contact">
-                            <i class="icon-telephone"></i> Contact
-                        </nuxt-link>
+                        <i class="icon-telephone"></i> Signup
                     </button>
                 </div>
             </div>
@@ -76,6 +75,12 @@ export default {
         return {
             showVideoModal: false
         };
+    },
+    methods: {
+        toBiotime: () => {
+            const url = 'http://biotime.ng';
+            window.location.href = url;
+        }
     }
 };
 </script>
