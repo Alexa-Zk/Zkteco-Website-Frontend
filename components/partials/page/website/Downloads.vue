@@ -48,9 +48,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="download_right">
-                                                        <a :href="i.file[0].url" download
+                                                        <!-- <a :href="i.file[0].url" download
                                                             >Download</a
-                                                        >
+                                                        > -->
+                                                        <button class="ps-btn" @click.prevent="download(i.file[0].url)">
+                                                            Download
+                                                        </button>
 
                                                         <div class="date">
                                                             Uploaded on: {{formatDate(i.file[0].updated_at)}}
@@ -71,6 +74,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import { state } from '~/store/app';
 export default {
     name: 'Downloads',
 		props: ['downloadCenters'],
@@ -78,7 +83,25 @@ export default {
 			formatDate(date) {
             let formated = new Date(date);
             return formated.toDateString();
-        }
+        },
+				download(data) {
+					if (this.isLoggedInToDownload) {
+						const link = document.createElement('a');
+						link.href = data;
+						link.setAttribute('download', 'image.jpg');
+						document.body.appendChild(link);
+						link.click();
+						document.body.removeChild(link);
+						location.href = data;
+					} else {
+						this.$router.push("/auth/login")
+					}
+				}
+		},
+		computed: {
+			...mapState({
+				isLoggedInToDownload: state => state.auth.isLoggedInToDownload
+			})
 		}
 };
 </script>

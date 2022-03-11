@@ -2,13 +2,16 @@ import Repository, {
     serializeQuery,
     serializePayload
 } from '~/repositories/Repository.js';
-import { baseUrl } from '~/repositories/Repository';
+import { baseUrl, subBaseUrl } from '~/repositories/Repository';
 import axios from 'axios';
 
 export const state = () => ({
     isLoggedIn: false,
+    isLoggedInToDownload: false,
     userInfo: null,
+    userInfoDownload: null,
     authToken: null,
+    authTokenForDownloads: null,
     singleUserInformation: null,
     billing: null,
     shipping: null
@@ -21,10 +24,24 @@ export const mutations = {
     setUserInfo(state, payload) {
         state.userInfo = payload;
     },
+    setIsLoggedInDownload(state, payload) {
+        state.isLoggedInToDownload = payload;
+    },
+    setUserInfoDownload(state, payload) {
+        state.userInfoDownload = payload;
+    },
     setAuthToken(state, payload) {
         state.authToken = payload;
 
         this.$cookies.set('id_token', payload, {
+            path: '/',
+            maxAge: 60 * 60 * 24 * 7
+        });
+    },
+    setAuthTokenForDownloads(state, payload) {
+        state.authTokenForDownloads = payload;
+
+        this.$cookies.set('download_token', payload, {
             path: '/',
             maxAge: 60 * 60 * 24 * 7
         });
@@ -80,6 +97,33 @@ export const actions = {
                 return response.data;
             })
             .catch(error => ({ error: error.response.data }));
+        return reponse;
+    },
+
+    async loginDownloads({ commit, state }, payload) {
+        const reponse = await Repository.post(
+            `${subBaseUrl}/auth/local`,
+            payload
+        )
+            .then(response => {
+                commit('setUserInfoDownload', response.data);
+                commit('setIsLoggedInDownload', true);
+                commit('setAuthTokenForDownloads', response.data.jwt)
+                return response;
+            })
+            .catch(error => ({ error: error.response.data }));
+        return reponse;
+    },
+
+    async registerDownload({ commit }, payload) {
+        const reponse = await Repository.post(
+            `${subBaseUrl}/auth/local/register`,
+            payload
+        )
+            .then(response => {
+                return response;
+            })
+            .catch(error => ({ error: error.response }));
         return reponse;
     },
 

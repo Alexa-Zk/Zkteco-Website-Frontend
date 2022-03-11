@@ -20,42 +20,31 @@
             <v-tab-item>
                 <div class="tab-content">
                     <div v-if="downloadStuff">No Downloads</div>
-                    <div class="" v-else  v-for="i in product_information.downloads" :key="i.id">
-                        
-                        <div class="download_left">
-                            <div class="row-left">
-                                <div
-                                    class="download-avatar"
-                                >
-                                    <img
-                                        src="~/static/img/website/download-2.png"
-                                        alt="Download"
-                                    />
-                                </div>
-                                <div class="title">
-                                    {{ i.name }}
-                                </div>
-                            </div>
-                            <div class="size">
-                                Size:
-                                {{
-                                    i.file[0].size
-                                }}KB
-                            </div>
+                    <div
+                        class="download_container"
+                        v-else
+                        v-for="i in product_information.downloads"
+                        :key="i.id"
+                    >
+                        <div class="download">
+                            <img
+                                src="~/static/img/website/download-2.png"
+                                alt="Download"
+                            />
+                            <h4>{{ i.name }}</h4>
+                            <div class="size">Size: {{ i.file[0].size }}KB</div>
+                            <a v-on:click.prevent="download(i.file[0].url)">Download</a>
                         </div>
-                        <div class="download_right">
-                            <a :href="i.file[0].url" download
-                                >Download</a
-                            >
-                        </div>
-                        
                     </div>
                     <!-- <partial-specification :product="product_information"/> -->
                 </div>
             </v-tab-item>
             <v-tab-item>
                 <div class="tab-content">
-                    <related-product layout="fullwidth" collection-slug="shop-recommend-items"/>
+                    <related-product
+                        layout="fullwidth"
+                        collection-slug="shop-recommend-items"
+                    />
                 </div>
             </v-tab-item>
         </v-tabs>
@@ -63,10 +52,9 @@
 </template>
 
 <script>
-
 import PartialDescription from '~/components/elements/detail/modules/website/PartialDescription';
 import PartialSpecification from '~/components/elements/detail/modules/website/PartialSpecification';
-
+import { mapState } from "vuex";
 import RelatedProduct from '~/components/partials/product/RelatedProduct';
 export default {
     name: 'DefaultDescription',
@@ -91,9 +79,28 @@ export default {
         );
     },
     computed: {
+        ...mapState({
+				isLoggedInToDownload: state => state.auth.isLoggedInToDownload
+			}),
         downloadStuff() {
-            const isEmpty = Object.keys(this.product_information.downloads).length === 0;
-            return isEmpty
+            const isEmpty =
+                Object.keys(this.product_information.downloads).length === 0;
+            return isEmpty;
+        }
+    },
+    methods: {
+        download(data) {
+        if (this.isLoggedInToDownload) {
+            const link = document.createElement('a');
+            link.href = data;
+            link.setAttribute('download', 'image.jpg');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            location.href = data;
+        } else {
+            this.$router.push("/auth/login")
+        }
         }
     }
 };
@@ -118,6 +125,29 @@ span.list-item {
     text-transform: none;
     @media screen and (min-width: 992px) {
         font-size: 20px;
+    }
+}
+
+.download_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    .download {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        img {
+            height: 100px;
+            object-fit: contain;
+        }
+        h4 {
+            margin: 10px 0px;
+        }
+        a {
+            &hover {
+                text-decoration: underline;
+            }
+        }
     }
 }
 </style>
