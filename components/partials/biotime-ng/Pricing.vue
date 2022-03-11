@@ -14,48 +14,51 @@
         </div>
 
         <div class="pricing-configuration">
-            <div class="pricing-nav flex-center-center">
-                <div class="pricing-nav-item">
-                    <span>Annual</span>
-                </div>
-            </div>
             <div class="grid-cols4-30">
                 <pricing-item
-                    tagText="Lite"
-                    price="100"
-                    users="20"
-                    devices="1"
-                    app="1"
-                    events="30,000"
+                    tagText="Free Trial"
+                    price="0"
+                    users="50"
+                    devices="3"
+                    app="50"
+                    events="1,000,000"
                     valid="1"
                 />
                 <pricing-item
                     tagText="Standard"
-                    price="125"
-                    users="50"
-                    devices="1"
-                    app="3"
-                    events="100,000"
+                    price="20,000"
+                    users="200"
+                    devices="5"
+                    app="200"
+                    events="5,000,000"
                     valid="1"
                 />
                 <pricing-item
                     tagText="Premium"
-                    price="159"
-                    users="50"
-                    devices="1"
-                    app="5"
-                    events="250,000"
-                    valid="2"
+                    price="41,666"
+                    users="500"
+                    devices="20"
+                    app="300"
+                    events="999,999"
+                    valid="1"
                 />
                 <pricing-item
                     tagText="Enterprise"
-                    price="199"
-                    users="50"
-                    devices="2"
-                    app="10"
-                    events="300,000"
-                    valid="2"
-                    :active="true"
+                    price="70,834"
+                    users="1000"
+                    devices="100"
+                    app="500"
+                    events="10,000,000"
+                    valid="1"
+                />
+                <pricing-item
+                    tagText="Customization"
+                    price="291,667"
+                    users="5000+"
+                    devices="200+"
+                    app="70,000+"
+                    events="9,999,999"
+                    valid="1"
                 />
             </div>
         </div>
@@ -126,8 +129,8 @@ h6 {
 
         .grid-cols4-30 {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            gap: 30px;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 15px;
             @include media('<sm') {
                 grid-template-columns: 1fr;
             }

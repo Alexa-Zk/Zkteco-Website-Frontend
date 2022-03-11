@@ -10,75 +10,75 @@
         </div>
         <div class="price-section" :class="`${active ? 'ctx-invert' : null}`">
             <div class="flex-baseline">
+                <div class="currency">
+                    <span>&#x20A6;</span>
+                </div>
                 <div class="price">
                     {{ price }}
                 </div>
-                <div class="currency">
-                    USD
-                </div>
             </div>
 
-            <p :class="`${active ? 'ctx-invert' : null}`">Year</p>
+            <p :class="`${active ? 'ctx-invert' : null}`">Month</p>
         </div>
         <div>
             <div class="pricing-list-items">
                 <div class="ctx" :class="`${active ? 'ctx-invert' : null}`">
                     <i class="icon-user"></i>
-                    <span>Up to {{ users }} users</span>
+                    <span>{{ users }} Employees</span>
                 </div>
             </div>
             <div class="pricing-list-items">
                 <div class="ctx" :class="`${active ? 'ctx-invert' : null}`">
                     <i class="icon-desktop"></i>
-                    <span>{{ devices }} device</span>
+                    <span>{{ devices }} Device</span>
                 </div>
             </div>
             <div class="pricing-list-items">
                 <div class="ctx" :class="`${active ? 'ctx-invert' : null}`">
                     <i class="icon-tablet"></i>
-                    <span>{{ app }} mobile application</span>
+                    <span>{{ app }} Mobile App</span>
                 </div>
             </div>
             <div class="pricing-list-items">
                 <div class="ctx" :class="`${active ? 'ctx-invert' : null}`">
                     <i class="icon-eye"></i>
-                    <span>Up to {{ events }} events</span>
+                    <span>{{ events }} Transaction</span>
                 </div>
             </div>
             <div class="pricing-list-items">
                 <div class="ctx" :class="`${active ? 'ctx-invert' : null}`">
                     <i class="icon-icons"></i>
-                    <span>{{ valid }} year validity</span>
+                    <span>{{ valid }} Monthly</span>
                 </div>
             </div>
             <div class="pricing-list-items">
                 <div class="ctx" :class="`${active ? 'ctx-invert' : null}`">
                     <i class="icon-cog"></i>
-                    <span>API</span>
+                    <span>Rest API</span>
                 </div>
             </div>
             <div class="pricing-list-items">
                 <div class="ctx" :class="`${active ? 'ctx-invert' : null}`">
                     <i class="icon-self-timer"></i>
-                    <span>Advanced Time and Attendance</span>
+                    <span>SMS Nofication</span>
+                </div>
+            </div>
+            <div class="pricing-list-items">
+                <div class="ctx" :class="`${active ? 'ctx-invert' : null}`">
+                    <i class="icon-self-timer"></i>
+                    <span>Attendance Module</span>
                 </div>
             </div>
             <div class="pricing-list-items">
                 <div class="ctx" :class="`${active ? 'ctx-invert' : null}`">
                     <i class="icon-bubble-text"></i>
-                    <span>WhatsApp alerts</span>
+                    <span>Access Module</span>
                 </div>
             </div>
             <div class="pricing-list-items">
                 <div class="ctx" :class="`${active ? 'ctx-invert' : null}`">
                     <i class="icon-bubble-text"></i>
-                    <span>SMS notification</span>
-                </div>
-            </div>
-            <div class="pricing-list-items">
-                <div class="ctx" :class="`${active ? 'ctx-invert' : null}`">
-                    <i class="icon-enter"></i>
-                    <span>Basic Access Control</span>
+                    <span>WhatsApp Push Notification</span>
                 </div>
             </div>
         </div>
@@ -113,17 +113,17 @@ h6 {
     display: flex;
     align-items: baseline;
 }
-.ctx-invert{
-    color: white!important;;
+.ctx-invert {
+    color: white !important;
 }
 .pricing-item-invert {
-    background: #7ac143!important;
+    background: #7ac143 !important;
     color: white;
 }
 .pricing-item {
     background: white;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     flex-direction: column;
     border: 0 solid rgba(0, 0, 0, 0.125);
@@ -138,13 +138,13 @@ h6 {
     }
     .tag {
         background: #494949;
-        padding: 0px 4px;
+        padding: 6px 12px;
         border-radius: 0.25rem;
         width: fit-content;
         span {
             font-weight: 700;
             letter-spacing: -0.03rem;
-            font-size: 14px;
+            font-size: 20px;
             color: white;
         }
     }
@@ -167,26 +167,25 @@ h6 {
             font-weight: 700;
         }
         .currency {
-            font-size: 14px;
+            font-size: 48px;
             font-weight: 700;
         }
     }
     .pricing-list-items {
         display: flex;
-        justify-content: center;
+        justify-content: left;
+        align-items: top;
         padding: 8px 0px;
         .ctx {
-            display: flex;
-            align-items: center;
             color: #6c757d;
             i {
                 font-weight: 700;
-               
+                margin-top: 0px;
             }
             span {
-                font-size: 14px;
-                margin-left: 6px;
-                font-weight: 600;
+                font-size: 16px;
+                padding-left: 10px;
+                //font-weight: 600;
             }
         }
     }
