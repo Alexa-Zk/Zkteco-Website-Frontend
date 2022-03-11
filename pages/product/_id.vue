@@ -51,9 +51,6 @@ export default {
         const image = this.formattedProducts
             ? this.formattedProducts.images[0].url
             : 'https://www.zkteco-wa.com/img/zkteco-logo.png';
-        console.log(image)
-        console.log(description);
-        console.log(name);
         return {
             title: 'Product Details',
             titleTemplate(title) {

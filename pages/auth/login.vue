@@ -119,21 +119,39 @@ export default {
         username: { required },
         password: { required }
     },
+    beforeRouteEnter(to, from, next) {
+        next(vm => {
+            vm.storeLocally(from, next);
+        });
+    },
     methods: {
+        storeLocally(from, next) {
+            if (from.path !== '/auth/register') {
+                localStorage.setItem('NAVIGATION_HISTORY', from.path);
+            }
+            next();
+        },
         async handleSubmit() {
             this.$v.$touch();
             if (!this.$v.$invalid) {
                 this.loading = true;
-                const response = await this.$store.dispatch('auth/loginDownloads', {
-                    identifier: this.username || 'rahman.badru@zkteco-wa.com',
-                    password: this.password || 'alexa123'
-                });
+                const response = await this.$store.dispatch(
+                    'auth/loginDownloads',
+                    {
+                        identifier:
+                            this.username || 'rahman.badru@zkteco-wa.com',
+                        password: this.password || 'alexa123'
+                    }
+                );
                 if (response.status === 200) {
-                    this.$router.push('/support/download-center')
+                    const getLocationHistory = localStorage.getItem(
+                        'NAVIGATION_HISTORY'
+                    );
+                    this.$router.push(getLocationHistory);
                     this.loading = false;
                 } else {
                     this.loading = false;
-                    console.log(response.error.message)
+                    console.log(response.error.message);
                     this.error_alert = response.error.message;
                     this.showAlert = true;
                 }
@@ -154,7 +172,7 @@ export default {
                 errors.push('This password field is required');
             return errors;
         }
-    },
+    }
 };
 </script>
 
