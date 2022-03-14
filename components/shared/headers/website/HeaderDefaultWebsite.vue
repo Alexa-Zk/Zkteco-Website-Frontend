@@ -7,7 +7,7 @@
                     <nuxt-link to="/" class="ps-logo">
                         <img
                             loading="lazy"
-                            src="/img/zkteco-logo.png"
+                            src="/img/zkteco-logo1.png"
                             width="133.64"
                             height="32"
                             alt="zkteco logo"
