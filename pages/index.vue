@@ -24,7 +24,7 @@ export default {
         return {
             homePages: '',
             articles: '',
-            fullPage: true,
+            fullPage: true
         };
     },
     apollo: {
@@ -58,7 +58,10 @@ export default {
     },
     created() {
         let payload = {};
-        const response = this.$store.dispatch('website/getArticlesLimited', payload);
+        const response = this.$store.dispatch(
+            'website/getArticlesLimited',
+            payload
+        );
     }
 };
 </script>
