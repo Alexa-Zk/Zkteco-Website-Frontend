@@ -2,14 +2,11 @@
     <div class="ps-site-features">
         <div class="ps-container">
             <h1>ZKTeco West Africa</h1>
-            <h3 data-aos="zoom-out">ZKTeco Insight into the Market</h3>
+            <h3>ZKTeco Insight into the Market</h3>
             <div class="ps-block--site-features">
                 <nuxt-link
                     to="/product-categories/time-attendance"
                     class="ps-block__item"
-                    data-aos="fade-up"
-                    data-aos-duration="1000"
-                    data-aos-easing="ease-in-out"
                 >
                     <div class="ps-block__left">
                         <img
@@ -32,7 +29,6 @@
                 <nuxt-link
                     to="/product-categories/access-control"
                     class="ps-block__item"
-                    data-aos="fade-up"
                 >
                     <div class="ps-block__left">
                         <img
@@ -53,7 +49,6 @@
                 <nuxt-link
                     to="/product-categories/smart-lock"
                     class="ps-block__item"
-                    data-aos="fade-up"
                 >
                     <div class="ps-block__left">
                         <img
@@ -76,7 +71,6 @@
                 <nuxt-link
                     to="product-categories/entrance-control"
                     class="ps-block__item"
-                    data-aos="fade-up"
                 >
                     <div class="ps-block__left">
                         <img
@@ -98,7 +92,6 @@
                 <nuxt-link
                     to="product-categories/security-inspection"
                     class="ps-block__item"
-                    data-aos="fade-up"
                 >
                     <div class="ps-block__left">
                         <img
@@ -117,11 +110,7 @@
                         </p>
                     </div>
                 </nuxt-link>
-                <nuxt-link 
-                    to="/product-categories/cctv"
-                    class="ps-block__item"
-                    data-aos="fade-up"
-                >
+                <nuxt-link to="/product-categories/cctv" class="ps-block__item">
                     <div class="ps-block__left">
                         <img
                             src="~/static/img/website/cctv.webp"
