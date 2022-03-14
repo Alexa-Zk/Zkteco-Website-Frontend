@@ -10,10 +10,9 @@
             </p>
         </div>
 
-        <nuxt-link class="btn-contact" to="contact">
-            <i class="icon-telephone"></i>
-            <span class="">Contact</span>
-        </nuxt-link>
+        <button type="submit" class="btn-contact" v-on:click="toContact">
+            <i class="icon-telephone"></i> <span class="">Contact</span>
+        </button>
     </div>
 </template>
 
@@ -22,6 +21,12 @@ import PricingItem from './modules/PricingItem';
 export default {
     components: {
         PricingItem
+    },
+    methods: {
+        toContact: () => {
+            const url = 'https://www.zkteco-wa.com/contact';
+            window.location.href = url;
+        }
     }
 };
 </script>
