@@ -1,6 +1,43 @@
 <template lang="html">
-    <div class="ps-product__content">
-        <v-tabs background-color="white" color="warning" class="ps-tab-list">
+    <div>
+        <div class="ps-product__content">
+            <span class="list-item">Description</span>
+            <div class="tab-content">
+                <partial-description :product="product_information" />
+            </div>
+        </div>
+        <div class="ps-product__content">
+            <span class="list-item">Downloads</span>
+            <div class="tab-content">
+                <div v-if="downloadStuff">No Downloads</div>
+                <div
+                    class="download_container"
+                    v-else
+                    v-for="i in product_information.downloads"
+                    :key="i.id"
+                >
+                    <div class="download">
+                        <img
+                            src="~/static/img/website/download-2.png"
+                            alt="Download"
+                        />
+                        <h4>{{ i.name }}</h4>
+                        <div class="size">Size: {{ i.file[0].size }}KB</div>
+                        <a v-on:click.prevent="download(i.file[0].url)">Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ps-product__content">
+            <span class="list-item">Related Products</span>
+            <div class="tab-content">
+                <related-product
+                    layout="fullwidth"
+                    collection-slug="shop-recommend-items"
+                />
+            </div>
+        </div>
+        <!-- <v-tabs background-color="white" color="warning" class="ps-tab-list">
             <v-tab :ripple="false" tag="li">
                 <span class="list-item">Description</span>
             </v-tab>
@@ -36,7 +73,6 @@
                             <a v-on:click.prevent="download(i.file[0].url)">Download</a>
                         </div>
                     </div>
-                    <!-- <partial-specification :product="product_information"/> -->
                 </div>
             </v-tab-item>
             <v-tab-item>
@@ -47,7 +83,7 @@
                     />
                 </div>
             </v-tab-item>
-        </v-tabs>
+        </v-tabs> -->
     </div>
 </template>
 
@@ -115,16 +151,21 @@ li[aria-selected='true'] {
         color: $color-heading !important;
     }
 }
+
+.ps-product__content {
+    padding-top: 100px;
+}
 span.list-item {
     position: relative;
     display: block;
     color: #999999;
-    font-size: 14px;
+    font-size: 20px;
     line-height: 20px;
     font-weight: 600;
+    margin-bottom: 4px;
     text-transform: none;
     @media screen and (min-width: 992px) {
-        font-size: 20px;
+        font-size: 30px;
     }
 }
 
@@ -142,10 +183,17 @@ span.list-item {
         }
         h4 {
             margin: 10px 0px;
+            font-weight: 500;
+            text-transform: capitalize;
         }
         a {
-            &hover {
-                text-decoration: underline;
+            margin-top: 4px;
+            font-size: 16px;
+            color: #78bc27;
+            font-weight: 600;
+            transition: .7s all; 
+            &:hover {
+                color: darken($color: #78bc27, $amount: 40);
             }
         }
     }
