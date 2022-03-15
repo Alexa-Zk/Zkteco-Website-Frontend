@@ -13,7 +13,7 @@
                 <div
                     class="download_container"
                     v-else
-                    v-for="i in product_information.downloads"
+                    v-for="i in product_information.product_files"
                     :key="i.id"
                 >
                     <div class="download">
@@ -22,8 +22,31 @@
                             alt="Download"
                         />
                         <h4>{{ i.name }}</h4>
-                        <div class="size">Size: {{ i.file[0].size }}KB</div>
-                        <a v-on:click.prevent="download(i.file[0].url)">Download</a>
+                        <div class="size">Size: {{ i.file.size }}KB</div>
+                        <a v-on:click.prevent="download(i.file.url)"
+                            >Download</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ps-product__content">
+            <span class="list-item">Product Videos</span>
+            <div class="tab-content">
+                <div v-if="downloadStuff">No Downloads</div>
+                <div
+                    class="download_container"
+                    v-else
+                    v-for="i in product_information.product_videos"
+                    :key="i.id"
+                >
+                    <div class="download">
+                        <img
+                            src="~/static/img/website/download-2.png"
+                            alt="Download"
+                        />
+                        <h4>{{ i.name }}</h4>
+                        <a v-on:click.prevent="openModal(i.url)">Watch Video</a>
                     </div>
                 </div>
             </div>
@@ -37,60 +60,34 @@
                 />
             </div>
         </div>
-        <!-- <v-tabs background-color="white" color="warning" class="ps-tab-list">
-            <v-tab :ripple="false" tag="li">
-                <span class="list-item">Description</span>
-            </v-tab>
-            <v-tab :ripple="false" tag="li">
-                <span class="list-item">Downloads</span>
-            </v-tab>
-            <v-tab :ripple="false" tag="li">
-                <span class="list-item">Related Products</span>
-            </v-tab>
 
-            <v-tab-item>
-                <div class="tab-content">
-                    <partial-description :product="product_information" />
+        <!-- Modal  -->
+        <v-dialog v-model="showVideoModal" width="700" height="700">
+            <div class="ps-dialog">
+                <a
+                    class="ps-dialog__close"
+                    @click.prevent="showVideoModal = false"
+                >
+                    <i style="font-weight: bold;" class="icon icon-cross"></i>
+                </a>
+                <div style="margin-top: 10px;">
+                    <iframe
+                        width="100%"
+                        height="315"
+                        :src="videoUrl"
+                        frameborder="0"
+                        allowfullscreen
+                    ></iframe>
                 </div>
-            </v-tab-item>
-
-            <v-tab-item>
-                <div class="tab-content">
-                    <div v-if="downloadStuff">No Downloads</div>
-                    <div
-                        class="download_container"
-                        v-else
-                        v-for="i in product_information.downloads"
-                        :key="i.id"
-                    >
-                        <div class="download">
-                            <img
-                                src="~/static/img/website/download-2.png"
-                                alt="Download"
-                            />
-                            <h4>{{ i.name }}</h4>
-                            <div class="size">Size: {{ i.file[0].size }}KB</div>
-                            <a v-on:click.prevent="download(i.file[0].url)">Download</a>
-                        </div>
-                    </div>
-                </div>
-            </v-tab-item>
-            <v-tab-item>
-                <div class="tab-content">
-                    <related-product
-                        layout="fullwidth"
-                        collection-slug="shop-recommend-items"
-                    />
-                </div>
-            </v-tab-item>
-        </v-tabs> -->
+            </div>
+        </v-dialog>
     </div>
 </template>
 
 <script>
 import PartialDescription from '~/components/elements/detail/modules/website/PartialDescription';
 import PartialSpecification from '~/components/elements/detail/modules/website/PartialSpecification';
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 import RelatedProduct from '~/components/partials/product/RelatedProduct';
 export default {
     name: 'DefaultDescription',
@@ -98,6 +95,12 @@ export default {
         PartialSpecification,
         PartialDescription,
         RelatedProduct
+    },
+    data() {
+        return {
+            showVideoModal: false,
+            videoUrl: null
+        };
     },
     props: {
         product_information: {
@@ -116,8 +119,8 @@ export default {
     },
     computed: {
         ...mapState({
-				isLoggedInToDownload: state => state.auth.isLoggedInToDownload
-			}),
+            isLoggedInToDownload: state => state.auth.isLoggedInToDownload
+        }),
         downloadStuff() {
             const isEmpty =
                 Object.keys(this.product_information.downloads).length === 0;
@@ -125,18 +128,22 @@ export default {
         }
     },
     methods: {
+        openModal(url) {
+            this.showVideoModal = true;
+            this.videoUrl = url;
+        },
         download(data) {
-        if (this.isLoggedInToDownload) {
-            const link = document.createElement('a');
-            link.href = data;
-            link.setAttribute('download', 'image.jpg');
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            location.href = data;
-        } else {
-            this.$router.push("/auth/login")
-        }
+            if (this.isLoggedInToDownload) {
+                const link = document.createElement('a');
+                link.href = data;
+                link.setAttribute('download', 'image.jpg');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                location.href = data;
+            } else {
+                this.$router.push('/auth/login');
+            }
         }
     }
 };
@@ -191,7 +198,7 @@ span.list-item {
             font-size: 16px;
             color: #78bc27;
             font-weight: 600;
-            transition: .7s all; 
+            transition: 0.7s all;
             &:hover {
                 color: darken($color: #78bc27, $amount: 40);
             }

@@ -31,6 +31,24 @@ query Products($id: ID!) {
                 caption
             }
         }
+        product_files {
+            id
+            name
+            file {
+                id
+                name
+                url
+                size
+                alternativeText
+                caption
+            }
+        }
+        product_videos {
+            id
+            name
+            url
+
+        }
         images {
             id
             name
