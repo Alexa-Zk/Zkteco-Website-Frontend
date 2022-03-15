@@ -4,7 +4,7 @@
             
             <div class="navigation__right">
                 
-                <ul class="mega-menu__list" data-aos="fade-left">
+                <ul class="mega-menu__list" >
                     
                     <li class="menu-item-has-dropdown">
                         <nuxt-link to="/about">

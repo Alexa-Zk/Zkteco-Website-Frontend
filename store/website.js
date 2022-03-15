@@ -23,6 +23,7 @@ export const state = () => ({
     loading: false,
     page: 0,
     perPage: 12,
+    downloadCategories: null,
     sort_by: 'created_at:desc'
 
 });
@@ -98,6 +99,10 @@ export const mutations = {
 
     setStoreLocator(state, payload) {
         state.storeLocator = payload
+    },
+
+    setDownloadCategories(state, payload) {
+        state.downloadCategories = payload
     }
 
 };
@@ -146,6 +151,30 @@ export const actions = {
             )
             .then(response => {
                 commit('setArticles', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getDownloadCategories({ commit }) {
+        commit('setLoading', true);
+        const reponse = await Repository.get(`${subBaseUrl}/download-categories`)
+            .then(response => {
+                commit('setDownloadCategories', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async searchDownloadCategories({ commit }, payload) {
+        commit('setLoading', true);
+        const reponse = await Repository.get(`${subBaseUrl}/downloads?download_categories.category=${payload.category}&_q=${payload.search}`)
+            .then(response => {
+
                 commit('setLoading', false);
                 return response.data;
             })
