@@ -12,7 +12,54 @@
             </div>
         </div>
 
-        <div class="pricing-configuration">
+        <div class="benefit-container">
+            <div>
+                <i class="mdi mdi-track-light"></i>
+                <p>
+                    A simple and cost-effective system for tracking employee
+                    time, managing productivity, and producing high-quality
+                    outputs with a profit margin
+                </p>
+            </div>
+
+            <div>
+                <i class="mdi mdi-car-shift-pattern"></i>
+                <p>
+                    With a versatile scheduler, you can easily organize
+                    processes, assign shifts correctly, and make workflows
+                    simpler and more efficient.
+                </p>
+            </div>
+
+            <div>
+                <i class="mdi mdi-image-filter-tilt-shift"></i>
+                <p>
+                    A customizable and user-friendly reporting tool that gives
+                    comprehensive data and makes it simple for businesses to
+                    analyze and improve their processes.
+                </p>
+            </div>
+
+            <div>
+                <i class="mdi mdi-human-male-board"></i>
+                <p>
+                    User-friendly dashboard design and simple modules for
+                    managing user profiles, shifts and leave schedules, and
+                    more.
+                </p>
+            </div>
+
+            <div>
+                <i class="mdi mdi-location-enter"></i>
+                <p>
+                    With our Biotime mobile app, we provide a comprehensive
+                    solution for continuous attendance management with a
+                    geo-located time clock.
+                </p>
+            </div>
+        </div>
+
+        <!--div class="pricing-configuration">
             <div class="grid-cols4-30">
                 <benefit-item
                     tagText="A simple and cost-effective system for tracking employee time, managing productivity, and producing high-quality outputs with a profit margin"
@@ -30,7 +77,7 @@
                     tagText="With our Biotime mobile app, we provide a comprehensive solution for continuous attendance management with a geo-located time clock."
                 />
             </div>
-        </div>
+        </div -->
     </div>
 </template>
 
@@ -57,6 +104,10 @@ h6 {
 .flex-center-center {
     display: flex;
     justify-content: center;
+    margin-bottom: 2rem;
+    p {
+        font-size: 1.8rem;
+    }
 }
 
 .btc-pricing {
@@ -71,6 +122,38 @@ h6 {
             @include media('<sm') {
                 width: 100%;
             }
+        }
+    }
+    .benefit-container {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 2rem;
+
+        div {
+            flex-direction: column;
+            box-shadow: 0px 0px 20px rgb(0 0 0 / 10%);
+            padding: 2rem;
+            border-radius: 4px;
+            text-align: center;
+            p {
+                font-size: 1.8rem;
+                background-color: #fff;
+                text-align: left;
+            }
+            i {
+                color: #7ac143;
+                font-size: 4em;
+                text-align: center;
+            }
+            &:hover {
+                transform: scale(1.03);
+            }
+        }
+
+        @include media('<sm') {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 1rem;
         }
     }
     .pricing-configuration {

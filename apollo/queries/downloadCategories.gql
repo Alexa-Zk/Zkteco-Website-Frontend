@@ -1,0 +1,19 @@
+query DownloadCategories{
+    downloadCategories {
+        id
+        category
+        downloads {
+            id
+            name
+            file {
+                id
+                name
+                updated_at
+                size
+                url
+                ext
+                caption
+            }
+        }
+    }
+}

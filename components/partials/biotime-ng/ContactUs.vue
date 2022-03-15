@@ -10,10 +10,9 @@
             </p>
         </div>
 
-        <nuxt-link class="btn-contact" to="#btc-contact">
-            <i class="icon-telephone"></i>
-            <span class="">Contact</span>
-        </nuxt-link>
+        <button type="submit" class="btn-contact" v-on:click="toContact">
+            <i class="icon-telephone"></i> <span class="">Contact</span>
+        </button>
     </div>
 </template>
 
@@ -22,6 +21,12 @@ import PricingItem from './modules/PricingItem';
 export default {
     components: {
         PricingItem
+    },
+    methods: {
+        toContact: () => {
+            const url = 'https://www.zkteco-wa.com/contact';
+            window.location.href = url;
+        }
     }
 };
 </script>
@@ -50,19 +55,20 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 100px 0px;
+    margin: 50px 0px;
     background: #f8f9fa;
     padding: 70px 60px;
-    transition: all .4s cubic-bezier(.165,.84,.44,1);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05),
         0 1.5rem 2.2rem rgba(0, 0, 0, 0.1);
 
     @include media('<sm') {
-       display: block;
+        display: block;
         padding: 40px 20px;
     }
     &:hover {
-        box-shadow: 0 .5rem 1.2rem rgba(0,0,0,.1),0 2rem 3rem rgba(0,0,0,.15);
+        box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.1),
+            0 2rem 3rem rgba(0, 0, 0, 0.15);
     }
     .header-text {
         p {
@@ -75,7 +81,8 @@ p {
         color: #7ac143;
         padding: 1.5rem 3.375rem;
         background: white;
-        box-shadow: 0 .25rem .5rem rgba(0,0,0,.05),0 1.5rem 2.2rem rgba(0,0,0,.1)!important;
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05),
+            0 1.5rem 2.2rem rgba(0, 0, 0, 0.1) !important;
 
         span {
             font-size: 20px;

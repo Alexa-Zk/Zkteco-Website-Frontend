@@ -1,5 +1,9 @@
 <template>
-    <div id="btc-contact" class="contact-form" style="background: rgb(250, 250, 250);">
+    <div
+        id="btc-contact"
+        class="contact-form"
+        style="background: rgb(250, 250, 250);"
+    >
         <div class="ps-container contact-form-link">
             <div class="contact-form-card">
                 <div class="circle">
@@ -17,8 +21,18 @@
                 </div>
                 <div class="card-text">
                     <h6>Email</h6>
-                    <p><a href = "mailto:enquiry@zkteco-wa.com?subject=Biotime Cloud&body=Enquiry">enquiry@zkteco-wa.com</a></p>
-                    <p><a href = "mailto:support@zkteco-wa.com?subject=Biotime Cloud&body=Support">support@zkteco-wa.com</a></p>
+                    <p>
+                        <a
+                            href="mailto:enquiry@zkteco-wa.com?subject=Biotime Cloud&body=Enquiry"
+                            >enquiry@zkteco-wa.com</a
+                        >
+                    </p>
+                    <p>
+                        <a
+                            href="mailto:support@zkteco-wa.com?subject=Biotime Cloud&body=Support"
+                            >support@zkteco-wa.com</a
+                        >
+                    </p>
                 </div>
             </div>
             <div class="contact-form-card">
@@ -177,7 +191,7 @@ h6 {
     color: #6c757d;
 }
 .contact-form {
-    padding: 100px 0px;
+    padding: 50px 0px;
 
     .contact-form-link {
         display: grid;
@@ -187,7 +201,7 @@ h6 {
 
         @include media('<sm') {
             gap: 10px;
-						grid-template-columns: 1fr;
+            grid-template-columns: 1fr;
         }
 
         .contact-form-card {
@@ -244,10 +258,10 @@ h6 {
             width: 75%;
             height: auto;
             border-radius: 0.3rem;
-						@include media('<sm') {
-							margin: 0;
-							width: 100%;
-						}
+            @include media('<sm') {
+                margin: 0;
+                width: 100%;
+            }
         }
         .btc-form--contact-us {
             background: white;
@@ -262,10 +276,10 @@ h6 {
             padding: 30px;
             border-radius: 10px;
 
-						@include media('<sm') {
-							position: relative;
-							width: 100%;
-						}
+            @include media('<sm') {
+                position: relative;
+                width: 100%;
+            }
 
             .row {
                 margin-top: 40px;

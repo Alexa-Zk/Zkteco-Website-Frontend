@@ -1,7 +1,7 @@
 <template lang="html">
     <v-app>
         <v-main>
-            <header-biotime-cloud />
+            <header-biotime-ng />
             <header-mobile />
             <nuxt />
             <footer-fullwidth />
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import HeaderBiotimeCloud from '~/components/shared/headers/website/HeaderBiotimeCloud';
+import HeaderBiotimeNg from '~/components/shared/headers/website/HeaderBiotimeNg';
 import HeaderMobile from '~/components/shared/mobile/website/HeaderMobile';
 import NavigationList from '~/components/shared/mobile/website/NavigationList';
 import MobileDrawer from '~/components/shared/mobile/website/MobileDrawer';
@@ -25,8 +25,8 @@ export default {
         MobileDrawer,
         NavigationList,
         HeaderMobile,
-        HeaderBiotimeCloud,
-        Notify,
+        HeaderBiotimeNg,
+        Notify
     }
 };
 </script>

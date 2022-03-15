@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="ps-page--single">
-        <bread-crumb :breadcrumb="breadCrumb"  layout="fullwidth"/>
-        <downloads :downloadCenters="downloadCenters"/>
+        <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />
+        <downloads :downloadCategories="downloadCategories" />
     </div>
 </template>
 
@@ -10,8 +10,7 @@ import BreadCrumb from '~/components/elements/BreadCrumb';
 import Downloads from '~/components/partials/page/website/Downloads';
 
 // Queries
-import downloadCenters from '~/apollo/queries/downloadCenters';
-
+import downloadCategories from '~/apollo/queries/downloadCategories';
 
 export default {
     head() {
@@ -34,7 +33,7 @@ export default {
     transition: 'zoom',
     data: () => {
         return {
-            downloadCenters: '',
+            downloadCategories: '',
             breadCrumb: [
                 {
                     text: 'Home',
@@ -47,11 +46,11 @@ export default {
         };
     },
     apollo: {
-        downloadCenters: {
+        downloadCategories: {
             prefetch: true,
-            query: downloadCenters
+            query: downloadCategories
         }
-    },
+    }
 };
 </script>
 

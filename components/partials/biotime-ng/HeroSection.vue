@@ -4,11 +4,11 @@
             <div class="ltf">
                 <div class="tag">
                     <span>
-                        BioTime Cloud
+                        BioTime NG
                     </span>
                 </div>
                 <h2>
-                    BioTime Cloud, your cloud-based attendance management system
+                    A smarter attendance solution for your business
                 </h2>
                 <p>
                     Biotime.ng is a smart cloud-based attendance management
@@ -18,26 +18,14 @@
                     to connect with your peers in the most efficient manner
                     possible.
                 </p>
-                <p>
-                    AWS cloud technology powers the Biotime.ng platform, making
-                    it the most flexible and secure cloud computing environment
-                    available today. The platform gives you total visibility
-                    into your business operations and makes it simple to
-                    collaborate with users.
-                </p>
-                <p>
-                    Employees and administrators can use the Biotime.ng software
-                    portal from anywhere and at any time using
-                    internet-connected devices like laptops or mobile apps
-                </p>
+
                 <div class="features-ctx">
                     <button
                         type="submit"
                         class="ps-btn ps-btn--lg ps-btn--gray"
+                        v-on:click="toBiotime"
                     >
-                        <nuxt-link to="#btc-contact">
-                            <i class="icon-telephone"></i> Contact
-                        </nuxt-link>
+                        <i class="icon-telephone"></i> Signup
                     </button>
                 </div>
             </div>
@@ -47,13 +35,13 @@
                     src="/img/biotime-ng.png"
                     alt="biotime cloud logo"
                 />
-                <div class="play-circle" @click.prevent="showVideoModal = true">
+                <!--div class="play-circle" @click.prevent="showVideoModal = true">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path
                             d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18c.62-.39.62-1.29 0-1.69L9.54 5.98C8.87 5.55 8 6.03 8 6.82z"
                         ></path>
                     </svg>
-                </div>
+                </div-->
             </div>
         </div>
 
@@ -87,6 +75,12 @@ export default {
         return {
             showVideoModal: false
         };
+    },
+    methods: {
+        toBiotime: () => {
+            const url = 'http://biotime.ng';
+            window.location.href = url;
+        }
     }
 };
 </script>
@@ -163,13 +157,13 @@ h6 {
             padding-bottom: 20px;
             .tag {
                 background-color: rgba(0, 0, 0, 0.2);
-                padding: 3px 6px;
+                padding: 5px 7px;
                 border-radius: 0.25rem;
                 width: fit-content;
                 span {
                     font-weight: 700;
                     letter-spacing: -0.03rem;
-                    font-size: 14px;
+                    font-size: 24px;
                     color: white;
                 }
             }

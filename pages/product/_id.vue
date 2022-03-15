@@ -1,6 +1,5 @@
 <template lang="html">
     <div class="martfury">
-
         <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />
         <div class="ps-page--product">
             <div class="ps-container">
@@ -28,8 +27,7 @@ import RelatedProduct from '~/components/partials/product/RelatedProduct';
 import ProductWidgets from '~/components/partials/product/website/ProductWidgets';
 import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
-import singleProduct from "~/apollo/queries/products/singleProduct";
-
+import singleProduct from '~/apollo/queries/products/singleProduct';
 
 export default {
     layout: 'layout-default-website',
@@ -50,7 +48,7 @@ export default {
             : 'Product Details - Description';
         const image = this.formattedProducts
             ? this.formattedProducts.images[0].url
-            : 'https://www.zkteco-wa.com/img/zkteco-logo.png';
+            : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
         return {
             title: 'Product Details',
             titleTemplate(title) {
@@ -124,11 +122,11 @@ export default {
             }
         }
     },
-    
+
     computed: {
         formattedProducts() {
             return this.products[0];
-        },
+        }
     },
     data() {
         return {
@@ -150,7 +148,7 @@ export default {
                 }
             ]
         };
-    },
+    }
 };
 </script>
 

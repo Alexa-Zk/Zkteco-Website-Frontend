@@ -22,9 +22,15 @@
                                     placeholder="Email address"
                                     v-model="email"
                                 />
-                                <button class="ps-btn" @click.prevent="subscribe">
+                                <button
+                                    class="ps-btn"
+                                    @click.prevent="subscribe"
+                                >
                                     {{ $t('common.subscribe') }}
                                 </button>
+                            </div>
+                            <div>
+                                <p class="message">{{ message }}</p>
                             </div>
                         </div>
                     </div>
@@ -39,7 +45,8 @@ export default {
     name: 'Newsletters',
     data() {
         return {
-            email: ''
+            email: '',
+            message: ''
         };
     },
     props: {
@@ -51,10 +58,17 @@ export default {
     methods: {
         async subscribe() {
             let payload = {
-                name: "From the Website",
+                name: 'From the Website',
                 email: this.email
+            };
+            const response = await this.$axios.$post(
+                'https://admin.zkteco-wa.com/maillists',
+                payload
+            );
+            if (response) {
+                this.email = '';
+                this.message = 'Thanks for subscribing to our newsletter';
             }
-            const ip = await this.$axios.$post('https://admin.zkteco-wa.com/maillists', payload);
         }
     }
 };
@@ -65,5 +79,8 @@ export default {
     background: ghostwhite;
     // border-top: 1px solid #e1e1e1;
     // border-bottom: 1px solid #e1e1e1;
+}
+.message {
+    color: green;
 }
 </style>

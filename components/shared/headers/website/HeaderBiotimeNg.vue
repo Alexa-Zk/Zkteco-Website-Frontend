@@ -3,7 +3,7 @@
         <div class="header__top">
             <div class="ps-container">
                 <div class="bt-header-left">
-                    <nuxt-link to="/biotime-cloud" class="ps-logo">
+                    <nuxt-link to="/" class="ps-logo">
                         <img
                             loading="lazy"
                             src="/img/ZKTECO-LOGO-NEW.png"
@@ -22,13 +22,16 @@
                             </nuxt-link>
                         </li>
                         <li>
-                            <nuxt-link to="#btc-prices" class="ps-logo">
+                            <!--nuxt-link to="#btc-prices" class="ps-logo">
                                 Prices
+                            </nuxt-link-->
+                            <nuxt-link to="#btc-prices" class="ps-logo">
+                                Benefits
                             </nuxt-link>
                         </li>
                         <li>
-                            <nuxt-link to="#btc-contact" class="ps-logo">
-                                Contact
+                            <nuxt-link to="#btc-faq" class="ps-logo">
+                                FAQ
                             </nuxt-link>
                         </li>
                     </ul>
