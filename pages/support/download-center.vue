@@ -50,6 +50,9 @@ export default {
             prefetch: true,
             query: downloadCategories
         }
+    },
+    created() {
+        const response = this.$store.dispatch( 'website/getDownloadCategories');
     }
 };
 </script>

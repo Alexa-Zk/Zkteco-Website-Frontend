@@ -1,11 +1,24 @@
 <template lang="html">
     <div class="ps-checkout ps-section--shopping">
-        <div class="container">
+        <div class="ps-container">
+            <div class="row mb-10">
+                <div class="col-lg-5 form-group--nest">
+                    <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Please input keyword"
+                        v-model="searchQuery"
+                    />
+                    <button class="ps-btn" @click.prevent="searchDownloads">
+                        {{ isLoading ? "Searching..." : "Search" }}
+                    </button>
+                </div>
+            </div>
             <div class="ps-section__content">
-                <div class="row">
+                <div class="">
                     <div class="col-md-12 col-sm-12">
                         <div class="ps-block--shipping">
-                            <div class="ps-block--methods">
+                            <div class="ps-block--methods" v-if="!isSearching">
                                 <v-tabs
                                     background-color="white"
                                     color="warning"
@@ -17,6 +30,7 @@
                                         class="tab-label"
                                         v-for="item in downloadCategories"
                                         :key="item.id"
+																				@click="tabValue(item.category)"
                                     >
                                         {{ item.category }}
                                     </v-tab>
@@ -85,6 +99,86 @@
                                     </v-tab-item>
                                 </v-tabs>
                             </div>
+														<div class="ps-block--methods" v-else>
+                                <v-tabs
+                                    background-color="white"
+                                    color="warning"
+                                    class="ps-tab-list"
+                                    grow
+																		v-for="item1 in searchData"
+                                    :key="item1.id"
+                                >
+
+                                    <v-tab
+                                        tag="li"
+                                        class="tab-label"
+                                        v-for="item2 in item1.download_categories"
+																				:key="item2.id"
+																				
+                                    >
+                                        {{ item2.category }}
+                                    </v-tab>
+
+                                    <v-tab-item
+                                        
+                                    >
+                                        <form>
+                                            <div class="ps-block__content">
+                                                <div
+                                                    class="downloads_container"
+                                                   
+                                                >
+                                                    <div class="download_left">
+                                                        <div class="row-left">
+                                                            <div
+                                                                class="download-avatar"
+                                                            >
+                                                                <img
+                                                                    src="~/static/img/website/download-2.png"
+                                                                    alt="Download"
+                                                                />
+                                                            </div>
+                                                            <div class="title">
+                                                                {{ item1.name }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="size">
+                                                            Size:
+                                                            {{
+                                                                item1.file.size /
+                                                                    1000
+                                                            }}MB
+                                                        </div>
+                                                    </div>
+                                                    <div class="download_right">
+                                                    
+                                                        <button
+                                                            class="ps-btn"
+                                                            @click.prevent="
+                                                                download(
+                                                                    item1.file.url
+                                                                )
+                                                            "
+                                                        >
+                                                            Download
+                                                        </button>
+
+                                                        <div class="date">
+                                                            Uploaded on:
+                                                            {{
+                                                                formatDate(
+                                                                    item1.file
+                                                                        .updated_at
+                                                                )
+                                                            }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </v-tab-item>
+                                </v-tabs> 
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -98,8 +192,35 @@ import { mapState } from 'vuex';
 import { state } from '~/store/app';
 export default {
     name: 'Downloads',
-    props: ['downloadCategories'],
+    data() {
+        return {
+            searchQuery: '',
+						isSearching: false,
+						searchData: null,
+						currentCategory: null
+        };
+    },
     methods: {
+			tabValue(event) {
+				this.currentCategory = event
+			},
+        async searchDownloads() {
+					let payload = {
+						category: this.currentCategory ? this.currentCategory : this.currentCategoryComputed,
+						search: this.searchQuery
+					}
+					const response = await this.$store.dispatch(
+							'website/searchDownloadCategories',
+							payload
+					);
+					this.isSearching = true
+					if (response.error) {
+					} else {
+						console.log(response)
+						this.searchData = response
+					}
+						
+        },
         formatDate(date) {
             let formated = new Date(date);
             return formated.toDateString();
@@ -113,16 +234,28 @@ export default {
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-                // location.href = data;
             } else {
                 this.$router.push('/auth/login');
             }
         }
     },
+		watch: {
+			searchQuery(newEntry, oldEntry) {
+				if (newEntry !== "") {
+				} else {
+					this.isSearching = false
+				}
+			}
+		},
     computed: {
         ...mapState({
-            isLoggedInToDownload: state => state.auth.isLoggedInToDownload
-        })
+						isLoading: state => state.website.loading,
+            isLoggedInToDownload: state => state.auth.isLoggedInToDownload,
+						downloadCategories: state => state.website.downloadCategories
+        }),
+				currentCategoryComputed () {
+					return this.downloadCategories[0].category
+				}
     }
 };
 </script>
