@@ -2,7 +2,8 @@ export default {
     head: {
         titleTemplate: 'ZKTeco West Africa',
         title: 'ZKTeco West Africa',
-        meta: [{
+        meta: [
+            {
                 charset: 'utf-8'
             },
             {
@@ -12,9 +13,10 @@ export default {
             {
                 hid: 'description',
                 name: 'description',
-                content: 'ZKTeco is a globally-renowned provider of security, access control and time management solutions. ZKTeco focus on Biometrics of fingerprint, face recognition, ..'
+                content:
+                    'ZKTeco is a globally-renowned provider of security, access control and time management solutions. ZKTeco focus on Biometrics of fingerprint, face recognition, ..'
             }
-        ],
+        ]
     },
     generate: {
         fallback: true
@@ -27,7 +29,8 @@ export default {
         '~/assets/scss/style.scss'
     ],
 
-    plugins: [{
+    plugins: [
+        {
             src: '~plugins/vueliate.js',
             ssr: false
         },
@@ -55,9 +58,8 @@ export default {
             src: '~/plugins/filters.js',
             ssr: false
         },
-        {   src: "~/plugins/aos", 
-            ssr: false 
-        }
+        { src: '~/plugins/aos', ssr: false },
+        { src: '~/plugins/v-google-translate.js', ssr: false  }
     ],
 
     buildModules: [
@@ -67,11 +69,11 @@ export default {
     ],
 
     build: {
-    //     analyze: true,
-    // // or
-    //     analyze: {
-    //         analyzerMode: 'static'
-    //     }
+        //     analyze: true,
+        // // or
+        //     analyze: {
+        //         analyzerMode: 'static'
+        //     }
     },
 
     styleResources: {
@@ -112,7 +114,8 @@ export default {
     },
 
     i18n: {
-        locales: [{
+        locales: [
+            {
                 code: 'en',
                 file: 'en.json'
             },
