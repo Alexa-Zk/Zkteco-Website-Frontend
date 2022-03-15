@@ -11,19 +11,25 @@
                                     color="warning"
                                     class="ps-tab-list"
                                     grow
-                                    v-for="item in downloadCenters"
-                                    :key="item.id"
                                 >
-                                    <v-tab tag="li" class="tab-label">
-                                        {{ item.name }}
+                                    <v-tab
+                                        tag="li"
+                                        class="tab-label"
+                                        v-for="item in downloadCategories"
+                                        :key="item.id"
+                                    >
+                                        {{ item.category }}
                                     </v-tab>
 
-                                    <v-tab-item>
+                                    <v-tab-item
+                                        v-for="item in downloadCategories"
+                                        :key="item.id"
+                                    >
                                         <form>
                                             <div class="ps-block__content">
                                                 <div
                                                     class="downloads_container"
-                                                    v-for="i in item.download"
+                                                    v-for="i in item.downloads"
                                                     :key="i.id"
                                                 >
                                                     <div class="download_left">
@@ -43,7 +49,8 @@
                                                         <div class="size">
                                                             Size:
                                                             {{
-                                                                i.file[0].size
+                                                                i.file.size /
+                                                                    1000
                                                             }}MB
                                                         </div>
                                                     </div>
@@ -51,12 +58,25 @@
                                                         <!-- <a :href="i.file[0].url" download
                                                             >Download</a
                                                         > -->
-                                                        <button class="ps-btn" @click.prevent="download(i.file[0].url)">
+                                                        <button
+                                                            class="ps-btn"
+                                                            @click.prevent="
+                                                                download(
+                                                                    i.file.url
+                                                                )
+                                                            "
+                                                        >
                                                             Download
                                                         </button>
 
                                                         <div class="date">
-                                                            Uploaded on: {{formatDate(i.file[0].updated_at)}}
+                                                            Uploaded on:
+                                                            {{
+                                                                formatDate(
+                                                                    i.file
+                                                                        .updated_at
+                                                                )
+                                                            }}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -74,35 +94,36 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 import { state } from '~/store/app';
 export default {
     name: 'Downloads',
-		props: ['downloadCenters'],
-		methods: {
-			formatDate(date) {
+    props: ['downloadCategories'],
+    methods: {
+        formatDate(date) {
             let formated = new Date(date);
             return formated.toDateString();
         },
-				download(data) {
-					if (this.isLoggedInToDownload) {
-						const link = document.createElement('a');
-						link.href = data;
-						link.setAttribute('download', 'image.jpg');
-						document.body.appendChild(link);
-						link.click();
-						document.body.removeChild(link);
-						location.href = data;
-					} else {
-						this.$router.push("/auth/login")
-					}
-				}
-		},
-		computed: {
-			...mapState({
-				isLoggedInToDownload: state => state.auth.isLoggedInToDownload
-			})
-		}
+        download(data) {
+            if (this.isLoggedInToDownload) {
+                const link = document.createElement('a');
+                link.href = data;
+                link.setAttribute('download', 'image.jpg');
+                link.setAttribute('target', '_blank');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                // location.href = data;
+            } else {
+                this.$router.push('/auth/login');
+            }
+        }
+    },
+    computed: {
+        ...mapState({
+            isLoggedInToDownload: state => state.auth.isLoggedInToDownload
+        })
+    }
 };
 </script>
 
@@ -130,11 +151,10 @@ export default {
             align-items: center;
             display: flex;
             .title {
-								margin-left: 20px;
-								margin-left: 20px;
-								font-size: 20px!important;
-								font-family: 'Work Sans', sans-serif !important;
-
+                margin-left: 20px;
+                margin-left: 20px;
+                font-size: 20px !important;
+                font-family: 'Work Sans', sans-serif !important;
             }
         }
     }
