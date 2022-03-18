@@ -8,7 +8,7 @@
             <div class="ps-post__meta">
                 <nuxt-link
                     v-for="category in post.categories"
-                    :to="`/news-center/categories/${category.id}`"
+                    :to="`/news-center/categories/${category.slug}`"
                     :key="category.id"
                 >
                     {{ category.name }}
