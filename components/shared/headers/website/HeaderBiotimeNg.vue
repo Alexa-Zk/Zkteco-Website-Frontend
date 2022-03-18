@@ -14,11 +14,8 @@
                 <div class="bt-header-right">
                     <ul>
                         <li>
-                            <nuxt-link
-                                to="#btc-characteristics"
-                                class="ps-logo"
-                            >
-                                Characteristics
+                            <nuxt-link to="#btc-feature" class="ps-logo">
+                                Features
                             </nuxt-link>
                         </li>
                         <li>
