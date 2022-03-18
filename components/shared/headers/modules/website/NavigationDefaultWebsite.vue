@@ -24,12 +24,12 @@
                         </nuxt-link>
                     </li>
                     |
-                    <li class="menu-item-has-dropdown">
+                    <!-- <li class="menu-item-has-dropdown">
                         <nuxt-link to="/store">
                             Login
                         </nuxt-link>
                     </li>
-                    |
+                    | -->
                     <li class="menu-item-has-dropdown">
                         <client-only>
                             <v-google-translate
