@@ -1,22 +1,25 @@
 <template>
-    <div class="bitome-wrapper ">
+    <div class="bitome-wrapper">
         <div class="wrapper">
             <h2>Attendance Solution</h2>
             <h3>Attendance Solution</h3>
             <div class="cloud">
-                <img
-                    loading="lazy"
-                    src="/img/biotime/cloud.png"
-                    alt="biotime cloud"
-                />
-
-                <p>
-                    AWS cloud technology powers the Biotime.ng platform, making
-                    it the most flexible and secure cloud computing environment
-                    available today. The platform gives you total visibility
-                    into your business operations and makes it simple to
-                    collaborate with users.
-                </p>
+                <div class="image-awa">
+                    <img
+                        loading="lazy"
+                        src="/img/biotime/cloud.png"
+                        alt="biotime cloud"
+                    />
+                </div>
+                <div class="ptag">
+                    <p>
+                        AWS cloud technology powers the Biotime.ng platform,
+                        making it the most flexible and secure cloud computing
+                        environment available today. The platform gives you
+                        total visibility into your business operations and makes
+                        it simple to collaborate with users.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -35,13 +38,14 @@ h3,
 span,
 h5,
 h6 {
-    color: #6c757d;
+    color: #acb3b9;
 }
 
 .bitome-wrapper {
-    display: flex;
+    //display: flex;
     justify-content: center;
     align-items: center;
+    display: grid;
     margin-top: 8rem;
     background-color: #fff;
     border-radius: 2px;
@@ -73,22 +77,36 @@ h6 {
                 background: #7ac143;
             }
         }
-        .cloud {
-            max-width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 4em;
-            transform: translateY(-35px);
-            i {
-                font-size: 6em;
-            }
+    }
+    .cloud {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-areas:
+            'image'
+            'ptag';
+        align-items: center;
+        gap: 4em;
+        transform: translateY(-35px);
+        i {
+            font-size: 6em;
+        }
 
-            p {
-                text-align: left;
-                font-size: 2rem;
-                background-color: #fff;
-            }
+        p {
+            text-align: left;
+            font-size: 2rem;
+            background-color: #fff;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .bitome-wrapper {
+        .cloud {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-areas:
+                'image'
+                'ptag';
         }
     }
 }
