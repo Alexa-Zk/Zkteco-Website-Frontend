@@ -31,12 +31,12 @@
                     </li>
                     | -->
                     <li class="menu-item-has-dropdown">
-                        <client-only>
+                        <!-- <client-only>
                             <v-google-translate
                                 :defaultLanguageCode="defaultLanguageCode"
                                 :languages="languages"
                             />
-                        </client-only>
+                        </client-only> -->
                     </li>
                     |
                     <li>
