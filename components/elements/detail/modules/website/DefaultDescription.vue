@@ -41,12 +41,14 @@
                     :key="i.id"
                 >
                     <div class="download">
-                        <img
-                            src="~/static/img/website/download-2.png"
-                            alt="Download"
-                        />
+                        <iframe
+                            width="100%"
+                            height="315"
+                            :src="i.url"
+                            frameborder="0"
+                            allowfullscreen
+                        ></iframe>
                         <h4>{{ i.name }}</h4>
-                        <a v-on:click.prevent="openModal(i.url)">Watch Video</a>
                     </div>
                 </div>
             </div>
@@ -61,26 +63,6 @@
             </div>
         </div>
 
-        <!-- Modal  -->
-        <v-dialog v-model="showVideoModal" width="700" height="700">
-            <div class="ps-dialog">
-                <a
-                    class="ps-dialog__close"
-                    @click.prevent="showVideoModal = false"
-                >
-                    <i style="font-weight: bold;" class="icon icon-cross"></i>
-                </a>
-                <div style="margin-top: 10px;">
-                    <iframe
-                        width="100%"
-                        height="315"
-                        :src="videoUrl"
-                        frameborder="0"
-                        allowfullscreen
-                    ></iframe>
-                </div>
-            </div>
-        </v-dialog>
     </div>
 </template>
 
@@ -98,7 +80,7 @@ export default {
     },
     data() {
         return {
-            showVideoModal: false,
+
             videoUrl: null
         };
     },
@@ -128,10 +110,6 @@ export default {
         }
     },
     methods: {
-        openModal(url) {
-            this.showVideoModal = true;
-            this.videoUrl = url;
-        },
         download(data) {
             if (this.isLoggedInToDownload) {
                 const link = document.createElement('a');
@@ -178,7 +156,7 @@ span.list-item {
 
 .download_container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
     .download {
         display: flex;

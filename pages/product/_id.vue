@@ -50,9 +50,9 @@ export default {
             ? this.formattedProducts.images[0].url
             : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
         return {
-            title: 'Product Details',
+            title: name,
             titleTemplate(title) {
-                return `${name} - ${title}`;
+                return `${title}`;
             },
             meta: [
                 {
@@ -112,6 +112,20 @@ export default {
                 }
             ]
         };
+    },
+    jsonld() {
+        if (this.formattedProducts) {
+            return {
+                "@context": "https://schema.org",
+                "@id": "#product",
+                "@type": "IndividualProduct",
+                "additionalType": `https://www.zkteco-wa.com/product/${this.formattedProducts.slug}`,
+                "description": `https://www.zkteco-wa.com/product/${this.formattedProducts.description}`,
+                "name": `https://www.zkteco-wa.com/product/${this.formattedProducts.name}`
+            };
+        } else {
+            return {};
+        }
     },
     apollo: {
         products: {

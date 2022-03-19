@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 export default {
     head: {
         titleTemplate: 'ZKTeco West Africa',
@@ -59,7 +61,8 @@ export default {
             ssr: false
         },
         { src: '~/plugins/aos', ssr: false },
-        { src: '~/plugins/v-google-translate.js', ssr: false  }
+        { src: '~/plugins/v-google-translate.js', ssr: false  },
+        '~/plugins/jsonld.js',
     ],
 
     buildModules: [
@@ -91,7 +94,7 @@ export default {
         'nuxt-i18n',
         '@nuxtjs/apollo',
         '@nuxtjs/robots',
-        '@nuxtjs/sitemap'
+        '@nuxtjs/sitemap',
     ],
 
     robots: {
@@ -102,7 +105,20 @@ export default {
     sitemap: {
         hostname: 'https://zkteco-wa.com',
         exclude: [],
-        routes: []
+        routes: async () => {
+
+            let { data: productsData } = await axios.get(`https://admin.zkteco-wa.com/products`);
+            const productArray = productsData.map(v => `/product/${v.slug}`)
+        
+            let { data: solutionData } = await axios.get(`https://admin.zkteco-wa.com/solutions`);
+            const solutionArray = solutionData.map(v => `/solution-details/${v.slug}`)
+
+            let { data: articlesData } = await axios.get(`https://admin.zkteco-wa.com/articles`);
+            const articlesArray = articlesData.map(v => `/blog/${v.slug}`)
+        
+            return [...productArray, ...solutionArray, ...articlesArray]
+        }
+
     },
 
     apollo: {
