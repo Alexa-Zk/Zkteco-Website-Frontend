@@ -413,12 +413,11 @@ export const actions = {
         commit('setLoading', true);
 
         let params = {
-            page: Object.keys(payload).length === 0 ? state.page : payload.page,
-            perPage: Object.keys(payload).length === 0 ? 100 : payload.perPage,
-            query: Object.keys(payload).length === 0 ? '' : payload.query,
+            _sort: 'sort_id:desc',
+            ...(payload.query && { _q: payload.query }),
         };
         const reponse = await Repository.get(
-                `${subBaseUrl}/store-locators/search?${serializeQuery(params)}`
+                `${subBaseUrl}/store-locators?${serializeQuery(params)}`
             )
             .then(response => {
                 commit('setStoreLocator', response.data);
