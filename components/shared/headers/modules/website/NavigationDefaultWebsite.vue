@@ -11,25 +11,25 @@
                             About Us
                         </nuxt-link>
                     </li>
-                    |
+                    
                     <li class="menu-item-has-dropdown">
                         <nuxt-link to="/news-center">
                             News Center
                         </nuxt-link>
                     </li>
-                    |
+                    
                     <li class="menu-item-has-dropdown">
                         <nuxt-link to="/contact">
                             Contact Us
                         </nuxt-link>
                     </li>
-                    |
-                    <!-- <li class="menu-item-has-dropdown">
+                    
+                    <!--li class="menu-item-has-dropdown">
                         <nuxt-link to="/store">
                             Login
                         </nuxt-link>
-                    </li>
-                    | -->
+                    </li-->
+                    
                     <li class="menu-item-has-dropdown">
                         <client-only>
                             <v-google-translate
@@ -38,7 +38,7 @@
                             />
                         </client-only>
                     </li>
-                    |
+                    
                     <li>
                         <v-menu open-on-hover bottom offset-y>
                             <template v-slot:activator="{ on, attrs }">

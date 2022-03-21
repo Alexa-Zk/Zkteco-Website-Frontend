@@ -24,6 +24,12 @@
                     <div class="form-group--nest">
                         <input
                             class="form-control"
+                            type="text"
+                            placeholder="Name"
+                            v-model="name"
+                        />
+                        <input
+                            class="form-control"
                             type="email"
                             placeholder="Email address"
                             v-model="email"
@@ -50,6 +56,7 @@ export default {
         return {
             demoDialog: true,
             email: '',
+            name: '',
             message: ''
         };
     },
@@ -67,7 +74,7 @@ export default {
         async subscribe() {
             if (this.email !== '') {
                 let payload = {
-                    name: 'From the Website',
+                    name: this.name,
                     email: this.email
                 };
                 const ip = await this.$axios.$post(
@@ -75,6 +82,7 @@ export default {
                     payload
                 );
                 this.email = '';
+                this.name = '';
                 this.message = 'Thanks for subscribing to our newsletter';
             }
         }
