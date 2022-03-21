@@ -88,6 +88,12 @@ export default {
     // border-top: 1px solid #e1e1e1;
     // border-bottom: 1px solid #e1e1e1;
 }
+.form-group--nest {
+            input {
+                margin-right: 24px;
+                border-right: 1px solid #ccc;
+            }
+        }
 .message {
     color: green;
 }
