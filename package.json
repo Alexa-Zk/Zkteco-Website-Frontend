@@ -28,6 +28,7 @@
         "moment": "^2.26.0",
         "nuxt": "^2.14.7",
         "nuxt-i18n": "^6.3.0",
+        "nuxt-jsonld": "^1.5.3",
         "prettier": "^1.9.2",
         "save-dev": "^0.0.1-security",
         "v-google-translate": "^0.1.10",
