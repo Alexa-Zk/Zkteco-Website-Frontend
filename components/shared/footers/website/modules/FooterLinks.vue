@@ -61,7 +61,7 @@
                                     /></a>
                                 </span>
                             </template>
-                            <span>Whatsapp</span>
+                            <span>Email</span>
                         </v-tooltip>
                     </div>
                 </h1>
