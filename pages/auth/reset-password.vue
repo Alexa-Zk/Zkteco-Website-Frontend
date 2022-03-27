@@ -7,14 +7,10 @@
                     <ul class="ps-tab-list">
                         <li class="active">
                             <nuxt-link to="/auth/login">
-                                Login
+                                Reset password
                             </nuxt-link>
                         </li>
-                        <li>
-                            <nuxt-link to="/auth/register">
-                                Register
-                            </nuxt-link>
-                        </li>
+                        
                     </ul>
                     <div class="ps-tab active">
                         <form>
@@ -43,9 +39,11 @@
                                         outlined
                                     />
                                 </div>
-                                <div class="form-group forget-link">
-
-                                    <nuxt-link to="/auth/forget-password">forget password?</nuxt-link>
+                                <div class="form-group">
+                                    <v-checkbox
+                                        label="Remember me"
+                                        color="warning"
+                                    />
                                 </div>
                                 <div class="form-group submit">
                                     <button
@@ -60,7 +58,6 @@
                                         }}
                                     </button>
                                 </div>
-
                                 <v-alert
                                     v-if="showAlert"
                                     class="mt-4"
@@ -176,14 +173,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.forget-link {
-    margin: 10px 0px;
-    &:hover {
-        a {
-            color: #78BC27;
-        }
-    }
-}
 .ps-tab-list {
     padding-left: 0;
 }

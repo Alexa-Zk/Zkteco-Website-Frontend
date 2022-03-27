@@ -10,7 +10,7 @@
                         v-model="searchQuery"
                     />
                     <button class="ps-btn" @click.prevent="searchDownloads">
-                        {{ isLoading ? "Searching..." : "Search" }}
+                        {{ isLoading ? 'Searching...' : 'Search' }}
                     </button>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                                         class="tab-label"
                                         v-for="item in downloadCategories"
                                         :key="item.id"
-																				@click="tabValue(item.category)"
+                                        @click="tabValue(item.category)"
                                     >
                                         {{ item.category }}
                                     </v-tab>
@@ -63,9 +63,8 @@
                                                         <div class="size">
                                                             Size:
                                                             {{
-                                                                i.file.size /
-                                                                    1000
-                                                            }}MB
+                                                                 Math.floor(i.file.size)
+                                                            }}KB
                                                         </div>
                                                     </div>
                                                     <div class="download_right">
@@ -99,34 +98,29 @@
                                     </v-tab-item>
                                 </v-tabs>
                             </div>
-														<div class="ps-block--methods" v-else>
+                            <div class="ps-block--methods" v-else>
                                 <v-tabs
                                     background-color="white"
                                     color="warning"
                                     class="ps-tab-list"
                                     grow
-																		v-for="item1 in searchData"
+                                    v-for="item1 in searchData"
                                     :key="item1.id"
                                 >
-
                                     <v-tab
                                         tag="li"
                                         class="tab-label"
                                         v-for="item2 in item1.download_categories"
-																				:key="item2.id"
-																				
+                                        :key="item2.id"
                                     >
                                         {{ item2.category }}
                                     </v-tab>
 
-                                    <v-tab-item
-                                        
-                                    >
+                                    <v-tab-item>
                                         <form>
                                             <div class="ps-block__content">
                                                 <div
                                                     class="downloads_container"
-                                                   
                                                 >
                                                     <div class="download_left">
                                                         <div class="row-left">
@@ -145,18 +139,17 @@
                                                         <div class="size">
                                                             Size:
                                                             {{
-                                                                item1.file.size /
-                                                                    1000
+                                                                Math.floor(item1.file.size / 1000)
                                                             }}MB
                                                         </div>
                                                     </div>
                                                     <div class="download_right">
-                                                    
                                                         <button
                                                             class="ps-btn"
                                                             @click.prevent="
                                                                 download(
-                                                                    item1.file.url
+                                                                    item1.file
+                                                                        .url
                                                                 )
                                                             "
                                                         >
@@ -177,7 +170,7 @@
                                             </div>
                                         </form>
                                     </v-tab-item>
-                                </v-tabs> 
+                                </v-tabs>
                             </div>
                         </div>
                     </div>
@@ -195,31 +188,32 @@ export default {
     data() {
         return {
             searchQuery: '',
-						isSearching: false,
-						searchData: null,
-						currentCategory: null
+            isSearching: false,
+            searchData: null,
+            currentCategory: null
         };
     },
     methods: {
-			tabValue(event) {
-				this.currentCategory = event
-			},
+        tabValue(event) {
+            this.currentCategory = event;
+        },
         async searchDownloads() {
-					let payload = {
-						category: this.currentCategory ? this.currentCategory : this.currentCategoryComputed,
-						search: this.searchQuery
-					}
-					const response = await this.$store.dispatch(
-							'website/searchDownloadCategories',
-							payload
-					);
-					this.isSearching = true
-					if (response.error) {
-					} else {
-						console.log(response)
-						this.searchData = response
-					}
-						
+            let payload = {
+                category: this.currentCategory
+                    ? this.currentCategory
+                    : this.currentCategoryComputed,
+                search: this.searchQuery
+            };
+            const response = await this.$store.dispatch(
+                'website/searchDownloadCategories',
+                payload
+            );
+            this.isSearching = true;
+            if (response.error) {
+            } else {
+                console.log(response);
+                this.searchData = response;
+            }
         },
         formatDate(date) {
             let formated = new Date(date);
@@ -239,23 +233,23 @@ export default {
             }
         }
     },
-		watch: {
-			searchQuery(newEntry, oldEntry) {
-				if (newEntry !== "") {
-				} else {
-					this.isSearching = false
-				}
-			}
-		},
+    watch: {
+        searchQuery(newEntry, oldEntry) {
+            if (newEntry !== '') {
+            } else {
+                this.isSearching = false;
+            }
+        }
+    },
     computed: {
         ...mapState({
-						isLoading: state => state.website.loading,
+            isLoading: state => state.website.loading,
             isLoggedInToDownload: state => state.auth.isLoggedInToDownload,
-						downloadCategories: state => state.website.downloadCategories
+            downloadCategories: state => state.website.downloadCategories
         }),
-				currentCategoryComputed () {
-					return this.downloadCategories[0].category
-				}
+        currentCategoryComputed() {
+            return this.downloadCategories[0].category;
+        }
     }
 };
 </script>

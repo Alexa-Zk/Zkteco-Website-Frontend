@@ -8,7 +8,6 @@ export const actions = {
         const auth = this.$cookies.get('auth', { parseJSON: true });
         const token = this.$cookies.get('id_token', { parseJSON: true });
         const tokenForDownloads = this.$cookies.get('download_token', { parseJSON: true });
-        
         const currency = this.$cookies.get('currency', { parseJSON: true });
         const userInfo = this.$cookies.get('userInfo', {parseJSON: true});
         const shippingInfo = this.$cookies.get('shippingInfo', {parseJSON: true});
@@ -47,7 +46,8 @@ export const actions = {
         }
 
         if (tokenForDownloads) {
-            commit('auth/setIsLoggedInDownload', true);
+            commit('auth/setAuthTokenForDownloads', tokenForDownloads);
+            commit('auth/setIsLoggedInDownload', true)
         }
 
         if (currency) {

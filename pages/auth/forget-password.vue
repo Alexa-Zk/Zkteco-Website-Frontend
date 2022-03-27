@@ -7,45 +7,25 @@
                     <ul class="ps-tab-list">
                         <li class="active">
                             <nuxt-link to="/auth/login">
-                                Login
+                                Forget Password
                             </nuxt-link>
                         </li>
-                        <li>
-                            <nuxt-link to="/auth/register">
-                                Register
-                            </nuxt-link>
-                        </li>
+                        
                     </ul>
                     <div class="ps-tab active">
                         <form>
                             <div class="ps-form__content">
-                                <h5>Login</h5>
+                                
                                 <div class="form-group">
                                     <v-text-field
-                                        v-model="username"
+                                        v-model="email"
                                         class="ps-text-field"
                                         :error-messages="emailErrors"
-                                        @input="$v.username.$touch()"
+                                        @input="$v.email.$touch()"
                                         placeholder="Please enter email"
                                         height="50"
                                         outlined
                                     />
-                                </div>
-                                <div class="form-group">
-                                    <v-text-field
-                                        v-model="password"
-                                        type="password"
-                                        class="ps-text-field"
-                                        :error-messages="passwordErrors"
-                                        @input="$v.password.$touch()"
-                                        placeholder="Please enter password"
-                                        height="50"
-                                        outlined
-                                    />
-                                </div>
-                                <div class="form-group forget-link">
-
-                                    <nuxt-link to="/auth/forget-password">forget password?</nuxt-link>
                                 </div>
                                 <div class="form-group submit">
                                     <button
@@ -55,12 +35,11 @@
                                     >
                                         {{
                                             loading
-                                                ? 'Authenticating...'
-                                                : 'Login'
+                                                ? 'Loading...'
+                                                : 'Forget Password'
                                         }}
                                     </button>
                                 </div>
-
                                 <v-alert
                                     v-if="showAlert"
                                     class="mt-4"
@@ -104,50 +83,32 @@ export default {
                     url: '/'
                 },
                 {
-                    text: 'Login'
+                    text: 'Login',
+                    url: '/auth/login'
+                },
+                {
+                    text: 'Forget Password'
                 }
             ],
             loading: false,
-            username: null,
-            password: null,
+            email: null,
             error_alert: '',
             showAlert: false
         };
     },
     validations: {
-        username: { required },
-        password: { required }
+        email: { required }
     },
-    beforeRouteEnter(to, from, next) {
-        next(vm => {
-            vm.storeLocally(from, next);
-        });
-    },
+   
     methods: {
-        storeLocally(from, next) {
-            if (from.path !== '/auth/register') {
-                localStorage.setItem('NAVIGATION_HISTORY', from.path);
-            }
-            next();
-        },
         async handleSubmit() {
             this.$v.$touch();
             if (!this.$v.$invalid) {
                 this.loading = true;
-                const response = await this.$store.dispatch(
-                    'auth/loginDownloads',
-                    {
-                        identifier:
-                            this.username || 'rahman.badru@zkteco-wa.com',
-                        password: this.password || 'alexa123'
-                    }
-                );
+                const response = await this.$store.dispatch('auth/forgetPassword', { email: this.email});
+                console.log(response)
                 if (response.status === 200) {
-                    const getLocationHistory = localStorage.getItem(
-                        'NAVIGATION_HISTORY'
-                    );
-                    this.$router.push(getLocationHistory);
-                    this.loading = false;
+                    
                 } else {
                     this.loading = false;
                     console.log(response.error.message);
@@ -160,30 +121,15 @@ export default {
     computed: {
         emailErrors() {
             const errors = [];
-            if (!this.$v.username.$dirty) return errors;
-            !this.$v.username.required && errors.push('E-mail is required');
+            if (!this.$v.email.$dirty) return errors;
+            !this.$v.email.required && errors.push('E-mail is required');
             return errors;
         },
-        passwordErrors() {
-            const errors = [];
-            if (!this.$v.password.$dirty) return errors;
-            !this.$v.password.required &&
-                errors.push('This password field is required');
-            return errors;
-        }
     }
 };
 </script>
 
 <style lang="scss" scoped>
-.forget-link {
-    margin: 10px 0px;
-    &:hover {
-        a {
-            color: #78BC27;
-        }
-    }
-}
 .ps-tab-list {
     padding-left: 0;
 }

@@ -40,6 +40,7 @@ export const mutations = {
     },
     setAuthTokenForDownloads(state, payload) {
         state.authTokenForDownloads = payload;
+        state.isLoggedInToDownload = true
 
         this.$cookies.set('download_token', payload, {
             path: '/',
@@ -58,21 +59,17 @@ export const mutations = {
 };
 
 export const actions = {
-    setAuthStatus({ commit, state }, payload) {
-        commit('setIsLoggedIn', payload);
+    getAuthToken({ commit }, payload) {
+        commit('setAuthToken', payload);
+    },
 
-        const cookieParams = {
-            isLoggedIn: state.isLoggedIn
-        };
+    logoutDownloadToken({ commit }) {
+        commit('setIsLoggedInDownload', false);
 
-        this.$cookies.set('auth', cookieParams, {
+        this.$cookies.remove('download_token', {
             path: '/',
             maxAge: 60 * 60 * 24 * 7
         });
-    },
-
-    getAuthToken({ commit }, payload) {
-        commit('setAuthToken', payload);
     },
 
     async login({ commit, state }, payload) {
@@ -124,6 +121,18 @@ export const actions = {
                 return response;
             })
             .catch(error => ({ error: error.response }));
+        return reponse;
+    },
+
+    async forgetPassword({ commit }, payload) {
+        const reponse = await Repository.post(
+            `${subBaseUrl}/auth/forgot-password`,
+            payload
+        )
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
     },
 

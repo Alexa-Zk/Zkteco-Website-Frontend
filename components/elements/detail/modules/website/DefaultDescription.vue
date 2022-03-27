@@ -115,6 +115,7 @@ export default {
                 const link = document.createElement('a');
                 link.href = data;
                 link.setAttribute('download', 'image.jpg');
+                link.setAttribute('target', '_blank');
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
