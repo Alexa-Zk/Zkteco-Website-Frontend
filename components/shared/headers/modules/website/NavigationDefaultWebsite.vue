@@ -11,25 +11,29 @@
                             About Us
                         </nuxt-link>
                     </li>
-                    
+                    |
                     <li class="menu-item-has-dropdown">
                         <nuxt-link to="/news-center">
                             News Center
                         </nuxt-link>
                     </li>
-                    
+                    |
                     <li class="menu-item-has-dropdown">
                         <nuxt-link to="/contact">
                             Contact Us
                         </nuxt-link>
                     </li>
-                    
-                    <!--li class="menu-item-has-dropdown">
-                        <nuxt-link to="/store">
+                    |
+                    <li v-if="!isLoggedInToDownload" class="menu-item-has-dropdown">
+                        <nuxt-link to="/auth/login">
                             Login
-                        </nuxt-link>
-                    </li-->
-                    
+                        </nuxt-link> 
+                    </li>
+                
+                    <li v-else @click="logoutDownloads" style="cursor: pointer" class="menu-item-has-dropdown">
+                        Logout
+                    </li>
+                    |
                     <li class="menu-item-has-dropdown">
                         <client-only>
                             <v-google-translate
@@ -38,7 +42,7 @@
                             />
                         </client-only>
                     </li>
-                    
+                    |
                     <li>
                         <v-menu open-on-hover bottom offset-y>
                             <template v-slot:activator="{ on, attrs }">
@@ -74,6 +78,7 @@
 import CurrencyDropdown from '../CurrencyDropdown';
 import LanguageSwicher from '../LanguageSwicher';
 // import MenuDefault from '~/components/shared/menu/website/MenuDefaultWebsite';
+import { mapState } from "vuex";
 import MenuCategories from '~/components/shared/menu/MenuCategories';
 export default {
     name: 'NavigationDefault',
@@ -101,7 +106,17 @@ export default {
             ]
         };
     },
+    computed: {
+        isLoggedInToDownload() {
+            const tokenForDownloads = this.$cookies.get('download_token', { parseJSON: true });
+            return tokenForDownloads ? true : false;
+        }
+    },
     methods: {
+        logoutDownloads() {
+            this.$store.dispatch('auth/logoutDownloadToken');
+            window.location.reload(true)
+        }
     }
 };
 </script>
