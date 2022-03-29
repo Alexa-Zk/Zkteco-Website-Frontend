@@ -134,11 +134,9 @@ export default {
             this.$v.$touch();
             if (!this.$v.$invalid) {
                 this.loading = true;
-                const response = await this.$store.dispatch(
-                    'auth/loginDownloads',
+                const response = await this.$store.dispatch('auth/loginDownloads',
                     {
-                        identifier:
-                            this.username || 'rahman.badru@zkteco-wa.com',
+                        identifier: this.username || 'rahman.badru@zkteco-wa.com',
                         password: this.password || 'alexa123'
                     }
                 );

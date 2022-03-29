@@ -107,14 +107,14 @@ export default {
         };
     },
     computed: {
-        ...mapState({
-            isLoggedInToDownload: state => state.auth.isLoggedInToDownload
-        })
+        isLoggedInToDownload() {
+            const tokenForDownloads = this.$cookies.get('download_token', { parseJSON: true });
+            return tokenForDownloads ? true : false;
+        }
     },
     methods: {
         logoutDownloads() {
             this.$store.dispatch('auth/logoutDownloadToken');
-
         }
     }
 };

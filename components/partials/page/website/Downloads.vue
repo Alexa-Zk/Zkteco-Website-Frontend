@@ -63,7 +63,9 @@
                                                         <div class="size">
                                                             Size:
                                                             {{
-                                                                 Math.floor(i.file.size)
+                                                                Math.floor(
+                                                                    i.file.size
+                                                                )
                                                             }}KB
                                                         </div>
                                                     </div>
@@ -139,7 +141,11 @@
                                                         <div class="size">
                                                             Size:
                                                             {{
-                                                                Math.floor(item1.file.size / 1000)
+                                                                Math.floor(
+                                                                    item1.file
+                                                                        .size /
+                                                                        1000
+                                                                )
                                                             }}MB
                                                         </div>
                                                     </div>
@@ -220,7 +226,10 @@ export default {
             return formated.toDateString();
         },
         download(data) {
-            if (this.isLoggedInToDownload) {
+            const tokenForDownloads = this.$cookies.get('download_token', {
+                parseJSON: true
+            });
+            if (tokenForDownloads) {
                 const link = document.createElement('a');
                 link.href = data;
                 link.setAttribute('download', 'image.jpg');

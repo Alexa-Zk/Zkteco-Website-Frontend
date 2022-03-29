@@ -111,7 +111,8 @@ export default {
     },
     methods: {
         download(data) {
-            if (this.isLoggedInToDownload) {
+            const tokenForDownloads = this.$cookies.get('download_token', { parseJSON: true });
+            if (tokenForDownloads) {
                 const link = document.createElement('a');
                 link.href = data;
                 link.setAttribute('download', 'image.jpg');
