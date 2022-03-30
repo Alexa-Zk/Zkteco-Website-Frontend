@@ -139,6 +139,18 @@ export const actions = {
         return reponse;
     },
 
+    async requestAQuote({ commit }, payload) {
+        commit('setLoading', true);
+
+        const reponse = await Repository.post(`${subBaseUrl}/request-a-quotes`, payload)
+            .then(response => {
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
     async getArticles({ commit, state }, payload) {
         commit('setLoading', true);
         let params = {
