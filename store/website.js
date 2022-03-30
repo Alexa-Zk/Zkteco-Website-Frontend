@@ -130,7 +130,7 @@ export const actions = {
                     ? state.perPage
                     : payload.perPage
         };
-        console.log(' -Kazeem- ', params);
+
         const reponse = await Repository.get(
             `${subBaseUrl}/products?${serializeQuery(params)}`
         )
@@ -336,7 +336,7 @@ export const actions = {
                     : payload.perPage,
             'product_category.slug': payload.slug
         };
-        console.log(' paramsDollar ', params);
+
         const reponse = await Repository.get(
             `${subBaseUrl}/products?${serializeQuery(params)}`
         )
@@ -434,9 +434,7 @@ export const actions = {
             `${subBaseUrl}/products/count?${serializeQuery(params)}`
         )
             .then(res => {
-                console.log(' XC1 == ', res.data);
                 commit('setTotalSingleProductCategories', res.data);
-                console.log(' XC2 == ', res.data);
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
