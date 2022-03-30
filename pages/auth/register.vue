@@ -143,6 +143,14 @@ export default {
                     password: this.password
                 });
                 if (response.status === 200) {
+                    let payload = {
+                        name: this.username,
+                        email: this.email
+                    };
+                    await this.$axios.$post(
+                        'https://admin.zkteco-wa.com/maillists',
+                        payload
+                    );
                     this.$router.push('/auth/login')
                     this.loading = false;
                 } else {

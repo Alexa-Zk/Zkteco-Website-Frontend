@@ -24,19 +24,23 @@
                         </nuxt-link>
                     </li>
                     |
-                    <!-- <li class="menu-item-has-dropdown">
-                        <nuxt-link to="/store">
+                    <li v-if="!isLoggedInToDownload" class="menu-item-has-dropdown">
+                        <nuxt-link to="/auth/login">
                             Login
-                        </nuxt-link>
+                        </nuxt-link> 
                     </li>
-                    | -->
+                
+                    <li v-else @click="logoutDownloads" style="cursor: pointer" class="menu-item-has-dropdown">
+                        Logout
+                    </li>
+                    |
                     <li class="menu-item-has-dropdown">
-                        <!-- <client-only>
+                        <client-only>
                             <v-google-translate
                                 :defaultLanguageCode="defaultLanguageCode"
                                 :languages="languages"
                             />
-                        </client-only> -->
+                        </client-only>
                     </li>
                     |
                     <li>
@@ -74,6 +78,7 @@
 import CurrencyDropdown from '../CurrencyDropdown';
 import LanguageSwicher from '../LanguageSwicher';
 // import MenuDefault from '~/components/shared/menu/website/MenuDefaultWebsite';
+import { mapState } from "vuex";
 import MenuCategories from '~/components/shared/menu/MenuCategories';
 export default {
     name: 'NavigationDefault',
@@ -101,7 +106,17 @@ export default {
             ]
         };
     },
+    computed: {
+        isLoggedInToDownload() {
+            const tokenForDownloads = this.$cookies.get('download_token', { parseJSON: true });
+            return tokenForDownloads ? true : false;
+        }
+    },
     methods: {
+        logoutDownloads() {
+            this.$store.dispatch('auth/logoutDownloadToken');
+            window.location.reload(true)
+        }
     }
 };
 </script>
