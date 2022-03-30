@@ -2,7 +2,7 @@
     <div class="ps-shopping">
         <div class="ps-shopping__header">
             <p>
-                <strong class="mr-2">{{ totalProductCategories }}</strong>
+                <strong class="mr-2">{{ totals }}</strong>
                 Products found
             </p>
         </div>
@@ -45,7 +45,7 @@ import ProductCategoryDefault from '~/components/elements/product/website/Produc
 import ProductWide from '~/components/elements/product/ProductWide';
 
 export default {
-    name: 'LayoutShopSidebarCategories',
+    name: 'LayoutShopSidebar',
     components: { ProductWide, ProductCategoryDefault },
     props: ['categories_products', 'totalProductCategories', 'loading'],
     data() {
@@ -61,33 +61,32 @@ export default {
             this.listView = !this.listView;
         },
         async handleChangePagination(value) {
+            const slug = this.$route.params.id;
             const page = parseInt(value) === 1 ? 1 : 1 + (value - 1) * 12;
             let nextStartPage = parseInt(page);
 
-            const slug = this.$route.params.id;
             const payload = {
                 slug: slug,
                 page: nextStartPage,
                 sort_by: this.sort_by,
                 perPage: this.pageSize
             };
-            await this.$store.dispatch(
-                'website/getSingleProductCategories',
+            console.log('payloadss ', payload);
+            const response = await this.$store.dispatch(
+                'website/getSubProductCategories',
                 payload
             );
         }
     },
     computed: {
+        paginationLenght() {
+            console.log(' Ad ', this.totalProductCategories);
+            return Math.ceil(this.totalProductCategories / 12);
+        },
         totals() {
             return this.totalProductCategories
                 ? this.totalProductCategories
                 : 0;
-        }
-    },
-
-    computed: {
-        paginationLenght() {
-            return Math.ceil(this.totalProductCategories / 12);
         }
     }
 };
