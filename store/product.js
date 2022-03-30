@@ -288,7 +288,7 @@ export const actions = {
         const reponse = await Repository.get(
             `${baseUrl}/integrations/products/categories?${serializeQuery(
                 params
-            )}`,
+            )}`
         )
             .then(response => {
                 commit('setCategories', response.data.data);

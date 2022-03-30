@@ -45,15 +45,15 @@ import ProductCategoryDefault from '~/components/elements/product/website/Produc
 import ProductWide from '~/components/elements/product/ProductWide';
 
 export default {
-    name: 'LayoutShopSidebarCategories',
+    name: 'LayoutShopSidebar',
     components: { ProductWide, ProductCategoryDefault },
-    props: ['categories_products', 'totalProductCategories', 'loading'],
+    props: ['categories_products', 'totalProductCategories'],
     data() {
         return {
             listView: false,
-            sort_by: 'created_at:desc',
-            page: 1,
-            pageSize: 12
+            sort_by: 'created_at'
+            // page: 0,
+            // perPage: 0
         };
     },
     methods: {
@@ -61,17 +61,19 @@ export default {
             this.listView = !this.listView;
         },
         async handleChangePagination(value) {
-            const page = parseInt(value) === 1 ? 1 : 1 + (value - 1) * 12;
+            const page = 1 + value * this.perPage;
             let nextStartPage = parseInt(page);
+
+            console.log('handleChangePagination - ', value);
 
             const slug = this.$route.params.id;
             const payload = {
                 slug: slug,
                 page: nextStartPage,
                 sort_by: this.sort_by,
-                perPage: this.pageSize
+                perPage: this.perPage
             };
-            await this.$store.dispatch(
+            const response = await this.$store.dispatch(
                 'website/getSingleProductCategories',
                 payload
             );
@@ -82,12 +84,15 @@ export default {
             return this.totalProductCategories
                 ? this.totalProductCategories
                 : 0;
-        }
+        },
+        ...mapState({
+            loading: state => state.website.loading
+        })
     },
 
     computed: {
         paginationLenght() {
-            return Math.ceil(this.totalProductCategories / 12);
+            return Math.floor(this.totalProductCategories / 12);
         }
     }
 };
