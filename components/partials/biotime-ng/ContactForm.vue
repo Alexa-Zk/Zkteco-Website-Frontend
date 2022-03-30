@@ -55,16 +55,19 @@
                 action="/"
                 method="get"
             >
-                <h3>Get In Touch</h3>
+                <h3>Request a quote</h3>
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                         <div class="form-group">
                             <input
                                 class="form-control"
                                 type="text"
-                                placeholder="Full Name *"
-                                v-model="payload.full_name"
+                                placeholder="Company Name"
+                                v-model="company_name"
                             />
+                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.company_name.required">
+                                The company name is required!
+                            </p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
@@ -72,9 +75,12 @@
                             <input
                                 class="form-control"
                                 type="text"
-                                placeholder="Email *"
-                                v-model="payload.email"
+                                placeholder="Contact Name"
+                                v-model="contact_name"
                             />
+                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.contact_name.required">
+                                Contact name is required!
+                            </p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
@@ -82,9 +88,12 @@
                             <input
                                 class="form-control"
                                 type="text"
-                                placeholder="Company Name *"
-                                v-model="payload.company"
+                                placeholder="Company Address"
+                                v-model="address"
                             />
+                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.address.required">
+                                Address is required!
+                            </p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
@@ -93,89 +102,234 @@
                                 class="form-control"
                                 type="text"
                                 placeholder="Phone Number *"
-                                v-model="payload.phone"
+                                v-model="phone_number"
                             />
+                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.phone_number.required">
+                                Phone Number is required!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
+                        <div class="form-group">
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder="Email *"
+                                v-model="email"
+                            />
+                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.email.required">
+                                The email is required!
+                            </p>
+                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.email.email">
+                                Must be a valid email
+                            </p>
                         </div>
                     </div>
                     <div
-                        class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                        class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 "
                     >
                         <div class="form-group">
                             <input
                                 class="form-control"
                                 type="text"
-                                placeholder="Subject *"
-                                v-model="payload.subject"
+                                placeholder="Number of employees"
+                                v-model="no_of_employees"
                             />
+                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.no_of_employees.required">
+                                Employees numbers is required!
+                            </p>
+                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.no_of_employees.numeric">
+                                Must be a number
+                            </p>
                         </div>
                     </div>
+                    <div
+                        class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12  "
+                    >
+                        <div class="form-group">
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder="Devices Quantity?"
+                                v-model="quantity_of_attendance_device"
+                            />
+                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.quantity_of_attendance_device.required">
+                               Device quantity is required!
+                            </p>
+                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.quantity_of_attendance_device.numeric">
+                                Must be a number
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12  "
+                    >
+                        <div class="form-group">
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder="How many locations? *"
+                                v-model="no_of_locations"
+                            />
+                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.no_of_locations.required">
+                               The number of location is required!
+                            </p>
+                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.no_of_locations.numeric">
+                                Must be a number
+                            </p>
+                        </div>
+                    </div>
+
                     <div
                         class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
                     >
                         <div class="form-group">
-                            <textarea
-                                class="form-control"
-                                rows="5"
-                                placeholder="Message"
-                                v-model="payload.message"
-                            ></textarea>
+                             <select  class="form-control" v-model="preferred_mode_of_autentication">
+                                <option disabled value="">Mode of authentication? *</option
+                                >
+                                <option key="fingerprint">fingerprint</option>
+                                <option key="face">face</option>
+                                <option key="palm">palm</option>
+                            </select>
+                             <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.preferred_mode_of_autentication.required">
+                               The prefered mode is required!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="form-group">
+                            
+                            <select  class="form-control" v-model="monitor_attendance_online">
+                                <option disabled value="">Monitor Online? *</option
+                                >
+                                <option key="yes">Yes</option>
+                                <option key="no">No</option>
+                            </select>
+                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.monitor_attendance_online.required">
+                               This field is required!
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
+                        <div class="form-group">
+                            <select  class="form-control" v-model="is_support_needed">
+                                <option disabled value="">Periodic Maintenance? *</option
+                                >
+                                <option key="yes">Yes</option>
+                                <option key="no">No</option>
+                            </select>
+                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.is_support_needed.required">
+                               This field is required!
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="form-group submit">
-                    <el-button @click.prevent="willContactUs" class="ps-btn">
-                        {{ loading ? 'Sending...' : 'Send Message' }}
+                <div class="form-group submit" style="margin-top: 10px;">
+                    <el-button @click.prevent="willContactUs" class="ps-btn ps-btn--fullwidth">
+                        {{ loading ? 'Sending...' : 'Send Quote' }}
                     </el-button>
+
                 </div>
+                <p style="font-size: 11px; color: red; font-weight: normal;" v-if="showError">
+                    An error occurred               
+                </p>
+                <p style="font-size: 11px; color: green; font-weight: normal;" v-if="showSuccess">
+                    You will be contacted shortly!!             
+                </p>
             </form>
         </div>
     </div>
 </template>
 
 <script>
+import { required, email, numeric } from 'vuelidate/lib/validators';
+import { validationMixin } from 'vuelidate';
+
 export default {
+    name: "RequestQuoteForm",
+    mixins: [validationMixin],
     data() {
         return {
+            showError: false,
+            showSuccess: false,
             loading: '',
-            payload: {
-                full_name: '',
-                company: '',
-                email: '',
-                phone: '',
-                subject: '',
-                message: ''
-            },
+            company_name: "",
+            contact_name: "",
+            email: "",
+            phone_number: "",
+            address: "",
+            no_of_locations: "",
+            no_of_employees: "",
+            quantity_of_attendance_device: "",
+            preferred_mode_of_autentication: "",
+            monitor_attendance_online: "",
+            is_support_needed: "",
             disabled: false
         };
     },
+    validations: {
+        company_name: { required },
+        contact_name: { required },
+        email: { required, email },
+        phone_number: { required },
+        address: { required },
+        no_of_locations: { required, numeric },
+        no_of_employees: { required, numeric },
+        quantity_of_attendance_device: { required, numeric },
+        preferred_mode_of_autentication: { required },
+        monitor_attendance_online: { required },
+        is_support_needed: { required }
+    },
     methods: {
+        resetForm() {
+            this.company_name =  ""
+            this.contact_name = ""
+            this.email = ""
+            this.phone_number = ""
+            this.address = ""
+            this.no_of_locations = ""
+            this.no_of_employees = ""
+            this.quantity_of_attendance_device = ""
+            this.preferred_mode_of_autentication = ""
+            this.monitor_attendance_online = ""
+            this.is_support_needed = ""
+        },
         async willContactUs() {
-            this.loading = true;
-            const response = await this.$store.dispatch(
-                'website/sendEnquiry',
-                this.payload
-            );
-            if (response.data) {
-                this.loading = false;
-                this.$notify({
-                    group: 'addCartSuccess',
-                    title: 'Success!',
-                    text: `your enquiry has been sent! you would be contact shortly. Thank you`
-                });
-                this.payload.full_name = '';
-                this.payload.company = '';
-                this.payload.email = '';
-                this.payload.phone = '';
-                this.payload.subject = '';
-                this.payload.message = '';
+            this.$v.$touch()
+            if (this.$v.$invalid) { 
+                return false;
             } else {
-                this.loading = false;
-                this.$notify({
-                    title: 'Waring!',
-                    text: `All text field should be filled`,
-                    group: 'addCartSuccess'
-                });
+                this.loading = true;
+                const payload = {
+                    company_name: this.company_name,
+                    contact_name: this.contact_name,
+                    email: this.email,
+                    phone_number: this.phone_number,
+                    address: this.address,
+                    no_of_locations: this.no_of_locations,
+                    no_of_employees: this.no_of_employees,
+                    quantity_of_attendance_device: this.quantity_of_attendance_device,
+                    preferred_mode_of_autentication: this.preferred_mode_of_autentication,
+                    monitor_attendance_online: this.monitor_attendance_online  === 'Yes' ? true : false,
+                    is_support_needed: this.is_support_needed  === 'Yes' ? true : false,
+                }
+                const response = await this.$store.dispatch(
+                    'website/requestAQuote',
+                    payload
+                );
+                if (response) {
+                    this.loading = false;
+                    this.showSuccess = true;
+                    this.showError = false;
+                    this.resetForm()
+                } else {
+                    this.showError = true;
+                    this.showSuccess = false;
+                    this.loading = false;
+                }
             }
+            
         }
     }
 };
@@ -269,7 +423,7 @@ h6 {
             position: absolute;
             width: 45%;
             right: 0;
-            top: 10%;
+            top: 3%;
             left: 0;
             box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05),
                 0 1.5rem 2.2rem rgba(0, 0, 0, 0.1) !important;
