@@ -71,7 +71,6 @@ export default {
                 sort_by: this.sort_by,
                 perPage: this.pageSize
             };
-            console.log('payloadss ', payload);
             const response = await this.$store.dispatch(
                 'website/getSubProductCategories',
                 payload
@@ -80,7 +79,6 @@ export default {
     },
     computed: {
         paginationLenght() {
-            console.log(' Ad ', this.totalProductCategories);
             return Math.ceil(this.totalProductCategories / 12);
         },
         totals() {
