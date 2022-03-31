@@ -95,12 +95,16 @@ export default {
     background: white;
     display: flex;
     justify-content: space-between;
-
+    
     p {
         margin: 0px;
     }
 
     .popup-left {
+
+        @media (max-width: 480px) {
+            display: none;
+        }
         width: 40%;
         img {
             width: 100%;
@@ -110,6 +114,10 @@ export default {
     }
 
     .popup-right {
+        @media (max-width: 480px) {
+           width: 100%;
+           padding: 20px;
+        }
         width: 60%;
         padding: 60px 30px;
         display: flex;
@@ -122,6 +130,17 @@ export default {
 
         .form-group--nest {
             margin-top: 40px;
+            @media (max-width: 480px) {
+                display: grid;
+                gap: 22px;
+            }
+
+            input {
+                @media (max-width: 480px) {
+                   border: 1px solid #dddddd;
+                }
+                
+            }
         }
 
         .ps-btn {
