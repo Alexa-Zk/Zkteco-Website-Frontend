@@ -87,7 +87,7 @@ export default {
     background: ghostwhite;
 }
 .form-group--nest {
-    @media (max-width: 480px) {
+    @media (max-width: 540px) {
         display: grid;
         gap: 22px;
     }
