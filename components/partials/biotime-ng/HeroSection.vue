@@ -27,14 +27,14 @@
                     >
                         <i class="icon-telephone"></i> Signup
                     </button>
-                    <button
+                    <!--button
                         style="margin-left: 10px;"
                         type="submit"
                         class="ps-btn ps-btn--xs ps-btn--gray"
                         v-on:click="toRequestQuote"
                     >
                         <i class="icon-document"></i> Request a quote
-                    </button>
+                    </button-->
                 </div>
             </div>
             <div class="rtf">
@@ -85,12 +85,12 @@ export default {
         };
     },
     methods: {
-        toBiotime(){
+        toBiotime() {
             const url = 'http://biotime.ng';
             window.location.href = url;
         },
         toRequestQuote() {
-            this.$router.push("/biotime-ng#btc-contact")
+            this.$router.push('/biotime-ng#btc-contact');
         }
     }
 };
@@ -195,7 +195,6 @@ h6 {
             }
 
             .features-ctx {
-
                 .features {
                     padding: 8px 0px;
                     font-size: 16px;
