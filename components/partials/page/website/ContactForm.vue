@@ -70,12 +70,12 @@
                     </div>
                 </div>
                 <div class="form-group submit">
-                    <el-button
+                    <button
                         @click.prevent="willContactUs"
                         class="ps-btn"
                     >
                         {{loading ? "Sending..." : "Send Message"}}
-                    </el-button>
+                    </button>
                 </div>
             </form>
         </div>
