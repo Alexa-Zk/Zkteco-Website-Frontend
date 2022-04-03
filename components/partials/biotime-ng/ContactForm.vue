@@ -562,6 +562,7 @@ h6 {
 }
 .contact-form {
     padding: 50px 0px;
+    margin-bottom: 200px;
 
     .contact-form-link {
         display: grid;
