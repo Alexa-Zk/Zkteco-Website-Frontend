@@ -52,129 +52,171 @@
             </div>
             <form
                 class="ps-form--contact-us btc-form--contact-us"
-                action="/"
-                method="get"
+                @submit.prevent="willContactUs"
             >
                 <h3>Request a quote</h3>
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                         <div class="form-group">
+                            <label>Company Name</label>
                             <input
                                 class="form-control"
                                 type="text"
                                 placeholder="Company Name"
-                                v-model="company_name"
+                                v-model.trim="$v.company_name.$model"
                             />
-                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.company_name.required">
+
+                            <p
+                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                v-if="!$v.company_name.required"
+                            >
                                 The company name is required!
                             </p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                         <div class="form-group">
+                            <label>Cantact Name</label>
                             <input
                                 class="form-control"
                                 type="text"
-                                placeholder="Contact Name"
-                                v-model="contact_name"
+                                placeholder="Cantact Name"
+                                v-model.trim="contact_name"
+                                required
                             />
-                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.contact_name.required">
+                            <p
+                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                v-if="!$v.contact_name.required"
+                            >
                                 Contact name is required!
                             </p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                         <div class="form-group">
+                            <label>Company Address</label>
                             <input
                                 class="form-control"
                                 type="text"
                                 placeholder="Company Address"
-                                v-model="address"
+                                v-model.trim="address"
+                                required
                             />
-                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.address.required">
+                            <p
+                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                v-if="!$v.address.required"
+                            >
                                 Address is required!
                             </p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                         <div class="form-group">
+                            <label>Phone Number</label>
                             <input
                                 class="form-control"
                                 type="text"
-                                placeholder="Phone Number *"
+                                placeholder="Phone Number"
                                 v-model="phone_number"
                             />
-                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.phone_number.required">
+                            <p
+                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                v-if="!$v.phone_number.required"
+                            >
                                 Phone Number is required!
                             </p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                         <div class="form-group">
+                            <label>Email</label>
                             <input
                                 class="form-control"
-                                type="text"
-                                placeholder="Email *"
+                                type="email"
+                                placeholder="Email "
                                 v-model="email"
                             />
-                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.email.required">
+                            <p
+                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                v-if="!$v.email.required"
+                            >
                                 The email is required!
                             </p>
-                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.email.email">
+                            <p
+                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                v-if="!$v.email.email"
+                            >
                                 Must be a valid email
                             </p>
                         </div>
                     </div>
-                    <div
-                        class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 "
-                    >
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                         <div class="form-group">
+                            <label>No of Employees</label>
                             <input
                                 class="form-control"
-                                type="text"
-                                placeholder="Number of employees"
+                                type="number"
+                                placeholder="No of Employees"
                                 v-model="no_of_employees"
                             />
-                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.no_of_employees.required">
+                            <p
+                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                v-if="!$v.no_of_employees.required"
+                            >
                                 Employees numbers is required!
                             </p>
-                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.no_of_employees.numeric">
+                            <p
+                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                v-if="!$v.no_of_employees.numeric"
+                            >
                                 Must be a number
                             </p>
                         </div>
                     </div>
-                    <div
-                        class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12  "
-                    >
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12  ">
                         <div class="form-group">
+                            <label>No of Time and Attendance Devices</label>
                             <input
                                 class="form-control"
-                                type="text"
+                                type="number"
                                 placeholder="Devices Quantity?"
                                 v-model="quantity_of_attendance_device"
                             />
-                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.quantity_of_attendance_device.required">
-                               Device quantity is required!
+                            <p
+                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                v-if="
+                                    !$v.quantity_of_attendance_device.required
+                                "
+                            >
+                                Device quantity is required!
                             </p>
-                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.quantity_of_attendance_device.numeric">
+                            <p
+                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                v-if="!$v.quantity_of_attendance_device.numeric"
+                            >
                                 Must be a number
                             </p>
                         </div>
                     </div>
-                    <div
-                        class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12  "
-                    >
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12  ">
                         <div class="form-group">
+                            <label>No of Location</label>
                             <input
                                 class="form-control"
-                                type="text"
-                                placeholder="How many locations? *"
+                                type="number"
+                                placeholder="No of locations?"
                                 v-model="no_of_locations"
                             />
-                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.no_of_locations.required">
-                               The number of location is required!
+                            <p
+                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                v-if="!$v.no_of_locations.required"
+                            >
+                                The number of location is required!
                             </p>
-                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.no_of_locations.numeric">
+                            <p
+                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                v-if="!$v.no_of_locations.numeric"
+                            >
                                 Must be a number
                             </p>
                         </div>
@@ -184,58 +226,225 @@
                         class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
                     >
                         <div class="form-group">
-                             <select  class="form-control" v-model="preferred_mode_of_autentication">
-                                <option disabled value="">Mode of authentication? *</option
+                            <label>Mode of authentication?</label>
+                            <div class="form-check form-check-inline">
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    id="inlineCheckbox1"
+                                    value="Fingerprint"
+                                    v-model="preferred_mode_of_autentication"
+                                />
+                                <label
+                                    class="form-check-label"
+                                    for="inlineCheckbox1"
+                                    >Fingerprint</label
                                 >
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    id="inlineCheckbox2"
+                                    value="Face"
+                                    v-model="preferred_mode_of_autentication"
+                                />
+                                <label
+                                    class="form-check-label"
+                                    for="inlineCheckbox2"
+                                    >Face</label
+                                >
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    id="inlineCheckbox3"
+                                    value="Palm"
+                                    v-model="preferred_mode_of_autentication"
+                                />
+                                <label
+                                    class="form-check-label"
+                                    for="inlineCheckbox3"
+                                    >Palm</label
+                                >
+                            </div>
+                            <p
+                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                v-if="
+                                    !$v.preferred_mode_of_autentication.required
+                                "
+                            >
+                                The prefered mode is required!
+                            </p>
+                        </div>
+                        <!--div class="form-group">
+                            <select
+                                class="form-control"
+                                v-model="preferred_mode_of_autentication"
+                            >
+                                <option disabled value=""
+                                    >Mode of authentication?
+                                </option>
                                 <option key="fingerprint">fingerprint</option>
                                 <option key="face">face</option>
                                 <option key="palm">palm</option>
                             </select>
-                             <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.preferred_mode_of_autentication.required">
-                               The prefered mode is required!
+                            <p
+                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                v-if="
+                                    !$v.preferred_mode_of_autentication.required
+                                "
+                            >
+                                The prefered mode is required!
                             </p>
-                        </div>
+                        </div -->
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <!--div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="form-group">
-                            
-                            <select  class="form-control" v-model="monitor_attendance_online">
-                                <option disabled value="">Monitor Online? *</option
-                                >
+                            <select
+                                class="form-control"
+                                v-model="monitor_attendance_online"
+                            >
+                                <option disabled value=""
+                                    >Monitor Online?
+                                </option>
                                 <option key="yes">Yes</option>
                                 <option key="no">No</option>
                             </select>
-                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.monitor_attendance_online.required">
-                               This field is required!
+                            <p
+                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                v-if="!$v.monitor_attendance_online.required"
+                            >
+                                This field is required!
+                            </p>
+                        </div>
+                    </div-->
+
+                    <div
+                        class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                    >
+                        <div class="form-group">
+                            <label
+                                >Do you want to monitor attendance online?
+                            </label>
+
+                            <div class="form-check form-check-inline">
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="monitor_attendance_online"
+                                    id="inlineRadio1"
+                                    value="Yes"
+                                    v-model="monitor_attendance_online"
+                                />
+                                <label
+                                    class="form-check-label"
+                                    for="inlineRadio1"
+                                    >Yes</label
+                                >
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="monitor_attendance_online"
+                                    id="inlineRadio2"
+                                    value="No"
+                                    v-model="monitor_attendance_online"
+                                />
+                                <label
+                                    class="form-check-label"
+                                    for="inlineRadio2"
+                                    >No</label
+                                >
+                            </div>
+
+                            <p
+                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                v-if="!$v.monitor_attendance_online.required"
+                            >
+                                This field is required!
                             </p>
                         </div>
                     </div>
 
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
+                    <div
+                        class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                    >
+                        <label
+                            >Would you require periodic support & maintenance?
+                        </label>
+
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="is_support_needed"
+                                id="inlineRadio1"
+                                value="Yes"
+                                v-model="is_support_needed"
+                            />
+                            <label class="form-check-label" for="inlineRadio1"
+                                >Yes</label
+                            >
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="is_support_needed"
+                                id="inlineRadio2"
+                                value="No"
+                                v-model="is_support_needed"
+                            />
+                            <label class="form-check-label" for="inlineRadio2"
+                                >No</label
+                            >
+                        </div>
+                        <p
+                            style="font-size: 11px; color: red; font-weight: lighter;"
+                            v-if="!$v.is_support_needed.required"
+                        >
+                            This field is required!
+                        </p>
+                    </div>
+
+                    <br /><br />
+                    <div
+                        class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                    >
                         <div class="form-group">
-                            <select  class="form-control" v-model="is_support_needed">
-                                <option disabled value="">Periodic Maintenance? *</option
-                                >
-                                <option key="yes">Yes</option>
-                                <option key="no">No</option>
-                            </select>
-                            <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.is_support_needed.required">
-                               This field is required!
-                            </p>
+                            <label>Additional Request </label>
+
+                            <textarea
+                                class="form-control"
+                                v-model="additional_request"
+                                placeholder="Additional Request "
+                                id="floatingTextarea"
+                            ></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="form-group submit" style="margin-top: 10px;">
-                    <el-button @click.prevent="willContactUs" class="ps-btn ps-btn--fullwidth">
+                    <el-button
+                        @click.prevent="willContactUs"
+                        class="ps-btn ps-btn--fullwidth"
+                    >
                         {{ loading ? 'Sending...' : 'Send Quote' }}
                     </el-button>
-
                 </div>
-                <p style="font-size: 11px; color: red; font-weight: normal;" v-if="showError">
-                    An error occurred               
+                <p
+                    style="font-size: 11px; color: red; font-weight: normal;"
+                    v-if="showError"
+                >
+                    An error occurred
                 </p>
-                <p style="font-size: 11px; color: green; font-weight: normal;" v-if="showSuccess">
-                    You will be contacted shortly!!             
+                <p
+                    style="font-size: 11px; color: green; font-weight: normal;"
+                    v-if="showSuccess"
+                >
+                    You will be contacted shortly!!
                 </p>
             </form>
         </div>
@@ -247,24 +456,25 @@ import { required, email, numeric } from 'vuelidate/lib/validators';
 import { validationMixin } from 'vuelidate';
 
 export default {
-    name: "RequestQuoteForm",
+    name: 'RequestQuoteForm',
     mixins: [validationMixin],
     data() {
         return {
             showError: false,
             showSuccess: false,
             loading: '',
-            company_name: "",
-            contact_name: "",
-            email: "",
-            phone_number: "",
-            address: "",
-            no_of_locations: "",
-            no_of_employees: "",
-            quantity_of_attendance_device: "",
-            preferred_mode_of_autentication: "",
-            monitor_attendance_online: "",
-            is_support_needed: "",
+            company_name: '',
+            contact_name: '',
+            email: '',
+            phone_number: '',
+            address: '',
+            no_of_locations: '',
+            no_of_employees: '',
+            quantity_of_attendance_device: '',
+            preferred_mode_of_autentication: [],
+            monitor_attendance_online: '',
+            is_support_needed: '',
+            additional_request: '',
             disabled: false
         };
     },
@@ -283,21 +493,22 @@ export default {
     },
     methods: {
         resetForm() {
-            this.company_name =  ""
-            this.contact_name = ""
-            this.email = ""
-            this.phone_number = ""
-            this.address = ""
-            this.no_of_locations = ""
-            this.no_of_employees = ""
-            this.quantity_of_attendance_device = ""
-            this.preferred_mode_of_autentication = ""
-            this.monitor_attendance_online = ""
-            this.is_support_needed = ""
+            this.company_name = '';
+            this.contact_name = '';
+            this.email = '';
+            this.phone_number = '';
+            this.address = '';
+            this.no_of_locations = '';
+            this.no_of_employees = '';
+            this.quantity_of_attendance_device = '';
+            this.preferred_mode_of_autentication = [];
+            this.monitor_attendance_online = '';
+            this.is_support_needed = '';
+            this.additional_request = '';
         },
         async willContactUs() {
-            this.$v.$touch()
-            if (this.$v.$invalid) { 
+            this.$v.$touch();
+            if (this.$v.$invalid) {
                 return false;
             } else {
                 this.loading = true;
@@ -309,11 +520,17 @@ export default {
                     address: this.address,
                     no_of_locations: this.no_of_locations,
                     no_of_employees: this.no_of_employees,
-                    quantity_of_attendance_device: this.quantity_of_attendance_device,
-                    preferred_mode_of_autentication: this.preferred_mode_of_autentication,
-                    monitor_attendance_online: this.monitor_attendance_online  === 'Yes' ? true : false,
-                    is_support_needed: this.is_support_needed  === 'Yes' ? true : false,
-                }
+                    quantity_of_attendance_device: this
+                        .quantity_of_attendance_device,
+                    preferred_mode_of_autentication: this
+                        .preferred_mode_of_autentication,
+                    monitor_attendance_online:
+                        this.monitor_attendance_online === 'Yes' ? true : false,
+                    is_support_needed:
+                        this.is_support_needed === 'Yes' ? true : false,
+                    additional_request: this.additional_request
+                };
+
                 const response = await this.$store.dispatch(
                     'website/requestAQuote',
                     payload
@@ -322,14 +539,13 @@ export default {
                     this.loading = false;
                     this.showSuccess = true;
                     this.showError = false;
-                    this.resetForm()
+                    this.resetForm();
                 } else {
                     this.showError = true;
                     this.showSuccess = false;
                     this.loading = false;
                 }
             }
-            
         }
     }
 };
