@@ -522,8 +522,7 @@ export default {
                     no_of_employees: this.no_of_employees,
                     quantity_of_attendance_device: this
                         .quantity_of_attendance_device,
-                    preferred_mode_of_autentication: this
-                        .preferred_mode_of_autentication,
+                    preferred_mode_of_autentication: this.preferred_mode_of_autentication.toString(),
                     monitor_attendance_online:
                         this.monitor_attendance_online === 'Yes' ? true : false,
                     is_support_needed:
