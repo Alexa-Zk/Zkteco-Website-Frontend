@@ -73,11 +73,11 @@
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                         <div class="form-group">
-                            <label>Cantact Name</label>
+                            <label>Contact Name</label>
                             <input
                                 class="form-control"
                                 type="text"
-                                placeholder="Cantact Name"
+                                placeholder="Contact Name"
                                 v-model.trim="contact_name"
                                 required
                             />
@@ -176,7 +176,7 @@
                             <input
                                 class="form-control"
                                 type="number"
-                                placeholder="Devices Quantity?"
+                                placeholder="No of Time and Attendance Devices?"
                                 v-model="quantity_of_attendance_device"
                             />
                             <p
