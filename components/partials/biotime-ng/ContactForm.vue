@@ -50,10 +50,7 @@
             <div class="form-image">
                 <img src="~/static/img/biotimecloud-zkteco.jpeg" alt="" />
             </div>
-            <form
-                class="ps-form--contact-us btc-form--contact-us"
-                @submit.prevent="willContactUs"
-            >
+            <form class="ps-form--contact-us btc-form--contact-us">
                 <h3>Request a quote</h3>
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
@@ -278,48 +275,7 @@
                                 The prefered mode is required!
                             </p>
                         </div>
-                        <!--div class="form-group">
-                            <select
-                                class="form-control"
-                                v-model="preferred_mode_of_autentication"
-                            >
-                                <option disabled value=""
-                                    >Mode of authentication?
-                                </option>
-                                <option key="fingerprint">fingerprint</option>
-                                <option key="face">face</option>
-                                <option key="palm">palm</option>
-                            </select>
-                            <p
-                                style="font-size: 11px; color: red; font-weight: lighter;"
-                                v-if="
-                                    !$v.preferred_mode_of_autentication.required
-                                "
-                            >
-                                The prefered mode is required!
-                            </p>
-                        </div -->
                     </div>
-                    <!--div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="form-group">
-                            <select
-                                class="form-control"
-                                v-model="monitor_attendance_online"
-                            >
-                                <option disabled value=""
-                                    >Monitor Online?
-                                </option>
-                                <option key="yes">Yes</option>
-                                <option key="no">No</option>
-                            </select>
-                            <p
-                                style="font-size: 11px; color: red; font-weight: lighter;"
-                                v-if="!$v.monitor_attendance_online.required"
-                            >
-                                This field is required!
-                            </p>
-                        </div>
-                    </div-->
 
                     <div
                         class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
@@ -427,12 +383,12 @@
                     </div>
                 </div>
                 <div class="form-group submit" style="margin-top: 10px;">
-                    <el-button
+                    <button
                         @click.prevent="willContactUs"
                         class="ps-btn ps-btn--fullwidth"
                     >
                         {{ loading ? 'Sending...' : 'Send Quote' }}
-                    </el-button>
+                    </button>
                 </div>
                 <p
                     style="font-size: 11px; color: red; font-weight: normal;"
