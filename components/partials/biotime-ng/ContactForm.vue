@@ -230,7 +230,7 @@
                                     type="checkbox"
                                     id="inlineCheckbox1"
                                     value="Fingerprint"
-                                    v-model="preferred_mode_of_autentication"
+                                    v-model="preferred_mode_of_authentication"
                                 />
                                 <label
                                     class="form-check-label"
@@ -244,7 +244,7 @@
                                     type="checkbox"
                                     id="inlineCheckbox2"
                                     value="Face"
-                                    v-model="preferred_mode_of_autentication"
+                                    v-model="preferred_mode_of_authentication"
                                 />
                                 <label
                                     class="form-check-label"
@@ -258,7 +258,7 @@
                                     type="checkbox"
                                     id="inlineCheckbox3"
                                     value="Palm"
-                                    v-model="preferred_mode_of_autentication"
+                                    v-model="preferred_mode_of_authentication"
                                 />
                                 <label
                                     class="form-check-label"
@@ -269,7 +269,8 @@
                             <p
                                 style="font-size: 11px; color: red; font-weight: lighter;"
                                 v-if="
-                                    !$v.preferred_mode_of_autentication.required
+                                    !$v.preferred_mode_of_authentication
+                                        .required
                                 "
                             >
                                 The prefered mode is required!
@@ -383,10 +384,12 @@
                     </div>
                 </div>
                 <div class="form-group submit" style="margin-top: 10px;">
-                    <button @click.prevent="willContactUs" class="ps-btn ps-btn--fullwidth">
+                    <button
+                        @click.prevent="willContactUs"
+                        class="ps-btn ps-btn--fullwidth"
+                    >
                         {{ loading ? 'Sending...' : 'Send Quote' }}
                     </button>
-
                 </div>
                 <p
                     style="font-size: 11px; color: red; font-weight: normal;"
@@ -425,7 +428,7 @@ export default {
             no_of_locations: '',
             no_of_employees: '',
             quantity_of_attendance_device: '',
-            preferred_mode_of_autentication: [],
+            preferred_mode_of_authentication: [],
             monitor_attendance_online: '',
             is_support_needed: '',
             additional_request: '',
@@ -441,7 +444,7 @@ export default {
         no_of_locations: { required, numeric },
         no_of_employees: { required, numeric },
         quantity_of_attendance_device: { required, numeric },
-        preferred_mode_of_autentication: { required },
+        preferred_mode_of_authentication: { required },
         monitor_attendance_online: { required },
         is_support_needed: { required }
     },
@@ -455,7 +458,7 @@ export default {
             this.no_of_locations = '';
             this.no_of_employees = '';
             this.quantity_of_attendance_device = '';
-            this.preferred_mode_of_autentication = [];
+            this.preferred_mode_of_authentication = [];
             this.monitor_attendance_online = '';
             this.is_support_needed = '';
             this.additional_request = '';
@@ -472,11 +475,12 @@ export default {
                     email: this.email,
                     phone_number: this.phone_number,
                     address: this.address,
-                    no_of_locations: this.no_of_locations,
-                    no_of_employees: this.no_of_employees,
-                    quantity_of_attendance_device: this
-                        .quantity_of_attendance_device,
-                    preferred_mode_of_autentication: this.preferred_mode_of_autentication.toString(),
+                    no_of_locations: Number(this.no_of_locations),
+                    no_of_employees: Number(this.no_of_employees),
+                    quantity_of_attendance_device: Number(
+                        this.quantity_of_attendance_device
+                    ),
+                    preferred_mode_of_authentication: this.preferred_mode_of_authentication.toString(),
                     monitor_attendance_online:
                         this.monitor_attendance_online === 'Yes' ? true : false,
                     is_support_needed:
