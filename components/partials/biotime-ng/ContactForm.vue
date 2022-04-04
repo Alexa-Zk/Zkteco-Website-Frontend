@@ -383,12 +383,10 @@
                     </div>
                 </div>
                 <div class="form-group submit" style="margin-top: 10px;">
-                    <button
-                        @click.prevent="willContactUs"
-                        class="ps-btn ps-btn--fullwidth"
-                    >
+                    <button @click.prevent="willContactUs" class="ps-btn ps-btn--fullwidth">
                         {{ loading ? 'Sending...' : 'Send Quote' }}
                     </button>
+
                 </div>
                 <p
                     style="font-size: 11px; color: red; font-weight: normal;"

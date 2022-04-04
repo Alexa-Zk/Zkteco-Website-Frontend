@@ -29,6 +29,11 @@ export const mutations = {
     },
     setUserInfoDownload(state, payload) {
         state.userInfoDownload = payload;
+
+        this.$cookies.set('download_user_info', payload, {
+            path: '/',
+            maxAge: 60 * 60 * 24 * 7
+        });
     },
     setAuthToken(state, payload) {
         state.authToken = payload;
