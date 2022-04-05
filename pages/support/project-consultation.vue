@@ -8,8 +8,11 @@
                         <div class="contact">
                             <h3>Contact Method</h3>
                             <div class="row">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
+                                        <label>Name </label>
                                         <input
                                             class="form-control"
                                             type="text"
@@ -17,50 +20,70 @@
                                             placeholder="Name"
                                             v-model="userInfo.username"
                                         />
-                                        
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
+                                        <label>Position </label>
                                         <input
                                             class="form-control"
                                             type="text"
                                             placeholder="Position"
                                             v-model="position"
                                         />
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.position.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="$v.position.$error"
+                                        >
                                             Position is required!
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
+                                        <label>Company Name </label>
                                         <input
                                             class="form-control"
                                             type="text"
                                             placeholder="Company Name"
                                             v-model="company_name"
                                         />
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.company_name.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="$v.company_name.$error"
+                                        >
                                             The Company Name is required!
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
+                                        <label>Phone Number </label>
                                         <input
                                             class="form-control"
                                             type="text"
                                             placeholder="Phone Number"
                                             v-model="phone_number"
                                         />
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.phone_number.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="$v.phone_number.$error"
+                                        >
                                             Phone is required!
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
+                                        <label>Email </label>
                                         <input
                                             class="form-control"
                                             type="text"
@@ -68,32 +91,49 @@
                                             placeholder="Email"
                                             v-model="userInfo.email"
                                         />
-                                       
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
-                                        <select  class="form-control" v-model="country">
-                                            <option disabled value="">Country *</option
+                                        <label>Country </label>
+                                        <select
+                                            class="form-control"
+                                            v-model="country"
+                                        >
+                                            <option disabled value=""
+                                                >Country</option
                                             >
-                                            <option key="nigeria">Nigeria</option>
+                                            <option key="nigeria"
+                                                >Nigeria</option
+                                            >
                                             <option key="ghana">Ghana</option>
                                             <option key="others">Others</option>
                                         </select>
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.country.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="$v.country.$error"
+                                        >
                                             Country is required!
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
+                                        <label>City </label>
                                         <input
                                             class="form-control"
                                             type="text"
                                             placeholder="City"
                                             v-model="city"
                                         />
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.city.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="$v.city.$error"
+                                        >
                                             City is required!
                                         </p>
                                     </div>
@@ -105,67 +145,107 @@
                             <h3>Requirement Information</h3>
 
                             <div class="row">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
+                                        <label>Related Industry </label>
                                         <input
                                             class="form-control"
                                             type="text"
                                             placeholder="Related Industry"
                                             v-model="related_industry"
                                         />
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.related_industry.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="$v.related_industry.$error"
+                                        >
                                             Enter Related Industry!
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
+                                        <label
+                                            >Products Needed for Project
+                                        </label>
                                         <input
                                             class="form-control"
                                             type="text"
                                             placeholder="Products Needed for Project"
                                             v-model="product_needed"
                                         />
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.product_needed.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="$v.product_needed.$error"
+                                        >
                                             Enter needed product!
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
+                                        <label>Project Description </label>
                                         <input
                                             class="form-control"
                                             type="text"
                                             placeholder="Project Description"
                                             v-model="project_description"
                                         />
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.project_description.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="$v.project_description.$error"
+                                        >
                                             Enter Project Description!
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
-                                       <select  class="form-control" v-model="project_scale">
-                                            <option disabled value="">Project Scale *</option
+                                        <label>Project Scale </label>
+                                        <select
+                                            class="form-control"
+                                            v-model="project_scale"
+                                        >
+                                            <option disabled value=""
+                                                >Project Scale
+                                            </option>
+                                            <option key="large"
+                                                >Large Products</option
                                             >
-                                            <option key="large">Large Products</option>
-                                            <option key="medium">Medium Project</option>
-                                            <option key="small">Small Products</option>
+                                            <option key="medium"
+                                                >Medium Project</option
+                                            >
+                                            <option key="small"
+                                                >Small Products</option
+                                            >
                                         </select>
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.project_scale.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="$v.project_scale.$error"
+                                        >
                                             Select Project Scale!
                                         </p>
                                     </div>
                                 </div>
 
-                                <div class="container form-group submit" style="margin-top: 10px;">
-                                    <button @click.prevent="submit" class="ps-btn ps-btn--fullwidth">
+                                <div
+                                    class="container form-group submit"
+                                    style="margin-top: 10px;"
+                                >
+                                    <button
+                                        @click.prevent="submit"
+                                        class="ps-btn ps-btn--fullwidth"
+                                    >
                                         {{ loading ? 'Sending...' : 'Submit' }}
                                     </button>
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -206,7 +286,7 @@ export default {
             company_name: '',
             country: '',
             phone_number: '',
-           
+
             position: '',
             related_industry: '',
             product_needed: '',
@@ -240,8 +320,8 @@ export default {
             this.city = '';
         },
         async submit() {
-            this.$v.$touch()
-            if (this.$v.$invalid) { 
+            this.$v.$touch();
+            if (this.$v.$invalid) {
                 return false;
             } else {
                 this.loading = true;
@@ -255,10 +335,15 @@ export default {
                     related_industry: this.related_industry,
                     product_needed: this.product_needed,
                     project_description: this.project_description,
-                    project_scale: this.project_scale === 'Large Project' ? 'large_projects' : this.project_scale === 'Medium Project' ? 'medium_projects' : 'small_projects',
+                    project_scale:
+                        this.project_scale === 'Large Project'
+                            ? 'large_projects'
+                            : this.project_scale === 'Medium Project'
+                            ? 'medium_projects'
+                            : 'small_projects',
                     city: this.city
-                }
-                console.log(payload)
+                };
+                console.log(payload);
                 const response = await this.$store.dispatch(
                     'website/projectConsultation',
                     payload
@@ -267,7 +352,7 @@ export default {
                     this.loading = false;
                     this.showSuccess = true;
                     this.showError = false;
-                    this.resetForm()
+                    this.resetForm();
                 } else {
                     this.showError = true;
                     this.showSuccess = false;
@@ -280,7 +365,7 @@ export default {
         ...mapState({
             user: state => state.auth.userInfoDownload
         }),
-        userInfo () {
+        userInfo() {
             return this.user.user;
         }
     },
@@ -317,7 +402,7 @@ export default {
     }
 
     .requirement {
-         @include media('<sm') {
+        @include media('<sm') {
             width: 100%;
             margin-left: 0%;
             margin-top: 50px;
