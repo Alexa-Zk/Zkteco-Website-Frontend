@@ -63,7 +63,7 @@ export default {
                 {
                     hid: 'description',
                     name: 'description',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'twitter:title',
@@ -73,7 +73,7 @@ export default {
                 {
                     hid: 'twitter:description',
                     name: 'twitter:description',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'twitter:image',
@@ -93,7 +93,7 @@ export default {
                 {
                     hid: 'og:description',
                     property: 'og:description',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'og:image',
@@ -108,7 +108,7 @@ export default {
                 {
                     hid: 'og:image:alt',
                     property: 'og:image:alt',
-                    content: name
+                    content: name.replace(/<\/?[^>]+(>|$)/g, '')
                 }
             ]
         };
@@ -116,12 +116,12 @@ export default {
     jsonld() {
         if (this.formattedProducts) {
             return {
-                "@context": "https://schema.org",
-                "@id": "#product",
-                "@type": "IndividualProduct",
-                "additionalType": `https://www.zkteco-wa.com/product/${this.formattedProducts.slug}`,
-                "description": `https://www.zkteco-wa.com/product/${this.formattedProducts.description}`,
-                "name": `https://www.zkteco-wa.com/product/${this.formattedProducts.name}`
+                '@context': 'https://schema.org',
+                '@id': '#product',
+                '@type': 'IndividualProduct',
+                additionalType: `https://www.zkteco-wa.com/product/${this.formattedProducts.slug}`,
+                description: `https://www.zkteco-wa.com/product/${this.formattedProducts.description}`,
+                name: `https://www.zkteco-wa.com/product/${this.formattedProducts.name}`
             };
         } else {
             return {};
