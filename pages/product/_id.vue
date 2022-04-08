@@ -43,24 +43,98 @@ export default {
     },
     head() {
         return {
-            titleTemplate: this.formattedProducts
-                ? this.formattedProducts.name
-                : '',
+            titleTemplate: `${
+                this.news_categories ? this.news_categories.name : ''
+            }`,
             meta: [
                 {
                     hid: 'description',
                     name: 'description',
-                    content: this.formattedProducts
-                        ? this.formattedProducts.description.replace(
-                              /<\/?[^>]+(>|$)/g,
-                              ''
-                          )
-                        : 'Product Details - Description'
+                    content: `${
+                        this.news_categories ? this.news_categories.name : ''
+                    } About ZKTeco West Africa`
                 }
             ]
         };
     },
-
+    head() {
+        const name = this.formattedProducts ? this.formattedProducts.name : '';
+        const description = this.formattedProducts
+            ? this.formattedProducts.description
+            : 'Product Details - Description';
+        const image = this.formattedProducts
+            ? this.formattedProducts.images[0].url
+            : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
+        const title = description.replace(/<\/?[^>]+(>|$)/g, '');
+        return {
+            title: title,
+            titleTemplate(title) {
+                return `${title}`;
+            },
+            meta: [
+                {
+                    hid: 'title',
+                    name: 'title',
+                    content: title
+                },
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                },
+                {
+                    hid: 'twitter:title',
+                    name: 'twitter:title',
+                    content: title
+                },
+                {
+                    hid: 'twitter:description',
+                    name: 'twitter:description',
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                },
+                {
+                    hid: 'twitter:image',
+                    name: 'twitter:image',
+                    content: image
+                },
+                {
+                    hid: 'twitter:image:alt',
+                    name: 'twitter:image:alt',
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                },
+                {
+                    hid: 'og:title',
+                    property: 'og:title',
+                    content: title
+                },
+                {
+                    hid: 'og:description',
+                    property: 'og:description',
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                },
+                {
+                    hid: 'og:image',
+                    property: 'og:image',
+                    content: image
+                },
+                {
+                    hid: 'og:image:secure_url',
+                    property: 'og:image:secure_url',
+                    content: image
+                },
+                {
+                    hid: 'og:image:alt',
+                    property: 'og:image:alt',
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                },
+                {
+                    hid: 'keywords',
+                    name: 'keywords',
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                }
+            ]
+        };
+    },
     jsonld() {
         if (this.formattedProducts) {
             return {
