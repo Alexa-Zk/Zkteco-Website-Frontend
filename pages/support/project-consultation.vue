@@ -366,7 +366,9 @@ export default {
             user: state => state.auth.userInfoDownload
         }),
         userInfo() {
-            return this.user.user;
+            return this.user == null || this.user == undefined
+                ? ''
+                : this.user.user;
         }
     },
     mounted() {
