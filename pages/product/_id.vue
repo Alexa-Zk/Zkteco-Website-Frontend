@@ -49,8 +49,11 @@ export default {
         const image = this.formattedProducts
             ? this.formattedProducts.images[0].url
             : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
+        const title = this.formattedProducts.seo.title
+            ? this.formattedProducts.seo.title
+            : description;
         return {
-            title: name,
+            title: title,
             titleTemplate(title) {
                 return `${title}`;
             },
@@ -58,7 +61,7 @@ export default {
                 {
                     hid: 'title',
                     name: 'title',
-                    content: name
+                    content: title
                 },
                 {
                     hid: 'description',
@@ -68,7 +71,7 @@ export default {
                 {
                     hid: 'twitter:title',
                     name: 'twitter:title',
-                    content: name
+                    content: title
                 },
                 {
                     hid: 'twitter:description',
@@ -83,12 +86,12 @@ export default {
                 {
                     hid: 'twitter:image:alt',
                     name: 'twitter:image:alt',
-                    content: name
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'og:title',
                     property: 'og:title',
-                    content: name
+                    content: title
                 },
                 {
                     hid: 'og:description',
@@ -108,7 +111,7 @@ export default {
                 {
                     hid: 'og:image:alt',
                     property: 'og:image:alt',
-                    content: name.replace(/<\/?[^>]+(>|$)/g, '')
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 }
             ]
         };
