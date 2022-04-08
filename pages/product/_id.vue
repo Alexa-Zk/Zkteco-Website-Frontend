@@ -49,9 +49,7 @@ export default {
         const image = this.formattedProducts
             ? this.formattedProducts.images[0].url
             : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
-        const title = this.formattedProducts.seo.title
-            ? this.formattedProducts.seo.title
-            : description;
+        const title = description.replace(/<\/?[^>]+(>|$)/g, '');
         return {
             title: title,
             titleTemplate(title) {
@@ -111,6 +109,11 @@ export default {
                 {
                     hid: 'og:image:alt',
                     property: 'og:image:alt',
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                },
+                {
+                    hid: 'keywords',
+                    name: 'keywords',
                     content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 }
             ]
