@@ -343,7 +343,7 @@ export default {
                             : 'small_projects',
                     city: this.city
                 };
-                console.log(payload);
+
                 const response = await this.$store.dispatch(
                     'website/projectConsultation',
                     payload
@@ -366,6 +366,7 @@ export default {
             user: state => state.auth.userInfoDownload
         }),
         userInfo() {
+            //console.log(' - ', this.user);
             return this.user == null || this.user == undefined
                 ? ''
                 : this.user.user;
