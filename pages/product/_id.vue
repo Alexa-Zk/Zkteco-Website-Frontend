@@ -29,6 +29,8 @@ import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
 import singleProduct from '~/apollo/queries/products/singleProduct';
 
+const axios = require('axios');
+
 export default {
     layout: 'layout-default-website',
     name: 'Products',
@@ -42,22 +44,6 @@ export default {
         ProductDetailFullwidth
     },
     head() {
-        return {
-            titleTemplate: `${
-                this.news_categories ? this.news_categories.name : ''
-            }`,
-            meta: [
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: `${
-                        this.news_categories ? this.news_categories.name : ''
-                    } About ZKTeco West Africa`
-                }
-            ]
-        };
-    },
-    head() {
         const name = this.formattedProducts ? this.formattedProducts.name : '';
         const description = this.formattedProducts
             ? this.formattedProducts.description
@@ -65,7 +51,7 @@ export default {
         const image = this.formattedProducts
             ? this.formattedProducts.images[0].url
             : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
-        const title = description.replace(/<\/?[^>]+(>|$)/g, '');
+        const title = name.replace(/<\/?[^>]+(>|$)/g, '');
         return {
             title: title,
             titleTemplate(title) {
@@ -149,19 +135,17 @@ export default {
             return {};
         }
     },
-    apollo: {
-        products: {
-            prefetch: true,
-            query: singleProduct,
-            variables() {
-                return { id: this.$route.params.id };
-            }
-        }
+    async asyncData({ params }) {
+        try {
+            let products = await axios.get(
+                `https://admin.zkteco-wa.com/products?slug_in=${params.id}`
+            );
+            return { products };
+        } catch (error) {}
     },
-
     computed: {
         formattedProducts() {
-            return this.products[0];
+            return this.products.data[0];
         }
     },
     data() {
