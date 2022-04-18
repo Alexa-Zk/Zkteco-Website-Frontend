@@ -38,6 +38,7 @@
                                         outlined
                                     />
                                 </div>
+                                
 
                                 <div class="form-group submit">
                                     <button
@@ -115,7 +116,8 @@ export default {
             this.$v.$touch();
             if (!this.$v.$invalid) {
                 this.loading = true;
-                const response = await this.$store.dispatch('auth/resetPassword',
+                const response = await this.$store.dispatch(
+                    'auth/resetPassword',
                     {
                         code: this.resetCode,
                         password: this.password,
@@ -124,8 +126,8 @@ export default {
                 );
                 if (response) {
                     this.loading = false;
-                    console.log('Your user\'s password has been changed.');
-                    this.$router.push('/auth/login')
+                    console.log("Your user's password has been changed.");
+                    this.$router.push('/auth/login');
                 } else {
                     this.loading = false;
                     this.error_alert = response.error.message;
@@ -138,15 +140,19 @@ export default {
         confirmPasswordErrors() {
             const errors = [];
             if (!this.$v.confirmPassword.$dirty) return errors;
-            !this.$v.confirmPassword.required && errors.push('confirm password is required');
-            !this.$v.confirmPassword.sameAsPassword && errors.push('password and confirm password should match');
+            !this.$v.confirmPassword.required &&
+                errors.push('confirm password is required');
+            !this.$v.confirmPassword.sameAsPassword &&
+                errors.push('password and confirm password should match');
             return errors;
         },
         passwordErrors() {
             const errors = [];
             if (!this.$v.password.$dirty) return errors;
-            !this.$v.password.required && errors.push('This password field is required');
-            !this.$v.password.minLength && errors.push('password must be mored than 6');
+            !this.$v.password.required &&
+                errors.push('This password field is required');
+            !this.$v.password.minLength &&
+                errors.push('password must be mored than 6');
             return errors;
         }
     }
