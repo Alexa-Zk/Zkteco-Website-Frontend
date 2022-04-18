@@ -55,7 +55,7 @@
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                         <div class="form-group">
-                            <label>Company Name</label>
+                            <label>Company Name </label>
                             <input
                                 class="form-control"
                                 type="text"
@@ -63,35 +63,29 @@
                                 v-model.trim="$v.company_name.$model"
                             />
 
-                            <p
-                                style="font-size: 11px; color: red; font-weight: lighter;"
-                                v-if="!$v.company_name.required"
-                            >
+                            <p class="el-error" v-if="$v.company_name.$error">
                                 The company name is required!
                             </p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                         <div class="form-group">
-                            <label>Cantact Name</label>
+                            <label>Contact Name</label>
                             <input
                                 class="form-control"
                                 type="text"
-                                placeholder="Cantact Name"
+                                placeholder="Contact Name"
                                 v-model.trim="contact_name"
                                 required
                             />
-                            <p
-                                style="font-size: 11px; color: red; font-weight: lighter;"
-                                v-if="!$v.contact_name.required"
-                            >
+                            <p class="el-error" v-if="$v.contact_name.$error">
                                 Contact name is required!
                             </p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                         <div class="form-group">
-                            <label>Company Address</label>
+                            <label>Company Address </label>
                             <input
                                 class="form-control"
                                 type="text"
@@ -99,12 +93,9 @@
                                 v-model.trim="address"
                                 required
                             />
-                            <p
-                                style="font-size: 11px; color: red; font-weight: lighter;"
-                                v-if="!$v.address.required"
-                            >
+                            <div class="el-error" v-if="$v.address.$error">
                                 Address is required!
-                            </p>
+                            </div>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
@@ -116,10 +107,7 @@
                                 placeholder="Phone Number"
                                 v-model="phone_number"
                             />
-                            <p
-                                style="font-size: 11px; color: red; font-weight: lighter;"
-                                v-if="!$v.phone_number.required"
-                            >
+                            <p class="el-error" v-if="$v.phone_number.$error">
                                 Phone Number is required!
                             </p>
                         </div>
@@ -133,16 +121,10 @@
                                 placeholder="Email "
                                 v-model="email"
                             />
-                            <p
-                                style="font-size: 11px; color: red; font-weight: lighter;"
-                                v-if="!$v.email.required"
-                            >
+                            <p class="el-error" v-if="$v.email.$error">
                                 The email is required!
                             </p>
-                            <p
-                                style="font-size: 11px; color: red; font-weight: lighter;"
-                                v-if="!$v.email.email"
-                            >
+                            <p class="el-error" v-if="!$v.email.email">
                                 Must be a valid email
                             </p>
                         </div>
@@ -157,16 +139,10 @@
                                 v-model="no_of_employees"
                             />
                             <p
-                                style="font-size: 11px; color: red; font-weight: lighter;"
-                                v-if="!$v.no_of_employees.required"
+                                class="el-error"
+                                v-if="$v.no_of_employees.$error"
                             >
                                 Employees numbers is required!
-                            </p>
-                            <p
-                                style="font-size: 11px; color: red; font-weight: lighter;"
-                                v-if="!$v.no_of_employees.numeric"
-                            >
-                                Must be a number
                             </p>
                         </div>
                     </div>
@@ -176,20 +152,18 @@
                             <input
                                 class="form-control"
                                 type="number"
-                                placeholder="Devices Quantity?"
+                                placeholder="No of Time and Attendance Devices?"
                                 v-model="quantity_of_attendance_device"
                             />
                             <p
-                                style="font-size: 11px; color: red; font-weight: lighter;"
-                                v-if="
-                                    !$v.quantity_of_attendance_device.required
-                                "
+                                class="el-error"
+                                v-if="$v.quantity_of_attendance_device.$error"
                             >
                                 Device quantity is required!
                             </p>
                             <p
-                                style="font-size: 11px; color: red; font-weight: lighter;"
-                                v-if="!$v.quantity_of_attendance_device.numeric"
+                                class="el-error"
+                                v-if="$v.quantity_of_attendance_device.$error"
                             >
                                 Must be a number
                             </p>
@@ -205,16 +179,10 @@
                                 v-model="no_of_locations"
                             />
                             <p
-                                style="font-size: 11px; color: red; font-weight: lighter;"
-                                v-if="!$v.no_of_locations.required"
+                                class="el-error"
+                                v-if="$v.no_of_locations.$error"
                             >
                                 The number of location is required!
-                            </p>
-                            <p
-                                style="font-size: 11px; color: red; font-weight: lighter;"
-                                v-if="!$v.no_of_locations.numeric"
-                            >
-                                Must be a number
                             </p>
                         </div>
                     </div>
@@ -230,7 +198,7 @@
                                     type="checkbox"
                                     id="inlineCheckbox1"
                                     value="Fingerprint"
-                                    v-model="preferred_mode_of_autentication"
+                                    v-model="preferred_mode_of_authentication"
                                 />
                                 <label
                                     class="form-check-label"
@@ -244,7 +212,7 @@
                                     type="checkbox"
                                     id="inlineCheckbox2"
                                     value="Face"
-                                    v-model="preferred_mode_of_autentication"
+                                    v-model="preferred_mode_of_authentication"
                                 />
                                 <label
                                     class="form-check-label"
@@ -258,7 +226,7 @@
                                     type="checkbox"
                                     id="inlineCheckbox3"
                                     value="Palm"
-                                    v-model="preferred_mode_of_autentication"
+                                    v-model="preferred_mode_of_authentication"
                                 />
                                 <label
                                     class="form-check-label"
@@ -267,9 +235,9 @@
                                 >
                             </div>
                             <p
-                                style="font-size: 11px; color: red; font-weight: lighter;"
+                                class="el-error"
                                 v-if="
-                                    !$v.preferred_mode_of_autentication.required
+                                    $v.preferred_mode_of_authentication.$error
                                 "
                             >
                                 The prefered mode is required!
@@ -317,8 +285,8 @@
                             </div>
 
                             <p
-                                style="font-size: 11px; color: red; font-weight: lighter;"
-                                v-if="!$v.monitor_attendance_online.required"
+                                class="el-error"
+                                v-if="$v.monitor_attendance_online.$error"
                             >
                                 This field is required!
                             </p>
@@ -358,10 +326,7 @@
                                 >No</label
                             >
                         </div>
-                        <p
-                            style="font-size: 11px; color: red; font-weight: lighter;"
-                            v-if="!$v.is_support_needed.required"
-                        >
+                        <p class="el-error" v-if="$v.is_support_needed.$error">
                             This field is required!
                         </p>
                     </div>
@@ -383,10 +348,12 @@
                     </div>
                 </div>
                 <div class="form-group submit" style="margin-top: 10px;">
-                    <button @click.prevent="willContactUs" class="ps-btn ps-btn--fullwidth">
+                    <button
+                        @click.prevent="willContactUs"
+                        class="ps-btn ps-btn--fullwidth"
+                    >
                         {{ loading ? 'Sending...' : 'Send Quote' }}
                     </button>
-
                 </div>
                 <p
                     style="font-size: 11px; color: red; font-weight: normal;"
@@ -425,7 +392,7 @@ export default {
             no_of_locations: '',
             no_of_employees: '',
             quantity_of_attendance_device: '',
-            preferred_mode_of_autentication: [],
+            preferred_mode_of_authentication: [],
             monitor_attendance_online: '',
             is_support_needed: '',
             additional_request: '',
@@ -441,7 +408,7 @@ export default {
         no_of_locations: { required, numeric },
         no_of_employees: { required, numeric },
         quantity_of_attendance_device: { required, numeric },
-        preferred_mode_of_autentication: { required },
+        preferred_mode_of_authentication: { required },
         monitor_attendance_online: { required },
         is_support_needed: { required }
     },
@@ -455,7 +422,7 @@ export default {
             this.no_of_locations = '';
             this.no_of_employees = '';
             this.quantity_of_attendance_device = '';
-            this.preferred_mode_of_autentication = [];
+            this.preferred_mode_of_authentication = [];
             this.monitor_attendance_online = '';
             this.is_support_needed = '';
             this.additional_request = '';
@@ -472,11 +439,12 @@ export default {
                     email: this.email,
                     phone_number: this.phone_number,
                     address: this.address,
-                    no_of_locations: this.no_of_locations,
-                    no_of_employees: this.no_of_employees,
-                    quantity_of_attendance_device: this
-                        .quantity_of_attendance_device,
-                    preferred_mode_of_autentication: this.preferred_mode_of_autentication.toString(),
+                    no_of_locations: Number(this.no_of_locations),
+                    no_of_employees: Number(this.no_of_employees),
+                    quantity_of_attendance_device: Number(
+                        this.quantity_of_attendance_device
+                    ),
+                    preferred_mode_of_authentication: this.preferred_mode_of_authentication.toString(),
                     monitor_attendance_online:
                         this.monitor_attendance_online === 'Yes' ? true : false,
                     is_support_needed:
@@ -513,6 +481,12 @@ h5,
 h6 {
     color: #6c757d;
 }
+.el-error {
+    font-size: 11px !important;
+    color: red !important;
+    font-weight: lighter !important;
+}
+
 .contact-form {
     padding: 50px 0px;
     margin-bottom: 200px;

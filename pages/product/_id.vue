@@ -29,6 +29,8 @@ import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
 import singleProduct from '~/apollo/queries/products/singleProduct';
 
+const axios = require('axios');
+
 export default {
     layout: 'layout-default-website',
     name: 'Products',
@@ -49,8 +51,9 @@ export default {
         const image = this.formattedProducts
             ? this.formattedProducts.images[0].url
             : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
+        const title = name.replace(/<\/?[^>]+(>|$)/g, '');
         return {
-            title: name,
+            title: title,
             titleTemplate(title) {
                 return `${title}`;
             },
@@ -58,22 +61,22 @@ export default {
                 {
                     hid: 'title',
                     name: 'title',
-                    content: name
+                    content: title
                 },
                 {
                     hid: 'description',
                     name: 'description',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'twitter:title',
                     name: 'twitter:title',
-                    content: name
+                    content: title
                 },
                 {
                     hid: 'twitter:description',
                     name: 'twitter:description',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'twitter:image',
@@ -83,17 +86,17 @@ export default {
                 {
                     hid: 'twitter:image:alt',
                     name: 'twitter:image:alt',
-                    content: name
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'og:title',
                     property: 'og:title',
-                    content: name
+                    content: title
                 },
                 {
                     hid: 'og:description',
                     property: 'og:description',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'og:image',
@@ -108,7 +111,12 @@ export default {
                 {
                     hid: 'og:image:alt',
                     property: 'og:image:alt',
-                    content: name
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                },
+                {
+                    hid: 'keywords',
+                    name: 'keywords',
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 }
             ]
         };
@@ -116,30 +124,28 @@ export default {
     jsonld() {
         if (this.formattedProducts) {
             return {
-                "@context": "https://schema.org",
-                "@id": "#product",
-                "@type": "IndividualProduct",
-                "additionalType": `https://www.zkteco-wa.com/product/${this.formattedProducts.slug}`,
-                "description": `https://www.zkteco-wa.com/product/${this.formattedProducts.description}`,
-                "name": `https://www.zkteco-wa.com/product/${this.formattedProducts.name}`
+                '@context': 'https://schema.org',
+                '@id': '#product',
+                '@type': 'IndividualProduct',
+                additionalType: `https://www.zkteco-wa.com/product/${this.formattedProducts.slug}`,
+                description: `https://www.zkteco-wa.com/product/${this.formattedProducts.description}`,
+                name: `https://www.zkteco-wa.com/product/${this.formattedProducts.name}`
             };
         } else {
             return {};
         }
     },
-    apollo: {
-        products: {
-            prefetch: true,
-            query: singleProduct,
-            variables() {
-                return { id: this.$route.params.id };
-            }
-        }
+    async asyncData({ params }) {
+        try {
+            let products = await axios.get(
+                `https://admin.zkteco-wa.com/products?slug_in=${params.id}`
+            );
+            return { products };
+        } catch (error) {}
     },
-
     computed: {
         formattedProducts() {
-            return this.products[0];
+            return this.products.data[0];
         }
     },
     data() {

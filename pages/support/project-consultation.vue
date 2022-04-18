@@ -12,6 +12,7 @@
                                     class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
                                 >
                                     <div class="form-group">
+                                        <label>Name </label>
                                         <input
                                             class="form-control"
                                             type="text"
@@ -25,6 +26,7 @@
                                     class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
                                 >
                                     <div class="form-group">
+                                        <label>Position </label>
                                         <input
                                             class="form-control"
                                             type="text"
@@ -43,6 +45,7 @@
                                     class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
                                 >
                                     <div class="form-group">
+                                        <label>Company Name </label>
                                         <input
                                             class="form-control"
                                             type="text"
@@ -61,6 +64,7 @@
                                     class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
                                 >
                                     <div class="form-group">
+                                        <label>Phone Number </label>
                                         <input
                                             class="form-control"
                                             type="text"
@@ -79,6 +83,7 @@
                                     class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
                                 >
                                     <div class="form-group">
+                                        <label>Email </label>
                                         <input
                                             class="form-control"
                                             type="text"
@@ -117,6 +122,7 @@
                                     class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
                                 >
                                     <div class="form-group">
+                                        <label>City </label>
                                         <input
                                             class="form-control"
                                             type="text"
@@ -142,6 +148,7 @@
                                     class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
                                 >
                                     <div class="form-group">
+                                        <label>Related Industry </label>
                                         <input
                                             class="form-control"
                                             type="text"
@@ -160,6 +167,9 @@
                                     class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
                                 >
                                     <div class="form-group">
+                                        <label
+                                            >Products Needed for Project
+                                        </label>
                                         <input
                                             class="form-control"
                                             type="text"
@@ -178,6 +188,7 @@
                                     class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
                                 >
                                     <div class="form-group">
+                                        <label>Project Description </label>
                                         <input
                                             class="form-control"
                                             type="text"

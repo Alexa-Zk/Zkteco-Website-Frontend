@@ -60,13 +60,27 @@ export default {
             ]
         };
     },
+    async asyncData({ store }) {
+        try {
+            let payload = {};
+            const response = await store.dispatch(
+                'website/getProducts',
+                payload
+            );
+            const responseTotal = await store.dispatch(
+                'website/getProductsTotal',
+                payload
+            );
+            return { response };
+        } catch (error) {}
+    },
     created() {
-        let payload = {};
-        const response = this.$store.dispatch('website/getProducts', payload);
-        const responseTotal = this.$store.dispatch(
-            'website/getProductsTotal',
-            payload
-        );
+        // let payload = {};
+        // const response = this.$store.dispatch('website/getProducts', payload);
+        // const responseTotal = this.$store.dispatch(
+        //     'website/getProductsTotal',
+        //     payload
+        // );
     },
     computed: {
         ...mapState({
