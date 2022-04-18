@@ -116,6 +116,7 @@ export const actions = {
             .catch(error => ({ error: error.response.data }));
         return reponse;
     },
+    
 
     async registerDownload({ commit }, payload) {
         const reponse = await Repository.post(
@@ -132,6 +133,18 @@ export const actions = {
     async forgetPassword({ commit }, payload) {
         const reponse = await Repository.post(
             `${subBaseUrl}/auth/forgot-password`,
+            payload
+        )
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async resetPassword({ commit }, payload) {
+        const reponse = await Repository.post(
+            `${subBaseUrl}/auth/reset-password`,
             payload
         )
             .then(response => {
