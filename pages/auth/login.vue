@@ -43,9 +43,28 @@
                                         outlined
                                     />
                                 </div>
+                                <div class="form-group">
+                                    <v-checkbox :error-messages="checkboxErrors" @change="$v.checkbox.$touch()" color="success" v-model="checkbox">
+                                        <template v-slot:label>
+                                            <div class="agreement_link">
+                                                Agree to comply with ZKTeco
+                                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
+                                                    Term of Use
+                                                </a>,
+                                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
+                                                   Privacy Policy
+                                                </a>,
+                                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
+                                                    Cookie Policy
+                                                </a>
+                                            </div>
+                                        </template>
+                                    </v-checkbox>
+                                </div>
                                 <div class="form-group forget-link">
-
-                                    <nuxt-link to="/auth/forget-password">forget password?</nuxt-link>
+                                    <nuxt-link to="/auth/forget-password"
+                                        >forget password?</nuxt-link
+                                    >
                                 </div>
                                 <div class="form-group submit">
                                     <button
@@ -83,7 +102,7 @@
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import Login from '~/components/partials/account/Login';
 import HeaderMobile from '~/components/shared/mobile/HeaderMobile';
-import { required, email } from 'vuelidate/lib/validators';
+import { required } from 'vuelidate/lib/validators';
 import { validationMixin } from 'vuelidate';
 
 export default {
@@ -107,6 +126,7 @@ export default {
                     text: 'Login'
                 }
             ],
+            checkbox: '',
             loading: false,
             username: null,
             password: null,
@@ -116,7 +136,8 @@ export default {
     },
     validations: {
         username: { required },
-        password: { required }
+        password: { required },
+        checkbox: { required }
     },
     beforeRouteEnter(to, from, next) {
         next(vm => {
@@ -134,9 +155,11 @@ export default {
             this.$v.$touch();
             if (!this.$v.$invalid) {
                 this.loading = true;
-                const response = await this.$store.dispatch('auth/loginDownloads',
+                const response = await this.$store.dispatch(
+                    'auth/loginDownloads',
                     {
-                        identifier: this.username || 'rahman.badru@zkteco-wa.com',
+                        identifier:
+                            this.username || 'rahman.badru@zkteco-wa.com',
                         password: this.password || 'alexa123'
                     }
                 );
@@ -168,7 +191,13 @@ export default {
             !this.$v.password.required &&
                 errors.push('This password field is required');
             return errors;
-        }
+        },
+        checkboxErrors() {
+            const errors = [];
+            if (!this.$v.checkbox.$dirty) return errors;
+            !this.$v.checkbox.required && errors.push('Please agree to the terms');
+            return errors;
+        },
     }
 };
 </script>
@@ -178,7 +207,7 @@ export default {
     margin: 10px 0px;
     &:hover {
         a {
-            color: #78BC27;
+            color: #78bc27;
         }
     }
 }
@@ -188,4 +217,16 @@ export default {
 .ps-form__content {
     padding: 30px;
 }
+
+
+.agreement_link {
+    font-size: 14px;
+    a {
+        color: #78bc27;
+        &:hover {
+            color: green;
+        }
+    }
+
+} 
 </style>

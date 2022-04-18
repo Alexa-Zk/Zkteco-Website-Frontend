@@ -35,7 +35,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="$v.position.$error"
+                                            v-if="!$v.position.required"
                                         >
                                             Position is required!
                                         </p>
@@ -54,7 +54,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="$v.company_name.$error"
+                                            v-if="!$v.company_name.required"
                                         >
                                             The Company Name is required!
                                         </p>
@@ -73,7 +73,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="$v.phone_number.$error"
+                                            v-if="!$v.phone_number.required"
                                         >
                                             Phone is required!
                                         </p>
@@ -97,23 +97,22 @@
                                     class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
                                 >
                                     <div class="form-group">
-                                        <label>Country </label>
                                         <select
                                             class="form-control"
                                             v-model="country"
                                         >
                                             <option disabled value=""
-                                                >Country</option
+                                                >Country *</option
                                             >
-                                            <option key="nigeria"
-                                                >Nigeria</option
+                                            <option
+                                                v-for="country in countries"
+                                                :key="country"
+                                                >{{ country }}</option
                                             >
-                                            <option key="ghana">Ghana</option>
-                                            <option key="others">Others</option>
                                         </select>
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="$v.country.$error"
+                                            v-if="!$v.country.required"
                                         >
                                             Country is required!
                                         </p>
@@ -132,7 +131,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="$v.city.$error"
+                                            v-if="!$v.city.required"
                                         >
                                             City is required!
                                         </p>
@@ -158,7 +157,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="$v.related_industry.$error"
+                                            v-if="!$v.related_industry.required"
                                         >
                                             Enter Related Industry!
                                         </p>
@@ -179,7 +178,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="$v.product_needed.$error"
+                                            v-if="!$v.product_needed.required"
                                         >
                                             Enter needed product!
                                         </p>
@@ -198,7 +197,9 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="$v.project_description.$error"
+                                            v-if="
+                                                !$v.project_description.required
+                                            "
                                         >
                                             Enter Project Description!
                                         </p>
@@ -208,14 +209,13 @@
                                     class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
                                 >
                                     <div class="form-group">
-                                        <label>Project Scale </label>
                                         <select
                                             class="form-control"
                                             v-model="project_scale"
                                         >
                                             <option disabled value=""
-                                                >Project Scale
-                                            </option>
+                                                >Project Scale *</option
+                                            >
                                             <option key="large"
                                                 >Large Products</option
                                             >
@@ -228,12 +228,14 @@
                                         </select>
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="$v.project_scale.$error"
+                                            v-if="!$v.project_scale.required"
                                         >
                                             Select Project Scale!
                                         </p>
                                     </div>
                                 </div>
+
+
 
                                 <div
                                     class="container form-group submit"
@@ -246,6 +248,27 @@
                                         {{ loading ? 'Sending...' : 'Submit' }}
                                     </button>
                                 </div>
+
+                                <v-snackbar
+                                    v-model="snackbar"
+                                    :timeout="3000"
+                                    color="green"
+                                    tile
+
+                                    >
+                                    {{ snackBarMessage }}
+
+                                    <template v-slot:action="{ attrs }">
+                                        <v-btn
+                                        color="white"
+                                        text
+                                        v-bind="attrs"
+                                        @click="snackbar = false"
+                                        >
+                                        Close
+                                        </v-btn>
+                                    </template>
+                                </v-snackbar>
                             </div>
                         </div>
                     </div>
@@ -280,20 +303,38 @@ export default {
                     text: 'Project Consultation'
                 }
             ],
+            countries: [
+                'NIGERIA',
+                'BENIN',
+                'BURKINA FASO',
+                'CABO VERDE',
+                'CÔTE DIVOIRE',
+                'The GAMBIA',
+                'GHANA',
+                'GUINEA',
+                'GUINEA BISSAU',
+                'LIBERIA',
+                'MALI',
+                'NIGER',
+                'SENEGAL',
+                'SIERRA LEONE',
+                'TOGO'
+            ],
             showError: false,
             showSuccess: false,
             loading: '',
             company_name: '',
             country: '',
             phone_number: '',
-
             position: '',
             related_industry: '',
             product_needed: '',
             project_description: '',
             project_scale: '',
             city: '',
-            disabled: false
+            disabled: false,
+            snackbar: false,
+            snackBarMessage: "Form Submitted Successfully. You will be contacted by one of our customer representatives."
         };
     },
     validations: {
@@ -343,19 +384,17 @@ export default {
                             : 'small_projects',
                     city: this.city
                 };
-
+                console.log(payload);
                 const response = await this.$store.dispatch(
                     'website/projectConsultation',
                     payload
                 );
+
                 if (response) {
                     this.loading = false;
-                    this.showSuccess = true;
-                    this.showError = false;
+                    this.snackbar = true
                     this.resetForm();
                 } else {
-                    this.showError = true;
-                    this.showSuccess = false;
                     this.loading = false;
                 }
             }
@@ -366,10 +405,7 @@ export default {
             user: state => state.auth.userInfoDownload
         }),
         userInfo() {
-            //console.log(' - ', this.user);
-            return this.user == null || this.user == undefined
-                ? ''
-                : this.user.user;
+            return this.user.user;
         }
     },
     mounted() {
@@ -417,4 +453,6 @@ export default {
         }
     }
 }
+
+
 </style>
