@@ -8,7 +8,9 @@
                         <div class="contact">
                             <h3>Contact Method</h3>
                             <div class="row">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
                                         <input
                                             class="form-control"
@@ -17,10 +19,11 @@
                                             placeholder="Name"
                                             v-model="userInfo.username"
                                         />
-                                        
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
                                         <input
                                             class="form-control"
@@ -28,12 +31,17 @@
                                             placeholder="Position"
                                             v-model="position"
                                         />
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.position.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="!$v.position.required"
+                                        >
                                             Position is required!
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
                                         <input
                                             class="form-control"
@@ -41,12 +49,17 @@
                                             placeholder="Company Name"
                                             v-model="company_name"
                                         />
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.company_name.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="!$v.company_name.required"
+                                        >
                                             The Company Name is required!
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
                                         <input
                                             class="form-control"
@@ -54,12 +67,17 @@
                                             placeholder="Phone Number"
                                             v-model="phone_number"
                                         />
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.phone_number.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="!$v.phone_number.required"
+                                        >
                                             Phone is required!
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
                                         <input
                                             class="form-control"
@@ -68,24 +86,36 @@
                                             placeholder="Email"
                                             v-model="userInfo.email"
                                         />
-                                       
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
-                                        <select  class="form-control" v-model="country">
-                                            <option disabled value="">Country *</option
+                                        <select
+                                            class="form-control"
+                                            v-model="country"
+                                        >
+                                            <option disabled value=""
+                                                >Country *</option
                                             >
-                                            <option key="nigeria">Nigeria</option>
-                                            <option key="ghana">Ghana</option>
-                                            <option key="others">Others</option>
+                                            <option
+                                                v-for="country in countries"
+                                                :key="country"
+                                                >{{ country }}</option
+                                            >
                                         </select>
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.country.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="!$v.country.required"
+                                        >
                                             Country is required!
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
                                         <input
                                             class="form-control"
@@ -93,7 +123,10 @@
                                             placeholder="City"
                                             v-model="city"
                                         />
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.city.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="!$v.city.required"
+                                        >
                                             City is required!
                                         </p>
                                     </div>
@@ -105,7 +138,9 @@
                             <h3>Requirement Information</h3>
 
                             <div class="row">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
                                         <input
                                             class="form-control"
@@ -113,12 +148,17 @@
                                             placeholder="Related Industry"
                                             v-model="related_industry"
                                         />
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.related_industry.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="!$v.related_industry.required"
+                                        >
                                             Enter Related Industry!
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
                                         <input
                                             class="form-control"
@@ -126,12 +166,17 @@
                                             placeholder="Products Needed for Project"
                                             v-model="product_needed"
                                         />
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.product_needed.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="!$v.product_needed.required"
+                                        >
                                             Enter needed product!
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
                                         <input
                                             class="form-control"
@@ -139,33 +184,80 @@
                                             placeholder="Project Description"
                                             v-model="project_description"
                                         />
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.project_description.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="
+                                                !$v.project_description.required
+                                            "
+                                        >
                                             Enter Project Description!
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
                                     <div class="form-group">
-                                       <select  class="form-control" v-model="project_scale">
-                                            <option disabled value="">Project Scale *</option
+                                        <select
+                                            class="form-control"
+                                            v-model="project_scale"
+                                        >
+                                            <option disabled value=""
+                                                >Project Scale *</option
                                             >
-                                            <option key="large">Large Products</option>
-                                            <option key="medium">Medium Project</option>
-                                            <option key="small">Small Products</option>
+                                            <option key="large"
+                                                >Large Products</option
+                                            >
+                                            <option key="medium"
+                                                >Medium Project</option
+                                            >
+                                            <option key="small"
+                                                >Small Products</option
+                                            >
                                         </select>
-                                        <p style="font-size: 11px; color: red; font-weight: lighter;" v-if="!$v.project_scale.required" >
+                                        <p
+                                            style="font-size: 11px; color: red; font-weight: lighter;"
+                                            v-if="!$v.project_scale.required"
+                                        >
                                             Select Project Scale!
                                         </p>
                                     </div>
                                 </div>
 
-                                <div class="container form-group submit" style="margin-top: 10px;">
-                                    <button @click.prevent="submit" class="ps-btn ps-btn--fullwidth">
+
+
+                                <div
+                                    class="container form-group submit"
+                                    style="margin-top: 10px;"
+                                >
+                                    <button
+                                        @click.prevent="submit"
+                                        class="ps-btn ps-btn--fullwidth"
+                                    >
                                         {{ loading ? 'Sending...' : 'Submit' }}
                                     </button>
-
                                 </div>
 
+                                <v-snackbar
+                                    v-model="snackbar"
+                                    :timeout="3000"
+                                    color="green"
+                                    tile
+
+                                    >
+                                    {{ snackBarMessage }}
+
+                                    <template v-slot:action="{ attrs }">
+                                        <v-btn
+                                        color="white"
+                                        text
+                                        v-bind="attrs"
+                                        @click="snackbar = false"
+                                        >
+                                        Close
+                                        </v-btn>
+                                    </template>
+                                </v-snackbar>
                             </div>
                         </div>
                     </div>
@@ -200,20 +292,38 @@ export default {
                     text: 'Project Consultation'
                 }
             ],
+            countries: [
+                'NIGERIA',
+                'BENIN',
+                'BURKINA FASO',
+                'CABO VERDE',
+                'CÔTE DIVOIRE',
+                'The GAMBIA',
+                'GHANA',
+                'GUINEA',
+                'GUINEA BISSAU',
+                'LIBERIA',
+                'MALI',
+                'NIGER',
+                'SENEGAL',
+                'SIERRA LEONE',
+                'TOGO'
+            ],
             showError: false,
             showSuccess: false,
             loading: '',
             company_name: '',
             country: '',
             phone_number: '',
-           
             position: '',
             related_industry: '',
             product_needed: '',
             project_description: '',
             project_scale: '',
             city: '',
-            disabled: false
+            disabled: false,
+            snackbar: false,
+            snackBarMessage: "Form Submitted Successfully. You will be contacted by one of our customer representatives."
         };
     },
     validations: {
@@ -240,8 +350,8 @@ export default {
             this.city = '';
         },
         async submit() {
-            this.$v.$touch()
-            if (this.$v.$invalid) { 
+            this.$v.$touch();
+            if (this.$v.$invalid) {
                 return false;
             } else {
                 this.loading = true;
@@ -255,22 +365,25 @@ export default {
                     related_industry: this.related_industry,
                     product_needed: this.product_needed,
                     project_description: this.project_description,
-                    project_scale: this.project_scale === 'Large Project' ? 'large_projects' : this.project_scale === 'Medium Project' ? 'medium_projects' : 'small_projects',
+                    project_scale:
+                        this.project_scale === 'Large Project'
+                            ? 'large_projects'
+                            : this.project_scale === 'Medium Project'
+                            ? 'medium_projects'
+                            : 'small_projects',
                     city: this.city
-                }
-                console.log(payload)
+                };
+                console.log(payload);
                 const response = await this.$store.dispatch(
                     'website/projectConsultation',
                     payload
                 );
+
                 if (response) {
                     this.loading = false;
-                    this.showSuccess = true;
-                    this.showError = false;
-                    this.resetForm()
+                    this.snackbar = true
+                    this.resetForm();
                 } else {
-                    this.showError = true;
-                    this.showSuccess = false;
                     this.loading = false;
                 }
             }
@@ -280,7 +393,7 @@ export default {
         ...mapState({
             user: state => state.auth.userInfoDownload
         }),
-        userInfo () {
+        userInfo() {
             return this.user.user;
         }
     },
@@ -317,7 +430,7 @@ export default {
     }
 
     .requirement {
-         @include media('<sm') {
+        @include media('<sm') {
             width: 100%;
             margin-left: 0%;
             margin-top: 50px;
@@ -329,4 +442,6 @@ export default {
         }
     }
 }
+
+
 </style>

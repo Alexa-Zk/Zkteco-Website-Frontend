@@ -240,3 +240,14 @@ textarea {
     -webkit-appearance: button;
     font: inherit;
 }
+
+
+.v-snack {
+    .v-snack__wrapper {
+        .v-snack__content {
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 20px;
+        }
+    }
+}

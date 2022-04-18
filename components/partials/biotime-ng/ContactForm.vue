@@ -395,7 +395,7 @@
                     An error occurred
                 </p>
                 <p
-                    style="font-size: 11px; color: green; font-weight: normal;"
+                    style="font-size: 14px; color: green; font-weight: 600;"
                     v-if="showSuccess"
                 >
                     You will be contacted shortly!!
