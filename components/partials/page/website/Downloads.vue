@@ -1,29 +1,49 @@
 <template lang="html">
     <div class="ps-checkout ps-section--shopping">
-        <div class="container">
+        <div class="ps-container">
+            <div class="row mb-10">
+                <div class="col-lg-5 form-group--nest">
+                    <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Please input keyword"
+                        v-model="searchQuery"
+                    />
+                    <button class="ps-btn" @click.prevent="searchDownloads">
+                        {{ isLoading ? 'Searching...' : 'Search' }}
+                    </button>
+                </div>
+            </div>
             <div class="ps-section__content">
-                <div class="row">
+                <div class="">
                     <div class="col-md-12 col-sm-12">
                         <div class="ps-block--shipping">
-                            <div class="ps-block--methods">
+                            <div class="ps-block--methods" v-if="!isSearching">
                                 <v-tabs
                                     background-color="white"
                                     color="warning"
                                     class="ps-tab-list"
                                     grow
-                                    v-for="item in downloadCenters"
-                                    :key="item.id"
                                 >
-                                    <v-tab tag="li" class="tab-label">
-                                        {{ item.name }}
+                                    <v-tab
+                                        tag="li"
+                                        class="tab-label"
+                                        v-for="item in downloadCategories"
+                                        :key="item.id"
+                                        @click="tabValue(item.category)"
+                                    >
+                                        {{ item.category }}
                                     </v-tab>
 
-                                    <v-tab-item>
+                                    <v-tab-item
+                                        v-for="item in downloadCategories"
+                                        :key="item.id"
+                                    >
                                         <form>
                                             <div class="ps-block__content">
                                                 <div
                                                     class="downloads_container"
-                                                    v-for="i in item.download"
+                                                    v-for="i in item.downloads"
                                                     :key="i.id"
                                                 >
                                                     <div class="download_left">
@@ -43,17 +63,113 @@
                                                         <div class="size">
                                                             Size:
                                                             {{
-                                                                i.file[0].size
+                                                                Math.floor(
+                                                                    i.file.size
+                                                                )
+                                                            }}KB
+                                                        </div>
+                                                    </div>
+                                                    <div class="download_right">
+                                                        <!-- <a :href="i.file[0].url" download
+                                                            >Download</a
+                                                        > -->
+                                                        <button
+                                                            class="ps-btn"
+                                                            @click.prevent="
+                                                                download(
+                                                                    i.file.url
+                                                                )
+                                                            "
+                                                        >
+                                                            Download
+                                                        </button>
+
+                                                        <div class="date">
+                                                            Uploaded on:
+                                                            {{
+                                                                formatDate(
+                                                                    i.file
+                                                                        .updated_at
+                                                                )
+                                                            }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </v-tab-item>
+                                </v-tabs>
+                            </div>
+                            <div class="ps-block--methods" v-else>
+                                <v-tabs
+                                    background-color="white"
+                                    color="warning"
+                                    class="ps-tab-list"
+                                    grow
+                                    v-for="item1 in searchData"
+                                    :key="item1.id"
+                                >
+                                    <v-tab
+                                        tag="li"
+                                        class="tab-label"
+                                        v-for="item2 in item1.download_categories"
+                                        :key="item2.id"
+                                    >
+                                        {{ item2.category }}
+                                    </v-tab>
+
+                                    <v-tab-item>
+                                        <form>
+                                            <div class="ps-block__content">
+                                                <div
+                                                    class="downloads_container"
+                                                >
+                                                    <div class="download_left">
+                                                        <div class="row-left">
+                                                            <div
+                                                                class="download-avatar"
+                                                            >
+                                                                <img
+                                                                    src="~/static/img/website/download-2.png"
+                                                                    alt="Download"
+                                                                />
+                                                            </div>
+                                                            <div class="title">
+                                                                {{ item1.name }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="size">
+                                                            Size:
+                                                            {{
+                                                                Math.floor(
+                                                                    item1.file
+                                                                        .size /
+                                                                        1000
+                                                                )
                                                             }}MB
                                                         </div>
                                                     </div>
                                                     <div class="download_right">
-                                                        <a :href="i.file[0].url" download
-                                                            >Download</a
+                                                        <button
+                                                            class="ps-btn"
+                                                            @click.prevent="
+                                                                download(
+                                                                    item1.file
+                                                                        .url
+                                                                )
+                                                            "
                                                         >
+                                                            Download
+                                                        </button>
 
                                                         <div class="date">
-                                                            Uploaded on: {{formatDate(i.file[0].updated_at)}}
+                                                            Uploaded on:
+                                                            {{
+                                                                formatDate(
+                                                                    item1.file
+                                                                        .updated_at
+                                                                )
+                                                            }}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -71,15 +187,79 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import { state } from '~/store/app';
 export default {
     name: 'Downloads',
-		props: ['downloadCenters'],
-		methods: {
-			formatDate(date) {
+    data() {
+        return {
+            searchQuery: '',
+            isSearching: false,
+            searchData: null,
+            currentCategory: null
+        };
+    },
+    methods: {
+        tabValue(event) {
+            this.currentCategory = event;
+        },
+        async searchDownloads() {
+            let payload = {
+                category: this.currentCategory
+                    ? this.currentCategory
+                    : this.currentCategoryComputed,
+                search: this.searchQuery
+            };
+            const response = await this.$store.dispatch(
+                'website/searchDownloadCategories',
+                payload
+            );
+            this.isSearching = true;
+            if (response.error) {
+            } else {
+                console.log(response);
+                this.searchData = response;
+            }
+        },
+        formatDate(date) {
             let formated = new Date(date);
             return formated.toDateString();
+        },
+        download(data) {
+            const tokenForDownloads = this.$cookies.get('download_token', {
+                parseJSON: true
+            });
+            if (tokenForDownloads) {
+                const link = document.createElement('a');
+                link.href = data;
+                link.setAttribute('download', 'image.jpg');
+                link.setAttribute('target', '_blank');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                this.$router.push('/auth/login');
+            }
         }
-		}
+    },
+    watch: {
+        searchQuery(newEntry, oldEntry) {
+            if (newEntry !== '') {
+            } else {
+                this.isSearching = false;
+            }
+        }
+    },
+    computed: {
+        ...mapState({
+            isLoading: state => state.website.loading,
+            isLoggedInToDownload: state => state.auth.isLoggedInToDownload,
+            downloadCategories: state => state.website.downloadCategories
+        }),
+        currentCategoryComputed() {
+            return this.downloadCategories[0].category;
+        }
+    }
 };
 </script>
 
@@ -107,11 +287,10 @@ export default {
             align-items: center;
             display: flex;
             .title {
-								margin-left: 20px;
-								margin-left: 20px;
-								font-size: 20px!important;
-								font-family: 'Work Sans', sans-serif !important;
-
+                margin-left: 20px;
+                margin-left: 20px;
+                font-size: 20px !important;
+                font-family: 'Work Sans', sans-serif !important;
             }
         }
     }

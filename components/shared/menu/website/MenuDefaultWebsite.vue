@@ -1,12 +1,14 @@
 <template lang="html">
-    <ul 
-        :class="className" 
-    >
+    <ul :class="className">
         <MenuProduct />
         <template v-for="item in mainMenu">
             <MenuDropdown v-if="item.subMenu" :menu-data="item" />
             <MenuMega v-else-if="item.mega" :menu-data="item" />
-            <li class="menu-item-has-dropdown" v-else-if="item.redirect" :key="item.text">
+            <li
+                class="menu-item-has-dropdown"
+                v-else-if="item.redirect"
+                :key="item.text"
+            >
                 <a href="https://ngteco.ng/">
                     {{ item.text }}
                 </a>
@@ -49,14 +51,14 @@ export default {
                         },
                         {
                             text: 'Classified By Application',
-                            url: '/solution-categories/classified-by-application'
-                        },
-                        
+                            url:
+                                '/solution-categories/classified-by-application'
+                        }
                     ]
                 },
                 {
                     text: 'Support',
-                    url: '/store/',
+                    url: '/support/support',
                     extraClass: 'menu-item-has-children has-mega-menu',
                     subClass: 'sub-menu',
                     mega: 'true',
@@ -67,7 +69,7 @@ export default {
                                 {
                                     text: 'Resources Center',
                                     url: '/support/download-center'
-                                },
+                                }
                             ]
                         },
                         {
@@ -88,26 +90,30 @@ export default {
                                 {
                                     text: 'FAQ',
                                     url: '/support/faq'
-                                },
+                                }
                             ]
-                        },
+                        }
                     ]
                 },
                 {
                     text: 'Smart Home',
                     redirect: true
                 },
-                {
-                    text: 'Partners Portal',
-                    url: '/store',
-                    extraClass: 'menu-item-has-children',
-                    subClass: 'sub-menu',
-                    icon: 'icon-cart'
-                },
+                // {
+                //     text: 'Partners Portal',
+                //     url: '/store',
+                //     extraClass: 'menu-item-has-children',
+                //     subClass: 'sub-menu',
+                //     icon: 'icon-cart'
+                // },
                 {
                     text: 'Authorised Partners',
-                    url: '/website/page/store-locator',
+                    url: '/website/page/store-locator'
                 },
+                {
+                    text: 'BioTime NG',
+                    url: '/biotime-ng'
+                }
             ]
         };
     }

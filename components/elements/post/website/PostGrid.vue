@@ -1,20 +1,14 @@
 <template lang="html">
-    <article class="ps-post" data-aos="flip-down">
-        <div class="ps-post__thumbnail" >
-            <nuxt-link
-                :to="`/blog/${post.slug}`"
-                class="ps-post__overlay"
-            />
-            <img 
-                :src="post.image[0].url"
-                :alt="post.title" 
-            />
+    <article class="ps-post">
+        <div class="ps-post__thumbnail">
+            <nuxt-link :to="`/blog/${post.slug}`" class="ps-post__overlay" />
+            <img :src="post.image[0].url" :alt="post.title" />
         </div>
         <div class="ps-post__content">
             <div class="ps-post__meta">
                 <nuxt-link
                     v-for="category in post.categories"
-                    :to="`/news-center/categories/${category.id}`"
+                    :to="`/news-center/categories/${category.slug}`"
                     :key="category.id"
                 >
                     {{ category.name }}

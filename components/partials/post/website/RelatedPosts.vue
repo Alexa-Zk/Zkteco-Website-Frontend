@@ -1,6 +1,6 @@
 <template>
     <div class="ps-related-posts">
-        <h3 data-aos="zoom-out">News Center</h3>
+        <h3>News Center</h3>
         <div class="row">
             <div
                 v-for="post in formattedArticles"
@@ -14,22 +14,21 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 import PostGrid from '~/components/elements/post/website/PostGrid';
 
 export default {
     name: 'RelatedPosts',
     components: { PostGrid },
     data() {
-        return {
-        };
+        return {};
     },
     computed: {
         ...mapState({
             articles: state => state.website.articlesLimited
         }),
         formattedArticles() {
-            return this.articles ? this.articles: [];
+            return this.articles ? this.articles : [];
         }
     }
 };

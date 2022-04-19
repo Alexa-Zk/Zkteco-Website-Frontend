@@ -1,5 +1,5 @@
 <template lang="html">
-    <div >
+    <div>
         <bread-crumb :breadcrumb="breadCrumb" />
         <div class="ps-page--shop" id="shop-sidebar">
             <div class="container">
@@ -8,7 +8,20 @@
                         <shop-widget />
                     </div>
                     <div class="ps-layout__right">
-                        <layout-shop-sidebar :categories_products="categoriesWithProduct ? categoriesWithProduct : []" />
+                        <div class="ps-page__header">
+                            <h1 class="text-uppercase">{{ title }}</h1>
+                        </div>
+                        <layout-shop-sidebar-categories
+                            :loading="loading"
+                            :categories_products="
+                                categoriesWithProduct
+                                    ? categoriesWithProduct
+                                    : 0
+                            "
+                            :totalProductCategories="
+                                totalSingleProductCategories
+                            "
+                        />
                     </div>
                 </div>
             </div>
@@ -20,16 +33,17 @@
 import { mapState } from 'vuex';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import ShopWidget from '~/components/partials/shop/modules/website/ShopWidget';
-import LayoutShopSidebar from '~/components/partials/shop/website/LayoutShopSidebarCategories';
+import LayoutShopSidebarCategories from '~/components/partials/shop/website/LayoutShopSidebarCategories';
 
 export default {
     components: {
-        LayoutShopSidebar,
+        LayoutShopSidebarCategories,
         ShopWidget,
         BreadCrumb
     },
+
     head() {
-        const name = this.categoriesWithProduct ? this.categoriesWithProduct.name : 'Product Categories';
+        const name = this.$route.params.id.toUpperCase();
         return {
             titleTemplate: name,
             title: name,
@@ -43,10 +57,11 @@ export default {
                     hid: 'description',
                     name: 'description',
                     content: 'ZKTeco west africa all product list'
-                },
+                }
             ]
         };
     },
+
     transition() {
         return 'fadeIn';
     },
@@ -62,21 +77,42 @@ export default {
                     text: 'All Products'
                 }
             ],
+            sort_by: 'created_at:desc'
         };
     },
-    
+
     computed: {
         ...mapState({
             product: state => state.website.singleProductCategories,
+            totalSingleProductCategories: state =>
+                state.website.totalSingleProductCategories,
+            loading: state => state.website.loading
         }),
         categoriesWithProduct() {
-            return this.product ? this.product[0] : [];
+            return this.product ? this.product : [];
         },
+        title() {
+            return this.$route.params.id.toUpperCase();
+        }
     },
     async created() {
-        const slug = this.$route.params.id
-        const response = await this.$store.dispatch('website/getSingleProductCategories', slug);
-    },
+        const slug = this.$route.params.id;
+        const payload = {
+            slug: slug,
+            page: 0,
+            sort_by: this.sort_by,
+            perPage: 0
+        };
+        const response = await this.$store.dispatch(
+            'website/getSingleProductCategories',
+            payload
+        );
+
+        await this.$store.dispatch(
+            'website/getTotalSingleProductCategories',
+            slug
+        );
+    }
 };
 </script>
 

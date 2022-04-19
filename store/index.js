@@ -7,7 +7,8 @@ export const actions = {
         const compareItems = this.$cookies.get('compare', { parseJSON: true });
         const auth = this.$cookies.get('auth', { parseJSON: true });
         const token = this.$cookies.get('id_token', { parseJSON: true });
-        
+        const tokenForDownloads = this.$cookies.get('download_token', { parseJSON: true });
+        const userInfoDownloads = this.$cookies.get('download_user_info', { parseJSON: true });
         const currency = this.$cookies.get('currency', { parseJSON: true });
         const userInfo = this.$cookies.get('userInfo', {parseJSON: true});
         const shippingInfo = this.$cookies.get('shippingInfo', {parseJSON: true});
@@ -45,6 +46,14 @@ export const actions = {
             commit('auth/setAuthToken', token);
         }
 
+        if (tokenForDownloads) {
+            commit('auth/setAuthTokenForDownloads', tokenForDownloads);
+            commit('auth/setIsLoggedInDownload', true)
+        }
+
+        if (userInfoDownloads) {
+            commit('auth/setUserInfoDownload', userInfoDownloads);
+        }
         if (currency) {
             commit('app/setCurrency', currency.data);
         }

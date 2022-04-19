@@ -11,6 +11,16 @@ query Products($id: ID!) {
             slug
             id
         }
+        product_sub_category {
+            id
+            slug
+            name
+            product_category {
+                id
+                name
+                slug
+            }
+        }
         downloads {
             id
             name
@@ -20,6 +30,24 @@ query Products($id: ID!) {
                 alternativeText
                 caption
             }
+        }
+        product_files {
+            id
+            name
+            file {
+                id
+                name
+                url
+                size
+                alternativeText
+                caption
+            }
+        }
+        product_videos {
+            id
+            name
+            url
+
         }
         images {
             id

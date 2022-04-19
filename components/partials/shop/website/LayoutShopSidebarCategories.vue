@@ -1,8 +1,8 @@
 <template lang="html">
-    <div class="ps-shopping" v-if="categories_products">
+    <div class="ps-shopping">
         <div class="ps-shopping__header">
             <p>
-                <strong class="mr-2">{{totals}}</strong>
+                <strong class="mr-2">{{ totalProductCategories }}</strong>
                 Products found
             </p>
         </div>
@@ -16,13 +16,22 @@
             <div v-else class="ps-shopping-product">
                 <div class="row">
                     <div
-                        v-for="product in categories_products.products"
+                        v-for="product in categories_products"
                         class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 "
                         :key="product.id"
                     >
-                        <product-default :product="product" />
+                        <product-category-default :product="product" />
                     </div>
                 </div>
+                <footer class="mt-60">
+                    <v-pagination
+                        v-model="page"
+                        :total-visible="7"
+                        color="green"
+                        :length="paginationLenght"
+                        @input="handleChangePagination"
+                    />
+                </footer>
             </div>
         </div>
     </div>
@@ -30,16 +39,19 @@
 
 <script>
 import { mapState } from 'vuex';
-import ProductDefault from '~/components/elements/product/website/ProductDefault';
+//import ProductDefault from '~/components/elements/product/website/ProductDefault';
+import ProductCategoryDefault from '~/components/elements/product/website/ProductCategoryDefault';
+
 import ProductWide from '~/components/elements/product/ProductWide';
 
 export default {
-    name: 'LayoutShopSidebar',
-    components: { ProductWide, ProductDefault },
-    props: ['categories_products'],
+    name: 'LayoutShopSidebarCategories',
+    components: { ProductWide, ProductCategoryDefault },
+    props: ['categories_products', 'totalProductCategories', 'loading'],
     data() {
         return {
             listView: false,
+            sort_by: 'created_at:desc',
             page: 1,
             pageSize: 12
         };
@@ -47,15 +59,36 @@ export default {
     methods: {
         handleChangeViewMode() {
             this.listView = !this.listView;
+        },
+        async handleChangePagination(value) {
+            const page = parseInt(value) === 1 ? 1 : 1 + (value - 1) * 12;
+            let nextStartPage = parseInt(page);
+
+            const slug = this.$route.params.id;
+            const payload = {
+                slug: slug,
+                page: nextStartPage,
+                sort_by: this.sort_by,
+                perPage: this.pageSize
+            };
+            await this.$store.dispatch(
+                'website/getSingleProductCategories',
+                payload
+            );
         }
     },
     computed: {
         totals() {
-            return this.categories_products.products ? this.categories_products.products.length : 0;
-        },
-        ...mapState({
-            loading: state => state.website.loading
-        })
+            return this.totalProductCategories
+                ? this.totalProductCategories
+                : 0;
+        }
+    },
+
+    computed: {
+        paginationLenght() {
+            return Math.ceil(this.totalProductCategories / 12);
+        }
     }
 };
 </script>

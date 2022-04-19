@@ -1,8 +1,11 @@
+const axios = require("axios");
+
 export default {
     head: {
         titleTemplate: 'ZKTeco West Africa',
         title: 'ZKTeco West Africa',
-        meta: [{
+        meta: [
+            {
                 charset: 'utf-8'
             },
             {
@@ -12,9 +15,10 @@ export default {
             {
                 hid: 'description',
                 name: 'description',
-                content: 'ZKTeco is a globally-renowned provider of security, access control and time management solutions. ZKTeco focus on Biometrics of fingerprint, face recognition, ..'
+                content:
+                    'ZKTeco is a globally-renowned provider of security, access control and time management solutions. ZKTeco focus on Biometrics of fingerprint, face recognition, ..'
             }
-        ],
+        ]
     },
     generate: {
         fallback: true
@@ -27,7 +31,8 @@ export default {
         '~/assets/scss/style.scss'
     ],
 
-    plugins: [{
+    plugins: [
+        {
             src: '~plugins/vueliate.js',
             ssr: false
         },
@@ -55,9 +60,9 @@ export default {
             src: '~/plugins/filters.js',
             ssr: false
         },
-        {   src: "~/plugins/aos", 
-            ssr: false 
-        }
+        { src: '~/plugins/aos', ssr: false },
+        { src: '~/plugins/v-google-translate.js', ssr: false  },
+        '~/plugins/jsonld.js',
     ],
 
     buildModules: [
@@ -67,11 +72,11 @@ export default {
     ],
 
     build: {
-    //     analyze: true,
-    // // or
-    //     analyze: {
-    //         analyzerMode: 'static'
-    //     }
+        //     analyze: true,
+        // // or
+        //     analyze: {
+        //         analyzerMode: 'static'
+        //     }
     },
 
     styleResources: {
@@ -89,7 +94,7 @@ export default {
         'nuxt-i18n',
         '@nuxtjs/apollo',
         '@nuxtjs/robots',
-        '@nuxtjs/sitemap'
+        '@nuxtjs/sitemap',
     ],
 
     robots: {
@@ -100,7 +105,20 @@ export default {
     sitemap: {
         hostname: 'https://zkteco-wa.com',
         exclude: [],
-        routes: []
+        routes: async () => {
+
+            let { data: productsData } = await axios.get(`https://admin.zkteco-wa.com/products`);
+            const productArray = productsData.map(v => `/product/${v.slug}`)
+        
+            let { data: solutionData } = await axios.get(`https://admin.zkteco-wa.com/solutions`);
+            const solutionArray = solutionData.map(v => `/solution-details/${v.slug}`)
+
+            let { data: articlesData } = await axios.get(`https://admin.zkteco-wa.com/articles`);
+            const articlesArray = articlesData.map(v => `/blog/${v.slug}`)
+        
+            return [...productArray, ...solutionArray, ...articlesArray]
+        }
+
     },
 
     apollo: {
@@ -112,7 +130,8 @@ export default {
     },
 
     i18n: {
-        locales: [{
+        locales: [
+            {
                 code: 'en',
                 file: 'en.json'
             },

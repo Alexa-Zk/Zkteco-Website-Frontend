@@ -149,7 +149,7 @@ export default {
             const icons = document.querySelector('#icon-bar');
             const buttonTop = document.querySelector('#scroll-to-top');
 
-            const divHeight = elmnt.offsetHeight;
+            const divHeight = elmnt ? elmnt.offsetHeight: 0;
             const distanceToTop = elmnt.getBoundingClientRect().top - HEADLINE;
             const scrollHeight = event.target.scrollingElement.scrollTop;
 

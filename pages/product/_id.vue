@@ -1,21 +1,12 @@
 <template lang="html">
     <div class="martfury">
-        <loading
-            :active.sync="loading"
-            :can-cancel="true"
-            :is-full-page="fullPage"
-            :width="width"
-            :height="height"
-            color="#78bc27"
-        ></loading>
-
         <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />
         <div class="ps-page--product">
             <div class="ps-container">
                 <div class="ps-page__container">
-                    <div class="ps-page__left">
+                    <div class="ps-page__left" v-if="products">
                         <product-detail-fullwidth
-                            :singleProduct="singleProduct"
+                            :singleProduct="formattedProducts"
                         />
                     </div>
                     <div class="ps-page__right">
@@ -30,63 +21,62 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import ProductDetailFullwidth from '~/components/elements/detail/website/ProductDetailFullwidth';
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import CustomerBought from '~/components/partials/product/CustomerBought';
 import RelatedProduct from '~/components/partials/product/RelatedProduct';
 import ProductWidgets from '~/components/partials/product/website/ProductWidgets';
 import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
-import Loading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/vue-loading.css';
+import singleProduct from '~/apollo/queries/products/singleProduct';
 
 export default {
     layout: 'layout-default-website',
+    name: 'Products',
     transition: 'zoom',
     components: {
         Newsletters,
         LayoutProduct,
         ProductWidgets,
         RelatedProduct,
-        CustomerBought,
         BreadCrumb,
-        ProductDetailFullwidth,
-        Loading
+        ProductDetailFullwidth
     },
     head() {
-        const name = this.singleProduct
-            ? this.singleProduct.name
-            : '';
-        const description = this.singleProduct
-            ? this.singleProduct.description
+        const name = this.formattedProducts ? this.formattedProducts.name : '';
+        const description = this.formattedProducts
+            ? this.formattedProducts.description
             : 'Product Details - Description';
-        const image = this.singleProduct ? this.singleProduct.images[0].url: ''
+        const image = this.formattedProducts
+            ? this.formattedProducts.images[0].url
+            : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
+        const title = this.formattedProducts.seo.title
+            ? this.formattedProducts.seo.title
+            : description;
         return {
-            title: 'Product Details',
+            title: title,
             titleTemplate(title) {
-                return `${name} - ${title}`
+                return `${title}`;
             },
             meta: [
                 {
                     hid: 'title',
                     name: 'title',
-                    content: name
+                    content: title
                 },
                 {
                     hid: 'description',
                     name: 'description',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'twitter:title',
                     name: 'twitter:title',
-                    content: name
+                    content: title
                 },
                 {
                     hid: 'twitter:description',
                     name: 'twitter:description',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'twitter:image',
@@ -96,17 +86,17 @@ export default {
                 {
                     hid: 'twitter:image:alt',
                     name: 'twitter:image:alt',
-                    content: name
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'og:title',
                     property: 'og:title',
-                    content: name
+                    content: title
                 },
                 {
                     hid: 'og:description',
                     property: 'og:description',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'og:image',
@@ -121,48 +111,60 @@ export default {
                 {
                     hid: 'og:image:alt',
                     property: 'og:image:alt',
-                    content: name
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 }
             ]
         };
     },
+    jsonld() {
+        if (this.formattedProducts) {
+            return {
+                '@context': 'https://schema.org',
+                '@id': '#product',
+                '@type': 'IndividualProduct',
+                additionalType: `https://www.zkteco-wa.com/product/${this.formattedProducts.slug}`,
+                description: `https://www.zkteco-wa.com/product/${this.formattedProducts.description}`,
+                name: `https://www.zkteco-wa.com/product/${this.formattedProducts.name}`
+            };
+        } else {
+            return {};
+        }
+    },
+    apollo: {
+        products: {
+            prefetch: true,
+            query: singleProduct,
+            variables() {
+                return { id: this.$route.params.id };
+            }
+        }
+    },
+
     computed: {
-        ...mapState({
-            singleProduct: state => state.website.singleProduct,
-            loading: state => state.website.loading,
-        }),
+        formattedProducts() {
+            return this.products[0];
+        }
     },
     data() {
         return {
             fullPage: true,
+            products: [],
             height: 60,
-            width: 40
+            width: 40,
+            breadCrumb: [
+                {
+                    text: 'Home',
+                    url: '/'
+                },
+                {
+                    text: 'Products',
+                    url: '/product'
+                },
+                {
+                    text: ''
+                }
+            ]
         };
-    },
-    methods: {
-        onCancel() {}
-    },
-    async created() {
-        this.breadCrumb = [
-            {
-                text: 'Home',
-                url: '/'
-            },
-            {
-                text: 'Products',
-                url: '/product'
-            },
-            {
-                text: ''
-            }
-        ];
-        let payload = {
-            id: this.$route.params.id
-        };
-        const response = await this.$store.dispatch(
-            'website/getSingleProduct',
-            payload
-        );
     }
 };
 </script>

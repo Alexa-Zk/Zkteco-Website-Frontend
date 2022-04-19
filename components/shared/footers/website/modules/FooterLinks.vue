@@ -3,30 +3,25 @@
         <div class="ps-footer__images">
             <div class="text-box">
                 <h1 class="heading-primary">
-                    <span 
-                        class="heading-primary-main"
-                        data-aos="fade-up"
-                    >
+                    <span class="heading-primary-main" data-aos="fade-up">
                         Learn how ZKTeco helps you
                     </span>
-                    <span 
-                        class="heading-primary-sub"
-                    >
+                    <span class="heading-primary-sub">
                         ZKTeco is a globally-renowned provider of security,
                         access control and time management solutions
                     </span>
-                    <div 
-                        class="footer-image-icon justify-center mt-10 d-flex"
-                    >
+                    <div class="footer-image-icon justify-center mt-10 d-flex">
                         <v-tooltip bottom>
                             <template v-slot:activator="{ on, attrs }">
                                 <span
                                     dark
                                     v-bind="attrs"
                                     v-on="on"
-                                    class="mx-2"
+                                    class="mx-3"
                                 >
-                                    <a href="tel:2348175555512"><Call /></a>
+                                    <a href="tel:2348175555512">
+                                        <i class="icon-telephone" style="font-size: 40px;"></i>
+                                    </a>
                                 </span>
                             </template>
                             <span>Call Us</span>
@@ -37,13 +32,13 @@
                                     dark
                                     v-bind="attrs"
                                     v-on="on"
-                                    class="mx-2"
+                                    class="mx-3"
                                 >
                                     <a
                                         href="https://wa.me/2348175555514?text=I%20am%20interested%20in%20your%20product%20for%20sale"
                                     >
-                                        <User
-                                    /></a>
+                                        <i class="icon-bubble" style="font-size: 40px;"></i>
+                                    </a>
                                 </span>
                             </template>
                             <span>Whatsapp</span>
@@ -54,14 +49,29 @@
                                     dark
                                     v-bind="attrs"
                                     v-on="on"
-                                    class="mx-2"
+                                    class="mx-3"
                                 >
                                     <a href="mailto:enquiry@zkteco-wa.com">
-                                        <Consultation
-                                    /></a>
+                                        <i class="icon-envelope" style="font-size: 40px;"></i>
+                                    </a>
                                 </span>
                             </template>
-                            <span>Whatsapp</span>
+                            <span>Email</span>
+                        </v-tooltip>
+                        <v-tooltip bottom>
+                            <template v-slot:activator="{ on, attrs }">
+                                <span
+                                    dark
+                                    v-bind="attrs"
+                                    v-on="on"
+                                    class="mx-3"
+                                >
+                                    <div @click="goToProjectConsultation" style="cursor: pointer;">
+                                        <i class="icon-document" style="font-size: 40px;"></i>
+                                    </div>
+                                </span>
+                            </template>
+                            <span>Project Consultation</span>
                         </v-tooltip>
                     </div>
                 </h1>
@@ -79,6 +89,18 @@ export default {
     name: 'FooterLinks',
     data() {
         return {};
+    },
+    methods: {
+        goToProjectConsultation() {
+            const tokenForDownloads = this.$cookies.get('download_token', {
+                parseJSON: true
+            });
+            if (tokenForDownloads) {
+               this.$router.push('/support/project-consultation');
+            } else {
+                this.$router.push('/auth/login');
+            }
+        }
     },
     components: { Consultation, Call, User }
 };
@@ -104,13 +126,18 @@ export default {
     justify-content: center;
 }
 
-.text-box {
-}
-
 .heading-primary {
     color: white;
     text-align: center;
     backface-visibility: hidden;
+}
+
+.footer-image-icon {
+    i {
+        &:hover {
+            color: greenyellow;
+        }
+    }
 }
 
 .heading-primary-main {

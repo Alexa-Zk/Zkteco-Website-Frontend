@@ -1,7 +1,6 @@
 import Repository, { serializeQuery } from '~/repositories/Repository.js';
 import { baseUrl, subBaseUrl } from '~/repositories/Repository';
 
-
 export const state = () => ({
     products: null,
     productsRelated: null,
@@ -23,8 +22,10 @@ export const state = () => ({
     loading: false,
     page: 0,
     perPage: 12,
-    sort_by: 'created_at:desc'
-
+    downloadCategories: null,
+    sort_by: 'created_at:desc',
+    totalSingleProductCategories: 0,
+    totalSingleProductSubCategories: 0
 });
 
 export const mutations = {
@@ -61,60 +62,97 @@ export const mutations = {
     },
 
     setSingleProduct(state, payload) {
-        state.singleProduct = payload
+        state.singleProduct = payload;
     },
 
     setArticlesCategories(state, payload) {
-        state.articlesCategories = payload
+        state.articlesCategories = payload;
     },
 
     setSingleProductCategories(state, payload) {
-        state.singleProductCategories = payload
+        state.singleProductCategories = payload;
     },
 
     setProductCategories(state, payload) {
-        state.productCategories = payload
+        state.productCategories = payload;
     },
 
     setSubProductCategories(state, payload) {
-        state.subProductCategories = payload
+        state.subProductCategories = payload;
     },
 
     setSolutionCategories(state, payload) {
-        state.solutionCategories = payload
+        state.solutionCategories = payload;
     },
 
     setNewsCategories(state, payload) {
-        state.newsCategories = payload
+        state.newsCategories = payload;
     },
 
     setSolutions(state, payload) {
-        state.solutions = payload
+        state.solutions = payload;
     },
 
     setHomepage(state, payload) {
-        state.homePage = payload
+        state.homePage = payload;
     },
 
     setStoreLocator(state, payload) {
-        state.storeLocator = payload
-    }
+        state.storeLocator = payload;
+    },
 
+    setDownloadCategories(state, payload) {
+        state.downloadCategories = payload;
+    },
+
+    setTotalSingleProductCategories(state, payload) {
+        state.totalSingleProductCategories = payload;
+    },
+
+    setTotalSubCategories(state, payload) {
+        consolo.log('state ', payload);
+        state.totalSingleProductSubCategories = payload;
+    }
 };
 
 export const actions = {
     async getProducts({ state, commit }, payload) {
         commit('setLoading', true);
         let params = {
-            _start: Object.keys(payload).length === 0 ? state.page : payload.page,
-            _sort: Object.keys(payload).length === 0 ? state.sort_by : payload.sort_by,
-            _limit: Object.keys(payload).length === 0 ? state.perPage : payload.perPage,
+            _start:
+                Object.keys(payload).length === 0 ? state.page : payload.page,
+            _sort:
+                Object.keys(payload).length === 0
+                    ? state.sort_by
+                    : payload.sort_by,
+            _limit:
+                Object.keys(payload).length === 0
+                    ? state.perPage
+                    : payload.perPage
         };
+
         const reponse = await Repository.get(
-                `${subBaseUrl}/products?${serializeQuery(params)}`
-            )
+            `${subBaseUrl}/products?${serializeQuery(params)}`
+        )
             .then(response => {
                 commit('setProducts', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({
+                error: JSON.stringify(error)
+            }));
+        return reponse;
+    },
+
+    async sendEnquiry({ commit }, payload) {
+        commit('setLoading', true);
+
+        const reponse = await Repository.post(
+            `${baseUrl}/integrations/enquiries`,
+            payload
+        )
+            .then(response => {
                 commit('setLoading', false);
                 return response.data;
             })
@@ -122,10 +160,22 @@ export const actions = {
         return reponse;
     },
 
-    async sendEnquiry({ commit }, payload) {
+    async requestAQuote({ commit }, payload) {
         commit('setLoading', true);
 
-        const reponse = await Repository.post(`${baseUrl}/integrations/enquiries`, payload)
+        const reponse = await Repository.post(`${subBaseUrl}/request-a-quotes`, payload)
+            .then(response => {
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async projectConsultation({ commit }, payload) {
+        commit('setLoading', true);
+
+        const reponse = await Repository.post(`${subBaseUrl}/project-consultations`, payload)
             .then(response => {
                 commit('setLoading', false);
                 return response.data;
@@ -137,15 +187,46 @@ export const actions = {
     async getArticles({ commit, state }, payload) {
         commit('setLoading', true);
         let params = {
-            _start: Object.keys(payload).length === 0 ? state.page : payload.page,
+            _start:
+                Object.keys(payload).length === 0 ? state.page : payload.page,
             _sort: 'created_at:desc',
-            _limit: Object.keys(payload).length === 0 ? state.perPage : payload.perPage,
+            _limit:
+                Object.keys(payload).length === 0
+                    ? state.perPage
+                    : payload.perPage
         };
         const reponse = await Repository.get(
-                `${subBaseUrl}/articles?${serializeQuery(params)}`
-            )
+            `${subBaseUrl}/articles?${serializeQuery(params)}`
+        )
             .then(response => {
                 commit('setArticles', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getDownloadCategories({ commit }) {
+        commit('setLoading', true);
+        const reponse = await Repository.get(
+            `${subBaseUrl}/download-categories`
+        )
+            .then(response => {
+                commit('setDownloadCategories', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async searchDownloadCategories({ commit }, payload) {
+        commit('setLoading', true);
+        const reponse = await Repository.get(
+            `${subBaseUrl}/downloads?download_categories.category=${payload.category}&_q=${payload.search}`
+        )
+            .then(response => {
                 commit('setLoading', false);
                 return response.data;
             })
@@ -158,12 +239,11 @@ export const actions = {
         let params = {
             _start: 0,
             _sort: 'created_at:desc',
-            _limit: 4,
-
+            _limit: 4
         };
         const reponse = await Repository.get(
-                `${subBaseUrl}/articles?${serializeQuery(params)}`
-            )
+            `${subBaseUrl}/articles?${serializeQuery(params)}`
+        )
             .then(response => {
                 commit('setArticlesLimited', response.data);
                 commit('setLoading', false);
@@ -178,11 +258,11 @@ export const actions = {
         let params = {
             _start: 0,
             _sort: 'created_at:desc',
-            _limit: 100,
+            _limit: 100
         };
         const reponse = await Repository.get(
-                `${subBaseUrl}/solutions?${serializeQuery(params)}`
-            )
+            `${subBaseUrl}/solutions?${serializeQuery(params)}`
+        )
             .then(response => {
                 commit('setSolutions', response.data);
                 commit('setLoading', false);
@@ -195,14 +275,17 @@ export const actions = {
     async getSingleProduct({ commit, dispatch }, payload) {
         commit('setLoading', true);
         let params = {
-            slug_in: payload.id,
+            slug_in: payload.id
         };
         const reponse = await Repository.get(
-                `${subBaseUrl}/products?${serializeQuery(params)}`
-            )
+            `${subBaseUrl}/products?${serializeQuery(params)}`
+        )
             .then(response => {
                 commit('setSingleProduct', response.data[0]);
-                dispatch('getRelatedProducts', response.data[0].product_category)
+                dispatch(
+                    'getRelatedProducts',
+                    response.data[0].product_category
+                );
                 commit('setLoading', false);
                 return response.data[0];
             })
@@ -212,11 +295,11 @@ export const actions = {
 
     async getRelatedProducts({ commit }, payload) {
         let params = {
-            slug_in: payload.id,
+            slug_in: payload.id
         };
         const reponse = await Repository.get(
-                `${subBaseUrl}/product-categories?${serializeQuery(params)}`
-            )
+            `${subBaseUrl}/product-categories?${serializeQuery(params)}`
+        )
             .then(response => {
                 commit('setRelatedProducts', response.data[0].products);
                 return response.data;
@@ -225,20 +308,70 @@ export const actions = {
         return reponse;
     },
 
-    async getSingleProductCategories({ commit }, slug) {
-        commit('setLoading', true);
+    // async getSingleProductCategories1({ commit }, slug) {
+    //     commit('setLoading', true);
+    //     let params = {
+    //         slug_in: slug
+    //     };
+    //     const reponse = await Repository.get(
+    //         `${subBaseUrl}/product-categories/?${serializeQuery(params)}`
+    //     )
+    //         .then(response => {
+    //             commit('setSingleProductCategories', response.data);
+    //             commit('setLoading', false);
+    //             return response.data;
+    //         })
+    //         .catch(error => ({ error: JSON.stringify(error) }));
+    //     return reponse;
+    // },
+
+    async getTotalSingleProductCategories({ commit }, slug) {
         let params = {
-            slug_in: slug,
+            'product_category.slug': slug
         };
         const reponse = await Repository.get(
-                `${subBaseUrl}/product-categories/?${serializeQuery(params)}`
-            )
+            `${subBaseUrl}/products/count?${serializeQuery(params)}`
+        )
+            .then(response => {
+                commit('setTotalSingleProductCategories', response.data);
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getSingleProductCategories({ state, commit }, payload) {
+        //getSingleProductCategories
+        //https://admin.zkteco-wa.com/products?_limit=2&product_category.slug=time-attendance&_start=1
+
+        commit('setLoading', true);
+        let params = {
+            _start:
+                payload.page === 0 ||
+                payload.page === undefined ||
+                payload.page === null
+                    ? state.page
+                    : payload.page,
+            _sort: payload.sort_by === 0 ? state.sort_by : payload.sort_by,
+            _limit:
+                payload.perPage === null ||
+                payload.perPage === undefined ||
+                payload.perPage === 0
+                    ? state.perPage
+                    : payload.perPage,
+            'product_category.slug': payload.slug
+        };
+
+        const reponse = await Repository.get(
+            `${subBaseUrl}/products?${serializeQuery(params)}`
+        )
             .then(response => {
                 commit('setSingleProductCategories', response.data);
                 commit('setLoading', false);
                 return response.data;
             })
-            .catch(error => ({ error: JSON.stringify(error) }));
+            .catch(error => ({
+                error: JSON.stringify(error)
+            }));
         return reponse;
     },
 
@@ -246,8 +379,8 @@ export const actions = {
         commit('setLoading', true);
         let params = {};
         const reponse = await Repository.get(
-                `${subBaseUrl}/product-categories/?${serializeQuery(params)}`
-            )
+            `${subBaseUrl}/product-categories/?${serializeQuery(params)}`
+        )
             .then(response => {
                 commit('setProductCategories', response.data);
                 commit('setLoading', false);
@@ -259,9 +392,7 @@ export const actions = {
 
     async getArticlesCategories({ commit }, slug) {
         commit('setLoading', true);
-        const reponse = await Repository.get(
-                `${subBaseUrl}/categories/`
-            )
+        const reponse = await Repository.get(`${subBaseUrl}/categories/`)
             .then(response => {
                 commit('setArticlesCategories', response.data);
                 commit('setLoading', false);
@@ -271,18 +402,63 @@ export const actions = {
         return reponse;
     },
 
-    async getSubProductCategories({ commit }, slug) {
+    async getSubProductCategories({ state, commit }, payload) {
         commit('setLoading', true);
         let params = {
-            slug_in: slug,
+            _start:
+                payload.page === 0 ||
+                payload.page === undefined ||
+                payload.page === null
+                    ? state.page
+                    : payload.page,
+            _sort: payload.sort_by === 0 ? state.sort_by : payload.sort_by,
+            _limit:
+                payload.perPage === null ||
+                payload.perPage === undefined ||
+                payload.perPage === 0
+                    ? state.perPage
+                    : payload.perPage,
+            'product_sub_category.slug': payload.slug
+        };
+
+        const reponse = await Repository.get(
+            `${subBaseUrl}/products/?${serializeQuery(params)}`
+        )
+            .then(res => {
+                const product = res.data ? res.data : [];
+                commit('setSubProductCategories', product);
+                commit('setLoading', false);
+                return product;
+            })
+            .catch(error => ({
+                error: JSON.stringify(error)
+            }));
+        return reponse;
+    },
+
+    async getTotalSingleProductCategories({ commit }, slug) {
+        let params = {
+            'product_category.slug': slug
         };
         const reponse = await Repository.get(
-                `${subBaseUrl}/sub-product-categories/?${serializeQuery(params)}`
-            )
+            `${subBaseUrl}/products/count?${serializeQuery(params)}`
+        )
             .then(response => {
-                commit('setSubProductCategories', response.data[0]);
-                commit('setLoading', false);
-                return response.data;
+                commit('setTotalSingleProductCategories', response.data);
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getTotalSubCategories({ commit }, slug) {
+        let params = {
+            'product_sub_category.slug': slug
+        };
+        const reponse = await Repository.get(
+            `${subBaseUrl}/products/count?${serializeQuery(params)}`
+        )
+            .then(res => {
+                commit('setTotalSingleProductCategories', res.data);
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
@@ -291,11 +467,11 @@ export const actions = {
     async getSolutionCategories({ commit }, slug) {
         commit('setLoading', true);
         let params = {
-            slug_in: slug,
+            slug_in: slug
         };
         const reponse = await Repository.get(
-                `${subBaseUrl}/solution-categories/?${serializeQuery(params)}`
-            )
+            `${subBaseUrl}/solution-categories/?${serializeQuery(params)}`
+        )
             .then(response => {
                 commit('setSolutionCategories', response.data[0]);
                 commit('setLoading', false);
@@ -307,19 +483,17 @@ export const actions = {
 
     async getNewsCategories({ commit }, slug) {
         commit('setLoading', true);
-        let params = {
-            slug_in: slug,
-        };
-        const reponse = await Repository.get(
-                `${subBaseUrl}/categories/?${serializeQuery(params)}`
-            )
+
+        const response = await Repository.get(
+            `${subBaseUrl}/getCategoriesBySlug/${slug}`
+        )
             .then(response => {
-                commit('setNewsCategories', response.data[0]);
+                commit('setNewsCategories', response.data);
                 commit('setLoading', false);
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
-        return reponse;
+        return response;
     },
 
     async getProductsTotal({ state, commit }, payload) {
@@ -327,8 +501,8 @@ export const actions = {
             _limit: -1
         };
         const reponse = await Repository.get(
-                `${subBaseUrl}/products?${serializeQuery(params)}`
-            )
+            `${subBaseUrl}/products?${serializeQuery(params)}`
+        )
             .then(response => {
                 commit('setProductsTotal', response.data.length);
                 return response.data;
@@ -342,8 +516,8 @@ export const actions = {
             _limit: -1
         };
         const reponse = await Repository.get(
-                `${subBaseUrl}/articles?${serializeQuery(params)}`
-            )
+            `${subBaseUrl}/articles?${serializeQuery(params)}`
+        )
             .then(response => {
                 commit('setArticlesTotal', response.data.length);
                 return response.data;
@@ -357,8 +531,8 @@ export const actions = {
             _q: payload.query
         };
         const reponse = await Repository.get(
-                `${subBaseUrl}/products?${serializeQuery(params)}`
-            )
+            `${subBaseUrl}/products?${serializeQuery(params)}`
+        )
             .then(response => {
                 commit('setSearchResults', response.data);
                 return response.data;
@@ -371,8 +545,8 @@ export const actions = {
         commit('setLoading', true);
         let params = {};
         const reponse = await Repository.get(
-                `${subBaseUrl}/home-pages/?${serializeQuery(params)}`
-            )
+            `${subBaseUrl}/home-pages/?${serializeQuery(params)}`
+        )
             .then(response => {
                 commit('setHomepage', response.data);
                 commit('setLoading', false);
@@ -384,15 +558,13 @@ export const actions = {
 
     async getStoreLocator({ commit, state }, payload) {
         commit('setLoading', true);
-
         let params = {
-            page: Object.keys(payload).length === 0 ? state.page : payload.page,
-            perPage: Object.keys(payload).length === 0 ? 100 : payload.perPage,
-            query: Object.keys(payload).length === 0 ? '' : payload.query,
+            _sort: 'sort_id:desc',
+            ...(payload.query && { _q: payload.query })
         };
         const reponse = await Repository.get(
-                `${subBaseUrl}/store-locators/search?${serializeQuery(params)}`
-            )
+            `${subBaseUrl}/store-locators?${serializeQuery(params)}`
+        )
             .then(response => {
                 commit('setStoreLocator', response.data);
                 commit('setLoading', false);
@@ -400,5 +572,5 @@ export const actions = {
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
-    },
+    }
 };
