@@ -27,14 +27,14 @@
                     >
                         <i class="icon-telephone"></i> Signup
                     </button>
-                    <!--button
+                    <button
                         style="margin-left: 10px;"
                         type="submit"
                         class="ps-btn ps-btn--xs ps-btn--gray"
                         v-on:click="toRequestQuote"
                     >
                         <i class="icon-document"></i> Request a quote
-                    </button-->
+                    </button>
                 </div>
             </div>
             <div class="rtf">

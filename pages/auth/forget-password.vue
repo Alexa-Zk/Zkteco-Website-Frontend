@@ -16,7 +16,7 @@
                         <form>
                             <div class="ps-form__content">
                                 
-                                <div class="form-group">
+                                <div v-if="showMessage === false" class="form-group">
                                     <v-text-field
                                         v-model="email"
                                         class="ps-text-field"
@@ -27,8 +27,12 @@
                                         outlined
                                     />
                                 </div>
+                                <div v-else  style="margin-bottom: 40px;">
+                                    Forget Password Link has been sent to your email. Please check your email
+                                </div>
                                 <div class="form-group submit">
                                     <button
+                                    v-if="showMessage === false"
                                         type="submit"
                                         class="ps-btn ps-btn--fullwidth"
                                         @click.prevent="handleSubmit"
@@ -38,6 +42,14 @@
                                                 ? 'Loading...'
                                                 : 'Forget Password'
                                         }}
+                                    </button>
+                                    <button
+                                        v-else
+                                        type="submit"
+                                        class="ps-btn ps-btn--fullwidth"
+                                        @click.prevent="goToLogin"
+                                    >
+                                        Go Back to Login
                                     </button>
                                 </div>
                                 <v-alert
@@ -77,6 +89,7 @@ export default {
     layout: 'empty',
     data: () => {
         return {
+            showMessage: false,
             breadCrumb: [
                 {
                     text: 'Home',
@@ -101,14 +114,15 @@ export default {
     },
    
     methods: {
+        goToLogin() {this.$router.push("/auth/login")},
         async handleSubmit() {
             this.$v.$touch();
             if (!this.$v.$invalid) {
                 this.loading = true;
                 const response = await this.$store.dispatch('auth/forgetPassword', { email: this.email});
-                console.log(response)
-                if (response.status === 200) {
-                    
+                if (response.ok === true) {
+                    this.loading = false;
+                    this.showMessage = true
                 } else {
                     this.loading = false;
                     console.log(response.error.message);

@@ -29,6 +29,11 @@ export const mutations = {
     },
     setUserInfoDownload(state, payload) {
         state.userInfoDownload = payload;
+
+        this.$cookies.set('download_user_info', payload, {
+            path: '/',
+            maxAge: 60 * 60 * 24 * 7
+        });
     },
     setAuthToken(state, payload) {
         state.authToken = payload;
@@ -40,7 +45,7 @@ export const mutations = {
     },
     setAuthTokenForDownloads(state, payload) {
         state.authTokenForDownloads = payload;
-        state.isLoggedInToDownload = true
+        state.isLoggedInToDownload = true;
 
         this.$cookies.set('download_token', payload, {
             path: '/',
@@ -103,14 +108,21 @@ export const actions = {
             payload
         )
             .then(response => {
-                commit('setUserInfoDownload', response.data);
+                const res =
+                    response.data == null ||
+                    response.data == undefined ||
+                    response.data == ''
+                        ? ''
+                        : response.data;
+                commit('setUserInfoDownload', res);
                 commit('setIsLoggedInDownload', true);
-                commit('setAuthTokenForDownloads', response.data.jwt)
+                commit('setAuthTokenForDownloads', res.jwt);
                 return response;
             })
             .catch(error => ({ error: error.response.data }));
         return reponse;
     },
+    
 
     async registerDownload({ commit }, payload) {
         const reponse = await Repository.post(
@@ -136,6 +148,18 @@ export const actions = {
         return reponse;
     },
 
+    async resetPassword({ commit }, payload) {
+        const reponse = await Repository.post(
+            `${subBaseUrl}/auth/reset-password`,
+            payload
+        )
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
     async register({ commit }, payload) {
         const reponse = await Repository.post(
             `${baseUrl}/integrations/customers`,
@@ -150,8 +174,11 @@ export const actions = {
 
     async updateUserInformation({ dispatch }, payload) {
         const token = this.getters['auth/getToken'];
-        const reponse = await Repository.put(`${baseUrl}/integrations/customers`, payload ,
-            { headers: { Authorization: token }})
+        const reponse = await Repository.put(
+            `${baseUrl}/integrations/customers`,
+            payload,
+            { headers: { Authorization: token } }
+        )
             .then(response => {
                 dispatch('getUserInformation');
                 return response.data;
@@ -172,7 +199,7 @@ export const actions = {
             }
         )
             .then(response => {
-                dispatch('getBilling')
+                dispatch('getBilling');
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
@@ -191,7 +218,7 @@ export const actions = {
             }
         )
             .then(response => {
-                dispatch('getShipping')
+                dispatch('getShipping');
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
@@ -200,7 +227,8 @@ export const actions = {
 
     async getBilling({ commit }) {
         const token = this.getters['auth/getToken'];
-        const reponse = await Repository.get(`${baseUrl}/integrations/customers/billing`,
+        const reponse = await Repository.get(
+            `${baseUrl}/integrations/customers/billing`,
             {
                 headers: {
                     Authorization: token
@@ -208,7 +236,10 @@ export const actions = {
             }
         )
             .then(response => {
-                commit('setBilling', response.data.data !== '' ? response.data.data : {} );
+                commit(
+                    'setBilling',
+                    response.data.data !== '' ? response.data.data : {}
+                );
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
@@ -217,7 +248,8 @@ export const actions = {
 
     async getShipping({ commit }) {
         const token = this.getters['auth/getToken'];
-        const reponse = await Repository.get(`${baseUrl}/integrations/customers/shipping`,
+        const reponse = await Repository.get(
+            `${baseUrl}/integrations/customers/shipping`,
             {
                 headers: {
                     Authorization: token
@@ -225,13 +257,16 @@ export const actions = {
             }
         )
             .then(response => {
-                commit('setShipping', response.data.data !== '' ? response.data.data : {} );
+                commit(
+                    'setShipping',
+                    response.data.data !== '' ? response.data.data : {}
+                );
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
     },
-    
+
     async getUserInformation({ commit, state }, payload) {
         const reponse = await Repository.get(
             `${baseUrl}/integrations/customers/logged-in`,
