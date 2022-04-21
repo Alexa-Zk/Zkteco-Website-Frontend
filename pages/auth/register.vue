@@ -58,16 +58,14 @@
                                     <v-checkbox :error-messages="checkboxErrors" @change="$v.checkbox.$touch()" color="success" v-model="checkbox">
                                         <template v-slot:label>
                                             <div class="agreement_link">
-                                                Agree to comply with ZKTeco
+                                                I have read and agree to
                                                 <a target="_blank" href="/website/page/privacy-policy" @click.stop>
-                                                    Term of Use
+                                                    Membership Registration Agreement
                                                 </a>,
                                                 <a target="_blank" href="/website/page/privacy-policy" @click.stop>
                                                    Privacy Policy
-                                                </a>,
-                                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
-                                                    Cookie Policy
                                                 </a>
+                                            
                                             </div>
                                         </template>
                                     </v-checkbox>
@@ -217,9 +215,10 @@ export default {
 .agreement_link {
     font-size: 14px;
     a {
-        color: #78bc27;
+        color: red;
         &:hover {
-            color: green;
+            color: darkred;
+            text-decoration: underline;
         }
     }
 
