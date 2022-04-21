@@ -402,10 +402,10 @@ export default {
     },
     computed: {
         ...mapState({
-            user: state => state.auth.userInfoDownload
+            userInfoDownload: state => state.auth.userInfoDownload
         }),
         userInfo() {
-            return this.user.user;
+            return this.userInfoDownload.user;
         }
     },
     mounted() {
