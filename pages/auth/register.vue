@@ -215,9 +215,9 @@ export default {
 .agreement_link {
     font-size: 14px;
     a {
-        color: red;
+        color: #78bc27;
         &:hover {
-            color: darkred;
+            color: darkgreen;
             text-decoration: underline;
         }
     }
