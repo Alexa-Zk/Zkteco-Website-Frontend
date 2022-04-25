@@ -113,6 +113,10 @@ export default {
                 {
                     text: 'BioTime NG',
                     url: '/biotime-ng'
+                },
+                {
+                    text: 'Project Consultation',
+                    url: '/support/project-consultation'
                 }
             ]
         };

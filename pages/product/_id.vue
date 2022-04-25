@@ -6,7 +6,7 @@
                 <div class="ps-page__container">
                     <div class="ps-page__left" v-if="products">
                         <product-detail-fullwidth
-                            :singleProduct="formattedProducts"
+                            :singleProduct="pdt.data[0]"
                         />
                     </div>
                     <div class="ps-page__right">
@@ -23,11 +23,11 @@
 <script>
 import ProductDetailFullwidth from '~/components/elements/detail/website/ProductDetailFullwidth';
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import RelatedProduct from '~/components/partials/product/RelatedProduct';
+//import RelatedProduct from '~/components/partials/product/RelatedProduct';
 import ProductWidgets from '~/components/partials/product/website/ProductWidgets';
 import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
-import singleProduct from '~/apollo/queries/products/singleProduct';
+//import singleProduct from '~/apollo/queries/products/singleProduct';
 
 const axios = require('axios');
 
@@ -39,17 +39,24 @@ export default {
         Newsletters,
         LayoutProduct,
         ProductWidgets,
-        RelatedProduct,
+        //RelatedProduct,
         BreadCrumb,
         ProductDetailFullwidth
     },
+    async asyncData({ params, $axios }) {
+        try {
+            const pdt = await $axios.get(
+                `https://admin.zkteco-wa.com/products?slug_in=${params.id}`
+            );
+            return { pdt };
+        } catch (error) {}
+    },
     head() {
-        const name = this.formattedProducts ? this.formattedProducts.name : '';
-        const description = this.formattedProducts
-            ? this.formattedProducts.description
+        const description = this.pdt.data[0]
+            ? this.pdt.data[0].description
             : 'Product Details - Description';
-        const image = this.formattedProducts
-            ? this.formattedProducts.images[0].url
+        const image = this.pdt.data[0]
+            ? this.pdt.data[0].images[0].url
             : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
         const title = name.replace(/<\/?[^>]+(>|$)/g, '');
         return {
@@ -122,34 +129,22 @@ export default {
         };
     },
     jsonld() {
-        if (this.formattedProducts) {
+        if (this.pdt.data[0]) {
             return {
                 '@context': 'https://schema.org',
                 '@id': '#product',
                 '@type': 'IndividualProduct',
-                additionalType: `https://www.zkteco-wa.com/product/${this.formattedProducts.slug}`,
-                description: `https://www.zkteco-wa.com/product/${this.formattedProducts.description}`,
-                name: `https://www.zkteco-wa.com/product/${this.formattedProducts.name}`
+                additionalType: `https://www.zkteco-wa.com/product/${this.pdt.data[0].slug}`,
+                description: `https://www.zkteco-wa.com/product/${this.pdt.data[0].description}`,
+                name: `https://www.zkteco-wa.com/product/${this.pdt.data[0].name}`
             };
         } else {
             return {};
         }
     },
-    async asyncData({ params }) {
-        try {
-            let products = await axios.get(
-                `https://admin.zkteco-wa.com/products?slug_in=${params.id}`
-            );
-            return { products };
-        } catch (error) {}
-    },
-    computed: {
-        formattedProducts() {
-            return this.products.data[0];
-        }
-    },
     data() {
         return {
+            appProduct: {},
             fullPage: true,
             products: [],
             height: 60,

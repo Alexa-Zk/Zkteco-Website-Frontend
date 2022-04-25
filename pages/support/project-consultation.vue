@@ -33,9 +33,10 @@
                                             placeholder="Position"
                                             v-model="position"
                                         />
+
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="!$v.position.required"
+                                            v-if="$v.position.$error"
                                         >
                                             Position is required!
                                         </p>
@@ -54,7 +55,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="!$v.company_name.required"
+                                            v-if="$v.company_name.$error"
                                         >
                                             The Company Name is required!
                                         </p>
@@ -73,7 +74,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="!$v.phone_number.required"
+                                            v-if="$v.phone_number.$error"
                                         >
                                             Phone is required!
                                         </p>
@@ -112,7 +113,7 @@
                                         </select>
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="!$v.country.required"
+                                            v-if="$v.country.$error"
                                         >
                                             Country is required!
                                         </p>
@@ -131,7 +132,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="!$v.city.required"
+                                            v-if="$v.city.$error"
                                         >
                                             City is required!
                                         </p>
@@ -157,7 +158,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="!$v.related_industry.required"
+                                            v-if="$v.related_industry.$error"
                                         >
                                             Enter Related Industry!
                                         </p>
@@ -178,7 +179,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="!$v.product_needed.required"
+                                            v-if="$v.product_needed.$error"
                                         >
                                             Enter needed product!
                                         </p>
@@ -197,9 +198,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="
-                                                !$v.project_description.required
-                                            "
+                                            v-if="$v.project_description.$error"
                                         >
                                             Enter Project Description!
                                         </p>
@@ -228,14 +227,12 @@
                                         </select>
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="!$v.project_scale.required"
+                                            v-if="$v.project_scale.$error"
                                         >
                                             Select Project Scale!
                                         </p>
                                     </div>
                                 </div>
-
-
 
                                 <div
                                     class="container form-group submit"
@@ -248,24 +245,27 @@
                                         {{ loading ? 'Sending...' : 'Submit' }}
                                     </button>
                                 </div>
-
-                                <v-snackbar
-                                    v-model="snackbar"
+                                <!-- v-model="snackbar"
                                     :timeout="3000"
                                     color="green"
                                     tile
-
-                                    >
+                                    -->
+                                <v-snackbar
+                                    v-model="snackbar"
+                                    :timeout="8000"
+                                    color="green"
+                                    tile
+                                >
                                     {{ snackBarMessage }}
 
                                     <template v-slot:action="{ attrs }">
                                         <v-btn
-                                        color="white"
-                                        text
-                                        v-bind="attrs"
-                                        @click="snackbar = false"
+                                            color="white"
+                                            text
+                                            v-bind="attrs"
+                                            @click="snackbar = false"
                                         >
-                                        Close
+                                            Close
                                         </v-btn>
                                     </template>
                                 </v-snackbar>
@@ -289,7 +289,7 @@ export default {
         BreadCrumb
     },
     name: 'project-consultation',
-    transition: 'zoom',
+    //transition: 'zoom',
     layout: 'layout-default-website',
     mixins: [validationMixin],
     data: () => {
@@ -334,7 +334,8 @@ export default {
             city: '',
             disabled: false,
             snackbar: false,
-            snackBarMessage: "Form Submitted Successfully. You will be contacted by one of our customer representatives."
+            snackBarMessage:
+                'Form Submitted Successfully. You will be contacted by one of our customer representatives.'
         };
     },
     validations: {
@@ -384,7 +385,7 @@ export default {
                             : 'small_projects',
                     city: this.city
                 };
-                console.log(payload);
+
                 const response = await this.$store.dispatch(
                     'website/projectConsultation',
                     payload
@@ -392,8 +393,9 @@ export default {
 
                 if (response) {
                     this.loading = false;
-                    this.snackbar = true
+                    this.snackbar = true;
                     this.resetForm();
+                    this.$router.push('/');
                 } else {
                     this.loading = false;
                 }
@@ -453,6 +455,4 @@ export default {
         }
     }
 }
-
-
 </style>
