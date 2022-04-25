@@ -74,7 +74,7 @@ export default {
         async subscribe() {
             if (this.email !== '') {
                 let payload = {
-                    name: this.name,
+                    name: this.name || "Website",
                     email: this.email
                 };
                 const ip = await this.$axios.$post(
@@ -129,15 +129,30 @@ export default {
 
         .form-group--nest {
             margin-top: 40px;
+            display: block;
+
             @media (max-width: 540px) {
                 display: grid;
                 gap: 22px;
             }
 
             input {
+                margin: 10px 0px;
+                border: 1px solid #dddddd;
+                border-radius: 4px;
+                transition: all 0.5s;
+
+                &:focus {
+                    border: 1px solid #000000;
+                }
                 @media (max-width: 540px) {
                     border: 1px solid #dddddd;
                 }
+            }
+
+            .ps-btn {
+                margin-top: 20px;
+                width: 100%;
             }
         }
 
