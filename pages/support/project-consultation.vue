@@ -366,7 +366,6 @@ export default {
             this.$v.$touch();
             if (this.$v.$invalid) {
             } else if (this.$v.$error) {
-                console.log(' condition ', this.$v.$error);
                 return false;
             } else {
                 this.loading = true;

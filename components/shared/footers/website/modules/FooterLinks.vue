@@ -22,7 +22,7 @@
                                     <a href="tel:2348175555512">
                                         <i
                                             class="icon-telephone"
-                                            style="font-size: 40px;"
+                                            style="font-size: 40px; color:white;"
                                         ></i>
                                     </a>
                                 </span>
@@ -42,7 +42,7 @@
                                     >
                                         <i
                                             class="icon-bubble"
-                                            style="font-size: 40px;"
+                                            style="font-size: 40px; color:white;"
                                         ></i>
                                     </a>
                                 </span>
@@ -60,7 +60,7 @@
                                     <a href="mailto:enquiry@zkteco-wa.com">
                                         <i
                                             class="icon-envelope"
-                                            style="font-size: 40px;"
+                                            style="font-size: 40px; color:white;"
                                         ></i>
                                     </a>
                                 </span>
@@ -81,7 +81,7 @@
                                     >
                                         <i
                                             class="icon-document"
-                                            style="font-size: 40px; color:white"
+                                            style="font-size: 40px; color:white;"
                                         ></i>
                                     </div>
                                 </span>

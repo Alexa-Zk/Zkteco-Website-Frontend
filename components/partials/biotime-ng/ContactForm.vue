@@ -112,7 +112,7 @@
                             <label>Phone Number</label>
                             <input
                                 class="form-control"
-                                type="text"
+                                type="number"
                                 placeholder="Phone Number"
                                 v-model="phone_number"
                             />
@@ -377,6 +377,20 @@
                     You will be contacted shortly!!
                 </p>
             </form>
+            <v-snackbar v-model="snackbar" :timeout="3000" color="green" tile>
+                {{ snackBarMessage }}
+
+                <template v-slot:action="{ attrs }">
+                    <v-btn
+                        color="white"
+                        text
+                        v-bind="attrs"
+                        @click="snackbar = false"
+                    >
+                        Close
+                    </v-btn>
+                </template>
+            </v-snackbar>
         </div>
     </div>
 </template>
@@ -405,7 +419,10 @@ export default {
             monitor_attendance_online: '',
             is_support_needed: '',
             additional_request: '',
-            disabled: false
+            disabled: false,
+            snackbar: false,
+            snackBarMessage:
+                'Form Submitted Successfully. You will be contacted by one of our customer representatives.'
         };
     },
     validations: {
@@ -440,6 +457,8 @@ export default {
             this.$v.$touch();
             if (this.$v.$invalid) {
                 return false;
+            } else if (this.$v.$error) {
+                return false;
             } else {
                 this.loading = true;
                 const payload = {
@@ -465,6 +484,7 @@ export default {
                     'website/requestAQuote',
                     payload
                 );
+                /*
                 if (response) {
                     this.loading = false;
                     this.showSuccess = true;
@@ -474,6 +494,20 @@ export default {
                     this.showError = true;
                     this.showSuccess = false;
                     this.loading = false;
+                }
+                */
+                if (response) {
+                    this.loading = false;
+                    this.snackbar = true;
+                    this.showError = false;
+                    setTimeout(() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        this.resetForm();
+                    }, 3001);
+                } else {
+                    this.loading = false;
+                    this.showSuccess = false;
+                    this.showError = true;
                 }
             }
         }
