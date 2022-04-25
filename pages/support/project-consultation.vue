@@ -68,7 +68,7 @@
                                         <label>Phone Number </label>
                                         <input
                                             class="form-control"
-                                            type="text"
+                                            type="number"
                                             placeholder="Phone Number"
                                             v-model="phone_number"
                                         />
@@ -216,13 +216,13 @@
                                                 >Project Scale *</option
                                             >
                                             <option key="large"
-                                                >Large Products</option
+                                                >Large Projects</option
                                             >
                                             <option key="medium"
-                                                >Medium Project</option
+                                                >Medium Projects</option
                                             >
                                             <option key="small"
-                                                >Small Products</option
+                                                >Small Projects</option
                                             >
                                         </select>
                                         <p
@@ -252,7 +252,7 @@
                                     -->
                                 <v-snackbar
                                     v-model="snackbar"
-                                    :timeout="8000"
+                                    :timeout="3000"
                                     color="green"
                                     tile
                                 >
@@ -362,8 +362,11 @@ export default {
             this.city = '';
         },
         async submit() {
+            console.log(' Error ', this.$v.$error);
             this.$v.$touch();
             if (this.$v.$invalid) {
+            } else if (this.$v.$error) {
+                console.log(' condition ', this.$v.$error);
                 return false;
             } else {
                 this.loading = true;
@@ -378,9 +381,9 @@ export default {
                     product_needed: this.product_needed,
                     project_description: this.project_description,
                     project_scale:
-                        this.project_scale === 'Large Project'
+                        this.project_scale === 'Large Projects'
                             ? 'large_projects'
-                            : this.project_scale === 'Medium Project'
+                            : this.project_scale === 'Medium Projects'
                             ? 'medium_projects'
                             : 'small_projects',
                     city: this.city
@@ -394,8 +397,11 @@ export default {
                 if (response) {
                     this.loading = false;
                     this.snackbar = true;
-                    this.resetForm();
-                    this.$router.push('/');
+
+                    setTimeout(() => {
+                        this.$router.push('/');
+                        //this.resetForm();
+                    }, 3002);
                 } else {
                     this.loading = false;
                 }

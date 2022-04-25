@@ -11,8 +11,8 @@
                 </div>
                 <div class="card-text">
                     <h6>Call Us</h6>
-                    <p><a href="tel:+2348177777512">(+234) 8177777512</a></p>
-                    <p><a href="tel:+2348177777513">(+234) 8177777513</a></p>
+                    <p><a href="tel:+2348175555512">(+234) 817 5555 512</a></p>
+                    <p><a href="tel:+2348175555513">(+234) 817 5555 513</a></p>
                 </div>
             </div>
             <div class="contact-form-card">
@@ -27,12 +27,12 @@
                             >enquiry@zkteco-wa.com</a
                         >
                     </p>
-                    <p>
+                    <!--p>
                         <a
                             href="mailto:support@zkteco-wa.com?subject=Biotime Cloud&body=Support"
                             >support@zkteco-wa.com</a
                         >
-                    </p>
+                    </p-->
                 </div>
             </div>
             <div class="contact-form-card">
@@ -42,6 +42,15 @@
                 <div class="card-text">
                     <h6>Visit Us</h6>
                     <p>64 Adetokunbo Ademola Street, Victoria Island, Lagos</p>
+                </div>
+            </div>
+            <div class="contact-form-card">
+                <div class="circle">
+                    <i class="icon-telephone"></i>
+                </div>
+                <div class="card-text">
+                    <h6>Whatapp</h6>
+                    <p><a href="tel:+2348175555514">(+234) 817 5555 514</a></p>
                 </div>
             </div>
         </div>
@@ -493,7 +502,7 @@ h6 {
 
     .contact-form-link {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 30px;
         margin-bottom: 60px;
 

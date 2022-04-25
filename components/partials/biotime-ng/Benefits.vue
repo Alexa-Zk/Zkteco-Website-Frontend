@@ -14,7 +14,11 @@
 
         <div class="benefit-container">
             <div>
-                <i class="mdi mdi-track-light"></i>
+                <i
+                    class="fa fa-money"
+                    aria-hidden="true"
+                    title="cost-effective"
+                ></i>
                 <p>
                     A simple and cost-effective system for tracking employee
                     time, managing productivity, and producing high-quality
@@ -23,7 +27,13 @@
             </div>
 
             <div>
-                <i class="mdi mdi-car-shift-pattern"></i>
+                <i
+                    class="fa fa-bar-chart-o"
+                    aria-hidden="true"
+                    title="Dashboard"
+                ></i>
+                <br />
+                <br />
                 <p>
                     With a versatile scheduler, you can easily organize
                     processes, assign shifts correctly, and make workflows
@@ -32,7 +42,13 @@
             </div>
 
             <div>
-                <i class="mdi mdi-image-filter-tilt-shift"></i>
+                <i
+                    class="fa fa-database"
+                    aria-hidden="true"
+                    title="Dashboard"
+                ></i>
+                <br />
+                <br />
                 <p>
                     A customizable and user-friendly reporting tool that gives
                     comprehensive data and makes it simple for businesses to
@@ -41,7 +57,13 @@
             </div>
 
             <div>
-                <i class="mdi mdi-human-male-board"></i>
+                <i
+                    class="fa fa-dashboard"
+                    aria-hidden="true"
+                    title="Dashboard"
+                ></i>
+                <br />
+                <br />
                 <p>
                     User-friendly dashboard design and simple modules for
                     managing user profiles, shifts and leave schedules, and
@@ -50,7 +72,13 @@
             </div>
 
             <div>
-                <i class="mdi mdi-location-enter"></i>
+                <i
+                    class="fa fa-mobile-phone"
+                    aria-hidden="true"
+                    title="Dashboard"
+                ></i>
+                <br />
+                <br />
                 <p>
                     With our Biotime mobile app, we provide a comprehensive
                     solution for continuous attendance management with a

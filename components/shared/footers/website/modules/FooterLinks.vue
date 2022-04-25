@@ -20,7 +20,10 @@
                                     class="mx-3"
                                 >
                                     <a href="tel:2348175555512">
-                                        <i class="icon-telephone" style="font-size: 40px;"></i>
+                                        <i
+                                            class="icon-telephone"
+                                            style="font-size: 40px;"
+                                        ></i>
                                     </a>
                                 </span>
                             </template>
@@ -37,7 +40,10 @@
                                     <a
                                         href="https://wa.me/2348175555514?text=I%20am%20interested%20in%20your%20product%20for%20sale"
                                     >
-                                        <i class="icon-bubble" style="font-size: 40px;"></i>
+                                        <i
+                                            class="icon-bubble"
+                                            style="font-size: 40px;"
+                                        ></i>
                                     </a>
                                 </span>
                             </template>
@@ -52,7 +58,10 @@
                                     class="mx-3"
                                 >
                                     <a href="mailto:enquiry@zkteco-wa.com">
-                                        <i class="icon-envelope" style="font-size: 40px;"></i>
+                                        <i
+                                            class="icon-envelope"
+                                            style="font-size: 40px;"
+                                        ></i>
                                     </a>
                                 </span>
                             </template>
@@ -66,8 +75,14 @@
                                     v-on="on"
                                     class="mx-3"
                                 >
-                                    <div @click="goToProjectConsultation" style="cursor: pointer;">
-                                        <i class="icon-document" style="font-size: 40px;"></i>
+                                    <div
+                                        @click="goToProjectConsultation"
+                                        style="cursor: pointer;"
+                                    >
+                                        <i
+                                            class="icon-document"
+                                            style="font-size: 40px; color:white"
+                                        ></i>
                                     </div>
                                 </span>
                             </template>
@@ -96,7 +111,7 @@ export default {
                 parseJSON: true
             });
             if (tokenForDownloads) {
-               this.$router.push('/support/project-consultation');
+                this.$router.push('/support/project-consultation');
             } else {
                 this.$router.push('/auth/login');
             }
