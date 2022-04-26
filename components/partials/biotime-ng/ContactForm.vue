@@ -356,6 +356,39 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                    <!-- ################################################################### -->
+                    <div class="form-group">
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="inlineCheckbox3"
+                                v-model="checkbox"
+                            />
+                            <label
+                                class="form-check-label"
+                                for="inlineCheckbox3"
+                                >I have read and agree to
+
+                                <a
+                                    target="_blank"
+                                    href="/website/page/privacy-policy"
+                                    @click.stop
+                                >
+                                    Privacy Policy
+                                </a></label
+                            >
+                        </div>
+
+                        <p class="el-error">
+                            {{ errors }}
+                        </p>
+                    </div>
+                    <!-- ###################################################################-->
+                </div>
+
                 <div class="form-group submit" style="margin-top: 10px;">
                     <button
                         @click.prevent="willContactUs"
@@ -422,7 +455,9 @@ export default {
             disabled: false,
             snackbar: false,
             snackBarMessage:
-                'Form Submitted Successfully. You will be contacted by one of our customer representatives.'
+                'Form Submitted Successfully. You will be contacted by one of our customer representatives.',
+            checkbox: false,
+            errors: ''
         };
     },
     validations: {
@@ -436,7 +471,8 @@ export default {
         quantity_of_attendance_device: { required, numeric },
         preferred_mode_of_authentication: { required },
         monitor_attendance_online: { required },
-        is_support_needed: { required }
+        is_support_needed: { required },
+        checkbox: { required }
     },
     methods: {
         resetForm() {
@@ -458,6 +494,10 @@ export default {
             if (this.$v.$invalid) {
                 return false;
             } else if (this.$v.$error) {
+                return false;
+            } else if (this.checkbox == false) {
+                this.errors = 'Please agree to the terms';
+
                 return false;
             } else {
                 this.loading = true;
@@ -484,18 +524,7 @@ export default {
                     'website/requestAQuote',
                     payload
                 );
-                /*
-                if (response) {
-                    this.loading = false;
-                    this.showSuccess = true;
-                    this.showError = false;
-                    this.resetForm();
-                } else {
-                    this.showError = true;
-                    this.showSuccess = false;
-                    this.loading = false;
-                }
-                */
+
                 if (response) {
                     this.loading = false;
                     this.snackbar = true;
@@ -528,6 +557,10 @@ h6 {
     font-size: 11px !important;
     color: red !important;
     font-weight: lighter !important;
+}
+
+label a {
+    color: red !important;
 }
 
 .contact-form {

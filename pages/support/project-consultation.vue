@@ -235,6 +235,42 @@
                                 </div>
 
                                 <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
+                                    <!-- ################################################################### -->
+                                    <div class="form-group">
+                                        <div
+                                            class="form-check form-check-inline"
+                                        >
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                id="inlineCheckbox3"
+                                                v-model="checkbox"
+                                            />
+                                            <label
+                                                class="form-check-label"
+                                                for="inlineCheckbox3"
+                                                >I have read and agree to
+
+                                                <a
+                                                    target="_blank"
+                                                    href="/website/page/privacy-policy"
+                                                    @click.stop
+                                                >
+                                                    Privacy Policy
+                                                </a></label
+                                            >
+                                        </div>
+
+                                        <p class="el-error">
+                                            {{ errors }}
+                                        </p>
+                                    </div>
+                                    <!-- ###################################################################-->
+                                </div>
+
+                                <div
                                     class="container form-group submit"
                                     style="margin-top: 10px;"
                                 >
@@ -335,7 +371,9 @@ export default {
             disabled: false,
             snackbar: false,
             snackBarMessage:
-                'Form Submitted Successfully. You will be contacted by one of our customer representatives.'
+                'Form Submitted Successfully. You will be contacted by one of our customer representatives.',
+            checkbox: false,
+            errors: ''
         };
     },
     validations: {
@@ -347,7 +385,8 @@ export default {
         product_needed: { required },
         project_description: { required },
         project_scale: { required },
-        city: { required }
+        city: { required },
+        checkbox: { required }
     },
     methods: {
         resetForm() {
@@ -363,9 +402,16 @@ export default {
         },
         async submit() {
             console.log(' Error ', this.$v.$error);
-            this.$v.$touch();
+            console.log(' check ', this.$v.$touch(), this.$v.checkbox);
+            console.log(' checkbox ', this.checkbox);
+            //console.log(' dirty ', this.$v.checkbox.$dirty);
             if (this.$v.$invalid) {
             } else if (this.$v.$error) {
+                return false;
+            } else if (this.checkbox == false) {
+                //const errors = [];
+                this.errors = 'Please agree to the terms';
+
                 return false;
             } else {
                 this.loading = true;
@@ -413,6 +459,13 @@ export default {
         }),
         userInfo() {
             return this.userInfoDownload.user;
+        },
+        checkboxErrors() {
+            const errors = [];
+            if (!this.$v.checkbox.$dirty) return errors;
+            !this.$v.checkbox.required &&
+                errors.push('Please agree to the terms');
+            return errors;
         }
     },
     mounted() {
@@ -429,6 +482,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.el-error {
+    font-size: 11px !important;
+    color: red !important;
+    font-weight: lighter !important;
+}
+
+label a {
+    color: red !important;
+}
+
 .consultation-box {
     display: flex;
     // align-items: center;
