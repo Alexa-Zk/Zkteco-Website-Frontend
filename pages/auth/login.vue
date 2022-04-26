@@ -109,7 +109,7 @@ export default {
                     text: 'Login'
                 }
             ],
-            checkbox: '',
+            //checkbox: '',
             loading: false,
             username: null,
             password: null,
@@ -119,8 +119,8 @@ export default {
     },
     validations: {
         username: { required },
-        password: { required },
-        checkbox: { required }
+        password: { required }
+        //checkbox: { required }
     },
     beforeRouteEnter(to, from, next) {
         next(vm => {
@@ -176,11 +176,11 @@ export default {
             return errors;
         },
         checkboxErrors() {
-            const errors = [];
-            if (!this.$v.checkbox.$dirty) return errors;
-            !this.$v.checkbox.required &&
-                errors.push('Please agree to the terms');
-            return errors;
+            // const errors = [];
+            // if (!this.$v.checkbox.$dirty) return errors;
+            // !this.$v.checkbox.required &&
+            //     errors.push('Please agree to the terms');
+            // return errors;
         }
     }
 };
