@@ -475,7 +475,7 @@ export default {
         if (tokenForDownloads) {
             return true;
         } else {
-            this.$router.push('/');
+            this.$router.push('/auth/login');
         }
     }
 };

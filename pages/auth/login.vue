@@ -43,24 +43,7 @@
                                         outlined
                                     />
                                 </div>
-                                <div class="form-group">
-                                    <v-checkbox :error-messages="checkboxErrors" @change="$v.checkbox.$touch()" color="success" v-model="checkbox">
-                                        <template v-slot:label>
-                                            <div class="agreement_link">
-                                                Agree to comply with ZKTeco
-                                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
-                                                    Term of Use
-                                                </a>,
-                                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
-                                                   Privacy Policy
-                                                </a>,
-                                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
-                                                    Cookie Policy
-                                                </a>
-                                            </div>
-                                        </template>
-                                    </v-checkbox>
-                                </div>
+
                                 <div class="form-group forget-link">
                                     <nuxt-link to="/auth/forget-password"
                                         >forget password?</nuxt-link
@@ -195,9 +178,10 @@ export default {
         checkboxErrors() {
             const errors = [];
             if (!this.$v.checkbox.$dirty) return errors;
-            !this.$v.checkbox.required && errors.push('Please agree to the terms');
+            !this.$v.checkbox.required &&
+                errors.push('Please agree to the terms');
             return errors;
-        },
+        }
     }
 };
 </script>
@@ -218,7 +202,6 @@ export default {
     padding: 30px;
 }
 
-
 .agreement_link {
     font-size: 14px;
     a {
@@ -228,6 +211,5 @@ export default {
             text-decoration: underline;
         }
     }
-
-} 
+}
 </style>
