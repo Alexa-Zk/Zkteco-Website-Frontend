@@ -483,7 +483,7 @@ export default {
 
 <style lang="scss" scoped>
 .el-error {
-    font-size: 11px !important;
+    font-size: 13px !important;
     color: red !important;
     font-weight: lighter !important;
 }

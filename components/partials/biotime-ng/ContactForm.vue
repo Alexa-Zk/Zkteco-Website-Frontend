@@ -57,7 +57,7 @@
 
         <div class="contact-widget">
             <div class="form-image">
-                <img src="~/static/img/biotimecloud-zkteco.jpeg" alt="" />
+                <img src="~/static/img/african_man.png" alt="" />
             </div>
             <form class="ps-form--contact-us btc-form--contact-us">
                 <h3>Request a quote</h3>
@@ -554,7 +554,7 @@ h6 {
     color: #6c757d;
 }
 .el-error {
-    font-size: 11px !important;
+    font-size: 14px !important;
     color: red !important;
     font-weight: lighter !important;
 }
