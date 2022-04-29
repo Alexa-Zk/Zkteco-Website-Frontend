@@ -397,10 +397,7 @@
                         {{ loading ? 'Sending...' : 'Send Quote' }}
                     </button>
                 </div>
-                <p
-                    style="font-size: 11px; color: red; font-weight: normal;"
-                    v-if="showError"
-                >
+                <p class="el-error" v-if="showError">
                     An error occurred
                 </p>
                 <p
@@ -531,7 +528,9 @@ export default {
                     this.showError = false;
                     setTimeout(() => {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                        this.resetForm();
+                        //this.resetForm();
+                        window.location.reload();
+                        //this.$router.push('/biotime-ng');
                     }, 3001);
                 } else {
                     this.loading = false;
