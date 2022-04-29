@@ -340,21 +340,21 @@ export default {
                 }
             ],
             countries: [
-                'NIGERIA',
-                'BENIN',
-                'BURKINA FASO',
-                'CABO VERDE',
-                'CÔTE DIVOIRE',
-                'The GAMBIA',
-                'GHANA',
-                'GUINEA',
-                'GUINEA BISSAU',
-                'LIBERIA',
-                'MALI',
-                'NIGER',
-                'SENEGAL',
-                'SIERRA LEONE',
-                'TOGO'
+                'Nigeria',
+                'Benin',
+                'Burkina Faso',
+                'Cabo Verde',
+                'Cote Divoire',
+                'The Gambia',
+                'Ghana',
+                'Guinea',
+                'Guinea Bissau',
+                'Liberia',
+                'Mali',
+                'Niger',
+                'Senegal',
+                'Sierra Leone',
+                'Togo'
             ],
             showError: false,
             showSuccess: false,
@@ -401,15 +401,10 @@ export default {
             this.city = '';
         },
         async submit() {
-            console.log(' Error ', this.$v.$error);
-            console.log(' check ', this.$v.$touch(), this.$v.checkbox);
-            console.log(' checkbox ', this.checkbox);
-            //console.log(' dirty ', this.$v.checkbox.$dirty);
             if (this.$v.$invalid) {
             } else if (this.$v.$error) {
                 return false;
             } else if (this.checkbox == false) {
-                //const errors = [];
                 this.errors = 'Please agree to the terms';
 
                 return false;
