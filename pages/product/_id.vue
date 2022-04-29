@@ -4,9 +4,9 @@
         <div class="ps-page--product">
             <div class="ps-container">
                 <div class="ps-page__container">
-                    <div class="ps-page__left" v-if="products">
+                    <div class="ps-page__left" v-if="pdt">
                         <product-detail-fullwidth
-                            :singleProduct="pdt.data[0]"
+                            :singleProduct="pdt"
                         />
                     </div>
                     <div class="ps-page__right">
@@ -29,8 +29,6 @@ import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
 //import singleProduct from '~/apollo/queries/products/singleProduct';
 
-const axios = require('axios');
-
 export default {
     layout: 'layout-default-website',
     name: 'Products',
@@ -45,20 +43,17 @@ export default {
     },
     async asyncData({ params, $axios }) {
         try {
-            const pdt = await $axios.get(
+            const response = await $axios.get(
                 `https://admin.zkteco-wa.com/products?slug_in=${params.id}`
             );
+            const pdt = response.data[0]
             return { pdt };
         } catch (error) {}
     },
     head() {
-        const description = this.pdt.data[0]
-            ? this.pdt.data[0].description
-            : 'Product Details - Description';
-        const image = this.pdt.data[0]
-            ? this.pdt.data[0].images[0].url
-            : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
-        const title = name.replace(/<\/?[^>]+(>|$)/g, '');
+        const description = this.pdt.description.replace(/<\/?[^>]+(>|$)/g, '')
+        const image = this.pdt.images[0].url
+        const title = this.pdt.name;
         return {
             title: title,
             titleTemplate(title) {
@@ -73,7 +68,7 @@ export default {
                 {
                     hid: 'description',
                     name: 'description',
-                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                    content: description
                 },
                 {
                     hid: 'twitter:title',
@@ -83,7 +78,7 @@ export default {
                 {
                     hid: 'twitter:description',
                     name: 'twitter:description',
-                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                    content: description
                 },
                 {
                     hid: 'twitter:image',
@@ -93,7 +88,7 @@ export default {
                 {
                     hid: 'twitter:image:alt',
                     name: 'twitter:image:alt',
-                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                    content: description
                 },
                 {
                     hid: 'og:title',
@@ -103,7 +98,7 @@ export default {
                 {
                     hid: 'og:description',
                     property: 'og:description',
-                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                    content: description
                 },
                 {
                     hid: 'og:image',
@@ -118,25 +113,25 @@ export default {
                 {
                     hid: 'og:image:alt',
                     property: 'og:image:alt',
-                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                    content: description
                 },
                 {
                     hid: 'keywords',
                     name: 'keywords',
-                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                    content: description
                 }
             ]
         };
     },
     jsonld() {
-        if (this.pdt.data[0]) {
+        if (this.pdt) {
             return {
                 '@context': 'https://schema.org',
                 '@id': '#product',
                 '@type': 'IndividualProduct',
-                additionalType: `https://www.zkteco-wa.com/product/${this.pdt.data[0].slug}`,
-                description: `https://www.zkteco-wa.com/product/${this.pdt.data[0].description}`,
-                name: `https://www.zkteco-wa.com/product/${this.pdt.data[0].name}`
+                additionalType: `https://www.zkteco-wa.com/product/${this.pdt.slug}`,
+                description: `https://www.zkteco-wa.com/product/${this.pdt.description}`,
+                name: `https://www.zkteco-wa.com/product/${this.pdt.name}`
             };
         } else {
             return {};
