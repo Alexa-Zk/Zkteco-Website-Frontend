@@ -43,24 +43,7 @@
                                         outlined
                                     />
                                 </div>
-                                <div class="form-group">
-                                    <v-checkbox :error-messages="checkboxErrors" @change="$v.checkbox.$touch()" color="success" v-model="checkbox">
-                                        <template v-slot:label>
-                                            <div class="agreement_link">
-                                                Agree to comply with ZKTeco
-                                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
-                                                    Term of Use
-                                                </a>,
-                                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
-                                                   Privacy Policy
-                                                </a>,
-                                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
-                                                    Cookie Policy
-                                                </a>
-                                            </div>
-                                        </template>
-                                    </v-checkbox>
-                                </div>
+
                                 <div class="form-group forget-link">
                                     <nuxt-link to="/auth/forget-password"
                                         >forget password?</nuxt-link
@@ -126,7 +109,7 @@ export default {
                     text: 'Login'
                 }
             ],
-            checkbox: '',
+            //checkbox: '',
             loading: false,
             username: null,
             password: null,
@@ -136,8 +119,8 @@ export default {
     },
     validations: {
         username: { required },
-        password: { required },
-        checkbox: { required }
+        password: { required }
+        //checkbox: { required }
     },
     beforeRouteEnter(to, from, next) {
         next(vm => {
@@ -193,11 +176,12 @@ export default {
             return errors;
         },
         checkboxErrors() {
-            const errors = [];
-            if (!this.$v.checkbox.$dirty) return errors;
-            !this.$v.checkbox.required && errors.push('Please agree to the terms');
-            return errors;
-        },
+            // const errors = [];
+            // if (!this.$v.checkbox.$dirty) return errors;
+            // !this.$v.checkbox.required &&
+            //     errors.push('Please agree to the terms');
+            // return errors;
+        }
     }
 };
 </script>
@@ -218,16 +202,14 @@ export default {
     padding: 30px;
 }
 
-
 .agreement_link {
     font-size: 14px;
     a {
-        color: red;
+        color: #78bc27;
         &:hover {
-            color: darkred;
+            color: darkgreen;
             text-decoration: underline;
         }
     }
-
-} 
+}
 </style>

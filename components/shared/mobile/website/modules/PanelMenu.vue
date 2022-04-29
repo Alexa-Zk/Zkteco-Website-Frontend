@@ -171,10 +171,15 @@ export default {
                     text: 'Store Locator',
                     url: '/website/page/store-locator'
                 },
-                // {
-                //     text: 'BioTime NG',
-                //     url: '/biotime-ng',
-                // },
+
+                {
+                    text: 'BioTime NG',
+                    url: '/biotime-ng'
+                },
+                {
+                    text: 'Project Consultation',
+                    url: '/support/project-consultation'
+                },
                 {
                     text: 'Login',
                     url: '/website/page/login'

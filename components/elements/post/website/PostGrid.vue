@@ -36,7 +36,7 @@ export default {
     position: relative;
     height: 100%;
     .ps-post__thumbnail {
-        height: 210.42px;
+        //height: 210.42px;
         img {
             width: 100%;
             height: 100%;

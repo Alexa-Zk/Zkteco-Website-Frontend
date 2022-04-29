@@ -33,9 +33,10 @@
                                             placeholder="Position"
                                             v-model="position"
                                         />
+
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="!$v.position.required"
+                                            v-if="$v.position.$error"
                                         >
                                             Position is required!
                                         </p>
@@ -54,7 +55,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="!$v.company_name.required"
+                                            v-if="$v.company_name.$error"
                                         >
                                             The Company Name is required!
                                         </p>
@@ -67,13 +68,13 @@
                                         <label>Phone Number </label>
                                         <input
                                             class="form-control"
-                                            type="text"
+                                            type="number"
                                             placeholder="Phone Number"
                                             v-model="phone_number"
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="!$v.phone_number.required"
+                                            v-if="$v.phone_number.$error"
                                         >
                                             Phone is required!
                                         </p>
@@ -112,7 +113,7 @@
                                         </select>
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="!$v.country.required"
+                                            v-if="$v.country.$error"
                                         >
                                             Country is required!
                                         </p>
@@ -131,7 +132,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="!$v.city.required"
+                                            v-if="$v.city.$error"
                                         >
                                             City is required!
                                         </p>
@@ -157,7 +158,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="!$v.related_industry.required"
+                                            v-if="$v.related_industry.$error"
                                         >
                                             Enter Related Industry!
                                         </p>
@@ -178,7 +179,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="!$v.product_needed.required"
+                                            v-if="$v.product_needed.$error"
                                         >
                                             Enter needed product!
                                         </p>
@@ -197,9 +198,7 @@
                                         />
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="
-                                                !$v.project_description.required
-                                            "
+                                            v-if="$v.project_description.$error"
                                         >
                                             Enter Project Description!
                                         </p>
@@ -217,25 +216,59 @@
                                                 >Project Scale *</option
                                             >
                                             <option key="large"
-                                                >Large Products</option
+                                                >Large Projects</option
                                             >
                                             <option key="medium"
-                                                >Medium Project</option
+                                                >Medium Projects</option
                                             >
                                             <option key="small"
-                                                >Small Products</option
+                                                >Small Projects</option
                                             >
                                         </select>
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
-                                            v-if="!$v.project_scale.required"
+                                            v-if="$v.project_scale.$error"
                                         >
                                             Select Project Scale!
                                         </p>
                                     </div>
                                 </div>
 
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
+                                    <!-- ################################################################### -->
+                                    <div class="form-group">
+                                        <div
+                                            class="form-check form-check-inline"
+                                        >
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                id="inlineCheckbox3"
+                                                v-model="checkbox"
+                                            />
+                                            <label
+                                                class="form-check-label"
+                                                for="inlineCheckbox3"
+                                                >I have read and agree to
 
+                                                <a
+                                                    target="_blank"
+                                                    href="/website/page/privacy-policy"
+                                                    @click.stop
+                                                >
+                                                    Privacy Policy
+                                                </a></label
+                                            >
+                                        </div>
+
+                                        <p class="el-error">
+                                            {{ errors }}
+                                        </p>
+                                    </div>
+                                    <!-- ###################################################################-->
+                                </div>
 
                                 <div
                                     class="container form-group submit"
@@ -248,24 +281,27 @@
                                         {{ loading ? 'Sending...' : 'Submit' }}
                                     </button>
                                 </div>
-
+                                <!-- v-model="snackbar"
+                                    :timeout="3000"
+                                    color="green"
+                                    tile
+                                    -->
                                 <v-snackbar
                                     v-model="snackbar"
                                     :timeout="3000"
                                     color="green"
                                     tile
-
-                                    >
+                                >
                                     {{ snackBarMessage }}
 
                                     <template v-slot:action="{ attrs }">
                                         <v-btn
-                                        color="white"
-                                        text
-                                        v-bind="attrs"
-                                        @click="snackbar = false"
+                                            color="white"
+                                            text
+                                            v-bind="attrs"
+                                            @click="snackbar = false"
                                         >
-                                        Close
+                                            Close
                                         </v-btn>
                                     </template>
                                 </v-snackbar>
@@ -289,7 +325,7 @@ export default {
         BreadCrumb
     },
     name: 'project-consultation',
-    transition: 'zoom',
+    //transition: 'zoom',
     layout: 'layout-default-website',
     mixins: [validationMixin],
     data: () => {
@@ -304,21 +340,21 @@ export default {
                 }
             ],
             countries: [
-                'NIGERIA',
-                'BENIN',
-                'BURKINA FASO',
-                'CABO VERDE',
-                'CÔTE DIVOIRE',
-                'The GAMBIA',
-                'GHANA',
-                'GUINEA',
-                'GUINEA BISSAU',
-                'LIBERIA',
-                'MALI',
-                'NIGER',
-                'SENEGAL',
-                'SIERRA LEONE',
-                'TOGO'
+                'Nigeria',
+                'Benin',
+                'Burkina Faso',
+                'Cabo Verde',
+                'Cote Divoire',
+                'The Gambia',
+                'Ghana',
+                'Guinea',
+                'Guinea Bissau',
+                'Liberia',
+                'Mali',
+                'Niger',
+                'Senegal',
+                'Sierra Leone',
+                'Togo'
             ],
             showError: false,
             showSuccess: false,
@@ -334,7 +370,10 @@ export default {
             city: '',
             disabled: false,
             snackbar: false,
-            snackBarMessage: "Form Submitted Successfully. You will be contacted by one of our customer representatives."
+            snackBarMessage:
+                'Form Submitted Successfully. You will be contacted by one of our customer representatives.',
+            checkbox: false,
+            errors: ''
         };
     },
     validations: {
@@ -346,7 +385,8 @@ export default {
         product_needed: { required },
         project_description: { required },
         project_scale: { required },
-        city: { required }
+        city: { required },
+        checkbox: { required }
     },
     methods: {
         resetForm() {
@@ -361,8 +401,12 @@ export default {
             this.city = '';
         },
         async submit() {
-            this.$v.$touch();
             if (this.$v.$invalid) {
+            } else if (this.$v.$error) {
+                return false;
+            } else if (this.checkbox == false) {
+                this.errors = 'Please agree to the terms';
+
                 return false;
             } else {
                 this.loading = true;
@@ -377,14 +421,14 @@ export default {
                     product_needed: this.product_needed,
                     project_description: this.project_description,
                     project_scale:
-                        this.project_scale === 'Large Project'
+                        this.project_scale === 'Large Projects'
                             ? 'large_projects'
-                            : this.project_scale === 'Medium Project'
+                            : this.project_scale === 'Medium Projects'
                             ? 'medium_projects'
                             : 'small_projects',
                     city: this.city
                 };
-                console.log(payload);
+
                 const response = await this.$store.dispatch(
                     'website/projectConsultation',
                     payload
@@ -392,8 +436,12 @@ export default {
 
                 if (response) {
                     this.loading = false;
-                    this.snackbar = true
-                    this.resetForm();
+                    this.snackbar = true;
+
+                    setTimeout(() => {
+                        this.$router.push('/');
+                        //this.resetForm();
+                    }, 3002);
                 } else {
                     this.loading = false;
                 }
@@ -406,6 +454,13 @@ export default {
         }),
         userInfo() {
             return this.userInfoDownload.user;
+        },
+        checkboxErrors() {
+            const errors = [];
+            if (!this.$v.checkbox.$dirty) return errors;
+            !this.$v.checkbox.required &&
+                errors.push('Please agree to the terms');
+            return errors;
         }
     },
     mounted() {
@@ -415,13 +470,23 @@ export default {
         if (tokenForDownloads) {
             return true;
         } else {
-            this.$router.push('/');
+            this.$router.push('/auth/login');
         }
     }
 };
 </script>
 
 <style lang="scss" scoped>
+.el-error {
+    font-size: 13px !important;
+    color: red !important;
+    font-weight: lighter !important;
+}
+
+label a {
+    color: red !important;
+}
+
 .consultation-box {
     display: flex;
     // align-items: center;
@@ -453,6 +518,4 @@ export default {
         }
     }
 }
-
-
 </style>
