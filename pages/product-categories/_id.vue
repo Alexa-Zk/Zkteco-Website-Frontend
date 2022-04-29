@@ -42,26 +42,6 @@ export default {
         BreadCrumb
     },
 
-    head() {
-        const name = this.$route.params.id.toUpperCase();
-        return {
-            titleTemplate: name,
-            title: name,
-            meta: [
-                {
-                    hid: 'title',
-                    name: 'title',
-                    content: name
-                },
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: 'ZKTeco west africa all product list'
-                }
-            ]
-        };
-    },
-
     transition() {
         return 'fadeIn';
     },
@@ -95,24 +75,51 @@ export default {
             return this.$route.params.id.toUpperCase();
         }
     },
-    async created() {
-        const slug = this.$route.params.id;
+    async asyncData({ store, params }) {
         const payload = {
-            slug: slug,
+            slug: params.id,
             page: 0,
-            sort_by: this.sort_by,
+            sort_by: 'created_at:desc',
             perPage: 0
         };
-        const response = await this.$store.dispatch(
-            'website/getSingleProductCategories',
-            payload
-        );
+        try {
+            const blogDetails = await store.dispatch(
+                'website/getSingleProductCategories',
+                payload
+            );
 
-        await this.$store.dispatch(
-            'website/getTotalSingleProductCategories',
-            slug
-        );
-    }
+            await store.dispatch(
+                'website/getTotalSingleProductCategories',
+                params.id
+            );
+            return {
+                blogDetails
+            };
+        } catch (e) {}
+    },
+    head() {
+        const description = this.$data.blogDetails[0].product_category.SEO ? this.$data.blogDetails[0].product_category.SEO.description : "ZKTeco | Product Categories";
+        const title = this.$data.blogDetails[0].product_category.SEO ? this.$data.blogDetails[0].product_category.SEO.title : "ZKTeco | Product Categories";
+        const keywords = this.$data.blogDetails[0].product_category.SEO ? this.$data.blogDetails[0].product_category.SEO.keywords : "keywords";
+        return {
+            title: title,
+            titleTemplate(title) {
+                return `${title}`;
+            },
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: description
+                },
+                {
+                    hid: 'keywords',
+                    name: 'keywords',
+                    content: keywords
+                }
+            ]
+        };
+    },
 };
 </script>
 
