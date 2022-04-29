@@ -48,6 +48,7 @@ export default {
             src: '~/plugins/vue-notification.js',
             ssr: false
         },
+        { src: '~plugins/vue-cookie-law.js', ssr: false },
         {
             src: '~/plugins/axios.js',
             ssr: false
