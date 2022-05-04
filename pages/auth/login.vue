@@ -154,8 +154,7 @@ export default {
                     this.loading = false;
                 } else {
                     this.loading = false;
-                    console.log(response.error.message);
-                    this.error_alert = response.error.message;
+                    this.error_alert = "email or password invalid. check and try again";
                     this.showAlert = true;
                 }
             }

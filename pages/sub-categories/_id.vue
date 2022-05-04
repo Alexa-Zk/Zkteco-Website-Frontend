@@ -37,23 +37,6 @@ import LayoutShopSidebarSub from '~/components/partials/shop/website/LayoutShopS
 //LayoutShopSidebarSub.vue
 
 export default {
-    head() {
-        const name = this.$route.params.id.toUpperCase();
-
-        return {
-            title: 'Product Sub Categories',
-            titleTemplate(title) {
-                return `${name} - ${title}`;
-            },
-            meta: [
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: name
-                }
-            ]
-        };
-    },
     components: {
         LayoutShopSidebarSub,
         ShopWidget,
@@ -90,21 +73,51 @@ export default {
         }
     },
 
-    created() {
-        const slug = this.$route.params.id;
+    async asyncData({ store, params }) {
         const payload = {
-            slug: slug,
-            sort_by: this.sort_by,
+            slug: params.id,
             page: 0,
+            sort_by: 'created_at:desc',
             perPage: 0
         };
-        const response = this.$store.dispatch(
-            'website/getSubProductCategories',
-            payload
-        );
+        try {
+            const blogDetails = await store.dispatch(
+                'website/getSubProductCategories',
+                payload
+            );
 
-        this.$store.dispatch('website/getTotalSubCategories', slug);
-    }
+            await store.dispatch(
+                'website/getTotalSubCategories',
+                params.id
+            );
+            return {
+                blogDetails
+            };
+        } catch (e) {}
+    },
+    head() {
+        const description = this.$data.blogDetails[0].product_sub_category.SEO ? this.$data.blogDetails[0].product_sub_category.SEO.description : "ZKTeco | Product Sub-categories";
+        const title = this.$data.blogDetails[0].product_sub_category.SEO ? this.$data.blogDetails[0].product_sub_category.SEO.title : "ZKTeco | Product Sub-categories" ;
+        const keywords = this.$data.blogDetails[0].product_sub_category.SEO ?  this.$data.blogDetails[0].product_sub_category.SEO.keywords: "keywords";
+        return {
+            title: title,
+            titleTemplate(title) {
+                return `${title}`;
+            },
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: description
+                },
+                {
+                    hid: 'keywords',
+                    name: 'keywords',
+                    content: keywords
+                }
+            ]
+        };
+    },
 };
 </script>
 
