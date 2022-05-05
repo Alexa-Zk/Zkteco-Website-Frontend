@@ -5,9 +5,7 @@
             <div class="ps-container">
                 <div class="ps-page__container">
                     <div class="ps-page__left" v-if="pdt">
-                        <product-detail-fullwidth
-                            :singleProduct="pdt"
-                        />
+                        <product-detail-fullwidth :singleProduct="pdt" />
                     </div>
                     <div class="ps-page__right">
                         <product-widgets collection-slug="widget_same_brand" />
@@ -46,14 +44,17 @@ export default {
             const response = await $axios.get(
                 `https://admin.zkteco-wa.com/products?slug_in=${params.id}`
             );
-            const pdt = response.data[0]
+            const pdt = response.data[0];
             return { pdt };
         } catch (error) {}
     },
     head() {
-        const description = this.pdt.description.replace(/<\/?[^>]+(>|$)/g, '')
-        const image = this.pdt.images[0].url
-        const title = this.pdt.name;
+        const description = this.$data.pdt.description.replace(
+            /<\/?[^>]+(>|$)/g,
+            ''
+        );
+        const image = this.$data.pdt.images[0].url;
+        const title = this.$data.pdt.name;
         return {
             title: title,
             titleTemplate(title) {
