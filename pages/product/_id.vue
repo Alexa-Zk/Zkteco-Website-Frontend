@@ -52,6 +52,7 @@ export default {
         let description = 'ZKTeco | Product Categories';
         let title = 'ZKTeco | Product Categories';
         let keywords = 'ZKTeco | Product Categories';
+        let image = 'ZKTeco | Product Categories';
         /*
         const description = this.$data.pdt.description.replace(
             /<\/?[^>]+(>|$)/g,
