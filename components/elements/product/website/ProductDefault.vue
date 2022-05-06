@@ -77,11 +77,11 @@ import ProductQuickview from '~/components/elements/detail/website/ProductQuickv
 export default {
     components: { ProductQuickview, Rating },
     props: {
-        // product: {
-        //     type: Object,
-        //     require: true,
-        //     default: () => {}
-        // }
+        product: {
+            type: Object,
+            require: true,
+            default: () => {}
+        }
     },
 
     computed: {

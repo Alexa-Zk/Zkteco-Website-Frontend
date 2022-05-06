@@ -14,10 +14,10 @@ export default {
     name: 'ProductQuickview',
     components: { ThumbnailQuickView, InformationQuickView },
     props: {
-        // product: {
-        //     type: Object,
-        //     default: {}
-        // }
+        product: {
+            type: Object,
+            default: {}
+        }
     }
 };
 </script>
