@@ -98,18 +98,17 @@ export default {
         } catch (e) {}
     },
     head() {
-        /*
         let seo = this.$data.blogDetails[0].product_category.SEO;
         let description = 'ZKTeco | Product Categories';
         let title = 'ZKTeco | Product Categories';
         let keywords = 'ZKTeco | Product Categories';
-
+        /*
         if (this.$data.blogDetails[0] !== undefined) {
             description = seo ? seo.description : 'ZKTeco | Product Categories';
             title = seo ? seo.title : 'ZKTeco | Product Categories';
             keywords = seo ? seo.keywords : 'keywords';
         }
-
+        */
         return {
             title: title,
             titleTemplate(title) {
@@ -128,7 +127,6 @@ export default {
                 }
             ]
         };
-        */
     }
 };
 </script>

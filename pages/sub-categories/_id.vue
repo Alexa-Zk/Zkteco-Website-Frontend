@@ -93,12 +93,11 @@ export default {
         } catch (e) {}
     },
     head() {
-        /*
         let description = 'ZKTeco | Product Sub-categories';
         let title = 'ZKTeco | Product Sub-categories';
         let keywords = 'ZKTeco | Product Sub-categories';
         let seo = this.$data.blogDetails[0].product_sub_category.SEO;
-
+        /*
         if (this.$data.blogDetails[0] !== undefined) {
             description = seo
                 ? seo.description
@@ -106,7 +105,7 @@ export default {
             title = seo ? seo.title : 'ZKTeco | Product Sub-categories';
             keywords = seo ? seo.keywords : 'keywords';
         }
-
+*/
         return {
             title: title,
             titleTemplate(title) {
@@ -125,7 +124,6 @@ export default {
                 }
             ]
         };
-        */
     }
 };
 </script>
