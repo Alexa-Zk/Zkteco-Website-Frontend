@@ -96,7 +96,7 @@ export default {
         let description = 'ZKTeco | Product Sub-categories';
         let title = 'ZKTeco | Product Sub-categories';
         let keywords = 'ZKTeco | Product Sub-categories';
-        let seo = this.$data.blogDetails[0].product_sub_category.SEO;
+        //let seo = this.$data.blogDetails[0].product_sub_category.SEO;
         /*
         if (this.$data.blogDetails[0] !== undefined) {
             description = seo

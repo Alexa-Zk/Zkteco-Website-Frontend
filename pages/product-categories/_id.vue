@@ -98,7 +98,7 @@ export default {
         } catch (e) {}
     },
     head() {
-        let seo = this.$data.blogDetails[0].product_category.SEO;
+        //let seo = this.$data.blogDetails[0].product_category.SEO;
         let description = 'ZKTeco | Product Categories';
         let title = 'ZKTeco | Product Categories';
         let keywords = 'ZKTeco | Product Categories';
