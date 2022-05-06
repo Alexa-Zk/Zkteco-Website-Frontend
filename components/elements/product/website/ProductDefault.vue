@@ -2,7 +2,11 @@
     <div class="ps-product">
         <div class="ps-product__thumbnail">
             <nuxt-link :to="`/product/${product.slug}`">
-                <img class="lazyload" :data-src="product.images[0].url" :alt="product.images[0].name" />
+                <img
+                    class="lazyload"
+                    :data-src="product.images[0].url"
+                    :alt="product.images[0].name"
+                />
             </nuxt-link>
             <ul class="ps-product__actions">
                 <li>
@@ -73,11 +77,11 @@ import ProductQuickview from '~/components/elements/detail/website/ProductQuickv
 export default {
     components: { ProductQuickview, Rating },
     props: {
-        product: {
-            type: Object,
-            require: true,
-            default: () => {}
-        }
+        // product: {
+        //     type: Object,
+        //     require: true,
+        //     default: () => {}
+        // }
     },
 
     computed: {
