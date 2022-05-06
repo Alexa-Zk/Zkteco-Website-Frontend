@@ -40,6 +40,7 @@ export default {
         ProductDetailFullwidth
     },
     async asyncData({ params, $axios }) {
+        /*
         try {
             const response = await $axios.get(
                 `https://admin.zkteco-wa.com/products?slug_in=${params.id}`
@@ -123,6 +124,7 @@ export default {
                 }
             ]
         };
+        */
     },
     jsonld() {
         if (this.pdt) {
