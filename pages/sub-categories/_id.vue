@@ -97,15 +97,16 @@ export default {
         let title = 'ZKTeco | Product Sub-categories';
         let keywords = 'ZKTeco | Product Sub-categories';
         //let seo = this.$data.blogDetails[0].product_sub_category.SEO;
-        /*
+
         if (this.$data.blogDetails[0] !== undefined) {
+            let seo = this.$data.blogDetails[0].product_sub_category.SEO;
             description = seo
                 ? seo.description
                 : 'ZKTeco | Product Sub-categories';
             title = seo ? seo.title : 'ZKTeco | Product Sub-categories';
             keywords = seo ? seo.keywords : 'keywords';
         }
-*/
+
         return {
             title: title,
             titleTemplate(title) {
