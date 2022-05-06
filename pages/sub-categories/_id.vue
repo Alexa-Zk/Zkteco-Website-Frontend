@@ -93,6 +93,7 @@ export default {
         } catch (e) {}
     },
     head() {
+        /*
         let description = 'ZKTeco | Product Sub-categories';
         let title = 'ZKTeco | Product Sub-categories';
         let keywords = 'ZKTeco | Product Sub-categories';
@@ -124,6 +125,7 @@ export default {
                 }
             ]
         };
+        */
     }
 };
 </script>
