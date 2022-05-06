@@ -49,18 +49,25 @@ export default {
         } catch (error) {}
     },
     head() {
-        let description = 'ZKTeco | Product Categories';
-        let title = 'ZKTeco | Product Categories';
-        let keywords = 'ZKTeco | Product Categories';
-        let image = 'ZKTeco | Product Categories';
-        /*
-        const description = this.$data.pdt.description.replace(
-            /<\/?[^>]+(>|$)/g,
-            ''
-        );
-        const image = this.$data.pdt.images[0].url;
-        const title = this.$data.pdt.name;
-        */
+        let description = 'ZKTeco | Product ';
+        let title = 'ZKTeco | Product ';
+        let keywords = 'ZKTeco | Product ';
+        let image = 'ZKTeco | Product ';
+
+        if (
+            this.$data.pdt !== null ||
+            this.$data.pdt !== undefined ||
+            this.$data.pdt !== ''
+        ) {
+            description = this.$data.pdt.description.replace(
+                /<\/?[^>]+(>|$)/g,
+                ''
+            );
+            image = this.$data.pdt.images[0].url;
+            title = this.$data.pdt.name;
+            keywords = this.$data.pdt.name;
+        }
+
         return {
             title: title,
             titleTemplate(title) {
@@ -126,6 +133,11 @@ export default {
                     hid: 'keywords',
                     name: 'keywords',
                     content: description
+                },
+                {
+                    hid: 'keywords',
+                    name: 'keywords',
+                    content: keywords
                 }
             ]
         };
