@@ -40,7 +40,6 @@ export default {
         ProductDetailFullwidth
     },
     async asyncData({ params, $axios }) {
-        /*
         try {
             const response = await $axios.get(
                 `https://admin.zkteco-wa.com/products?slug_in=${params.id}`
@@ -50,12 +49,17 @@ export default {
         } catch (error) {}
     },
     head() {
+        let description = 'ZKTeco | Product Categories';
+        let title = 'ZKTeco | Product Categories';
+        let keywords = 'ZKTeco | Product Categories';
+        /*
         const description = this.$data.pdt.description.replace(
             /<\/?[^>]+(>|$)/g,
             ''
         );
         const image = this.$data.pdt.images[0].url;
         const title = this.$data.pdt.name;
+        */
         return {
             title: title,
             titleTemplate(title) {
@@ -124,7 +128,6 @@ export default {
                 }
             ]
         };
-        */
     },
     jsonld() {
         if (this.pdt) {
