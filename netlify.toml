@@ -4,4 +4,4 @@
 
 [[headers]]
   [headers.values]
-    Content-Security-Policy = frame-ancestors https://www.youtube.com
+    Content-Security-Policy = "frame-ancestors https://www.youtube.com"
