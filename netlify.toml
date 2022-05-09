@@ -3,5 +3,7 @@
   publish = "dist/"
 
 [[headers]]
+  for = "/*"
+  
   [headers.values]
     Content-Security-Policy = "frame-ancestors https://www.youtube.com"
