@@ -4,8 +4,10 @@
         <div class="ps-page--product">
             <div class="ps-container">
                 <div class="ps-page__container">
-                    <div class="ps-page__left" v-if="pdt">
-                        <product-detail-fullwidth :singleProduct="pdt" />
+                    <div class="ps-page__left" v-if="products">
+                        <product-detail-fullwidth
+                            :singleProduct="formattedProducts"
+                        />
                     </div>
                     <div class="ps-page__right">
                         <product-widgets collection-slug="widget_same_brand" />
@@ -37,38 +39,17 @@ export default {
         ProductWidgets,
         RelatedProduct,
         BreadCrumb,
-        ProductDetailFullwidth,
-        singleProduct
-    },
-    async asyncData({ params, $axios }) {
-        try {
-            const response = await $axios.get(
-                `https://admin.zkteco-wa.com/products?slug_in=${params.id}`
-            );
-            const pdt = response.data[0];
-            return { pdt };
-        } catch (error) {}
+        ProductDetailFullwidth
     },
     head() {
-        let description = 'ZKTeco | Product ';
-        let title = 'ZKTeco | Product ';
-        let keywords = 'ZKTeco | Product ';
-        let image = 'ZKTeco | Product ';
-
-        if (
-            this.$data.pdt !== null ||
-            this.$data.pdt !== undefined ||
-            this.$data.pdt !== ''
-        ) {
-            description = this.$data.pdt.description.replace(
-                /<\/?[^>]+(>|$)/g,
-                ''
-            );
-            image = this.$data.pdt.images[0].url;
-            title = this.$data.pdt.name;
-            keywords = this.$data.pdt.name;
-        }
-
+        const name = this.formattedProducts ? this.formattedProducts.name : '';
+        const description = this.formattedProducts
+            ? this.formattedProducts.description
+            : 'Product Details - Description';
+        const image = this.formattedProducts
+            ? this.formattedProducts.images[0].url
+            : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
+        const title = description.replace(/<\/?[^>]+(>|$)/g, '');
         return {
             title: title,
             titleTemplate(title) {
@@ -83,7 +64,7 @@ export default {
                 {
                     hid: 'description',
                     name: 'description',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'twitter:title',
@@ -93,7 +74,7 @@ export default {
                 {
                     hid: 'twitter:description',
                     name: 'twitter:description',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'twitter:image',
@@ -103,7 +84,7 @@ export default {
                 {
                     hid: 'twitter:image:alt',
                     name: 'twitter:image:alt',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'og:title',
@@ -113,7 +94,7 @@ export default {
                 {
                     hid: 'og:description',
                     property: 'og:description',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'og:image',
@@ -128,38 +109,47 @@ export default {
                 {
                     hid: 'og:image:alt',
                     property: 'og:image:alt',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'keywords',
                     name: 'keywords',
-                    content: description
-                },
-                {
-                    hid: 'keywords',
-                    name: 'keywords',
-                    content: keywords
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 }
             ]
         };
     },
     jsonld() {
-        if (this.pdt) {
+        if (this.formattedProducts) {
             return {
                 '@context': 'https://schema.org',
                 '@id': '#product',
                 '@type': 'IndividualProduct',
-                additionalType: `https://www.zkteco-wa.com/product/${this.pdt.slug}`,
-                description: `https://www.zkteco-wa.com/product/${this.pdt.description}`,
-                name: `https://www.zkteco-wa.com/product/${this.pdt.name}`
+                additionalType: `https://www.zkteco-wa.com/product/${this.formattedProducts.slug}`,
+                description: `https://www.zkteco-wa.com/product/${this.formattedProducts.description}`,
+                name: `https://www.zkteco-wa.com/product/${this.formattedProducts.name}`
             };
         } else {
             return {};
         }
     },
+    apollo: {
+        products: {
+            prefetch: true,
+            query: singleProduct,
+            variables() {
+                return { id: this.$route.params.id };
+            }
+        }
+    },
+
+    computed: {
+        formattedProducts() {
+            return this.products[0];
+        }
+    },
     data() {
         return {
-            appProduct: {},
             fullPage: true,
             products: [],
             height: 60,
