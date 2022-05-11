@@ -42,9 +42,6 @@ import Sidebar from './modules/Sidebar';
 import PostHorizontal from '../../elements/post/PostHorizontal';
 import PostSmallThumbnail from '../../elements/post/PostSmallThumbnail';
 
-// Queries
-import articles from '~/apollo/queries/articles/homePageArticles';
-
 export default {
     name: 'BlogSidebar',
     components: { PostSmallThumbnail, PostHorizontal, Sidebar, Pagination },

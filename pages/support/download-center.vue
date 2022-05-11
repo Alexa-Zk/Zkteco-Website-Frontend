@@ -9,8 +9,6 @@
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import Downloads from '~/components/partials/page/website/Downloads';
 
-// Queries
-import downloadCategories from '~/apollo/queries/downloadCategories';
 
 export default {
     head() {
@@ -45,14 +43,10 @@ export default {
             ]
         };
     },
-    apollo: {
-        downloadCategories: {
-            prefetch: true,
-            query: downloadCategories
-        }
-    },
-    created() {
-        const response = this.$store.dispatch( 'website/getDownloadCategories');
+    
+    async created() {
+        const response = await this.$store.dispatch( 'website/getDownloadCategories');
+        this.downloadCategories = response
     }
 };
 </script>

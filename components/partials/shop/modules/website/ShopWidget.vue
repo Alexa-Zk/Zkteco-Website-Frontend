@@ -1,20 +1,20 @@
 <template lang="html">
     <div id="shop-widgets">
         <aside class="widget widget_shop">
-            <h4 class="widget-title">
+            <h4 class="widget-title" style="font-weight: bold;">
                 {{ $t('shop.widget.categories') }}
             </h4>
             <ul
                 v-if="categories !== undefined"
                 class="ps-list--categories--website"
             >
-                <li>
-                    <nuxt-link
-                        :to="`/product`"
-                    >
-                        All Categories
-                    </nuxt-link>
-                </li>
+                <div class="placeholder-image" v-if="loading">
+                    <content-placeholders v-for="x in 3" :key="x">
+                        <content-placeholders-heading :img="true" />
+                        <content-placeholders-text :lines="3" />
+                    </content-placeholders>
+                </div>
+                
                 <li v-for="category in productCategories" :key="category.id">
                     <v-list class="sidebar-border" >
                         <v-list-group>
@@ -60,9 +60,9 @@
 <script>
 import { mapState } from 'vuex';
 import MenuMegaSubCategories from '~/components/shared/menu/website/MenuMegaSubCategories';
+import Repository from '~/repositories/Repository.js';
+import { subBaseUrl } from '~/repositories/Repository';
 
-// Queries
-import Categories from '~/apollo/queries/products/allCategories';
 
 export default {
     name: 'ShopWidget',
@@ -71,32 +71,31 @@ export default {
     },
     computed: {
         ...mapState({
-            categories: state => state.product.categories,
-            brands: state => state.product.brands,
-            products: state => state.product.products
+            categories: state => state.product.categories,  
         }),
-        categorySlug() {
-            return this.$route;
-        },
-        ProductCategories() {
-            return this.productCategories;
-        }
+        
     },
     data() {
         return {
             productCategories: '',
-            priceRange: [100, 1000],
-            selectedBrands: []
+            loading: false
         };
     },
-    apollo: {
-        productCategories: {
-            prefetch: true,
-            query: Categories
-        }
+    mounted() {
+        this.getProductCategories()
     },
+    
     methods: {
-        async handleGotoCategory(id) {
+        async getProductCategories () {
+            this.loading = true
+            const reponse = await Repository.get( `${subBaseUrl}/product-categories`)
+                .then(response => {
+                    
+                    this.productCategories = response.data
+                    this.loading = false
+                })
+                .catch(error => ({ error: JSON.stringify(error) }));
+            return reponse;
         }
     }
 };
