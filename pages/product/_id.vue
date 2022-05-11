@@ -4,10 +4,8 @@
         <div class="ps-page--product">
             <div class="ps-container">
                 <div class="ps-page__container">
-                    <div class="ps-page__left" v-if="products">
-                        <product-detail-fullwidth
-                            :singleProduct="formattedProducts"
-                        />
+                    <div class="ps-page__left" v-if="pdt">
+                        <product-detail-fullwidth :singleProduct="pdt" />
                     </div>
                     <div class="ps-page__right">
                         <product-widgets collection-slug="widget_same_brand" />
@@ -40,15 +38,43 @@ export default {
         BreadCrumb,
         ProductDetailFullwidth
     },
+    async asyncData({ params, $axios }) {
+        try {
+            const response = await $axios.get(
+                `https://admin.zkteco-wa.com/products?slug_in=${params.id}`
+            );
+            const pdt = response.data[0];
+            return { pdt };
+        } catch (error) {}
+    },
     head() {
-        const name = this.formattedProducts ? this.formattedProducts.name : '';
-        const description = this.formattedProducts
-            ? this.formattedProducts.description
-            : 'Product Details - Description';
-        const image = this.formattedProducts
-            ? this.formattedProducts.images[0].url
-            : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
-        const title = description.replace(/<\/?[^>]+(>|$)/g, '');
+        // const name = this.formattedProducts ? this.formattedProducts.name : '';
+        // const description = this.formattedProducts
+        //     ? this.formattedProducts.description
+        //     : 'Product Details - Description';
+        // const image = this.formattedProducts
+        //     ? this.formattedProducts.images[0].url
+        //     : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
+        // const title = description.replace(/<\/?[^>]+(>|$)/g, '');
+        let description = 'ZKTeco | Product ';
+        let title = 'ZKTeco | Product ';
+        let image = 'ZKTeco | Product ';
+        let keywords = 'ZKTeco | Product ';
+
+        if (
+            this.$data.pdt !== null ||
+            this.$data.pdt !== undefined ||
+            this.$data.pdt !== ''
+        ) {
+            description = this.$data.pdt.description.replace(
+                /<\/?[^>]+(>|$)/g,
+                ''
+            );
+            image = this.$data.pdt.images[0].url;
+            title = this.$data.pdt.name;
+            keywords = this.$data.pdt.name;
+        }
+
         return {
             title: title,
             titleTemplate(title) {
@@ -113,7 +139,7 @@ export default {
                 {
                     hid: 'keywords',
                     name: 'keywords',
-                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                    content: keywords
                 }
             ]
         };
