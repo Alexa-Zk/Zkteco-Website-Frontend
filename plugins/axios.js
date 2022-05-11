@@ -1,5 +1,3 @@
-import Cookies from 'js-cookie';
-
 export default function({ $axios, redirect }) {
     $axios.onError(error => {
         const code = parseInt(error.response && error.response.status);
@@ -8,6 +6,6 @@ export default function({ $axios, redirect }) {
         }
     });
     $axios.onRequest(config => {
-        console.log(config)
+        return config
     })
 }

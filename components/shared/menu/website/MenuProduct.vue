@@ -30,8 +30,8 @@
 </template>
 
 <script>
-// Queries
-import Categories from '~/apollo/queries/products/allCategories';
+import Repository from '~/repositories/Repository.js';
+import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
     name: 'MenuProduct',
@@ -40,17 +40,26 @@ export default {
             productCategories: ''
         };
     },
-    apollo: {
-        productCategories: {
-            prefetch: true,
-            query: Categories
-        }
-    },
     computed: {
         ProductCategories() {
             return this.productCategories;
         }
-    }
+    },
+    mounted() {
+        this.getProductCategories()
+    },
+    methods: {
+        async getProductCategories () {
+            this.loading = true
+            const reponse = await Repository.get( `${subBaseUrl}/product-categories`)
+                .then(response => {
+                    this.productCategories = response.data
+                    this.loading = false
+                })
+                .catch(error => ({ error: JSON.stringify(error) }));
+            return reponse;
+        }
+    },
 };
 </script>
 

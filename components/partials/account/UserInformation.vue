@@ -209,7 +209,7 @@ export default {
     methods: {
         updatePassword() {
             if (this.new_password === this.confirm_password) {
-                console.log("Update")
+                alert("Update")
             } else {
                 this.$notify({
                     group: 'addCartSuccess',

@@ -10,9 +10,9 @@
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import VendorBanner from '~/components/partials/vendor/VendorBanner';
 import VendorAbout from '~/components/partials/vendor/VendorAbout';
+import Repository from '~/repositories/Repository.js';
+import { subBaseUrl } from '~/repositories/Repository';
 
-// Queries
-import singleSolution from '~/apollo/queries/solutions/singleSolution';
 
 export default {
     components: {
@@ -58,19 +58,27 @@ export default {
             ]
         };
     },
-    apollo: {
-        solutions: {
-            query: singleSolution,
-            variables() {
-                return { id: this.$route.params.id };
-            }
-        }
-    },
+    
     computed: {
         formattedSingleSolution() {
             return this.solutions[0];
         }
-    }
+    },
+    mounted() {
+        this.getSolutionDetails(this.$route.params.id)
+    },
+    methods: {
+        async getSolutionDetails (slug) {
+            this.loading = true
+            const reponse = await Repository.get( `${subBaseUrl}/solutions?slug=${slug}`)
+                .then(response => {
+                    this.solutions = response.data
+                    this.loading = false
+                })
+                .catch(error => ({ error: JSON.stringify(error) }));
+            return reponse;
+        }
+    },
 };
 </script>
 

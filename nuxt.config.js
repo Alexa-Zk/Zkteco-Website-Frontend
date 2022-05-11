@@ -93,7 +93,6 @@ export default {
     modules: [
         '@nuxtjs/axios',
         'nuxt-i18n',
-        '@nuxtjs/apollo',
         '@nuxtjs/robots',
         '@nuxtjs/sitemap'
     ],
@@ -125,14 +124,6 @@ export default {
             const articlesArray = articlesData.map(v => `/blog/${v.slug}`);
 
             return [...productArray, ...solutionArray, ...articlesArray];
-        }
-    },
-
-    apollo: {
-        clientConfigs: {
-            default: {
-                httpEndpoint: 'https://admin.zkteco-wa.com/graphql'
-            }
         }
     },
 

@@ -122,7 +122,8 @@
 </template>
 
 <script>
-import articlesCat from '~/apollo/queries/articles/articlesCategories';
+import Repository from '~/repositories/Repository.js';
+import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
     name: 'FooterWidgets',
@@ -131,10 +132,19 @@ export default {
             categories: ''
         };
     },
-    apollo: {
-        categories: {
-            prefetch: true,
-            query: articlesCat,
+    mounted() {
+        this.getArticlesCategories()
+    },
+    methods: {
+        async getArticlesCategories () {
+            this.loading = true
+            const reponse = await Repository.get( `${subBaseUrl}/categories`)
+                .then(response => {
+                    this.categories = response.data
+                    this.loading = false
+                })
+                .catch(error => ({ error: JSON.stringify(error) }));
+            return reponse;
         }
     },
 };

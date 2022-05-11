@@ -25,7 +25,6 @@ import BreadCrumb from '~/components/elements/BreadCrumb';
 import ProductWidgets from '~/components/partials/product/website/ProductWidgets';
 import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
-//import singleProduct from '~/apollo/queries/products/singleProduct';
 
 export default {
     layout: 'layout-default-website',
@@ -142,20 +141,20 @@ export default {
             ]
         };
     },
-    jsonld() {
-        if (this.pdt) {
-            return {
-                '@context': 'https://schema.org',
-                '@id': '#product',
-                '@type': 'IndividualProduct',
-                additionalType: `https://www.zkteco-wa.com/product/${this.pdt.slug}`,
-                description: `https://www.zkteco-wa.com/product/${this.pdt.description}`,
-                name: `https://www.zkteco-wa.com/product/${this.pdt.name}`
-            };
-        } else {
-            return {};
-        }
-    },
+    // jsonld() {
+    //     if (this.pdt) {
+    //         return {
+    //             '@context': 'https://schema.org',
+    //             '@id': '#product',
+    //             '@type': 'IndividualProduct',
+    //             additionalType: `https://www.zkteco-wa.com/product/${this.pdt.slug}`,
+    //             description: `https://www.zkteco-wa.com/product/${this.pdt.description}`,
+    //             name: `https://www.zkteco-wa.com/product/${this.pdt.name}`
+    //         };
+    //     } else {
+    //         return {};
+    //     }
+    // },
     data() {
         return {
             appProduct: {},

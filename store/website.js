@@ -9,6 +9,7 @@ export const state = () => ({
     articles: null,
     articlesLimited: null,
     articlesCategories: null,
+    singleArticlesCategories: null,
     productsTotal: 0,
     articlesTotal: 0,
     singleProductCategories: null,
@@ -69,6 +70,10 @@ export const mutations = {
         state.articlesCategories = payload;
     },
 
+    setSingleArticlesCategories(state, payload) {
+        state.singleArticlesCategories = payload
+    },
+
     setSingleProductCategories(state, payload) {
         state.singleProductCategories = payload;
     },
@@ -110,7 +115,6 @@ export const mutations = {
     },
 
     setTotalSubCategories(state, payload) {
-        consolo.log('state ', payload);
         state.totalSingleProductSubCategories = payload;
     }
 };
@@ -390,11 +394,35 @@ export const actions = {
         return reponse;
     },
 
-    async getArticlesCategories({ commit }, slug) {
+    async getArticlesCategories({ commit }) {
         commit('setLoading', true);
         const reponse = await Repository.get(`${subBaseUrl}/categories/`)
             .then(response => {
                 commit('setArticlesCategories', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+    
+    async getArticlesCategories({ commit }) {
+        commit('setLoading', true);
+        const reponse = await Repository.get(`${subBaseUrl}/categories/`)
+            .then(response => {
+                commit('setArticlesCategories', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getSingleArticlesCategories({ commit }, slug) {
+        commit('setLoading', true);
+        const reponse = await Repository.get(`${subBaseUrl}/categories?slug=${slug}`)
+            .then(response => {
+                commit('setSingleArticlesCategories', response.data);
                 commit('setLoading', false);
                 return response.data;
             })

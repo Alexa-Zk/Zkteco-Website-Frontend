@@ -125,7 +125,6 @@ export default {
                     this.showMessage = true
                 } else {
                     this.loading = false;
-                    console.log(response.error.message);
                     this.error_alert = response.error.message;
                     this.showAlert = true;
                 }

@@ -29,25 +29,12 @@ import ShopBanner from '~/components/partials/shop/sections/ShopBanner';
 import ShopBrands from '~/components/partials/shop/sections/ShopBrands';
 import ShopCategories from '~/components/partials/shop/sections/ShopCategories';
 import Loading from '~/components/elements/commons/Loading';
-
-// Queries
-import EcommerceImages from '~/apollo/queries/storeHomePages';
-// Queries
-import homePages from '~/apollo/queries/homePages';
-
+import Repository from '~/repositories/Repository.js';
+import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
     name: 'index',
-    apollo: {
-        ecommerceImages: {
-            prefetch: true,
-            query: EcommerceImages
-        },
-        homePages: {
-            prefetch: true,
-            query: homePages
-        },
-    },
+   
     components: {
         Loading,
         ShopCategories,
@@ -65,9 +52,6 @@ export default {
             categories: state => state.product.categories,
             products: state => state.product.products
         }),
-        categorySlug() {
-            return this.$route.query.category;
-        },
         adImages() {
             return this.ecommerceImages ? this.ecommerceImages[0]: [];
         },
@@ -79,6 +63,7 @@ export default {
     data() {
         return {
             widgetLoading: true,
+            loading: false,
             ecommerceImages: '',
             homePages: '',
             breadCrumb: [
@@ -92,7 +77,32 @@ export default {
             ]
         };
     },
-
+    mounted() {
+        this.getEcommerceBanner();
+        this.getHomePageImages();
+    },
+    methods: {
+        async getEcommerceBanner () {
+            this.loading = true
+            const reponse = await Repository.get( `${subBaseUrl}/ecommerce-images`)
+                .then(response => {
+                    this.ecommerceImages = response.data
+                    this.loading = false
+                })
+                .catch(error => ({ error: JSON.stringify(error) }));
+            return reponse;
+        },
+        async getHomePageImages () {
+            this.loading = true
+            const reponse = await Repository.get( `${subBaseUrl}/home-pages`)
+                .then(response => {
+                    this.homePages = response.data
+                    this.loading = false
+                })
+                .catch(error => ({ error: JSON.stringify(error) }));
+            return reponse;
+        }
+    },
     async created() {
         const params = {
             _start: 1,

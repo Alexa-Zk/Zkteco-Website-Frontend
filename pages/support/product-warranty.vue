@@ -2,9 +2,15 @@
     <div class="ps-page--single">
         <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />
         <div class="ps-container">
-            <div class="guarantee-box">
-                <h2>{{ warranties.name }}</h2>
-                <p class="text" v-html="warranties.content"></p>
+            <div v-if="loading">
+                <content-placeholders>
+                    <content-placeholders-heading :img="true" />
+                    <content-placeholders-text :lines="10" />
+                </content-placeholders>
+            </div>
+            <div class="guarantee-box" v-if="warrantyPolicies">
+                <h2>{{ warrantyPolicies.name }}</h2>
+                <p class="text" v-html="warrantyPolicies.content"></p>
             </div>
         </div>
     </div>
@@ -13,9 +19,8 @@
 <script>
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import Faqs from '~/components/partials/page/Faqs';
-
-// Queries
-import WarrantyPolicies from '~/apollo/queries/warranty/warranties';
+import Repository from '~/repositories/Repository.js';
+import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
     head() {
@@ -38,7 +43,8 @@ export default {
     layout: 'layout-default-website',
     data: () => {
         return {
-            warrantyPolicies: '',
+            loading: false,
+            warrantyPolicies: null,
             breadCrumb: [
                 {
                     text: 'Home',
@@ -54,20 +60,22 @@ export default {
             ]
         };
     },
-    apollo: {
-        warrantyPolicies: {
-            prefetch: true,
-            query: WarrantyPolicies
+    mounted() {
+        this.getWarranties()
+    },
+    methods: {
+        async getWarranties () {
+            this.loading = true
+            const reponse = await Repository.get( `${subBaseUrl}/warranty-policies`)
+                .then(response => {
+                    this.warrantyPolicies = response.data[0]
+                    this.loading = false
+                })
+                .catch(error => ({ error: JSON.stringify(error) }));
+            return reponse;
         }
     },
-    computed: {
-        warranties() {
-            return this.warrantyPolicies ? this.warrantyPolicies[0] : {
-                name:  "Warranty",
-                content:  'No warranty'
-            };
-        }
-    }
+
 };
 </script>
 
