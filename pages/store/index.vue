@@ -39,8 +39,8 @@ import MobileDrawer from '~/components/shared/mobile/MobileDrawer';
 import HomeDefaultDealOfDay from '~/components/partials/homepage/default/HomeDefaultDealOfDay';
 import DemoPanel from '~/components/shared/DemoPanel';
 
-// Queries
-import EcommerceImages from '~/apollo/queries/storeHomePages';
+import Repository from '~/repositories/Repository.js';
+import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
      data() {
@@ -49,15 +49,11 @@ export default {
             articles: '',
             access_control: 22,
             home_automation: 26,
-            cctv: 23
+            cctv: 23,
+            loading: false,
         };
     },
-    apollo: {
-        ecommerceImages: {
-            prefetch: true,
-            query: EcommerceImages
-        },
-    },
+    
     middleware: 'authentication',
     components: {
         DemoPanel,
@@ -94,6 +90,22 @@ export default {
 
     async created() {
         await this.$store.dispatch('collection/getCollectionById')
-    }
+    },
+
+    mounted() {
+        this.getEcommerceBanner()
+    },
+    methods: {
+        async getEcommerceBanner () {
+            this.loading = true
+            const reponse = await Repository.get( `${subBaseUrl}/ecommerce-images`)
+                .then(response => {
+                    this.ecommerceImages = response.data
+                    this.loading = false
+                })
+                .catch(error => ({ error: JSON.stringify(error) }));
+            return reponse;
+        }
+    },
 };
 </script>

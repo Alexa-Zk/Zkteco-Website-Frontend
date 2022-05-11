@@ -22,7 +22,7 @@ export default {
                 this.$store.commit('theme/updateSiteOverlay', false);
                 this.$store.commit('theme/updateNavigationPanel', false);
             } else {
-                console.log(e.target.parentNode.querySelector('.sub-menu'));
+                return false
             }
         }
     }

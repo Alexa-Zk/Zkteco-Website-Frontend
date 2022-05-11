@@ -11,8 +11,15 @@
             </a>
         </div>
         <div class="navigation__content">
+            
             <ul class="menu--mobile">
-                <li v-for="category in ProductCategories">
+                <div class="placeholder-image" v-if="loading">
+                    <content-placeholders v-for="x in 3" :key="x">
+                        <content-placeholders-heading :img="true" />
+                        <content-placeholders-text :lines="3" />
+                    </content-placeholders>
+                </div>
+                <li v-for="category in productCategories">
                     <nuxt-link :to="`/product-categories/${category.slug}`">{{ category.name }}</nuxt-link>
                 </li>
             </ul>
@@ -21,34 +28,43 @@
 </template>
 
 <script>
-import categories from '~/static/data/static-categories.json';
 
-// Queries
-import Categories from '~/apollo/queries/products/allCategories';
+import Repository from '~/repositories/Repository.js';
+import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
     name: 'PanelCategories',
-    computed: {
-        categories() {
-            return categories;
-        },
-        ProductCategories() {
-            return this.productCategories;
+    
+    data() {
+        return {
+            productCategories: null,
+            loading: false,
         }
+    },
+    mounted() {
+        this.getProductCategories()
     },
     methods: {
         handleClosePanel() {
             this.$store.commit('app/setCurrentDrawerContent', null);
             this.$store.commit('app/setAppDrawer', false);
-        }
-    },
-    apollo: {
-        productCategories: {
-            prefetch: true,
-            query: Categories,
+        },
+        async getProductCategories () {
+            this.loading = true
+            const reponse = await Repository.get( `${subBaseUrl}/product-categories`)
+                .then(response => {
+                    this.productCategories = response.data
+                    this.loading = false
+                })
+                .catch(error => ({ error: JSON.stringify(error) }));
+            return reponse;
         }
     },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.placeholder-image {
+    padding: 15px;
+}
+</style>

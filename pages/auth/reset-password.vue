@@ -126,7 +126,6 @@ export default {
                 );
                 if (response) {
                     this.loading = false;
-                    console.log("Your user's password has been changed.");
                     this.$router.push('/auth/login');
                 } else {
                     this.loading = false;

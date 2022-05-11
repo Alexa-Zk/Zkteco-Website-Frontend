@@ -2,7 +2,13 @@
     <div class="ps-page--single">
         <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />
         <div class="container">
-            <faqs :faqs="faqs"/>
+            <div v-if="loading">
+                <content-placeholders>
+                    <content-placeholders-heading :img="true" />
+                    <content-placeholders-text :lines="10" />
+                </content-placeholders>
+            </div>
+            <faqs v-else :faqs="faqs"/>
         </div>
     </div>
 </template>
@@ -11,9 +17,9 @@
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import Faqs from '~/components/partials/page/Faqs';
 
+import Repository from '~/repositories/Repository.js';
+import { subBaseUrl } from '~/repositories/Repository';
 
-// Queries
-import faqs from '~/apollo/queries/faq/faqs';
 
 export default {
     head() {
@@ -28,15 +34,16 @@ export default {
             ]
         };
     },
-    layout: 'layout-default',
     components: {
         Faqs,
         BreadCrumb
     },
     transition: 'zoom',
+    layout: 'layout-default-website',
     data: () => {
         return {
             faqs: [],
+            loading: false,
             breadCrumb: [
                 {
                     text: 'Home',
@@ -52,10 +59,20 @@ export default {
             ]
         };
     },
-    apollo: {
-        faqs: {
-            prefetch: true,
-            query: faqs
+    
+    mounted() {
+        this.getFaqs()
+    },
+    methods: {
+        async getFaqs () {
+            this.loading = true
+            const reponse = await Repository.get( `${subBaseUrl}/faqs`)
+                .then(response => {
+                    this.faqs = response.data
+                    this.loading = false
+                })
+                .catch(error => ({ error: JSON.stringify(error) }));
+            return reponse;
         }
     },
 };

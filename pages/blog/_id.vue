@@ -14,8 +14,8 @@ import PostDetailHasBackground from '~/components/elements/post/PostDetailHasBac
 import PostComments from '~/components/partials/post/PostComments';
 import RelatedPosts from '~/components/partials/post/RelatedPosts';
 
-// Queries
-import singleArticles from '~/apollo/queries/articles/singleArticles';
+import Repository from '~/repositories/Repository.js';
+import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
     name: 'BlogPost',
@@ -117,12 +117,24 @@ export default {
             ]
         };
     },
-    apollo: {
-        articles: {
-            query: singleArticles,
-            variables() {
-                return { id: this.$route.params.id };
-            }
+    
+    mounted() {
+        this.getProductCategories()
+    },
+    methods: {
+        handleClosePanel() {
+            this.$store.commit('app/setCurrentDrawerContent', null);
+            this.$store.commit('app/setAppDrawer', false);
+        },
+        async getProductCategories () {
+            this.loading = true
+            const reponse = await Repository.get( `${subBaseUrl}/articles?slug=${this.$route.params.id}`)
+                .then(response => {
+                    this.articles = response.data
+                    this.loading = false
+                })
+                .catch(error => ({ error: JSON.stringify(error) }));
+            return reponse;
         }
     },
     computed: {
@@ -135,38 +147,38 @@ export default {
             );
         }
     },
-    jsonld() {
-        if (this.formattedArticle) {
-            return {
-                '@context': 'https://schema.org',
-                '@type': 'NewsArticle',
-                url: `https://www.zkteco-wa.com/blog/${this.formattedArticle.slug}`,
-                mainEntityOfPage: {
-                    '@type': 'WebPage',
-                    '@id': `https://www.zkteco-wa.com/blog/${this.formattedArticle.slug}`
-                },
-                headline: `https://www.zkteco-wa.com/blog/${this.formattedArticle.title}`,
-                description: `https://www.zkteco-wa.com/blog/${this.formattedArticle.excerpt}`,
-                image: `https://www.zkteco-wa.com/blog/${this.formattedArticle.image[0].url}`,
-                author: {
-                    '@type': 'Person',
-                    name: `https://www.zkteco-wa.com/blog/${this.formattedArticle.Author}`
-                },
-                datePublished: `https://www.zkteco-wa.com/blog/${this.formattedArticle.created_at}`,
-                dateModified: `https://www.zkteco-wa.com/blog/${this.formattedArticle.created_at}`,
-                publisher: {
-                    '@type': 'Organization',
-                    name: 'ZKTeco West Africa',
-                    logo: {
-                        '@type': 'ImageObject',
-                        url: 'https://www.zkteco-wa.com/img/zkteco-logo1.png'
-                    }
-                }
-            };
-        } else {
-            return {};
-        }
-    }
+    // jsonld() {
+    //     if (this.formattedArticle) {
+    //         return {
+    //             '@context': 'https://schema.org',
+    //             '@type': 'NewsArticle',
+    //             url: `https://www.zkteco-wa.com/blog/${this.formattedArticle.slug}`,
+    //             mainEntityOfPage: {
+    //                 '@type': 'WebPage',
+    //                 '@id': `https://www.zkteco-wa.com/blog/${this.formattedArticle.slug}`
+    //             },
+    //             headline: `https://www.zkteco-wa.com/blog/${this.formattedArticle.title}`,
+    //             description: `https://www.zkteco-wa.com/blog/${this.formattedArticle.excerpt}`,
+    //             image: `https://www.zkteco-wa.com/blog/${this.formattedArticle.image[0].url}`,
+    //             author: {
+    //                 '@type': 'Person',
+    //                 name: `https://www.zkteco-wa.com/blog/${this.formattedArticle.Author}`
+    //             },
+    //             datePublished: `https://www.zkteco-wa.com/blog/${this.formattedArticle.created_at}`,
+    //             dateModified: `https://www.zkteco-wa.com/blog/${this.formattedArticle.created_at}`,
+    //             publisher: {
+    //                 '@type': 'Organization',
+    //                 name: 'ZKTeco West Africa',
+    //                 logo: {
+    //                     '@type': 'ImageObject',
+    //                     url: 'https://www.zkteco-wa.com/img/zkteco-logo1.png'
+    //                 }
+    //             }
+    //         };
+    //     } else {
+    //         return {};
+    //     }
+    // }
 };
 </script>
 
