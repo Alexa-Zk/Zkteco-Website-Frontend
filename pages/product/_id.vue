@@ -21,11 +21,11 @@
 <script>
 import ProductDetailFullwidth from '~/components/elements/detail/website/ProductDetailFullwidth';
 import BreadCrumb from '~/components/elements/BreadCrumb';
-//import RelatedProduct from '~/components/partials/product/RelatedProduct';
+import RelatedProduct from '~/components/partials/product/RelatedProduct';
 import ProductWidgets from '~/components/partials/product/website/ProductWidgets';
 import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
-//import singleProduct from '~/apollo/queries/products/singleProduct';
+import singleProduct from '~/apollo/queries/products/singleProduct';
 
 export default {
     layout: 'layout-default-website',
@@ -35,9 +35,10 @@ export default {
         Newsletters,
         LayoutProduct,
         ProductWidgets,
-        //RelatedProduct,
+        RelatedProduct,
         BreadCrumb,
-        ProductDetailFullwidth
+        ProductDetailFullwidth,
+        singleProduct
     },
     async asyncData({ params, $axios }) {
         try {
