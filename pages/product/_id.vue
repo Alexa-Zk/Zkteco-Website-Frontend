@@ -27,10 +27,6 @@ import RelatedProduct from '~/components/partials/product/RelatedProduct';
 import ProductWidgets from '~/components/partials/product/website/ProductWidgets';
 import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
-<<<<<<< HEAD
-=======
-import singleProduct from '~/apollo/queries/products/singleProduct';
->>>>>>> 1343ec044c3a9ae63c4dd2d61563c6f538bf5611
 
 export default {
     layout: 'layout-default-website',
