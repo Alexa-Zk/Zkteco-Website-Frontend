@@ -119,6 +119,16 @@ export default {
             ]
         };
     },
+    async asyncData({ app, route }) {
+        let id = route.params.id;
+        const homeresult = await app.apolloProvider.defaultClient.query({
+            query: singleProduct,
+            variables: {
+                id: id
+            }
+        });
+        return { home: homeresult };
+    },
     jsonld() {
         if (this.formattedProducts) {
             return {
