@@ -115,4 +115,7 @@ export default {
 a {
     text-decoration: none;
 }
+.widget_content a {
+    color: #fff !important;
+}
 </style>

@@ -6,17 +6,27 @@
             </h4>
             <div class="widget_content">
                 <p>Call us 24/7</p>
-                <h3> 
-                    <a style="font-weight: inherit;" href="tel:2348175555512"> +234 817 5555 512 </a> <br>
-                    <a style="font-weight: inherit;" href="tel:2348175555513"> +234 817 5555 513 </a>
+                <h3>
+                    <a style="font-weight: inherit;" href="tel:2348175555512">
+                        +234 817 5555 512
+                    </a>
+                    <br />
+                    <a style="font-weight: inherit;" href="tel:2348175555513">
+                        +234 817 5555 513
+                    </a>
                 </h3>
                 <p>
                     64 Adetokunbo Ademola Street, Victoria Island, Lagos<br />
-                    <a href="mailto:enquiry@zkteco-wa.com">enquiry@zkteco-wa.com</a>
+                    <a href="mailto:enquiry@zkteco-wa.com"
+                        >enquiry@zkteco-wa.com</a
+                    >
                 </p>
                 <ul class="ps-list--social">
                     <li>
-                        <a class="facebook" href="https://www.facebook.com/zktecowa">
+                        <a
+                            class="facebook"
+                            href="https://www.facebook.com/zktecowa"
+                        >
                             <i class="fa fa-facebook"></i>
                         </a>
                     </li>
@@ -26,12 +36,18 @@
                         </a>
                     </li>
                     <li>
-                        <a class="instagram" href="https://www.instagram.com/zktecowa/">
+                        <a
+                            class="instagram"
+                            href="https://www.instagram.com/zktecowa/"
+                        >
                             <i class="fa fa-instagram"></i>
                         </a>
                     </li>
                     <li>
-                        <a class="linkedin" href="https://www.linkedin.com/company/zkteco-wa/?originalSubdomain=ng">
+                        <a
+                            class="linkedin"
+                            href="https://www.linkedin.com/company/zkteco-wa/?originalSubdomain=ng"
+                        >
                             <i class="fa fa-linkedin"></i>
                         </a>
                     </li>
@@ -63,9 +79,10 @@
             </h4>
             <ul class="ps-list--link">
                 <li v-for="item in categories" :key="item.id">
-                    <nuxt-link :to="`/news-center/categories/${item.slug}`">{{item.name}}</nuxt-link>
+                    <nuxt-link :to="`/news-center/categories/${item.slug}`">{{
+                        item.name
+                    }}</nuxt-link>
                 </li>
-                
             </ul>
         </aside>
         <aside class="widget widget_footer">
@@ -74,12 +91,16 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <nuxt-link to="/solution-categories/classified-by-industry">Classified by Industry</nuxt-link>
+                    <nuxt-link to="/solution-categories/classified-by-industry"
+                        >Classified by Industry</nuxt-link
+                    >
                 </li>
                 <li>
-                    <nuxt-link to="/solution-categories/classified-by-application">Classified by Application</nuxt-link>
+                    <nuxt-link
+                        to="/solution-categories/classified-by-application"
+                        >Classified by Application</nuxt-link
+                    >
                 </li>
-                
             </ul>
         </aside>
         <aside class="widget widget_footer">
@@ -88,11 +109,15 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <nuxt-link to="/support/anti-counterfeiting">Anti-counterfeit Enquiry</nuxt-link>
+                    <nuxt-link to="/support/anti-counterfeiting"
+                        >Anti-counterfeit Enquiry</nuxt-link
+                    >
                 </li>
                 <li>
-                    <nuxt-link to="/support/download-center">Download Center</nuxt-link>
-                </li>                
+                    <nuxt-link to="/support/download-center"
+                        >Download Center</nuxt-link
+                    >
+                </li>
                 <li>
                     <nuxt-link to="/support/support">Support Tickets</nuxt-link>
                 </li>
@@ -102,7 +127,6 @@
                 <li>
                     <nuxt-link to="/support/faq">FAQs</nuxt-link>
                 </li>
-                
             </ul>
         </aside>
         <aside class="widget widget_footer">
@@ -111,11 +135,15 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <a href="https://zktecopos.com" target="_blank">ZKTeco POS Website</a>
+                    <a href="https://zktecopos.com" target="_blank"
+                        >ZKTeco POS Website</a
+                    >
                 </li>
                 <li>
-                    <a href="https://sprout-ng.com/" target="_blank">Sprout API Docs</a>
-                </li> 
+                    <a href="https://sprout-ng.com/" target="_blank"
+                        >Sprout API Docs</a
+                    >
+                </li>
             </ul>
         </aside>
     </div>
@@ -146,13 +174,13 @@ export default {
                 .catch(error => ({ error: JSON.stringify(error) }));
             return reponse;
         }
-    },
+    }
 };
 </script>
 
 <style lang="scss" scoped>
 .widget_footer {
-    .widget-title  {
+    .widget-title {
         color: #e5e5e5;
     }
     .ps-list--link {
@@ -169,6 +197,9 @@ export default {
     .widget_content {
         p {
             color: #e5e5e5;
+            a {
+                color: #e5e5e5 !important;
+            }
         }
     }
     .ps-list--social {
@@ -205,5 +236,5 @@ export default {
             }
         }
     }
-} 
+}
 </style>

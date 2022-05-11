@@ -4,8 +4,10 @@
         <div class="ps-page--product">
             <div class="ps-container">
                 <div class="ps-page__container">
-                    <div class="ps-page__left" v-if="pdt">
-                        <product-detail-fullwidth :singleProduct="pdt" />
+                    <div class="ps-page__left" v-if="products">
+                        <product-detail-fullwidth
+                            :singleProduct="formattedProducts"
+                        />
                     </div>
                     <div class="ps-page__right">
                         <product-widgets collection-slug="widget_same_brand" />
@@ -21,10 +23,14 @@
 <script>
 import ProductDetailFullwidth from '~/components/elements/detail/website/ProductDetailFullwidth';
 import BreadCrumb from '~/components/elements/BreadCrumb';
-//import RelatedProduct from '~/components/partials/product/RelatedProduct';
+import RelatedProduct from '~/components/partials/product/RelatedProduct';
 import ProductWidgets from '~/components/partials/product/website/ProductWidgets';
 import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
+<<<<<<< HEAD
+=======
+import singleProduct from '~/apollo/queries/products/singleProduct';
+>>>>>>> 1343ec044c3a9ae63c4dd2d61563c6f538bf5611
 
 export default {
     layout: 'layout-default-website',
@@ -34,39 +40,19 @@ export default {
         Newsletters,
         LayoutProduct,
         ProductWidgets,
-        //RelatedProduct,
+        RelatedProduct,
         BreadCrumb,
         ProductDetailFullwidth
     },
-    async asyncData({ params, $axios }) {
-        try {
-            const response = await $axios.get(
-                `https://admin.zkteco-wa.com/products?slug_in=${params.id}`
-            );
-            const pdt = response.data[0];
-            return { pdt };
-        } catch (error) {}
-    },
     head() {
-        let description = 'ZKTeco | Product ';
-        let title = 'ZKTeco | Product ';
-        let keywords = 'ZKTeco | Product ';
-        let image = 'ZKTeco | Product ';
-
-        if (
-            this.$data.pdt !== null ||
-            this.$data.pdt !== undefined ||
-            this.$data.pdt !== ''
-        ) {
-            description = this.$data.pdt.description.replace(
-                /<\/?[^>]+(>|$)/g,
-                ''
-            );
-            image = this.$data.pdt.images[0].url;
-            title = this.$data.pdt.name;
-            keywords = this.$data.pdt.name;
-        }
-
+        const name = this.formattedProducts ? this.formattedProducts.name : '';
+        const description = this.formattedProducts
+            ? this.formattedProducts.description
+            : 'Product Details - Description';
+        const image = this.formattedProducts
+            ? this.formattedProducts.images[0].url
+            : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
+        const title = description.replace(/<\/?[^>]+(>|$)/g, '');
         return {
             title: title,
             titleTemplate(title) {
@@ -81,7 +67,7 @@ export default {
                 {
                     hid: 'description',
                     name: 'description',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'twitter:title',
@@ -91,7 +77,7 @@ export default {
                 {
                     hid: 'twitter:description',
                     name: 'twitter:description',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'twitter:image',
@@ -101,7 +87,7 @@ export default {
                 {
                     hid: 'twitter:image:alt',
                     name: 'twitter:image:alt',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'og:title',
@@ -111,7 +97,7 @@ export default {
                 {
                     hid: 'og:description',
                     property: 'og:description',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'og:image',
@@ -126,17 +112,12 @@ export default {
                 {
                     hid: 'og:image:alt',
                     property: 'og:image:alt',
-                    content: description
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 },
                 {
                     hid: 'keywords',
                     name: 'keywords',
-                    content: description
-                },
-                {
-                    hid: 'keywords',
-                    name: 'keywords',
-                    content: keywords
+                    content: description.replace(/<\/?[^>]+(>|$)/g, '')
                 }
             ]
         };
@@ -157,7 +138,6 @@ export default {
     // },
     data() {
         return {
-            appProduct: {},
             fullPage: true,
             products: [],
             height: 60,
