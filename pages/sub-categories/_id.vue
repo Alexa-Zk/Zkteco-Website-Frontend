@@ -86,19 +86,27 @@ export default {
                 payload
             );
 
-            await store.dispatch(
-                'website/getTotalSubCategories',
-                params.id
-            );
+            await store.dispatch('website/getTotalSubCategories', params.id);
             return {
                 blogDetails
             };
         } catch (e) {}
     },
     head() {
-        const description = this.$data.blogDetails[0].product_sub_category.SEO ? this.$data.blogDetails[0].product_sub_category.SEO.description : "ZKTeco | Product Sub-categories";
-        const title = this.$data.blogDetails[0].product_sub_category.SEO ? this.$data.blogDetails[0].product_sub_category.SEO.title : "ZKTeco | Product Sub-categories" ;
-        const keywords = this.$data.blogDetails[0].product_sub_category.SEO ?  this.$data.blogDetails[0].product_sub_category.SEO.keywords: "keywords";
+        let description = 'ZKTeco | Product Sub-categories';
+        let title = 'ZKTeco | Product Sub-categories';
+        let keywords = 'ZKTeco | Product Sub-categories';
+        //let seo = this.$data.blogDetails[0].product_sub_category.SEO;
+
+        if (this.$data.blogDetails[0] !== undefined) {
+            let seo = this.$data.blogDetails[0].product_sub_category.SEO;
+            description = seo
+                ? seo.description
+                : 'ZKTeco | Product Sub-categories';
+            title = seo ? seo.title : 'ZKTeco | Product Sub-categories';
+            keywords = seo ? seo.keywords : 'keywords';
+        }
+
         return {
             title: title,
             titleTemplate(title) {
@@ -117,7 +125,7 @@ export default {
                 }
             ]
         };
-    },
+    }
 };
 </script>
 

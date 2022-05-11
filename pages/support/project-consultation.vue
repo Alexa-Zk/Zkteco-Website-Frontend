@@ -373,7 +373,8 @@ export default {
             snackBarMessage:
                 'Form Submitted Successfully. You will be contacted by one of our customer representatives.',
             checkbox: false,
-            errors: ''
+            errors: '',
+            name: null
         };
     },
     validations: {
@@ -453,6 +454,13 @@ export default {
             userInfoDownload: state => state.auth.userInfoDownload
         }),
         userInfo() {
+            if (
+                this.userInfoDownload == null ||
+                this.userInfoDownload == undefined ||
+                this.userInfoDownload == ''
+            ) {
+                return { username: '', email: '' };
+            }
             return this.userInfoDownload.user;
         },
         checkboxErrors() {
