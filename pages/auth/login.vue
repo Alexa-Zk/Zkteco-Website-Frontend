@@ -46,7 +46,7 @@
 
                                 <div class="form-group forget-link">
                                     <nuxt-link to="/auth/forget-password"
-                                        >forget password?</nuxt-link
+                                        >forgot password?</nuxt-link
                                     >
                                 </div>
                                 <div class="form-group submit">
@@ -154,7 +154,8 @@ export default {
                     this.loading = false;
                 } else {
                     this.loading = false;
-                    this.error_alert = "email or password invalid. check and try again";
+                    this.error_alert =
+                        'email or password invalid. check and try again';
                     this.showAlert = true;
                 }
             }
