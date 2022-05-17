@@ -47,7 +47,7 @@ export default {
                     question:
                         'How is BioTime-NG different from other time and attendance management solutions on the market?',
                     answer:
-                        'Unlike other solutions or time control software, BioTime-NG is implemented in the AWS cloud (Amazon Web Services). Being a presence control service in the cloud, users do not manage the infrastructure and the cloud platform where the application runs, which eliminates the need to install and run programs on the users computers or servers. This simplifies maintenance, support and enables global access to the GoTime Cloud at any time on any device with Internet access.'
+                        'Unlike other solutions or time control software, BioTime-NG is implemented in the AWS cloud (Amazon Web Services). Being a presence control service in the cloud, users do not manage the infrastructure and the cloud platform where the application runs, which eliminates the need to install and run programs on the users computers or servers. This simplifies maintenance, support and enables global access to the Biotime-NG at any time on any device with Internet access.'
                 },
                 {
                     id: 2,
