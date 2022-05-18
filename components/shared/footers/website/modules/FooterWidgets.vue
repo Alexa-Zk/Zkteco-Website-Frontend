@@ -119,7 +119,7 @@
                     >
                 </li>
                 <li>
-                    <nuxt-link to="/support/support">Support Tickets</nuxt-link>
+                    <nuxt-link to="/support">Support Tickets</nuxt-link>
                 </li>
                 <li>
                     <nuxt-link to="/support/after-sale">After Sales</nuxt-link>
@@ -161,15 +161,15 @@ export default {
         };
     },
     mounted() {
-        this.getArticlesCategories()
+        this.getArticlesCategories();
     },
     methods: {
-        async getArticlesCategories () {
-            this.loading = true
-            const reponse = await Repository.get( `${subBaseUrl}/categories`)
+        async getArticlesCategories() {
+            this.loading = true;
+            const reponse = await Repository.get(`${subBaseUrl}/categories`)
                 .then(response => {
-                    this.categories = response.data
-                    this.loading = false
+                    this.categories = response.data;
+                    this.loading = false;
                 })
                 .catch(error => ({ error: JSON.stringify(error) }));
             return reponse;

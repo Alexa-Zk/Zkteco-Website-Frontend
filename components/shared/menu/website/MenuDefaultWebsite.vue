@@ -58,7 +58,7 @@ export default {
                 },
                 {
                     text: 'Support',
-                    url: '/support/support',
+                    url: '/support',
                     extraClass: 'menu-item-has-children has-mega-menu',
                     subClass: 'sub-menu',
                     mega: 'true',
@@ -81,7 +81,7 @@ export default {
                                 },
                                 {
                                     text: 'Support Ticket',
-                                    url: '/support/support'
+                                    url: '/support'
                                 },
                                 {
                                     text: 'Warranty Policy',

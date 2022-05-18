@@ -135,7 +135,7 @@ export default {
                         },
                         {
                             text: 'Support Ticket',
-                            url: '/support/support'
+                            url: '/support'
                         },
                         {
                             text: 'Warranty Policies',
