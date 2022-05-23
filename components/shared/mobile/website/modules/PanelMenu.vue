@@ -133,10 +133,10 @@ export default {
                             text: 'FAQ',
                             url: '/support/faq'
                         },
-                        {
-                            text: 'Support Ticket',
-                            url: '/support'
-                        },
+                        // {
+                        //     text: 'Support',
+                        //     url: '/support/tickets'
+                        // },
                         {
                             text: 'Warranty Policies',
                             url: '/support/product-warranty'

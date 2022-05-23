@@ -118,14 +118,14 @@
                         >Download Center</nuxt-link
                     >
                 </li>
-                <li>
-                    <nuxt-link to="/support">Support Tickets</nuxt-link>
-                </li>
+                <!--li>
+                    <nuxt-link to="/support/tickets">Support Tickets</nuxt-link>
+                </li-->
                 <li>
                     <nuxt-link to="/support/after-sale">After Sales</nuxt-link>
                 </li>
                 <li>
-                    <nuxt-link to="/support/faq">FAQs</nuxt-link>
+                    <nuxt-link to="/support">FAQs</nuxt-link>
                 </li>
             </ul>
         </aside>
