@@ -131,7 +131,7 @@ export default {
                         },
                         {
                             text: 'FAQ',
-                            url: '/support/faq'
+                            url: '/support'
                         },
                         // {
                         //     text: 'Support',
