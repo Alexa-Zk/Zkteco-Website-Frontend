@@ -16,7 +16,7 @@
                         </nuxt-link>
                     </div>
                     <div class="ps-column">
-                        <nuxt-link to="/support/faq" class="ps-post__title">
+                        <nuxt-link to="/support" class="ps-post__title">
                             <faq />
                             FAQs
                         </nuxt-link>
@@ -30,12 +30,12 @@
                             Anti-counterfeit enquiry
                         </nuxt-link>
                     </div>
-                    <div class="ps-column">
-                        <nuxt-link to="/support" class="ps-post__title">
+                    <!--div class="ps-column">
+                        <nuxt-link to="/support/tickets" class="ps-post__title">
                             <support />
                             Support Tickets
                         </nuxt-link>
-                    </div>
+                    </div-->
                 </div>
             </div>
         </div>
