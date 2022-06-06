@@ -114,12 +114,13 @@ export default {
 <style lang="scss" scoped>
 .ps-product {
     .ps-product__thumbnail {
-        width: 208px;
-        height: 208px;
+       
         @media (max-width: 480px) {
             width: 100%;
         }
         img {
+            max-height: 100%;
+            max-width: 100%;
             object-fit: contain;
         }
     }
