@@ -72,7 +72,7 @@ export default {
             return this.product ? this.product : [];
         },
         title() {
-            return this.$route.params.id.toUpperCase();
+            return this.$route.params.id.split("-").join(" ").toUpperCase();
         }
     },
     async asyncData({ store, params }) {
