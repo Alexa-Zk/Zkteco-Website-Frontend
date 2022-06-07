@@ -9,12 +9,11 @@
                 <span class="tab-label">Downloads</span>
             </v-tab>
             <v-tab :ripple="false" tag="li">
-                <span class="tab-label">Related Products</span>
-            </v-tab>
-            <v-tab :ripple="false" tag="li">
                 <span class="tab-label">Product Videos</span>
             </v-tab>
-
+            <v-tab :ripple="false" tag="li">
+                <span class="tab-label">Related Products</span>
+            </v-tab>
             <v-tab-item>
                 <div class="tab-content">
                     <partial-description :product="product_information" />
@@ -47,6 +46,28 @@
 
             <v-tab-item>
                 <div class="tab-content">
+                    <div v-if="downloadStuff">No Downloads</div>
+                    <div
+                        class="download_container"
+                        v-else
+                        v-for="i in product_information.product_videos"
+                        :key="i.id"
+                    >
+                        <div class="download">
+                            <iframe
+                                width="100%"
+                                height="315"
+                                :src="i.url"
+                                frameborder="0"
+                                allowfullscreen
+                            ></iframe>
+                            <h4>{{ i.name }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </v-tab-item>
+            <v-tab-item>
+                <div class="tab-content">
                     <related-product
                         layout="fullwidth"
                         collection-slug="shop-recommend-items"
@@ -54,28 +75,7 @@
                 </div>
             </v-tab-item>
 
-            <v-tab-item>
-                <div class="tab-content">
-                <div v-if="downloadStuff">No Downloads</div>
-                <div
-                    class="download_container"
-                    v-else
-                    v-for="i in product_information.product_videos"
-                    :key="i.id"
-                >
-                    <div class="download">
-                        <iframe
-                            width="100%"
-                            height="315"
-                            :src="i.url"
-                            frameborder="0"
-                            allowfullscreen
-                        ></iframe>
-                        <h4>{{ i.name }}</h4>
-                    </div>
-                </div>
-            </div>
-            </v-tab-item>
+            
         </v-tabs>
     </div>
 </template>
@@ -147,7 +147,7 @@ export default {
 .tab-label {
     font-size: 20px;
     text-transform: none;
-    color: $color-1st;
+    color: #999;
     font-weight: bold;
 }
 .tab-content {
@@ -196,7 +196,6 @@ span.list-item {
         a {
             margin-top: 4px;
             font-size: 16px;
-            color: #78bc27;
             font-weight: 600;
             transition: 0.7s all;
             &:hover {
