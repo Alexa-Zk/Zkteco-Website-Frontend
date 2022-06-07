@@ -23,7 +23,7 @@
                 </nuxt-link>
             </p>
         </aside>
-        <aside class="widget widget_ads">
+        <!-- <aside class="widget widget_ads">
             <nuxt-link to="/shop">
                 <a>
                     <img
@@ -32,7 +32,7 @@
                     />
                 </a>
             </nuxt-link>
-        </aside>
+        </aside> -->
     </section>
 </template>
 
