@@ -17,7 +17,7 @@
                 <div class="row">
                     <div
                         v-for="product in categories_products"
-                        class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 "
+                        class="col-lg-4 col-md-4 col-sm-6 col-6 "
                         :key="product.id"
                     >
                         <product-category-default :product="product" />

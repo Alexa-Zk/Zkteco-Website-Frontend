@@ -1,68 +1,82 @@
 <template lang="html">
+    
     <div>
-        <div class="ps-product__content">
-            <span class="list-item">Description</span>
-            <div class="tab-content">
-                <partial-description :product="product_information" />
-            </div>
-        </div>
-        <div class="ps-product__content">
-            <span class="list-item">Downloads</span>
-            <div class="tab-content">
-                <div v-if="downloadStuff">No Downloads</div>
-                <div
-                    class="download_container"
-                    v-else
-                    v-for="i in product_information.product_files"
-                    :key="i.id"
-                >
-                    <div class="download">
-                        <img
-                            src="~/static/img/website/download-2.png"
-                            alt="Download"
-                        />
-                        <h4>{{ i.name }}</h4>
-                        <div class="size">Size: {{ i.file.size }}KB</div>
-                        <a v-on:click.prevent="download(i.file.url)"
-                            >Download</a
-                        >
-                    </div>
+<v-tabs background-color="white" color="warning" class="ps-tab-list ">
+            <v-tab :ripple="false" tag="li" class="tab-label">
+                <span class="tab-label">Description</span>
+            </v-tab>
+            <v-tab :ripple="false" tag="li">
+                <span class="tab-label">Downloads</span>
+            </v-tab>
+            <v-tab :ripple="false" tag="li">
+                <span class="tab-label">Product Videos</span>
+            </v-tab>
+            <v-tab :ripple="false" tag="li">
+                <span class="tab-label">Related Products</span>
+            </v-tab>
+            <v-tab-item>
+                <div class="tab-content">
+                    <partial-description :product="product_information" />
                 </div>
-            </div>
-        </div>
-        <div class="ps-product__content">
-            <span class="list-item">Product Videos</span>
-            <div class="tab-content">
-                <div v-if="downloadStuff">No Downloads</div>
-                <div
-                    class="download_container"
-                    v-else
-                    v-for="i in product_information.product_videos"
-                    :key="i.id"
-                >
-                    <div class="download">
-                        <iframe
-                            width="100%"
-                            height="315"
-                            :src="i.url"
-                            frameborder="0"
-                            allowfullscreen
-                        ></iframe>
-                        <h4>{{ i.name }}</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ps-product__content">
-            <span class="list-item">Related Products</span>
-            <div class="tab-content">
-                <related-product
-                    layout="fullwidth"
-                    collection-slug="shop-recommend-items"
-                />
-            </div>
-        </div>
+            </v-tab-item>
 
+            <v-tab-item>
+                <div class="tab-content">
+                    <div v-if="downloadStuff">No Downloads</div>
+                    <div
+                        class="download_container"
+                        v-else
+                        v-for="i in product_information.product_files"
+                        :key="i.id"
+                    >
+                        <div class="download">
+                            <img
+                                src="~/static/img/website/download-2.png"
+                                alt="Download"
+                            />
+                            <h4>{{ i.name }}</h4>
+                            <div class="size">Size: {{ i.file.size }}KB</div>
+                            <a v-on:click.prevent="download(i.file.url)"
+                                >Download</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </v-tab-item>
+
+            <v-tab-item>
+                <div class="tab-content">
+                    <div v-if="downloadStuff">No Downloads</div>
+                    <div
+                        class="download_container"
+                        v-else
+                        v-for="i in product_information.product_videos"
+                        :key="i.id"
+                    >
+                        <div class="download">
+                            <iframe
+                                width="100%"
+                                height="315"
+                                :src="i.url"
+                                frameborder="0"
+                                allowfullscreen
+                            ></iframe>
+                            <h4>{{ i.name }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </v-tab-item>
+            <v-tab-item>
+                <div class="tab-content">
+                    <related-product
+                        layout="fullwidth"
+                        collection-slug="shop-recommend-items"
+                    />
+                </div>
+            </v-tab-item>
+
+            
+        </v-tabs>
     </div>
 </template>
 
@@ -130,6 +144,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.tab-label {
+    font-size: 20px;
+    text-transform: none;
+    color: #999;
+    font-weight: bold;
+}
 .tab-content {
     padding-top: 30px;
 }
@@ -176,7 +196,6 @@ span.list-item {
         a {
             margin-top: 4px;
             font-size: 16px;
-            color: #78bc27;
             font-weight: 600;
             transition: 0.7s all;
             &:hover {

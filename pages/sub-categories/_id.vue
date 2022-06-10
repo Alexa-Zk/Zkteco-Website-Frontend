@@ -69,7 +69,7 @@ export default {
             loading: state => state.website.loading
         }),
         title() {
-            return this.$route.params.id.toUpperCase();
+            return this.$route.params.id.split("-").join(" ").toUpperCase();
         }
     },
 

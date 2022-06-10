@@ -18,7 +18,7 @@
                 <div class="row" v-else>
                     <div
                         v-for="product in products"
-                        class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 "
+                        class="col-lg-4 col-md-4 col-sm-6 col-6 "
                         :key="product.id"
                     >
                         <product-default :product="product" />
