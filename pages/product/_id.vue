@@ -8,7 +8,7 @@
                         <product-detail-fullwidth :singleProduct="pdt" />
                     </div>
                     <div class="ps-page__right">
-                        <product-widgets collection-slug="widget_same_brand" />
+                        <!--product-widgets collection-slug="widget_same_brand" /-->
                     </div>
                 </div>
                 <!-- <related-product layout="fullwidth" collection-slug="shop-recommend-items"/> -->
