@@ -1,6 +1,7 @@
 <template lang="html">
     <div class="ps-product__desc ps-post--detail">
         <ul class="ps-list--dot" v-html="product.description"></ul>
+
         <div class="ps-post__footer">
             <div class="ps-list--social-color ps-post__social">
                 <a
@@ -43,6 +44,9 @@
                 >
                     <i class="fa fa-whatsapp"></i>
                 </a>
+                <nuxt-link :to="`/product/${product.slug}`">
+                    <span class="learn-more">Learn More</span>
+                </nuxt-link>
             </div>
         </div>
     </div>
@@ -78,6 +82,11 @@ export default {
     .ps-post__social {
         // margin-top: 100px;
         display: flex;
+        .learn-more {
+            position: absolute;
+            color: #06c !important;
+            width: 80px !important;
+        }
     }
 }
 </style>
