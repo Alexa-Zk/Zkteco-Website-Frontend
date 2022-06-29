@@ -9,11 +9,14 @@
         <div class="ps-shopping__content">
             <div class="ps-shopping-product">
                 <div class="placeholder-image-grid" v-if="loading">
-                    <content-placeholders :rounded="true" v-for="x in 9" :key="x">
+                    <content-placeholders
+                        :rounded="true"
+                        v-for="x in 9"
+                        :key="x"
+                    >
                         <content-placeholders-img />
                         <content-placeholders-heading />
                     </content-placeholders>
-                    
                 </div>
                 <div class="row" v-else>
                     <div
