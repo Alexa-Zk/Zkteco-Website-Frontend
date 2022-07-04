@@ -71,7 +71,7 @@ export const mutations = {
     },
 
     setSingleArticlesCategories(state, payload) {
-        state.singleArticlesCategories = payload
+        state.singleArticlesCategories = payload;
     },
 
     setSingleProductCategories(state, payload) {
@@ -167,7 +167,40 @@ export const actions = {
     async requestAQuote({ commit }, payload) {
         commit('setLoading', true);
 
-        const reponse = await Repository.post(`${subBaseUrl}/request-a-quotes`, payload)
+        const reponse = await Repository.post(
+            `${subBaseUrl}/request-a-quotes`,
+            payload
+        )
+            .then(response => {
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async requestAQuote({ commit }, payload) {
+        commit('setLoading', true);
+
+        const reponse = await Repository.post(
+            `${subBaseUrl}/request-a-quotes`,
+            payload
+        )
+            .then(response => {
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async requestAProductQuote({ commit }, payload) {
+        commit('setLoading', true);
+
+        const reponse = await Repository.post(
+            `${subBaseUrl}/product-quotes`,
+            payload
+        )
             .then(response => {
                 commit('setLoading', false);
                 return response.data;
@@ -179,7 +212,10 @@ export const actions = {
     async projectConsultation({ commit }, payload) {
         commit('setLoading', true);
 
-        const reponse = await Repository.post(`${subBaseUrl}/project-consultations`, payload)
+        const reponse = await Repository.post(
+            `${subBaseUrl}/project-consultations`,
+            payload
+        )
             .then(response => {
                 commit('setLoading', false);
                 return response.data;
@@ -405,7 +441,7 @@ export const actions = {
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
     },
-    
+
     async getArticlesCategories({ commit }) {
         commit('setLoading', true);
         const reponse = await Repository.get(`${subBaseUrl}/categories/`)
@@ -420,7 +456,9 @@ export const actions = {
 
     async getSingleArticlesCategories({ commit }, slug) {
         commit('setLoading', true);
-        const reponse = await Repository.get(`${subBaseUrl}/categories?slug=${slug}`)
+        const reponse = await Repository.get(
+            `${subBaseUrl}/categories?slug=${slug}`
+        )
             .then(response => {
                 commit('setSingleArticlesCategories', response.data);
                 commit('setLoading', false);
