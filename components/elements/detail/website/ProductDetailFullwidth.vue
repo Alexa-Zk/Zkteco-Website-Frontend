@@ -1,10 +1,12 @@
 <template lang="html">
     <div class="ps-product--detail ps-product--fullwidth" v-if="singleProduct">
         <div class="ps-product__header">
-            <thumbnail-default :thumbnailImage="singleProduct.images"/>
+            <thumbnail-default :thumbnailImage="singleProduct.images" />
             <information-default :product_information="singleProduct" />
         </div>
-        <default-description :product_information="singleProduct" />
+        <div id="top">
+            <default-description :product_information="singleProduct" />
+        </div>
     </div>
 </template>
 
@@ -15,7 +17,7 @@ import ThumbnailDefault from '~/components/elements/detail/thumbnail/website/Thu
 export default {
     name: 'ProductDetailFullwidth',
     components: { ThumbnailDefault, InformationDefault, DefaultDescription },
-    props: ["singleProduct"]
+    props: ['singleProduct']
 };
 </script>
 
