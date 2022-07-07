@@ -161,10 +161,12 @@
 </template>
 
 <script>
-import { required, email, numeric } from 'vuelidate/lib/validators';
 import { validationMixin } from 'vuelidate';
+import { required, email, numeric } from 'vuelidate/lib/validators';
+
 export default {
     name: 'RequestAQuote',
+    mixins: [validationMixin],
     data() {
         return {
             snackBarMessage:
@@ -250,10 +252,14 @@ export default {
 }
 input,
 textarea {
-    width: 50vw;
+    width: 16vw;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 568px) {
+    .quote {
+        display: flex;
+    }
+
     input,
     textarea {
         width: 80vw;
