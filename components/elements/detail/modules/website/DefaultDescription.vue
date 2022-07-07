@@ -10,10 +10,10 @@
             <v-tab :ripple="false" tag="li">
                 <span class="tab-label">Product Videos</span>
             </v-tab>
-            <v-tab :ripple="false" tag="li" class="v-tab--active">
+            <v-tab :ripple="false" tag="li">
                 <span class="tab-label">Related Products</span>
             </v-tab>
-            <v-tab :ripple="false" tag="li" :active-class="active">
+            <v-tab :ripple="false" tag="li" class="quote">
                 <span class="tab-label">Request A Quote</span>
             </v-tab>
             <v-tab-item>
@@ -78,7 +78,7 @@
             </v-tab-item>
 
             <v-tab-item>
-                <div class="tab-content">
+                <div class="tab-content quote">
                     <request-a-quote />
                 </div>
             </v-tab-item>
@@ -154,6 +154,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// .quote {
+//     display: none;
+// }
 .tab-label {
     font-size: 20px;
     text-transform: none;
@@ -212,6 +215,20 @@ span.list-item {
                 color: darken($color: #78bc27, $amount: 40);
             }
         }
+    }
+}
+.quote {
+    display: none;
+}
+
+@media screen and (max-width: 568px) {
+    .quote {
+        display: flex;
+    }
+
+    input,
+    textarea {
+        width: 80vw;
     }
 }
 </style>

@@ -8,7 +8,9 @@
                         <product-detail-fullwidth :singleProduct="pdt" />
                     </div>
                     <div class="ps-page__right">
-                        <div></div>
+                        <div class="request-quote">
+                            <request-a-quote />
+                        </div>
                     </div>
                 </div>
                 <!-- <related-product layout="fullwidth" collection-slug="shop-recommend-items"/> -->
@@ -19,6 +21,7 @@
 </template>
 
 <script>
+import { validationMixin } from 'vuelidate';
 import ProductDetailFullwidth from '~/components/elements/detail/website/ProductDetailFullwidth';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import RelatedProduct from '~/components/partials/product/RelatedProduct';
@@ -26,12 +29,7 @@ import ProductWidgets from '~/components/partials/product/website/ProductWidgets
 import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
 
-import { required, email, numeric } from 'vuelidate/lib/validators';
-import { validationMixin } from 'vuelidate';
-
-// export default {
-//     name: 'RequestQuoteForm',
-//     mixins: [validationMixin],
+import RequestAQuote from '~/components/elements/detail/modules/website/RequestAQuote';
 
 export default {
     layout: 'layout-default-website',
@@ -44,7 +42,8 @@ export default {
         ProductWidgets,
         RelatedProduct,
         BreadCrumb,
-        ProductDetailFullwidth
+        ProductDetailFullwidth,
+        RequestAQuote
     },
     async asyncData({ params, $axios }) {
         try {
@@ -184,80 +183,26 @@ export default {
                 {
                     text: ''
                 }
-            ],
-            // sanwo
-            snackBarMessage:
-                'Form Submitted Successfully. You will be contacted by one of our customer representatives.',
-            snackbar: false,
-            showError: false,
-            showSuccess: false,
-            loading: '',
-            name: '',
-            company: '',
-            country: '',
-            email: '',
-            phone: '',
-            about_us: '',
-            additional_request: ''
+            ]
         };
-    },
-    validations: {
-        name: { required },
-        company: { required },
-        country: { required },
-        email: { required, email },
-        phone: { required },
-        additional_request: { required }
-    },
-    methods: {
-        resetForm() {
-            this.name = '';
-            this.company = '';
-            this.country = '';
-            this.email = '';
-            this.phone = '';
-            this.about_us = '';
-            this.additional_request = '';
-        },
-        async willContactUs() {
-            this.$v.$touch();
-            if (this.$v.$invalid) {
-                return false;
-            } else if (this.$v.$error) {
-                return false;
-            } else {
-                this.loading = true;
-                const payload = {
-                    company_name: this.company,
-                    contact_name: this.name,
-                    country: this.country,
-                    email: this.email,
-                    phone: this.phone,
-                    route: this.$route.params.id,
-                    about_us: this.about_us,
-                    additional_request: this.additional_request
-                };
-                const response = await this.$store.dispatch(
-                    'website/requestAProductQuote',
-                    payload
-                );
-
-                if (response) {
-                    this.loading = false;
-                    this.snackbar = true;
-                    this.showError = false;
-                } else {
-                    this.loading = false;
-                    this.showSuccess = false;
-                    this.showError = true;
-                }
-            }
-        }
     }
 };
 </script>
 
 <style lang="scss" scoped>
+.request-quote {
+    background: #e1f3dc; //rgb(129, 129, 129);
+    padding: 2rem 2rem;
+
+    button {
+        padding: 2rem;
+    }
+
+    .form-control {
+        width: 98% !important;
+    }
+}
+
 .el-error {
     font-size: 14px !important;
     color: red !important;
