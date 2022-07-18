@@ -5,7 +5,6 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 ">
                     <div class="form-group">
-                        <label>Name </label>
                         <input
                             class="form-control"
                             type="text"
@@ -19,10 +18,32 @@
                     </div>
                 </div>
             </div>
+            <!--tree-view
+                :data="$v.name"
+                :options="{ rootObjectKey: '$v.name', maxDepth: 2 }"
+            ></tree-view -->
+
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 ">
                     <div class="form-group">
-                        <label>Company</label>
+                        <select id="inputState" class="form-control">
+                            <option>Category</option>
+                            <option
+                                class="form-group"
+                                v-for="(categ, i) in category"
+                                :key="i"
+                                >{{ categ }}</option
+                            >
+                        </select>
+                        <!--p class="el-error" v-if="$v.category.$error">
+                            Category is required!
+                        </p -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 ">
+                    <div class="form-group">
                         <input
                             class="form-control"
                             type="text"
@@ -36,28 +57,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 ">
-                    <div class="form-group">
-                        <label>Country </label>
-                        <input
-                            class="form-control"
-                            type="text"
-                            placeholder="Country"
-                            required
-                            v-model.trim="$v.country.$model"
-                        />
-                        <p class="el-error" v-if="$v.name.$error">
-                            Country is required!
-                        </p>
-                    </div>
-                </div>
-            </div>
 
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 ">
                     <div class="form-group">
-                        <label>Email</label>
                         <input
                             class="form-control"
                             type="email"
@@ -77,10 +80,9 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 ">
                     <div class="form-group">
-                        <label>Phone Number</label>
                         <input
                             class="form-control"
-                            type="number"
+                            type="text"
                             placeholder="Phone Number"
                             v-model="phone"
                         />
@@ -94,15 +96,50 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 ">
                     <div class="form-group">
-                        <label>
-                            Where did you hear/see about us
-                        </label>
+                        <select id="inputState" class="form-control">
+                            <option>Country</option>
+                            <option
+                                class="form-group"
+                                v-for="(country, i) in countryArray"
+                                :key="i"
+                                >{{ country }}</option
+                            >
+                        </select>
+                        <p class="el-error" v-if="$v.country.$error">
+                            Country is required!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 ">
+                    <div class="form-group">
                         <input
                             class="form-control"
                             type="text"
-                            placeholder="Where did you hear/see about us"
-                            v-model="about_us"
+                            placeholder="City"
+                            v-model.trim="$v.city.$model"
                         />
+                        <p class="el-error" v-if="$v.city.$error">
+                            City is required!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 ">
+                    <div class="form-group">
+                        <input
+                            class="form-control"
+                            type="number"
+                            placeholder="How many devices do you need?"
+                            v-model.trim="$v.device.$model"
+                        />
+                        <p class="el-error" v-if="$v.device.$error">
+                            Device is required!
+                        </p>
                     </div>
                 </div>
             </div>
@@ -110,8 +147,6 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
                     <div class="form-group">
-                        <label>Message </label>
-
                         <textarea
                             class="form-control"
                             v-model="additional_request"
@@ -181,7 +216,28 @@ export default {
             email: '',
             phone: '',
             about_us: '',
-            additional_request: ''
+            additional_request: '',
+            city: '',
+            device: '',
+            countryArray: [
+                'Benin',
+                'Burkina Faso',
+                'Cape Verde',
+                "Côte D'Ivoire",
+                'Gambia',
+                'Ghana',
+                'Guinea',
+                'Guinea-Bissau',
+                'Liberia',
+                'Mali',
+                'Mauritania',
+                'Niger',
+                'Nigeria',
+                'Senegal',
+                'Sierra Leone',
+                'Togo'
+            ],
+            category: ['INSTALLER', 'END-USER', 'RESELLER', 'PROJECT MANAGER']
         };
     },
     validations: {
@@ -190,7 +246,10 @@ export default {
         country: { required },
         email: { required, email },
         phone: { required },
-        additional_request: { required }
+        additional_request: { required },
+        city: { required },
+        device: { required },
+        category: { required }
     },
     methods: {
         resetForm() {
@@ -201,6 +260,9 @@ export default {
             this.phone = '';
             this.about_us = '';
             this.additional_request = '';
+            this.city = '';
+            this.device = '';
+            this.category = '';
         },
         async willContactUs() {
             this.$v.$touch();
@@ -218,7 +280,10 @@ export default {
                     phone: this.phone,
                     route: this.$route.params.id,
                     about_us: this.about_us,
-                    additional_request: this.additional_request
+                    additional_request: this.additional_request,
+                    city: this.city,
+                    device: this.device,
+                    category: this.category
                 };
                 const response = await this.$store.dispatch(
                     'website/requestAProductQuote',
@@ -253,6 +318,9 @@ export default {
 input,
 textarea {
     width: 16vw;
+}
+h3 {
+    margin-bottom: 20px;
 }
 
 @media screen and (max-width: 568px) {
