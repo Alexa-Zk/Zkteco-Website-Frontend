@@ -135,9 +135,9 @@
                             class="form-control"
                             type="number"
                             placeholder="How many devices do you need?"
-                            v-model.trim="$v.device.$model"
+                            v-model.trim="$v.devices.$model"
                         />
-                        <p class="el-error" v-if="$v.device.$error">
+                        <p class="el-error" v-if="$v.devices.$error">
                             Device is required!
                         </p>
                     </div>
@@ -248,7 +248,7 @@ export default {
         phone: { required },
         additional_request: { required },
         city: { required },
-        device: { required },
+        devices: { required },
         category: { required }
     },
     methods: {
@@ -261,7 +261,7 @@ export default {
             this.about_us = '';
             this.additional_request = '';
             this.city = '';
-            this.device = '';
+            this.devices = '';
             this.category = '';
         },
         async willContactUs() {
@@ -282,7 +282,7 @@ export default {
                     about_us: this.about_us,
                     additional_request: this.additional_request,
                     city: this.city,
-                    device: this.device,
+                    devices: this.devices,
                     category: this.category
                 };
                 const response = await this.$store.dispatch(
