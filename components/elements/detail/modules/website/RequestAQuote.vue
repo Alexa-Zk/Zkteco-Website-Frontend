@@ -26,18 +26,22 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 ">
                     <div class="form-group">
-                        <select id="inputState" class="form-control">
-                            <option>Category</option>
+                        <label>Category</label>
+                        <select
+                            id="inputState"
+                            class="form-control"
+                            v-model.trim="$v.category.$model"
+                        >
                             <option
                                 class="form-group"
-                                v-for="(categ, i) in category"
+                                v-for="(categ, i) in categoryArray"
                                 :key="i"
                                 >{{ categ }}</option
                             >
                         </select>
-                        <!--p class="el-error" v-if="$v.category.$error">
+                        <p class="el-error" v-if="$v.category.$error">
                             Category is required!
-                        </p -->
+                        </p>
                     </div>
                 </div>
             </div>
@@ -96,8 +100,12 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 ">
                     <div class="form-group">
-                        <select id="inputState" class="form-control">
-                            <option>Country</option>
+                        <label>Country</label>
+                        <select
+                            id="inputState"
+                            class="form-control"
+                            v-model.trim="$v.country.$model"
+                        >
                             <option
                                 class="form-group"
                                 v-for="(country, i) in countryArray"
@@ -237,7 +245,12 @@ export default {
                 'Sierra Leone',
                 'Togo'
             ],
-            category: ['INSTALLER', 'END-USER', 'RESELLER', 'PROJECT MANAGER']
+            categoryArray: [
+                'INSTALLER',
+                'END-USER',
+                'RESELLER',
+                'PROJECT MANAGER'
+            ]
         };
     },
     validations: {
@@ -285,10 +298,12 @@ export default {
                     devices: this.devices,
                     category: this.category
                 };
-                const response = await this.$store.dispatch(
-                    'website/requestAProductQuote',
-                    payload
-                );
+                console.log('payload', payload);
+                // const response = await this.$store.dispatch(
+                //     'website/requestAProductQuote',
+                //     payload
+                // );
+                const response = true;
 
                 if (response) {
                     this.loading = false;
