@@ -298,12 +298,10 @@ export default {
                     devices: this.devices,
                     category: this.category
                 };
-                console.log('payload', payload);
-                // const response = await this.$store.dispatch(
-                //     'website/requestAProductQuote',
-                //     payload
-                // );
-                const response = true;
+                const response = await this.$store.dispatch(
+                    'website/requestAProductQuote',
+                    payload
+                );
 
                 if (response) {
                     this.loading = false;
