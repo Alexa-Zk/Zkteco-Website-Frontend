@@ -8,7 +8,9 @@
                         <product-detail-fullwidth :singleProduct="pdt" />
                     </div>
                     <div class="ps-page__right">
-                        <!--product-widgets collection-slug="widget_same_brand" /-->
+                        <div class="request-quote">
+                            <request-a-quote />
+                        </div>
                     </div>
                 </div>
                 <!-- <related-product layout="fullwidth" collection-slug="shop-recommend-items"/> -->
@@ -19,6 +21,7 @@
 </template>
 
 <script>
+import { validationMixin } from 'vuelidate';
 import ProductDetailFullwidth from '~/components/elements/detail/website/ProductDetailFullwidth';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import RelatedProduct from '~/components/partials/product/RelatedProduct';
@@ -26,17 +29,21 @@ import ProductWidgets from '~/components/partials/product/website/ProductWidgets
 import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
 
+import RequestAQuote from '~/components/elements/detail/modules/website/RequestAQuote';
+
 export default {
     layout: 'layout-default-website',
     name: 'Products',
     transition: 'zoom',
+    mixins: [validationMixin],
     components: {
         Newsletters,
         LayoutProduct,
         ProductWidgets,
         RelatedProduct,
         BreadCrumb,
-        ProductDetailFullwidth
+        ProductDetailFullwidth,
+        RequestAQuote
     },
     async asyncData({ params, $axios }) {
         try {
@@ -182,4 +189,23 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.request-quote {
+    background: #e1f3dc; //rgb(129, 129, 129);
+    padding: 2rem 2rem;
+
+    button {
+        padding: 2rem;
+    }
+
+    .form-control {
+        width: 98% !important;
+    }
+}
+
+.el-error {
+    font-size: 14px !important;
+    color: red !important;
+    font-weight: lighter !important;
+}
+</style>

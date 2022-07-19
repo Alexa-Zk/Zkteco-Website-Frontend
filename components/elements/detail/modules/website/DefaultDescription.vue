@@ -1,7 +1,6 @@
 <template lang="html">
-    
     <div>
-<v-tabs background-color="white" color="warning" class="ps-tab-list ">
+        <v-tabs background-color="white" color="warning" class="ps-tab-list ">
             <v-tab :ripple="false" tag="li" class="tab-label">
                 <span class="tab-label">Description</span>
             </v-tab>
@@ -13,6 +12,9 @@
             </v-tab>
             <v-tab :ripple="false" tag="li">
                 <span class="tab-label">Related Products</span>
+            </v-tab>
+            <v-tab :ripple="false" tag="li" class="quote">
+                <span class="tab-label">Request A Quote</span>
             </v-tab>
             <v-tab-item>
                 <div class="tab-content">
@@ -75,7 +77,11 @@
                 </div>
             </v-tab-item>
 
-            
+            <v-tab-item>
+                <div class="tab-content quote">
+                    <request-a-quote />
+                </div>
+            </v-tab-item>
         </v-tabs>
     </div>
 </template>
@@ -85,16 +91,18 @@ import PartialDescription from '~/components/elements/detail/modules/website/Par
 import PartialSpecification from '~/components/elements/detail/modules/website/PartialSpecification';
 import { mapState } from 'vuex';
 import RelatedProduct from '~/components/partials/product/RelatedProduct';
+import RequestAQuote from '~/components/elements/detail/modules/website/RequestAQuote';
+
 export default {
     name: 'DefaultDescription',
     components: {
         PartialSpecification,
         PartialDescription,
-        RelatedProduct
+        RelatedProduct,
+        RequestAQuote
     },
     data() {
         return {
-
             videoUrl: null
         };
     },
@@ -125,7 +133,9 @@ export default {
     },
     methods: {
         download(data) {
-            const tokenForDownloads = this.$cookies.get('download_token', { parseJSON: true });
+            const tokenForDownloads = this.$cookies.get('download_token', {
+                parseJSON: true
+            });
             if (tokenForDownloads) {
                 const link = document.createElement('a');
                 link.href = data;
@@ -144,6 +154,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// .quote {
+//     display: none;
+// }
 .tab-label {
     font-size: 20px;
     text-transform: none;
@@ -202,6 +215,20 @@ span.list-item {
                 color: darken($color: #78bc27, $amount: 40);
             }
         }
+    }
+}
+.quote {
+    display: none;
+}
+
+@media screen and (max-width: 568px) {
+    .quote {
+        display: flex;
+    }
+
+    input,
+    textarea {
+        width: 80vw;
     }
 }
 </style>
