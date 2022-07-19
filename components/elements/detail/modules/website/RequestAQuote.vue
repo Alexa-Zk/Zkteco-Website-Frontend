@@ -18,10 +18,6 @@
                     </div>
                 </div>
             </div>
-            <!--tree-view
-                :data="$v.name"
-                :options="{ rootObjectKey: '$v.name', maxDepth: 2 }"
-            ></tree-view -->
 
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 ">
@@ -329,8 +325,9 @@ export default {
     font-weight: lighter !important;
 }
 input,
+select,
 textarea {
-    width: 16vw;
+    width: 25rem;
 }
 h3 {
     margin-bottom: 20px;
@@ -342,6 +339,7 @@ h3 {
     }
 
     input,
+    select,
     textarea {
         width: 80vw;
     }
