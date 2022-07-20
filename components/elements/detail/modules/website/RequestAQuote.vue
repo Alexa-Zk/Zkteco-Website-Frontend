@@ -227,6 +227,7 @@ export default {
                 'Benin',
                 'Burkina Faso',
                 'Cape Verde',
+                'Cameroon',
                 "Côte D'Ivoire",
                 'Gambia',
                 'Ghana',
