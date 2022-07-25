@@ -23,7 +23,7 @@
                 <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 ">
                     <div class="form-group">
                         <select
-                            id="inputState1"
+                            id="inputState"
                             class="form-control"
                             v-model.trim="$v.category.$model"
                         >
