@@ -22,12 +22,12 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 ">
                     <div class="form-group">
-                        <label>Category</label>
                         <select
-                            id="inputState"
+                            id="inputState1"
                             class="form-control"
                             v-model.trim="$v.category.$model"
                         >
+                            <option value="">Category</option>
                             <option
                                 class="form-group"
                                 v-for="(categ, i) in categoryArray"
@@ -96,12 +96,12 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 ">
                     <div class="form-group">
-                        <label>Country</label>
                         <select
                             id="inputState"
                             class="form-control"
                             v-model.trim="$v.country.$model"
                         >
+                            <option value="">Country</option>
                             <option
                                 class="form-group"
                                 v-for="(country, i) in countryArray"
@@ -223,7 +223,9 @@ export default {
             additional_request: '',
             city: '',
             device: '',
+            category: '',
             countryArray: [
+                'Nigeria',
                 'Benin',
                 'Burkina Faso',
                 'Cape Verde',
@@ -237,7 +239,6 @@ export default {
                 'Mali',
                 'Mauritania',
                 'Niger',
-                'Nigeria',
                 'Senegal',
                 'Sierra Leone',
                 'Togo'
