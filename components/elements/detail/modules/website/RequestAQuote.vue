@@ -23,12 +23,14 @@
                         </div>
                         <div class="input_field select_option">
                             <select v-model.trim="$v.category.$model">
-                                <option>Select a category</option>
+                                <option disabled value=""
+                                    >Select a Category</option
+                                >
                                 <option
                                     class="form-group"
-                                    v-for="(categ, i) in categoryArray"
+                                    v-for="(category, i) in categoryArray"
                                     :key="i"
-                                    >{{ categ }}</option
+                                    >{{ category }}</option
                                 >
                             </select>
                             <p class="el-error" v-if="$v.category.$error">
