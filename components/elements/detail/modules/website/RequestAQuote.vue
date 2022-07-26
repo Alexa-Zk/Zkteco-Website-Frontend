@@ -320,7 +320,7 @@ body {
     margin: 8% auto 0;
     position: relative;
     z-index: 1;
-    border-top: 5px solid $yellow;
+    border-top: 5px solid #78bc27;
     -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
@@ -435,6 +435,7 @@ body {
             transition: all 0.3s ease-in-out;
             &:hover {
                 background: darken($yellow, 7%);
+                color: #000000;
             }
             &:focus {
                 background: darken($yellow, 7%);
