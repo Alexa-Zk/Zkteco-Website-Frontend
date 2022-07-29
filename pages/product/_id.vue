@@ -192,7 +192,7 @@ export default {
 <style lang="scss" scoped>
 .request-quote {
     background: #e1f3dc; //rgb(129, 129, 129);
-    padding: 2rem 2rem;
+    padding: 1.5rem 1.5rem;
 
     button {
         padding: 2rem;
