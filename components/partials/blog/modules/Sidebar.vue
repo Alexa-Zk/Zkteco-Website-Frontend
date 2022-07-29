@@ -12,7 +12,7 @@
                     placeholder="Search..."
                     v-model="searchQuery"
                 />
-                <button>
+                <button @click.prevent="searchButtonIcon">
                     <i class="icon-magnifier"></i>
                 </button>
             </form>
@@ -27,11 +27,14 @@
                 </div>
                 <ul v-else>
                     <li v-for="category in Categories" :key="category.id">
-                        <nuxt-link :to="`/news-center/categories/${category.slug}`">
+                        <nuxt-link
+                            :to="`/news-center/categories/${category.slug}`"
+                        >
                             {{ category.name }}
-                            <span class="widget__content_value">{{category.articles.length}}</span>
+                            <span class="widget__content_value">{{
+                                category.articles.length
+                            }}</span>
                         </nuxt-link>
-                        
                     </li>
                 </ul>
             </div>
@@ -39,24 +42,26 @@
         <aside class="widget widget--blog widget--recent-post">
             <recent-sidebar />
         </aside>
-
     </div>
 </template>
 
 <script>
-import RecentSidebar from "./RecentSidebar";
+import RecentSidebar from './RecentSidebar';
 import { mapState } from 'vuex';
 
 export default {
     name: 'Sidebar',
     components: { RecentSidebar },
+    //props: ['searchQuery'],
     data() {
         return {
-            searchQuery: '',
+            searchQuery: ''
         };
     },
     async created() {
-        const response = await this.$store.dispatch('website/getArticlesCategories');
+        const response = await this.$store.dispatch(
+            'website/getArticlesCategories'
+        );
     },
     computed: {
         ...mapState({
@@ -65,11 +70,16 @@ export default {
         }),
         Categories() {
             return this.articlesCategories;
-        },
+        }
     },
     watch: {
-        searchQuery: function (newQuestion, oldQuestion) {
-            this.$emit('searchBlogs', newQuestion)
+        // searchQuery: function(newQuestion, oldQuestion) {
+        //     this.$emit('searchBlogs', newQuestion);
+        // }
+    },
+    methods: {
+        searchButtonIcon() {
+            this.$emit('searchBlogQuery', this.searchQuery);
         }
     }
 };
@@ -82,6 +92,6 @@ export default {
         color: white;
         padding: 2px 5px;
         margin-left: 10px;
-    }   
+    }
 }
 </style>
