@@ -225,6 +225,8 @@ export const actions = {
     },
 
     async getArticles({ commit, state }, payload) {
+        let searchQuery =
+            payload.search == undefined ? '' : { _q: payload.search };
         commit('setLoading', true);
         let params = {
             _start:
@@ -233,17 +235,19 @@ export const actions = {
             _limit:
                 Object.keys(payload).length === 0
                     ? state.perPage
-                    : payload.perPage
+                    : payload.perPage,
+            ...searchQuery
         };
-        const reponse = await Repository.get(
-            `${subBaseUrl}/articles?${serializeQuery(params)}`
-        )
+
+        const URL = `${subBaseUrl}/articles?${serializeQuery(params)}`;
+        const reponse = await Repository.get(URL)
             .then(response => {
                 commit('setArticles', response.data);
                 commit('setLoading', false);
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
+
         return reponse;
     },
 
