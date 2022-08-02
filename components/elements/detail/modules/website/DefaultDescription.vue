@@ -4,9 +4,6 @@
             <v-tab :ripple="false" tag="li" class="tab-label">
                 <span class="tab-label">Description</span>
             </v-tab>
-            <v-tab :ripple="false" tag="li" class="quote">
-                <span class="tab-label">Request A Quote</span>
-            </v-tab>
             <v-tab :ripple="false" tag="li">
                 <span class="tab-label">Downloads</span>
             </v-tab>
@@ -16,15 +13,12 @@
             <v-tab :ripple="false" tag="li">
                 <span class="tab-label">Related Products</span>
             </v-tab>
+            <v-tab :ripple="false" tag="li" class="quote">
+                <span class="tab-label">Request A Quote</span>
+            </v-tab>
             <v-tab-item>
                 <div class="tab-content">
                     <partial-description :product="product_information" />
-                </div>
-            </v-tab-item>
-
-            <v-tab-item>
-                <div class="tab-content quote">
-                    <request-a-quote />
                 </div>
             </v-tab-item>
 
@@ -54,7 +48,7 @@
 
             <v-tab-item>
                 <div class="tab-content">
-                    <div v-if="downloadStuff">No Product Video</div>
+                    <div v-if="downloadStuff">No Downloads</div>
                     <div
                         class="download_container"
                         v-else
@@ -80,6 +74,12 @@
                         layout="fullwidth"
                         collection-slug="shop-recommend-items"
                     />
+                </div>
+            </v-tab-item>
+
+            <v-tab-item>
+                <div class="tab-content quote">
+                    <request-a-quote />
                 </div>
             </v-tab-item>
         </v-tabs>
