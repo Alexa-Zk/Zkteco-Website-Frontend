@@ -236,7 +236,7 @@ span.list-item {
     display: none;
 }
 
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 820px) {
     .quote {
         display: flex;
     }
