@@ -16,6 +16,7 @@
             <v-tab :ripple="false" tag="li">
                 <span class="tab-label">Related Products</span>
             </v-tab>
+
             <v-tab-item>
                 <div class="tab-content">
                     <partial-description :product="product_information" />
@@ -62,11 +63,13 @@
             <v-tab-item>
                 <div class="tab-content">
                     <div
-                        v-if="Object.keys(product_information.product_videos).length === 0="
+                        v-if="
+                            Object.keys(product_information.product_videos)
+                                .length === 0
+                        "
                     >
-                        No Product Video
+                        No Product Videos
                     </div>
-
                     <div
                         class="download_container"
                         v-else
