@@ -30,7 +30,14 @@
 
             <v-tab-item>
                 <div class="tab-content">
-                    <div v-if="downloadStuff">No Downloads</div>
+                    <div
+                        v-if="
+                            Object.keys(product_information.product_files)
+                                .length === 0
+                        "
+                    >
+                        No Downloads
+                    </div>
                     <div
                         class="download_container"
                         v-else
