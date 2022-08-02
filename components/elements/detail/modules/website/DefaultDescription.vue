@@ -61,7 +61,12 @@
 
             <v-tab-item>
                 <div class="tab-content">
-                    <div v-if="downloadStuff">No Product Video</div>
+                    <div
+                        v-if="Object.keys(product_information.product_videos).length === 0="
+                    >
+                        No Product Video
+                    </div>
+
                     <div
                         class="download_container"
                         v-else
