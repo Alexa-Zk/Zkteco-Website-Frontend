@@ -4,6 +4,9 @@
             <v-tab :ripple="false" tag="li" class="tab-label">
                 <span class="tab-label">Description</span>
             </v-tab>
+            <v-tab :ripple="false" tag="li" class="quote">
+                <span class="tab-label">Request A Quote</span>
+            </v-tab>
             <v-tab :ripple="false" tag="li">
                 <span class="tab-label">Downloads</span>
             </v-tab>
@@ -13,9 +16,6 @@
             <v-tab :ripple="false" tag="li">
                 <span class="tab-label">Related Products</span>
             </v-tab>
-            <v-tab :ripple="false" tag="li" class="quote">
-                <span class="tab-label">Request A Quote</span>
-            </v-tab>
             <v-tab-item>
                 <div class="tab-content">
                     <partial-description :product="product_information" />
@@ -23,8 +23,21 @@
             </v-tab-item>
 
             <v-tab-item>
+                <div class="tab-content quote">
+                    <request-a-quote />
+                </div>
+            </v-tab-item>
+
+            <v-tab-item>
                 <div class="tab-content">
-                    <div v-if="Object.keys(product_information.product_files).length === 0">No Downloads</div>
+                    <div
+                        v-if="
+                            Object.keys(product_information.product_files)
+                                .length === 0
+                        "
+                    >
+                        No Downloads
+                    </div>
                     <div
                         class="download_container"
                         v-else
@@ -48,7 +61,12 @@
 
             <v-tab-item>
                 <div class="tab-content">
-                    <div v-if="Object.keys(product_information.product_videos).length === 0">No Product Videos</div>
+                    <div
+                        v-if="Object.keys(product_information.product_videos).length === 0="
+                    >
+                        No Product Video
+                    </div>
+
                     <div
                         class="download_container"
                         v-else
@@ -74,12 +92,6 @@
                         layout="fullwidth"
                         collection-slug="shop-recommend-items"
                     />
-                </div>
-            </v-tab-item>
-
-            <v-tab-item>
-                <div class="tab-content quote">
-                    <request-a-quote />
                 </div>
             </v-tab-item>
         </v-tabs>
