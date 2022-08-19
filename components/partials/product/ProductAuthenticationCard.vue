@@ -7,7 +7,7 @@
                     <div class="col-inner">
                         <div class="col-title">Name/Company:</div>
                         <span>{{
-                            productData.data ? productData.data.customer_name : 'unknown'
+                            productData ? productData.customer_name : 'unknown'
                         }}</span>
                     </div>
                 </div>
@@ -19,12 +19,12 @@
                             productData ? productData.serial_number : 'unknown'
                         }}</span>
                     </div>
-                    <div class="col-inner">
+                    <!-- <div class="col-inner">
                         <div class="col-title">Model:</div>
                         <span>{{
                             productData ? productData.device_model : 'unknown'
                         }}</span>
-                    </div>
+                    </div> -->
                     <div class="col-inner">
                         <div class="col-title">Exclusive Area:</div>
                         <span>{{
@@ -36,18 +36,20 @@
                     <h3>Warranty Details</h3>
                     <div class="col-inner">
                         <div class="col-title">Warranty Status:</div>
-                        <span>{{
+                        <span :class="{'text-danger': productData.warranty_status == 'Expired' }">{{
                             productData ? productData.warranty_status : 'unknown'
                         }}</span>
-                    </div>
+                    </div>                                         
                     <div class="col-inner">
                         <div class="col-title">Warranty Period:</div>
                         <span>{{
-                            productData ? productData.warranty_days_left : 'unknown'
+                             productData  
+                                ? (productData.warranty_days_left = 'Supported')
+                                : 'Not supported'
                         }}</span>
                     </div>
                 </div>
-                <div class="col">
+                <!-- <div class="col">
                     <h3>Support Details</h3>
                     <div class="col-inner">
                         <div class="col-title">Support:</div>
@@ -57,7 +59,7 @@
                                 : 'not-supported'
                         }}</span>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="right-row">
                 <!-- <img src="../../assets/certified-2.png" alt="" /> -->
@@ -80,6 +82,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.text-danger {
+    font-weight: bold;
+    font-family: monospace;
+    color: orangered;
+}
 .zk-authentication {
     .row {
         padding: 30px;
