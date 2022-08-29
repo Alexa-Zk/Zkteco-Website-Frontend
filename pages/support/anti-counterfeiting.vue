@@ -29,7 +29,6 @@
                                         <div class="form-group--nest">
                                             <input
                                                 class="form-control"
-                                                disabled
                                                 type="text"
                                                 placeholder="Input Serial Number"
                                                 v-model="serial_number"
