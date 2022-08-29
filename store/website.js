@@ -253,29 +253,77 @@ export const actions = {
 
     async getDownloadCategories({ commit }) {
         commit('setLoading', true);
-        const reponse = await Repository.get(
-            `${subBaseUrl}/download-categories`
+
+        const productFiles = await Repository.get(
+            `${subBaseUrl}/product-files`
         )
             .then(response => {
-                commit('setDownloadCategories', response.data);
-                commit('setLoading', false);
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
-        return reponse;
+        const productCategory = {
+            category: "Product Files",
+            created_at: new Date(),
+            created_by: productFiles ? productFiles[0].created_by : null,
+            slug: "product-files",
+            updated_at: new Date(),
+            updated_by: productFiles ? productFiles[0].created_by : null,
+            downloads: productFiles
+        }
+        const reponse = await Repository.get(
+            `${subBaseUrl}/download-categories`
+        )
+            .then(response => {      
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+            
+            const allProductCategory = [...reponse, productCategory]  
+            commit('setDownloadCategories', allProductCategory);
+            commit('setLoading', false);   
+
+        return allProductCategory;
     },
 
     async searchDownloadCategories({ commit }, payload) {
         commit('setLoading', true);
-        const reponse = await Repository.get(
-            `${subBaseUrl}/downloads?download_categories.category=${payload.category}&_q=${payload.search}`
-        )
-            .then(response => {
-                commit('setLoading', false);
-                return response.data;
-            })
-            .catch(error => ({ error: JSON.stringify(error) }));
-        return reponse;
+        let response;
+
+        if(payload.category.toLowerCase().split(" ").join("-") == "product-files"){
+            response = await Repository.get(
+                `${subBaseUrl}/product-files?_q=${payload.search}`
+            )
+                .then(response => {
+                    if(response && response.data.length){
+                        const productCategory = {
+                            id: Math.floor(Math.random() * 101),
+                            category: "Product Files",
+                            created_at: new Date(),
+                            created_by: response.data ? response.data[0].created_by : null,
+                            slug: "product-files",
+                            updated_at: new Date(),
+                            updated_by: response.data ? response.data[0].created_by : null,
+                        }
+                        commit('setLoading', false);
+                        const reformedResponse = response.data.map(download => {
+                            return {...download, download_categories: [productCategory], }
+                        })
+                        return reformedResponse
+                    }
+                    return response.data;
+                })
+                .catch(error => ({ error: JSON.stringify(error) }));
+        } else {
+            response = await Repository.get(
+                `${subBaseUrl}/downloads?download_categories.category=${payload.category}&_q=${payload.search}`
+            )
+                .then(response => {
+                    commit('setLoading', false);
+                    return response.data;
+                })
+                .catch(error => ({ error: JSON.stringify(error) }));
+        }
+        return response;
     },
 
     async getArticlesLimited({ commit }, payload) {
