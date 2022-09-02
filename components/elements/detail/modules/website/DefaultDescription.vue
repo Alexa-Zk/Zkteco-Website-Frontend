@@ -5,7 +5,7 @@
                 <v-tab :ripple="false" tag="li" class="tab-label">
                     <span class="tab-label">
                         <div class="tab-icon-container">
-                            <i class="fa fa-superpowers" aria-hidden="true"></i>
+                            <i class="fa fa-book" aria-hidden="true"></i>
                         </div>
                         <div class="tab-text-container">Description</div> </span
                     ><!-- Description -->
@@ -13,7 +13,7 @@
                 <v-tab :ripple="false" tag="li" class="quote">
                     <span class="tab-label">
                         <div class="tab-icon-container">
-                            <i aria-hidden="true" class="fa fa-usd"></i>
+                            <i aria-hidden="true" class="fa fa-superpowers"></i>
                         </div>
                         <div class="tab-text-container">Request A Quote</div>
                     </span>
