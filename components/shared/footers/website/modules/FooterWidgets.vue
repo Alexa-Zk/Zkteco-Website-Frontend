@@ -140,9 +140,7 @@
                     >
                 </li>
                 <li>
-                    <a href="https://sprout-ng.com/" target="_blank"
-                        >Sprout API Docs</a
-                    >
+                    <a href="/biotime-ng" target="_blank">Biotime API Docs</a>
                 </li>
             </ul>
         </aside>
