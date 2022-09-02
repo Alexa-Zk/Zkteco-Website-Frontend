@@ -1,47 +1,52 @@
 <template lang="html">
     <div>
         <v-tabs background-color="white" color="warning" class="ps-tab-list ">
-            <v-tab :ripple="false" tag="li" class="tab-label">
-                <span class="tab-label">
-                    <div class="tab-icon-container">
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                    </div>
-                    <div class="tab-text-container">Description</div> </span
-                ><!-- Description -->
-            </v-tab>
-            <v-tab :ripple="false" tag="li" class="quote">
-                <span class="tab-label">
-                    <div class="tab-icon-container">
-                        <i aria-hidden="true" class="fa fa-book"></i>
-                    </div>
-                    <div class="tab-text-container">Request A Quote</div>
-                </span>
-            </v-tab>
-            <!-- Request A Quote -->
-            <v-tab :ripple="false" tag="li">
-                <span class="tab-label">
-                    <div class="tab-icon-container">
-                        <i class="fa fa-download" aria-hidden="true"></i>
-                    </div>
-                    <div class="tab-text-container">Downloads</div>
-                </span> </v-tab
-            ><!-- Downloads -->
-            <v-tab :ripple="false" tag="li">
-                <span class="tab-label">
-                    <div class="tab-icon-container">
-                        <i aria-hidden="true" class="fa fa-play-circle"></i>
-                    </div>
-                    <div class="tab-text-container">Product Videos</div>
-                </span> </v-tab
-            ><!-- Product Videos -->
-            <v-tab :ripple="false" tag="li">
-                <span class="tab-label">
-                    <div class="tab-icon-container">
-                        <i aria-hidden="true" class="fa fa-product-hunt"></i>
-                    </div>
-                    <div class="tab-text-container">Related Products</div>
-                </span> </v-tab
-            ><!-- Related Products -->
+            <div class="tab-container">
+                <v-tab :ripple="false" tag="li" class="tab-label">
+                    <span class="tab-label">
+                        <div class="tab-icon-container">
+                            <i class="fa fa-superpowers" aria-hidden="true"></i>
+                        </div>
+                        <div class="tab-text-container">Description</div> </span
+                    ><!-- Description -->
+                </v-tab>
+                <v-tab :ripple="false" tag="li" class="quote">
+                    <span class="tab-label">
+                        <div class="tab-icon-container">
+                            <i aria-hidden="true" class="fa fa-usd"></i>
+                        </div>
+                        <div class="tab-text-container">Request A Quote</div>
+                    </span>
+                </v-tab>
+                <!-- Request A Quote -->
+                <v-tab :ripple="false" tag="li">
+                    <span class="tab-label">
+                        <div class="tab-icon-container">
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                        </div>
+                        <div class="tab-text-container">Downloads</div>
+                    </span> </v-tab
+                ><!-- Downloads -->
+                <v-tab :ripple="false" tag="li">
+                    <span class="tab-label">
+                        <div class="tab-icon-container">
+                            <i aria-hidden="true" class="fa fa-play-circle"></i>
+                        </div>
+                        <div class="tab-text-container">Product Videos</div>
+                    </span> </v-tab
+                ><!-- Product Videos -->
+                <v-tab :ripple="false" tag="li">
+                    <span class="tab-label">
+                        <div class="tab-icon-container">
+                            <i
+                                aria-hidden="true"
+                                class="fa fa-product-hunt"
+                            ></i>
+                        </div>
+                        <div class="tab-text-container">Related Products</div>
+                    </span> </v-tab
+                ><!-- Related Products -->
+            </div>
 
             <v-tab-item>
                 <div class="tab-content">
@@ -200,9 +205,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .quote {
-//     display: none;
-// }
+.v-item-group {
+    padding: 500px;
+}
+
+.v-slide-group__wrapper {
+    padding-top: 200px !important;
+}
+
+.ps-tab-list:first-child {
+    padding-top: 30px;
+}
+
+.tab-container {
+    display: flex;
+}
 
 .tab-icon-container {
     display: none;
