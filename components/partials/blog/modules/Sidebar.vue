@@ -12,7 +12,7 @@
                     placeholder="Search..."
                     v-model="searchQuery"
                 />
-                <button>
+                <button @click.prevent="searchButtonIcon">
                     <i class="icon-magnifier"></i>
                 </button>
             </form>
@@ -20,13 +20,21 @@
         <aside class="widget widget--blog widget--categories">
             <h3 class="widget__title">Categories</h3>
             <div class="widget__content">
-                <ul>
+                <div v-if="loading">
+                    <content-placeholders v-for="x in 2" :key="x">
+                        <content-placeholders-text :lines="2" />
+                    </content-placeholders>
+                </div>
+                <ul v-else>
                     <li v-for="category in Categories" :key="category.id">
-                        <nuxt-link :to="`/news-center/categories/${category.slug}`">
+                        <nuxt-link
+                            :to="`/news-center/categories/${category.slug}`"
+                        >
                             {{ category.name }}
-                            <span class="widget__content_value">{{category.articles.length}}</span>
+                            <span class="widget__content_value">{{
+                                category.articles.length
+                            }}</span>
                         </nuxt-link>
-                        
                     </li>
                 </ul>
             </div>
@@ -34,39 +42,44 @@
         <aside class="widget widget--blog widget--recent-post">
             <recent-sidebar />
         </aside>
-
     </div>
 </template>
 
 <script>
-import RecentSidebar from "./RecentSidebar";
-
-// Queries
-import Categories from '~/apollo/queries/articles/allArticlesCategories';
+import RecentSidebar from './RecentSidebar';
+import { mapState } from 'vuex';
 
 export default {
     name: 'Sidebar',
     components: { RecentSidebar },
+    //props: ['searchQuery'],
     data() {
         return {
-            categories: '',
             searchQuery: ''
         };
     },
-    apollo: {
-        categories: {
-            prefetch: true,
-            query: Categories,
-        },
+    async created() {
+        const response = await this.$store.dispatch(
+            'website/getArticlesCategories'
+        );
     },
     computed: {
+        ...mapState({
+            loading: state => state.website.loading,
+            articlesCategories: state => state.website.articlesCategories
+        }),
         Categories() {
-            return this.categories;
-        },
+            return this.articlesCategories;
+        }
     },
     watch: {
-        searchQuery: function (newQuestion, oldQuestion) {
-            this.$emit('searchBlogs', newQuestion)
+        // searchQuery: function(newQuestion, oldQuestion) {
+        //     this.$emit('searchBlogs', newQuestion);
+        // }
+    },
+    methods: {
+        searchButtonIcon() {
+            this.$emit('searchBlogQuery', this.searchQuery);
         }
     }
 };
@@ -79,6 +92,6 @@ export default {
         color: white;
         padding: 2px 5px;
         margin-left: 10px;
-    }   
+    }
 }
 </style>

@@ -42,26 +42,6 @@ export default {
         BreadCrumb
     },
 
-    head() {
-        const name = this.$route.params.id.toUpperCase();
-        return {
-            titleTemplate: name,
-            title: name,
-            meta: [
-                {
-                    hid: 'title',
-                    name: 'title',
-                    content: name
-                },
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: 'ZKTeco west africa all product list'
-                }
-            ]
-        };
-    },
-
     transition() {
         return 'fadeIn';
     },
@@ -92,26 +72,61 @@ export default {
             return this.product ? this.product : [];
         },
         title() {
-            return this.$route.params.id.toUpperCase();
+            return this.$route.params.id.split("-").join(" ").toUpperCase();
         }
     },
-    async created() {
-        const slug = this.$route.params.id;
+    async asyncData({ store, params }) {
         const payload = {
-            slug: slug,
+            slug: params.id,
             page: 0,
-            sort_by: this.sort_by,
+            sort_by: 'created_at:desc',
             perPage: 0
         };
-        const response = await this.$store.dispatch(
-            'website/getSingleProductCategories',
-            payload
-        );
+        try {
+            const blogDetails = await store.dispatch(
+                'website/getSingleProductCategories',
+                payload
+            );
 
-        await this.$store.dispatch(
-            'website/getTotalSingleProductCategories',
-            slug
-        );
+            await store.dispatch(
+                'website/getTotalSingleProductCategories',
+                params.id
+            );
+            return {
+                blogDetails
+            };
+        } catch (e) {}
+    },
+    head() {
+        let description = 'ZKTeco | Product Categories';
+        let title = 'ZKTeco | Product Categories';
+        let keywords = 'ZKTeco | Product Categories';
+
+        if (this.$data.blogDetails[0] !== undefined) {
+            let seo = this.$data.blogDetails[0].product_category.SEO;
+            description = seo ? seo.description : 'ZKTeco | Product Categories';
+            title = seo ? seo.title : 'ZKTeco | Product Categories';
+            keywords = seo ? seo.keywords : 'keywords';
+        }
+
+        return {
+            title: title,
+            titleTemplate(title) {
+                return `${title}`;
+            },
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: description
+                },
+                {
+                    hid: 'keywords',
+                    name: 'keywords',
+                    content: keywords
+                }
+            ]
+        };
     }
 };
 </script>

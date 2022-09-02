@@ -55,10 +55,20 @@
                                     />
                                 </div>
                                 <div class="form-group">
-                                    <v-checkbox
-                                        label="Remember me"
-                                        color="warning"
-                                    />
+                                    <v-checkbox :error-messages="checkboxErrors" @change="$v.checkbox.$touch()" color="success" v-model="checkbox">
+                                        <template v-slot:label>
+                                            <div class="agreement_link">
+                                                I have read and agree to
+                                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
+                                                    Membership Registration Agreement
+                                                </a>,
+                                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
+                                                   Privacy Policy
+                                                </a>
+                                            
+                                            </div>
+                                        </template>
+                                    </v-checkbox>
                                 </div>
                                 <div class="form-group submit">
                                     <button
@@ -122,6 +132,7 @@ export default {
             loading: false,
             username: null,
             email: null,
+            checkbox: '',
             password: null,
             error_alert: '',
             showAlert: false
@@ -130,7 +141,8 @@ export default {
     validations: {
         username: { required },
         password: { required },
-        email: { required, email }
+        email: { required, email },
+        checkbox: { required }
     },
     methods: {
         async handleSubmit() {
@@ -181,7 +193,13 @@ export default {
             !this.$v.password.required &&
                 errors.push('This password field is required');
             return errors;
-        }
+        },
+        checkboxErrors() {
+            const errors = [];
+            if (!this.$v.checkbox.$dirty) return errors;
+            !this.$v.checkbox.required && errors.push('Please agree to the terms');
+            return errors;
+        },
     },
 };
 </script>
@@ -193,4 +211,16 @@ export default {
 .ps-form__content {
     padding: 30px;
 }
+
+.agreement_link {
+    font-size: 14px;
+    a {
+        color: #78bc27;
+        &:hover {
+            color: darkgreen;
+            text-decoration: underline;
+        }
+    }
+
+} 
 </style>

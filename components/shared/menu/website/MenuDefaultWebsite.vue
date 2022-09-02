@@ -58,7 +58,7 @@ export default {
                 },
                 {
                     text: 'Support',
-                    url: '/support/support',
+                    url: '/support',
                     extraClass: 'menu-item-has-children has-mega-menu',
                     subClass: 'sub-menu',
                     mega: 'true',
@@ -79,17 +79,17 @@ export default {
                                     text: 'Anti-Counterfeit Enquiry',
                                     url: '/support/anti-counterfeiting'
                                 },
-                                {
-                                    text: 'Support Ticket',
-                                    url: '/support/support'
-                                },
+                                // {
+                                //     text: 'Support Ticket',
+                                //     url: '/support/tickets'
+                                // },
                                 {
                                     text: 'Warranty Policy',
                                     url: '/support/product-warranty'
                                 },
                                 {
                                     text: 'FAQ',
-                                    url: '/support/faq'
+                                    url: '/support'
                                 }
                             ]
                         }
@@ -113,6 +113,10 @@ export default {
                 {
                     text: 'BioTime NG',
                     url: '/biotime-ng'
+                },
+                {
+                    text: 'Project Consultation',
+                    url: '/support/project-consultation'
                 }
             ]
         };

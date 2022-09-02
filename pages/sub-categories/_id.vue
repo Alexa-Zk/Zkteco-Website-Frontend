@@ -37,23 +37,6 @@ import LayoutShopSidebarSub from '~/components/partials/shop/website/LayoutShopS
 //LayoutShopSidebarSub.vue
 
 export default {
-    head() {
-        const name = this.$route.params.id.toUpperCase();
-
-        return {
-            title: 'Product Sub Categories',
-            titleTemplate(title) {
-                return `${name} - ${title}`;
-            },
-            meta: [
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: name
-                }
-            ]
-        };
-    },
     components: {
         LayoutShopSidebarSub,
         ShopWidget,
@@ -86,24 +69,62 @@ export default {
             loading: state => state.website.loading
         }),
         title() {
-            return this.$route.params.id.toUpperCase();
+            return this.$route.params.id.split("-").join(" ").toUpperCase();
         }
     },
 
-    created() {
-        const slug = this.$route.params.id;
+    async asyncData({ store, params }) {
         const payload = {
-            slug: slug,
-            sort_by: this.sort_by,
+            slug: params.id,
             page: 0,
+            sort_by: 'created_at:desc',
             perPage: 0
         };
-        const response = this.$store.dispatch(
-            'website/getSubProductCategories',
-            payload
-        );
+        try {
+            const blogDetails = await store.dispatch(
+                'website/getSubProductCategories',
+                payload
+            );
 
-        this.$store.dispatch('website/getTotalSubCategories', slug);
+            await store.dispatch('website/getTotalSubCategories', params.id);
+            return {
+                blogDetails
+            };
+        } catch (e) {}
+    },
+    head() {
+        let description = 'ZKTeco | Product Sub-categories';
+        let title = 'ZKTeco | Product Sub-categories';
+        let keywords = 'ZKTeco | Product Sub-categories';
+        //let seo = this.$data.blogDetails[0].product_sub_category.SEO;
+
+        if (this.$data.blogDetails[0] !== undefined) {
+            let seo = this.$data.blogDetails[0].product_sub_category.SEO;
+            description = seo
+                ? seo.description
+                : 'ZKTeco | Product Sub-categories';
+            title = seo ? seo.title : 'ZKTeco | Product Sub-categories';
+            keywords = seo ? seo.keywords : 'keywords';
+        }
+
+        return {
+            title: title,
+            titleTemplate(title) {
+                return `${title}`;
+            },
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: description
+                },
+                {
+                    hid: 'keywords',
+                    name: 'keywords',
+                    content: keywords
+                }
+            ]
+        };
     }
 };
 </script>

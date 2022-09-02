@@ -11,8 +11,8 @@
                 </div>
                 <div class="card-text">
                     <h6>Call Us</h6>
-                    <p><a href="tel:+2348177777512">(+234) 8177777512</a></p>
-                    <p><a href="tel:+2348177777513">(+234) 8177777513</a></p>
+                    <p><a href="tel:+2348175555512">(+234) 817 5555 512</a></p>
+                    <p><a href="tel:+2348175555513">(+234) 817 5555 513</a></p>
                 </div>
             </div>
             <div class="contact-form-card">
@@ -27,12 +27,12 @@
                             >enquiry@zkteco-wa.com</a
                         >
                     </p>
-                    <p>
+                    <!--p>
                         <a
                             href="mailto:support@zkteco-wa.com?subject=Biotime Cloud&body=Support"
                             >support@zkteco-wa.com</a
                         >
-                    </p>
+                    </p-->
                 </div>
             </div>
             <div class="contact-form-card">
@@ -44,11 +44,20 @@
                     <p>64 Adetokunbo Ademola Street, Victoria Island, Lagos</p>
                 </div>
             </div>
+            <div class="contact-form-card">
+                <div class="circle">
+                    <i class="icon-telephone"></i>
+                </div>
+                <div class="card-text">
+                    <h6>Whatapp</h6>
+                    <p><a href="tel:+2348175555514">(+234) 817 5555 514</a></p>
+                </div>
+            </div>
         </div>
 
         <div class="contact-widget">
             <div class="form-image">
-                <img src="~/static/img/biotimecloud-zkteco.jpeg" alt="" />
+                <img src="~/static/img/african_man.png" alt="" />
             </div>
             <form class="ps-form--contact-us btc-form--contact-us">
                 <h3>Request a quote</h3>
@@ -103,7 +112,7 @@
                             <label>Phone Number</label>
                             <input
                                 class="form-control"
-                                type="text"
+                                type="number"
                                 placeholder="Phone Number"
                                 v-model="phone_number"
                             />
@@ -347,6 +356,39 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                    <!-- ################################################################### -->
+                    <div class="form-group">
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="inlineCheckbox3"
+                                v-model="checkbox"
+                            />
+                            <label
+                                class="form-check-label"
+                                for="inlineCheckbox3"
+                                >I have read and agree to
+
+                                <a
+                                    target="_blank"
+                                    href="/website/page/privacy-policy"
+                                    @click.stop
+                                >
+                                    Privacy Policy
+                                </a></label
+                            >
+                        </div>
+
+                        <p class="el-error">
+                            {{ errors }}
+                        </p>
+                    </div>
+                    <!-- ###################################################################-->
+                </div>
+
                 <div class="form-group submit" style="margin-top: 10px;">
                     <button
                         @click.prevent="willContactUs"
@@ -355,19 +397,30 @@
                         {{ loading ? 'Sending...' : 'Send Quote' }}
                     </button>
                 </div>
-                <p
-                    style="font-size: 11px; color: red; font-weight: normal;"
-                    v-if="showError"
-                >
+                <p class="el-error" v-if="showError">
                     An error occurred
                 </p>
                 <p
-                    style="font-size: 11px; color: green; font-weight: normal;"
+                    style="font-size: 14px; color: green; font-weight: 600;"
                     v-if="showSuccess"
                 >
                     You will be contacted shortly!!
                 </p>
             </form>
+            <v-snackbar v-model="snackbar" :timeout="3000" color="green" tile>
+                {{ snackBarMessage }}
+
+                <template v-slot:action="{ attrs }">
+                    <v-btn
+                        color="white"
+                        text
+                        v-bind="attrs"
+                        @click="snackbar = false"
+                    >
+                        Close
+                    </v-btn>
+                </template>
+            </v-snackbar>
         </div>
     </div>
 </template>
@@ -396,7 +449,12 @@ export default {
             monitor_attendance_online: '',
             is_support_needed: '',
             additional_request: '',
-            disabled: false
+            disabled: false,
+            snackbar: false,
+            snackBarMessage:
+                'Form Submitted Successfully. You will be contacted by one of our customer representatives.',
+            checkbox: false,
+            errors: ''
         };
     },
     validations: {
@@ -410,7 +468,8 @@ export default {
         quantity_of_attendance_device: { required, numeric },
         preferred_mode_of_authentication: { required },
         monitor_attendance_online: { required },
-        is_support_needed: { required }
+        is_support_needed: { required },
+        checkbox: { required }
     },
     methods: {
         resetForm() {
@@ -430,6 +489,12 @@ export default {
         async willContactUs() {
             this.$v.$touch();
             if (this.$v.$invalid) {
+                return false;
+            } else if (this.$v.$error) {
+                return false;
+            } else if (this.checkbox == false) {
+                this.errors = 'Please agree to the terms';
+
                 return false;
             } else {
                 this.loading = true;
@@ -456,15 +521,21 @@ export default {
                     'website/requestAQuote',
                     payload
                 );
+
                 if (response) {
                     this.loading = false;
-                    this.showSuccess = true;
+                    this.snackbar = true;
                     this.showError = false;
-                    this.resetForm();
+                    setTimeout(() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        //this.resetForm();
+                        window.location.reload();
+                        //this.$router.push('/biotime-ng');
+                    }, 3001);
                 } else {
-                    this.showError = true;
-                    this.showSuccess = false;
                     this.loading = false;
+                    this.showSuccess = false;
+                    this.showError = true;
                 }
             }
         }
@@ -482,9 +553,13 @@ h6 {
     color: #6c757d;
 }
 .el-error {
-    font-size: 11px !important;
+    font-size: 14px !important;
     color: red !important;
     font-weight: lighter !important;
+}
+
+label a {
+    color: red !important;
 }
 
 .contact-form {
@@ -493,7 +568,7 @@ h6 {
 
     .contact-form-link {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 30px;
         margin-bottom: 60px;
 

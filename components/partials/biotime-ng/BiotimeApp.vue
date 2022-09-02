@@ -16,15 +16,19 @@
                     </p>
                 </div>
                 <div class="app-buttons">
-                    <button
-                        type="submit"
+                    <a
                         class="ps-btn ps-btn--lg ps-btn--gray"
-                    >
-                        <i class="fa fa-apple"></i> IPhone
-                    </button>
-                    <button type="submit" class="ps-btn ps-btn--lg">
-                        <i class="fa fa-android"></i> Andriod
-                    </button>
+                        target="_blank"
+                        href="https://apps.apple.com/lt/app/biotime-cloud/id1576511039"
+                        ><i class="fa fa-apple"></i> IPhone
+                    </a>
+
+                    <a
+                        class="ps-btn ps-btn--lg"
+                        target="_blank"
+                        href="https://play.google.com/store/apps/details?id=com.biotime.cloud&hl=en&gl=US"
+                        ><i class="fa fa-android"></i> Andriod
+                    </a>
                 </div>
             </div>
             <div class="rtf">

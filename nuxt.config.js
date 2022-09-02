@@ -1,4 +1,4 @@
-const axios = require("axios");
+const axios = require('axios');
 
 export default {
     head: {
@@ -48,6 +48,7 @@ export default {
             src: '~/plugins/vue-notification.js',
             ssr: false
         },
+        { src: '~plugins/vue-cookie-law.js', ssr: false },
         {
             src: '~/plugins/axios.js',
             ssr: false
@@ -61,8 +62,8 @@ export default {
             ssr: false
         },
         { src: '~/plugins/aos', ssr: false },
-        { src: '~/plugins/v-google-translate.js', ssr: false  },
-        '~/plugins/jsonld.js',
+        { src: '~/plugins/v-google-translate.js', ssr: false },
+        '~/plugins/jsonld.js'
     ],
 
     buildModules: [
@@ -92,9 +93,8 @@ export default {
     modules: [
         '@nuxtjs/axios',
         'nuxt-i18n',
-        '@nuxtjs/apollo',
         '@nuxtjs/robots',
-        '@nuxtjs/sitemap',
+        '@nuxtjs/sitemap'
     ],
 
     robots: {
@@ -106,26 +106,24 @@ export default {
         hostname: 'https://zkteco-wa.com',
         exclude: [],
         routes: async () => {
+            let { data: productsData } = await axios.get(
+                `https://admin.zkteco-wa.com/products`
+            );
+            const productArray = productsData.map(v => `/product/${v.slug}`);
 
-            let { data: productsData } = await axios.get(`https://admin.zkteco-wa.com/products`);
-            const productArray = productsData.map(v => `/product/${v.slug}`)
-        
-            let { data: solutionData } = await axios.get(`https://admin.zkteco-wa.com/solutions`);
-            const solutionArray = solutionData.map(v => `/solution-details/${v.slug}`)
+            let { data: solutionData } = await axios.get(
+                `https://admin.zkteco-wa.com/solutions`
+            );
+            const solutionArray = solutionData.map(
+                v => `/solution-details/${v.slug}`
+            );
 
-            let { data: articlesData } = await axios.get(`https://admin.zkteco-wa.com/articles`);
-            const articlesArray = articlesData.map(v => `/blog/${v.slug}`)
-        
-            return [...productArray, ...solutionArray, ...articlesArray]
-        }
+            let { data: articlesData } = await axios.get(
+                `https://admin.zkteco-wa.com/articles`
+            );
+            const articlesArray = articlesData.map(v => `/blog/${v.slug}`);
 
-    },
-
-    apollo: {
-        clientConfigs: {
-            default: {
-                httpEndpoint: 'https://admin.zkteco-wa.com/graphql'
-            }
+            return [...productArray, ...solutionArray, ...articlesArray];
         }
     },
 

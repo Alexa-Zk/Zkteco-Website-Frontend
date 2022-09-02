@@ -10,23 +10,10 @@
                                 Reset password
                             </nuxt-link>
                         </li>
-                        
                     </ul>
                     <div class="ps-tab active">
                         <form>
                             <div class="ps-form__content">
-                                <h5>Login</h5>
-                                <div class="form-group">
-                                    <v-text-field
-                                        v-model="username"
-                                        class="ps-text-field"
-                                        :error-messages="emailErrors"
-                                        @input="$v.username.$touch()"
-                                        placeholder="Please enter email"
-                                        height="50"
-                                        outlined
-                                    />
-                                </div>
                                 <div class="form-group">
                                     <v-text-field
                                         v-model="password"
@@ -40,22 +27,26 @@
                                     />
                                 </div>
                                 <div class="form-group">
-                                    <v-checkbox
-                                        label="Remember me"
-                                        color="warning"
+                                    <v-text-field
+                                        v-model="confirmPassword"
+                                        type="password"
+                                        class="ps-text-field"
+                                        :error-messages="confirmPasswordErrors"
+                                        @input="$v.confirmPassword.$touch()"
+                                        placeholder="Please confirm password"
+                                        height="50"
+                                        outlined
                                     />
                                 </div>
+                                
+
                                 <div class="form-group submit">
                                     <button
                                         type="submit"
                                         class="ps-btn ps-btn--fullwidth"
                                         @click.prevent="handleSubmit"
                                     >
-                                        {{
-                                            loading
-                                                ? 'Authenticating...'
-                                                : 'Login'
-                                        }}
+                                        {{ loading ? 'Resetting...' : 'Reset' }}
                                     </button>
                                 </div>
                                 <v-alert
@@ -80,7 +71,7 @@
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import Login from '~/components/partials/account/Login';
 import HeaderMobile from '~/components/shared/mobile/HeaderMobile';
-import { required, email } from 'vuelidate/lib/validators';
+import { required, minLength, sameAs } from 'vuelidate/lib/validators';
 import { validationMixin } from 'vuelidate';
 
 export default {
@@ -105,49 +96,39 @@ export default {
                 }
             ],
             loading: false,
-            username: null,
             password: null,
+            confirmPassword: null,
             error_alert: '',
+            resetCode: null,
             showAlert: false
         };
     },
     validations: {
-        username: { required },
-        password: { required }
+        confirmPassword: { required, sameAsPassword: sameAs('password') },
+        password: { required, minLength: minLength(6) }
     },
-    beforeRouteEnter(to, from, next) {
-        next(vm => {
-            vm.storeLocally(from, next);
-        });
+    mounted() {
+        this.resetCode = this.$route.query.code;
     },
+
     methods: {
-        storeLocally(from, next) {
-            if (from.path !== '/auth/register') {
-                localStorage.setItem('NAVIGATION_HISTORY', from.path);
-            }
-            next();
-        },
         async handleSubmit() {
             this.$v.$touch();
             if (!this.$v.$invalid) {
                 this.loading = true;
                 const response = await this.$store.dispatch(
-                    'auth/loginDownloads',
+                    'auth/resetPassword',
                     {
-                        identifier:
-                            this.username || 'rahman.badru@zkteco-wa.com',
-                        password: this.password || 'alexa123'
+                        code: this.resetCode,
+                        password: this.password,
+                        passwordConfirmation: this.confirmPassword
                     }
                 );
-                if (response.status === 200) {
-                    const getLocationHistory = localStorage.getItem(
-                        'NAVIGATION_HISTORY'
-                    );
-                    this.$router.push(getLocationHistory);
+                if (response) {
                     this.loading = false;
+                    this.$router.push('/auth/login');
                 } else {
                     this.loading = false;
-                    console.log(response.error.message);
                     this.error_alert = response.error.message;
                     this.showAlert = true;
                 }
@@ -155,10 +136,13 @@ export default {
         }
     },
     computed: {
-        emailErrors() {
+        confirmPasswordErrors() {
             const errors = [];
-            if (!this.$v.username.$dirty) return errors;
-            !this.$v.username.required && errors.push('E-mail is required');
+            if (!this.$v.confirmPassword.$dirty) return errors;
+            !this.$v.confirmPassword.required &&
+                errors.push('confirm password is required');
+            !this.$v.confirmPassword.sameAsPassword &&
+                errors.push('password and confirm password should match');
             return errors;
         },
         passwordErrors() {
@@ -166,6 +150,8 @@ export default {
             if (!this.$v.password.$dirty) return errors;
             !this.$v.password.required &&
                 errors.push('This password field is required');
+            !this.$v.password.minLength &&
+                errors.push('password must be mored than 6');
             return errors;
         }
     }

@@ -31,14 +31,13 @@ export default {
                     text: this.$i18n.t('menu.mainMenu.home'),
                     url: '/store',
                     extraClass: 'menu-item-has-children',
-                    subClass: 'sub-menu',
-                    
+                    subClass: 'sub-menu'
                 },
                 {
                     text: 'Products',
                     url: '/store/shop',
                     extraClass: 'menu-item-has-children has-mega-menu',
-                    subClass: 'sub-menu',
+                    subClass: 'sub-menu'
                 },
                 {
                     text: 'Help',
@@ -61,24 +60,23 @@ export default {
                                 {
                                     text: this.$i18n.t('menu.mainMenu.faqs'),
                                     url: '/store/page/faqs'
-                                },
+                                }
                             ]
-                        },
+                        }
                     ]
                 },
                 {
                     text: 'Support',
-                    url: '/support/support',
+                    url: '/support',
                     extraClass: 'menu-item-has-children',
-                    subClass: 'sub-menu',
+                    subClass: 'sub-menu'
                 },
                 {
                     text: 'Website',
                     url: '/',
                     extraClass: 'menu-item-has-children',
-                    subClass: 'sub-menu',
-                    
-                },
+                    subClass: 'sub-menu'
+                }
             ]
         };
     }

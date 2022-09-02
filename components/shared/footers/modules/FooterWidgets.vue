@@ -9,11 +9,18 @@
                 <h3>+234 817 5555 512</h3>
                 <p>
                     64 Adetokunbo Ademola Street, Victoria Island, Lagos<br />
-                    <a style="font-weight: bold;" href="mailto:enquiry@zkteco-wa.com">enquiry@zkteco-wa.com</a>
+                    <a
+                        style="font-weight: bold;"
+                        href="mailto:enquiry@zkteco-wa.com"
+                        >enquiry@zkteco-wa.com</a
+                    >
                 </p>
                 <ul class="ps-list--social">
                     <li>
-                        <a class="facebook" href="https://www.facebook.com/zktecowa">
+                        <a
+                            class="facebook"
+                            href="https://www.facebook.com/zktecowa"
+                        >
                             <i class="fa fa-facebook"></i>
                         </a>
                     </li>
@@ -23,12 +30,18 @@
                         </a>
                     </li>
                     <li>
-                        <a class="instagram" href="https://www.instagram.com/zktecowa/">
+                        <a
+                            class="instagram"
+                            href="https://www.instagram.com/zktecowa/"
+                        >
                             <i class="fa fa-instagram"></i>
                         </a>
                     </li>
                     <li>
-                        <a class="linkedin" href="https://www.instagram.com/zkteco_wa/">
+                        <a
+                            class="linkedin"
+                            href="https://www.instagram.com/zkteco_wa/"
+                        >
                             <i class="fa fa-linkedin"></i>
                         </a>
                     </li>
@@ -46,7 +59,7 @@
                 <li>
                     <a href="/support/product-warranty">Warranty</a>
                 </li>
-                 <li>
+                <li>
                     <a href="/store/page/faqs">FAQs</a>
                 </li>
             </ul>
@@ -98,4 +111,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+a {
+    text-decoration: none;
+}
+.widget_content a {
+    color: #fff !important;
+}
+</style>

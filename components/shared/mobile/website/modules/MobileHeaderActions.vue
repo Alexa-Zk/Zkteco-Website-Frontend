@@ -4,7 +4,7 @@
             <i class="icon-bag2"></i>
             
         </nuxt-link> -->
-        <nuxt-link to="/" class="header__extra">
+        <nuxt-link to="/auth/login" class="header__extra">
             <i class="icon-user"></i>
         </nuxt-link>
     </div>
@@ -22,7 +22,7 @@ export default {
         i {
             color: white;
         }
-        span {    
+        span {
             background: white;
             i {
                 color: #78bc27;

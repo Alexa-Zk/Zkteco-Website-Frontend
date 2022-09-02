@@ -217,7 +217,6 @@ export default {
             this.isSearching = true;
             if (response.error) {
             } else {
-                console.log(response);
                 this.searchData = response;
             }
         },
@@ -246,11 +245,13 @@ export default {
         searchQuery(newEntry, oldEntry) {
             if (newEntry !== '') {
             } else {
+                this.currentCategory = this.currentCategoryComputed
                 this.isSearching = false;
             }
         }
     },
     computed: {
+        
         ...mapState({
             isLoading: state => state.website.loading,
             isLoggedInToDownload: state => state.auth.isLoggedInToDownload,
@@ -258,7 +259,7 @@ export default {
         }),
         currentCategoryComputed() {
             return this.downloadCategories[0].category;
-        }
+        } 
     }
 };
 </script>

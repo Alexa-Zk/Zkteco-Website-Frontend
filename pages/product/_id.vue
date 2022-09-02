@@ -4,13 +4,13 @@
         <div class="ps-page--product">
             <div class="ps-container">
                 <div class="ps-page__container">
-                    <div class="ps-page__left" v-if="products">
-                        <product-detail-fullwidth
-                            :singleProduct="formattedProducts"
-                        />
+                    <div class="ps-page__left" v-if="pdt">
+                        <product-detail-fullwidth :singleProduct="pdt" />
                     </div>
                     <div class="ps-page__right">
-                        <product-widgets collection-slug="widget_same_brand" />
+                        <div class="request-quote">
+                            <request-a-quote />
+                        </div>
                     </div>
                 </div>
                 <!-- <related-product layout="fullwidth" collection-slug="shop-recommend-items"/> -->
@@ -21,37 +21,67 @@
 </template>
 
 <script>
+import { validationMixin } from 'vuelidate';
 import ProductDetailFullwidth from '~/components/elements/detail/website/ProductDetailFullwidth';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import RelatedProduct from '~/components/partials/product/RelatedProduct';
 import ProductWidgets from '~/components/partials/product/website/ProductWidgets';
 import LayoutProduct from '~/layouts/layout-product';
 import Newsletters from '~/components/partials/commons/Newsletters';
-import singleProduct from '~/apollo/queries/products/singleProduct';
+
+import RequestAQuote from '~/components/elements/detail/modules/website/RequestAQuote';
 
 export default {
     layout: 'layout-default-website',
     name: 'Products',
     transition: 'zoom',
+    mixins: [validationMixin],
     components: {
         Newsletters,
         LayoutProduct,
         ProductWidgets,
         RelatedProduct,
         BreadCrumb,
-        ProductDetailFullwidth
+        ProductDetailFullwidth,
+        RequestAQuote
+    },
+    async asyncData({ params, $axios }) {
+        try {
+            const response = await $axios.get(
+                `https://admin.zkteco-wa.com/products?slug_in=${params.id}`
+            );
+            const pdt = response.data[0];
+            return { pdt };
+        } catch (error) {}
     },
     head() {
-        const name = this.formattedProducts ? this.formattedProducts.name : '';
-        const description = this.formattedProducts
-            ? this.formattedProducts.description
-            : 'Product Details - Description';
-        const image = this.formattedProducts
-            ? this.formattedProducts.images[0].url
-            : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
-        const title = this.formattedProducts.seo.title
-            ? this.formattedProducts.seo.title
-            : description;
+        // const name = this.formattedProducts ? this.formattedProducts.name : '';
+        // const description = this.formattedProducts
+        //     ? this.formattedProducts.description
+        //     : 'Product Details - Description';
+        // const image = this.formattedProducts
+        //     ? this.formattedProducts.images[0].url
+        //     : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
+        // const title = description.replace(/<\/?[^>]+(>|$)/g, '');
+        let description = 'ZKTeco | Product ';
+        let title = 'ZKTeco | Product ';
+        let image = 'ZKTeco | Product ';
+        let keywords = 'ZKTeco | Product ';
+
+        if (
+            this.$data.pdt !== null ||
+            this.$data.pdt !== undefined ||
+            this.$data.pdt !== ''
+        ) {
+            description = this.$data.pdt.description.replace(
+                /<\/?[^>]+(>|$)/g,
+                ''
+            );
+            image = this.$data.pdt.images[0].url;
+            title = this.$data.pdt.name;
+            keywords = this.$data.pdt.name;
+        }
+
         return {
             title: title,
             titleTemplate(title) {
@@ -112,39 +142,29 @@ export default {
                     hid: 'og:image:alt',
                     property: 'og:image:alt',
                     content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                },
+                {
+                    hid: 'keywords',
+                    name: 'keywords',
+                    content: keywords
                 }
             ]
         };
     },
-    jsonld() {
-        if (this.formattedProducts) {
-            return {
-                '@context': 'https://schema.org',
-                '@id': '#product',
-                '@type': 'IndividualProduct',
-                additionalType: `https://www.zkteco-wa.com/product/${this.formattedProducts.slug}`,
-                description: `https://www.zkteco-wa.com/product/${this.formattedProducts.description}`,
-                name: `https://www.zkteco-wa.com/product/${this.formattedProducts.name}`
-            };
-        } else {
-            return {};
-        }
-    },
-    apollo: {
-        products: {
-            prefetch: true,
-            query: singleProduct,
-            variables() {
-                return { id: this.$route.params.id };
-            }
-        }
-    },
-
-    computed: {
-        formattedProducts() {
-            return this.products[0];
-        }
-    },
+    // jsonld() {
+    //     if (this.pdt) {
+    //         return {
+    //             '@context': 'https://schema.org',
+    //             '@id': '#product',
+    //             '@type': 'IndividualProduct',
+    //             additionalType: `https://www.zkteco-wa.com/product/${this.pdt.slug}`,
+    //             description: `https://www.zkteco-wa.com/product/${this.pdt.description}`,
+    //             name: `https://www.zkteco-wa.com/product/${this.pdt.name}`
+    //         };
+    //     } else {
+    //         return {};
+    //     }
+    // },
     data() {
         return {
             fullPage: true,
@@ -169,4 +189,23 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.request-quote {
+    background: #e1f3dc; //rgb(129, 129, 129);
+    padding: 1.5rem 1.5rem;
+
+    button {
+        padding: 2rem;
+    }
+
+    .form-control {
+        width: 98% !important;
+    }
+}
+
+.el-error {
+    font-size: 14px !important;
+    color: red !important;
+    font-weight: lighter !important;
+}
+</style>

@@ -33,6 +33,7 @@
                                             placeholder="Position"
                                             v-model="position"
                                         />
+
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
                                             v-if="$v.position.$error"
@@ -67,7 +68,7 @@
                                         <label>Phone Number </label>
                                         <input
                                             class="form-control"
-                                            type="text"
+                                            type="number"
                                             placeholder="Phone Number"
                                             v-model="phone_number"
                                         />
@@ -97,19 +98,18 @@
                                     class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
                                 >
                                     <div class="form-group">
-                                        <label>Country </label>
                                         <select
                                             class="form-control"
                                             v-model="country"
                                         >
                                             <option disabled value=""
-                                                >Country</option
+                                                >Country *</option
                                             >
-                                            <option key="nigeria"
-                                                >Nigeria</option
+                                            <option
+                                                v-for="country in countries"
+                                                :key="country"
+                                                >{{ country }}</option
                                             >
-                                            <option key="ghana">Ghana</option>
-                                            <option key="others">Others</option>
                                         </select>
                                         <p
                                             style="font-size: 11px; color: red; font-weight: lighter;"
@@ -208,22 +208,21 @@
                                     class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
                                 >
                                     <div class="form-group">
-                                        <label>Project Scale </label>
                                         <select
                                             class="form-control"
                                             v-model="project_scale"
                                         >
                                             <option disabled value=""
-                                                >Project Scale
-                                            </option>
+                                                >Project Scale *</option
+                                            >
                                             <option key="large"
-                                                >Large Products</option
+                                                >Large Projects</option
                                             >
                                             <option key="medium"
-                                                >Medium Project</option
+                                                >Medium Projects</option
                                             >
                                             <option key="small"
-                                                >Small Products</option
+                                                >Small Projects</option
                                             >
                                         </select>
                                         <p
@@ -233,6 +232,42 @@
                                             Select Project Scale!
                                         </p>
                                     </div>
+                                </div>
+
+                                <div
+                                    class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                                >
+                                    <!-- ################################################################### -->
+                                    <div class="form-group">
+                                        <div
+                                            class="form-check form-check-inline"
+                                        >
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                id="inlineCheckbox3"
+                                                v-model="checkbox"
+                                            />
+                                            <label
+                                                class="form-check-label"
+                                                for="inlineCheckbox3"
+                                                >I have read and agree to
+
+                                                <a
+                                                    target="_blank"
+                                                    href="/website/page/privacy-policy"
+                                                    @click.stop
+                                                >
+                                                    Privacy Policy
+                                                </a></label
+                                            >
+                                        </div>
+
+                                        <p class="el-error">
+                                            {{ errors }}
+                                        </p>
+                                    </div>
+                                    <!-- ###################################################################-->
                                 </div>
 
                                 <div
@@ -246,6 +281,30 @@
                                         {{ loading ? 'Sending...' : 'Submit' }}
                                     </button>
                                 </div>
+                                <!-- v-model="snackbar"
+                                    :timeout="3000"
+                                    color="green"
+                                    tile
+                                    -->
+                                <v-snackbar
+                                    v-model="snackbar"
+                                    :timeout="3000"
+                                    color="green"
+                                    tile
+                                >
+                                    {{ snackBarMessage }}
+
+                                    <template v-slot:action="{ attrs }">
+                                        <v-btn
+                                            color="white"
+                                            text
+                                            v-bind="attrs"
+                                            @click="snackbar = false"
+                                        >
+                                            Close
+                                        </v-btn>
+                                    </template>
+                                </v-snackbar>
                             </div>
                         </div>
                     </div>
@@ -266,7 +325,7 @@ export default {
         BreadCrumb
     },
     name: 'project-consultation',
-    transition: 'zoom',
+    //transition: 'zoom',
     layout: 'layout-default-website',
     mixins: [validationMixin],
     data: () => {
@@ -280,20 +339,42 @@ export default {
                     text: 'Project Consultation'
                 }
             ],
+            countries: [
+                'Nigeria',
+                'Benin',
+                'Burkina Faso',
+                'Cabo Verde',
+                'Cote Divoire',
+                'The Gambia',
+                'Ghana',
+                'Guinea',
+                'Guinea Bissau',
+                'Liberia',
+                'Mali',
+                'Niger',
+                'Senegal',
+                'Sierra Leone',
+                'Togo'
+            ],
             showError: false,
             showSuccess: false,
             loading: '',
             company_name: '',
             country: '',
             phone_number: '',
-
             position: '',
             related_industry: '',
             product_needed: '',
             project_description: '',
             project_scale: '',
             city: '',
-            disabled: false
+            disabled: false,
+            snackbar: false,
+            snackBarMessage:
+                'Form Submitted Successfully. You will be contacted by one of our customer representatives.',
+            checkbox: false,
+            errors: '',
+            name: null
         };
     },
     validations: {
@@ -305,7 +386,8 @@ export default {
         product_needed: { required },
         project_description: { required },
         project_scale: { required },
-        city: { required }
+        city: { required },
+        checkbox: { required }
     },
     methods: {
         resetForm() {
@@ -320,8 +402,12 @@ export default {
             this.city = '';
         },
         async submit() {
-            this.$v.$touch();
             if (this.$v.$invalid) {
+            } else if (this.$v.$error) {
+                return false;
+            } else if (this.checkbox == false) {
+                this.errors = 'Please agree to the terms';
+
                 return false;
             } else {
                 this.loading = true;
@@ -336,26 +422,28 @@ export default {
                     product_needed: this.product_needed,
                     project_description: this.project_description,
                     project_scale:
-                        this.project_scale === 'Large Project'
+                        this.project_scale === 'Large Projects'
                             ? 'large_projects'
-                            : this.project_scale === 'Medium Project'
+                            : this.project_scale === 'Medium Projects'
                             ? 'medium_projects'
                             : 'small_projects',
                     city: this.city
                 };
-                console.log(payload);
+
                 const response = await this.$store.dispatch(
                     'website/projectConsultation',
                     payload
                 );
+
                 if (response) {
                     this.loading = false;
-                    this.showSuccess = true;
-                    this.showError = false;
-                    this.resetForm();
+                    this.snackbar = true;
+
+                    setTimeout(() => {
+                        this.$router.push('/');
+                        //this.resetForm();
+                    }, 3002);
                 } else {
-                    this.showError = true;
-                    this.showSuccess = false;
                     this.loading = false;
                 }
             }
@@ -363,10 +451,24 @@ export default {
     },
     computed: {
         ...mapState({
-            user: state => state.auth.userInfoDownload
+            userInfoDownload: state => state.auth.userInfoDownload
         }),
         userInfo() {
-            return this.user.user;
+            if (
+                this.userInfoDownload == null ||
+                this.userInfoDownload == undefined ||
+                this.userInfoDownload == ''
+            ) {
+                return { username: '', email: '' };
+            }
+            return this.userInfoDownload.user;
+        },
+        checkboxErrors() {
+            const errors = [];
+            if (!this.$v.checkbox.$dirty) return errors;
+            !this.$v.checkbox.required &&
+                errors.push('Please agree to the terms');
+            return errors;
         }
     },
     mounted() {
@@ -376,13 +478,23 @@ export default {
         if (tokenForDownloads) {
             return true;
         } else {
-            this.$router.push('/');
+            this.$router.push('/auth/login');
         }
     }
 };
 </script>
 
 <style lang="scss" scoped>
+.el-error {
+    font-size: 13px !important;
+    color: red !important;
+    font-weight: lighter !important;
+}
+
+label a {
+    color: red !important;
+}
+
 .consultation-box {
     display: flex;
     // align-items: center;

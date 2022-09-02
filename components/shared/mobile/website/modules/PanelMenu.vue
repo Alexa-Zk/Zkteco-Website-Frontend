@@ -131,12 +131,12 @@ export default {
                         },
                         {
                             text: 'FAQ',
-                            url: '/support/faq'
+                            url: '/support'
                         },
-                        {
-                            text: 'Support Ticket',
-                            url: '/support/support'
-                        },
+                        // {
+                        //     text: 'Support',
+                        //     url: '/support/tickets'
+                        // },
                         {
                             text: 'Warranty Policies',
                             url: '/support/product-warranty'
@@ -171,10 +171,15 @@ export default {
                     text: 'Store Locator',
                     url: '/website/page/store-locator'
                 },
-                // {
-                //     text: 'BioTime NG',
-                //     url: '/biotime-ng',
-                // },
+
+                {
+                    text: 'BioTime NG',
+                    url: '/biotime-ng'
+                },
+                {
+                    text: 'Project Consultation',
+                    url: '/support/project-consultation'
+                },
                 {
                     text: 'Login',
                     url: '/website/page/login'
