@@ -353,7 +353,7 @@ export default {
             color: #8bc76f;
         }
     }
-    @media (max-width: 540px) {
+    @media (max-width: 740px) {
         .group_profile {
             display: flex;
             flex-direction: column;
@@ -384,7 +384,7 @@ export default {
             }
         }
     }
-    @media (max-width: 540px) {
+    @media (max-width: 740px) {
         .emp_stat {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -421,7 +421,7 @@ export default {
             }
         }
     }
-    @media (max-width: 540px) {
+    @media (max-width: 740px) {
         .icon_wrapper {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -466,7 +466,7 @@ export default {
             }
         }
 
-        @media (max-width: 540px) {
+        @media (max-width: 740px) {
             .business_content {
                 .business_emp {
                     display: flex;
