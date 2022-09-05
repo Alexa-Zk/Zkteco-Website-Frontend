@@ -475,6 +475,12 @@ export default {
                 .business_entrance {
                     display: flex;
                     flex-direction: column;
+
+                    // div {
+                    //     display: flex;
+                    //     flex-direction: row-reverse;
+                    //     justify-content: flex-end;
+                    // }
                 }
             }
         }
