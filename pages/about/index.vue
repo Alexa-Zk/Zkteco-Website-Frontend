@@ -43,23 +43,23 @@
         <div class="emp_stat_container">
             <div class="emp_stat">
                 <div>
-                    <span>
-                        3800+
+                    <span class="num" data-val="2800">
+                        0
                     </span>
                     <p>Global Employees Exceed</p>
                 </div>
                 <div>
-                    <span>
-                        1100+
+                    <span class="num" data-val="1400">
+                        0
                     </span>
                     <p>R&D Staffs Exceed</p>
                 </div>
                 <div>
-                    <span>730 </span>
+                    <span class="num" data-val="2730">0 </span>
                     <p>Number of Foreign Employees</p>
                 </div>
                 <div>
-                    <span>38</span>
+                    <span class="num" data-val="2100">0</span>
                     <p>Overseas Subsidiaries</p>
                 </div>
             </div>
@@ -330,6 +330,24 @@ export default {
                 }
             ]
         };
+    },
+    mounted() {
+        let valueDisplays = window.document.querySelectorAll('.num');
+        let interval = 2000;
+
+        valueDisplays.forEach(valueDisplay => {
+            let startValue = 0;
+            let endValue = parseInt(valueDisplay.getAttribute('data-val'));
+
+            let duration = Math.floor(interval / endValue);
+            let counter = setInterval(function() {
+                startValue += 5;
+                valueDisplay.textContent = startValue;
+                if (startValue == endValue) {
+                    clearInterval(counter);
+                }
+            }, duration);
+        });
     }
 };
 </script>
