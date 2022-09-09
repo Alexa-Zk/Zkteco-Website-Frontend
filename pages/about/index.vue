@@ -239,6 +239,53 @@
                             />
                         </div>
                     </div>
+
+                    <div class="business_entrance_mobile">
+                        <div>
+                            <img
+                                data-src="/img/about_us/Smart_Entrance/smart_entrance.jpg"
+                                class="lazyload"
+                                alt=""
+                            />
+                        </div>
+                        <div>
+                            <h4>
+                                Smart Entrance & Exit “Person + Car +
+                                Object”Software Platform Empowerment Integrated
+                                Business (Smart Entrance & Exit Application)
+                            </h4>
+                            <div>
+                                <p>
+                                    ZKTeco is a globally renowned provider of
+                                    core techniques, smart terminals and
+                                    software platforms based on smart entrance &
+                                    exit “car + person + object” applications,
+                                    and owns a large quantity of software
+                                    copyrights of software products and
+                                    solutions and patented smart terminal
+                                    patented techniques, and strives to
+                                    integrate hybrid biometric verication
+                                    techniques and computer vision techniques
+                                    with the Internet, IoT, big data and cloud
+                                    computing, and builds system platform
+                                    including ZKBioSecurity and ZKBioCV Secruity
+                                    etc. ZKTeco owns professional development
+                                    and supply chain teams for smart terminal of
+                                    person, car and object passages, and
+                                    globally famous entrance & exit biometric
+                                    verication computer vision smart IoT
+                                    hardware and servers, private cloud and
+                                    public linkage services to provide system
+                                    integration services for many partners
+                                    regarding industry solutions, which are
+                                    widely applied in various elds including
+                                    smart traffic, smart nance, smart education,
+                                    smart medicine and smart government etc.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="business_emp">
                         <div>
                             <img
@@ -482,6 +529,10 @@ export default {
                 grid-template-columns: 3fr 1fr;
                 grid-gap: 2em;
             }
+
+            .business_entrance_mobile {
+                display: none;
+            }
         }
 
         @media (max-width: 740px) {
@@ -491,14 +542,14 @@ export default {
                     flex-direction: column;
                 }
                 .business_entrance {
+                    display: none;
+                }
+                .business_entrance_mobile {
                     display: flex;
                     flex-direction: column;
-
-                    // div {
-                    //     display: flex;
-                    //     flex-direction: row-reverse;
-                    //     justify-content: flex-end;
-                    // }
+                    padding-top: 40px;
+                    padding-bottom: 60px;
+                    grid-gap: 2em;
                 }
             }
         }
