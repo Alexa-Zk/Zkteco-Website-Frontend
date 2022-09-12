@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="ps-page--single">
         <img
-            data-src="/img/website/about-us-banner.jpg"
+            data-src="/img/website/one_team_one_dream.png"
             class="lazyload"
             alt=""
         />
@@ -229,8 +229,6 @@
                                     authentication authorization service, API
                                     service platform and cloud storage service
                                     etc. <br />
-                                    <br />
-                                    <br />
                                     “Cloud Application” connected through
                                     ZKTeco+ links up smart terminal devices in
                                     smart office applications to IoT devices of
@@ -449,6 +447,8 @@ export default {
         padding-top: 50px;
         padding-bottom: 50px;
 
+        text-align: center;
+
         display: grid;
         grid-template-columns: repeat(4, 1fr);
 
@@ -493,11 +493,14 @@ export default {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            justify-items: center;
+            // justify-items: center;
+            align-items: center;
+            text-align: center;
 
             img {
                 width: 9rem;
                 height: 9rem;
+                text-align: center;
             }
             span {
                 font-family: 1.8rem;
@@ -539,6 +542,7 @@ export default {
                 display: grid;
                 grid-template-columns: 1.8fr 3.4fr;
                 grid-gap: 2em;
+                align-items: center;
 
                 img {
                     height: 100% !important;
@@ -546,7 +550,8 @@ export default {
                     // object-fit: cover;
                 }
                 p {
-                    font-size: 1.8rem;
+                    font-size: 1.5rem;
+                    text-align: justify;
                 }
             }
 
@@ -556,10 +561,11 @@ export default {
                 display: grid;
                 grid-template-columns: 3.4fr 1.8fr;
                 grid-gap: 2em;
-                //align-items: center;
+                align-items: center;
 
                 p {
-                    font-size: 1.8rem;
+                    font-size: 1.5rem;
+                    text-align: justify;
                 }
 
                 img {
@@ -591,7 +597,8 @@ export default {
                     grid-gap: 2em;
 
                     p {
-                        font-size: 1.8rem;
+                        font-size: 1.5rem;
+                        text-align: justify;
                     }
                 }
             }
