@@ -30,7 +30,10 @@
             </div>
         </div>
         <div class="ps-blog__right">
-            <Sidebar @searchBlogs="filterBlogs" />
+            <Sidebar
+                @searchBlogQuery="searchInputRequest"
+                :searchQuery="searchQuery"
+            />
         </div>
     </div>
 </template>
@@ -48,7 +51,7 @@ export default {
     data() {
         return {
             articles: '',
-            searchQuery: '',
+            searchQuery: null,
             page: 1,
             pageSize: 12
         };
@@ -64,14 +67,33 @@ export default {
         filterBlogs(value) {
             this.searchQuery = value;
         },
-        async handleChangePagination(value) {
-            window.scrollTo(0,0);
-            const compute = value - 1;
+        async searchInputRequest(value) {
+            this.searchQuery = value;
             const params = {
-                page: compute * 12 ,
+                page: 0,
                 perPage: 12,
-                order: 'asc'
+                order: 'asc',
+                search: this.searchQuery.toLowerCase()
             };
+            await this.$store.dispatch('website/getArticles', params);
+        },
+        async handleChangePagination(value) {
+            window.scrollTo(0, 0);
+
+            const compute = value - 1;
+
+            let searchQueryIn =
+                this.searchQuery == null || this.searchQuery == undefined
+                    ? null
+                    : { search: this.searchQuery };
+
+            let params = {
+                page: compute * 12,
+                perPage: 12,
+                order: 'asc',
+                ...searchQueryIn
+            };
+
             await this.$store.dispatch('website/getArticles', params);
         }
     },
@@ -91,12 +113,9 @@ export default {
         ourArticles() {
             return this.artic ? this.artic : [];
         },
+
         filteredList() {
-            return this.ourArticles.filter(res => {
-                return res.title
-                    .toLowerCase()
-                    .includes(this.searchQuery.toLowerCase());
-            });
+            return this.ourArticles;
         }
     }
 };

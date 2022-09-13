@@ -1,19 +1,53 @@
 <template lang="html">
-    
     <div>
-<v-tabs background-color="white" color="warning" class="ps-tab-list ">
-            <v-tab :ripple="false" tag="li" class="tab-label">
-                <span class="tab-label">Description</span>
-            </v-tab>
-            <v-tab :ripple="false" tag="li">
-                <span class="tab-label">Downloads</span>
-            </v-tab>
-            <v-tab :ripple="false" tag="li">
-                <span class="tab-label">Product Videos</span>
-            </v-tab>
-            <v-tab :ripple="false" tag="li">
-                <span class="tab-label">Related Products</span>
-            </v-tab>
+        <v-tabs background-color="white" color="warning" class="ps-tab-list ">
+            <div class="tab-container">
+                <v-tab :ripple="false" tag="li" class="tab-label">
+                    <span class="tab-label">
+                        <div class="tab-icon-container">
+                            <i class="fa fa-book" aria-hidden="true"></i>
+                        </div>
+                        <div class="tab-text-container">Description</div> </span
+                    ><!-- Description -->
+                </v-tab>
+                <v-tab :ripple="false" tag="li" class="quote">
+                    <span class="tab-label">
+                        <div class="tab-icon-container">
+                            <i aria-hidden="true" class="fa fa-superpowers"></i>
+                        </div>
+                        <div class="tab-text-container">Request A Quote</div>
+                    </span>
+                </v-tab>
+                <!-- Request A Quote -->
+                <v-tab :ripple="false" tag="li">
+                    <span class="tab-label">
+                        <div class="tab-icon-container">
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                        </div>
+                        <div class="tab-text-container">Downloads</div>
+                    </span> </v-tab
+                ><!-- Downloads -->
+                <v-tab :ripple="false" tag="li">
+                    <span class="tab-label">
+                        <div class="tab-icon-container">
+                            <i aria-hidden="true" class="fa fa-play-circle"></i>
+                        </div>
+                        <div class="tab-text-container">Product Videos</div>
+                    </span> </v-tab
+                ><!-- Product Videos -->
+                <v-tab :ripple="false" tag="li">
+                    <span class="tab-label">
+                        <div class="tab-icon-container">
+                            <i
+                                aria-hidden="true"
+                                class="fa fa-product-hunt"
+                            ></i>
+                        </div>
+                        <div class="tab-text-container">Related Products</div>
+                    </span> </v-tab
+                ><!-- Related Products -->
+            </div>
+
             <v-tab-item>
                 <div class="tab-content">
                     <partial-description :product="product_information" />
@@ -21,8 +55,21 @@
             </v-tab-item>
 
             <v-tab-item>
+                <div class="tab-content quote">
+                    <request-a-quote />
+                </div>
+            </v-tab-item>
+
+            <v-tab-item>
                 <div class="tab-content">
-                    <div v-if="Object.keys(product_information.product_files).length === 0">No Downloads</div>
+                    <div
+                        v-if="
+                            Object.keys(product_information.product_files)
+                                .length === 0
+                        "
+                    >
+                        No Downloads
+                    </div>
                     <div
                         class="download_container"
                         v-else
@@ -46,7 +93,14 @@
 
             <v-tab-item>
                 <div class="tab-content">
-                    <div v-if="Object.keys(product_information.product_videos).length === 0">No Product Videos</div>
+                    <div
+                        v-if="
+                            Object.keys(product_information.product_videos)
+                                .length === 0
+                        "
+                    >
+                        No Product Videos
+                    </div>
                     <div
                         class="download_container"
                         v-else
@@ -74,8 +128,6 @@
                     />
                 </div>
             </v-tab-item>
-
-            
         </v-tabs>
     </div>
 </template>
@@ -85,16 +137,18 @@ import PartialDescription from '~/components/elements/detail/modules/website/Par
 import PartialSpecification from '~/components/elements/detail/modules/website/PartialSpecification';
 import { mapState } from 'vuex';
 import RelatedProduct from '~/components/partials/product/RelatedProduct';
+import RequestAQuote from '~/components/elements/detail/modules/website/RequestAQuote';
+
 export default {
     name: 'DefaultDescription',
     components: {
         PartialSpecification,
         PartialDescription,
-        RelatedProduct
+        RelatedProduct,
+        RequestAQuote
     },
     data() {
         return {
-
             videoUrl: null
         };
     },
@@ -105,6 +159,11 @@ export default {
         }
     },
     async created() {
+        // document.getElementById('v-slide-group__prev').style.display = 'none';
+        // document.getElementById('v-slide-group__prev--disabled').style.display =
+        //     'none';
+        //v-slide-group__prev v-slide-group__prev--disabled
+
         let payload = {
             id: this.product_information.product_category.slug
         };
@@ -125,7 +184,9 @@ export default {
     },
     methods: {
         download(data) {
-            const tokenForDownloads = this.$cookies.get('download_token', { parseJSON: true });
+            const tokenForDownloads = this.$cookies.get('download_token', {
+                parseJSON: true
+            });
             if (tokenForDownloads) {
                 const link = document.createElement('a');
                 link.href = data;
@@ -144,6 +205,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.v-item-group {
+    padding: 500px;
+}
+
+.v-slide-group__wrapper {
+    padding-top: 200px !important;
+}
+
+.ps-tab-list:first-child {
+    padding-top: 30px;
+}
+
+.tab-container {
+    display: flex;
+}
+
+.tab-icon-container {
+    display: none;
+}
+//class="v-slide-group__prev v-slide-group__prev--disabled"
+
+@media screen and (max-width: 540px) {
+    .tab-icon-container {
+        display: flex;
+    }
+
+    .tab-text-container {
+        display: none;
+    }
+}
+
 .tab-label {
     font-size: 20px;
     text-transform: none;
@@ -202,6 +294,20 @@ span.list-item {
                 color: darken($color: #78bc27, $amount: 40);
             }
         }
+    }
+}
+.quote {
+    display: none;
+}
+
+@media screen and (max-width: 820px) {
+    .quote {
+        display: flex;
+    }
+
+    input,
+    textarea {
+        width: 80vw;
     }
 }
 </style>
