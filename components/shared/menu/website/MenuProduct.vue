@@ -30,6 +30,7 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex';
 import Repository from '~/repositories/Repository.js';
 import { subBaseUrl } from '~/repositories/Repository';
 
@@ -37,28 +38,15 @@ export default {
     name: 'MenuProduct',
     data() {
         return {
-            productCategories: ''
-        };
+        }
     },
     computed: {
-        ProductCategories() {
-            return this.productCategories;
-        }
+        ...mapState({
+            ProductCategories: state => state.website.productCategories,  
+        }),
     },
-    mounted() {
-        this.getProductCategories()
-    },
-    methods: {
-        async getProductCategories () {
-            this.loading = true
-            const reponse = await Repository.get( `${subBaseUrl}/product-categories`)
-                .then(response => {
-                    this.productCategories = response.data
-                    this.loading = false
-                })
-                .catch(error => ({ error: JSON.stringify(error) }));
-            return reponse;
-        }
+    async mounted() {
+         await this.$store.dispatch('website/getAllProductCategories');
     },
 };
 </script>
