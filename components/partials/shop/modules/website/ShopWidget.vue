@@ -86,21 +86,6 @@ export default {
             await this.$store.dispatch('website/getAllProductCategories');
         }
     },
-
-    methods: {
-        async getProductCategories () {
-            // this.loading = true
-            // const reponse = await Repository.get( `${subBaseUrl}/product-categories`)
-            //     .then(response => {
-                    
-            //         this.productCategories = response.data
-            //         this.loading = false
-            //     })
-            //     .catch(error => ({ error: JSON.stringify(error) }));
-            // return reponse;
-            return []
-        }
-    }
 };
 </script>
 
