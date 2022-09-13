@@ -71,33 +71,21 @@ export default {
     },
     computed: {
         ...mapState({
+            productCategories: state => state.website.productCategories,  
             categories: state => state.product.categories,  
         }),
         
     },
     data() {
         return {
-            productCategories: '',
             loading: false
         };
     },
-    mounted() {
-        this.getProductCategories()
-    },
-    
-    methods: {
-        async getProductCategories () {
-            this.loading = true
-            const reponse = await Repository.get( `${subBaseUrl}/product-categories`)
-                .then(response => {
-                    
-                    this.productCategories = response.data
-                    this.loading = false
-                })
-                .catch(error => ({ error: JSON.stringify(error) }));
-            return reponse;
+    async mounted() {
+        if(this.productCategories != null && this.productCategories.length == 0){
+            await this.$store.dispatch('website/getAllProductCategories');
         }
-    }
+    },
 };
 </script>
 

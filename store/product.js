@@ -281,21 +281,22 @@ export const actions = {
     },
 
     async getProductCategories({ state, commit }) {
-        let params = {
-            page: state.page,
-            per_page: state.per_page
-        };
-        const reponse = await Repository.get(
-            `${baseUrl}/integrations/products/categories?${serializeQuery(
-                params
-            )}`
-        )
-            .then(response => {
-                commit('setCategories', response.data.data);
-                return response.data.data;
-            })
-            .catch(error => ({ error: JSON.stringify(error) }));
-        return reponse;
+        // let params = {
+        //     page: state.page,
+        //     per_page: state.per_page
+        // };
+        // const reponse = await Repository.get(
+        //     `${baseUrl}/integrations/products/categories?${serializeQuery(
+        //         params
+        //     )}`
+        // )
+        //     .then(response => {
+        //         commit('setCategories', response.data.data);
+        //         return response.data.data;
+        //     })
+        //     .catch(error => ({ error: JSON.stringify(error) }));
+        // return reponse;
+        return []
     },
 
     async getProductByCategoriesId({ state, commit }, payload) {
