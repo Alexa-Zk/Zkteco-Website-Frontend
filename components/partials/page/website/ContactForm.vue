@@ -69,6 +69,22 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <v-checkbox color="success" v-model="checkbox">
+                        <template v-slot:label>
+                            <div class="agreement_link">
+                                I have read and agree to
+                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
+                                    Membership Registration Agreement
+                                </a>,
+                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
+                                    Privacy Policy
+                                </a>
+                            
+                            </div>
+                        </template>
+                    </v-checkbox>
+                </div>
                 <div class="form-group submit">
                     <button
                         @click.prevent="willContactUs"
@@ -94,13 +110,22 @@ export default {
                 email: '',
                 phone: '',
                 subject: '',
-                message: ''
+                message: '',
             },
+            checkbox: false,
             disabled: false
         };
     },
     methods: {
         async willContactUs() {
+            if(!this.checkbox){
+                this.$notify({
+                    title: 'Warning!',
+                    text: `Kindly Accept the Terms and Condition`,
+                    group: 'addCartSuccess'
+                });
+                return false
+            }
             this.loading = true;
             const response = await this.$store.dispatch(
                 'website/sendEnquiry',
@@ -122,7 +147,7 @@ export default {
             } else {
                 this.loading = false;
                 this.$notify({
-                    title: 'Waring!',
+                    title: 'Warning!',
                     text: `All text field should be filled`,
                     group: 'addCartSuccess'
                 });
