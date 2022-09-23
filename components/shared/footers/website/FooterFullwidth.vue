@@ -12,12 +12,14 @@
                     We use cookies on this site to enhance your user experience
                     By clicking OK, I agree button on this banner you are giving your consent for us to set cookies. 
                     <v-checkbox input-value="true" disabled color="warning" style="margin: -5px 0px -21px 0px; font-size: 13px;" label="Mandatory"/>
-                    Last connection of the user to browse the website and use its different options or services. They will never be used to collect information in order to show you personalized advertising. A user identifier per session, the date and time of the user's last connection and the parameters necessary to navigate between the company website and that of individuals.
+                    These cookies enable core functionality such as security, verification of identity and network management. These cookies cannot be disabled.                   
                     <v-checkbox color="warning" style="margin: -5px 0px -21px 0px; font-size: 13px;" label="Analytics" />
-                    They are used to analyze the browsing habits of users, with the aim of optimizing the functionalities and technical and operational maintenance of the website and guaranteeing the best possible service. They will never be used to display personalized advertisements, or to remember user preferences beyond the session. Technological profile of the device, origin of access to the web, browsing activity and search terms used.
+                     These cookies help us to understand how visitors interact with our website, discover errors and provide a better overall analytics.
                     <v-checkbox color="warning" style="margin: -5px 0px -21px 0px; font-size: 13px;" label="Advertising" />
-                    They are those that allow the storage of information on the behavior of users obtained through the continuous observation of their browsing habits, which allows the development of a specific user profile. In this way, they are used to personalize the advertising campaigns that are adjusted to the user's preferences.
+                    These cookies are used to track advertising effectiveness to provide a more relevant service and deliver better ads to suit your interests.
                     <v-checkbox color="warning" style="margin: -2px 0px -20px 0px; font-size: 13px;" label="Personalization" />
+                    These cookies collect data to remember choices users make to improve and give a more personalised experience.
+                    <br/>
                     Learn more about how we use cookies in our                     
                     <nuxt-link class="" to="/website/page/privacy-policy"
                         >cookie policy</nuxt-link
