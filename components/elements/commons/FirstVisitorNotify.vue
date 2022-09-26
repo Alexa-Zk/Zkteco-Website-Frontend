@@ -10,7 +10,7 @@
                         class="ps-page__close"
                         @click.prevent="demoDialog = false"
                     >
-                        <i class="icon icon-cross"></i>
+                        <i class="icon icon-cross" @click.prevent="demoDialog = false" style="position: relative;"></i>
                     </a>
                     <h3>
                         Join thousands of businesses with a headstart
