@@ -13,11 +13,11 @@
                     By clicking OK, I agree button on this banner you are giving your consent for us to set cookies. 
                     <v-checkbox input-value="true" disabled color="warning" style="margin: -5px 0px -21px 0px; font-size: 13px;" label="Mandatory"/>
                     These cookies enable core functionality such as security, verification of identity and network management. These cookies cannot be disabled.                   
-                    <v-checkbox color="warning" style="margin: -5px 0px -21px 0px; font-size: 13px;" label="Analytics" />
+                    <v-checkbox color="success" style="margin: -5px 0px -21px 0px; font-size: 13px;" label="Analytics" />
                      These cookies help us to understand how visitors interact with our website, discover errors and provide a better overall analytics.
-                    <v-checkbox color="warning" style="margin: -5px 0px -21px 0px; font-size: 13px;" label="Advertising" />
+                    <v-checkbox color="success" style="margin: -5px 0px -21px 0px; font-size: 13px;" label="Advertising" />
                     These cookies are used to track advertising effectiveness to provide a more relevant service and deliver better ads to suit your interests.
-                    <v-checkbox color="warning" style="margin: -2px 0px -20px 0px; font-size: 13px;" label="Personalization" />
+                    <v-checkbox color="success" style="margin: -2px 0px -20px 0px; font-size: 13px;" label="Personalization" />
                     These cookies collect data to remember choices users make to improve and give a more personalised experience.
                     <br/>
                     Learn more about how we use cookies in our                     

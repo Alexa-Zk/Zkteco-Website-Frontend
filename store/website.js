@@ -469,7 +469,7 @@ export const actions = {
 
     async getAllProductCategories({ commit }, slug) {
         commit('setLoading', true);
-        let params = {};
+        let params = { _sort: 'created_at:asc'};
         const reponse = await Repository.get(
             `${subBaseUrl}/product-categories/?${serializeQuery(params)}`
         )
