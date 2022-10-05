@@ -61,7 +61,7 @@ export default {
         };
     },
     mounted() {
-       // this.runPopupModalSubscriber();
+        this.runPopupModalSubscriber();
     },
     methods: {
         runPopupModalSubscriber() {
@@ -72,7 +72,6 @@ export default {
             localStorage.setItem('SUBSCRIBER_POPUP', true);
         },
         closeModal(){
-            console.log('hii');
             this.demoDialog = false
         },
         async subscribe() {
