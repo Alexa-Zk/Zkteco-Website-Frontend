@@ -10,7 +10,7 @@
                         class="ps-page__close"
                         @click.prevent="demoDialog = false"
                     >
-                        <i class="icon icon-cross" @click.prevent="demoDialog = false" style="position: relative;"></i>
+                        <i class="icon icon-cross" style="position: relative;z-index: 100"></i>
                     </a>
                     <h3>
                         Join thousands of businesses with a headstart
@@ -61,7 +61,7 @@ export default {
         };
     },
     mounted() {
-        this.runPopupModalSubscriber();
+       // this.runPopupModalSubscriber();
     },
     methods: {
         runPopupModalSubscriber() {
@@ -70,6 +70,10 @@ export default {
                 this.demoDialog = false;
             }
             localStorage.setItem('SUBSCRIBER_POPUP', true);
+        },
+        closeModal(){
+            console.log('hii');
+            this.demoDialog = false
         },
         async subscribe() {
             if (this.email !== '') {
