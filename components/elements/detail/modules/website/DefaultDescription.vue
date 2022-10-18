@@ -13,7 +13,7 @@
                 <v-tab :ripple="false" tag="li" class="quote">
                     <span class="tab-label">
                         <div class="tab-icon-container">
-                            <i aria-hidden="true" class="fa fa-superpowers"></i>
+                            <i aria-hidden="true" class="fa fa-usd"></i>
                         </div>
                         <div class="tab-text-container">Request A Quote</div>
                     </span>
@@ -230,7 +230,6 @@ export default {
     .tab-icon-container {
         display: flex;
     }
-
     .tab-text-container {
         display: none;
     }
@@ -309,5 +308,6 @@ span.list-item {
     textarea {
         width: 80vw;
     }
+
 }
 </style>
