@@ -110,7 +110,7 @@
                         </p>
                     </div>
                 </nuxt-link>
-                <nuxt-link to="/product-categories/cctv" class="ps-block__item">
+                <nuxt-link to="/product-categories/surveillance" class="ps-block__item">
                     <div class="ps-block__left">
                         <img
                             src="~/static/img/website/cctv.webp"
