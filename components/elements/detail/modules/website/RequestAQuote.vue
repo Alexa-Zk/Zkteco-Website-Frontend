@@ -304,7 +304,9 @@ body {
     font-size: 14px;
     background: #f2f2f2;
 }
+
 .clearfix {
+    justify-content: center;
     &:after {
         content: '';
         display: block;
