@@ -125,8 +125,8 @@ export default {
 
     a {
         background: #8cc63f;
-        font-size: 1.8rem;
-        padding: 15px;
+        font-size: 1.5rem;
+        padding: 14px 22px;
         color: #fff;
         font-weight: 600;
     }
