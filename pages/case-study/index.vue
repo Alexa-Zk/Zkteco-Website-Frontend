@@ -44,7 +44,7 @@ export default {
     async created() {
         const payload = {};
         const response = await this.$store.dispatch(
-            'website/getSolutions',
+            'website/getCaseStudies',
             payload
         );
     }
