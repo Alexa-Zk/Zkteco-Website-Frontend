@@ -2,7 +2,7 @@
     <div
         class="ps-vendor-banner bg--cover"
         :style="{
-            backgroundImage: `url(${formatted.image[0].url})`
+            backgroundImage: `url(${formatted.side_image.url})`
         }"
         v-if="formatted"
     >

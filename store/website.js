@@ -6,6 +6,7 @@ export const state = () => ({
     productsRelated: null,
     singleProduct: null,
     solutions: null,
+    caseStudies: null,
     articles: null,
     articlesLimited: null,
     articlesCategories: null,
@@ -96,6 +97,10 @@ export const mutations = {
 
     setSolutions(state, payload) {
         state.solutions = payload;
+    },
+
+    setCaseStudies(state, payload) {
+        state.caseStudies = payload;
     },
 
     setHomepage(state, payload) {
@@ -357,6 +362,25 @@ export const actions = {
         )
             .then(response => {
                 commit('setSolutions', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getCaseStudies({ commit }, payload) {
+        commit('setLoading', true);
+        let params = {
+            _start: 0,
+            _sort: 'created_at:desc',
+            _limit: 100
+        };
+        const reponse = await Repository.get(
+            `${subBaseUrl}/case-studies?${serializeQuery(params)}`
+        )
+            .then(response => {
+                commit('setCaseStudies', response.data);
                 commit('setLoading', false);
                 return response.data;
             })

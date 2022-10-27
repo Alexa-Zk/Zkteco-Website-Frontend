@@ -1,14 +1,14 @@
 <template lang="html">
     <div class="ps-page--single">
-        <case-study-banner :formatted="formattedSingleSolution" />
+        <case-study-banner :formatted="formattedSingleCaseStudies" />
         <nav class="case-study-nav">
             <nuxt-link :to="`/case-study`"> Case Studies</nuxt-link>
             <nuxt-link :to="`#related_product`"> Related Products</nuxt-link>
-            <nuxt-link :to="`/solution-details/`"> Related Solution</nuxt-link>
-            <nuxt-link :to="`/solution-details/`"> More Cases</nuxt-link>
+            <nuxt-link v-if="caseStudies" :to="`/case-study?slug=${caseStudies[0].case_study_categories[0].slug}`"> Related Solution</nuxt-link>
+            <nuxt-link :to="`/case-study`"> More Cases</nuxt-link>
         </nav>
         <hr class="line" />
-        <case-study-about :formatted="formattedSingleSolution" />
+        <case-study-about :formatted="formattedSingleCaseStudies" />
     </div>
 </template>
 
@@ -25,11 +25,11 @@ export default {
     },
     layout: 'layout-default-website',
     head() {
-        const title = this.formattedSingleSolution
-            ? this.formattedSingleSolution.title
+        const title = this.formattedSingleCaseStudies
+            ? this.formattedSingleCaseStudies.title
             : 'Case Study';
-        const description = this.formattedSingleSolution
-            ? this.formattedSingleSolution.description
+        const description = this.formattedSingleCaseStudies
+            ? this.formattedSingleCaseStudies.description
             : 'Case Study - Description';
         return {
             titleTemplate: title,
@@ -49,26 +49,26 @@ export default {
     },
     data: () => {
         return {
-            solutions: ''
+            caseStudies: ''
         };
     },
 
     computed: {
-        formattedSingleSolution() {
-            return this.solutions[0];
+        formattedSingleCaseStudies() {
+            return this.caseStudies[0];
         }
     },
     mounted() {
-        this.getSolutionDetails(this.$route.params.id);
+        this.getCaseStudiesDetails(this.$route.params.id);
     },
     methods: {
-        async getSolutionDetails(slug) {
+        async getCaseStudiesDetails(slug) {
             this.loading = true;
             const reponse = await Repository.get(
-                `${subBaseUrl}/solutions?slug=${slug}`
+                `${subBaseUrl}/case-studies?slug=${slug}`
             )
                 .then(response => {
-                    this.solutions = response.data;
+                    this.caseStudies = response.data;
                     this.loading = false;
                 })
                 .catch(error => ({ error: JSON.stringify(error) }));

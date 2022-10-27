@@ -3,70 +3,12 @@
         <div class="container" v-if="formatted">
             <div class="ps-section__header">
                 <h2>Case Details</h2>
-                <h4>DEVELOPMENT OF THE GLOBAL ECONOMY</h4>
+                <h4>{{ formatted.title }}</h4>
             </div>
             <div class="ps-section__content">
                 <article class="content_wrapper">
-                    <img src="/img/biotime-ng.png" alt="biotime cloud logo" />
-                    <div class="text-container">
-                        Formatting versus Styling While it is not always
-                        apparent within the software you are using, you should
-                        always lean towards formatting options over styling
-                        options to create semantically correct text content.
-                        Formatting Considerations for Bold and Italics An entire
-                        paragraph that is bolded does not indicate to a screen
-                        reader that it is a heading. As a heading, it obtains
-                        special functionality that aids screen reader users in
-                        scanning a page much like a visual user skipping around
-                        on a page. But as a bolded paragraph, it does not obtain
-                        that scanning functionality. Instead, it behaves like
-                        the average paragraph, but it is read as though there is
-                        strong emphasis across all the content in the paragraph.
-                        That takes away from the functionality defined for the
-                        bold styling, since if everything is important, then
-                        nothing is important. Similar issues occur for
-                        italicizing a paragraph as this indicates emphasis, a
-                        slightly lower form of importance. Styling
-                        Considerations for Bold, Italics and Underline Styling
-                        on the Tarleton website is determined mostly by the AP
-                        Stylebook. Web standards are added on to assist with
-                        reading web content. For example, you do not use
-                        underline for titles or headings on webpages because
-                        underlined text typically is understood to be a link.
-                        Instead, quotes may or may not be used, depending on the
-                        publication, to denote titles. See Brandeis University’s
-                        Web Style Guide cheat sheet regarding Associate Press
-                        Style for titles, along with numbers, abbreviations
-                        (e.g. academic degrees, dates, time. Formatting versus
-                        Styling While it is not always apparent within the
-                        software you are using, you should always lean towards
-                        formatting options over styling options to create
-                        semantically correct text content. Formatting
-                        Considerations for Bold and Italics An entire paragraph
-                        that is bolded does not indicate to a screen reader that
-                        it is a heading. As a heading, it obtains special
-                        functionality that aids screen reader users in scanning
-                        a page much like a visual user skipping around on a
-                        page. But as a bolded paragraph, it does not obtain that
-                        scanning functionality. Instead, it behaves like the
-                        average paragraph, but it is read as though there is
-                        strong emphasis across all the content in the paragraph.
-                        That takes away from the functionality defined for the
-                        bold styling, since if everything is important, then
-                        nothing is important. Similar issues occur for
-                        italicizing a paragraph as this indicates emphasis, a
-                        slightly lower form of importance. Styling
-                        Considerations for Bold, Italics and Underline Styling
-                        on the Tarleton website is determined mostly by the AP
-                        Stylebook. Web standards are added on to assist with
-                        reading web content. For example, you do not use
-                        underline for titles or headings on webpages because
-                        underlined text typically is understood to be a link.
-                        Instead, quotes may or may not be used, depending on the
-                        publication, to denote titles. See Brandeis University’s
-                        Web Style Guide cheat sheet regarding Associate Press
-                        Style for titles, along with numbers, abbreviations
-                        (e.g. academic degrees, dates, time.
+                    <img :src="formatted.side_image.url" alt="biotime cloud logo" />
+                    <div class="ps-content" v-html="formatted.content">
                     </div>
                 </article>
                 <!--div class=" ps-content " v-html="formatted.content"></div-->
