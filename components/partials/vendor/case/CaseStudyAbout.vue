@@ -81,7 +81,7 @@ export default {
         .ps-section__header {
             text-align: left;
             h2 {
-                color: #8bc76f;
+                color: #8fc74a;
             }
             h4 {
                 font-size: 2rem;
@@ -114,7 +114,7 @@ export default {
         flex-direction: column;
 
         h3 {
-            color: #8bc76f;
+            color: #8fc74a;
         }
         img {
             display: grid;
@@ -132,7 +132,7 @@ export default {
         margin: 0 auto;
 
         h3 {
-            color: #8bc76f;
+            color: #8fc74a;
         }
     }
 }
