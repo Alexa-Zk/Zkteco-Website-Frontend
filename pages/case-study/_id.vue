@@ -4,7 +4,14 @@
         <nav class="case-study-nav">
             <nuxt-link :to="`/case-study`"> Case Studies</nuxt-link>
             <nuxt-link :to="`#related_product`"> Related Products</nuxt-link>
-            <nuxt-link v-if="caseStudies" :to="`/case-study?slug=${caseStudies[0].case_study_categories[0].slug}`"> Related Solution</nuxt-link>
+            <nuxt-link
+                v-if="caseStudies"
+                :to="
+                    `/case-study?slug=${caseStudies[0].case_study_categories[0].slug}`
+                "
+            >
+                Related Solution</nuxt-link
+            >
             <nuxt-link :to="`/case-study`"> More Cases</nuxt-link>
         </nav>
         <hr class="line" />
@@ -93,7 +100,8 @@ export default {
         // background: #8cc63f;
         font-size: 1.8rem;
         // padding: 15px;
-        // color: #fff;
+        text-decoration: none;
+        color: #000;
         font-weight: 600;
     }
 }
