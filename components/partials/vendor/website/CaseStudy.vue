@@ -4,16 +4,20 @@
             <div class="ps-section__header">
                 <h3>Case Study</h3>
             </div>
-           
-            <nav class="case-study-nav" >
+
+            <nav class="case-study-nav">
                 <a @click.prevent="fetchCaseStudyByCategory('all')">
                     All
                 </a>
-                <a v-for="category in caseStudyCategories" :key="category.id" @click.prevent="fetchCaseStudyByCategory(category.slug)">
-                    {{category.title}}
+                <a
+                    v-for="category in caseStudyCategories"
+                    :key="category.id"
+                    @click.prevent="fetchCaseStudyByCategory(category.slug)"
+                >
+                    {{ category.title }}
                 </a>
             </nav>
-            <!-- <nav class="case-study-nav">
+            <!--nav class="case-study-nav">
                 <nuxt-link :to="`/solution-details/`">
                     All
                 </nuxt-link>
@@ -32,7 +36,7 @@
                 <nuxt-link :to="`/solution-details/`">
                     Integration
                 </nuxt-link>
-            </nav> -->
+            </nav -->
             <div class="ps-section__content">
                 <div class="placeholder-image-grid" v-if="loading">
                     <content-placeholders
@@ -44,7 +48,10 @@
                         <content-placeholders-heading />
                     </content-placeholders>
                 </div>
-                <div class="row" v-else-if="caseStudies == null || caseStudies.length <= 0">
+                <div
+                    class="row"
+                    v-else-if="caseStudies == null || caseStudies.length <= 0"
+                >
                     No case study available
                 </div>
                 <div class="row" v-else>
@@ -83,14 +90,14 @@
 
 <script>
 import { mapState } from 'vuex';
-import  Repository, { serializeQuery } from '~/repositories/Repository.js';
+import Repository, { serializeQuery } from '~/repositories/Repository.js';
 import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
     name: 'CaseStudy',
     computed: {
         ...mapState({
-            caseStudies: state => state.website.caseStudies,
+            caseStudies: state => state.website.caseStudies
         })
     },
     data: () => {
@@ -101,19 +108,19 @@ export default {
     },
     mounted() {
         this.getCaseStudyCategories();
-        const case_category = this.$route.query.slug
-         if(case_category){
-            this.fetchCaseStudyByCategory(case_category)
-         }
+        const case_category = this.$route.query.slug;
+        if (case_category) {
+            this.fetchCaseStudyByCategory(case_category);
+        }
     },
 
     methods: {
-        async fetchCaseStudyByCategory(case_slug){
+        async fetchCaseStudyByCategory(case_slug) {
             console.log(slug);
-            let slug = case_slug == 'all' ? null : case_slug
+            let slug = case_slug == 'all' ? null : case_slug;
             let params = {
                 _sort: 'created_at:desc',
-                ...(slug && { 'slug': slug }),
+                ...(slug && { slug: slug })
             };
             this.loading = true;
             const reponse = await Repository.get(
@@ -122,12 +129,15 @@ export default {
                 .then(response => {
                     console.log(response.data);
                     this.$store.commit('website/setCaseStudies', []);
-                    this.$store.commit('website/setCaseStudies', response.data[0].case_studies);
+                    this.$store.commit(
+                        'website/setCaseStudies',
+                        response.data[0].case_studies
+                    );
                     console.log(this.caseStudies);
                     this.loading = false;
                 })
                 .catch(error => ({ error: JSON.stringify(error) }));
-                this.loading = false;
+            this.loading = false;
             return reponse;
         },
 
@@ -143,7 +153,6 @@ export default {
                 .catch(error => ({ error: JSON.stringify(error) }));
             return reponse;
         }
-
     }
 };
 </script>
@@ -180,6 +189,8 @@ export default {
 
 .ps-btn-case-study {
     text-align: center;
+    text-decoration: none;
+    color: black;
 }
 .case-study-nav {
     height: 5rem;
@@ -191,7 +202,7 @@ export default {
     a {
         background: #8cc63f;
         font-size: 1.5rem;
-        padding: 14px 22px;
+        padding: 14px 50px;
         color: #fff;
         font-weight: 600;
     }
