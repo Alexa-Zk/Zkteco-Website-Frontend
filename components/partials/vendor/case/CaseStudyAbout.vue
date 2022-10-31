@@ -77,7 +77,7 @@ export default {
 .ps-vendor-about {
     .container {
         transform: translateY(-80px);
-        max-width: 900px !important;
+        max-width: 1200px !important;
         .ps-section__header {
             text-align: left;
             h2 {
@@ -108,7 +108,7 @@ export default {
 
     .on_site_pictures {
         transform: translateY(-100px);
-        max-width: 900px !important;
+        max-width: 1200px !important;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -128,7 +128,7 @@ export default {
     }
 
     .related_product {
-        max-width: 950px !important;
+        max-width: 1200px !important;
         margin: 0 auto;
 
         h3 {
