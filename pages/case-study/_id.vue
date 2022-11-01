@@ -7,7 +7,7 @@
             <nuxt-link
                 v-if="caseStudies"
                 :to="
-                    `case-study?slug=${caseStudies[0].case_study_categories[0].slug}`
+                    `/case-study?slug=${caseStudies[0].case_study_categories[0].slug}`
                 "
             >
                 Related Solution</nuxt-link
