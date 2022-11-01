@@ -58,7 +58,7 @@
 
                                 <nuxt-link
                                     class="ps-btn-case-study"
-                                    :to="`case-study/${item.slug}`"
+                                    :to="`/case-study/${item.slug}`"
                                 >
                                     {{ item.title }}
                                 </nuxt-link>
