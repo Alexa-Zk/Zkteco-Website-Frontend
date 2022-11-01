@@ -16,27 +16,10 @@
                 >
                     {{ category.title }}
                 </a>
+                <a href="https://www.zkteco.com/en/case" target="_blank">
+                    More Cases
+                </a>
             </nav>
-            <!--nav class="case-study-nav">
-                <nuxt-link :to="`/solution-details/`">
-                    All
-                </nuxt-link>
-                <nuxt-link :to="`/solution-details/`">
-                    Smart Entrance Control
-                </nuxt-link>
-                <nuxt-link :to="`/solution-details/`">
-                    Smart Home
-                </nuxt-link>
-                <nuxt-link :to="`/solution-details/`">
-                    Access Control
-                </nuxt-link>
-                <nuxt-link :to="`/solution-details/`">
-                    Attendance
-                </nuxt-link>
-                <nuxt-link :to="`/solution-details/`">
-                    Integration
-                </nuxt-link>
-            </nav -->
             <div class="ps-section__content">
                 <div class="placeholder-image-grid" v-if="loading">
                     <content-placeholders
@@ -116,7 +99,6 @@ export default {
 
     methods: {
         async fetchCaseStudyByCategory(case_slug) {
-            console.log(slug);
             let slug = case_slug == 'all' ? null : case_slug;
             let params = {
                 _sort: 'created_at:desc',
@@ -127,13 +109,11 @@ export default {
                 `${subBaseUrl}/case-study-categories?${serializeQuery(params)}`
             )
                 .then(response => {
-                    console.log(response.data);
                     this.$store.commit('website/setCaseStudies', []);
                     this.$store.commit(
                         'website/setCaseStudies',
                         response.data[0].case_studies
                     );
-                    console.log(this.caseStudies);
                     this.loading = false;
                 })
                 .catch(error => ({ error: JSON.stringify(error) }));
