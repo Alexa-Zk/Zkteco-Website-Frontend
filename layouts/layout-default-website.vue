@@ -34,7 +34,7 @@ export default {
         Notify,
         FirstVisitorNotify,
         FloatingActionButton
-    },
+    }
 };
 </script>
 
