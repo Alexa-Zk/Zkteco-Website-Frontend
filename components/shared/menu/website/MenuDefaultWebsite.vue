@@ -107,7 +107,7 @@ export default {
                 //     icon: 'icon-cart'
                 // },
                 {
-                    text: 'Authorised Partners',
+                    text: 'Partners',
                     url: '/website/page/store-locator'
                 },
                 {
@@ -115,8 +115,12 @@ export default {
                     url: '/biotime-ng'
                 },
                 {
-                    text: 'Project Consultation',
+                    text: 'Consultation',
                     url: '/support/project-consultation'
+                },
+                {
+                    text: 'Case Study',
+                    url: '/case-study'
                 }
             ]
         };
@@ -132,5 +136,14 @@ export default {
             color: #78bc27;
         }
     }
+}
+// .navigation__right {
+//     font-size: 3px !important;
+//     .menu {
+//         font-size: 3px !important;
+//     }
+// }
+.menu {
+    font-size: 3px !important;
 }
 </style>
