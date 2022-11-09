@@ -58,7 +58,7 @@
 
                                 <nuxt-link
                                     class="ps-btn-case-study"
-                                    :to="`case-study/${item.slug}`"
+                                    :to="`/case-study/${item.slug}`"
                                 >
                                     {{ item.title }}
                                 </nuxt-link>
@@ -101,19 +101,22 @@ export default {
         async fetchCaseStudyByCategory(case_slug) {
             let slug = case_slug == 'all' ? null : case_slug;
             let params = {
-                _sort: 'created_at:desc',
-                ...(slug && { slug: slug })
+                _sort: 'sort_id:desc',
+                ...(slug && { 'case_study_categories.slug': slug })
             };
+            console.log(params);
             this.loading = true;
             const reponse = await Repository.get(
-                `${subBaseUrl}/case-study-categories?${serializeQuery(params)}`
+                `${subBaseUrl}/case-studies?${serializeQuery(params)}`
             )
                 .then(response => {
+                    console.log(response.data);
                     this.$store.commit('website/setCaseStudies', []);
                     this.$store.commit(
                         'website/setCaseStudies',
-                        response.data[0].case_studies
+                        response.data
                     );
+                    
                     this.loading = false;
                 })
                 .catch(error => ({ error: JSON.stringify(error) }));
