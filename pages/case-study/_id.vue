@@ -12,7 +12,10 @@
             >
                 Related Solution</nuxt-link
             >
-            <nuxt-link :to="`/case-study`"> More Cases</nuxt-link>
+            <!--nuxt-link :to="`case-study`"> More Cases</nuxt-link -->
+            <a href="https://www.zkteco.com/en/case" target="_blank">
+                More Cases
+            </a>
         </nav>
         <hr class="line" />
         <case-study-about :formatted="formattedSingleCaseStudies" />
