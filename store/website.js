@@ -402,7 +402,7 @@ export const actions = {
         commit('setLoading', true);
         let params = {
             _start: 0,
-            _sort: 'created_at:desc',
+            _sort: 'sort_id:desc',
             _limit: 100
         };
         const reponse = await Repository.get(
