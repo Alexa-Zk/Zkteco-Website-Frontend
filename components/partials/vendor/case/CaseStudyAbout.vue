@@ -193,11 +193,16 @@ export default {
                     float: left;
                     width: 450px;
                     height: 285px;
-                    padding: 0 20px 10px 0;
+                    background: coral;
+                    margin: 0 20px 10px 0;
+                    // .dev_image {
                     img {
                         width: 100%;
-                        overflow: hidden;
+                        width: 450px;
+                        height: 285px;
+                        object-fit: cover;
                     }
+                    // }
                 }
 
                 .text-container {
