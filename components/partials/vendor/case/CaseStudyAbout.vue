@@ -1,16 +1,19 @@
 <template lang="html">
     <div class="ps-section--vendor ps-vendor-about" v-if="formatted">
-        <div class="container" >
+        <div class="container">
             <div class="ps-section__header">
                 <h2>Case Details</h2>
                 <h4>{{ formatted.title }}</h4>
             </div>
             <div class="ps-section__content">
                 <article class="content_wrapper">
-                    <img
-                        :src="formatted.side_image.url"
-                        alt="biotime cloud logo"
-                    />
+                    <div class="image_content">
+                        <img
+                            :src="formatted.side_image.url"
+                            alt="biotime cloud logo"
+                        />
+                    </div>
+
                     <div class="ps-content" v-html="formatted.content"></div>
                 </article>
                 <!--div class=" ps-content " v-html="formatted.content"></div-->
@@ -22,7 +25,10 @@
                 <h3>On-Site Pictures</h3>
             </div>
             <div class="img_container">
-                <div class="image_wrapper" v-for="site_images in formatted.on_site_images ">
+                <div
+                    class="image_wrapper"
+                    v-for="site_images in formatted.on_site_images"
+                >
                     <img
                         :src="site_images.url"
                         :alt="site_images.alternativeText"
@@ -43,11 +49,16 @@
                 <div
                     class="ps-carousel"
                     v-swiper:mySwiper="
-                        layout === 'fullwidth' ? settingFullwidth : settingDefault
+                        layout === 'fullwidth'
+                            ? settingFullwidth
+                            : settingDefault
                     "
                 >
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="product in formatted.products">
+                        <div
+                            class="swiper-slide"
+                            v-for="product in formatted.products"
+                        >
                             <product-default :product="product" />
                         </div>
                     </div>
@@ -60,7 +71,9 @@
                             <i class="icon-chevron-right"></i>
                         </div>
                     </div>
-                    <div class="swiper-pagination swiper-pagination-bullets"></div>
+                    <div
+                        class="swiper-pagination swiper-pagination-bullets"
+                    ></div>
                 </div>
             </div>
         </div>
@@ -153,11 +166,11 @@ export default {
                 }
             }
         };
-    },
+    }
 };
 </script>
 
-<style lang="scss"> 
+<style lang="scss">
 .ps-vendor-about {
     .container {
         transform: translateY(-80px);
@@ -176,12 +189,22 @@ export default {
         .ps-section__content {
             transform: translateY(-80px);
             .content_wrapper {
-                img {
+                .image_content {
                     float: left;
                     width: 450px;
-                    height: 450px;
-                    padding: 0 20px 10px 0;
+                    height: 285px;
+                    background: coral;
+                    margin: 0 20px 10px 0;
+                    // .dev_image {
+                    img {
+                        width: 100%;
+                        width: 450px;
+                        height: 285px;
+                        object-fit: cover;
+                    }
+                    // }
                 }
+
                 .text-container {
                     text-align: justify;
                     font-size: 1.4rem;
