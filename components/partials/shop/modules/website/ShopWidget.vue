@@ -77,7 +77,7 @@ export default {
             loading: false
         };
     },
-    async mounted() {
+    async created() {
         await this.$store.dispatch('website/getAllProductCategories');
     }
 };
