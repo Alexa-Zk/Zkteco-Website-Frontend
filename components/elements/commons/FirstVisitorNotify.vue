@@ -2,7 +2,7 @@
     <v-dialog v-model="demoDialog" width="800" height="500">
         <div class="ps-page--subscriber">
             <div class="popup-left">
-                <img src="~/static/img/website/newsletter-image.png" />
+                <img src="~/static/img/website/newsletter-image1.png" />
             </div>
             <div class="popup-right">
                 <div>
@@ -10,7 +10,10 @@
                         class="ps-page__close"
                         @click.prevent="demoDialog = false"
                     >
-                        <i class="icon icon-cross" style="position: relative;z-index: 100"></i>
+                        <i
+                            class="icon icon-cross"
+                            style="position: relative;z-index: 100"
+                        ></i>
                     </a>
                     <h3>
                         Join thousands of businesses with a headstart
@@ -71,13 +74,13 @@ export default {
             }
             localStorage.setItem('SUBSCRIBER_POPUP', true);
         },
-        closeModal(){
-            this.demoDialog = false
+        closeModal() {
+            this.demoDialog = false;
         },
         async subscribe() {
             if (this.email !== '') {
                 let payload = {
-                    name: this.name || "Website",
+                    name: this.name || 'Website',
                     email: this.email
                 };
                 const ip = await this.$axios.$post(
