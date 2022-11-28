@@ -68,9 +68,9 @@
                 <li>
                     <nuxt-link to="/about">Our Values</nuxt-link>
                 </li>
-                <li>
+                <!--li>
                     <nuxt-link to="/careers">Careers</nuxt-link>
-                </li>
+                </li -->
             </ul>
         </aside>
         <aside class="widget widget_footer">
