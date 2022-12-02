@@ -207,7 +207,7 @@ export default {
 
                 .text-container {
                     text-align: justify;
-                    font-size: 1.4rem;
+                    font-size: 1.5rem;
                 }
             }
         }
