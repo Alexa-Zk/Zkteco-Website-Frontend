@@ -47,7 +47,7 @@
                             <div
                                 class="ps-block__content bg--cover"
                                 :style="{
-                                    backgroundImage: `linear-gradient(to right bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${item.side_image.url})`
+                                    backgroundImage: `url(${item.side_image.url})`
                                 }"
                             ></div>
                             <!--div class="ps-case-study-img">
@@ -112,11 +112,8 @@ export default {
                 .then(response => {
                     console.log(response.data);
                     this.$store.commit('website/setCaseStudies', []);
-                    this.$store.commit(
-                        'website/setCaseStudies',
-                        response.data
-                    );
-                    
+                    this.$store.commit('website/setCaseStudies', response.data);
+
                     this.loading = false;
                 })
                 .catch(error => ({ error: JSON.stringify(error) }));
