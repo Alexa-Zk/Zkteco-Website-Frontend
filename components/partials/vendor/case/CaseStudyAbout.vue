@@ -243,4 +243,26 @@ export default {
         }
     }
 }
+
+@media (max-width: 1200px) {
+    .on_site_pictures {
+        padding: 0 1.3rem;
+    }
+
+    .related_product {
+        padding: 0 1.3rem;
+    }
+}
+
+@media (max-width: 989px) {
+    .ps-section__header {
+        margin-bottom: 3rem;
+    }
+}
+
+@media (max-width: 760px) {
+    .ps-section__header {
+        margin-top: 2rem;
+    }
+}
 </style>
