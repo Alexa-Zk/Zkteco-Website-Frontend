@@ -4,22 +4,51 @@
             <div class="ps-section__header">
                 <h3>Case Study</h3>
             </div>
-
-            <nav class="case-study-nav">
-                <a @click.prevent="fetchCaseStudyByCategory('all')">
-                    All
-                </a>
-                <a
-                    v-for="category in caseStudyCategories"
-                    :key="category.id"
-                    @click.prevent="fetchCaseStudyByCategory(category.slug)"
-                >
-                    {{ category.title }}
-                </a>
-                <a href="https://www.zkteco.com/en/case" target="_blank">
-                    More Cases
-                </a>
-            </nav>
+            <div>
+                <nav class="case-study-nav-normal">
+                    <a @click.prevent="fetchCaseStudyByCategory('all')">
+                        All
+                    </a>
+                    <a
+                        v-for="category in caseStudyCategories"
+                        :key="category.id"
+                        @click.prevent="fetchCaseStudyByCategory(category.slug)"
+                    >
+                        {{ category.title }}
+                    </a>
+                    <a href="https://www.zkteco.com/en/case" target="_blank">
+                        More Cases
+                    </a>
+                </nav>
+                <nav class="case-study-nav-reside">
+                    <ul>
+                        <li>
+                            <a @click.prevent="fetchCaseStudyByCategory('all')">
+                                All
+                            </a>
+                            <ul>
+                                <li
+                                    v-for="category in caseStudyCategories"
+                                    :key="category.id"
+                                    @click.prevent="
+                                        fetchCaseStudyByCategory(category.slug)
+                                    "
+                                >
+                                    <a>{{ category.title }}</a>
+                                </li>
+                                <!--li>
+                                    <a
+                                        href="https://www.zkteco.com/en/case"
+                                        target="_blank"
+                                    >
+                                        More Cases
+                                    </a>
+                                </li-->
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
             <div class="ps-section__content">
                 <div class="placeholder-image-grid" v-if="loading">
                     <content-placeholders
@@ -73,6 +102,7 @@
 
 <script>
 import { mapState } from 'vuex';
+//import MenuDropdown from '~/components/shared/menu/website/MenuDropdown';
 import Repository, { serializeQuery } from '~/repositories/Repository.js';
 import { subBaseUrl } from '~/repositories/Repository';
 
@@ -172,7 +202,7 @@ export default {
     text-decoration: none;
     color: black;
 }
-.case-study-nav {
+.case-study-nav-normal {
     height: 5rem;
     margin-bottom: 4rem;
     display: flex;
@@ -185,6 +215,84 @@ export default {
         padding: 14px 50px;
         color: #fff;
         font-weight: 600;
+    }
+}
+
+.case-study-nav-reside {
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    //background: #37bc9b;
+    display: none;
+    margin-bottom: 4rem;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    float: left;
+    display: inline-block;
+}
+
+nav ul li {
+    position: relative;
+    margin: 0 20px 0 0;
+    float: left;
+    display: inline-block;
+}
+
+li > a:after {
+    content: ' »';
+} /* Change this in order to change the Dropdown symbol */
+
+li > a:only-child:after {
+    content: '';
+}
+
+nav ul li a {
+    padding: 20px;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    z-index: 1;
+    width: 250px;
+    background: #8cc63f;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+// nav ul li a:hover {
+//     opacity: 0.5;
+// }
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    left: 0;
+    // background: #37bc9b;
+    float: left;
+}
+
+nav ul li ul li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+@media (max-width: 1200px) {
+    .case-study-nav-normal {
+        display: none;
+    }
+
+    .case-study-nav-reside {
+        display: inline-block;
     }
 }
 </style>

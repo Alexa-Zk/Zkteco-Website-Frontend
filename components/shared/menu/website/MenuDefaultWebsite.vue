@@ -97,7 +97,8 @@ export default {
                 },
                 {
                     text: 'Smart Home',
-                    redirect: true
+                    //redirect: true,
+                    url: 'http://ngteco.ng/'
                 },
                 // {
                 //     text: 'Partners Portal',
