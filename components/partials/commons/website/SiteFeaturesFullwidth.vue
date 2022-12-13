@@ -103,6 +103,7 @@ export default {
 }
 
 .ps-btn-case-study {
+    text-decoration: none;
     padding: 20px 0;
     font-size: 1.5rem;
     color: #000;
