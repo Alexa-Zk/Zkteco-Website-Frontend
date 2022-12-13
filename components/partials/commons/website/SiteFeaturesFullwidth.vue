@@ -105,6 +105,7 @@ export default {
 .ps-btn-case-study {
     padding: 20px 0;
     font-size: 1.5rem;
+    color: #000;
 
     &:hover {
         color: #78bc27;
