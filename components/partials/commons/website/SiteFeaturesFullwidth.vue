@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="ps-site-features">
         <div class="ps-container">
-            <h3>Case Study</h3>
+            <h3>ZKTeco Insight into the Market</h3>
             <div>
                 <div class="row">
                     <div
