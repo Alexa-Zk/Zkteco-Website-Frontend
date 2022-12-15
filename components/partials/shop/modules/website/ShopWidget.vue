@@ -14,15 +14,13 @@
                         <content-placeholders-text :lines="3" />
                     </content-placeholders>
                 </div>
-                
+
                 <li v-for="category in productCategories" :key="category.id">
-                    <v-list class="sidebar-border" >
+                    <v-list class="sidebar-border">
                         <v-list-group>
                             <template v-slot:activator>
                                 <nuxt-link
-                                    :to="
-                                        `/product-categories/${category.slug}`
-                                    "
+                                    :to="`/product-categories/${category.slug}`"
                                 >
                                     <v-list-item-title>{{
                                         category.name
@@ -63,7 +61,6 @@ import MenuMegaSubCategories from '~/components/shared/menu/website/MenuMegaSubC
 import Repository from '~/repositories/Repository.js';
 import { subBaseUrl } from '~/repositories/Repository';
 
-
 export default {
     name: 'ShopWidget',
     components: {
@@ -71,21 +68,18 @@ export default {
     },
     computed: {
         ...mapState({
-            productCategories: state => state.website.productCategories,  
-            categories: state => state.product.categories,  
-        }),
-        
+            productCategories: state => state.website.productCategories,
+            categories: state => state.product.categories
+        })
     },
     data() {
         return {
             loading: false
         };
     },
-    async mounted() {
-        if(this.productCategories != null && this.productCategories.length == 0){
-            await this.$store.dispatch('website/getAllProductCategories');
-        }
-    },
+    async created() {
+        await this.$store.dispatch('website/getAllProductCategories');
+    }
 };
 </script>
 

@@ -122,11 +122,11 @@ export default {
                     subClass: 'sub-menu',
                     subMenu: [
                         {
-                            text: 'Download Center',
+                            text: 'Download ',
                             url: '/support/download-center'
                         },
                         {
-                            text: 'After Sales Service',
+                            text: 'After Sales ',
                             url: '/support/after-sale'
                         },
                         {
@@ -159,16 +159,16 @@ export default {
                     text: 'Contact Us',
                     url: 'contact'
                 },
-                {
-                    text: 'Partners Portal',
-                    url: '/store'
-                },
+                // {
+                //     text: 'Partners',
+                //     url: '/store'
+                // },
                 {
                     text: 'Smart Home',
                     url: 'http://ngteco.ng/'
                 },
                 {
-                    text: 'Store Locator',
+                    text: 'Partners',
                     url: '/website/page/store-locator'
                 },
 
@@ -177,8 +177,12 @@ export default {
                     url: '/biotime-ng'
                 },
                 {
-                    text: 'Project Consultation',
+                    text: 'Consultation',
                     url: '/support/project-consultation'
+                },
+                {
+                    text: 'Case Study',
+                    url: '/case-study'
                 },
                 {
                     text: 'Login',

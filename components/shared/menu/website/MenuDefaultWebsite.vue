@@ -97,10 +97,11 @@ export default {
                         }
                     ]
                 },
-                {
-                    text: 'Smart Home',
-                    redirect: true
-                },
+                // {
+                //     text: 'Smart Home',
+                //     //redirect: true,
+                //     url: 'http://ngteco.ng/'
+                // },
                 // {
                 //     text: 'Partners Portal',
                 //     url: '/store',
