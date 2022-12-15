@@ -6,6 +6,7 @@ export const state = () => ({
     productsRelated: null,
     singleProduct: null,
     solutions: null,
+    solutionCategoriesAndSub: null,
     caseStudies: null,
     articles: null,
     articlesLimited: null,
@@ -90,6 +91,9 @@ export const mutations = {
 
     setSolutionCategories(state, payload) {
         state.solutionCategories = payload;
+    },
+    setSolutionCategoryAndSubCategories(state, payload){
+        state.solutionCategoriesAndSub = payload;
     },
 
     setNewsCategories(state, payload) {
@@ -542,6 +546,20 @@ export const actions = {
         )
             .then(response => {
                 commit('setCategoryAndSubCategories', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getSolutionCategoryAndSubCategories({ commit }) {
+        commit('setLoading', true);
+        const reponse = await Repository.get(
+            `${subBaseUrl}/solution-categories/categoryAndSubcategory`
+        )
+            .then(response => {
+                commit('setSolutionCategoryAndSubCategories', response.data);
                 commit('setLoading', false);
                 return response.data;
             })

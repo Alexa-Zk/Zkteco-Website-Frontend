@@ -1,6 +1,7 @@
 <template lang="html">
     <ul :class="className">
         <MenuProduct />
+        <MenuSolutionCategories />
         <template v-for="item in mainMenu">
             <MenuDropdown v-if="item.subMenu" :menu-data="item" />
             <MenuMega v-else-if="item.mega" :menu-data="item" />
@@ -27,9 +28,10 @@
 import MenuDropdown from './MenuDropdown';
 import MenuMega from './MenuMega';
 import MenuProduct from './MenuProduct';
+import MenuSolutionCategories from './MenuSolutionCategories.vue' 
 export default {
     name: 'MenuDefault',
-    components: { MenuMega, MenuDropdown, MenuProduct },
+    components: { MenuMega, MenuDropdown, MenuProduct, MenuSolutionCategories },
     props: {
         className: {
             type: String,
@@ -39,23 +41,23 @@ export default {
     data() {
         return {
             mainMenu: [
-                {
-                    text: 'Solutions',
-                    url: '/solution',
-                    extraClass: 'menu-item-has-children',
-                    subClass: 'sub-menu',
-                    subMenu: [
-                        {
-                            text: 'Classified By Industry',
-                            url: '/solution-categories/classified-by-industry'
-                        },
-                        {
-                            text: 'Classified By Application',
-                            url:
-                                '/solution-categories/classified-by-application'
-                        }
-                    ]
-                },
+                // {
+                //     text: 'Solutions',
+                //     url: '/solution',
+                //     extraClass: 'menu-item-has-children',
+                //     subClass: 'sub-menu',
+                //     subMenu: [
+                //         {
+                //             text: 'Classified By Industry',
+                //             url: '/solution-categories/classified-by-industry'
+                //         },
+                //         {
+                //             text: 'Classified By Application',
+                //             url:
+                //                 '/solution-categories/classified-by-application'
+                //         }
+                //     ]
+                // },
                 {
                     text: 'Support',
                     url: '/support',
