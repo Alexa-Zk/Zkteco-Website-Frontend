@@ -14,7 +14,6 @@
                     </button>
                 </div>
             </div>
-            <!-- <div>{{downloadCategories}}</div> -->
              <div class="ps-section__content">
                 <div class="">
                     <div class="col-md-12 col-sm-12">
@@ -245,9 +244,6 @@ export default {
                 this.isSearching = false;
             }
         }
-    },
-    created(){
-        console.log('hiii', this.downloadCategories);
     },
     computed: {
         
