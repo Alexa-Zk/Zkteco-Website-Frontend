@@ -14,10 +14,10 @@
                     </button>
                 </div>
             </div>
-            <div class="ps-section__content">
+             <div class="ps-section__content">
                 <div class="">
                     <div class="col-md-12 col-sm-12">
-                        <div class="ps-block--shipping">
+                        <div class="ps-block--shipping" v-if="downloadCategories">
                             <div class="ps-block--methods" v-if="!isSearching">
                                 <v-tabs
                                     background-color="white"
@@ -40,10 +40,10 @@
                                         :key="item.id"
                                     >
                                         <form>
-                                            <div class="ps-block__content">
+                                            <div class="ps-block__content" v-if="item.product_files" >
                                                 <div
                                                     class="downloads_container"
-                                                    v-for="i in item.downloads"
+                                                    v-for="i in item.product_files"
                                                     :key="i.id"
                                                 >
                                                     <div class="download_left">
@@ -70,9 +70,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="download_right">
-                                                        <!-- <a :href="i.file[0].url" download
-                                                            >Download</a
-                                                        > -->
+                                               
                                                         <button
                                                             class="ps-btn"
                                                             @click.prevent="
@@ -112,12 +110,9 @@
                                     <v-tab
                                         tag="li"
                                         class="tab-label"
-                                        v-for="item2 in item1.download_categories"
-                                        :key="item2.id"
                                     >
-                                        {{ item2.category }}
+                                    {{ item1.product_file_category.category }}
                                     </v-tab>
-
                                     <v-tab-item>
                                         <form>
                                             <div class="ps-block__content">
@@ -181,7 +176,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
     </div>
 </template>
