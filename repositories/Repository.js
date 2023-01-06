@@ -3,12 +3,7 @@ import axios from 'axios';
 
 const token = Cookies.get('id_token');
 const baseHost = 'https://wslbackend.zkteco-wa.com/api/v1';
-<<<<<<< Updated upstream
 const subBaseHost = 'https://admin.zkteco-wa.com';
-=======
-//const subBaseHost = 'https://admin.zkteco-wa.com';
-const subBaseHost = 'http://localhost:1337';
->>>>>>> Stashed changes
 
 export const customHeaders = {
     'Content-Type': 'application/json',
