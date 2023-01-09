@@ -1,12 +1,23 @@
 <template lang="html">
-    <div class="ps-page--single ps-page--vendor">
+    <div>
         <bread-crumb :breadcrumb="breadCrumb" />
-        <store-list-2 />
+        <div class="ps-page--single ps-page--vendor">
+            <div class="container">
+                <div class="ps-layout--shop">
+                    <div class="ps-layout__left">
+                        <!--shop-widget /-->
+                    </div>
+                    <div class="ps-layout__right">
+                        <store-list-2 />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import { mapState } from 'vuex';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import StoreList2 from '~/components/partials/vendor/website/StoreList2';
 
@@ -41,9 +52,12 @@ export default {
             ]
         };
     },
-    async created () {
-        const payload = {}
-        const response = await this.$store.dispatch('website/getSolutions', payload)
+    async created() {
+        const payload = {};
+        const response = await this.$store.dispatch(
+            'website/getSolutions',
+            payload
+        );
     }
 };
 </script>

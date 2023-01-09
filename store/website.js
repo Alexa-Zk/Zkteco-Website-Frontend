@@ -382,20 +382,24 @@ export const actions = {
     async getSolutions({ commit }, payload) {
         commit('setLoading', true);
         let params = {
-            _start: 0,
+            _start: Object.keys(payload).length === 0 ? 0 : payload.page,
             _sort: 'created_at:desc',
-            _limit: 100
+            _limit:
+                Object.keys(payload).length === 0
+                    ? 8 //state.perPage
+                    : payload.perPage
         };
+
         const reponse = await Repository.get(
             `${subBaseUrl}/solutions?${serializeQuery(params)}`
         )
             .then(response => {
-                commit('setSolutions', response.data);
+                const solution = response.data;
+                commit('setSolutions', solution);
                 commit('setLoading', false);
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
-        return reponse;
     },
 
     async getCaseStudies({ commit }, payload) {

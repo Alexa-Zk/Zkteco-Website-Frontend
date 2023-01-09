@@ -2,22 +2,42 @@
     <section class="ps-store-list">
         <div class="container">
             <div class="ps-section__header">
-                <h3>ZKTeco Solutions</h3>
-                <p>
+                <!--p>
                     ZKTeco has developed professional industry solutions for
-                    different industries' properties and scale
-                </p>
+                    different industries' propertiesand scale
+                </p !-->
+            </div>
+            <div class="ps-container">
+                <div class="row mb-10">
+                    <div class="col-lg-7 form-group--nest">
+                        <input
+                            class="form-control"
+                            type="text"
+                            placeholder="Please input keyword"
+                            v-model="searchQuery"
+                        />
+                        <button class="ps-btn">
+                            {{ loading ? 'Searching...' : 'Search' }}
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="ps-section__content">
                 <div class="placeholder-image-grid" v-if="loading">
-                    <content-placeholders :rounded="true" v-for="x in 9" :key="x">
+                    <content-placeholders
+                        :rounded="true"
+                        v-for="x in 9"
+                        :key="x"
+                    >
                         <content-placeholders-img />
                         <content-placeholders-heading />
                     </content-placeholders>
                 </div>
                 <div class="row" v-else>
+                    <!--- col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12  -->
+
                     <div
-                        class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 "
+                        class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 "
                         v-for="item in solutions"
                         :key="item.id"
                     >
@@ -25,25 +45,30 @@
                             <div
                                 class="ps-block__content bg--cover"
                                 :style="{
-                                    backgroundImage: `linear-gradient(to right bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${item.image[0].url})`
+                                    backgroundImage: `url(${item.image[0].url})`
                                 }"
-                            >
-                                <figure>
-                                    <h4>{{ item.title }}</h4>
-                                </figure>
-                            </div>
+                            ></div>
                             <div class="ps-block__author">
                                 <a class="ps-block__user" href="#"> </a>
 
                                 <nuxt-link
-                                    class="ps-btn"
                                     :to="`/solution-details/${item.slug}`"
                                 >
-                                    Learn More
+                                    {{ item.title }}
                                 </nuxt-link>
                             </div>
                         </article>
                     </div>
+
+                    <footer class="mt-60">
+                        <v-pagination
+                            v-model="page"
+                            :total-visible="7"
+                            color="green"
+                            :length="paginationLenght"
+                            @input="handleChangePagination"
+                        />
+                    </footer>
                 </div>
             </div>
         </div>
@@ -51,16 +76,52 @@
 </template>
 
 <script>
-
 import { mapState } from 'vuex';
+import Repository from '~/repositories/Repository.js';
+import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
     name: 'Solutions',
+    data() {
+        return {
+            searchQuery: null,
+            isSearching: false,
+            searchData: null,
+            currentCategory: null,
+
+            page: 1,
+            pageSize: 4,
+            solutionTotal: 0
+        };
+    },
     computed: {
         ...mapState({
             solutions: state => state.website.solutions,
             loading: state => state.website.loading
-        })
+        }),
+        paginationLenght() {
+            console.log('Pagination ', this.solutionTotal);
+            if (this.solutionTotal % 8 === 0) {
+                return parseInt(this.solutionTotal / this.solutionTotal);
+            } else {
+                return parseInt(this.solutionTotal / 8 + 1);
+            }
+        }
+    },
+    async mounted() {
+        const response = await Repository.get(`${subBaseUrl}/solutions/count`);
+        this.solutionTotal = response.data;
+    },
+    methods: {
+        async handleChangePagination(value) {
+            const page = value == 1 ? 0 : value;
+            const params = {
+                page: page * this.pageSize,
+                sort_by: 'created_at:desc',
+                perPage: 8
+            };
+            await this.$store.dispatch('website/getSolutions', params);
+        }
     }
 };
 </script>
