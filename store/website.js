@@ -92,7 +92,7 @@ export const mutations = {
     setSolutionCategories(state, payload) {
         state.solutionCategories = payload;
     },
-    setSolutionCategoryAndSubCategories(state, payload){
+    setSolutionCategoryAndSubCategories(state, payload) {
         state.solutionCategoriesAndSub = payload;
     },
 
@@ -271,7 +271,6 @@ export const actions = {
             `${subBaseUrl}/product-file-categories`
         )
             .then(response => {
-                console.log(response.data);
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
@@ -284,14 +283,14 @@ export const actions = {
     async searchDownloadCategories({ commit }, payload) {
         commit('setLoading', true);
         let response;
-            response = await Repository.get(
-                `${subBaseUrl}/product-files?product_file_category.category=${payload.category}&_q=${payload.search}`
-            )
-                .then(response => {
-                    commit('setLoading', false);
-                    return response.data;
-                })
-                .catch(error => ({ error: JSON.stringify(error) }));
+        response = await Repository.get(
+            `${subBaseUrl}/product-files?product_file_category.category=${payload.category}&_q=${payload.search}`
+        )
+            .then(response => {
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
         return response;
     },
 
@@ -330,15 +329,20 @@ export const actions = {
 
     async getSolutions({ commit }, payload) {
         commit('setLoading', true);
+        let searchSolution =
+            payload.search == undefined || payload.search == ''
+                ? null
+                : { _q: `${payload.search.trim().toLowerCase()}` };
+
         let params = {
             _start: Object.keys(payload).length === 0 ? 0 : payload.page,
             _sort: 'created_at:desc',
             _limit:
                 Object.keys(payload).length === 0
                     ? 8 //state.perPage
-                    : payload.perPage
+                    : payload.perPage,
+            ...searchSolution
         };
-
         const reponse = await Repository.get(
             `${subBaseUrl}/solutions?${serializeQuery(params)}`
         )
@@ -346,9 +350,10 @@ export const actions = {
                 const solution = response.data;
                 commit('setSolutions', solution);
                 commit('setLoading', false);
-                return response.data;
+                return solution;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
     },
 
     async getCaseStudies({ commit }, payload) {

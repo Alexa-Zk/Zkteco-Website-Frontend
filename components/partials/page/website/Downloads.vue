@@ -14,10 +14,13 @@
                     </button>
                 </div>
             </div>
-             <div class="ps-section__content">
+            <div class="ps-section__content">
                 <div class="">
                     <div class="col-md-12 col-sm-12">
-                        <div class="ps-block--shipping" v-if="downloadCategories">
+                        <div
+                            class="ps-block--shipping"
+                            v-if="downloadCategories"
+                        >
                             <div class="ps-block--methods" v-if="!isSearching">
                                 <v-tabs
                                     background-color="white"
@@ -40,7 +43,10 @@
                                         :key="item.id"
                                     >
                                         <form>
-                                            <div class="ps-block__content" v-if="item.product_files" >
+                                            <div
+                                                class="ps-block__content"
+                                                v-if="item.product_files"
+                                            >
                                                 <div
                                                     class="downloads_container"
                                                     v-for="i in item.product_files"
@@ -70,7 +76,6 @@
                                                         </div>
                                                     </div>
                                                     <div class="download_right">
-                                               
                                                         <button
                                                             class="ps-btn"
                                                             @click.prevent="
@@ -107,11 +112,10 @@
                                     v-for="item1 in searchData"
                                     :key="item1.id"
                                 >
-                                    <v-tab
-                                        tag="li"
-                                        class="tab-label"
-                                    >
-                                    {{ item1.product_file_category.category }}
+                                    <v-tab tag="li" class="tab-label">
+                                        {{
+                                            item1.product_file_category.category
+                                        }}
                                     </v-tab>
                                     <v-tab-item>
                                         <form>
@@ -176,7 +180,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 </template>
@@ -240,13 +244,12 @@ export default {
         searchQuery(newEntry, oldEntry) {
             if (newEntry !== '') {
             } else {
-                this.currentCategory = this.currentCategoryComputed
+                this.currentCategory = this.currentCategoryComputed;
                 this.isSearching = false;
             }
         }
     },
     computed: {
-        
         ...mapState({
             isLoading: state => state.website.loading,
             isLoggedInToDownload: state => state.auth.isLoggedInToDownload,
@@ -254,7 +257,7 @@ export default {
         }),
         currentCategoryComputed() {
             return this.downloadCategories[0].category;
-        } 
+        }
     }
 };
 </script>

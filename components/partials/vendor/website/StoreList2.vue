@@ -16,7 +16,11 @@
                             placeholder="Please input keyword"
                             v-model="searchQuery"
                         />
-                        <button class="ps-btn">
+
+                        <button
+                            class="ps-btn"
+                            @click.prevent="searchInputedQurey"
+                        >
                             {{ loading ? 'Searching...' : 'Search' }}
                         </button>
                     </div>
@@ -59,17 +63,16 @@
                             </div>
                         </article>
                     </div>
-
-                    <footer class="mt-60">
-                        <v-pagination
-                            v-model="page"
-                            :total-visible="7"
-                            color="green"
-                            :length="paginationLenght"
-                            @input="handleChangePagination"
-                        />
-                    </footer>
                 </div>
+                <footer class="mt-60">
+                    <v-pagination
+                        v-model="page"
+                        :total-visible="8"
+                        color="green"
+                        :length="paginationLenght"
+                        @input="handleChangePagination"
+                    />
+                </footer>
             </div>
         </div>
     </section>
@@ -89,8 +92,8 @@ export default {
             searchData: null,
             currentCategory: null,
 
-            page: 1,
-            pageSize: 4,
+            page: 0,
+            pageSize: 8,
             solutionTotal: 0
         };
     },
@@ -100,27 +103,57 @@ export default {
             loading: state => state.website.loading
         }),
         paginationLenght() {
-            console.log('Pagination ', this.solutionTotal);
-            if (this.solutionTotal % 8 === 0) {
-                return parseInt(this.solutionTotal / this.solutionTotal);
-            } else {
-                return parseInt(this.solutionTotal / 8 + 1);
-            }
+            return Math.ceil(this.solutionTotal / 8);
         }
     },
-    async mounted() {
+    async created() {
         const response = await Repository.get(`${subBaseUrl}/solutions/count`);
         this.solutionTotal = response.data;
+
+        const payload = {
+            page: this.page,
+            sort_by: 'created_at:desc',
+            perPage: 8
+        };
+
+        await this.$store.dispatch('website/getSolutions', payload);
     },
+
     methods: {
         async handleChangePagination(value) {
-            const page = value == 1 ? 0 : value;
+            const page = parseInt(value) === 1 ? 0 : (value - 1) * 8;
+            let nextStartPage = parseInt(page);
+
             const params = {
-                page: page * this.pageSize,
+                page: nextStartPage,
                 sort_by: 'created_at:desc',
                 perPage: 8
             };
             await this.$store.dispatch('website/getSolutions', params);
+        },
+
+        async searchInputedQurey() {
+            let payload = {
+                // category: this.currentCategory
+                //     ? this.currentCategory
+                //     : this.currentCategoryComputed,
+                page: this.page,
+                sort_by: 'created_at:desc',
+                perPage: 8,
+                search: this.searchQuery
+            };
+
+            await this.$store.dispatch('website/getSolutions', payload);
+            //console.log(' response ==', response);
+            // Below is good when use search but can not revert ot inital totalSolution after used
+            //this.solutionTotal = response.length;
+            this.searchQuery = null;
+            //return response.data;
+            // this.isSearching = true;
+            // if (response.error) {
+            // } else {
+            //     this.searchData = response;
+            // }
         }
     }
 };

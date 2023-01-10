@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="ps-layout--shop">
                     <div class="ps-layout__left">
-                        <!--shop-widget /-->
+                        <solution-widget />
                     </div>
                     <div class="ps-layout__right">
                         <store-list-2 />
@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import StoreList2 from '~/components/partials/vendor/website/StoreList2';
+import SolutionWidget from '~/components/partials/shop/modules/website/SolutionWidget';
 
 export default {
     head() {
@@ -36,7 +36,8 @@ export default {
     },
     components: {
         StoreList2,
-        BreadCrumb
+        BreadCrumb,
+        SolutionWidget
     },
     layout: 'layout-default-website',
     data: () => {
@@ -51,13 +52,6 @@ export default {
                 }
             ]
         };
-    },
-    async created() {
-        const payload = {};
-        const response = await this.$store.dispatch(
-            'website/getSolutions',
-            payload
-        );
     }
 };
 </script>

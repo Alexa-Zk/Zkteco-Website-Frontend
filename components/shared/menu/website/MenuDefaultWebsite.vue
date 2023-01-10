@@ -28,7 +28,7 @@
 import MenuDropdown from './MenuDropdown';
 import MenuMega from './MenuMega';
 import MenuProduct from './MenuProduct';
-import MenuSolutionCategories from './MenuSolutionCategories.vue' 
+import MenuSolutionCategories from './MenuSolutionCategories';
 export default {
     name: 'MenuDefault',
     components: { MenuMega, MenuDropdown, MenuProduct, MenuSolutionCategories },
