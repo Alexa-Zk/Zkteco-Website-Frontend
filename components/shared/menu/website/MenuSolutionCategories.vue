@@ -19,7 +19,7 @@
                         v-for="subItem in item.solution_sub_categories"
                         :key="subItem.id"
                     >
-                        <nuxt-link :to="`/solution-categories/${subItem.slug}`">
+                        <nuxt-link :to="`/solution-sub/${subItem.slug}`">
                             {{ subItem.name }}
                         </nuxt-link>
                     </li>

@@ -20,6 +20,7 @@ export const state = () => ({
     homePage: null,
     storeLocator: null,
     solutionCategories: null,
+    solutionCategoryTotal: 0,
     newsCategories: null,
     searchResults: null,
     loading: false,
@@ -29,7 +30,9 @@ export const state = () => ({
     sort_by: 'created_at:desc',
     totalSingleProductCategories: 0,
     totalSingleProductSubCategories: 0,
-    categoryAndSubCategories: null
+    categoryAndSubCategories: null,
+    solutionSub: null,
+    solutionSubTotal: 0
 });
 
 export const mutations = {
@@ -92,6 +95,19 @@ export const mutations = {
     setSolutionCategories(state, payload) {
         state.solutionCategories = payload;
     },
+
+    setSolutionCategoryTotal(state, payload) {
+        state.solutionCategoryTotal = payload;
+    },
+
+    setSolutionSub(state, payload) {
+        state.solutionSub = payload;
+    },
+
+    setSolutionSubTotal(state, payload) {
+        state.solutionSubTotal = payload;
+    },
+
     setSolutionCategoryAndSubCategories(state, payload) {
         state.solutionCategoriesAndSub = payload;
     },
@@ -621,21 +637,75 @@ export const actions = {
         return reponse;
     },
 
-    async getSolutionCategories({ commit }, slug) {
+    async getSolutionCategories({ commit }, payload) {
         commit('setLoading', true);
+        let searchSolution =
+            payload.search == undefined || payload.search == ''
+                ? null
+                : {
+                      _q: `${payload.search.trim().toLowerCase()}`
+                  };
         let params = {
-            slug_in: slug
+            _start: Object.keys(payload).length === 0 ? 0 : payload.page,
+            _sort: 'created_at:desc',
+            _limit: Object.keys(payload).length === 0 ? 8 : payload.perPage,
+            'solution_categories.name': payload.slug,
+            ...searchSolution
         };
-        const reponse = await Repository.get(
-            `${subBaseUrl}/solution-categories/?${serializeQuery(params)}`
-        )
-            .then(response => {
-                commit('setSolutionCategories', response.data[0]);
-                commit('setLoading', false);
-                return response.data;
-            })
-            .catch(error => ({ error: JSON.stringify(error) }));
-        return reponse;
+
+        let paramCount = {
+            'solution_categories.name': payload.slug,
+            ...searchSolution
+        };
+
+        let url = `${subBaseUrl}/solutions/?${serializeQuery(params)}`;
+        let urlCount = `${subBaseUrl}/solutions/count?${serializeQuery(
+            paramCount
+        )}`;
+        const res = Repository.get(url);
+        const count = Repository.get(urlCount);
+
+        await Promise.all([res, count]).then(value => {
+            commit('setSolutionCategories', value[0].data);
+            commit('setSolutionCategoryTotal', value[1].data);
+            commit('setLoading', false);
+        });
+    },
+
+    async getSolutionSub({ commit }, payload) {
+        commit('setLoading', true);
+        let searchSolution =
+            payload.search == undefined || payload.search == ''
+                ? null
+                : {
+                      _q: `${payload.search.trim().toLowerCase()}`
+                  };
+
+        let params = {
+            _start: Object.keys(payload).length === 0 ? 0 : payload.page,
+            _sort: 'created_at:desc',
+            _limit: Object.keys(payload).length === 0 ? 8 : payload.perPage,
+            'solution_sub_categories.name': payload.slug,
+            ...searchSolution
+        };
+
+        let paramCount = {
+            'solution_sub_categories.name': payload.slug,
+            ...searchSolution
+        };
+
+        let url = `${subBaseUrl}/solutions/?${serializeQuery(params)}`;
+        let urlCount = `${subBaseUrl}/solutions/count?${serializeQuery(
+            paramCount
+        )}`;
+        const res = Repository.get(url);
+        const count = Repository.get(urlCount);
+
+        await Promise.all([res, count]).then(value => {
+            commit('setSolutionSub', value[0].data);
+            commit('setSolutionSubTotal', value[1].data);
+            commit('setLoading', false);
+        });
     },
 
     async getNewsCategories({ commit }, slug) {

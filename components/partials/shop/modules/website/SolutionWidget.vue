@@ -43,7 +43,7 @@
                                     <v-list-item-content>
                                         <nuxt-link
                                             :to="
-                                                `/sub-categories/${solution.slug}`
+                                                `/solution-sub/${solution.slug}`
                                             "
                                             ><v-list-item-title
                                                 >{{ solution.name }}
@@ -79,11 +79,6 @@ export default {
         return {
             loading: false
         };
-    },
-    async created() {
-        await this.$store.dispatch(
-            'website/getSolutionCategoryAndSubCategories'
-        );
     }
 };
 </script>
