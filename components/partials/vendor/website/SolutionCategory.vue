@@ -42,7 +42,7 @@
 
                     <div
                         class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 "
-                        v-for="item in solutions"
+                        v-for="item in solutionCategories"
                         :key="item.id"
                     >
                         <article class="ps-block--store-2">
@@ -80,11 +80,9 @@
 
 <script>
 import { mapState } from 'vuex';
-import Repository from '~/repositories/Repository.js';
-import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
-    name: 'Solutions',
+    name: 'SolutionCategory',
     data() {
         return {
             searchQuery: null,
@@ -99,49 +97,53 @@ export default {
     },
     computed: {
         ...mapState({
-            solutions: state => state.website.solutions,
+            solutionCategories: state => state.website.solutionCategories,
+            solutionCategoryTotal: state => state.website.solutionCategoryTotal,
             loading: state => state.website.loading
         }),
+
         paginationLenght() {
-            return Math.ceil(this.solutionTotal / 8);
+            return Math.ceil(this.solutionCategoryTotal / 8);
         }
     },
     async created() {
-        const response = await Repository.get(`${subBaseUrl}/solutions/count`);
-        this.solutionTotal = response.data;
-
-        const payload = {
-            page: this.page,
-            sort_by: 'created_at:desc',
-            perPage: 8
-        };
-
-        await this.$store.dispatch('website/getSolutions', payload);
+        await this.pageLoad();
     },
 
     methods: {
         async handleChangePagination(value) {
             const page = parseInt(value) === 1 ? 0 : (value - 1) * 8;
             let nextStartPage = parseInt(page);
+            this.pageLoad(nextStartPage);
+        },
+        async pageLoad(value = null) {
+            let search =
+                this.searchQuery == undefined || this.searchQuery == ''
+                    ? null
+                    : { search: `${this.searchQuery.trim().toLowerCase()}` };
 
-            const params = {
-                page: nextStartPage,
+            let slug =
+                this.$route.params.id == undefined ||
+                this.$route.params.id == ''
+                    ? null
+                    : this.$route.params.id;
+
+            let payload = {
+                page: value == null ? this.page : value,
                 sort_by: 'created_at:desc',
-                perPage: 8
+                perPage: 8,
+                slug: slug,
+                ...search
             };
-            await this.$store.dispatch('website/getSolutions', params);
+
+            return this.$store.dispatch(
+                'website/getSolutionCategories',
+                payload
+            );
         },
 
         async searchInputedQurey() {
-            let payload = {
-                page: this.page,
-                sort_by: 'created_at:desc',
-                perPage: 8,
-                search: this.searchQuery
-            };
-
-            await this.$store.dispatch('website/getSolutions', payload);
-            this.searchQuery = null;
+            return await this.pageLoad();
         }
     }
 };

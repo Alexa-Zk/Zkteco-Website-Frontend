@@ -1,6 +1,6 @@
 <template>
     <li class=" menu-item-has-children has-mega-menu">
-        <nuxt-link to="/product">
+        <nuxt-link to="/solution">
             Solutions
         </nuxt-link>
         <div class="mega-menu">
@@ -10,7 +10,7 @@
                 :key="item.id"
             >
                 <h4>
-                    <nuxt-link :to="`/solution-categories/classified-by-application`">
+                    <nuxt-link :to="`/solution-categories/${item.slug}`">
                         {{ item.name }}
                     </nuxt-link>
                 </h4>
@@ -19,7 +19,7 @@
                         v-for="subItem in item.solution_sub_categories"
                         :key="subItem.id"
                     >
-                        <nuxt-link :to="`/solution-categories/classified-by-industry`">
+                        <nuxt-link :to="`/solution-sub/${subItem.slug}`">
                             {{ subItem.name }}
                         </nuxt-link>
                     </li>
@@ -31,11 +31,9 @@
 
 <script>
 import { mapState } from 'vuex';
-import Repository from '~/repositories/Repository.js';
-import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
-    name: 'MenuProduct',
+    name: 'MenuSolutionCategories',
     data() {
         return {};
     },
@@ -46,7 +44,9 @@ export default {
         })
     },
     async mounted() {
-        await this.$store.dispatch('website/getSolutionCategoryAndSubCategories');
+        await this.$store.dispatch(
+            'website/getSolutionCategoryAndSubCategories'
+        );
     }
 };
 </script>
