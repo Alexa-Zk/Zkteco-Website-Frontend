@@ -88,18 +88,14 @@ export default {
     data() {
         return {
             searchQuery: null,
-            isSearching: false,
-            searchData: null,
-            currentCategory: null,
-
             page: 0,
-            pageSize: 8,
-            solutionTotal: 0
+            pageSize: 8
         };
     },
     computed: {
         ...mapState({
             solutions: state => state.website.solutions,
+            solutionTotal: state => state.website.solutionTotal,
             loading: state => state.website.loading
         }),
         paginationLenght() {
@@ -107,41 +103,33 @@ export default {
         }
     },
     async created() {
-        const response = await Repository.get(`${subBaseUrl}/solutions/count`);
-        this.solutionTotal = response.data;
-
-        const payload = {
-            page: this.page,
-            sort_by: 'created_at:desc',
-            perPage: 8
-        };
-
-        await this.$store.dispatch('website/getSolutions', payload);
+        this.pageLoad();
     },
 
     methods: {
         async handleChangePagination(value) {
             const page = parseInt(value) === 1 ? 0 : (value - 1) * 8;
-            let nextStartPage = parseInt(page);
-
-            const params = {
-                page: nextStartPage,
-                sort_by: 'created_at:desc',
-                perPage: 8
-            };
-            await this.$store.dispatch('website/getSolutions', params);
+            this.pageLoad(parseInt(page));
         },
 
         async searchInputedQurey() {
+            return await this.pageLoad();
+        },
+
+        async pageLoad(value = null) {
+            let search =
+                this.searchQuery == undefined || this.searchQuery == ''
+                    ? null
+                    : { search: `${this.searchQuery.trim().toLowerCase()}` };
+
             let payload = {
-                page: this.page,
+                page: value == null ? this.page : value,
                 sort_by: 'created_at:desc',
                 perPage: 8,
-                search: this.searchQuery
+                ...search
             };
 
-            await this.$store.dispatch('website/getSolutions', payload);
-            this.searchQuery = null;
+            return this.$store.dispatch('website/getSolutions', payload);
         }
     }
 };
@@ -175,5 +163,9 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 40px;
+}
+
+a {
+    color: #000 !important;
 }
 </style>
