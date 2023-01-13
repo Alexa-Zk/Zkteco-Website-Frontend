@@ -32,7 +32,8 @@ export const state = () => ({
     totalSingleProductSubCategories: 0,
     categoryAndSubCategories: null,
     solutionSub: null,
-    solutionSubTotal: 0
+    solutionSubTotal: 0,
+    solutionTotal: 0
 });
 
 export const mutations = {
@@ -118,6 +119,10 @@ export const mutations = {
 
     setSolutions(state, payload) {
         state.solutions = payload;
+    },
+
+    setSolutionTotal(state, payload) {
+        state.solutionTotal = payload;
     },
 
     setCaseStudies(state, payload) {
@@ -348,28 +353,33 @@ export const actions = {
         let searchSolution =
             payload.search == undefined || payload.search == ''
                 ? null
-                : { _q: `${payload.search.trim().toLowerCase()}` };
+                : {
+                      _q: `${payload.search.trim().toLowerCase()}`
+                  };
 
         let params = {
             _start: Object.keys(payload).length === 0 ? 0 : payload.page,
             _sort: 'created_at:desc',
-            _limit:
-                Object.keys(payload).length === 0
-                    ? 8 //state.perPage
-                    : payload.perPage,
+            _limit: Object.keys(payload).length === 0 ? 8 : payload.perPage,
             ...searchSolution
         };
-        const reponse = await Repository.get(
-            `${subBaseUrl}/solutions?${serializeQuery(params)}`
-        )
-            .then(response => {
-                const solution = response.data;
-                commit('setSolutions', solution);
-                commit('setLoading', false);
-                return solution;
-            })
-            .catch(error => ({ error: JSON.stringify(error) }));
-        return reponse;
+
+        let paramCount = {
+            ...searchSolution
+        };
+
+        let url = `${subBaseUrl}/solutions/?${serializeQuery(params)}`;
+        let urlCount = `${subBaseUrl}/solutions/count?${serializeQuery(
+            paramCount
+        )}`;
+        const res = Repository.get(url);
+        const count = Repository.get(urlCount);
+
+        await Promise.all([res, count]).then(value => {
+            commit('setSolutions', value[0].data);
+            commit('setSolutionTotal', value[1].data);
+            commit('setLoading', false);
+        });
     },
 
     async getCaseStudies({ commit }, payload) {

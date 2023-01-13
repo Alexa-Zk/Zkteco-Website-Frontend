@@ -86,13 +86,8 @@ export default {
     data() {
         return {
             searchQuery: null,
-            isSearching: false,
-            searchData: null,
-            currentCategory: null,
-
             page: 0,
-            pageSize: 8,
-            solutionTotal: 0
+            pageSize: 8
         };
     },
     computed: {
@@ -113,8 +108,7 @@ export default {
     methods: {
         async handleChangePagination(value) {
             const page = parseInt(value) === 1 ? 0 : (value - 1) * 8;
-            let nextStartPage = parseInt(page);
-            this.pageLoad(nextStartPage);
+            this.pageLoad(parseInt(page));
         },
         async pageLoad(value = null) {
             let search =
@@ -177,5 +171,8 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 40px;
+}
+a {
+    color: #000 !important;
 }
 </style>
