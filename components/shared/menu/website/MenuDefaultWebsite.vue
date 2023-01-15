@@ -21,6 +21,7 @@
                 </nuxt-link>
             </li>
         </template>
+        <MenuBrand />
     </ul>
 </template>
 
@@ -28,10 +29,17 @@
 import MenuDropdown from './MenuDropdown';
 import MenuMega from './MenuMega';
 import MenuProduct from './MenuProduct';
-import MenuSolutionCategories from './MenuSolutionCategories.vue' 
+import MenuSolutionCategories from './MenuSolutionCategories';
+import MenuBrand from './MenuBrand';
 export default {
     name: 'MenuDefault',
-    components: { MenuMega, MenuDropdown, MenuProduct, MenuSolutionCategories },
+    components: {
+        MenuMega,
+        MenuDropdown,
+        MenuProduct,
+        MenuSolutionCategories,
+        MenuBrand
+    },
     props: {
         className: {
             type: String,
@@ -113,10 +121,10 @@ export default {
                     text: 'Partners',
                     url: '/website/page/store-locator'
                 },
-                {
-                    text: 'BioTime NG',
-                    url: '/biotime-ng'
-                },
+                // {
+                //     text: 'BioTime NG',
+                //     url: '/biotime-ng'
+                // },
                 {
                     text: 'Consultation',
                     url: '/support/project-consultation'
@@ -140,12 +148,7 @@ export default {
         }
     }
 }
-// .navigation__right {
-//     font-size: 3px !important;
-//     .menu {
-//         font-size: 3px !important;
-//     }
-// }
+
 .menu {
     font-size: 3px !important;
 }

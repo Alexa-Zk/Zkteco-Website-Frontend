@@ -14,7 +14,7 @@
                     </button>
                 </div>
             </div>
-             <div class="ps-section__content">
+            <div class="ps-section__content">
                 <div class="">
                     <div class="col-md-12 col-sm-12">
                         <div class="ps-block--shipping" >
@@ -80,7 +80,6 @@
                                                         </div>
                                                     </div>
                                                     <div class="download_right">
-                                               
                                                         <button
                                                             class="ps-btn"
                                                             @click.prevent="
@@ -202,7 +201,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 </template>
@@ -328,7 +327,7 @@ export default {
         searchQuery(newEntry, oldEntry) {
             if (newEntry !== '') {
             } else {
-                this.currentCategory = this.currentCategoryComputed
+                this.currentCategory = this.currentCategoryComputed;
                 this.isSearching = false;
             }
         }

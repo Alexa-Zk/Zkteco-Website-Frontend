@@ -42,7 +42,7 @@
 
                     <div
                         class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 "
-                        v-for="item in solutions"
+                        v-for="item in solutionCategories"
                         :key="item.id"
                     >
                         <article class="ps-block--store-2">
@@ -80,11 +80,9 @@
 
 <script>
 import { mapState } from 'vuex';
-import Repository from '~/repositories/Repository.js';
-import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
-    name: 'Solutions',
+    name: 'SolutionCategory',
     data() {
         return {
             searchQuery: null,
@@ -94,16 +92,17 @@ export default {
     },
     computed: {
         ...mapState({
-            solutions: state => state.website.solutions,
-            solutionTotal: state => state.website.solutionTotal,
+            solutionCategories: state => state.website.solutionCategories,
+            solutionCategoryTotal: state => state.website.solutionCategoryTotal,
             loading: state => state.website.loading
         }),
+
         paginationLenght() {
-            return Math.ceil(this.solutionTotal / 8);
+            return Math.ceil(this.solutionCategoryTotal / 8);
         }
     },
     async created() {
-        this.pageLoad();
+        await this.pageLoad();
     },
 
     methods: {
@@ -111,25 +110,34 @@ export default {
             const page = parseInt(value) === 1 ? 0 : (value - 1) * 8;
             this.pageLoad(parseInt(page));
         },
-
-        async searchInputedQurey() {
-            return await this.pageLoad();
-        },
-
         async pageLoad(value = null) {
             let search =
                 this.searchQuery == undefined || this.searchQuery == ''
                     ? null
                     : { search: `${this.searchQuery.trim().toLowerCase()}` };
 
+            let slug =
+                this.$route.params.id == undefined ||
+                this.$route.params.id == ''
+                    ? null
+                    : this.$route.params.id;
+
             let payload = {
                 page: value == null ? this.page : value,
                 sort_by: 'created_at:desc',
                 perPage: 8,
+                slug: slug,
                 ...search
             };
 
-            return this.$store.dispatch('website/getSolutions', payload);
+            return this.$store.dispatch(
+                'website/getSolutionCategories',
+                payload
+            );
+        },
+
+        async searchInputedQurey() {
+            return await this.pageLoad();
         }
     }
 };
@@ -164,7 +172,6 @@ export default {
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 40px;
 }
-
 a {
     color: #000 !important;
 }

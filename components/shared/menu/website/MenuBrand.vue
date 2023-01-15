@@ -1,27 +1,25 @@
 <template>
     <li class=" menu-item-has-children has-mega-menu">
-        <nuxt-link to="/solution">
-            Solutions
+        <nuxt-link to="/biotime-ng">
+            Brands
         </nuxt-link>
         <div class="mega-menu">
-            <div
-                v-for="item in solutionCategoriesAndSub"
-                class="mega-menu__column"
-                :key="item.id"
-            >
+            <div>
                 <h4>
-                    <nuxt-link :to="`/solution-categories/${item.slug}`">
-                        {{ item.name }}
+                    <nuxt-link :to="`/biotime-ng`">
+                        Brands
                     </nuxt-link>
                 </h4>
                 <ul class="mega-menu__list">
-                    <li
-                        v-for="subItem in item.solution_sub_categories"
-                        :key="subItem.id"
-                    >
-                        <nuxt-link :to="`/solution-sub/${subItem.slug}`">
-                            {{ subItem.name }}
+                    <li>
+                        <nuxt-link :to="`/biotime-ng`">
+                            BioTime
                         </nuxt-link>
+                    </li>
+                    <li>
+                        <a href="https://ngteco.ng/">
+                            NGTeco
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -30,23 +28,10 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-
 export default {
-    name: 'MenuSolutionCategories',
+    name: 'MenuBrand',
     data() {
         return {};
-    },
-    computed: {
-        ...mapState({
-            solutionCategoriesAndSub: state =>
-                state.website.solutionCategoriesAndSub
-        })
-    },
-    async mounted() {
-        await this.$store.dispatch(
-            'website/getSolutionCategoryAndSubCategories'
-        );
     }
 };
 </script>
