@@ -44,17 +44,30 @@
                                     />
                                 </div>
                                 <div class="form-group">
-                                    <v-checkbox :error-messages="checkboxErrors" @change="$v.checkbox.$touch()" color="success" v-model="checkbox">
+                                    <v-checkbox
+                                        :error-messages="checkboxErrors"
+                                        @change="$v.checkbox.$touch()"
+                                        color="success"
+                                        v-model="checkbox"
+                                    >
                                         <template v-slot:label>
                                             <div class="agreement_link">
                                                 I have read and agree to
-                                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
-                                                    Membership Registration Agreement
-                                                </a>,
-                                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
-                                                   Privacy Policy
+                                                <a
+                                                    target="_blank"
+                                                    href="/website/page/privacy-policy"
+                                                    @click.stop
+                                                >
+                                                    Membership Registration
+                                                    Agreement </a
+                                                >,
+                                                <a
+                                                    target="_blank"
+                                                    href="/website/page/privacy-policy"
+                                                    @click.stop
+                                                >
+                                                    Privacy Policy
                                                 </a>
-                                            
                                             </div>
                                         </template>
                                     </v-checkbox>

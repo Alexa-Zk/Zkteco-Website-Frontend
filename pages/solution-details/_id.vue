@@ -2,21 +2,26 @@
     <div class="ps-page--single">
         <bread-crumb :breadcrumb="breadCrumb" />
         <vendor-banner :formatted="formattedSingleSolution" />
-        <vendor-about :formatted="formattedSingleSolution" />
+        <nav class="solution-details">
+            <nuxt-link :to="`#details`"> Solution Details</nuxt-link>
+            <nuxt-link :to="`#downloads`"> Download</nuxt-link>
+            <nuxt-link :to="`#related_product`"> Related Products </nuxt-link>
+        </nav>
+        <hr class="line" />
+        <solution-detail :formatted="formattedSingleSolution" />
     </div>
 </template>
 
 <script>
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import VendorBanner from '~/components/partials/vendor/VendorBanner';
-import VendorAbout from '~/components/partials/vendor/VendorAbout';
+import SolutionDetail from '~/components/partials/vendor/solution/SolutionDetail';
 import Repository from '~/repositories/Repository.js';
 import { subBaseUrl } from '~/repositories/Repository';
 
-
 export default {
     components: {
-        VendorAbout,
+        SolutionDetail,
         VendorBanner,
         BreadCrumb
     },
@@ -58,32 +63,57 @@ export default {
             ]
         };
     },
-    
+
     computed: {
         formattedSingleSolution() {
             return this.solutions[0];
         }
     },
     mounted() {
-        this.getSolutionDetails(this.$route.params.id)
+        this.getSolutionDetails(this.$route.params.id);
     },
     methods: {
-        async getSolutionDetails (slug) {
-            this.loading = true
-            const reponse = await Repository.get( `${subBaseUrl}/solutions?slug=${slug}`)
+        async getSolutionDetails(slug) {
+            this.loading = true;
+            const reponse = await Repository.get(
+                `${subBaseUrl}/solutions?slug=${slug}`
+            )
                 .then(response => {
-                    this.solutions = response.data
-                    this.loading = false
+                    this.solutions = response.data;
+                    this.loading = false;
                 })
                 .catch(error => ({ error: JSON.stringify(error) }));
             return reponse;
         }
-    },
+    }
 };
 </script>
 
 <style lang="scss" scoped>
 .ps-page--single {
     padding: 30px 0;
+}
+
+.solution-details {
+    margin-bottom: 0.3rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+
+    a {
+        // background: #8cc63f;
+        font-size: 1.8rem;
+        // padding: 15px;
+        text-decoration: none;
+        color: #000;
+        font-weight: 600;
+    }
+}
+.line {
+    border-bottom: 4px solid #8cc63f;
 }
 </style>
