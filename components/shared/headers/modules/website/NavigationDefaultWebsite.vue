@@ -99,7 +99,7 @@ export default {
             items: [
                 { title: 'International', url: 'https://www.zkteco.com/en/' },
                 { title: 'Turkey', url: 'https://zkteco.com.tr/' },
-                { title: 'Sengal', url: 'https://www.zkteco-ao.com/' }
+                { title: 'Senegal', url: 'https://www.zkteco-ao.com/' }
             ],
             languages: [
                 {
