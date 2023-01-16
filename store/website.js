@@ -301,6 +301,37 @@ export const actions = {
         return response;
     },
 
+    async getPaginatedProductFiles({ state, commit }, payload) {
+        commit('setLoading', true);
+        let params = {
+            _start:
+                payload.page === 0 ||
+                payload.page === undefined ||
+                payload.page === null
+                    ? state.page
+                    : payload.page,
+            _limit:
+                payload.perPage === null ||
+                payload.perPage === undefined ||
+                payload.perPage === 0
+                    ? state.perPage
+                    : payload.perPage,
+        };
+
+        const reponse = await Repository.get(
+            `${subBaseUrl}/product-files?product_file_category.category=${payload.category}&${serializeQuery(params)}`
+        )
+            .then(res => {
+                const productFiles = res.data ? res.data : [];
+                commit('setLoading', false);
+                return productFiles;
+            })
+            .catch(error => ({
+                error: JSON.stringify(error)
+            }));
+        return reponse;
+    },
+    
     async searchDownloadCategories({ commit }, payload) {
         commit('setLoading', true);
         let response;
@@ -312,6 +343,32 @@ export const actions = {
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
+        return response;
+    },
+
+    async getProductFilesCount({ commit }, payload) {
+        let response;
+            response = await Repository.get(
+                `${subBaseUrl}/product-files/count?product_file_category.category=${payload.category}`
+            )
+                .then(response => {
+                    return response.data;
+                })
+                .catch(error => ({ error: JSON.stringify(error) }));
+        return response;
+    },
+
+    async fetchProductFilesByCategory({ commit }, payload) {
+        commit('setLoading', true);
+        let response;
+            response = await Repository.get(
+                `${subBaseUrl}/product-files?product_file_category.category=${payload.category}&_limit=5`
+            )
+                .then(response => {
+                    commit('setLoading', false);
+                    return response.data;
+                })
+                .catch(error => ({ error: JSON.stringify(error) }));
         return response;
     },
 

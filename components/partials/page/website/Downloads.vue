@@ -17,10 +17,7 @@
             <div class="ps-section__content">
                 <div class="">
                     <div class="col-md-12 col-sm-12">
-                        <div
-                            class="ps-block--shipping"
-                            v-if="downloadCategories"
-                        >
+                        <div class="ps-block--shipping" >
                             <div class="ps-block--methods" v-if="!isSearching">
                                 <v-tabs
                                     background-color="white"
@@ -33,25 +30,32 @@
                                         class="tab-label"
                                         v-for="item in downloadCategories"
                                         :key="item.id"
-                                        @click="tabValue(item.category)"
+                                        @click="tabValue(item.category); fetchProductFilesByCategory(item.category)"
                                     >
                                         {{ item.category }}
                                     </v-tab>
 
+                                    <v-tab-item v-if="!productFiles">
+                                        Loading....
+                                    </v-tab-item>
+                                    <v-tab-item v-else-if="productFiles.length == 0">
+                                        <div class="placeholder-image">
+                                            <content-placeholders v-for="x in 6" :key="x">
+                                                <content-placeholders-heading :img="true" />
+                                                <content-placeholders-text :lines="3" />
+                                        </content-placeholders>
+                                        </div>
+                                    </v-tab-item>
                                     <v-tab-item
+                                        v-else
                                         v-for="item in downloadCategories"
                                         :key="item.id"
                                     >
                                         <form>
-                                            <div
-                                                class="ps-block__content"
-                                                v-if="item.product_files"
-                                            >
-                                                <div
-                                                    class="downloads_container"
-                                                    v-for="i in item.product_files"
-                                                    :key="i.id"
-                                                >
+                                            <div class="ps-block__content" >
+                                                <div class="downloads_container"
+                                                    v-for="i in productFiles"
+                                                    :key="i.id">
                                                     <div class="download_left">
                                                         <div class="row-left">
                                                             <div
@@ -109,19 +113,25 @@
                                     color="warning"
                                     class="ps-tab-list"
                                     grow
-                                    v-for="item1 in searchData"
-                                    :key="item1.id"
+                                    
                                 >
-                                    <v-tab tag="li" class="tab-label">
-                                        {{
-                                            item1.product_file_category.category
-                                        }}
+                                    <v-tab
+                                    v-if="searchData && searchData[0]"
+                                        tag="li"
+                                        class="tab-label"
+                                    >
+                                    {{ searchData[0].product_file_category.category }}
                                     </v-tab>
-                                    <v-tab-item>
+                                    <v-tab v-else>
+                                        No Search Data Found
+                                    </v-tab>
+                                    <v-tab-item v-if="searchData">
                                         <form>
                                             <div class="ps-block__content">
                                                 <div
                                                     class="downloads_container"
+                                                    v-for="item1 in searchData"
+                                                    :key="item1.id"
                                                 >
                                                     <div class="download_left">
                                                         <div class="row-left">
@@ -175,8 +185,19 @@
                                             </div>
                                         </form>
                                     </v-tab-item>
+                                    
                                 </v-tabs>
                             </div>
+                           
+                            <footer class="mt-60">
+                                <v-pagination
+                                    v-model="page"
+                                    :total-visible="7"
+                                    color="green"
+                                    :length="paginationLenght"
+                                    @input="handleChangePagination"
+                                />
+                            </footer>
                         </div>
                     </div>
                 </div>
@@ -195,12 +216,48 @@ export default {
             searchQuery: '',
             isSearching: false,
             searchData: null,
-            currentCategory: null
+            currentCategory: null,
+            productFiles: null,
+            page: 1,
+            pageSize: 5,
+            totalProductFiles: 0
         };
+    },
+    computed: {
+        ...mapState({
+            isLoading: state => state.website.loading,
+            isLoggedInToDownload: state => state.auth.isLoggedInToDownload,
+            downloadCategories: state => state.website.downloadCategories
+        }),
+        currentCategoryComputed() {
+            return this.downloadCategories[0].category;
+        },
+        paginationLenght() {
+            return Math.ceil(this.totalProductFiles / this.pageSize);
+        }, 
+    },
+    async created() {
+        this.currentCategory = 'Data Sheet'
+        const response = await this.$store.dispatch( 'website/fetchProductFilesByCategory', {category: this.currentCategory});
+        this.productFiles = response
+
+        this.getTotalProductFiles()
     },
     methods: {
         tabValue(event) {
             this.currentCategory = event;
+            this.getTotalProductFiles()
+        },
+        async fetchProductFilesByCategory(category){
+            this.productFiles = []
+            const response = await this.$store.dispatch(
+                'website/fetchProductFilesByCategory',
+                {category: category}
+            );
+            if (response.error) {
+            } else {
+                this.productFiles = response;
+            }
         },
         async searchDownloads() {
             let payload = {
@@ -238,7 +295,33 @@ export default {
             } else {
                 this.$router.push('/auth/login');
             }
-        }
+        },
+        async handleChangePagination(value) {
+            const slug = this.$route.params.id;
+            const page = parseInt(value) === 1 ? 1 : 1 + (value - 1) * this.pageSize;
+            let nextStartPage = parseInt(page);
+
+            const payload = {
+                slug: slug,
+                page: nextStartPage,
+                perPage: this.pageSize,
+                category: this.currentCategory
+            };
+            const response = await this.$store.dispatch(
+                'website/getPaginatedProductFiles',
+                payload
+            );
+            this.productFiles = []
+            this.productFiles = response
+        },
+
+        async getTotalProductFiles() {
+            const response = await this.$store.dispatch(
+                'website/getProductFilesCount',
+                {category: this.currentCategory ? this.currentCategory : this.currentCategoryComputed}
+            );
+            this.totalProductFiles = response
+        },
     },
     watch: {
         searchQuery(newEntry, oldEntry) {
@@ -249,20 +332,16 @@ export default {
             }
         }
     },
-    computed: {
-        ...mapState({
-            isLoading: state => state.website.loading,
-            isLoggedInToDownload: state => state.auth.isLoggedInToDownload,
-            downloadCategories: state => state.website.downloadCategories
-        }),
-        currentCategoryComputed() {
-            return this.downloadCategories[0].category;
-        }
-    }
+    
 };
 </script>
 
 <style lang="scss" scoped>
+.placeholder-image {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 35px;
+}
 .tab-label {
     font-size: 16px;
     text-transform: none;
