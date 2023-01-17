@@ -29,6 +29,7 @@ export default {
     padding: 60px 0;
     h2 {
         color: black;
+        visibility: hidden;
     }
     // background: url('/img/bg/vendor.jpg');
 }

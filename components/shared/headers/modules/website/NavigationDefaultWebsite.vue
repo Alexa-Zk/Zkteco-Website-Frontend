@@ -1,11 +1,8 @@
 <template lang="html">
     <nav class="navigation">
         <div class="ps-container">
-            
             <div class="navigation__right">
-                
-                <ul class="mega-menu__list" >
-                    
+                <ul class="mega-menu__list">
                     <li class="menu-item-has-dropdown">
                         <nuxt-link to="/about">
                             About Us
@@ -24,13 +21,21 @@
                         </nuxt-link>
                     </li>
                     |
-                    <li v-if="!isLoggedInToDownload" class="menu-item-has-dropdown">
+                    <li
+                        v-if="!isLoggedInToDownload"
+                        class="menu-item-has-dropdown"
+                    >
                         <nuxt-link to="/auth/login">
                             Login
-                        </nuxt-link> 
+                        </nuxt-link>
                     </li>
-                
-                    <li v-else @click="logoutDownloads" style="cursor: pointer" class="menu-item-has-dropdown">
+
+                    <li
+                        v-else
+                        @click="logoutDownloads"
+                        style="cursor: pointer"
+                        class="menu-item-has-dropdown"
+                    >
                         Logout
                     </li>
                     |
@@ -78,7 +83,7 @@
 import CurrencyDropdown from '../CurrencyDropdown';
 import LanguageSwicher from '../LanguageSwicher';
 // import MenuDefault from '~/components/shared/menu/website/MenuDefaultWebsite';
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 import MenuCategories from '~/components/shared/menu/MenuCategories';
 export default {
     name: 'NavigationDefault',
@@ -93,7 +98,8 @@ export default {
             defaultLanguageCode: 'en',
             items: [
                 { title: 'International', url: 'https://www.zkteco.com/en/' },
-                { title: 'Turkey', url: 'https://zkteco.com.tr/' }
+                { title: 'Turkey', url: 'https://zkteco.com.tr/' },
+                { title: 'Senegal', url: 'https://www.zkteco-ao.com/' }
             ],
             languages: [
                 {
@@ -108,14 +114,16 @@ export default {
     },
     computed: {
         isLoggedInToDownload() {
-            const tokenForDownloads = this.$cookies.get('download_token', { parseJSON: true });
+            const tokenForDownloads = this.$cookies.get('download_token', {
+                parseJSON: true
+            });
             return tokenForDownloads ? true : false;
         }
     },
     methods: {
         logoutDownloads() {
             this.$store.dispatch('auth/logoutDownloadToken');
-            window.location.reload(true)
+            window.location.reload(true);
         }
     }
 };

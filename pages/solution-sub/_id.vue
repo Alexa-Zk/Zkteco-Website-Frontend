@@ -8,7 +8,7 @@
                         <solution-widget />
                     </div>
                     <div class="ps-layout__right">
-                        <store-list-2 />
+                        <solution-sub />
                     </div>
                 </div>
             </div>
@@ -18,26 +18,26 @@
 
 <script>
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import StoreList2 from '~/components/partials/vendor/website/StoreList2';
+import SolutionSub from '~/components/partials/vendor/website/SolutionSub';
 import SolutionWidget from '~/components/partials/shop/modules/website/SolutionWidget';
 
 export default {
     head() {
         return {
-            titleTemplate: 'Solutions',
+            titleTemplate: 'Solution SubCatgory',
             meta: [
                 {
                     hid: 'description',
                     name: 'description',
-                    content: 'Solutions'
+                    content: 'Solution SubCatgory'
                 }
             ]
         };
     },
     components: {
-        StoreList2,
-        BreadCrumb,
-        SolutionWidget
+        SolutionWidget,
+        SolutionSub,
+        BreadCrumb
     },
     layout: 'layout-default-website',
     data: () => {
@@ -48,7 +48,7 @@ export default {
                     url: '/'
                 },
                 {
-                    text: 'Solutions'
+                    text: 'Solution SubCategory'
                 }
             ]
         };

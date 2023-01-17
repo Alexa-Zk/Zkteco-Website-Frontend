@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="ps-form--account">
                     <ul class="ps-tab-list">
-                        <li >
+                        <li>
                             <nuxt-link to="/auth/login">
                                 Login
                             </nuxt-link>
@@ -55,17 +55,30 @@
                                     />
                                 </div>
                                 <div class="form-group">
-                                    <v-checkbox :error-messages="checkboxErrors" @change="$v.checkbox.$touch()" color="success" v-model="checkbox">
+                                    <v-checkbox
+                                        :error-messages="checkboxErrors"
+                                        @change="$v.checkbox.$touch()"
+                                        color="success"
+                                        v-model="checkbox"
+                                    >
                                         <template v-slot:label>
                                             <div class="agreement_link">
                                                 I have read and agree to
-                                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
-                                                    Membership Registration Agreement
-                                                </a>,
-                                                <a target="_blank" href="/website/page/privacy-policy" @click.stop>
-                                                   Privacy Policy
+                                                <a
+                                                    target="_blank"
+                                                    href="/website/page/privacy-policy"
+                                                    @click.stop
+                                                >
+                                                    Membership Registration
+                                                    Agreement </a
+                                                >,
+                                                <a
+                                                    target="_blank"
+                                                    href="/website/page/privacy-policy"
+                                                    @click.stop
+                                                >
+                                                    Privacy Policy
                                                 </a>
-                                            
                                             </div>
                                         </template>
                                     </v-checkbox>
@@ -149,11 +162,15 @@ export default {
             this.$v.$touch();
             if (!this.$v.$invalid) {
                 this.loading = true;
-                const response = await this.$store.dispatch('auth/registerDownload', {
-                    username: this.username,
-                    email: this.email,
-                    password: this.password
-                });
+                const response = await this.$store.dispatch(
+                    'auth/registerDownload',
+                    {
+                        username: this.username,
+                        email: this.email,
+                        password: this.password
+                    }
+                );
+
                 if (response.status === 200) {
                     let payload = {
                         name: this.username,
@@ -163,11 +180,11 @@ export default {
                         'https://admin.zkteco-wa.com/maillists',
                         payload
                     );
-                    this.$router.push('/auth/login')
+                    this.$router.push('/auth/login');
                     this.loading = false;
                 } else {
                     this.loading = false;
-                    this.error_alert = "Email or Username already exist";
+                    this.error_alert = 'Email or Username already exist';
                     this.showAlert = true;
                 }
             }
@@ -197,10 +214,11 @@ export default {
         checkboxErrors() {
             const errors = [];
             if (!this.$v.checkbox.$dirty) return errors;
-            !this.$v.checkbox.required && errors.push('Please agree to the terms');
+            !this.$v.checkbox.required &&
+                errors.push('Please agree to the terms');
             return errors;
-        },
-    },
+        }
+    }
 };
 </script>
 
@@ -221,6 +239,5 @@ export default {
             text-decoration: underline;
         }
     }
-
-} 
+}
 </style>

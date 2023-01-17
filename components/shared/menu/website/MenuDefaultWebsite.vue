@@ -1,6 +1,7 @@
 <template lang="html">
     <ul :class="className">
         <MenuProduct />
+        <MenuSolutionCategories />
         <template v-for="item in mainMenu">
             <MenuDropdown v-if="item.subMenu" :menu-data="item" />
             <MenuMega v-else-if="item.mega" :menu-data="item" />
@@ -20,6 +21,7 @@
                 </nuxt-link>
             </li>
         </template>
+        <MenuBrand />
     </ul>
 </template>
 
@@ -27,9 +29,17 @@
 import MenuDropdown from './MenuDropdown';
 import MenuMega from './MenuMega';
 import MenuProduct from './MenuProduct';
+import MenuSolutionCategories from './MenuSolutionCategories';
+import MenuBrand from './MenuBrand';
 export default {
     name: 'MenuDefault',
-    components: { MenuMega, MenuDropdown, MenuProduct },
+    components: {
+        MenuMega,
+        MenuDropdown,
+        MenuProduct,
+        MenuSolutionCategories,
+        MenuBrand
+    },
     props: {
         className: {
             type: String,
@@ -39,23 +49,23 @@ export default {
     data() {
         return {
             mainMenu: [
-                {
-                    text: 'Solutions',
-                    url: '/solution',
-                    extraClass: 'menu-item-has-children',
-                    subClass: 'sub-menu',
-                    subMenu: [
-                        {
-                            text: 'Classified By Industry',
-                            url: '/solution-categories/classified-by-industry'
-                        },
-                        {
-                            text: 'Classified By Application',
-                            url:
-                                '/solution-categories/classified-by-application'
-                        }
-                    ]
-                },
+                // {
+                //     text: 'Solutions',
+                //     url: '/solution',
+                //     extraClass: 'menu-item-has-children',
+                //     subClass: 'sub-menu',
+                //     subMenu: [
+                //         {
+                //             text: 'Classified By Industry',
+                //             url: '/solution-categories/classified-by-industry'
+                //         },
+                //         {
+                //             text: 'Classified By Application',
+                //             url:
+                //                 '/solution-categories/classified-by-application'
+                //         }
+                //     ]
+                // },
                 {
                     text: 'Support',
                     url: '/support',
@@ -95,11 +105,11 @@ export default {
                         }
                     ]
                 },
-                {
-                    text: 'Smart Home',
-                    //redirect: true,
-                    url: 'http://ngteco.ng/'
-                },
+                // {
+                //     text: 'Smart Home',
+                //     //redirect: true,
+                //     url: 'http://ngteco.ng/'
+                // },
                 // {
                 //     text: 'Partners Portal',
                 //     url: '/store',
@@ -111,10 +121,10 @@ export default {
                     text: 'Partners',
                     url: '/website/page/store-locator'
                 },
-                {
-                    text: 'BioTime NG',
-                    url: '/biotime-ng'
-                },
+                // {
+                //     text: 'BioTime NG',
+                //     url: '/biotime-ng'
+                // },
                 {
                     text: 'Consultation',
                     url: '/support/project-consultation'
@@ -138,12 +148,7 @@ export default {
         }
     }
 }
-// .navigation__right {
-//     font-size: 3px !important;
-//     .menu {
-//         font-size: 3px !important;
-//     }
-// }
+
 .menu {
     font-size: 3px !important;
 }

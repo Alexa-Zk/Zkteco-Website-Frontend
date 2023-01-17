@@ -1,34 +1,29 @@
 <template>
     <li class=" menu-item-has-children has-mega-menu">
-        <nuxt-link to="/product">
-            Products
+        <nuxt-link to="/solution">
+            Solutions
         </nuxt-link>
         <div class="mega-menu">
             <div
-                v-for="item in categoryAndSubCategories"
+                v-for="item in solutionCategoriesAndSub"
                 class="mega-menu__column"
                 :key="item.id"
             >
                 <h4>
-                    <nuxt-link :to="`/product-categories/${item.slug}`">
+                    <nuxt-link :to="`/solution-categories/${item.slug}`">
                         {{ item.name }}
                     </nuxt-link>
                 </h4>
                 <ul class="mega-menu__list">
                     <li
-                        v-for="subItem in item.product_sub_categories"
+                        v-for="subItem in item.solution_sub_categories"
                         :key="subItem.id"
                     >
-                        <nuxt-link :to="`/sub-categories/${subItem.slug}`">
+                        <nuxt-link :to="`/solution-sub/${subItem.slug}`">
                             {{ subItem.name }}
                         </nuxt-link>
                     </li>
                 </ul>
-            </div>
-            <div class="mega-menu__column">
-                <h4>
-                    <a href="http://ngteco.ng/">Smart Home</a>
-                </h4>
             </div>
         </div>
     </li>
@@ -36,22 +31,22 @@
 
 <script>
 import { mapState } from 'vuex';
-import Repository from '~/repositories/Repository.js';
-import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
-    name: 'MenuProduct',
+    name: 'MenuSolutionCategories',
     data() {
         return {};
     },
     computed: {
         ...mapState({
-            categoryAndSubCategories: state =>
-                state.website.categoryAndSubCategories
+            solutionCategoriesAndSub: state =>
+                state.website.solutionCategoriesAndSub
         })
     },
     async mounted() {
-        await this.$store.dispatch('website/getCategoryAndSubCategories');
+        await this.$store.dispatch(
+            'website/getSolutionCategoryAndSubCategories'
+        );
     }
 };
 </script>
