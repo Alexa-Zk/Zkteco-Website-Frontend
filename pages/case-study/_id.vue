@@ -106,6 +106,9 @@ export default {
         text-decoration: none;
         color: #000;
         font-weight: 600;
+        &:hover {
+            color: #8cc63f;
+        }
     }
 }
 .line {
