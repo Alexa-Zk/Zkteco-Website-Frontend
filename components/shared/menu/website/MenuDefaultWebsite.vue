@@ -2,6 +2,7 @@
     <ul :class="className">
         <MenuProduct />
         <MenuSolutionCategories />
+        <MenuBrand />
         <template v-for="item in mainMenu">
             <MenuDropdown v-if="item.subMenu" :menu-data="item" />
             <MenuMega v-else-if="item.mega" :menu-data="item" />
@@ -21,7 +22,6 @@
                 </nuxt-link>
             </li>
         </template>
-        <MenuBrand />
     </ul>
 </template>
 

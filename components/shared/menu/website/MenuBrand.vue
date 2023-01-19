@@ -5,20 +5,20 @@
         </nuxt-link>
         <div class="mega-menu">
             <div>
-                <h4>
+                <h4 class="brands">
                     <nuxt-link :to="`/biotime-ng`">
-                        Brands
+                        Brand
                     </nuxt-link>
                 </h4>
                 <ul class="mega-menu__list">
                     <li>
                         <nuxt-link :to="`/biotime-ng`">
-                            BioTime
+                            Cloud Solution
                         </nuxt-link>
                     </li>
                     <li>
                         <a href="https://ngteco.ng/">
-                            NGTeco
+                            Smart Home
                         </a>
                     </li>
                 </ul>
@@ -70,6 +70,7 @@ export default {
 
         .mega-menu__list {
             li {
+                padding: 0 10px;
                 a {
                     color: white;
                     &:hover {

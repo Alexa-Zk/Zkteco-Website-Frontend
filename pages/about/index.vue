@@ -62,6 +62,22 @@
                 </div>
             </div>
         </div>
+        <div class="goals">
+            <div class="vission_mission">
+                <div>
+                    <h2>Vision</h2>
+                    To be the leading provider of identity & security management
+                    solutions across West Africa
+                </div>
+
+                <div>
+                    <h2>Mission</h2>
+                    To build a network of Security Solution Expert across West
+                    Africa, delivering services to the highest standard for a
+                    safe environment for all to live.
+                </div>
+            </div>
+        </div>
 
         <div class="main_business">
             <div class="main_business_wrapper">
@@ -469,6 +485,29 @@ export default {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             text-align: center;
+        }
+    }
+}
+
+.goals {
+    .vission_mission {
+        margin-left: 8%;
+        margin-right: 8%;
+        padding-top: 30px;
+        padding-bottom: 40px;
+
+        display: grid;
+        grid-template-columns: 1.5fr 3fr;
+        grid-gap: 2em;
+        align-items: center;
+        font-size: 1.5rem;
+
+        h2 {
+            color: #8bc76f;
+        }
+
+        @media (max-width: 740px) {
+            grid-template-columns: 1fr;
         }
     }
 }

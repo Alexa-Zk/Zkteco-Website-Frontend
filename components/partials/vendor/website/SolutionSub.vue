@@ -67,7 +67,7 @@
                 <footer class="mt-60">
                     <v-pagination
                         v-model="page"
-                        :total-visible="8"
+                        :total-visible="6"
                         color="green"
                         :length="paginationLenght"
                         @input="handleChangePagination"
@@ -87,7 +87,7 @@ export default {
         return {
             searchQuery: null,
             page: 0,
-            pageSize: 8
+            pageSize: 6
         };
     },
     computed: {
@@ -98,7 +98,7 @@ export default {
         }),
 
         paginationLenght() {
-            return Math.ceil(this.solutionSubTotal / 8);
+            return Math.ceil(this.solutionSubTotal / this.pageSize);
         }
     },
     async created() {
@@ -107,7 +107,8 @@ export default {
 
     methods: {
         async handleChangePagination(value) {
-            const page = parseInt(value) === 1 ? 0 : (value - 1) * 8;
+            const page =
+                parseInt(value) === 1 ? 0 : (value - 1) * this.pageSize;
             this.pageLoad(parseInt(page));
         },
         async pageLoad(value = null) {
@@ -125,7 +126,7 @@ export default {
             let payload = {
                 page: value == null ? this.page : value,
                 sort_by: 'created_at:desc',
-                perPage: 8,
+                perPage: 6,
                 slug: slug,
                 ...search
             };
