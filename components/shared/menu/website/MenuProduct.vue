@@ -25,11 +25,6 @@
                     </li>
                 </ul>
             </div>
-            <div class="mega-menu__column">
-                <h4>
-                    <a href="http://ngteco.ng/">Smart Home</a>
-                </h4>
-            </div>
         </div>
     </li>
 </template>

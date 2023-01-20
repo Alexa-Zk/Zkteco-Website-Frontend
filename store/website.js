@@ -315,11 +315,13 @@ export const actions = {
                 payload.perPage === undefined ||
                 payload.perPage === 0
                     ? state.perPage
-                    : payload.perPage,
+                    : payload.perPage
         };
 
         const reponse = await Repository.get(
-            `${subBaseUrl}/product-files?product_file_category.category=${payload.category}&${serializeQuery(params)}`
+            `${subBaseUrl}/product-files?product_file_category.category=${
+                payload.category
+            }&${serializeQuery(params)}`
         )
             .then(res => {
                 const productFiles = res.data ? res.data : [];
@@ -331,7 +333,7 @@ export const actions = {
             }));
         return reponse;
     },
-    
+
     async searchDownloadCategories({ commit }, payload) {
         commit('setLoading', true);
         let response;
@@ -348,27 +350,27 @@ export const actions = {
 
     async getProductFilesCount({ commit }, payload) {
         let response;
-            response = await Repository.get(
-                `${subBaseUrl}/product-files/count?product_file_category.category=${payload.category}`
-            )
-                .then(response => {
-                    return response.data;
-                })
-                .catch(error => ({ error: JSON.stringify(error) }));
+        response = await Repository.get(
+            `${subBaseUrl}/product-files/count?product_file_category.category=${payload.category}`
+        )
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
         return response;
     },
 
     async fetchProductFilesByCategory({ commit }, payload) {
         commit('setLoading', true);
         let response;
-            response = await Repository.get(
-                `${subBaseUrl}/product-files?product_file_category.category=${payload.category}&_limit=5`
-            )
-                .then(response => {
-                    commit('setLoading', false);
-                    return response.data;
-                })
-                .catch(error => ({ error: JSON.stringify(error) }));
+        response = await Repository.get(
+            `${subBaseUrl}/product-files?product_file_category.category=${payload.category}&_limit=5`
+        )
+            .then(response => {
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
         return response;
     },
 
@@ -417,7 +419,7 @@ export const actions = {
         let params = {
             _start: Object.keys(payload).length === 0 ? 0 : payload.page,
             _sort: 'created_at:desc',
-            _limit: Object.keys(payload).length === 0 ? 8 : payload.perPage,
+            _limit: Object.keys(payload).length === 0 ? 6 : payload.perPage,
             ...searchSolution
         };
 
@@ -715,7 +717,7 @@ export const actions = {
         let params = {
             _start: Object.keys(payload).length === 0 ? 0 : payload.page,
             _sort: 'created_at:desc',
-            _limit: Object.keys(payload).length === 0 ? 8 : payload.perPage,
+            _limit: Object.keys(payload).length === 0 ? 6 : payload.perPage,
             'solution_categories.name': payload.slug,
             ...searchSolution
         };
@@ -751,7 +753,7 @@ export const actions = {
         let params = {
             _start: Object.keys(payload).length === 0 ? 0 : payload.page,
             _sort: 'created_at:desc',
-            _limit: Object.keys(payload).length === 0 ? 8 : payload.perPage,
+            _limit: Object.keys(payload).length === 0 ? 6 : payload.perPage,
             'solution_sub_categories.name': payload.slug,
             ...searchSolution
         };

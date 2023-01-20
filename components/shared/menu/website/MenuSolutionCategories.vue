@@ -25,6 +25,35 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="mega-menu__column">
+                <h4>
+                    <nuxt-link :to="`/biotime-ng`">
+                        Cloud Solution
+                    </nuxt-link>
+                </h4>
+                <ul class="mega-menu__list">
+                    <li>
+                        <nuxt-link :to="`/biotime-ng`">
+                            Biotime Africa
+                        </nuxt-link>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="brands">
+                    <a href="https://ngteco.ng/">
+                        Smart Homes
+                    </a>
+                </h4>
+                <ul class="mega-menu__list">
+                    <li>
+                        <a href="https://ngteco.ng/">
+                            NGTeco
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </li>
 </template>

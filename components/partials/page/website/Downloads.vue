@@ -17,7 +17,7 @@
             <div class="ps-section__content">
                 <div class="">
                     <div class="col-md-12 col-sm-12">
-                        <div class="ps-block--shipping" >
+                        <div class="ps-block--shipping">
                             <div class="ps-block--methods" v-if="!isSearching">
                                 <v-tabs
                                     background-color="white"
@@ -30,7 +30,12 @@
                                         class="tab-label"
                                         v-for="item in downloadCategories"
                                         :key="item.id"
-                                        @click="tabValue(item.category); fetchProductFilesByCategory(item.category)"
+                                        @click="
+                                            tabValue(item.category);
+                                            fetchProductFilesByCategory(
+                                                item.category
+                                            );
+                                        "
                                     >
                                         {{ item.category }}
                                     </v-tab>
@@ -38,12 +43,21 @@
                                     <v-tab-item v-if="!productFiles">
                                         Loading....
                                     </v-tab-item>
-                                    <v-tab-item v-else-if="productFiles.length == 0">
+                                    <v-tab-item
+                                        v-else-if="productFiles.length == 0"
+                                    >
                                         <div class="placeholder-image">
-                                            <content-placeholders v-for="x in 6" :key="x">
-                                                <content-placeholders-heading :img="true" />
-                                                <content-placeholders-text :lines="3" />
-                                        </content-placeholders>
+                                            <content-placeholders
+                                                v-for="x in 6"
+                                                :key="x"
+                                            >
+                                                <content-placeholders-heading
+                                                    :img="true"
+                                                />
+                                                <content-placeholders-text
+                                                    :lines="3"
+                                                />
+                                            </content-placeholders>
                                         </div>
                                     </v-tab-item>
                                     <v-tab-item
@@ -52,10 +66,12 @@
                                         :key="item.id"
                                     >
                                         <form>
-                                            <div class="ps-block__content" >
-                                                <div class="downloads_container"
+                                            <div class="ps-block__content">
+                                                <div
+                                                    class="downloads_container"
                                                     v-for="i in productFiles"
-                                                    :key="i.id">
+                                                    :key="i.id"
+                                                >
                                                     <div class="download_left">
                                                         <div class="row-left">
                                                             <div
@@ -70,14 +86,14 @@
                                                                 {{ i.name }}
                                                             </div>
                                                         </div>
-                                                        <div class="size">
+                                                        <!--div class="size">
                                                             Size:
                                                             {{
                                                                 Math.floor(
                                                                     i.file.size
                                                                 )
-                                                            }}KB
-                                                        </div>
+                                                            }}
+                                                        </div-->
                                                     </div>
                                                     <div class="download_right">
                                                         <button
@@ -92,11 +108,17 @@
                                                         </button>
 
                                                         <div class="date">
-                                                            Uploaded on:
+                                                            <!-- Uploaded on:
                                                             {{
                                                                 formatDate(
                                                                     i.file
                                                                         .updated_at
+                                                                )
+                                                            }} -->
+                                                            Size:
+                                                            {{
+                                                                formatBytes(
+                                                                    i.file.size
                                                                 )
                                                             }}
                                                         </div>
@@ -113,14 +135,16 @@
                                     color="warning"
                                     class="ps-tab-list"
                                     grow
-                                    
                                 >
                                     <v-tab
-                                    v-if="searchData && searchData[0]"
+                                        v-if="searchData && searchData[0]"
                                         tag="li"
                                         class="tab-label"
                                     >
-                                    {{ searchData[0].product_file_category.category }}
+                                        {{
+                                            searchData[0].product_file_category
+                                                .category
+                                        }}
                                     </v-tab>
                                     <v-tab v-else>
                                         No Search Data Found
@@ -155,7 +179,7 @@
                                                                         .size /
                                                                         1000
                                                                 )
-                                                            }}MB
+                                                            }}
                                                         </div>
                                                     </div>
                                                     <div class="download_right">
@@ -172,11 +196,17 @@
                                                         </button>
 
                                                         <div class="date">
-                                                            Uploaded on:
+                                                            <!-- Uploaded on:
                                                             {{
                                                                 formatDate(
                                                                     item1.file
                                                                         .updated_at
+                                                                )
+                                                            }} -->
+                                                            {{
+                                                                formatBytes(
+                                                                    item1.file
+                                                                        .size
                                                                 )
                                                             }}
                                                         </div>
@@ -185,10 +215,9 @@
                                             </div>
                                         </form>
                                     </v-tab-item>
-                                    
                                 </v-tabs>
                             </div>
-                           
+
                             <footer class="mt-60">
                                 <v-pagination
                                     v-model="page"
@@ -234,25 +263,28 @@ export default {
         },
         paginationLenght() {
             return Math.ceil(this.totalProductFiles / this.pageSize);
-        }, 
+        }
     },
     async created() {
-        this.currentCategory = 'Data Sheet'
-        const response = await this.$store.dispatch( 'website/fetchProductFilesByCategory', {category: this.currentCategory});
-        this.productFiles = response
+        this.currentCategory = 'Data Sheet';
+        const response = await this.$store.dispatch(
+            'website/fetchProductFilesByCategory',
+            { category: this.currentCategory }
+        );
+        this.productFiles = response;
 
-        this.getTotalProductFiles()
+        this.getTotalProductFiles();
     },
     methods: {
         tabValue(event) {
             this.currentCategory = event;
-            this.getTotalProductFiles()
+            this.getTotalProductFiles();
         },
-        async fetchProductFilesByCategory(category){
-            this.productFiles = []
+        async fetchProductFilesByCategory(category) {
+            this.productFiles = [];
             const response = await this.$store.dispatch(
                 'website/fetchProductFilesByCategory',
-                {category: category}
+                { category: category }
             );
             if (response.error) {
             } else {
@@ -280,6 +312,25 @@ export default {
             let formated = new Date(date);
             return formated.toDateString();
         },
+        formatBytes(bytes) {
+            var marker = 1024; // Change to 1000 if required
+            var decimal = 0; // Change as required
+            var kiloBytes = marker; // One Kilobyte is 1024 bytes
+            var megaBytes = marker * marker; // One MB is 1024 KB
+            var gigaBytes = marker * marker * marker; // One GB is 1024 MB
+            var teraBytes = marker * marker * marker * marker; // One TB is 1024 GB
+
+            // return bytes if less than a KB
+            if (bytes < kiloBytes) return bytes.toFixed(decimal) + 'B';
+            // return KB if less than a MB
+            else if (bytes < megaBytes)
+                return (bytes / kiloBytes).toFixed(decimal) + 'KB';
+            // return MB if less than a GB
+            else if (bytes < gigaBytes)
+                return (bytes / megaBytes).toFixed(decimal) + 'MB';
+            // return GB if less than a TB
+            else return (bytes / gigaBytes).toFixed(decimal) + 'GB';
+        },
         download(data) {
             const tokenForDownloads = this.$cookies.get('download_token', {
                 parseJSON: true
@@ -298,7 +349,8 @@ export default {
         },
         async handleChangePagination(value) {
             const slug = this.$route.params.id;
-            const page = parseInt(value) === 1 ? 1 : 1 + (value - 1) * this.pageSize;
+            const page =
+                parseInt(value) === 1 ? 1 : 1 + (value - 1) * this.pageSize;
             let nextStartPage = parseInt(page);
 
             const payload = {
@@ -311,17 +363,21 @@ export default {
                 'website/getPaginatedProductFiles',
                 payload
             );
-            this.productFiles = []
-            this.productFiles = response
+            this.productFiles = [];
+            this.productFiles = response;
         },
 
         async getTotalProductFiles() {
             const response = await this.$store.dispatch(
                 'website/getProductFilesCount',
-                {category: this.currentCategory ? this.currentCategory : this.currentCategoryComputed}
+                {
+                    category: this.currentCategory
+                        ? this.currentCategory
+                        : this.currentCategoryComputed
+                }
             );
-            this.totalProductFiles = response
-        },
+            this.totalProductFiles = response;
+        }
     },
     watch: {
         searchQuery(newEntry, oldEntry) {
@@ -331,8 +387,7 @@ export default {
                 this.isSearching = false;
             }
         }
-    },
-    
+    }
 };
 </script>
 
