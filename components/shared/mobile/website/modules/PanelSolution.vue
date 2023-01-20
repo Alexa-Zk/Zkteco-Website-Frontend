@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="ps-panel--sidebar">
         <div class="ps-panel__header">
-            <h3>Categores</h3>
+            <h3>Solutions</h3>
             <a
                 href="/product"
                 class="ps-panel__close"
@@ -18,10 +18,20 @@
                         <content-placeholders-text :lines="3" />
                     </content-placeholders>
                 </div>
-                <li v-for="category in productCategories">
-                    <nuxt-link :to="`/product-categories/${category.slug}`">{{
+                <li v-for="category in solutionCategoriesAndSub">
+                    <nuxt-link :to="`/solution-categories/${category.slug}`">{{
                         category.name
                     }}</nuxt-link>
+                </li>
+                <li>
+                    <nuxt-link :to="`/biotime-ng`">
+                        Cloud Solution
+                    </nuxt-link>
+                </li>
+                <li>
+                    <a href="https://ngteco.ng/">
+                        Smart Home
+                    </a>
                 </li>
             </ul>
         </div>
@@ -29,37 +39,22 @@
 </template>
 
 <script>
-import Repository from '~/repositories/Repository.js';
-import { subBaseUrl } from '~/repositories/Repository';
+import { mapState } from 'vuex';
 
 export default {
-    name: 'PanelCategories',
+    name: 'PanelSolution',
 
-    data() {
-        return {
-            productCategories: null,
-            loading: false
-        };
+    computed: {
+        ...mapState({
+            solutionCategoriesAndSub: state =>
+                state.website.solutionCategoriesAndSub
+        })
     },
-    mounted() {
-        this.getProductCategories();
-    },
+
     methods: {
         handleClosePanel() {
             this.$store.commit('app/setCurrentDrawerContent', null);
             this.$store.commit('app/setAppDrawer', false);
-        },
-        async getProductCategories() {
-            this.loading = true;
-            const reponse = await Repository.get(
-                `${subBaseUrl}/product-categories`
-            )
-                .then(response => {
-                    this.productCategories = response.data;
-                    this.loading = false;
-                })
-                .catch(error => ({ error: JSON.stringify(error) }));
-            return reponse;
         }
     }
 };

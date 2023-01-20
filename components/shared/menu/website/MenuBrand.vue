@@ -1,24 +1,33 @@
 <template>
     <li class=" menu-item-has-children has-mega-menu">
         <nuxt-link to="/biotime-ng">
-            Brands
+            Brand
         </nuxt-link>
         <div class="mega-menu">
             <div>
                 <h4 class="brands">
                     <nuxt-link :to="`/biotime-ng`">
-                        Brand
+                        Cloud Solution
                     </nuxt-link>
                 </h4>
                 <ul class="mega-menu__list">
                     <li>
                         <nuxt-link :to="`/biotime-ng`">
-                            Cloud Solution
+                            Biotime Africa
                         </nuxt-link>
                     </li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="brands">
+                    <a href="https://ngteco.ng/">
+                        Smart Homes
+                    </a>
+                </h4>
+                <ul class="mega-menu__list">
                     <li>
                         <a href="https://ngteco.ng/">
-                            Smart Home
+                            NGTeco
                         </a>
                     </li>
                 </ul>
@@ -79,6 +88,12 @@ export default {
                 }
             }
         }
+    }
+}
+.brands {
+    a {
+        width: 230px !important;
+        display: block !important;
     }
 }
 </style>

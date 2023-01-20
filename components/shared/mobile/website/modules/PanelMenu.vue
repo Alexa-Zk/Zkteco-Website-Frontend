@@ -88,33 +88,38 @@ import { mainMenu } from '~/static/data/menu-website.json';
 import MobileSubmenu from '~/components/shared/mobile/modules/MobileSubmenu';
 import MobileCurrencySwitcher from '~/components/shared/mobile/modules/MobileCurrencySwitcher';
 import MobileLangugeSwitcher from '~/components/shared/mobile/modules/MobileLangugeSwitcher';
+import MenuSolutionCategories from '~/components/shared/menu/website/MenuSolutionCategories';
+
+//import MenuSolutionCategories from '~/components/shared/menu/website/MenuSolutionCategories ';
+
 export default {
     name: 'PanelMenu',
     components: {
         MobileLangugeSwitcher,
         MobileCurrencySwitcher,
-        MobileSubmenu
+        MobileSubmenu,
+        MenuSolutionCategories
     },
     data() {
         return {
             menu: [
-                {
-                    text: 'Solution',
-                    url: '/solution',
-                    extraClass: 'menu-item-has-children',
-                    subClass: 'sub-menu',
-                    subMenu: [
-                        {
-                            text: 'Classified by Industry',
-                            url: '/solution-categories/classified-by-industry'
-                        },
-                        {
-                            text: 'Classified by Application',
-                            url:
-                                '/solution-categories/classified-by-application'
-                        }
-                    ]
-                },
+                // {
+                //     text: 'Solution',
+                //     url: '/solution',
+                //     extraClass: 'menu-item-has-children',
+                //     subClass: 'sub-menu',
+                //     subMenu: [
+                //         {
+                //             text: 'Classified by Industry',
+                //             url: '/solution-categories/classified-by-industry'
+                //         },
+                //         {
+                //             text: 'Classified by Application',
+                //             url:
+                //                 '/solution-categories/classified-by-application'
+                //         }
+                //     ]
+                // },
                 {
                     text: 'Support',
                     url: '/',
@@ -163,19 +168,15 @@ export default {
                 //     text: 'Partners',
                 //     url: '/store'
                 // },
-                {
-                    text: 'Smart Home',
-                    url: 'http://ngteco.ng/'
-                },
-                {
-                    text: 'Partners',
-                    url: '/website/page/store-locator'
-                },
+                // {
+                //     text: 'Partners',
+                //     url: '/website/page/store-locator'
+                // },
 
-                {
-                    text: 'BioTime NG',
-                    url: '/biotime-ng'
-                },
+                // {
+                //     text: 'BioTime NG',
+                //     url: '/biotime-ng'
+                // },
                 {
                     text: 'Consultation',
                     url: '/support/project-consultation'
