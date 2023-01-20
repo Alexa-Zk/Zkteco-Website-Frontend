@@ -4,6 +4,7 @@
         <panel-categories v-if="currentDrawerContent === 'products'" />
         <panel-menu v-if="currentDrawerContent === 'menu'" />
         <panel-search v-if="currentDrawerContent === 'search'" />
+        <panel-solution v-if="currentDrawerContent === 'solutions'" />
     </v-navigation-drawer>
 </template>
 
@@ -13,10 +14,17 @@ import PanelShoppingCart from '~/components/shared/mobile/website/modules/PanelS
 import PanelCategories from '~/components/shared/mobile/website/modules/PanelCategories';
 import PanelMenu from '~/components/shared/mobile/website/modules/PanelMenu';
 import PanelSearch from '~/components/shared/mobile/website/modules/PanelSearch';
+import PanelSolution from '~/components/shared/mobile/website/modules/PanelSolution';
 
 export default {
     name: 'MobileDrawer',
-    components: { PanelSearch, PanelMenu, PanelCategories, PanelShoppingCart },
+    components: {
+        PanelSearch,
+        PanelMenu,
+        PanelCategories,
+        PanelShoppingCart,
+        PanelSolution
+    },
     computed: {
         ...mapState({
             appDrawer: state => state.app.appDrawer,

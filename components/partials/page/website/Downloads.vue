@@ -86,14 +86,14 @@
                                                                 {{ i.name }}
                                                             </div>
                                                         </div>
-                                                        <div class="size">
+                                                        <!--div class="size">
                                                             Size:
                                                             {{
                                                                 Math.floor(
                                                                     i.file.size
                                                                 )
                                                             }}
-                                                        </div>
+                                                        </div-->
                                                     </div>
                                                     <div class="download_right">
                                                         <button
@@ -115,6 +115,7 @@
                                                                         .updated_at
                                                                 )
                                                             }} -->
+                                                            Size:
                                                             {{
                                                                 formatBytes(
                                                                     i.file.size
@@ -320,7 +321,7 @@ export default {
             var teraBytes = marker * marker * marker * marker; // One TB is 1024 GB
 
             // return bytes if less than a KB
-            if (bytes < kiloBytes) return bytes.toFixed(decimal) + 'Bytes';
+            if (bytes < kiloBytes) return bytes.toFixed(decimal) + 'B';
             // return KB if less than a MB
             else if (bytes < megaBytes)
                 return (bytes / kiloBytes).toFixed(decimal) + 'KB';

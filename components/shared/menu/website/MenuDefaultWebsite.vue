@@ -2,7 +2,6 @@
     <ul :class="className">
         <MenuProduct />
         <MenuSolutionCategories />
-        <MenuBrand />
         <template v-for="item in mainMenu">
             <MenuDropdown v-if="item.subMenu" :menu-data="item" />
             <MenuMega v-else-if="item.mega" :menu-data="item" />
@@ -10,11 +9,7 @@
                 class="menu-item-has-dropdown"
                 v-else-if="item.redirect"
                 :key="item.text"
-            >
-                <a href="https://ngteco.ng/">
-                    {{ item.text }}
-                </a>
-            </li>
+            ></li>
             <li class="menu-item-has-dropdown" v-else :key="item.text">
                 <nuxt-link :to="item.url">
                     {{ item.text }}
@@ -30,15 +25,15 @@ import MenuDropdown from './MenuDropdown';
 import MenuMega from './MenuMega';
 import MenuProduct from './MenuProduct';
 import MenuSolutionCategories from './MenuSolutionCategories';
-import MenuBrand from './MenuBrand';
+// import MenuBrand from './MenuBrand';
 export default {
     name: 'MenuDefault',
     components: {
         MenuMega,
         MenuDropdown,
         MenuProduct,
-        MenuSolutionCategories,
-        MenuBrand
+        MenuSolutionCategories
+        //MenuBrand
     },
     props: {
         className: {
