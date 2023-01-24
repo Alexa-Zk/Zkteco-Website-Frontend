@@ -64,17 +64,37 @@
         </div>
         <div class="goals">
             <div class="vission_mission">
-                <div>
-                    <h2>Vision</h2>
-                    To be the leading provider of identity & security management
-                    solutions across West Africa
+                <div class="vission">
+                    <div class="">
+                        <img
+                            data-src="/img/about_us/icon/vision.svg"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
+                    <div>
+                        <h2>Vision</h2>
+
+                        To be the leading provider of identity & security
+                        management solutions across West Africa
+                    </div>
                 </div>
 
-                <div>
-                    <h2>Mission</h2>
-                    To build a network of Security Solution Expert across West
-                    Africa, delivering services to the highest standard for a
-                    safe environment for all to live.
+                <div class="vission">
+                    <div>
+                        <img
+                            data-src="/img/about_us/icon/mission.svg"
+                            class="lazyload mission"
+                            alt=""
+                        />
+                    </div>
+                    <div>
+                        <h2>Mission</h2>
+
+                        To build a network of Security Solution Expert across
+                        West Africa, delivering services to the highest standard
+                        for a safe environment for all to live.
+                    </div>
                 </div>
             </div>
         </div>
@@ -493,17 +513,33 @@ export default {
     .vission_mission {
         margin-left: 8%;
         margin-right: 8%;
-        padding-top: 30px;
+        padding-top: 45px;
         padding-bottom: 40px;
 
         display: grid;
-        grid-template-columns: 1.5fr 3fr;
-        grid-gap: 2em;
-        align-items: center;
-        font-size: 1.5rem;
+        grid-template-columns: 1.5fr 1.5fr;
+
+        .vission {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            grid-gap: 0.8em;
+            align-items: center;
+            font-size: 1.5rem;
+            margin-bottom: 2em;
+        }
 
         h2 {
             color: #8bc76f;
+        }
+
+        img {
+            width: 10em;
+            height: 10em;
+        }
+
+        .mission {
+            background: #8bc63e;
+            border-radius: 10px;
         }
 
         @media (max-width: 740px) {
