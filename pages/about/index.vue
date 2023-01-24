@@ -513,7 +513,7 @@ export default {
     .vission_mission {
         margin-left: 8%;
         margin-right: 8%;
-        padding-top: 30px;
+        padding-top: 45px;
         padding-bottom: 40px;
 
         display: grid;
