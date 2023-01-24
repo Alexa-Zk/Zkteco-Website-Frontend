@@ -16,7 +16,7 @@
                 </h4>
                 <ul class="mega-menu__list">
                     <li
-                        v-for="subItem in item.solution_sub_categories"
+                        v-for="subItem in item.solution_sub_cats"
                         :key="subItem.id"
                     >
                         <nuxt-link :to="`/solution-sub/${subItem.slug}`">

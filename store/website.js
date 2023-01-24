@@ -718,12 +718,12 @@ export const actions = {
             _start: Object.keys(payload).length === 0 ? 0 : payload.page,
             _sort: 'created_at:desc',
             _limit: Object.keys(payload).length === 0 ? 6 : payload.perPage,
-            'solution_categories.name': payload.slug,
+            'solution_categories.slug': payload.slug,
             ...searchSolution
         };
 
         let paramCount = {
-            'solution_categories.name': payload.slug,
+            'solution_categories.slug': payload.slug,
             ...searchSolution
         };
 
@@ -754,12 +754,12 @@ export const actions = {
             _start: Object.keys(payload).length === 0 ? 0 : payload.page,
             _sort: 'created_at:desc',
             _limit: Object.keys(payload).length === 0 ? 6 : payload.perPage,
-            'solution_sub_categories.name': payload.slug,
+            'solution_sub_cats.slug': payload.slug,
             ...searchSolution
         };
 
         let paramCount = {
-            'solution_sub_categories.name': payload.slug,
+            'solution_sub_cats.slug': payload.slug,
             ...searchSolution
         };
 

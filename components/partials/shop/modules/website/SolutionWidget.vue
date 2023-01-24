@@ -36,7 +36,7 @@
                             <v-list-group
                                 style="color: #78bc27!important;"
                                 sub-group
-                                v-for="solution in category.solution_sub_categories"
+                                v-for="solution in category.solution_sub_cats"
                                 :key="solution.id"
                             >
                                 <template v-slot:activator>
