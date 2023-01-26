@@ -21,7 +21,7 @@
             <div>
                 <h4 class="brands">
                     <a href="https://ngteco.ng/">
-                        Smart Homes
+                        Smart Home
                     </a>
                 </h4>
                 <ul class="mega-menu__list">
