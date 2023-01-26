@@ -46,12 +46,14 @@
                         :key="item.id"
                     >
                         <article class="ps-block--store-2">
-                            <div
-                                class="ps-block__content bg--cover"
-                                :style="{
-                                    backgroundImage: `url(${item.image[0].url})`
-                                }"
-                            ></div>
+                            <nuxt-link :to="`/solution-details/${item.slug}`">
+                                <div
+                                    class="ps-block__content bg--cover"
+                                    :style="{
+                                        backgroundImage: `url(${item.image[0].url})`
+                                    }"
+                                ></div>
+                            </nuxt-link>
                             <div class="ps-block__author">
                                 <a class="ps-block__user" href="#"> </a>
 
@@ -80,8 +82,6 @@
 
 <script>
 import { mapState } from 'vuex';
-import Repository from '~/repositories/Repository.js';
-import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
     name: 'Solutions',
