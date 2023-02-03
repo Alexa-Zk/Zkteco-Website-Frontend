@@ -496,7 +496,7 @@ export default {
             // object-fit: cover;
         }
     }
-    @media (max-width: 740px) {
+    @media (max-width: 1000px) {
         .group_profile {
             display: flex;
             flex-direction: column;
@@ -540,8 +540,19 @@ export default {
     // gap: 10px;
 }
 
+@media (max-width: 600px) {
+    .div_btn{
+          flex-direction: column;
+        }
+}
 
-    @media (max-width: 700px) {
+@media (max-width: 1000px) and (min-width: 600px) {
+    .div_btn{
+          flex-direction: row;
+        }
+}
+
+    @media (max-width: 1000px) {
         .top_banner {
             display: grid;
             grid-template-columns: 1fr;
@@ -554,9 +565,7 @@ export default {
             display: grid;
             grid-template-columns: 1fr;
         }
-        .div_btn{
-          flex-direction: column;
-        }
+    
         .span_txt {
          padding: 30px
         }
