@@ -389,12 +389,12 @@ import AboutValue from '~/components/partials/page/website/AboutValue';
 export default {
     head() {
         return {
-            titleTemplate: 'About Us',
+            titleTemplate: 'Software',
             meta: [
                 {
-                    hid: 'description',
-                    name: 'description',
-                    content: 'About ZKTeco West Africa'
+                    hid: 'ZKTeco West Africa Software Application',
+                    name: 'ZKTeco West Africa Software Application',
+                    content: 'ZKTeco West Africa Software Application'
                 }
             ]
         };
@@ -416,7 +416,7 @@ export default {
                     url: '/'
                 },
                 {
-                    text: 'About Us'
+                    text: 'Software'
                 }
             ]
         };
