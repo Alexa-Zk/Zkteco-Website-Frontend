@@ -30,13 +30,13 @@
                     type="warning"
                     variant="outlined"
                     >
-                    <span style="color:#3c763d; font-size: 20px; font-weight: bold;">Update Alert</span><br>
-                    <span style="color:#3c763d;font-family: Montserrat, Sans-serif;font-size: 12px;font-weight: normal;">
+                    <span class="span_txt" style="color:#3c763d; font-size: 20px; font-weight: bold;">Update Alert</span><br>
+                    <span class="span_txt" style="color:#3c763d;font-family: Montserrat, Sans-serif;font-size: 12px;font-weight: normal;">
                         Version V5000 4.1.1 Replaces V3.1.1 (Size : 1.19 GB).
                     </span>  
-                </v-alert>
+                    </v-alert>
     
-                    <div>
+                    <div class="div_txt">
                         <p>
                             <span style="color: #8bc76f;font-weight: bold;">ZKBioSecurity V5000 4.1.1 </span>
                             ZKTECO CO., LTD. (ZKTeco) (301330: CN Shenzhen Stock
@@ -49,7 +49,7 @@
                             enterprise-level and personal users.
                         </p>
                         <hr size="100%" color="#333">
-                        <div class="d-flex justify-center align-baseline" style="gap: 1rem">
+                        <div class="d-flex justify-center align-baseline div_btn" style="gap: 1rem">
                             <v-btn
                             style="padding: 14px 25px 14px 25px;border-radius: 30px 30px 30px 30px;"
                             color="#7CBF5B"
@@ -69,18 +69,20 @@
                                 <i style="color:white; font-weight: bold; font-size: 15px; margin-left: 8px;" class="icon icon-arrow-right"></i>
                             </v-btn>
                             <v-btn
+                            class="offline_btn"
                             style="padding: 14px 25px 14px 25px;border-radius: 30px 30px 30px 30px;"
                             color="#7CBF5B"
                             prepend-icon="mdi-cloud-upload"
                             @click="load(2)"
                             >
-                            <span style="color:white; font-weight: bold; font-size: 13px;">Offline Activation</span> 
+                            <span style="color:white; font-weight: bold; font-size: 13px;">
+                                 Activation</span> 
                                 <i style="color:white; font-weight: bold; font-size: 15px; margin-left: 8px;" class="icon icon-arrow-right"></i>
                             </v-btn>
                         </div>
                     </div>
                 </div>
-                <div>
+                <div class="div_img">
                     <img
                         data-src="/img/software.png"
                         class="lazyload"
@@ -90,7 +92,7 @@
             </div>
 
             <div class="group_profile2">
-                <div>
+                <div class="div_img">
                     <img
                         data-src="/img/software.png"
                         class="lazyload"
@@ -107,13 +109,13 @@
                     type="warning"
                     variant="outlined"
                     >
-                    <span style="color:#3c763d; font-size: 20px; font-weight: bold;">Update Alert</span><br>
-                    <span style="color:#3c763d;font-family: Montserrat, Sans-serif;font-size: 12px;font-weight: normal;">
+                    <span class="span_txt" style="color:#3c763d; font-size: 20px; font-weight: bold;">Update Alert</span><br>
+                    <span class="span_txt" style="color:#3c763d;font-family: Montserrat, Sans-serif;font-size: 12px;font-weight: normal;">
                         Version V5000 4.1.1 Replaces V3.1.1 (Size : 1.19 GB).
                     </span>  
                 </v-alert>
     
-                    <div>
+                    <div class="div_txt">
                         <p>
                             <span style="color: #8bc76f;font-weight: bold;">ZKBioSecurity V5000 4.1.1 </span>
                             ZKTECO CO., LTD. (ZKTeco) (301330: CN Shenzhen Stock
@@ -126,7 +128,7 @@
                             enterprise-level and personal users.
                         </p>
                         <hr size="100%" color="#333">
-                        <div class="d-flex justify-center align-baseline" style="gap: 1rem">
+                        <div class="d-flex justify-center align-baseline div_btn" style="gap: 1rem">
                             <v-btn
                             style="padding: 14px 25px 14px 25px;border-radius: 30px 30px 30px 30px;"
                             color="#7CBF5B"
@@ -146,6 +148,7 @@
                                 <i style="color:white; font-weight: bold; font-size: 15px; margin-left: 8px;" class="icon icon-arrow-right"></i>
                             </v-btn>
                             <v-btn
+                            class="offline_btn"
                             style="padding: 14px 25px 14px 25px;border-radius: 30px 30px 30px 30px;"
                             color="#7CBF5B"
                             prepend-icon="mdi-cloud-upload"
@@ -170,13 +173,13 @@
                     type="warning"
                     variant="outlined"
                     >
-                    <span style="color:#3c763d; font-size: 20px; font-weight: bold;">Update Alert</span><br>
-                    <span style="color:#3c763d;font-family: Montserrat, Sans-serif;font-size: 12px;font-weight: normal;">
+                    <span class="span_txt" style="color:#3c763d; font-size: 20px; font-weight: bold;">Update Alert</span><br>
+                    <span class="span_txt" style="color:#3c763d;font-family: Montserrat, Sans-serif;font-size: 12px;font-weight: normal;">
                         Version V5000 4.1.1 Replaces V3.1.1 (Size : 1.19 GB).
                     </span>  
                 </v-alert>
     
-                    <div>
+                    <div class="div_txt">
                         <p>
                             <span style="color: #8bc76f;font-weight: bold;">ZKBioSecurity V5000 4.1.1 </span>
                             ZKTECO CO., LTD. (ZKTeco) (301330: CN Shenzhen Stock
@@ -189,7 +192,7 @@
                             enterprise-level and personal users.
                         </p>
                         <hr size="100%" color="#333">
-                        <div class="d-flex justify-center align-baseline" style="gap: 1rem">
+                        <div class="d-flex justify-center align-baseline div_btn" style="gap: 1rem">
                             <v-btn
                             style="padding: 14px 25px 14px 25px;border-radius: 30px 30px 30px 30px;"
                             color="#7CBF5B"
@@ -209,6 +212,7 @@
                                 <i style="color:white; font-weight: bold; font-size: 15px; margin-left: 8px;" class="icon icon-arrow-right"></i>
                             </v-btn>
                             <v-btn
+                            class="offline_btn"
                             style="padding: 14px 25px 14px 25px;border-radius: 30px 30px 30px 30px;"
                             color="#7CBF5B"
                             prepend-icon="mdi-cloud-upload"
@@ -220,7 +224,7 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div class="div_img">
                     <img
                         data-src="/img/software.png"
                         class="lazyload"
@@ -230,7 +234,7 @@
             </div>
 
             <div class="group_profile2">
-                <div>
+                <div class="div_img">
                     <img
                         data-src="/img/software.png"
                         class="lazyload"
@@ -247,13 +251,13 @@
                     type="warning"
                     variant="outlined"
                     >
-                    <span style="color:#3c763d; font-size: 20px; font-weight: bold;">Update Alert</span><br>
-                    <span style="color:#3c763d;font-family: Montserrat, Sans-serif;font-size: 12px;font-weight: normal;">
+                    <span class="span_txt" style="color:#3c763d; font-size: 20px; font-weight: bold;">Update Alert</span><br>
+                    <span class="span_txt" style="color:#3c763d;font-family: Montserrat, Sans-serif;font-size: 12px;font-weight: normal;">
                         Version V5000 4.1.1 Replaces V3.1.1 (Size : 1.19 GB).
                     </span>  
                 </v-alert>
     
-                    <div>
+                    <div class="div_txt">
                         <p>
                             <span style="color: #8bc76f;font-weight: bold;">ZKBioSecurity V5000 4.1.1 </span>
                             ZKTECO CO., LTD. (ZKTeco) (301330: CN Shenzhen Stock
@@ -266,7 +270,7 @@
                             enterprise-level and personal users.
                         </p>
                         <hr size="100%" color="#333">
-                        <div class="d-flex justify-center align-baseline" style="gap: 1rem">
+                        <div class="d-flex justify-center align-baseline div_btn" style="gap: 1rem">
                             <v-btn
                             style="padding: 14px 25px 14px 25px;border-radius: 30px 30px 30px 30px;"
                             color="#7CBF5B"
@@ -286,6 +290,7 @@
                                 <i style="color:white; font-weight: bold; font-size: 15px; margin-left: 8px;" class="icon icon-arrow-right"></i>
                             </v-btn>
                             <v-btn
+                            class="offline_btn"
                             style="padding: 14px 25px 14px 25px;border-radius: 30px 30px 30px 30px;"
                             color="#7CBF5B"
                             prepend-icon="mdi-cloud-upload"
@@ -310,13 +315,13 @@
                     type="warning"
                     variant="outlined"
                     >
-                    <span style="color:#3c763d; font-size: 20px; font-weight: bold;">Update Alert</span><br>
-                    <span style="color:#3c763d;font-family: Montserrat, Sans-serif;font-size: 12px;font-weight: normal;">
+                    <span class="span_txt" style="color:#3c763d; font-size: 20px; font-weight: bold;">Update Alert</span><br>
+                    <span class="span_txt" style="color:#3c763d;font-family: Montserrat, Sans-serif;font-size: 12px;font-weight: normal;">
                         Version V5000 4.1.1 Replaces V3.1.1 (Size : 1.19 GB).
                     </span>  
                 </v-alert>
     
-                    <div>
+                    <div >
                         <p>
                             <span style="color: #8bc76f;font-weight: bold;">ZKBioSecurity V5000 4.1.1 </span>
                             ZKTECO CO., LTD. (ZKTeco) (301330: CN Shenzhen Stock
@@ -329,7 +334,7 @@
                             enterprise-level and personal users.
                         </p>
                         <hr size="100%" color="#333">
-                        <div class="d-flex justify-center align-baseline" style="gap: 1rem">
+                        <div class="d-flex justify-center align-baseline div_btn" style="gap: 1rem">
                             <v-btn
                             style="padding: 14px 25px 14px 25px;border-radius: 30px 30px 30px 30px;"
                             color="#7CBF5B"
@@ -349,6 +354,7 @@
                                 <i style="color:white; font-weight: bold; font-size: 15px; margin-left: 8px;" class="icon icon-arrow-right"></i>
                             </v-btn>
                             <v-btn
+                            class="offline_btn"
                             style="padding: 14px 25px 14px 25px;border-radius: 30px 30px 30px 30px;"
                             color="#7CBF5B"
                             prepend-icon="mdi-cloud-upload"
@@ -360,7 +366,7 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div class="div_img">
                     <img
                         data-src="/img/android.png"
                         class="lazyload"
@@ -495,6 +501,10 @@ export default {
             display: flex;
             flex-direction: column;
         }
+        .group_profile2 {
+            display: flex;
+            flex-direction: column;
+        }
     }
 }
 .readmore_btn {
@@ -531,39 +541,46 @@ export default {
 }
 
 
-.emp_stat_container {
-    background: #8bc63e;
-    .emp_stat {
-        margin-left: 8%;
-        margin-right: 8%;
-        padding-top: 50px;
-        padding-bottom: 50px;
-
-        text-align: center;
-
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-
-        div {
-            color: #fff;
-            span {
-                font-size: 4.8rem;
-                font-weight: bold;
-            }
-            p {
-                color: #fff;
-                font-size: 1.5rem;
-            }
-        }
-    }
-    @media (max-width: 740px) {
-        .emp_stat {
+    @media (max-width: 700px) {
+        .top_banner {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            text-align: center;
+            grid-template-columns: 1fr;
         }
+        .top_banner_div {
+            text-align: center;
+            padding: 0;
+        }
+        .group_profile_container {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+        .div_btn{
+          flex-direction: column;
+        }
+        .span_txt {
+         padding: 30px
+        }
+
+        .div_txt {
+            // max-width: 60%;
+            // margin-left: 110px;
+        }
+        .div_txt2 {
+            max-width: 60%;
+            margin-right: 110px;
+        }
+        .div_img {
+            display: none;
+        }
+        .offline_btn {
+            margin-bottom: 40px;
+        }
+        // .group_profile2 {
+        //    display: grid;
+        //    grid-template-columns: 3.4fr 1.8fr;
+        // }
     }
-}
+
 
 .goals {
     .vission_mission {
