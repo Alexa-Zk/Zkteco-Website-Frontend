@@ -120,27 +120,28 @@
                             <div>
                                 <p>
                                     ZKTeco is a globally renowned provider of
-                                    biometric verication algorithm techniques,
-                                    sensors and software platform, which owns
-                                    patents of ngerprint, iris, face, vein and
-                                    palm print recognition techniques etc., and
-                                    owns patents of compute vision techniques
-                                    including facial recognition, identication
-                                    of behaviors, X-ray object identication, and
-                                    video structure, which make ZKTeco one of
-                                    the enterprises in the industry that owns
-                                    comparatively numerous patents. From the
-                                    core technical authorizations of physical
-                                    and behavioral features including ngerprint,
-                                    iris, face, and vein, to ZKBioDeSee Software
-                                    empowered by hybrid biometric verication and
-                                    computer vision and hybrid biometric
-                                    verication identity authentication O2O smart
-                                    terminals and solutions, we offer one-stop
-                                    solutions based on smart verication and
+                                    biometric verification algorithm techniques,
+                                    sensors, and software platforms and owns
+                                    patents for fingerprint, iris, face, vein,
+                                    and palm print recognition techniques, among
+                                    others, as well as patents for computer
+                                    vision techniques such as facial
+                                    recognition, behaviour identification, X-ray
+                                    object identification, and video structure,
+                                    making ZKTeco one of the industry's
+                                    enterprises with a comparatively large
+                                    number of patents. ZKTeco provides one-stop
+                                    solutions based on smart verification and
                                     identity authentication applications for
                                     vertical industries, partners, and system
-                                    integrators.
+                                    integrators, ranging from the core technical
+                                    authorisations of physical and behavioural
+                                    features such as fingerprint, iris, face,
+                                    and vein to ZKBioDeSee Software empowered by
+                                    hybrid biometric verification and computer
+                                    vision and hybrid biometric verification
+                                    identity authentication to smart terminals
+                                    and solutions.
                                 </p>
                             </div>
                         </div>
@@ -154,31 +155,29 @@
                             </h3>
                             <div>
                                 <p>
-                                    ZKTeco is a globally renowned provider of
-                                    core techniques, smart terminals and
-                                    software platforms based on smart entrance &
-                                    exit “car + person + object” applications,
-                                    and owns a large quantity of software
-                                    copyrights of software products and
-                                    solutions and patented smart terminal
-                                    patented techniques, and strives to
-                                    integrate hybrid biometric verication
-                                    techniques and computer vision techniques
-                                    with the Internet, IoT, big data and cloud
-                                    computing, and builds system platform
-                                    including ZKBioSecurity and ZKBioCV Secruity
-                                    etc. ZKTeco owns professional development
-                                    and supply chain teams for smart terminal of
-                                    person, car and object passages, and
-                                    globally famous entrance & exit biometric
-                                    verication computer vision smart IoT
-                                    hardware and servers, private cloud and
-                                    public linkage services to provide system
-                                    integration services for many partners
-                                    regarding industry solutions, which are
-                                    widely applied in various elds including
-                                    smart traffic, smart nance, smart education,
-                                    smart medicine and smart government etc.
+                                    ZKTeco provides core techniques, smart
+                                    terminals, and software platforms based on
+                                    smart entrance and exit "car + person +
+                                    object" applications, owns a large number of
+                                    software copyrights of software products and
+                                    solutions, as well as patented smart
+                                    terminal techniques, strives to integrate
+                                    hybrid biometric verification techniques and
+                                    computer vision techniques with the
+                                    Internet, IoT, big data, and cloud
+                                    computing, and builds system platforms such
+                                    as ZKBioCVSecurity. ZKTeco has professional
+                                    development and supply chain teams for smart
+                                    terminals for person, car, and object
+                                    passages, as well as globally renowned
+                                    entrance and exit biometric verification
+                                    computer vision smart IoT hardware and
+                                    servers, a private cloud, and public linkage
+                                    services to provide system integration
+                                    services for a wide range of partners in
+                                    fields such as smart traffic, smart
+                                    entrances, smart education, smart medicine,
+                                    and smart transportation.
                                 </p>
                             </div>
                         </div>
@@ -207,31 +206,26 @@
                             </h3>
                             <div>
                                 <p>
-                                    ZKTeco is a globally renowned provider of
-                                    core techniques, smart terminals and
-                                    software platforms based on smart entrance &
-                                    exit “car + person + object” applications,
-                                    and owns a large quantity of software
-                                    copyrights of software products and
-                                    solutions and patented smart terminal
-                                    patented techniques, and strives to
-                                    integrate hybrid biometric verication
-                                    techniques and computer vision techniques
-                                    with the Internet, IoT, big data and cloud
-                                    computing, and builds system platform
-                                    including ZKBioSecurity and ZKBioCV Secruity
-                                    etc. ZKTeco owns professional development
-                                    and supply chain teams for smart terminal of
-                                    person, car and object passages, and
-                                    globally famous entrance & exit biometric
-                                    verication computer vision smart IoT
-                                    hardware and servers, private cloud and
-                                    public linkage services to provide system
-                                    integration services for many partners
-                                    regarding industry solutions, which are
-                                    widely applied in various elds including
-                                    smart traffic, smart nance, smart education,
-                                    smart medicine and smart government etc.
+                                    ZKTeco offers ZKTeco+ Cloud Platform-enabled
+                                    core techniques, smart terminals, and a
+                                    software platform. ZKTeco+ Cloud Platform is
+                                    intended to establish the duo-core concept
+                                    of "Time Management + Space Management" as
+                                    well as a private cloud platform with a high
+                                    level of data security. The service desk,
+                                    information service offerings, app store and
+                                    authentication authorization service, API
+                                    service platform, and cloud storage service
+                                    are all available. "Cloud Application"
+                                    connected via ZKTeco+ connects smart
+                                    terminal devices in smart office
+                                    applications to IoT devices for attendance,
+                                    access control, visitor management, and POS
+                                    via software platforms such as ZKBioTime and
+                                    ZKBioCloud, which offer one-stop O2O
+                                    solutions for enterprise smart offices that
+                                    are widely applied in various fields such as
+                                    smart offices and smart education.
                                 </p>
                             </div>
                         </div>
@@ -684,7 +678,7 @@ export default {
 .ps-page--single {
     img {
         height: 200px;
-        width: 100%;
+        width: 100% !important;
         object-fit: cover;
     }
 }
