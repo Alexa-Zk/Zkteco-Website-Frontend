@@ -332,7 +332,6 @@ export default {
             else return (bytes / gigaBytes).toFixed(decimal) + 'GB';
         },
         download(data) {
-            console.log('download -- URL ', data);
             const tokenForDownloads = this.$cookies.get('download_token', {
                 parseJSON: true
             });
