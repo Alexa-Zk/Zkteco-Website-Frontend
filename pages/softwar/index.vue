@@ -45,8 +45,27 @@
                         </div>
                         <div class="footer">
                             <div>
-                                <button>User Manual</button>
-                                <button>V5000 4.1.1</button>
+                                <button
+                                    class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            zkbioV5000
+                                        )
+                                    "
+                                >
+                                    User Manual
+                                </button>
+                                
+                                <button
+                                    class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            zkbioV5000
+                                        )
+                                    "
+                                >
+                                    V5000 4.1.1
+                                </button>
                                 
                             </div>
 
@@ -86,8 +105,18 @@
                         </div>
                         <div class="footer">
                             <div>
-                                <button>User Manual</button>
-                                <button>V5000 4.1.1</button>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            zkbioV5000
+                                        )
+                                    ">User Manual</button>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            zkbioV5000
+                                        )
+                                    ">V5000 4.1.1</button>
                                 
                             </div>
 
@@ -127,9 +156,19 @@
                         </div>
                         <div class="footer">
                             <div>
-                                <button>User Manual</button>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            zkbioV5000
+                                        )
+                                    ">User Manual</button>
                                 <!--button>App User Manual</button-->
-                                <button> Try Free</button>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            zkbioV5000
+                                        )
+                                    "> Try Free</button>
                                 
                             </div>
 
@@ -166,8 +205,18 @@
                         </div>
                         <div class="footer">
                             <div>
-                                <button>User Manual</button>
-                                <button>Try Free</button>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            zkbioV5000
+                                        )
+                                    ">User Manual</button>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            zkbioV5000
+                                        )
+                                    ">Try Free</button>
                                 
                             </div>
 
@@ -207,8 +256,18 @@
                         </div>
                         <div class="footer">
                             <div>
-                                <button>User Manual</button>
-                                <button>Try Free</button>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            zkbioV5000
+                                        )
+                                    ">User Manual</button>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            zkbioV5000
+                                        )
+                                    ">Try Free</button>
                                 
                             </div>
 
@@ -246,8 +305,18 @@
                         </div>
                         <div class="footer">
                             <div>
-                                <button>Download Free</button>
-                                <button>Public Key</button>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            zkbioV5000
+                                        )
+                                    ">Download Free</button>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            zkbioV5000
+                                        )
+                                    ">Public Key</button>
                             </div>
 
                         </div>
@@ -291,15 +360,34 @@ export default {
                 {
                     text: 'Software'
                 }
-            ]
+            ],
+            zkbioV5000 : "https://storage.googleapis.com/zkteco_website_bucket/KF_160_3af1582d3b/KF_160_3af1582d3b.pdf"
         };
     },
-    async created() {
-        const payload = {};
-        const response = await this.$store.dispatch(
-            'website/getCaseStudies',
-            payload
-        );
+    // async created() {
+    //     const payload = {};
+    //     const response = await this.$store.dispatch(
+    //         'website/getCaseStudies',
+    //         payload
+    //     );
+    // }
+    methods: {
+        download(data) {
+            // const tokenForDownloads = this.$cookies.get('download_token', {
+            //     parseJSON: true
+            // });
+            // if (tokenForDownloads) {
+                const link = document.createElement('a');
+                link.href = data;
+                link.setAttribute('download', 'image.jpg');
+                link.setAttribute('target', '_blank');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            // } else {
+            //     this.$router.push('/auth/login');
+            // }
+        }
     }
 };
 </script>
