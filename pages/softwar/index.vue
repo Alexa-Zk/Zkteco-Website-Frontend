@@ -364,13 +364,7 @@ export default {
             zkbioV5000 : "https://storage.googleapis.com/zkteco_website_bucket/KF_160_3af1582d3b/KF_160_3af1582d3b.pdf"
         };
     },
-    // async created() {
-    //     const payload = {};
-    //     const response = await this.$store.dispatch(
-    //         'website/getCaseStudies',
-    //         payload
-    //     );
-    // }
+   
     methods: {
         download(data) {
             // const tokenForDownloads = this.$cookies.get('download_token', {
