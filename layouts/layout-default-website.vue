@@ -1,8 +1,8 @@
 <template lang="html">
     <v-app>
         <v-main>
-            <header-default />
-            <header-mobile />
+            <!--header-default />
+            <header-mobile /-->
             <nuxt />
             <footer-fullwidth />
             <navigation-list />
