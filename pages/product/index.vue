@@ -83,9 +83,9 @@ export default {
         // );
     },
     computed: {
-        // ...mapState({
-        //     loading: state => state.website.loading
-        // })
+        ...mapState({
+            loading: state => state.website.loading
+        })
     }
 };
 </script>
