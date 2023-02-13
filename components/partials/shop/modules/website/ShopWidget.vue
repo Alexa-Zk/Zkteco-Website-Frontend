@@ -15,7 +15,10 @@
                     </content-placeholders>
                 </div>
 
-                <li v-for="category in productCategories" :key="category.id">
+                <li
+                    v-for="category in categoryAndSubCategories"
+                    :key="category.id"
+                >
                     <v-list class="sidebar-border">
                         <v-list-group>
                             <template v-slot:activator>
@@ -68,7 +71,8 @@ export default {
     },
     computed: {
         ...mapState({
-            productCategories: state => state.website.productCategories,
+            categoryAndSubCategories: state =>
+                state.website.categoryAndSubCategories,
             categories: state => state.product.categories
         })
     },
@@ -76,10 +80,10 @@ export default {
         return {
             loading: false
         };
-    },
-    async created() {
-        await this.$store.dispatch('website/getAllProductCategories');
     }
+    // async created() {
+    //     await this.$store.dispatch('website/getCategoryAndSubCategories');
+    // }
 };
 </script>
 
