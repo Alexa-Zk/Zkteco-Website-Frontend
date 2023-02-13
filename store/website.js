@@ -15,7 +15,7 @@ export const state = () => ({
     productsTotal: 0,
     articlesTotal: 0,
     singleProductCategories: null,
-    productCategories: null,
+    //productCategories: null,
     subProductCategories: null,
     homePage: null,
     storeLocator: null,
@@ -85,9 +85,9 @@ export const mutations = {
         state.singleProductCategories = payload;
     },
 
-    setProductCategories(state, payload) {
-        state.productCategories = payload;
-    },
+    // setProductCategories(state, payload) {
+    //     state.productCategories = payload;
+    // },
 
     setSubProductCategories(state, payload) {
         state.subProductCategories = payload;
@@ -560,21 +560,6 @@ export const actions = {
             .catch(error => ({
                 error: JSON.stringify(error)
             }));
-        return reponse;
-    },
-
-    async getAllProductCategories({ commit }, slug) {
-        commit('setLoading', true);
-        let params = { _sort: 'created_at:asc' };
-        const reponse = await Repository.get(
-            `${subBaseUrl}/product-categories/?${serializeQuery(params)}`
-        )
-            .then(response => {
-                commit('setProductCategories', response.data);
-                commit('setLoading', false);
-                return response.data;
-            })
-            .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
     },
 

@@ -16,18 +16,18 @@
                 <!-- <related-product layout="fullwidth" collection-slug="shop-recommend-items"/> -->
             </div>
         </div>
-        <newsletters layout="fullwidth" />
+        <!--newsletters layout="fullwidth" /-->
     </div>
 </template>
 
 <script>
-import { validationMixin } from 'vuelidate';
+//import { validationMixin } from 'vuelidate';
 import ProductDetailFullwidth from '~/components/elements/detail/website/ProductDetailFullwidth';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import RelatedProduct from '~/components/partials/product/RelatedProduct';
-import ProductWidgets from '~/components/partials/product/website/ProductWidgets';
-import LayoutProduct from '~/layouts/layout-product';
-import Newsletters from '~/components/partials/commons/Newsletters';
+//import ProductWidgets from '~/components/partials/product/website/ProductWidgets';
+//import LayoutProduct from '~/layouts/layout-product';
+//import Newsletters from '~/components/partials/commons/Newsletters';
 
 import RequestAQuote from '~/components/elements/detail/modules/website/RequestAQuote';
 
@@ -35,11 +35,11 @@ export default {
     layout: 'layout-default-website',
     name: 'Products',
     transition: 'zoom',
-    mixins: [validationMixin],
+    // mixins: [validationMixin],
     components: {
-        Newsletters,
-        LayoutProduct,
-        ProductWidgets,
+        //Newsletters,
+        //LayoutProduct,
+        //ProductWidgets,
         RelatedProduct,
         BreadCrumb,
         ProductDetailFullwidth,
