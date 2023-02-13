@@ -84,11 +84,11 @@ export default {
         scss: './assets/scss/env.scss'
     },
 
-    // loadingIndicator: {
-    //     name: 'fading-circle',
-    //     color: 'white',
-    //     background: '#78bc27'
-    // },
+    loadingIndicator: {
+        name: 'fading-circle',
+        color: 'white',
+        background: '#78bc27'
+    },
 
     modules: [
         '@nuxtjs/axios',
