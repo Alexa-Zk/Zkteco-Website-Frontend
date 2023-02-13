@@ -496,23 +496,6 @@ export const actions = {
         return reponse;
     },
 
-    // async getSingleProductCategories1({ commit }, slug) {
-    //     commit('setLoading', true);
-    //     let params = {
-    //         slug_in: slug
-    //     };
-    //     const reponse = await Repository.get(
-    //         `${subBaseUrl}/product-categories/?${serializeQuery(params)}`
-    //     )
-    //         .then(response => {
-    //             commit('setSingleProductCategories', response.data);
-    //             commit('setLoading', false);
-    //             return response.data;
-    //         })
-    //         .catch(error => ({ error: JSON.stringify(error) }));
-    //     return reponse;
-    // },
-
     async getTotalSingleProductCategories({ commit }, slug) {
         let params = {
             'product_category.slug': slug
@@ -531,7 +514,7 @@ export const actions = {
         //getSingleProductCategories
         //https://admin.zkteco-wa.com/products?_limit=2&product_category.slug=time-attendance&_start=1
 
-        commit('setLoading', true);
+        // commit('setLoading', true);
         let params = {
             _start:
                 payload.page === 0 ||
@@ -553,9 +536,10 @@ export const actions = {
             `${subBaseUrl}/products?${serializeQuery(params)}`
         )
             .then(response => {
-                commit('setSingleProductCategories', response.data);
+                const data = response.data;
+                commit('setSingleProductCategories', data);
                 commit('setLoading', false);
-                return response.data;
+                return data;
             })
             .catch(error => ({
                 error: JSON.stringify(error)
@@ -569,9 +553,10 @@ export const actions = {
             `${subBaseUrl}/product-categories/categoryAndSubcategory`
         )
             .then(response => {
-                commit('setCategoryAndSubCategories', response.data);
+                const data = response.data;
+                commit('setCategoryAndSubCategories', data);
                 commit('setLoading', false);
-                return response.data;
+                return data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
@@ -660,7 +645,7 @@ export const actions = {
             .catch(error => ({
                 error: JSON.stringify(error)
             }));
-        return reponse;
+        // return reponse;
     },
 
     async getTotalSingleProductCategories({ commit }, slug) {
