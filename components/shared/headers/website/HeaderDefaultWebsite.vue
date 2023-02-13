@@ -68,10 +68,6 @@ export default {
                 this.$router.push(`/website/search?keyword=${this.searchText}`);
             }
         }
-    },
-    async created() {
-        // let slug = {}
-        // const response = await this.$store.dispatch('website/getAllProductCategories', slug);
     }
 };
 </script>
