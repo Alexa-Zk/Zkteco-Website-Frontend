@@ -536,7 +536,7 @@ export const actions = {
             `${subBaseUrl}/products?${serializeQuery(params)}`
         )
             .then(response => {
-                const data = []; // response.data;
+                const data = response.data;
                 commit('setSingleProductCategories', data);
                 commit('setLoading', false);
                 return data;
