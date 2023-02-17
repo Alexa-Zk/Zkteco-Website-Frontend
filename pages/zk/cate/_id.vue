@@ -1,5 +1,8 @@
 <template lang="html">
     <div>
+        <h2>Testing 2</h2>
+    </div>
+    <!--div>
         <bread-crumb :breadcrumb="breadCrumb" />
         <div class="ps-page--shop" id="shop-sidebar">
             <div class="container">
@@ -8,11 +11,11 @@
                         <shop-widget />
                     </div>
                     <div class="ps-layout__right">
-                        <!--div class="ps-page__header">
-                            <h1 class="text-uppercase">{{ title }}</h1 >
+                        <div class="ps-page__header">
+                            <h1 class="text-uppercase">{{ title }}</h1>
                             <h2>Testing</h2>
-                        </div -->
-                        <!--layout-shop-sidebar-categories
+                        </div>
+                        <layout-shop-sidebar-categories
                             :loading="loading"
                             :categories_products="
                                 categoriesWithProduct
@@ -22,12 +25,12 @@
                             :totalProductCategories="
                                 totalSingleProductCategories
                             "
-                        /-->
+                        />
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div -->
 </template>
 
 <script>
