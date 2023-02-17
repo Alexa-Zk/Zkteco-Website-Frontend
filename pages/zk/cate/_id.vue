@@ -1,6 +1,6 @@
 <template lang="html">
     <div>
-        <h2>Testing</h2>
+        <h2>Testing 2</h2>
     </div>
     <!--div>
         <bread-crumb :breadcrumb="breadCrumb" />
