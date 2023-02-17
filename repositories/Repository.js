@@ -14,7 +14,7 @@ export const baseUrl = `${baseHost}`;
 export const subBaseUrl = `${subBaseHost}`;
 
 export default axios.create({
-    //baseUrl,
+    baseUrl,
     headers: customHeaders
 });
 
