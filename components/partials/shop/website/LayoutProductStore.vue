@@ -47,7 +47,7 @@ import ProductDefault from '~/components/elements/product/website/ProductDefault
 import ProductWide from '~/components/elements/product/ProductWide';
 
 export default {
-    name: 'LayoutShopSidebar',
+    name: 'LayoutProductStore',
     components: { ProductWide, ProductDefault },
     data() {
         return {
