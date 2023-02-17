@@ -1,12 +1,13 @@
 <template lang="html">
     <div class="martfury">
-        <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />
+        <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />``
         <div class="ps-page--product">
             <div class="ps-container">
                 <div class="ps-page__container">
-                    <div class="ps-page__left" v-if="pdt">
-                        <!--product-detail-fullwidth :singleProduct="pdt" /-->
-                    </div>
+                    <h2>Test 3</h2>
+                    <!--div class="ps-page__left" v-if="pdt">
+                        <product-detail-fullwidth :singleProduct="pdt" />
+                    </div-->
                     <!--div class="ps-page__right">
                         <div class="request-quote">
                             <request-a-quote />

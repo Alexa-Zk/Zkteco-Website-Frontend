@@ -8,10 +8,10 @@
                         <shop-widget />
                     </div>
                     <div class="ps-layout__right">
-                        <div class="ps-page__header">
-                            <!--h1 class="text-uppercase">{{ title }}</h1 -->
+                        <!--div class="ps-page__header">
+                            <h1 class="text-uppercase">{{ title }}</h1 >
                             <h2>Testing</h2>
-                        </div>
+                        </div -->
                         <!--layout-shop-sidebar-categories
                             :loading="loading"
                             :categories_products="
