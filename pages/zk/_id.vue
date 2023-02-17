@@ -1,17 +1,18 @@
 <template lang="html">
     <div class="martfury">
-        <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />
+        <bread-crumb :breadcrumb="breadCrumb" layout="fullwidth" />``
         <div class="ps-page--product">
             <div class="ps-container">
                 <div class="ps-page__container">
-                    <div class="ps-page__left" v-if="pdt">
+                    <h2>Test 3</h2>
+                    <!--div class="ps-page__left" v-if="pdt">
                         <product-detail-fullwidth :singleProduct="pdt" />
-                    </div>
-                    <div class="ps-page__right">
+                    </div-->
+                    <!--div class="ps-page__right">
                         <div class="request-quote">
                             <request-a-quote />
                         </div>
-                    </div>
+                    </div -->
                 </div>
             </div>
         </div>
@@ -35,15 +36,16 @@ export default {
         RequestAQuote
     },
     async asyncData({ params, $axios }) {
-        try {
-            const response = await $axios.get(
-                `https://admin.zkteco-wa.com/products?slug_in=${params.id}`
-            );
-            const pdt = response.data[0];
-            return { pdt };
-        } catch (error) {}
+        // try {
+        //     const response = await $axios.get(
+        //         `https://admin.zkteco-wa.com/products?slug_in=${params.id}`
+        //     );
+        //     const pdt = response.data[0];
+        //     return { pdt };
+        // } catch (error) {}
     },
     head() {
+        /*
         let description = 'ZKTeco | Product ';
         let title = 'ZKTeco | Product ';
         let image = 'ZKTeco | Product ';
@@ -131,6 +133,7 @@ export default {
                 }
             ]
         };
+        */
     },
     data() {
         return {
