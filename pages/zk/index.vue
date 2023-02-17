@@ -11,7 +11,7 @@
                         <div class="ps-page__header">
                             <h1 class="text-uppercase">Products</h1>
                         </div>
-                        <layout-shop-sidebar :loading="loading" />
+                        <LayoutProductStore :loading="loading" />
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
 import { mapState } from 'vuex';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import ShopWidget from '~/components/partials/shop/modules/website/ShopWidget';
-import LayoutShopSidebar from '~/components/partials/shop/website/LayoutShopSidebar';
+import LayoutProductStore from '~/components/partials/shop/website/LayoutProductStore';
 
 export default {
     head() {
@@ -39,7 +39,7 @@ export default {
         };
     },
     components: {
-        LayoutShopSidebar,
+        LayoutProductStore,
         ShopWidget,
         BreadCrumb
     },
@@ -71,14 +71,7 @@ export default {
             return { response };
         } catch (error) {}
     },
-    created() {
-        // let payload = {};
-        // const response = this.$store.dispatch('website/getProducts', payload);
-        // const responseTotal = this.$store.dispatch(
-        //     'website/getProductsTotal',
-        //     payload
-        // );
-    },
+
     computed: {
         ...mapState({
             loading: state => state.website.loading

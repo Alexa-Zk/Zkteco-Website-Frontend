@@ -106,10 +106,43 @@ export default {
         hostname: 'https://zkteco-wa.com',
         exclude: [],
         routes: async () => {
+            // https://admin.zkteco-wa.com/products?product_category.slug=time-attendance
+            // https://admin.zkteco-wa.com/product-categories/categoryAndSubcategory
+            // https://admin.zkteco-wa.com/solution-categories?slug=hospitality
+
+            // https://admin.zkteco-wa.com/solution-categories?slug=hospitality
+
+            // https://admin.zkteco-wa.com/product-categories/categoryAndSubcategory
+
+            //solution-categories/
+
+            ////// ZKTECO /////////
+            // let { data: zkData } = await axios.get(
+            //     `https://admin.zkteco-wa.com/products`
+            // );
+
+            let { data: productCategoriesData } = await axios.get(
+                `https://admin.zkteco-wa.com/product-categories/categoryAndSubcategory`
+            );
+
+            const productCategoriesArray = productCategoriesData.map(v => {
+                if (v.slug != null || v.slug != '' || v.slug != undefined)
+                    return `/product-categories/${v.slug}`;
+            });
+
+            const zkCateArray = productCategoriesData.map(v => {
+                if (v.slug != null || v.slug != '' || v.slug != undefined)
+                    return `/zk/cate/${v.slug}`;
+            });
+
+            ///////////////////////////
+
             let { data: productsData } = await axios.get(
                 `https://admin.zkteco-wa.com/products`
             );
             const productArray = productsData.map(v => `/product/${v.slug}`);
+
+            const zkArray = productsData.map(v => `/zk/${v.slug}`);
 
             let { data: solutionData } = await axios.get(
                 `https://admin.zkteco-wa.com/solutions`
@@ -123,7 +156,14 @@ export default {
             );
             const articlesArray = articlesData.map(v => `/blog/${v.slug}`);
 
-            return [...productArray, ...solutionArray, ...articlesArray];
+            return [
+                ...zkArray,
+                ...zkCateArray,
+                ...productCategoriesArray,
+                ...productArray,
+                ...solutionArray,
+                ...articlesArray
+            ];
         }
     },
 
