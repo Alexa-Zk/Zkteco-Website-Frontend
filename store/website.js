@@ -632,7 +632,7 @@ export const actions = {
                 let product = await productCategory;
                 let count = await productCategoryCount;
 
-                return await Promise.all([product, count])
+                return await Promise.allSettled([product, count])
                     .then(value => {
                         commit('setSingleProductCategories', value[0].data);
                         commit(
