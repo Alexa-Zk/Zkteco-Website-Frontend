@@ -591,52 +591,57 @@ export const actions = {
     },
 
     async getProductCategories({ state, commit }, payload) {
-        commit('setLoading', true);
+        try {
+            commit('setLoading', true);
 
-        //let searchProduct = {};
-        let params = {
-            _start:
-                payload.page === 0 ||
-                payload.page === undefined ||
-                payload.page === null
-                    ? state.page
-                    : payload.page,
-            _sort: payload.sort_by === 0 ? state.sort_by : payload.sort_by,
-            _limit:
-                payload.perPage === null ||
-                payload.perPage === undefined ||
-                payload.perPage === 0
-                    ? state.perPage
-                    : payload.perPage,
-            'product_category.slug': payload.slug
-        };
+            //let searchProduct = {};
+            let params = {
+                _start:
+                    payload.page === 0 ||
+                    payload.page === undefined ||
+                    payload.page === null
+                        ? state.page
+                        : payload.page,
+                _sort: payload.sort_by === 0 ? state.sort_by : payload.sort_by,
+                _limit:
+                    payload.perPage === null ||
+                    payload.perPage === undefined ||
+                    payload.perPage === 0
+                        ? state.perPage
+                        : payload.perPage,
+                'product_category.slug': payload.slug
+            };
 
-        let paramCount = {
-            'product_category.slug': payload.slug
-        };
+            let paramCount = {
+                'product_category.slug': payload.slug
+            };
 
-        let productCategoryURL = `${subBaseUrl}/products?${serializeQuery(
-            params
-        )}`;
-        let productCategoryCountURL = `${subBaseUrl}/products/count?${serializeQuery(
-            paramCount
-        )}`;
+            let productCategoryURL = `${subBaseUrl}/products?${serializeQuery(
+                params
+            )}`;
+            let productCategoryCountURL = `${subBaseUrl}/products/count?${serializeQuery(
+                paramCount
+            )}`;
 
-        let productCategory = await Repository.get(productCategoryURL);
-        let productCategoryCount = await Repository.get(
-            productCategoryCountURL
-        );
+            let productCategory = Repository.get(productCategoryURL);
+            let productCategoryCount = Repository.get(productCategoryCountURL);
 
-        await Promise.all([productCategory, productCategoryCount])
-            .then(value => {
-                commit('setSingleProductCategories', value[0].data);
-                commit('setTotalSingleProductCategories', value[1].data);
-                commit('setLoading', false);
-            })
-            .catch(error => ({
-                error: JSON.stringify(error)
-            }));
-        // return reponse;
+            let product = await productCategory;
+            let count = await productCategoryCount;
+
+            await Promise.all([product, count])
+                .then(value => {
+                    commit('setSingleProductCategories', value[0].data);
+                    commit('setTotalSingleProductCategories', value[1].data);
+                    commit('setLoading', false);
+                })
+                .catch(error => ({
+                    error: JSON.stringify(error)
+                }));
+            // return reponse;
+        } catch (error) {
+            console.log(error);
+        }
     },
 
     async getSingleArticlesCategories({ commit }, slug) {
