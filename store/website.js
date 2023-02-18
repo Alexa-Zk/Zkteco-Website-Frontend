@@ -623,21 +623,30 @@ export const actions = {
                 paramCount
             )}`;
 
-            let productCategory = Repository.get(productCategoryURL);
-            let productCategoryCount = Repository.get(productCategoryCountURL);
+            try {
+                let productCategory = Repository.get(productCategoryURL);
+                let productCategoryCount = Repository.get(
+                    productCategoryCountURL
+                );
 
-            let product = await productCategory;
-            let count = await productCategoryCount;
+                let product = await productCategory;
+                let count = await productCategoryCount;
 
-            await Promise.all([product, count])
-                .then(value => {
-                    commit('setSingleProductCategories', value[0].data);
-                    commit('setTotalSingleProductCategories', value[1].data);
-                    commit('setLoading', false);
-                })
-                .catch(error => ({
-                    error: JSON.stringify(error)
-                }));
+                return await Promise.all([product, count])
+                    .then(value => {
+                        commit('setSingleProductCategories', value[0].data);
+                        commit(
+                            'setTotalSingleProductCategories',
+                            value[1].data
+                        );
+                        commit('setLoading', false);
+                    })
+                    .catch(error => ({
+                        error: JSON.stringify(error)
+                    }));
+            } catch (error) {
+                console.log('sub categories', error);
+            }
             // return reponse;
         } catch (error) {
             console.log(error);
