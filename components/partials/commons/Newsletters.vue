@@ -1,5 +1,5 @@
 <template lang="html">
-    <!--section class="ps-newsletter">
+    <section class="ps-newsletter">
         <div :class="layout === 'fullwidth' ? 'ps-container' : 'container'">
             <form class="ps-form--newsletter" action="do_action" method="post">
                 <div class="row">
@@ -30,7 +30,7 @@
                 </div>
             </form>
         </div>
-    </section -->
+    </section>
 </template>
 
 <script>
