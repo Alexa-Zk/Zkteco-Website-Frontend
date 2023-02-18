@@ -87,11 +87,10 @@ export default {
                 perPage: 0
             };
 
-            const blogDetails = await store.dispatch(
-                'website/getProductCategories',
-                payload
-            );
-        } catch (e) {}
+            await store.dispatch('website/getProductCategories', payload);
+        } catch (err) {
+            console.log(' zk/ cate ', err);
+        }
     },
     head() {
         /*
