@@ -72,60 +72,32 @@ export default {
             return this.product ? this.product : [];
         },
         title() {
-            let id = this.$route.params.id;
-            return id != null || id != undefined || id != undefined
-                ? id
-                      .split('-')
-                      .join(' ')
-                      .toUpperCase()
-                : '';
+            return this.$route.params.id
+                .split('-')
+                .join(' ')
+                .toUpperCase();
         }
     },
-    async created() {
-        return await this.productOnLoad();
-    },
-    methods: {
-        async productOnLoad() {
-            let id = this.$route.params.id;
-            if (id != null || id != undefined || id != undefined) {
-                const payload = {
-                    slug: id,
-                    page: 0,
-                    sort_by: 'created_at:desc',
-                    perPage: 0
-                };
+    async asyncData({ store, params }) {
+        try {
+            let payload = {
+                slug: params.id,
+                page: 0,
+                sort_by: 'created_at:desc',
+                perPage: 0
+            };
 
-                await this.$store.dispatch(
-                    'website/getProductCategories',
-                    payload
-                );
-            }
-        }
-    },
-    // async asyncData({ store, params }) {
-    //     try {
-    //         if (
-    //             params.id != null ||
-    //             params.id != undefined ||
-    //             params.id != undefined
-    //         ) {
-    //             const payload = {
-    //                 slug: params.id,
-    //                 page: 0,
-    //                 sort_by: 'created_at:desc',
-    //                 perPage: 0
-    //             };
+            const blogDetails = await store.dispatch(
+                'website/getSingleProductCategories',
+                payload
+            );
 
-    //             await store.dispatch('website/getProductCategories', payload);
-    //         } else {
-    //             console.log(' zk if condition / cate ', err);
-    //         }
-    //     } catch (err) {
-    //         console.log(' zk / cate ', err);
-    //     }
-    // },
+            return {
+                blogDetails
+            };
+        } catch (e) {}
+    },
     head() {
-        /*
         let description = 'ZKTeco | Product Categories';
         let title = 'ZKTeco | Product Categories';
         let keywords = 'ZKTeco | Product Categories';
@@ -155,7 +127,6 @@ export default {
                 }
             ]
         };
-        */
     }
 };
 </script>

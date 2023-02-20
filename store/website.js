@@ -534,9 +534,31 @@ export const actions = {
             'product_category.slug': payload.slug
         };
 
+        let paramCount = {
+            'product_category.slug': payload.slug
+        };
+
+        let productCategoryCountURL = `${subBaseUrl}/products/count?${serializeQuery(
+            paramCount
+        )}`;
+
+        const productGet = await Repository.get(
+            `${subBaseUrl}/products?${serializeQuery(params)}`
+        );
+
+        let productCount = await Repository.get(productCategoryCountURL);
+
+        // let product = productGet;
+        // let count = productCount;
+
+        commit('setSingleProductCategories', productGet.data);
+        commit('setTotalSingleProductCategories', productCount.data);
+
+        /*
         const reponse = await Repository.get(
             `${subBaseUrl}/products?${serializeQuery(params)}`
         )
+
             .then(response => {
                 const data = response.data;
                 commit('setSingleProductCategories', data);
@@ -546,7 +568,48 @@ export const actions = {
             .catch(error => ({
                 error: JSON.stringify(error)
             }));
-        return reponse;
+
+        */
+
+        /***
+             * 
+        
+            let paramCount = {
+                'product_category.slug': payload.slug
+            };
+
+            let productCategoryURL = `${subBaseUrl}/products?${serializeQuery(
+                params
+            )}`;
+            let productCategoryCountURL = `${subBaseUrl}/products/count?${serializeQuery(
+                paramCount
+            )}`;
+
+
+
+            let productCategoryURL = `${subBaseUrl}/products?${serializeQuery(
+                params
+            )}`;
+            let productCategoryCountURL = `${subBaseUrl}/products/count?${serializeQuery(
+                paramCount
+            )}`;
+
+            try {
+                let productCategory = Repository.get(productCategoryURL);
+                let productCategoryCount = Repository.get(
+                    productCategoryCountURL
+                );
+
+                let product = await productCategory;
+                let count = await productCategoryCount;
+
+                commit('setSingleProductCategories', product.data);
+                commit('setTotalSingleProductCategories', count.data);
+              
+            
+             */
+
+        return productGet.data;
     },
 
     async getCategoryAndSubCategories({ commit }) {
@@ -649,6 +712,7 @@ export const actions = {
                         error: JSON.stringify(error)
                     }));
                     */
+                return product.data;
             } catch (error) {
                 console.log('sub categories', error);
             }
