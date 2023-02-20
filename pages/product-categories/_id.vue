@@ -79,19 +79,26 @@ export default {
         }
     },
     async asyncData({ store, params }) {
+        const payload = {
+            slug: params.id,
+            page: 0,
+            sort_by: 'created_at:desc',
+            perPage: 0
+        };
         try {
-            let payload = {
-                slug: params.id,
-                page: 0,
-                sort_by: 'created_at:desc',
-                perPage: 0
-            };
-
+            // const blogDetails = await store.dispatch(
+            //     'website/getSingleProductCategories',
+            //     payload
+            // );
             const blogDetails = await store.dispatch(
                 'website/getSingleProductCategories',
                 payload
             );
 
+            // await store.dispatch(
+            //     'website/getTotalSingleProductCategories',
+            //     params.id
+            // );
             return {
                 blogDetails
             };
