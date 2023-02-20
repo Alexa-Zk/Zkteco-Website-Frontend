@@ -632,6 +632,10 @@ export const actions = {
                 let product = await productCategory;
                 let count = await productCategoryCount;
 
+                commit('setSingleProductCategories', product.data);
+                commit('setTotalSingleProductCategories', count.data);
+
+                /*
                 return await Promise.allSettled([product, count])
                     .then(res => {
                         commit('setSingleProductCategories', res[0].value.data);
@@ -644,6 +648,7 @@ export const actions = {
                     .catch(error => ({
                         error: JSON.stringify(error)
                     }));
+                    */
             } catch (error) {
                 console.log('sub categories', error);
             }
