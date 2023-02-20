@@ -703,14 +703,17 @@ export const actions = {
         const subProduct = await Repository.get(subProductURL);
         const subProductCount = await Repository.get(subProductCountURL);
 
-        await Promise.all([subProduct, subProductCount]).then(value => {
-            // console.log('product: ', value[0].data);
-            // console.log('Count: ', value[1].data);
+        commit('setSubProductCategories', subProduct.data);
+        commit('setTotalSingleProductCategories', subProductCount.data);
 
-            commit('setSubProductCategories', value[0].data);
-            commit('setTotalSingleProductCategories', value[1].data);
-            commit('setLoading', false);
-        });
+        // await Promise.all([subProduct, subProductCount]).then(value => {
+        //     // console.log('product: ', value[0].data);
+        //     // console.log('Count: ', value[1].data);
+
+        //     commit('setSubProductCategories', value[0].data);
+        //     commit('setTotalSingleProductCategories', value[1].data);
+        //     commit('setLoading', false);
+        // });
     },
 
     // async getTotalSingleProductCategories({ commit }, slug) {

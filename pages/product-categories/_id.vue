@@ -83,6 +83,7 @@ export default {
     },
     methods: {
         async productOnLoad() {
+            console.log(' XX:: ', this.$route.params.id);
             let id = this.$route.params.id;
             if (id != null || id != undefined || id != undefined) {
                 const payload = {
@@ -92,35 +93,32 @@ export default {
                     perPage: 0
                 };
 
-                await this.$store.dispatch(
-                    'website/getProductCategories',
-                    payload
-                );
+                await store.dispatch('website/getProductCategories', payload);
             }
         }
+    },
+    async asyncData({ store, params }) {
+        return await this.productOnLoad();
+        // const payload = {
+        //     slug: params.id,
+        //     page: 0,
+        //     sort_by: 'created_at:desc',
+        //     perPage: 0
+        // };
+        // try {
+        //     const blogDetails = await store.dispatch(
+        //         'website/getSingleProductCategories',
+        //         payload
+        //     );
+        //     await store.dispatch(
+        //         'website/getTotalSingleProductCategories',
+        //         params.id
+        //     );
+        //     return {
+        //         blogDetails
+        //     };
+        // } catch (e) {}
     }
-    // async asyncData({ store, params }) {
-    //     const payload = {
-    //         slug: params.id,
-    //         page: 0,
-    //         sort_by: 'created_at:desc',
-    //         perPage: 0
-    //     };
-    //     try {
-    //         const blogDetails = await store.dispatch(
-    //             'website/getSingleProductCategories',
-    //             payload
-    //         );
-
-    //         await store.dispatch(
-    //             'website/getTotalSingleProductCategories',
-    //             params.id
-    //         );
-    //         return {
-    //             blogDetails
-    //         };
-    //     } catch (e) {}
-    // },
     // head() {
     /*
         let description = 'ZKTeco | Product Categories';
