@@ -498,19 +498,19 @@ export const actions = {
         return reponse;
     },
 
-    async getTotalSingleProductCategories({ commit }, slug) {
-        let params = {
-            'product_category.slug': slug
-        };
-        const reponse = await Repository.get(
-            `${subBaseUrl}/products/count?${serializeQuery(params)}`
-        )
-            .then(response => {
-                commit('setTotalSingleProductCategories', response.data);
-            })
-            .catch(error => ({ error: JSON.stringify(error) }));
-        return reponse;
-    },
+    // async getTotalSingleProductCategories({ commit }, slug) {
+    //     let params = {
+    //         'product_category.slug': slug
+    //     };
+    //     const reponse = await Repository.get(
+    //         `${subBaseUrl}/products/count?${serializeQuery(params)}`
+    //     )
+    //         .then(response => {
+    //             commit('setTotalSingleProductCategories', response.data);
+    //         })
+    //         .catch(error => ({ error: JSON.stringify(error) }));
+    //     return reponse;
+    // },
 
     async getSingleProductCategories({ state, commit }, payload) {
         //getSingleProductCategories
@@ -633,11 +633,11 @@ export const actions = {
                 let count = await productCategoryCount;
 
                 return await Promise.allSettled([product, count])
-                    .then(value => {
-                        commit('setSingleProductCategories', value[0].data);
+                    .then(res => {
+                        commit('setSingleProductCategories', res[0].value.data);
                         commit(
                             'setTotalSingleProductCategories',
-                            value[1].data
+                            res[1].value.data
                         );
                         commit('setLoading', false);
                     })
@@ -708,33 +708,33 @@ export const actions = {
         });
     },
 
-    async getTotalSingleProductCategories({ commit }, slug) {
-        let params = {
-            'product_category.slug': slug
-        };
-        const reponse = await Repository.get(
-            `${subBaseUrl}/products/count?${serializeQuery(params)}`
-        )
-            .then(response => {
-                commit('setTotalSingleProductCategories', response.data);
-            })
-            .catch(error => ({ error: JSON.stringify(error) }));
-        return reponse;
-    },
+    // async getTotalSingleProductCategories({ commit }, slug) {
+    //     let params = {
+    //         'product_category.slug': slug
+    //     };
+    //     const reponse = await Repository.get(
+    //         `${subBaseUrl}/products/count?${serializeQuery(params)}`
+    //     )
+    //         .then(response => {
+    //             commit('setTotalSingleProductCategories', response.data);
+    //         })
+    //         .catch(error => ({ error: JSON.stringify(error) }));
+    //     return reponse;
+    // },
 
-    async getTotalSubCategories({ commit }, slug) {
-        let params = {
-            'product_sub_category.slug': slug
-        };
-        const reponse = await Repository.get(
-            `${subBaseUrl}/products/count?${serializeQuery(params)}`
-        )
-            .then(res => {
-                commit('setTotalSingleProductCategories', res.data);
-            })
-            .catch(error => ({ error: JSON.stringify(error) }));
-        return reponse;
-    },
+    // async getTotalSubCategories({ commit }, slug) {
+    //     let params = {
+    //         'product_sub_category.slug': slug
+    //     };
+    //     const reponse = await Repository.get(
+    //         `${subBaseUrl}/products/count?${serializeQuery(params)}`
+    //     )
+    //         .then(res => {
+    //             commit('setTotalSingleProductCategories', res.data);
+    //         })
+    //         .catch(error => ({ error: JSON.stringify(error) }));
+    //     return reponse;
+    // },
 
     async getSolutionCategories({ commit }, payload) {
         commit('setLoading', true);
