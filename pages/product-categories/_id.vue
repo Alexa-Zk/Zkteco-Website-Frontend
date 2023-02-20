@@ -101,7 +101,7 @@ export default {
     },
     async asyncData({ store, params }) {
         let id = params.id;
-        if (id != null || id != undefined || id != undefined) {
+        if (id != null || id != '' || id != undefined) {
             const payload = {
                 slug: id,
                 page: 0,
@@ -109,10 +109,7 @@ export default {
                 perPage: 0
             };
 
-            let blogDetails = await store.dispatch(
-                'website/getProductCategories',
-                payload
-            );
+            await store.dispatch('website/getProductCategories', payload);
         }
         // return await this.productOnLoad();
         // const payload = {
