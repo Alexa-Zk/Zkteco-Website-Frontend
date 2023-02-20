@@ -72,32 +72,57 @@ export default {
             return this.product ? this.product : [];
         },
         title() {
-            return this.$route.params.id.split("-").join(" ").toUpperCase();
+            return this.$route.params.id
+                .split('-')
+                .join(' ')
+                .toUpperCase();
         }
     },
-    async asyncData({ store, params }) {
-        const payload = {
-            slug: params.id,
-            page: 0,
-            sort_by: 'created_at:desc',
-            perPage: 0
-        };
-        try {
-            const blogDetails = await store.dispatch(
-                'website/getSingleProductCategories',
-                payload
-            );
-
-            await store.dispatch(
-                'website/getTotalSingleProductCategories',
-                params.id
-            );
-            return {
-                blogDetails
-            };
-        } catch (e) {}
+    async created() {
+        return await this.productOnLoad();
     },
-    head() {
+    methods: {
+        async productOnLoad() {
+            let id = this.$route.params.id;
+            if (id != null || id != undefined || id != undefined) {
+                const payload = {
+                    slug: id,
+                    page: 0,
+                    sort_by: 'created_at:desc',
+                    perPage: 0
+                };
+
+                await this.$store.dispatch(
+                    'website/getProductCategories',
+                    payload
+                );
+            }
+        }
+    }
+    // async asyncData({ store, params }) {
+    //     const payload = {
+    //         slug: params.id,
+    //         page: 0,
+    //         sort_by: 'created_at:desc',
+    //         perPage: 0
+    //     };
+    //     try {
+    //         const blogDetails = await store.dispatch(
+    //             'website/getSingleProductCategories',
+    //             payload
+    //         );
+
+    //         await store.dispatch(
+    //             'website/getTotalSingleProductCategories',
+    //             params.id
+    //         );
+    //         return {
+    //             blogDetails
+    //         };
+    //     } catch (e) {}
+    // },
+    // head() {
+    /*
         let description = 'ZKTeco | Product Categories';
         let title = 'ZKTeco | Product Categories';
         let keywords = 'ZKTeco | Product Categories';
@@ -127,7 +152,8 @@ export default {
                 }
             ]
         };
-    }
+        */
+    // }
 };
 </script>
 
