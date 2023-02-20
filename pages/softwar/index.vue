@@ -114,7 +114,7 @@
                                 <button class="ps-btn"
                                     @click.prevent="
                                         download(
-                                            zkbioV5000
+                                            ZK_Bio_Security_Soft
                                         )
                                     ">V5000 4.1.1</button>
                                 
@@ -166,7 +166,7 @@
                                 <button class="ps-btn"
                                     @click.prevent="
                                         download(
-                                            zkbioV5000
+                                            ZK_Bio_Time_Soft
                                         )
                                     "> Try Free</button>
                                 
@@ -214,7 +214,7 @@
                                 <button class="ps-btn"
                                     @click.prevent="
                                         download(
-                                            zkbioV5000
+                                            ZK_Bio_Security_Soft
                                         )
                                     ">Try Free</button>
                                 
@@ -265,7 +265,7 @@
                                 <button class="ps-btn"
                                     @click.prevent="
                                         download(
-                                            zkbioV5000
+                                            ZK_Time_NetSoft
                                         )
                                     ">Try Free</button>
                                 
@@ -361,7 +361,13 @@ export default {
                     text: 'Software'
                 }
             ],
-            zkbioV5000 : "https://storage.googleapis.com/zkteco_website_bucket/KF_160_3af1582d3b/KF_160_3af1582d3b.pdf"
+            zkbioV5000 : "https://storage.googleapis.com/zkteco_website_bucket/KF_160_3af1582d3b/KF_160_3af1582d3b.pdf",
+            LPRS_2000: "https://storage.googleapis.com/zkteco_website_bucket/LPRS_2000_2f0d9580f9/LPRS_2000_2f0d9580f9.pdf",
+            SBTL_9000_:"https://storage.googleapis.com/zkteco_website_bucket/SBTL_9000_Series_Data_Sheet_f357ee8d38/SBTL_9000_Series_Data_Sheet_f357ee8d38.pdf",
+            ZK_Bio_Time_Soft:"https://storage.googleapis.com/zkteco_website_bucket/ZK_Bio_Time8_0_8_20221205_15972_d838e9b89d/ZK_Bio_Time8_0_8_20221205_15972_d838e9b89d.exe",
+            ZK_Bio_Security_Soft:"https://storage.googleapis.com/zkteco_website_bucket/ZK_Bio_Security_3_2_0_0_0ed76f3179/ZK_Bio_Security_3_2_0_0_0ed76f3179.zip",
+            ZK_Time_NetSoft:"https://storage.googleapis.com/zkteco_website_bucket/ZK_Time_Net_3_3_1_3_e9caf8887b/ZK_Time_Net_3_3_1_3_e9caf8887b.zip",
+            ZK_Access:"https://storage.googleapis.com/zkteco_website_bucket/ZK_Access_3_5_5_1_1_874da05153/ZK_Access_3_5_5_1_1_874da05153.zip"
         };
     },
    
