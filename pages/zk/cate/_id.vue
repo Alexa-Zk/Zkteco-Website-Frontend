@@ -72,24 +72,36 @@ export default {
             return this.product ? this.product : [];
         },
         title() {
-            return this.$route.params.id
-                .split('-')
-                .join(' ')
-                .toUpperCase();
+            return this.$route.params.id != null ||
+                params.id != undefined ||
+                params.id != undefined
+                ? this.$route.params.id
+                      .split('-')
+                      .join(' ')
+                      .toUpperCase()
+                : '';
         }
     },
     async asyncData({ store, params }) {
         try {
-            const payload = {
-                slug: params.id,
-                page: 0,
-                sort_by: 'created_at:desc',
-                perPage: 0
-            };
+            if (
+                params.id != null ||
+                params.id != undefined ||
+                params.id != undefined
+            ) {
+                const payload = {
+                    slug: params.id,
+                    page: 0,
+                    sort_by: 'created_at:desc',
+                    perPage: 0
+                };
 
-            await store.dispatch('website/getProductCategories', payload);
+                await store.dispatch('website/getProductCategories', payload);
+            } else {
+                console.log(' zk if condition / cate ', err);
+            }
         } catch (err) {
-            console.log(' zk/ cate ', err);
+            console.log(' zk / cate ', err);
         }
     },
     head() {
