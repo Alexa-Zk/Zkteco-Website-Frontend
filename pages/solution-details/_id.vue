@@ -70,20 +70,25 @@ export default {
         }
     },
     mounted() {
-        this.getSolutionDetails(this.$route.params.id);
+        if (
+            this.$route.params.id != '' ||
+            this.$route.params.id != undefined ||
+            this.$route.params.id != null
+        ) {
+            this.getSolutionDetails(this.$route.params.id);
+        }
     },
     methods: {
         async getSolutionDetails(slug) {
-            this.loading = true;
-            const reponse = await Repository.get(
-                `${subBaseUrl}/solutions?slug=${slug}`
-            )
-                .then(response => {
-                    this.solutions = response.data;
-                    this.loading = false;
-                })
-                .catch(error => ({ error: JSON.stringify(error) }));
-            return reponse;
+            if (slug) {
+                this.loading = true;
+                const solution = Repository.get(
+                    `${subBaseUrl}/solutions?slug=${slug}`
+                );
+                let res = await solution;
+                this.solutions = res.data;
+                this.loading = false;
+            }
         }
     }
 };

@@ -315,7 +315,7 @@
                                     @click.prevent="
                                         download(
                                             ZKAccess35.download
-                                        )
+                                        ) 
                                     ">Public Key</button>
                             </div>
 
