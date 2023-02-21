@@ -9,7 +9,7 @@
                     </div>
                     <div class="ps-layout__right">
                         <div class="ps-page__header">
-                            <h1 class="text-uppercase">{{ title }}</h1>
+                            <!--h1 class="text-uppercase">{{ title }}</h1 -->
                         </div>
                         <layout-shop-sidebar-sub
                             :loading="loading"
@@ -67,10 +67,14 @@ export default {
             totalSingleProductCategories: state =>
                 state.website.totalSingleProductCategories,
             loading: state => state.website.loading
-        }),
-        title() {
-            return this.$route.params.id.split("-").join(" ").toUpperCase();
-        }
+        })
+
+        // title() {
+        //     return this.$route.params.id
+        //         .split('-')
+        //         .join(' ')
+        //         .toUpperCase();
+        // }
     },
 
     async asyncData({ store, params }) {
@@ -81,18 +85,16 @@ export default {
             perPage: 0
         };
         try {
-            const blogDetails = await store.dispatch(
-                'website/getSubProductCategories',
-                payload
-            );
+            await store.dispatch('website/getSubProductCategories', payload);
 
-            await store.dispatch('website/getTotalSubCategories', params.id);
-            return {
-                blogDetails
-            };
+            // await store.dispatch('website/getTotalSubCategories', payload.slug);
+            // return {
+            //     blogDetails
+            // };
         } catch (e) {}
     },
     head() {
+        /*
         let description = 'ZKTeco | Product Sub-categories';
         let title = 'ZKTeco | Product Sub-categories';
         let keywords = 'ZKTeco | Product Sub-categories';
@@ -125,6 +127,7 @@ export default {
                 }
             ]
         };
+        */
     }
 };
 </script>

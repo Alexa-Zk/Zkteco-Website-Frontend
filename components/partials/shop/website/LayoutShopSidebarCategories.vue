@@ -71,6 +71,8 @@ export default {
                 sort_by: this.sort_by,
                 perPage: this.pageSize
             };
+
+            console.log(payload);
             await this.$store.dispatch(
                 'website/getSingleProductCategories',
                 payload

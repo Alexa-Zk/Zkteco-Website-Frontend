@@ -69,10 +69,7 @@ export default {
     },
     data() {
         return {
-            exampleCategories: [
-                'All',
-                'Products',
-            ],
+            exampleCategories: ['All', 'Products'],
             isSearching: false,
             isLoading: false,
             searchText: ''
