@@ -114,29 +114,35 @@ export default {
             this.pageLoad(parseInt(page));
         },
         async pageLoad(value = null) {
-            let search =
-                this.searchQuery == undefined || this.searchQuery == ''
-                    ? null
-                    : { search: `${this.searchQuery.trim().toLowerCase()}` };
+            try {
+                let search =
+                    this.searchQuery == undefined || this.searchQuery == ''
+                        ? null
+                        : {
+                              search: `${this.searchQuery.trim().toLowerCase()}`
+                          };
 
-            let slug =
-                this.$route.params.id == undefined ||
-                this.$route.params.id == ''
-                    ? null
-                    : this.$route.params.id;
+                let slug =
+                    this.$route.params.id == undefined ||
+                    this.$route.params.id == ''
+                        ? null
+                        : this.$route.params.id;
 
-            let payload = {
-                page: value == null ? this.page : value,
-                sort_by: 'created_at:desc',
-                perPage: this.pageSize,
-                slug: slug,
-                ...search
-            };
+                let payload = {
+                    page: value == null ? this.page : value,
+                    sort_by: 'created_at:desc',
+                    perPage: this.pageSize,
+                    slug: slug,
+                    ...search
+                };
 
-            return this.$store.dispatch(
-                'website/getSolutionCategories',
-                payload
-            );
+                return this.$store.dispatch(
+                    'website/getSolutionCategories',
+                    payload
+                );
+            } catch (error) {
+                console.log(error);
+            }
         },
 
         async searchInputedQurey() {
