@@ -28,7 +28,7 @@ import RequestAQuote from '~/components/elements/detail/modules/website/RequestA
 export default {
     layout: 'layout-default-website',
     name: 'Products',
-    //transition: 'zoom',
+    transition: 'zoom',
     components: {
         RelatedProduct,
         BreadCrumb,
@@ -69,6 +69,99 @@ export default {
                 }
             ]
         };
+    },
+    head() {
+        try {
+            let description = 'ZKTeco | Product ';
+            let title = 'ZKTeco | Product ';
+            let image = 'ZKTeco | Product ';
+            let keywords = 'ZKTeco | Product ';
+
+            if (
+                this.$data.pdt !== null ||
+                this.$data.pdt !== undefined ||
+                this.$data.pdt !== ''
+            ) {
+                description = this.$data.pdt.description.replace(
+                    /<\/?[^>]+(>|$)/g,
+                    ''
+                );
+                image = this.$data.pdt.images[0].url;
+                title = this.$data.pdt.name;
+                keywords = this.$data.pdt.name;
+            }
+
+            return {
+                title: title,
+                titleTemplate(title) {
+                    return `${title}`;
+                },
+                meta: [
+                    {
+                        hid: 'title',
+                        name: 'title',
+                        content: title
+                    },
+                    {
+                        hid: 'description',
+                        name: 'description',
+                        content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                    },
+                    {
+                        hid: 'twitter:title',
+                        name: 'twitter:title',
+                        content: title
+                    },
+                    {
+                        hid: 'twitter:description',
+                        name: 'twitter:description',
+                        content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                    },
+                    {
+                        hid: 'twitter:image',
+                        name: 'twitter:image',
+                        content: image
+                    },
+                    {
+                        hid: 'twitter:image:alt',
+                        name: 'twitter:image:alt',
+                        content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                    },
+                    {
+                        hid: 'og:title',
+                        property: 'og:title',
+                        content: title
+                    },
+                    {
+                        hid: 'og:description',
+                        property: 'og:description',
+                        content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                    },
+                    {
+                        hid: 'og:image',
+                        property: 'og:image',
+                        content: image
+                    },
+                    {
+                        hid: 'og:image:secure_url',
+                        property: 'og:image:secure_url',
+                        content: image
+                    },
+                    {
+                        hid: 'og:image:alt',
+                        property: 'og:image:alt',
+                        content: description.replace(/<\/?[^>]+(>|$)/g, '')
+                    },
+                    {
+                        hid: 'keywords',
+                        name: 'keywords',
+                        content: keywords
+                    }
+                ]
+            };
+        } catch (error) {
+            console.log(error);
+        }
     }
 };
 </script>
