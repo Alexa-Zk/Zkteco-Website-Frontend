@@ -80,15 +80,17 @@ export default {
     },
     methods: {
         async getSolutionDetails(slug) {
-            if (slug) {
-                this.loading = true;
-                const solution = Repository.get(
-                    `${subBaseUrl}/solutions?slug=${slug}`
-                );
-                let res = await solution;
-                this.solutions = res.data;
-                this.loading = false;
-            }
+            try {
+                if (slug) {
+                    this.loading = true;
+                    const solution = Repository.get(
+                        `${subBaseUrl}/solutions?slug=${slug}`
+                    );
+                    let res = await solution;
+                    this.solutions = res.data;
+                    this.loading = false;
+                }
+            } catch (error) {}
         }
     }
 };
