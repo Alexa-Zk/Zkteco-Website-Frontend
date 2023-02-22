@@ -13,33 +13,23 @@
                         </div>
                     </div>
                 </div>
-                <!-- <related-product layout="fullwidth" collection-slug="shop-recommend-items"/> -->
             </div>
         </div>
-        <!--newsletters layout="fullwidth" /-->
     </div>
 </template>
 
 <script>
-//import { validationMixin } from 'vuelidate';
 import ProductDetailFullwidth from '~/components/elements/detail/website/ProductDetailFullwidth';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import RelatedProduct from '~/components/partials/product/RelatedProduct';
-//import ProductWidgets from '~/components/partials/product/website/ProductWidgets';
-//import LayoutProduct from '~/layouts/layout-product';
-//import Newsletters from '~/components/partials/commons/Newsletters';
 
 import RequestAQuote from '~/components/elements/detail/modules/website/RequestAQuote';
 
 export default {
     layout: 'layout-default-website',
     name: 'Products',
-    transition: 'zoom',
-    // mixins: [validationMixin],
+    //transition: 'zoom',
     components: {
-        //Newsletters,
-        //LayoutProduct,
-        //ProductWidgets,
         RelatedProduct,
         BreadCrumb,
         ProductDetailFullwidth,
@@ -47,12 +37,17 @@ export default {
     },
     async asyncData({ params, $axios }) {
         try {
-            const response = await $axios.get(
-                `https://admin.zkteco-wa.com/products?slug_in=${params.id}`
-            );
-            const pdt = response.data[0];
-            return { pdt };
-        } catch (error) {}
+            const id = params.id;
+            if (id != '' || id != null || id != undefined) {
+                const response = await $axios.get(
+                    `https://admin.zkteco-wa.com/products?slug_in=${id}`
+                );
+                const pdt = response.data[0];
+                return { pdt };
+            }
+        } catch (error) {
+            console.Console.log(error);
+        }
     },
     head() {
         // const name = this.formattedProducts ? this.formattedProducts.name : '';
@@ -63,6 +58,7 @@ export default {
         //     ? this.formattedProducts.images[0].url
         //     : 'https://www.zkteco-wa.com/img/zkteco-logo1.png';
         // const title = description.replace(/<\/?[^>]+(>|$)/g, '');
+        /*
         let description = 'ZKTeco | Product ';
         let title = 'ZKTeco | Product ';
         let image = 'ZKTeco | Product ';
@@ -150,6 +146,7 @@ export default {
                 }
             ]
         };
+        */
     },
     // jsonld() {
     //     if (this.pdt) {
