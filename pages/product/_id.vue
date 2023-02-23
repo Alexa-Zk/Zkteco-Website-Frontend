@@ -41,7 +41,6 @@ export default {
             products: [],
             height: 60,
             width: 40,
-            product: null,
             breadCrumb: [
                 {
                     text: 'Home',
