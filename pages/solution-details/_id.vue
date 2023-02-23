@@ -83,11 +83,10 @@ export default {
             try {
                 if (slug) {
                     this.loading = true;
-                    const solution = Repository.get(
+                    const solution = await Repository.get(
                         `${subBaseUrl}/solutions?slug=${slug}`
                     );
-                    let res = await solution;
-                    this.solutions = res.data;
+                    this.solutions = solution.data;
                     this.loading = false;
                 }
             } catch (error) {}

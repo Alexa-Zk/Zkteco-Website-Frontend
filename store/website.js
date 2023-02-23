@@ -531,8 +531,6 @@ export const actions = {
             'product_category.slug': payload.slug
         };
 
-        console.log(' ---:: ', params);
-
         let paramCount = {
             'product_category.slug': payload.slug
         };
@@ -546,8 +544,6 @@ export const actions = {
         );
 
         let count = await Repository.get(productCategoryCountURL);
-
-        console.log(' LA::-', product.data.length);
 
         commit('setSingleProductCategories', product.data);
         commit('setTotalSingleProductCategories', count.data);
