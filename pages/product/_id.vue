@@ -35,26 +35,13 @@ export default {
         ProductDetailFullwidth,
         RequestAQuote
     },
-    async asyncData({ params, $axios }) {
-        try {
-            const id = params.id;
-            if (id != '' || id != null || id != undefined) {
-                const response = await $axios.get(
-                    `https://admin.zkteco-wa.com/products?slug_in=${id}`
-                );
-                const pdt = response.data[0];
-                return { pdt };
-            }
-        } catch (error) {
-            console.Console.log(error);
-        }
-    },
     data() {
         return {
             fullPage: true,
             products: [],
             height: 60,
             width: 40,
+            product: null,
             breadCrumb: [
                 {
                     text: 'Home',
@@ -70,6 +57,21 @@ export default {
             ]
         };
     },
+    async asyncData({ params, $axios }) {
+        try {
+            const id = params.id;
+            if (id != '' || id != null || id != undefined) {
+                const response = await $axios.get(
+                    `https://admin.zkteco-wa.com/products?slug_in=${id}`
+                );
+                const pdt = response.data[0];
+                return { pdt };
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
     head() {
         try {
             let description = 'ZKTeco | Product ';
