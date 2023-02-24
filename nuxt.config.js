@@ -1,7 +1,6 @@
 const axios = require('axios');
 
 export default {
-    target: 'server',
     head: {
         titleTemplate: 'ZKTeco West Africa',
         title: 'ZKTeco West Africa',
@@ -79,9 +78,6 @@ export default {
         //     analyze: {
         //         analyzerMode: 'static'
         //     }
-        extend(config) {
-            config.performance.hints = false;
-        }
     },
 
     styleResources: {
