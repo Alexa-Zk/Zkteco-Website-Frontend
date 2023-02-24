@@ -310,10 +310,6 @@ export default {
         .container {
             transform: translateY(-60px);
         }
-
-        .ps-section__content {
-            //transform: translateY(-20px);
-        }
     }
 }
 </style>
