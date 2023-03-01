@@ -72,7 +72,6 @@ export default {
     },
 
     head() {
-        /*
         try {
             let description = 'ZKTeco | Product ';
             let title = 'ZKTeco | Product ';
@@ -180,7 +179,6 @@ export default {
         } catch (error) {
             console.log(error);
         }
-        */
     }
 };
 </script>
