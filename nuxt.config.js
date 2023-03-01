@@ -1,6 +1,9 @@
 const axios = require('axios');
 
 export default {
+    target: server,
+    ssr: true,
+
     head: {
         titleTemplate: 'ZKTeco West Africa',
         title: 'ZKTeco West Africa',
