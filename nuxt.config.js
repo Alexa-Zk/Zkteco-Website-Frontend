@@ -1,7 +1,41 @@
 const axios = require('axios');
 
+async function _getProductRoutes() {
+    const paths = [];
+    const missProduct = [
+        'pl-52d18e36e',
+        'padlock',
+        'pface202',
+        'qr500-series-reader'
+    ];
+    const products = await axios.get(`https://admin.zkteco-wa.com/products`);
+
+    const solution = await axios.get(
+        `https://admin.zkteco-wa.com/solution-categories/categoryAndSubcategory`
+    );
+
+    missProduct.forEach(v => {
+        paths.push(`/product/${v}`);
+    });
+
+    products.data.forEach(v => {
+        let slug = v.slug.trim();
+        if (slug != null) {
+            paths.push(`/product/${slug}`);
+        }
+    });
+
+    solution.data.forEach(v => {
+        let slug = v.slug.trim();
+        if (slug != null) {
+            paths.push(`/solution-categories/${slug}`);
+        }
+    });
+    return paths;
+}
+
 export default {
-    target: 'server',
+    target: 'static',
     ssr: true,
 
     head: {
@@ -24,7 +58,12 @@ export default {
         ]
     },
     generate: {
-        fallback: true
+        fallback: true,
+        crawler: true,
+        async routes() {
+            const routes = await _getProductRoutes();
+            return routes;
+        }
     },
 
     css: [
@@ -142,7 +181,14 @@ export default {
             let { data: articlesData } = await axios.get(
                 `https://admin.zkteco-wa.com/articles`
             );
-            const articlesArray = articlesData.map(v => `/blog/${v.slug}`);
+            const articlesArray = articlesData.map(v => {
+                let name = v.slug
+                    .split(' ')
+                    .join('-')
+                    .toLowerCase();
+
+                return `/blog/${name}`;
+            });
 
             return [
                 ...solutionCategoryArray,

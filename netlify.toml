@@ -1,6 +1,6 @@
 [build]
-  command = "yarn build && yarn start"
-  publish = "app"
+  command = "npm run generate"
+  publish = "dist/"
 
 
   
