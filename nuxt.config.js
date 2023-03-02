@@ -8,15 +8,12 @@ async function _getProductRoutes() {
         'pface202',
         'qr500-series-reader'
     ];
+
     const products = await axios.get(`https://admin.zkteco-wa.com/products`);
 
     const solution = await axios.get(
         `https://admin.zkteco-wa.com/solution-categories/categoryAndSubcategory`
     );
-
-    missProduct.forEach(v => {
-        paths.push(`/product/${v}`);
-    });
 
     products.data.forEach(v => {
         let slug = v.slug.trim();
@@ -31,6 +28,8 @@ async function _getProductRoutes() {
             paths.push(`/solution-categories/${slug}`);
         }
     });
+
+    missProduct.map(v => paths.push(`/product/${v}`));
     return paths;
 }
 
