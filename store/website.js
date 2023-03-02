@@ -531,8 +531,6 @@ export const actions = {
             'product_category.slug': payload.slug
         };
 
-        console.log(' ---:: ', params);
-
         let paramCount = {
             'product_category.slug': payload.slug
         };
@@ -546,8 +544,6 @@ export const actions = {
         );
 
         let count = await Repository.get(productCategoryCountURL);
-
-        console.log(' LA::-', product.data.length);
 
         commit('setSingleProductCategories', product.data);
         commit('setTotalSingleProductCategories', count.data);
@@ -738,38 +734,45 @@ export const actions = {
     // },
 
     async getSolutionCategories({ commit }, payload) {
-        commit('setLoading', true);
-        let searchSolution =
-            payload.search == undefined || payload.search == ''
-                ? null
-                : {
-                      _q: `${payload.search.trim().toLowerCase()}`
-                  };
-        let params = {
-            _start: Object.keys(payload).length === 0 ? 0 : payload.page,
-            _sort: 'created_at:desc',
-            _limit: Object.keys(payload).length === 0 ? 6 : payload.perPage,
-            'solution_categories.slug': payload.slug,
-            ...searchSolution
-        };
+        try {
+            commit('setLoading', true);
+            let searchSolution =
+                payload.search == undefined || payload.search == ''
+                    ? null
+                    : {
+                          _q: `${payload.search.trim().toLowerCase()}`
+                      };
+            let params = {
+                _start: Object.keys(payload).length === 0 ? 0 : payload.page,
+                _sort: 'created_at:desc',
+                _limit: Object.keys(payload).length === 0 ? 6 : payload.perPage,
+                'solution_categories.slug': payload.slug,
+                ...searchSolution
+            };
 
-        let paramCount = {
-            'solution_categories.slug': payload.slug,
-            ...searchSolution
-        };
+            let paramCount = {
+                'solution_categories.slug': payload.slug,
+                ...searchSolution
+            };
 
-        let url = `${subBaseUrl}/solutions/?${serializeQuery(params)}`;
-        let urlCount = `${subBaseUrl}/solutions/count?${serializeQuery(
-            paramCount
-        )}`;
-        const res = Repository.get(url);
-        const count = Repository.get(urlCount);
+            let url = `${subBaseUrl}/solutions/?${serializeQuery(params)}`;
+            let urlCount = `${subBaseUrl}/solutions/count?${serializeQuery(
+                paramCount
+            )}`;
+            try {
+                let solutionGet = Repository.get(url);
+                let solutionCount = Repository.get(urlCount);
 
-        await Promise.all([res, count]).then(value => {
-            commit('setSolutionCategories', value[0].data);
-            commit('setSolutionCategoryTotal', value[1].data);
-            commit('setLoading', false);
-        });
+                let solution = await solutionGet;
+                let count = await solutionCount;
+
+                commit('setSolutionCategories', solution.data);
+                commit('setSolutionCategoryTotal', count.data);
+                commit('setLoading', false);
+            } catch (error) {
+                return error;
+            }
+        } catch (error) {}
     },
 
     async getSolutionSub({ commit }, payload) {

@@ -1,6 +1,42 @@
 const axios = require('axios');
 
+async function _getProductRoutes() {
+    const paths = [];
+    const missProduct = [
+        'pl-52d18e36e',
+        'padlock',
+        'pface202',
+        'qr500-series-reader'
+    ];
+
+    const products = await axios.get(`https://admin.zkteco-wa.com/products`);
+
+    const solution = await axios.get(
+        `https://admin.zkteco-wa.com/solution-categories/categoryAndSubcategory`
+    );
+
+    products.data.forEach(v => {
+        let slug = v.slug.trim();
+        if (slug != null) {
+            paths.push(`/product/${slug}`);
+        }
+    });
+
+    solution.data.forEach(v => {
+        let slug = v.slug.trim();
+        if (slug != null) {
+            paths.push(`/solution-categories/${slug}`);
+        }
+    });
+
+    missProduct.map(v => paths.push(`/product/${v}`));
+    return paths;
+}
+
 export default {
+    target: 'static',
+    ssr: true,
+
     head: {
         titleTemplate: 'ZKTeco West Africa',
         title: 'ZKTeco West Africa',
@@ -21,7 +57,12 @@ export default {
         ]
     },
     generate: {
-        fallback: true
+        fallback: true,
+        crawler: true,
+        async routes() {
+            const routes = await _getProductRoutes();
+            return routes;
+        }
     },
 
     css: [
@@ -106,20 +147,14 @@ export default {
         hostname: 'https://zkteco-wa.com',
         exclude: [],
         routes: async () => {
-            // https://admin.zkteco-wa.com/products?product_category.slug=time-attendance
-            // https://admin.zkteco-wa.com/product-categories/categoryAndSubcategory
-            // https://admin.zkteco-wa.com/solution-categories?slug=hospitality
+            let { data: solutionCategoryData } = await axios.get(
+                `https://admin.zkteco-wa.com/solution-categories/categoryAndSubcategory`
+            );
 
-            // https://admin.zkteco-wa.com/solution-categories?slug=hospitality
-
-            // https://admin.zkteco-wa.com/product-categories/categoryAndSubcategory
-
-            //solution-categories/
-
-            ////// ZKTECO /////////
-            // let { data: zkData } = await axios.get(
-            //     `https://admin.zkteco-wa.com/products`
-            // );
+            const solutionCategoryArray = solutionCategoryData.map(v => {
+                if (v.slug != null || v.slug != '' || v.slug != undefined)
+                    return `/solution-categories/${v.slug}`;
+            });
 
             let { data: productCategoriesData } = await axios.get(
                 `https://admin.zkteco-wa.com/product-categories/categoryAndSubcategory`
@@ -130,19 +165,10 @@ export default {
                     return `/product-categories/${v.slug}`;
             });
 
-            const zkCateArray = productCategoriesData.map(v => {
-                if (v.slug != null || v.slug != '' || v.slug != undefined)
-                    return `/zk/cate/${v.slug}`;
-            });
-
-            ///////////////////////////
-
             let { data: productsData } = await axios.get(
                 `https://admin.zkteco-wa.com/products`
             );
             const productArray = productsData.map(v => `/product/${v.slug}`);
-
-            const zkArray = productsData.map(v => `/zk/${v.slug}`);
 
             let { data: solutionData } = await axios.get(
                 `https://admin.zkteco-wa.com/solutions`
@@ -154,11 +180,17 @@ export default {
             let { data: articlesData } = await axios.get(
                 `https://admin.zkteco-wa.com/articles`
             );
-            const articlesArray = articlesData.map(v => `/blog/${v.slug}`);
+            const articlesArray = articlesData.map(v => {
+                let name = v.slug
+                    .split(' ')
+                    .join('-')
+                    .toLowerCase();
+
+                return `/blog/${name}`;
+            });
 
             return [
-                ...zkArray,
-                ...zkCateArray,
+                ...solutionCategoryArray,
                 ...productCategoriesArray,
                 ...productArray,
                 ...solutionArray,
