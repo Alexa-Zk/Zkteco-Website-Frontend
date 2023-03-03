@@ -94,40 +94,39 @@ export default {
         } catch (e) {}
     },
     head() {
-        /*
-        let description = 'ZKTeco | Product Sub-categories';
-        let title = 'ZKTeco | Product Sub-categories';
-        let keywords = 'ZKTeco | Product Sub-categories';
-        //let seo = this.$data.blogDetails[0].product_sub_category.SEO;
+        try {
+            let description = 'ZKTeco | Product Sub-categories';
+            let title = 'ZKTeco | Product Sub-categories';
+            let keywords = 'ZKTeco | Product Sub-categories';
 
-        if (this.$data.blogDetails[0] !== undefined) {
-            let seo = this.$data.blogDetails[0].product_sub_category.SEO;
-            description = seo
-                ? seo.description
-                : 'ZKTeco | Product Sub-categories';
-            title = seo ? seo.title : 'ZKTeco | Product Sub-categories';
-            keywords = seo ? seo.keywords : 'keywords';
-        }
+            if (this.$data.blogDetails[0] !== undefined) {
+                let seo = this.$data.blogDetails[0].product_sub_category.SEO;
+                description = seo
+                    ? seo.description
+                    : 'ZKTeco | Product Sub-categories';
+                title = seo ? seo.title : 'ZKTeco | Product Sub-categories';
+                keywords = seo ? seo.keywords : 'keywords';
+            }
 
-        return {
-            title: title,
-            titleTemplate(title) {
-                return `${title}`;
-            },
-            meta: [
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: description
+            return {
+                title: title,
+                titleTemplate(title) {
+                    return `${title}`;
                 },
-                {
-                    hid: 'keywords',
-                    name: 'keywords',
-                    content: keywords
-                }
-            ]
-        };
-        */
+                meta: [
+                    {
+                        hid: 'description',
+                        name: 'description',
+                        content: description
+                    },
+                    {
+                        hid: 'keywords',
+                        name: 'keywords',
+                        content: keywords
+                    }
+                ]
+            };
+        } catch (error) {}
     }
 };
 </script>
