@@ -1,16 +1,19 @@
 const axios = require('axios');
 
 async function _getProductRoutes() {
-    const paths = [];
+    let paths = [];
     const missProduct = [
         'pl-52d18e36e',
         'padlock',
         'pface202',
-        'qr500-series-reader'
+        'qr500-series-reader',
+        'kit-8304xec-cl4-bs32b11m',
+        'dl-32d26b',
+        'es-32b11j'
     ];
 
-    missProduct.map(v => {
-        paths.push(`/product/${v}`);
+    missProduct.forEach(v => {
+        paths.push(`/product/${v.trim()}`);
     });
 
     const products = await axios.get(`https://admin.zkteco-wa.com/products`);
