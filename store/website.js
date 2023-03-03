@@ -694,44 +694,8 @@ export const actions = {
 
         commit('setSubProductCategories', subProduct.data);
         commit('setTotalSingleProductCategories', subProductCount.data);
-
-        // await Promise.all([subProduct, subProductCount]).then(value => {
-        //     // console.log('product: ', value[0].data);
-        //     // console.log('Count: ', value[1].data);
-
-        //     commit('setSubProductCategories', value[0].data);
-        //     commit('setTotalSingleProductCategories', value[1].data);
-        //     commit('setLoading', false);
-        // });
+        commit('setLoading', false);
     },
-
-    // async getTotalSingleProductCategories({ commit }, slug) {
-    //     let params = {
-    //         'product_category.slug': slug
-    //     };
-    //     const reponse = await Repository.get(
-    //         `${subBaseUrl}/products/count?${serializeQuery(params)}`
-    //     )
-    //         .then(response => {
-    //             commit('setTotalSingleProductCategories', response.data);
-    //         })
-    //         .catch(error => ({ error: JSON.stringify(error) }));
-    //     return reponse;
-    // },
-
-    // async getTotalSubCategories({ commit }, slug) {
-    //     let params = {
-    //         'product_sub_category.slug': slug
-    //     };
-    //     const reponse = await Repository.get(
-    //         `${subBaseUrl}/products/count?${serializeQuery(params)}`
-    //     )
-    //         .then(res => {
-    //             commit('setTotalSingleProductCategories', res.data);
-    //         })
-    //         .catch(error => ({ error: JSON.stringify(error) }));
-    //     return reponse;
-    // },
 
     async getSolutionCategories({ commit }, payload) {
         try {
@@ -872,9 +836,6 @@ export const actions = {
 
         await Promise.all([products, productCount])
             .then(value => {
-                //console.log('Pdt', value[0].data);
-                //console.log('Count', value[1].data);
-
                 commit('setProducts', value[0].data);
                 commit('setProductsTotal', value[1].data);
                 commit('setLoading', false);
