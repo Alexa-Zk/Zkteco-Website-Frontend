@@ -12,9 +12,7 @@ async function _getProductRoutes() {
         'es-32b11j'
     ];
 
-    missProduct.forEach(v => {
-        paths.push(`/product/${v.trim()}`);
-    });
+    missProduct.map(v => paths.push(`/product/${v.trim()}`));
 
     const products = await axios.get(`https://admin.zkteco-wa.com/products`);
 
@@ -22,14 +20,14 @@ async function _getProductRoutes() {
         `https://admin.zkteco-wa.com/solution-categories/categoryAndSubcategory`
     );
 
-    products.data.forEach(v => {
+    products.data.map(v => {
         let slug = v.slug.trim();
         if (slug != null) {
             paths.push(`/product/${slug}`);
         }
     });
 
-    solution.data.forEach(v => {
+    solution.data.map(v => {
         let slug = v.slug.trim();
         if (slug != null) {
             paths.push(`/solution-categories/${slug}`);
@@ -130,11 +128,11 @@ export default {
         scss: './assets/scss/env.scss'
     },
 
-    // loadingIndicator: {
-    //     name: 'fading-circle',
-    //     color: 'white',
-    //     background: '#78bc27'
-    // },
+    loadingIndicator: {
+        name: 'fading-circle',
+        color: 'white',
+        background: '#78bc27'
+    },
 
     modules: [
         '@nuxtjs/axios',
