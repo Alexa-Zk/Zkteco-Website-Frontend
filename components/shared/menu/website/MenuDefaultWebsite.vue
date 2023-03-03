@@ -74,6 +74,10 @@ export default {
                                 {
                                     text: 'Resources Center',
                                     url: '/support/download-center'
+                                },
+                                {
+                                    text: 'Software',
+                                    url: '/software'
                                 }
                             ]
                         },

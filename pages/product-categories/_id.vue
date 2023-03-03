@@ -86,19 +86,11 @@ export default {
             perPage: 0
         };
         try {
-            // const blogDetails = await store.dispatch(
-            //     'website/getSingleProductCategories',
-            //     payload
-            // );
             const blogDetails = await store.dispatch(
                 'website/getSingleProductCategories',
                 payload
             );
 
-            // await store.dispatch(
-            //     'website/getTotalSingleProductCategories',
-            //     params.id
-            // );
             return {
                 blogDetails
             };
