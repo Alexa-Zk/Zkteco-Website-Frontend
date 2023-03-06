@@ -11,11 +11,19 @@ async function _getProductRoutes() {
 
     missProduct.map(v => paths.push(`/product/${v.trim()}`));
 
-    const products = await axios.get(`https://admin.zkteco-wa.com/products`);
+    const productURL = axios.get(`https://admin.zkteco-wa.com/products`);
 
-    const solution = await axios.get(
+    const solutionURL = axios.get(
         `https://admin.zkteco-wa.com/solution-categories/categoryAndSubcategory`
     );
+
+    const productsubURL = axios.get(
+        `https://admin.zkteco-wa.com/sub-product-categories`
+    );
+
+    const products = await productURL;
+    const solution = await solutionURL;
+    const subcategory = await productsubURL;
 
     products.data.map(v => {
         let slug = v?.slug?.trim();
@@ -30,6 +38,14 @@ async function _getProductRoutes() {
             paths.push(`/solution-categories/${slug}`);
         }
     });
+
+    subcategory.data.map(v => {
+        let slug = v?.slug?.trim();
+        if (slug != null) {
+            paths.push(`/sub-categories/${slug}`);
+        }
+    });
+
     return paths;
 }
 
@@ -152,8 +168,8 @@ export default {
             );
 
             const solutionCategoryArray = solutionCategoryData.map(v => {
-                if (v.slug != null || v.slug != '' || v.slug != undefined)
-                    return `/solution-categories/${v.slug}`;
+                if (v?.slug != null || v?.slug != '' || v?.slug != undefined)
+                    return `/solution-categories/${v?.slug}`;
             });
 
             let { data: productCategoriesData } = await axios.get(
@@ -161,28 +177,28 @@ export default {
             );
 
             const productCategoriesArray = productCategoriesData.map(v => {
-                if (v.slug != null || v.slug != '' || v.slug != undefined)
-                    return `/product-categories/${v.slug}`;
+                if (v?.slug != null || v?.slug != '' || v?.slug != undefined)
+                    return `/product-categories/${v?.slug}`;
             });
 
             let { data: productsData } = await axios.get(
                 `https://admin.zkteco-wa.com/products`
             );
-            const productArray = productsData.map(v => `/product/${v.slug}`);
+            const productArray = productsData.map(v => `/product/${v?.slug}`);
 
             let { data: solutionData } = await axios.get(
                 `https://admin.zkteco-wa.com/solutions`
             );
             const solutionArray = solutionData.map(
-                v => `/solution-details/${v.slug}`
+                v => `/solution-details/${v?.slug}`
             );
 
             let { data: articlesData } = await axios.get(
                 `https://admin.zkteco-wa.com/articles`
             );
             const articlesArray = articlesData.map(v => {
-                let name = v.slug
-                    .split(' ')
+                let name = v?.slug
+                    ?.split(' ')
                     .join('-')
                     .toLowerCase();
 
