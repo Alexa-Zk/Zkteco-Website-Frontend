@@ -4,9 +4,6 @@ async function _getProductRoutes() {
     let paths = [];
     const missProduct = [
         'pl-52d18e36e',
-        'padlock',
-        'pface202',
-        'qr500-series-reader',
         'kit-8304xec-cl4-bs32b11m',
         'dl-32d26b',
         'es-32b11j'
@@ -21,14 +18,14 @@ async function _getProductRoutes() {
     );
 
     products.data.map(v => {
-        let slug = v.slug.trim();
+        let slug = v?.slug?.trim();
         if (slug != null) {
             paths.push(`/product/${slug}`);
         }
     });
 
     solution.data.map(v => {
-        let slug = v.slug.trim();
+        let slug = v?.slug?.trim();
         if (slug != null) {
             paths.push(`/solution-categories/${slug}`);
         }
