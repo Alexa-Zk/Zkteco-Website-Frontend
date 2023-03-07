@@ -178,9 +178,14 @@ export default {
                 //     url: '/biotime-ng'
                 // },
                 {
-                    text: 'Consultation',
+                    text: 'Project Consultation',
                     url: '/support/project-consultation'
                 },
+                {
+                    text: 'Partners',
+                    url: '/website/page/store-locator'
+                },
+
                 {
                     text: 'Case Study',
                     url: '/case-study'
