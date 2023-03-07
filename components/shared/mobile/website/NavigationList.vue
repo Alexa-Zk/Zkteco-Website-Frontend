@@ -32,10 +32,10 @@
                 <span> Search</span>
             </a>
 
-            <nuxt-link class="navigation__item" :to="`/store`">
+            <!--nuxt-link class="navigation__item" :to="`/store`">
                 <i class="icon-bag2"></i>
                 <span> Store</span>
-            </nuxt-link>
+            </nuxt-link -->
         </div>
     </div>
 </template>
