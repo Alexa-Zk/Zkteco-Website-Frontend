@@ -182,7 +182,7 @@ export default {
                     url: '/support/project-consultation'
                 },
                 {
-                    text: 'Partners',
+                    text: 'ZK Authorized Distributor',
                     url: '/website/page/store-locator'
                 },
 
