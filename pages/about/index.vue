@@ -57,7 +57,7 @@
                     <p>Number of Foreign Employees</p>
                 </div>
                 <div>
-                    <span class="num" data-val="38">0</span>
+                    <span class="num" data-val="40">0</span>
                     <p>Overseas Subsidiaries</p>
                 </div>
             </div>
