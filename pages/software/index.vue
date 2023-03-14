@@ -363,7 +363,7 @@ export default {
             ],
             ZKBioSecurityV5000:{
                 manual:"https://storage.googleapis.com/zkteco_website_bucket/ZK_Bio_Security_v5000_user_manual_8302bd30d7/ZK_Bio_Security_v5000_user_manual_8302bd30d7.pdf",
-                download: "https://storage.googleapis.com/zkteco_website_bucket/KF_160_3af1582d3b/KF_160_3af1582d3b.pdf",
+                download: "https://zkteco.co.za/softwarenew/standalone/V5000_4.1.1_R_2021-11-04_x64.zip",
             },
 
             ZKBioHLM:{
