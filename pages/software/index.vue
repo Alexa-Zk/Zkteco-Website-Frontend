@@ -368,7 +368,7 @@ export default {
 
             ZKBioHLM:{
                 manual:"https://storage.googleapis.com/zkteco_website_bucket/ZK_Bio_HLMS_User_Manual_V1_0_20210208_d65557c994/ZK_Bio_HLMS_User_Manual_V1_0_20210208_d65557c994.pdf",
-                download: ""
+                download: "https://zkteco.co.za/softwarenew/standalone/ZKBioHLMS_x64_2021-06-10-1352.zip"
             },
 
             BioTime04:{
