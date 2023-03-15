@@ -1,0 +1,189 @@
+<template lang="html">
+    <div>
+        <bread-crumb :breadcrumb="breadCrumb" />
+        <div class="ps-page--shop" id="shop-sidebar">
+            <div class="container">
+                <div class="ps-layout--shop">
+                    <div class="ps-layout__left">
+                        <shop-widget />
+                    </div>
+                    <div class="ps-layout__right">
+                        <div class="ps-page__header">
+                            <h1 class="text-uppercase">{{ title }}</h1>
+                        </div>
+                        <div class="ps-section__content" v-if="armaturas">
+                            <article class="content_wrapper">
+                                <div class="ps-content" v-html="armaturas.content"></div>
+                            </article>
+                            <!--div class=" ps-content " v-html="formatted.content"></div-->
+                        </div>
+                        <div class="placeholder-image-grid" v-else>
+                            <content-placeholders :rounded="true" v-for="x in 9" :key="x">
+                                <content-placeholders-img />
+                                <content-placeholders-heading />
+                            </content-placeholders>
+                        </div>
+                        <div class="row" v-if="armaturaProducts">
+                            <div
+                                v-for="product in armaturaProducts"
+                                class="col-lg-4 col-md-4 col-sm-6 col-6 "
+                                :key="product.id"
+                            >
+                                <product-category-default :product="product" />
+                            </div>
+                        </div>
+                        <div class="placeholder-image-grid" v-else>
+                            <content-placeholders :rounded="true" v-for="x in 9" :key="x">
+                                <content-placeholders-img />
+                                <content-placeholders-heading />
+                            </content-placeholders>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import { mapState } from 'vuex';
+import BreadCrumb from '~/components/elements/BreadCrumb';
+import ShopWidget from '~/components/partials/shop/modules/website/ShopWidget';
+import LayoutShopSidebarCategories from '~/components/partials/shop/website/LayoutShopSidebarCategories';
+import ProductCategoryDefault from '~/components/elements/product/website/ProductCategoryDefault';
+import Repository from '~/repositories/Repository.js';
+import { subBaseUrl } from '~/repositories/Repository';
+
+export default {
+    components: {
+        LayoutShopSidebarCategories,
+        ShopWidget,
+        ProductCategoryDefault,
+        BreadCrumb
+    },
+
+    transition() {
+        return 'fadeIn';
+    },
+    layout: 'layout-default-website',
+    data() {
+        return {
+            loading: false,
+            armaturaProducts: null,
+            armaturas: null,
+            breadCrumb: [
+                {
+                    text: 'Home',
+                    url: '/'
+                },
+                {
+                    text: 'All Products'
+                }
+            ],
+            sort_by: 'created_at:desc'
+        };
+    },
+
+    computed: {
+        ...mapState({
+            product: state => state.website.singleProductCategories,
+            totalSingleProductCategories: state =>
+                state.website.totalSingleProductCategories,
+        }),
+        categoriesWithProduct() {
+            return this.product ? this.product : [];
+        },
+        title() {
+            return 'armatura one' //this.$route.params.id.split("-").join(" ").toUpperCase();
+        }
+    },
+    mounted() {
+        this.getArmaturas();
+        this.fetchAmarturaProducts();
+    },
+    methods: {
+        async fetchAmarturaProducts() {
+            const payload = {
+                slug: 'armatura',
+                page: 0,
+                sort_by: 'created_at:desc',
+                perPage: 0
+            };
+            const armaturaProducts =  await this.$store.dispatch(
+                'website/getSingleProductCategories',
+                payload
+            );
+            this.armaturaProducts = armaturaProducts
+
+
+        },
+        async getArmaturas() {
+            this.loading = true;
+            const reponse = await Repository.get(
+                `${subBaseUrl}/armaturas`
+            )
+                .then(response => {
+                    this.armaturas = response.data[0];
+                    this.loading = false;
+                })
+                .catch(error => ({ error: JSON.stringify(error) }));
+            return reponse;
+        }
+    },
+    async asyncData({ store, params }) {
+        const payload = {
+            slug: 'armatura',
+            page: 0,
+            sort_by: 'created_at:desc',
+            perPage: 0
+        };
+        try {
+            const blogDetails = await store.dispatch(
+                'website/getSingleProductCategories',
+                payload
+            );
+
+            await store.dispatch(
+                'website/getTotalSingleProductCategories',
+                params.id
+            );
+            return {
+                blogDetails
+            };
+        } catch (e) {}
+    },
+    // head() {
+    //     let description = 'ZKTeco | Product Categories';
+    //     let title = 'ZKTeco | Product Categories';
+    //     let keywords = 'ZKTeco | Product Categories';
+
+    //     if (this.$data.blogDetails[0] !== undefined) {
+    //         let seo = this.$data.blogDetails[0].product_category.SEO;
+    //         description = seo ? seo.description : 'ZKTeco | Product Categories';
+    //         title = seo ? seo.title : 'ZKTeco | Product Categories';
+    //         keywords = seo ? seo.keywords : 'keywords';
+    //     }
+
+    //     return {
+    //         title: title,
+    //         titleTemplate(title) {
+    //             return `${title}`;
+    //         },
+    //         meta: [
+    //             {
+    //                 hid: 'description',
+    //                 name: 'description',
+    //                 content: description
+    //             },
+    //             {
+    //                 hid: 'keywords',
+    //                 name: 'keywords',
+    //                 content: keywords
+    //             }
+    //         ]
+    //     };
+    // }
+};
+</script>
+
+<style lang="scss" scoped></style>
