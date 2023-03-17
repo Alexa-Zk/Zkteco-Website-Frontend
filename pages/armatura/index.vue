@@ -8,17 +8,22 @@
                         <shop-widget />
                     </div>
                     <div class="ps-layout__right">
-                        <div class="ps-page__header">
-                            <h1 class="text-uppercase">{{ title }}</h1>
-                        </div>
+                        <h2>{{ title }}</h2>
+
                         <div class="ps-section__content" v-if="armaturas">
                             <article class="content_wrapper">
-                                <div class="ps-content" v-html="armaturas.content"></div>
+                                <div
+                                    class="ps-content"
+                                    v-html="armaturas.content"
+                                ></div>
                             </article>
-                            <!--div class=" ps-content " v-html="formatted.content"></div-->
                         </div>
                         <div class="placeholder-image-grid" v-else>
-                            <content-placeholders :rounded="true" v-for="x in 9" :key="x">
+                            <content-placeholders
+                                :rounded="true"
+                                v-for="x in 9"
+                                :key="x"
+                            >
                                 <content-placeholders-img />
                                 <content-placeholders-heading />
                             </content-placeholders>
@@ -33,7 +38,11 @@
                             </div>
                         </div>
                         <div class="placeholder-image-grid" v-else>
-                            <content-placeholders :rounded="true" v-for="x in 9" :key="x">
+                            <content-placeholders
+                                :rounded="true"
+                                v-for="x in 9"
+                                :key="x"
+                            >
                                 <content-placeholders-img />
                                 <content-placeholders-heading />
                             </content-placeholders>
@@ -46,7 +55,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import ShopWidget from '~/components/partials/shop/modules/website/ShopWidget';
 import LayoutShopSidebarCategories from '~/components/partials/shop/website/LayoutShopSidebarCategories';
@@ -85,16 +93,8 @@ export default {
     },
 
     computed: {
-        ...mapState({
-            product: state => state.website.singleProductCategories,
-            totalSingleProductCategories: state =>
-                state.website.totalSingleProductCategories,
-        }),
-        categoriesWithProduct() {
-            return this.product ? this.product : [];
-        },
         title() {
-            return 'armatura one' //this.$route.params.id.split("-").join(" ").toUpperCase();
+            return 'Armatura One';
         }
     },
     mounted() {
@@ -109,19 +109,15 @@ export default {
                 sort_by: 'created_at:desc',
                 perPage: 0
             };
-            const armaturaProducts =  await this.$store.dispatch(
+            const products = await this.$store.dispatch(
                 'website/getSingleProductCategories',
                 payload
             );
-            this.armaturaProducts = armaturaProducts
-
-
+            this.armaturaProducts = products;
         },
         async getArmaturas() {
             this.loading = true;
-            const reponse = await Repository.get(
-                `${subBaseUrl}/armaturas`
-            )
+            const reponse = await Repository.get(`${subBaseUrl}/armaturas`)
                 .then(response => {
                     this.armaturas = response.data[0];
                     this.loading = false;
@@ -129,60 +125,7 @@ export default {
                 .catch(error => ({ error: JSON.stringify(error) }));
             return reponse;
         }
-    },
-    async asyncData({ store, params }) {
-        const payload = {
-            slug: 'armatura',
-            page: 0,
-            sort_by: 'created_at:desc',
-            perPage: 0
-        };
-        try {
-            const blogDetails = await store.dispatch(
-                'website/getSingleProductCategories',
-                payload
-            );
-
-            await store.dispatch(
-                'website/getTotalSingleProductCategories',
-                params.id
-            );
-            return {
-                blogDetails
-            };
-        } catch (e) {}
-    },
-    // head() {
-    //     let description = 'ZKTeco | Product Categories';
-    //     let title = 'ZKTeco | Product Categories';
-    //     let keywords = 'ZKTeco | Product Categories';
-
-    //     if (this.$data.blogDetails[0] !== undefined) {
-    //         let seo = this.$data.blogDetails[0].product_category.SEO;
-    //         description = seo ? seo.description : 'ZKTeco | Product Categories';
-    //         title = seo ? seo.title : 'ZKTeco | Product Categories';
-    //         keywords = seo ? seo.keywords : 'keywords';
-    //     }
-
-    //     return {
-    //         title: title,
-    //         titleTemplate(title) {
-    //             return `${title}`;
-    //         },
-    //         meta: [
-    //             {
-    //                 hid: 'description',
-    //                 name: 'description',
-    //                 content: description
-    //             },
-    //             {
-    //                 hid: 'keywords',
-    //                 name: 'keywords',
-    //                 content: keywords
-    //             }
-    //         ]
-    //     };
-    // }
+    }
 };
 </script>
 
