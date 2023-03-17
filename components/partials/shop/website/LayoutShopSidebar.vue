@@ -71,7 +71,10 @@ export default {
                 sort_by: 'created_at:desc',
                 perPage: 12
             };
-            await this.$store.dispatch('website/getProducts', params);
+            await this.$store.dispatch(
+                'website/getProductAndTotalCount',
+                params
+            );
         }
     },
     computed: {

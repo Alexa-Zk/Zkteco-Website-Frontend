@@ -72,7 +72,10 @@ export default {
             return this.product ? this.product : [];
         },
         title() {
-            return this.$route.params.id.split("-").join(" ").toUpperCase();
+            return this.$route.params.id
+                .split('-')
+                .join(' ')
+                .toUpperCase();
         }
     },
     async asyncData({ store, params }) {
@@ -88,10 +91,6 @@ export default {
                 payload
             );
 
-            await store.dispatch(
-                'website/getTotalSingleProductCategories',
-                params.id
-            );
             return {
                 blogDetails
             };

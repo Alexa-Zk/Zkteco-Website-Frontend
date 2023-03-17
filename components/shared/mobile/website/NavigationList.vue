@@ -16,6 +16,13 @@
                 <i class="icon-list4"></i>
                 <span> Products</span>
             </a>
+            <a
+                class="navigation__item"
+                @click.prevent="handleOpenDrawer('solutions')"
+            >
+                <i class="icon-list4"></i>
+                <span> Solutions</span>
+            </a>
 
             <a
                 class="navigation__item"
@@ -25,13 +32,10 @@
                 <span> Search</span>
             </a>
 
-            <nuxt-link
-                class="navigation__item"
-                :to="`/store`"
-            >
+            <!--nuxt-link class="navigation__item" :to="`/store`">
                 <i class="icon-bag2"></i>
                 <span> Store</span>
-            </nuxt-link>
+            </nuxt-link -->
         </div>
     </div>
 </template>

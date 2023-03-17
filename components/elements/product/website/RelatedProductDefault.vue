@@ -8,7 +8,7 @@
                 />
             </nuxt-link>
             <ul class="ps-product__actions">
-                <li>
+                <li> 
                     <a
                         to="#"
                         data-toggle="tooltip"

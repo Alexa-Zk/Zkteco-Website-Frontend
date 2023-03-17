@@ -11,7 +11,6 @@
             </a>
         </div>
         <div class="navigation__content">
-            
             <ul class="menu--mobile">
                 <div class="placeholder-image" v-if="loading">
                     <content-placeholders v-for="x in 3" :key="x">
@@ -20,7 +19,9 @@
                     </content-placeholders>
                 </div>
                 <li v-for="category in productCategories">
-                    <nuxt-link :to="`/product-categories/${category.slug}`">{{ category.name }}</nuxt-link>
+                    <nuxt-link :to="`/product-categories/${category.slug}`">{{
+                        category.name
+                    }}</nuxt-link>
                 </li>
             </ul>
         </div>
@@ -28,38 +29,39 @@
 </template>
 
 <script>
-
 import Repository from '~/repositories/Repository.js';
 import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
     name: 'PanelCategories',
-    
+
     data() {
         return {
             productCategories: null,
-            loading: false,
-        }
+            loading: false
+        };
     },
     mounted() {
-        this.getProductCategories()
+        this.getProductCategories();
     },
     methods: {
         handleClosePanel() {
             this.$store.commit('app/setCurrentDrawerContent', null);
             this.$store.commit('app/setAppDrawer', false);
         },
-        async getProductCategories () {
-            this.loading = true
-            const reponse = await Repository.get( `${subBaseUrl}/product-categories`)
+        async getProductCategories() {
+            this.loading = true;
+            const reponse = await Repository.get(
+                `${subBaseUrl}/product-categories`
+            )
                 .then(response => {
-                    this.productCategories = response.data
-                    this.loading = false
+                    this.productCategories = response.data;
+                    this.loading = false;
                 })
                 .catch(error => ({ error: JSON.stringify(error) }));
             return reponse;
         }
-    },
+    }
 };
 </script>
 

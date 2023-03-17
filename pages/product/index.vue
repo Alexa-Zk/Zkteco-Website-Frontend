@@ -64,13 +64,10 @@ export default {
         try {
             let payload = {};
             const response = await store.dispatch(
-                'website/getProducts',
+                'website/getProductAndTotalCount',
                 payload
             );
-            const responseTotal = await store.dispatch(
-                'website/getProductsTotal',
-                payload
-            );
+
             return { response };
         } catch (error) {}
     },

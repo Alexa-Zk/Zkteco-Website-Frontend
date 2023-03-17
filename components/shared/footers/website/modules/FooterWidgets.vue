@@ -68,9 +68,9 @@
                 <li>
                     <nuxt-link to="/about">Our Values</nuxt-link>
                 </li>
-                <li>
+                <!--li>
                     <nuxt-link to="/careers">Careers</nuxt-link>
-                </li>
+                </li -->
             </ul>
         </aside>
         <aside class="widget widget_footer">
@@ -78,7 +78,7 @@
                 News Center
             </h4>
             <ul class="ps-list--link">
-                <li v-for="item in categories" :key="item.id">
+                <li v-for="item in categories" :key="item.slug">
                     <nuxt-link :to="`/news-center/categories/${item.slug}`">{{
                         item.name
                     }}</nuxt-link>
@@ -140,7 +140,7 @@
                     >
                 </li>
                 <li>
-                    <a href="/biotime-ng" target="_blank">Biotime API Docs</a>
+                    <a href="/biotime-ng" target="_blank">Biotime</a>
                 </li>
             </ul>
         </aside>
@@ -158,13 +158,15 @@ export default {
             categories: ''
         };
     },
-    mounted() {
+    async mounted() {
         this.getArticlesCategories();
     },
     methods: {
         async getArticlesCategories() {
             this.loading = true;
-            const reponse = await Repository.get(`${subBaseUrl}/categories`)
+            const reponse = await Repository.get(
+                `${subBaseUrl}/categories/home_page_categories`
+            )
                 .then(response => {
                     this.categories = response.data;
                     this.loading = false;

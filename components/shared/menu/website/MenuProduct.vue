@@ -5,7 +5,7 @@
         </nuxt-link>
         <div class="mega-menu">
             <div
-                v-for="item in ProductCategories"
+                v-for="item in categoryAndSubCategories"
                 class="mega-menu__column"
                 :key="item.id"
             >
@@ -30,36 +30,24 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Repository from '~/repositories/Repository.js';
 import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
     name: 'MenuProduct',
     data() {
-        return {
-            productCategories: ''
-        };
+        return {};
     },
     computed: {
-        ProductCategories() {
-            return this.productCategories;
-        }
+        ...mapState({
+            categoryAndSubCategories: state =>
+                state.website.categoryAndSubCategories
+        })
     },
-    mounted() {
-        this.getProductCategories()
-    },
-    methods: {
-        async getProductCategories () {
-            this.loading = true
-            const reponse = await Repository.get( `${subBaseUrl}/product-categories`)
-                .then(response => {
-                    this.productCategories = response.data
-                    this.loading = false
-                })
-                .catch(error => ({ error: JSON.stringify(error) }));
-            return reponse;
-        }
-    },
+    async mounted() {
+        await this.$store.dispatch('website/getCategoryAndSubCategories');
+    }
 };
 </script>
 
@@ -93,7 +81,6 @@ export default {
                 color: #78bc27;
                 font-weight: 600;
             }
-            
         }
 
         .mega-menu__list {

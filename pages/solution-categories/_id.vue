@@ -1,31 +1,42 @@
 <template lang="html">
-    <div class="ps-page--single ps-page--vendor">
+    <div>
         <bread-crumb :breadcrumb="breadCrumb" />
-        <store-list-2 :formattedSolution="solution_categories" />
+        <div class="ps-page--single ps-page--vendor">
+            <div class="container">
+                <div class="ps-layout--shop">
+                    <div class="ps-layout__left">
+                        <solution-widget />
+                    </div>
+                    <div class="ps-layout__right">
+                        <solution-category />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import {mapState} from 'vuex';
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import StoreList2 from '~/components/partials/vendor/website/SolutionCategories';
-
+import SolutionCategory from '~/components/partials/vendor/website/SolutionCategory';
+import SolutionWidget from '~/components/partials/shop/modules/website/SolutionWidget';
 
 export default {
     head() {
         return {
-            titleTemplate: `${this.solution_categories ? this.solution_categories.name : '' }`,
+            titleTemplate: 'Solution Catgory',
             meta: [
                 {
                     hid: 'description',
                     name: 'description',
-                    content: `${this.solution_categories ? this.solution_categories.name : ''} Solution`
+                    content: 'Solution Catgory'
                 }
             ]
         };
     },
     components: {
-        StoreList2,
+        SolutionWidget,
+        SolutionCategory,
         BreadCrumb
     },
     layout: 'layout-default-website',
@@ -37,21 +48,11 @@ export default {
                     url: '/'
                 },
                 {
-                    text: 'Solutions'
+                    text: 'Solution Category'
                 }
             ]
         };
-    },
-    computed: {
-        ...mapState({
-            solution_categories: state => state.website.solutionCategories,
-        }),
-    },
-    
-    created() {
-        const slug = this.$route.params.id
-        const response = this.$store.dispatch('website/getSolutionCategories', slug);
-    },
+    }
 };
 </script>
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="34.1257mm" height="35.8908mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 447 470"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil1 {fill:#FEFEFE}
+    .fil0 {fill:#8FC74A}
+    .fil2 {fill:#FEFEFE}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_1999150281040">
+   <rect class="fil0" width="447" height="470" rx="39" ry="39"/>
+   <path class="fil1" d="M200 128c-56,8 -101,36 -131,78 -13,18 -21,26 -7,47 41,63 108,99 187,89 39,-5 75,-22 97,-42 28,-27 60,-54 40,-85 -41,-60 -109,-97 -186,-87zm-53 185c-44,-51 -41,-105 0,-156 -32,11 -79,61 -79,78 -1,18 47,66 79,78zm54 -171c-129,36 -72,217 48,186 121,-31 74,-220 -48,-186zm103 169c29,-11 77,-60 77,-76 0,-18 -49,-66 -77,-76 10,19 28,33 28,76 0,30 -9,48 -23,69 -1,0 -2,1 -2,2l-3 5z"/>
+   <path class="fil1" d="M204 180c-13,-1 -11,-2 -22,-8l-19 19c10,33 14,14 -14,31l1 25c9,4 13,2 21,9 -1,15 -6,5 -8,23l16 16c18,-2 8,-6 23,-8l6 14c4,8 1,3 4,7l25 1c16,-28 -2,-24 30,-14l19 -19c-6,-11 -7,-8 -8,-21 11,-7 10,-2 21,-10 1,-29 3,-24 -21,-30 -1,-20 2,-6 8,-24l-18 -19c-19,6 -5,9 -25,8 -6,-24 0,-21 -34,-20l-5 20z"/>
+   <path class="fil0" d="M180 188c-3,18 9,9 3,27 -8,22 -12,3 -22,20 10,9 16,2 21,17 6,13 -2,11 -4,28 17,-2 15,-9 28,-4 20,7 4,9 17,21 17,-10 -3,-11 18,-21 18,-8 12,5 29,2 0,-18 -12,-7 -4,-27 7,-17 10,-5 21,-16 -6,-14 -27,-2 -21,-32l2 -13c-9,-3 -10,7 -26,2 -19,-6 -4,-14 -19,-21 -12,12 2,13 -16,21 -19,8 -10,-3 -27,-4z"/>
+   <path class="fil0" d="M212 203c-41,15 -19,78 24,62 40,-14 20,-77 -24,-62z"/>
+   <path class="fil2" d="M238 253c16,-25 -1,-50 -24,-38 -20,10 -17,47 24,38z"/>
+  </g>
+ </g>
+</svg>

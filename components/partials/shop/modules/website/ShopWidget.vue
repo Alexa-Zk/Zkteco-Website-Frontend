@@ -14,15 +14,16 @@
                         <content-placeholders-text :lines="3" />
                     </content-placeholders>
                 </div>
-                
-                <li v-for="category in productCategories" :key="category.id">
-                    <v-list class="sidebar-border" >
+
+                <li
+                    v-for="category in categoryAndSubCategories"
+                    :key="category.id"
+                >
+                    <v-list class="sidebar-border">
                         <v-list-group>
                             <template v-slot:activator>
                                 <nuxt-link
-                                    :to="
-                                        `/product-categories/${category.slug}`
-                                    "
+                                    :to="`/product-categories/${category.slug}`"
                                 >
                                     <v-list-item-title>{{
                                         category.name
@@ -63,7 +64,6 @@ import MenuMegaSubCategories from '~/components/shared/menu/website/MenuMegaSubC
 import Repository from '~/repositories/Repository.js';
 import { subBaseUrl } from '~/repositories/Repository';
 
-
 export default {
     name: 'ShopWidget',
     components: {
@@ -71,33 +71,19 @@ export default {
     },
     computed: {
         ...mapState({
-            categories: state => state.product.categories,  
-        }),
-        
+            categoryAndSubCategories: state =>
+                state.website.categoryAndSubCategories,
+            categories: state => state.product.categories
+        })
     },
     data() {
         return {
-            productCategories: '',
             loading: false
         };
-    },
-    mounted() {
-        this.getProductCategories()
-    },
-    
-    methods: {
-        async getProductCategories () {
-            this.loading = true
-            const reponse = await Repository.get( `${subBaseUrl}/product-categories`)
-                .then(response => {
-                    
-                    this.productCategories = response.data
-                    this.loading = false
-                })
-                .catch(error => ({ error: JSON.stringify(error) }));
-            return reponse;
-        }
     }
+    // async created() {
+    //     await this.$store.dispatch('website/getCategoryAndSubCategories');
+    // }
 };
 </script>
 

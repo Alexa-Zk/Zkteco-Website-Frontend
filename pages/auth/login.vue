@@ -43,7 +43,35 @@
                                         outlined
                                     />
                                 </div>
-
+                                <div class="form-group">
+                                    <v-checkbox
+                                        :error-messages="checkboxErrors"
+                                        @change="$v.checkbox.$touch()"
+                                        color="success"
+                                        v-model="checkbox"
+                                    >
+                                        <template v-slot:label>
+                                            <div class="agreement_link">
+                                                I have read and agree to
+                                                <a
+                                                    target="_blank"
+                                                    href="/website/page/privacy-policy"
+                                                    @click.stop
+                                                >
+                                                    Membership Registration
+                                                    Agreement </a
+                                                >,
+                                                <a
+                                                    target="_blank"
+                                                    href="/website/page/privacy-policy"
+                                                    @click.stop
+                                                >
+                                                    Privacy Policy
+                                                </a>
+                                            </div>
+                                        </template>
+                                    </v-checkbox>
+                                </div>
                                 <div class="form-group forget-link">
                                     <nuxt-link to="/auth/forget-password"
                                         >forgot password?</nuxt-link
@@ -109,7 +137,7 @@ export default {
                     text: 'Login'
                 }
             ],
-            //checkbox: '',
+            checkbox: '',
             loading: false,
             username: null,
             password: null,
@@ -119,8 +147,8 @@ export default {
     },
     validations: {
         username: { required },
-        password: { required }
-        //checkbox: { required }
+        password: { required },
+        checkbox: { required }
     },
     beforeRouteEnter(to, from, next) {
         next(vm => {
@@ -176,11 +204,11 @@ export default {
             return errors;
         },
         checkboxErrors() {
-            // const errors = [];
-            // if (!this.$v.checkbox.$dirty) return errors;
-            // !this.$v.checkbox.required &&
-            //     errors.push('Please agree to the terms');
-            // return errors;
+            const errors = [];
+            if (!this.$v.checkbox.$dirty) return errors;
+            !this.$v.checkbox.required &&
+                errors.push('Please agree to the terms');
+            return errors;
         }
     }
 };
