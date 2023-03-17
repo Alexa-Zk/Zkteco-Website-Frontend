@@ -8,7 +8,7 @@
                         <shop-widget />
                     </div>
                     <div class="ps-layout__right">
-                        <h2 class="text-uppercase">{{ title }}</h2>
+                        <h2>{{ title }}</h2>
 
                         <div class="ps-section__content" v-if="armaturas">
                             <article class="content_wrapper">
@@ -94,7 +94,7 @@ export default {
 
     computed: {
         title() {
-            return 'armatura one';
+            return 'Armatura One';
         }
     },
     mounted() {
