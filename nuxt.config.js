@@ -21,9 +21,12 @@ async function _getProductRoutes() {
         `https://admin.zkteco-wa.com/sub-product-categories`
     );
 
+    const blogURL = axios.get(`https://admin.zkteco-wa.com/articles`);
+
     const products = await productURL;
     const solution = await solutionURL;
     const subcategory = await productsubURL;
+    const blog = await blogURL;
 
     products.data.map(v => {
         let slug = v?.slug?.trim();
@@ -46,6 +49,12 @@ async function _getProductRoutes() {
         }
     });
 
+    blog.data.map(v => {
+        let slug = v?.slug?.trim();
+        if (slug != null) {
+            paths.push(`/blog/${slug}`);
+        }
+    });
     return paths;
 }
 
