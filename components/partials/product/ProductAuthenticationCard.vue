@@ -43,7 +43,7 @@
                     <div class="col-inner">
                         <div class="col-title">Warranty Period:</div>
                         <span>{{
-                             productData  
+                             productData && productData.warranty_status 
                                 ? (productData.warranty_days_left = 'Supported')
                                 : 'Not supported'
                         }}</span>
