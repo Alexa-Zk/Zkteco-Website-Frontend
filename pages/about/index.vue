@@ -436,83 +436,103 @@
             </div>
             <div class="icon_wrapper">
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/education.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/education.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Education </span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Construction.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Construction.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Construction </span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Energy.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Energy.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Energy </span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Supply_Chain.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Supply_Chain.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Supply Chain</span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Finance.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Finance.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Finance </span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Health_Care.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Health_Care.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Health Care </span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Hotel_Management.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Hotel_Management.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Hotel Management </span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Public_Facilities.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Public_Facilities.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Public Facilities </span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Residential.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Residential.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Residential </span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Retail.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Retail.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Retail </span>
                 </div>
             </div>
@@ -719,14 +739,18 @@ export default {
             align-items: center;
             text-align: center;
 
-            img {
-                width: 9rem;
-                height: 9rem;
-                text-align: center;
+            div {
+                height: 110px;
+                width: 110px;
+                img {
+                    object-fit: cover;
+                    text-align: center;
+                }
             }
+
             span {
                 font-family: 1.8rem;
-                padding-top: 5px;
+                padding-top: 20px;
             }
         }
     }
@@ -783,7 +807,7 @@ export default {
                 display: grid;
                 grid-template-columns: 3.4fr 2.1fr;
                 grid-gap: 2em;
-                align-items: start;
+                align-items: stretch;
 
                 p {
                     font-size: 1.5rem;
