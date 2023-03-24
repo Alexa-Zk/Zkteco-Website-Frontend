@@ -345,7 +345,7 @@
 
                         <div>
                             <img
-                                data-src="/img/about_us/Smart_Entrance/zkbio.jpg"
+                                data-src="/img/about_us/Smart_Entrance/zkbiosecurity.jpg"
                                 class="lazyload"
                                 alt=""
                             />
@@ -355,7 +355,7 @@
                     <div class="business_entrance_mobile">
                         <div>
                             <img
-                                data-src="/img/about_us/Smart_Entrance/zkbio.jpg"
+                                data-src="/img/about_us/Smart_Entrance/zkbiosecurity.jpg"
                                 class="lazyload"
                                 alt=""
                             />
@@ -781,9 +781,9 @@ export default {
                 padding-top: 40px;
                 padding-bottom: 60px;
                 display: grid;
-                grid-template-columns: 3.4fr 1.8fr;
+                grid-template-columns: 3.4fr 2.1fr;
                 grid-gap: 2em;
-                align-items: center;
+                align-items: start;
 
                 p {
                     font-size: 1.5rem;
