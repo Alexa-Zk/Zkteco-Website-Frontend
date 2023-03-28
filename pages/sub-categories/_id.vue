@@ -11,7 +11,7 @@
                         <div class="ps-page__header">
                             <!--h1 class="text-uppercase">{{ title }}</h1 -->
                         </div>
-                        <!--layout-shop-sidebar-sub
+                        <layout-shop-sidebar-sub
                             :loading="loading"
                             :categories_products="
                                 sub_product ? sub_product : []
@@ -21,7 +21,7 @@
                                     ? totalSingleProductCategories
                                     : 0
                             "
-                        / -->
+                        />
                     </div>
                 </div>
             </div>
