@@ -75,7 +75,7 @@ export default {
 
     computed: {
         title() {
-            return 'Armatura One';
+            return 'Armatura';
         }
     },
     mounted() {
