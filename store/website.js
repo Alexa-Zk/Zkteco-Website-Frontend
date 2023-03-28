@@ -662,6 +662,7 @@ export const actions = {
     },
 
     async getSubProductCategories({ state, commit }, payload) {
+        console.log('- check -');
         commit('setLoading', true);
         let params = {
             _start:
@@ -689,6 +690,8 @@ export const actions = {
             paramCount
         )}`;
 
+        console.log('- params -', params);
+
         const subProduct = await Repository.get(subProductURL);
         const subProductCount = await Repository.get(subProductCountURL);
 
@@ -699,7 +702,7 @@ export const actions = {
         console.log(' - Count -', subProductCount.data);
 
         console.log('XXXTTT');
-        console.log(subProduct.data);
+        //console.log(subProduct.data);
     },
 
     async getSolutionCategories({ commit }, payload) {
