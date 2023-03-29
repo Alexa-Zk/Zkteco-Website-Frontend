@@ -50,7 +50,7 @@
             <div class="ps-product__content hover">
                 <p class="ps-product__price sale">
                     <nuxt-link :to="`/product/${product.slug}`">
-                        <span class="ps-product__title">Learn More2</span>
+                        <span class="ps-product__title">Learn More</span>
                     </nuxt-link>
                 </p>
             </div>
