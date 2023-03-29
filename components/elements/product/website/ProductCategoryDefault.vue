@@ -50,7 +50,7 @@
             <div class="ps-product__content hover">
                 <p class="ps-product__price sale">
                     <nuxt-link :to="`/product/${product.slug}`">
-                        <span class="ps-product__title">Learn More</span>
+                        <span class="ps-product__title">Learn More2</span>
                     </nuxt-link>
                 </p>
             </div>
@@ -129,6 +129,11 @@ export default {
             color: #78bc27;
             font-weight: 700;
         }
+    }
+}
+@media (max-width: 767px){
+    .ps-product {
+        padding: 29px;
     }
 }
 </style>
