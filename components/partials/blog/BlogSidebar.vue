@@ -68,7 +68,6 @@ export default {
             this.searchQuery = value;
         },
         async searchInputRequest(value) {
-            console.log(' -value- ', value);
             this.searchQuery = value;
             const params = {
                 page: 0,
