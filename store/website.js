@@ -582,15 +582,15 @@ export const actions = {
     },
 
     async getArticlesCategories({ commit }) {
-        // commit('setLoading', true);
-        // const reponse = await Repository.get(`${subBaseUrl}/categories/`)
-        //     .then(response => {
-        //         commit('setArticlesCategories', response.data);
-        //         commit('setLoading', false);
-        //         return response.data;
-        //     })
-        //     .catch(error => ({ error: JSON.stringify(error) }));
-        // return [];
+        commit('setLoading', true);
+        const reponse = await Repository.get(`${subBaseUrl}/categories/`)
+            .then(response => {
+                commit('setArticlesCategories', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return [];
     },
 
     // async getProductCategories({ state, commit }, payload) {

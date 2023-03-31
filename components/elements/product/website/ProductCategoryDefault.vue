@@ -131,9 +131,4 @@ export default {
         }
     }
 }
-@media (max-width: 767px){
-    .ps-product {
-        padding: 29px;
-    }
-}
 </style>
