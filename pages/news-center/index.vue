@@ -58,8 +58,14 @@ export default {
             page: 0,
             perPage: 12
         };
-        const responseTotal = this.$store.dispatch('website/getArticlesTotal', payload);
-        const responseLimited = this.$store.dispatch('website/getArticlesLimited', payloadLimited);
+        const responseTotal = this.$store.dispatch(
+            'website/getArticlesTotal',
+            payload
+        );
+        const responseLimited = this.$store.dispatch(
+            'website/getArticlesLimited',
+            payloadLimited
+        );
         const response = this.$store.dispatch('website/getArticles', payload);
     }
 };

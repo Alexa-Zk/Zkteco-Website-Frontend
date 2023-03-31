@@ -32,7 +32,6 @@ import PostHorizontal from '../../elements/post/PostHorizontal';
 import PostSmallThumbnail from '../../elements/post/website/PostSmallThumbnail';
 // import { posts } from '~/static/data/blog-grid.json';
 
-
 export default {
     name: 'BlogSidebar',
     components: { PostSmallThumbnail, PostHorizontal, Sidebar, Pagination },
@@ -54,11 +53,9 @@ export default {
     computed: {
         ...mapState({
             loading: state => state.website.loading
-        }),
+        })
     }
-    
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
