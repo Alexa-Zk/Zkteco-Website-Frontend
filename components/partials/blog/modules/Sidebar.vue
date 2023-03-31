@@ -80,6 +80,9 @@ export default {
     methods: {
         searchButtonIcon() {
             this.$emit('searchBlogQuery', this.searchQuery);
+        },
+        trigger() {
+            this.$refs.searchButtonIcon.click();
         }
     }
 };

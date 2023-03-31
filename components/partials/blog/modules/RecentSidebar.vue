@@ -1,6 +1,5 @@
 <template lang="html">
     <div class="recent-sidebar">
-        
         <h3 class="widget__title">Recent Posts</h3>
         <div class="widget__content">
             <template v-if="articles">
@@ -14,29 +13,26 @@
             </template>
             <p v-else>No post.</p>
         </div>
-    
-
     </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 
 export default {
     name: 'Sidebar',
     data() {
-        return {
-        };
+        return {};
     },
-    
+
     computed: {
         ...mapState({
             articles: state => state.website.articlesLimited
         }),
         formattedArticles() {
-            return this.articles ? this.articles: [];
+            return this.articles ? this.articles : [];
         }
-    },
+    }
 };
 </script>
 
