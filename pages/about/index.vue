@@ -83,7 +83,7 @@
                 <div class="vission">
                     <div>
                         <img
-                            data-src="/img/about_us/icon/mission.svg"
+                            data-src="/img/about_us/icon/miss.svg"
                             class="lazyload mission"
                             alt=""
                         />
@@ -258,7 +258,7 @@
                                     information service, app. store and
                                     authentication authorization service, API
                                     service platform and cloud storage service
-                                    etc. <br />
+                                    etc. <br /><br />
                                     “Cloud Application” connected through
                                     ZKTeco+ links up smart terminal devices in
                                     smart office applications to IoT devices of
@@ -274,6 +274,159 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="business_entrance">
+                        <div>
+                            <h3>
+                                BioCV Multi-modal and Computer Vision Technology
+                            </h3>
+                            <div>
+                                <p>
+                                    BioCV is a core technology developed by
+                                    ZKTeco with its industry-leading expertise
+                                    of biometrics and security products and
+                                    solutions. ZKTeco’s Multi- modal technology
+                                    and computer vision technology is based on
+                                    large-sample model and few-shot front
+                                    trimming for calculation, and raw data
+                                    output for the protection and isolation of
+                                    data security.
+                                    <br /><br />
+                                    Multi-modal biometrics verification utilizes
+                                    pattern recognition and deep learning to
+                                    actualize advanced recognition algorithms
+                                    including fingerprint, face, iris and palm
+                                    recognition algorithms, which are the most
+                                    advanced and widely applied multi-modal
+                                    biometrics verification techniques in the
+                                    industry. The development and design of
+                                    BioCV is in compliance with GDPR standards
+                                    to adhere to the strictest requirements for
+                                    data protection and privacy.
+                                    <br /><br />
+                                    ZKTeco’s commitment to privacy and data
+                                    protection guarantees that all personal data
+                                    is handled with the utmost care and respect,
+                                    and deserves the trusts from the users to
+                                    protect their personal information.
+                                    BioCV&#39;s versatility and adaptability
+                                    enables a promising solution for a variety
+                                    of industries and applications. As a core
+                                    technology developed by ZKTeco, BioCV
+                                    continues to lead the way in biometrics and
+                                    computer vision technology. The
+                                    company&#39;s consistent investment in
+                                    research and development ensures that BioCV
+                                    remains at the forefront of innovation and
+                                    continues to meet the evolving needs of
+                                    businesses and organizations around the
+                                    world.
+                                    <br /><br />
+                                    BioCV&#39;s ability to authenticate
+                                    individuals in real time while ensuring
+                                    their privacy and data protection makes it
+                                    an essential tool for businesses and
+                                    organizations. Whether used in access
+                                    control systems, time and attendance
+                                    systems, or healthcare systems, BioCV&#39;s
+                                    powerful technology improves security and
+                                    efficiency. With its broad range of
+                                    applications and powerful capabilities,
+                                    BioCV has the potential to transform
+                                    industries and improve our daily lives.
+                                    ZKTeco&#39;s commitment to security,
+                                    privacy, and innovation ensures that BioCV
+                                    remains a cutting-edge solution for
+                                    businesses and organizations around the
+                                    world.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <img
+                                data-src="/img/about_us/Smart_Entrance/zkbiosecurity.jpg"
+                                class="lazyload"
+                                alt=""
+                            />
+                        </div>
+                    </div>
+
+                    <div class="business_entrance_mobile">
+                        <div>
+                            <img
+                                data-src="/img/about_us/Smart_Entrance/zkbiosecurity.jpg"
+                                class="lazyload"
+                                alt=""
+                            />
+                        </div>
+                        <div>
+                            <h3>
+                                BioCV Multi-modal and Computer Vision Technology
+                            </h3>
+                            <div>
+                                <p>
+                                    BioCV is a core technology developed by
+                                    ZKTeco with its industry-leading expertise
+                                    of biometrics and security products and
+                                    solutions. ZKTeco’s Multi- modal technology
+                                    and computer vision technology is based on
+                                    large-sample model and few-shot front
+                                    trimming for calculation, and raw data
+                                    output for the protection and isolation of
+                                    data security.
+                                    <br /><br />
+                                    Multi-modal biometrics verification utilizes
+                                    pattern recognition and deep learning to
+                                    actualize advanced recognition algorithms
+                                    including fingerprint, face, iris and palm
+                                    recognition algorithms, which are the most
+                                    advanced and widely applied multi-modal
+                                    biometrics verification techniques in the
+                                    industry. The development and design of
+                                    BioCV is in compliance with GDPR standards
+                                    to adhere to the strictest requirements for
+                                    data protection and privacy.
+                                    <br /><br />
+                                    ZKTeco’s commitment to privacy and data
+                                    protection guarantees that all personal data
+                                    is handled with the utmost care and respect,
+                                    and deserves the trusts from the users to
+                                    protect their personal information.
+                                    BioCV&#39;s versatility and adaptability
+                                    enables a promising solution for a variety
+                                    of industries and applications. As a core
+                                    technology developed by ZKTeco, BioCV
+                                    continues to lead the way in biometrics and
+                                    computer vision technology. The
+                                    company&#39;s consistent investment in
+                                    research and development ensures that BioCV
+                                    remains at the forefront of innovation and
+                                    continues to meet the evolving needs of
+                                    businesses and organizations around the
+                                    world.
+                                    <br /><br />
+                                    BioCV&#39;s ability to authenticate
+                                    individuals in real time while ensuring
+                                    their privacy and data protection makes it
+                                    an essential tool for businesses and
+                                    organizations. Whether used in access
+                                    control systems, time and attendance
+                                    systems, or healthcare systems, BioCV&#39;s
+                                    powerful technology improves security and
+                                    efficiency. With its broad range of
+                                    applications and powerful capabilities,
+                                    BioCV has the potential to transform
+                                    industries and improve our daily lives.
+                                    ZKTeco&#39;s commitment to security,
+                                    privacy, and innovation ensures that BioCV
+                                    remains a cutting-edge solution for
+                                    businesses and organizations around the
+                                    world.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -283,83 +436,103 @@
             </div>
             <div class="icon_wrapper">
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/education.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/education.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Education </span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Construction.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Construction.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Construction </span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Energy.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Energy.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Energy </span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Supply_Chain.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Supply_Chain.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Supply Chain</span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Finance.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Finance.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Finance </span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Health_Care.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Health_Care.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Health Care </span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Hotel_Management.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Hotel_Management.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Hotel Management </span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Public_Facilities.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Public_Facilities.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Public Facilities </span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Residential.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Residential.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Residential </span>
                 </div>
                 <div>
-                    <img
-                        data-src="/img/about_us/Application_areas_icon/Retail.png"
-                        class="lazyload"
-                        alt=""
-                    />
+                    <div>
+                        <img
+                            data-src="/img/about_us/Application_areas_icon/Retail.png"
+                            class="lazyload"
+                            alt=""
+                        />
+                    </div>
                     <span> Retail </span>
                 </div>
             </div>
@@ -566,14 +739,18 @@ export default {
             align-items: center;
             text-align: center;
 
-            img {
-                width: 9rem;
-                height: 9rem;
-                text-align: center;
+            div {
+                height: 110px;
+                width: 110px;
+                img {
+                    object-fit: cover;
+                    text-align: center;
+                }
             }
+
             span {
                 font-family: 1.8rem;
-                padding-top: 5px;
+                padding-top: 20px;
             }
         }
     }
@@ -628,9 +805,9 @@ export default {
                 padding-top: 40px;
                 padding-bottom: 60px;
                 display: grid;
-                grid-template-columns: 3.4fr 1.8fr;
+                grid-template-columns: 3.4fr 2.1fr;
                 grid-gap: 2em;
-                align-items: center;
+                align-items: stretch;
 
                 p {
                     font-size: 1.5rem;

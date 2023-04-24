@@ -185,11 +185,15 @@ export default {
                     text: 'ZK Authorized Distributor',
                     url: '/website/page/store-locator'
                 },
-
                 {
                     text: 'Case Study',
                     url: '/case-study'
                 },
+                {
+                    text: 'Armatura',
+                    url: '/armatura'
+                },
+
                 {
                     text: 'Login',
                     url: '/website/page/login'

@@ -37,13 +37,13 @@
                     <div class="col-inner">
                         <div class="col-title">Warranty Status:</div>
                         <span :class="{'text-danger': productData.warranty_status == 'Expired' }">{{
-                            productData ? productData.warranty_status : 'unknown'
+                            productData && productData.warranty_status ? productData.warranty_status : 'Not Supported'
                         }}</span>
                     </div>                                         
                     <div class="col-inner">
                         <div class="col-title">Warranty Period:</div>
                         <span>{{
-                             productData  
+                             productData && productData.warranty_status 
                                 ? (productData.warranty_days_left = 'Supported')
                                 : 'Not supported'
                         }}</span>

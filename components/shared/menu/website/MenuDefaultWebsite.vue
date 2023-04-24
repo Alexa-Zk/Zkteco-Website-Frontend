@@ -131,6 +131,10 @@ export default {
                 {
                     text: 'Case Study',
                     url: '/case-study'
+                },
+                {
+                    text: 'Armatura',
+                    url: '/armatura'
                 }
             ]
         };

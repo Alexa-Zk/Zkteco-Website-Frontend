@@ -18,16 +18,7 @@
                                 ></div>
                             </article>
                         </div>
-                        <div class="placeholder-image-grid" v-else>
-                            <content-placeholders
-                                :rounded="true"
-                                v-for="x in 9"
-                                :key="x"
-                            >
-                                <content-placeholders-img />
-                                <content-placeholders-heading />
-                            </content-placeholders>
-                        </div>
+
                         <div class="row" v-if="armaturaProducts">
                             <div
                                 v-for="product in armaturaProducts"
@@ -36,16 +27,6 @@
                             >
                                 <product-category-default :product="product" />
                             </div>
-                        </div>
-                        <div class="placeholder-image-grid" v-else>
-                            <content-placeholders
-                                :rounded="true"
-                                v-for="x in 9"
-                                :key="x"
-                            >
-                                <content-placeholders-img />
-                                <content-placeholders-heading />
-                            </content-placeholders>
                         </div>
                     </div>
                 </div>
@@ -94,7 +75,7 @@ export default {
 
     computed: {
         title() {
-            return 'Armatura One';
+            return 'Armatura';
         }
     },
     mounted() {
