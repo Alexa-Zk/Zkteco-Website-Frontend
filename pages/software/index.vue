@@ -16,6 +16,53 @@
                 <div class="container">
                     <div class="logo">
                         <img
+                                data-src="/img/software/zkbiocv-security.png"
+                                class="lazyload"
+                                alt=""
+                            />
+                    </div>
+                    <div class="content">
+                        <div class="contentHead">
+                            <p>
+                            <h4> New Software  </h4>
+                            ZKBio CVSecurity.
+                            </p>
+                        </div>
+                        <div class="wrapper">
+                            <p>
+                                
+                                ZKBio CVSecurity is a web-based access control software that uses hybrid biometric and computer 
+                                vision technology. It offers various modules for comprehensive security solutions for various 
+                                settings.
+                                
+                                If you currently hold a ZKBioSecurity V5000 3.0.0 Licence we will do a free migration to ZKBio CVSecurity. 
+                                If your version is under 3.0.0, there will be a migration fee.
+                            </p>
+                        </div>
+                        <div class="footer">
+                            <div>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            ZKAccess35.manual
+                                        )
+                                    ">Brochure</button>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            ZKAccess35.download
+                                        ) 
+                                    ">Download</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="container">
+                    <div class="logo">
+                        <img
                                 data-src="/img/software/zkbiosecurityV5000.png"
                                 class="lazyload"
                                 alt=""
@@ -178,7 +225,7 @@
                 </div>
 
 
-                <div class="container">
+                <!--div class="container">
                     <div class="logo">
                         <img
                                 data-src="/img/software/zkbiosecurityV320.png"
@@ -195,7 +242,8 @@
                         </div>
                         <div class="wrapper">
                             <p>
-                                <b>ZKBioSecurity 3.2.0.0 : </b> ZKBioSecurity is the ultimate “All-in-One” web-based security platform 
+                                <b>
+                                    ZKBioSecurity 3.2.0.0 : </b> ZKBioSecurity is the ultimate “All-in-One” web-based security platform 
                                 developed by ZKTeco. It contains multiple integrated modules: access control, time & attendance, 
                                 consumption management, elevator control, visitor management, parking, guard patrol, entrance control, 
                                 FaceKiosk, and intelligent facial recognition camera management, video(VMS), mask, and temperature 
@@ -223,7 +271,7 @@
                         </div>
                     </div>
                     
-                </div>
+                </div -->
 
 
                 <div class="container">
@@ -278,51 +326,7 @@
 
 
 
-                <div class="container">
-                    <div class="logo">
-                        <img
-                                data-src="/img/software/zkbiosecurityV320.png"
-                                class="lazyload"
-                                alt=""
-                            />
-                    </div>
-                    <div class="content">
-                        <div class="contentHead">
-                            <p>
-                            <h4> New Software  </h4>
-                            ZKAccess.
-                            </p>
-                        </div>
-                        <div class="wrapper">
-                            <p>
-                                <b>ZKAccess 3.5 : </b>As a professional access control software, 
-                                ZKAccess3.5 is designed to manage all ZKTeco’s access control panels and standalone access 
-                                control terminals. The software can simultaneously manage access control and generate 
-                                attendance report. It’s a desktop software which is suitable for small and medium 
-                                businesses application. The brand new flat GUI design and humanized structure of 
-                                new ZKAccess3.5 will make your daily management more pleasant and convenient.
-                            </p>
-                        </div>
-                        <div class="footer">
-                            <div>
-                                <button class="ps-btn"
-                                    @click.prevent="
-                                        download(
-                                            ZKAccess35.manual
-                                        )
-                                    ">Download Free</button>
-                                <button class="ps-btn"
-                                    @click.prevent="
-                                        download(
-                                            ZKAccess35.download
-                                        ) 
-                                    ">Public Key</button>
-                            </div>
-
-                        </div>
-                    </div>
-                    
-                </div>
+                
 
                 
             </div>
@@ -387,8 +391,8 @@ export default {
             },
 
             ZKAccess35:{
-                manual:"https://storage.googleapis.com/zkteco_website_bucket/ZK_Access3_5_Security_System_user_manual_V3_0_1_20141218_57e2073104/ZK_Access3_5_Security_System_user_manual_V3_0_1_20141218_57e2073104.pdf",
-                download: "https://storage.googleapis.com/zkteco_website_bucket/ZK_Access_3_5_5_1_1_874da05153/ZK_Access_3_5_5_1_1_874da05153.zip"
+                manual:"https://zkteco.co.za/downloads/brochures/zkbio_cvsecurity_brochure.pdf",
+                download: "https://zkteco.co.za/downloads/software/zkbio_cv_security_5.3.0.zip"
             },
             
             // zkbioV5000 :"https://storage.googleapis.com/zkteco_website_bucket/KF_160_3af1582d3b/KF_160_3af1582d3b.pdf",
