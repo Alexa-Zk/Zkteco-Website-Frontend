@@ -16,13 +16,19 @@
                 <div class="playlistBx">
                     <div class="header">
                         <div class="row">
-                            <span class="AllLessons"></span>
+                            <span class="AllLessons">All Lesson </span>
                         </div>
                     </div>
                     <ul class="playlist" id="playlist">
-                        <li :li-index="i" v-for="(allVideo, i) in allVideos" @click="(event) => changeVideoSrc(allVideo.src, i, event)"> 
+                        <li
+                            :li-index="i"
+                            v-for="(allVideo, i) in allVideos"
+                            @click="
+                                event => changeVideoSrc(allVideo.src, i, event)
+                            "
+                        >
                             <div class="row">
-                                <span>{{ `${i+1}. ${allVideo.name}` }}</span>
+                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
                             </div>
                             <span :id="allVideo.id" class="duration"></span>
                         </li>
@@ -34,21 +40,7 @@
 </template>
 
 <script>
-import BreadCrumb from '~/components/elements/BreadCrumb';
-import ShopWidget from '~/components/partials/shop/modules/website/ShopWidget';
-import LayoutShopSidebarCategories from '~/components/partials/shop/website/LayoutShopSidebarCategories';
-import ProductCategoryDefault from '~/components/elements/product/website/ProductCategoryDefault';
-import Repository from '~/repositories/Repository.js';
-import { subBaseUrl } from '~/repositories/Repository';
-
 export default {
-    components: {
-        LayoutShopSidebarCategories,
-        ShopWidget,
-        ProductCategoryDefault,
-        BreadCrumb
-    },
-
     transition() {
         return 'fadeIn';
     },
@@ -60,37 +52,43 @@ export default {
             isClicked: false,
             allVideos: [
                 {
-                    name: "ZKTeco Biotime Introduction",
-                    src: "https://www.youtube.com/embed/81Pp8iW_ftk",
-                    id: "vid_1"
+                    name: 'How to Add admin to Device on ZKBioSecurity',
+                    src: 'https://www.youtube.com/embed/QGgz3QlaBjk',
+                    video: 'QGgz3QlaBjk',
+                    id: 'vid_1'
                 },
                 {
-                    name: "Creating Company's Profile",
-                    src: "https://www.youtube.com/embed/tfxMCYM_Ygc",
-                    id: "vid_2"
+                    name: 'How to Set Personnel Valid Times on ZKBioSecurity',
+                    src: 'https://www.youtube.com/embed/szH-m_W_8ss',
+                    video: 'szH-m_W_8ss',
+                    id: 'vid_2'
                 },
                 {
-                    name: "Computer Monitor Shape",
-                    src: "http://d10.o2tv.org/The%20Blacklist/Season%2010/The%20Blacklist%20-%20S10E04%20(TvShows4Mobile.Com)%20otv-hkxzi.mp4",
-                    id: "vid_3"
+                    name: 'How to Setup Security Parameters on ZKBioSecurity',
+                    src: 'https://www.youtube.com/embed/vqLn-g7scXE',
+                    video: 'vqLn-g7scXE',
+                    id: 'vid_3'
                 },
                 {
-                    name: "Computer Monitor Shape",
-                    src: "http://d10.o2tv.org/The%20Blacklist/Season%2010/The%20Blacklist%20-%20S10E04%20(TvShows4Mobile.Com)%20otv-hkxzi.mp4",
-                    id: "vid_4"
+                    name: 'Computer Monitor Shape',
+                    src: 'https://www.youtube.com/embed/QGgz3QlaBjk',
+                    id: 'vid_4',
+                    video: 'QGgz3QlaBjk'
                 },
                 {
-                    name: "Computer Monitor Shape",
-                    src: "http://d10.o2tv.org/The%20Blacklist/Season%2010/The%20Blacklist%20-%20S10E04%20(TvShows4Mobile.Com)%20otv-hkxzi.mp4",
-                    id: "vid_5"
+                    name: 'Computer Monitor Shape',
+                    src: 'https://www.youtube.com/embed/szH-m_W_8ss',
+                    video: 'szH-m_W_8ss',
+                    id: 'vid_5'
                 },
                 {
-                    name: "Computer Monitor Shape",
-                    src: "http://d10.o2tv.org/The%20Blacklist/Season%2010/The%20Blacklist%20-%20S10E04%20(TvShows4Mobile.Com)%20otv-hkxzi.mp4",
-                    id: "vid_6"
-                },
+                    name: 'Computer Monitor Shape',
+                    src: 'https://www.youtube.com/embed/PSp60epZrvk',
+                    video: 'PSp60epZrvk',
+                    id: 'vid_6'
+                }
             ]
-        }
+        };
     },
 
     computed: {
@@ -102,10 +100,9 @@ export default {
         this.videoSrc = this.allVideos[this.musicIndex].src;
     },
     methods: {
-        async changeVideoSrc(src, i, event){
-            this.videoSrc = src
-            let allLiTags = event.target.tagName
-
+        async changeVideoSrc(src, i, event) {
+            this.videoSrc = src;
+            let allLiTags = event.target.tagName;
         }
     }
 };
@@ -117,18 +114,14 @@ export default {
     padding: 0;
     box-sizing: border-box;
 }
-body::-webkit-scrollbar
-{
-   width: 10px;
+body::-webkit-scrollbar {
+    width: 10px;
 }
 
-
-li
-{
+li {
     list-style: none;
 }
-section
-{
+section {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -137,8 +130,7 @@ section
     min-height: 100vh;
     background-color: black;
 }
-.title
-{
+.title {
     font-size: 20px;
     font-weight: 600;
     color: #dcdee1;
@@ -146,8 +138,7 @@ section
     width: 100%;
     margin-bottom: 10px;
 }
-.container
-{
+.container {
     position: relative;
     width: 100%;
     height: 100%;
@@ -156,61 +147,53 @@ section
     overflow: hidden;
     /* border: 2px solid red; */
 }
-.container #main-Video
-{
+.container #main-Video {
     position: relative;
     width: 100%;
     height: auto;
     overflow: hidden;
     outline: none;
 }
-.playlistBx
-{
+.playlistBx {
     position: relative;
     height: 100%;
     margin: 0 10px 0 10px;
     /* border: 2px solid green; */
 }
-.playlist
-{
+.playlist {
     position: absolute;
     width: 100%;
     height: calc(100% - 40px);
     overflow-y: scroll;
     border-top: 1px solid #dcdee1;
 }
-.playlist::-webkit-scrollbar
-{
-   width: 0px;
+.playlist::-webkit-scrollbar {
+    width: 0px;
 }
-.playlistBx .row .AllLessons
-{
-   display: block;
-   text-align: left;
-   color: #dcdee1;
-   font-size: 15px;
-   font-weight: 700;
-   margin-left: 40px;
-   line-height: 40px;
+.playlistBx .row .AllLessons {
+    display: block;
+    text-align: left;
+    color: #dcdee1;
+    font-size: 15px;
+    font-weight: 700;
+    margin-left: 40px;
+    line-height: 40px;
 }
-.playlist li
-{
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   list-style: none;
-   color: #dcdee1;
-   cursor: pointer;
-   border: 1px solid transparent;
-   padding: 15px 20px;
-   border-radius: 5px;
+.playlist li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    color: #dcdee1;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: 15px 20px;
+    border-radius: 5px;
 }
-.playlist li:hover
-{
+.playlist li:hover {
     border: 0.5px solid #375666;
 }
-.playlist li .row span
-{
+.playlist li .row span {
     font-size: 15px;
     font-weight: 400;
     color: #dcdee1;
@@ -218,68 +201,57 @@ section
     display: inline-block;
     text-align: left;
 }
-.playlist li .row span::before
-{
+.playlist li .row span::before {
     content: '\f01d';
     font-family: FontAwesome;
     color: #328a59;
     margin-right: 15px;
     font-size: 20px;
 }
-ul li.playing .row span::before
-{
+ul li.playing .row span::before {
     content: '\f28c';
     font-family: FontAwesome;
     color: #328a59;
     margin-right: 15px;
     font-size: 20px;
 }
-.playlist li.playing .row span
-{
-   color: #fff;
+.playlist li.playing .row span {
+    color: #fff;
 }
-.playlist li span.duration
-{
+.playlist li span.duration {
     font-size: 15px;
     font-weight: 400;
     display: inline-block;
     color: #dcdee1;
     text-align: right;
 }
-.playlist li.playing
-{
-   pointer-events: none;
-   background: #1d3541;
-   border: 0.5px solid #1d3541;
+.playlist li.playing {
+    pointer-events: none;
+    background: #1d3541;
+    border: 0.5px solid #1d3541;
 }
-@media(max-width: 1092px){
-    section
-    {
+@media (max-width: 1092px) {
+    section {
         padding: 30px 10px;
     }
-    .container
-    {
+    .container {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(1,1fr);
+        grid-template-columns: repeat(1, 1fr);
         overflow: hidden;
     }
-    .container #main-Video
-    {
+    .container #main-Video {
         height: 100%;
     }
-    .playlistBx
-    {
+    .playlistBx {
         height: 380px;
         margin-top: 10px;
     }
-    .playlist
-    {
+    .playlist {
         position: absolute;
         width: 100%;
         height: calc(100% - 40px);
         overflow-y: scroll;
     }
 }
-
 </style>
