@@ -25,7 +25,9 @@
                                 class="col-lg-4 col-md-4 col-sm-6 col-6 "
                                 :key="product.id"
                             >
-                                <product-category-default :product="product" />
+                                <!-- <product-category-default :product="product" /> -->
+                                <armatura-products :product="product" />
+
                             </div>
                         </div>
                     </div>
@@ -39,6 +41,7 @@
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import ShopWidget from '~/components/partials/shop/modules/website/ShopWidget';
 import LayoutShopSidebarCategories from '~/components/partials/shop/website/LayoutShopSidebarCategories';
+import ArmaturaProducts from '~/components/elements/product/website/ArmaturaProducts';
 import ProductCategoryDefault from '~/components/elements/product/website/ProductCategoryDefault';
 import Repository from '~/repositories/Repository.js';
 import { subBaseUrl } from '~/repositories/Repository';
@@ -47,6 +50,7 @@ export default {
     components: {
         LayoutShopSidebarCategories,
         ShopWidget,
+        ArmaturaProducts,
         ProductCategoryDefault,
         BreadCrumb
     },
@@ -110,4 +114,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@media (max-width: 767px){
+    .ps-product {
+        padding: 29px;
+    }
+}
+</style>
