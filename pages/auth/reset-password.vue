@@ -38,7 +38,6 @@
                                         outlined
                                     />
                                 </div>
-                                
 
                                 <div class="form-group submit">
                                     <button
@@ -108,7 +107,10 @@ export default {
         password: { required, minLength: minLength(6) }
     },
     mounted() {
-        this.resetCode = this.$route.query.code;
+        this.resetCode =
+            this.$route.query.code == undefined || this.$route.query.code == ''
+                ? this.$router.push('/product')
+                : this.$route.query.code;
     },
 
     methods: {
