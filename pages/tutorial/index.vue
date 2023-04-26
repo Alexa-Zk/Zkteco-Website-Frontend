@@ -33,7 +33,16 @@
                 <section class="menu-list" @click="collapsible">
                     <div class="menu">
                         <header>
-                            <h4>Modele 1 Setup Security</h4>
+                            <div class="content">
+                                <h4>Modele 1 Setup Security</h4>
+                            </div>
+
+                            <div class="icon">
+                                <i
+                                    aria-hidden="true"
+                                    class="mdi mdi-chevron-down"
+                                ></i>
+                            </div>
                         </header>
 
                         <nav class="dropdown">
@@ -51,7 +60,7 @@
                     </div>
                     <div class="menu">
                         <div>
-                            <h4>Modele 2 Setup Security</h4>
+                            <h4>Time Switch on ZKTeco Linux Device</h4>
                         </div>
                         <nav class="dropdown">
                             <div
@@ -68,7 +77,7 @@
                     </div>
                     <div class="menu">
                         <div>
-                            <h4>Modele 3 Setup Security</h4>
+                            <h4>Time Attendance and Access Control</h4>
                         </div>
                         <nav class="dropdown">
                             <div
@@ -102,7 +111,7 @@
                     </div>
                     <div class="menu">
                         <div>
-                            <h4>Modele 5 Setup Security</h4>
+                            <h4>Master Slave Configuration F18 & FR1200</h4>
                         </div>
                         <nav class="dropdown">
                             <div
@@ -137,7 +146,7 @@
 
                     <div class="menu">
                         <div>
-                            <h4>Modele 7 Setup Security</h4>
+                            <h4>How to Register New Users to ZKTeco G3Pro</h4>
                         </div>
                         <nav class="dropdown">
                             <div
@@ -155,25 +164,7 @@
 
                     <div class="menu">
                         <div>
-                            <h4>Modele 8 Setup Security</h4>
-                        </div>
-                        <nav class="dropdown">
-                            <div
-                                :index="i"
-                                v-for="(allVideo, i) in allVideos"
-                                @click="
-                                    event =>
-                                        changeVideoSrc(allVideo.src, i, event)
-                                "
-                            >
-                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
-                            </div>
-                        </nav>
-                    </div>
-
-                    <div class="menu">
-                        <div>
-                            <h4>Modele 9 Setup Security</h4>
+                            <h4>ZKTeco Biotime 8.5 Installation</h4>
                         </div>
                         <nav class="dropdown">
                             <div
@@ -195,8 +186,6 @@
 </template>
 
 <script>
-import { cloneWithoutLoc } from '@babel/types';
-
 export default {
     components: {},
 
@@ -266,10 +255,23 @@ export default {
 
         collapsible() {
             let menu = document.getElementsByClassName('menu');
+            //let menu = document.querySelectorAll('.menu');
 
             for (let i = 0; i < menu.length; i++) {
-                menu[i].addEventListener('click', () => {
-                    let tag = menu[i].children[1].classList.toggle('active');
+                menu[i].addEventListener('click', e => {
+                    let active = e.target.parentElement.parentElement;
+                    active.classList.toggle('active');
+
+                    console.log(' act ', e.target.parentElement);
+                    //e.target.parentElement.paremtElement;
+
+                    //console.log(' act ', active);
+                    // if (menu[i]) {
+                    //     console.log(' active', menu[i]);
+                    //     menu[i].children[1].classList.toggle('active');
+                    // } else {
+                    //     menu[i].children[1].classList.toggle();
+                    // }
                 });
             }
         }
@@ -356,11 +358,23 @@ export default {
                     border-bottom: 1px solid #000;
                     cursor: pointer;
 
+                    header {
+                        display: flex;
+                        justify-content: space-between;
+                        justify-items: center;
+                        align-items: center;
+
+                        .mdi {
+                            font-size: 2.5rem;
+                        }
+                    }
+
                     h4 {
                         //padding: 2rem 2rem;
                         padding: 2rem 0 1rem 2rem;
-                        font-size: 1.5rem;
+                        font-size: 1.4rem;
                         font-weight: normal;
+                        font-weight: bold;
                     }
 
                     .dropdown {
@@ -373,8 +387,9 @@ export default {
                             background: #7c7474;
                         }
                     }
-
-                    .active {
+                }
+                .active {
+                    .dropdown {
                         display: flex;
                         flex-direction: column;
                         visibility: visible;
