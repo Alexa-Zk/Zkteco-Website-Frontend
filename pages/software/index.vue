@@ -16,7 +16,7 @@
                 <div class="container">
                     <div class="logo">
                         <img
-                                data-src="/img/software/zkbiocv-security.png"
+                                data-src="/img/software/ZKBioCVSecurity.png"
                                 class="lazyload"
                                 alt=""
                             />
