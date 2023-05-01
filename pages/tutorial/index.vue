@@ -4,7 +4,7 @@
             <section class="video-wrapper">
                 <section class="video">
                     <header>
-                        <h3>How to Add admin to Device on ZKBioSecurity</h3>
+                        <h3>{{videoTitle}}</h3>
                     </header>
                     <div>
                         <iframe
@@ -31,160 +31,21 @@
                     <h3>Contents</h3>
                 </header>
                 <section class="menu-list" @click="collapsible">
-                    <div class="menu">
+                    <div class="menu" v-for="(video, i) in videoSubCategories">
                         <header>
-                            <h4>Modele 1 Setup Security</h4>
+                            <h4>{{video.name}}</h4>
                         </header>
 
                         <nav class="dropdown">
                             <div
                                 :index="i"
-                                v-for="(allVideo, i) in allVideos"
+                                v-for="(allVideo, i) in video.tutorial_videos"
                                 @click="
-                                    event =>
-                                        changeVideoSrc(allVideo.src, i, event)
+                                        changeVideoSrc(allVideo.url),
+                                        changeVideoTitle(allVideo.title)
                                 "
                             >
-                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="menu">
-                        <div>
-                            <h4>Modele 2 Setup Security</h4>
-                        </div>
-                        <nav class="dropdown">
-                            <div
-                                :index="i"
-                                v-for="(allVideo, i) in allVideos"
-                                @click="
-                                    event =>
-                                        changeVideoSrc(allVideo.src, i, event)
-                                "
-                            >
-                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="menu">
-                        <div>
-                            <h4>Modele 3 Setup Security</h4>
-                        </div>
-                        <nav class="dropdown">
-                            <div
-                                :index="i"
-                                v-for="(allVideo, i) in allVideos"
-                                @click="
-                                    event =>
-                                        changeVideoSrc(allVideo.src, i, event)
-                                "
-                            >
-                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="menu">
-                        <div>
-                            <h4>Modele 4 Setup Security</h4>
-                        </div>
-                        <nav class="dropdown">
-                            <div
-                                :index="i"
-                                v-for="(allVideo, i) in allVideos"
-                                @click="
-                                    event =>
-                                        changeVideoSrc(allVideo.src, i, event)
-                                "
-                            >
-                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="menu">
-                        <div>
-                            <h4>Modele 5 Setup Security</h4>
-                        </div>
-                        <nav class="dropdown">
-                            <div
-                                :index="i"
-                                v-for="(allVideo, i) in allVideos"
-                                @click="
-                                    event =>
-                                        changeVideoSrc(allVideo.src, i, event)
-                                "
-                            >
-                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="menu">
-                        <div>
-                            <h4>Modele 6 Setup Security</h4>
-                        </div>
-                        <nav class="dropdown">
-                            <div
-                                :index="i"
-                                v-for="(allVideo, i) in allVideos"
-                                @click="
-                                    event =>
-                                        changeVideoSrc(allVideo.src, i, event)
-                                "
-                            >
-                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
-                            </div>
-                        </nav>
-                    </div>
-
-                    <div class="menu">
-                        <div>
-                            <h4>Modele 7 Setup Security</h4>
-                        </div>
-                        <nav class="dropdown">
-                            <div
-                                :index="i"
-                                v-for="(allVideo, i) in allVideos"
-                                @click="
-                                    event =>
-                                        changeVideoSrc(allVideo.src, i, event)
-                                "
-                            >
-                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
-                            </div>
-                        </nav>
-                    </div>
-
-                    <div class="menu">
-                        <div>
-                            <h4>Modele 8 Setup Security</h4>
-                        </div>
-                        <nav class="dropdown">
-                            <div
-                                :index="i"
-                                v-for="(allVideo, i) in allVideos"
-                                @click="
-                                    event =>
-                                        changeVideoSrc(allVideo.src, i, event)
-                                "
-                            >
-                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
-                            </div>
-                        </nav>
-                    </div>
-
-                    <div class="menu">
-                        <div>
-                            <h4>Modele 9 Setup Security</h4>
-                        </div>
-                        <nav class="dropdown">
-                            <div
-                                :index="i"
-                                v-for="(allVideo, i) in allVideos"
-                                @click="
-                                    event =>
-                                        changeVideoSrc(allVideo.src, i, event)
-                                "
-                            >
-                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
+                                <span>{{ `${i + 1}. ${allVideo.title}` }}</span>
                             </div>
                         </nav>
                     </div>
@@ -196,6 +57,7 @@
 
 <script>
 import { cloneWithoutLoc } from '@babel/types';
+import { mapState } from 'vuex';
 
 export default {
     components: {},
@@ -207,6 +69,7 @@ export default {
     data() {
         return {
             videoSrc: null,
+            videoTitle: null,
             musicIndex: 0,
             isClicked: false,
             allVideos: [
@@ -253,15 +116,29 @@ export default {
     computed: {
         title() {
             return 'Product Videos';
-        }
+        },
+        ...mapState({
+            videoSubCategories: state =>
+                state.website.videoSubCategories
+        })
     },
-    mounted() {
-        this.videoSrc = this.allVideos[this.musicIndex].src;
+    async mounted() {
+        await this.$store.dispatch(
+            'website/getVideoSubCategoryBySlug', {slug:'security-solutions'}
+        ).then(data => {
+            this.videoSrc = this.videoSubCategories[0].tutorial_videos[this.musicIndex].url;
+            this.videoTitle = this.videoSubCategories[0].tutorial_videos[this.musicIndex].title;
+
+        });
     },
     methods: {
-        async changeVideoSrc(src, i, event) {
+        async changeVideoSrc(src) {
             this.videoSrc = src;
-            let allLiTags = event.target.tagName;
+            //let allLiTags = event.target.tagName;
+        },
+
+        async changeVideoTitle(title) {
+            this.videoTitle = title;
         },
 
         collapsible() {
