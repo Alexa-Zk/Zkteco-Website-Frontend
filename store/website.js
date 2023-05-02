@@ -33,7 +33,8 @@ export const state = () => ({
     categoryAndSubCategories: null,
     solutionSub: null,
     solutionSubTotal: 0,
-    solutionTotal: 0
+    solutionTotal: 0,
+    videoSubCategories: null
 });
 
 export const mutations = {
@@ -88,6 +89,10 @@ export const mutations = {
     // setProductCategories(state, payload) {
     //     state.productCategories = payload;
     // },
+
+    setVideoSubCategories(state, payload) {
+        state.videoSubCategories = payload;
+    },
 
     setSubProductCategories(state, payload) {
         state.subProductCategories = payload;
@@ -574,6 +579,24 @@ export const actions = {
         )
             .then(response => {
                 commit('setSolutionCategoryAndSubCategories', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    // this fetches all the sub categories of a particular video using slug as the parameter
+    async getVideoSubCategoryBySlug({ commit }, payload) {
+        let params = {
+            'tutorial_video_category.slug': payload.slug
+        };
+        commit('setLoading', true);
+        const reponse = await Repository.get(
+            `${subBaseUrl}/tutorial-video-sub-categories?${serializeQuery(params)}`
+        )
+            .then(response => {
+                commit('setVideoSubCategories', response.data);
                 commit('setLoading', false);
                 return response.data;
             })
