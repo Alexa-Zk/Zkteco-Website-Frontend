@@ -16,7 +16,7 @@
                 <div class="container">
                     <div class="logo">
                         <img
-                                data-src="/img/software/zkbiocv-security.png"
+                                data-src="/img/software/ZKBioCVSecurity.png"
                                 class="lazyload"
                                 alt=""
                             />
@@ -52,7 +52,14 @@
                                         download(
                                             ZKAccess35.download
                                         ) 
-                                    ">Download</button>
+                                    ">Download(V5.0.0)</button>
+
+                                    <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            ZKBioCVSecurityV531.download
+                                        ) 
+                                    ">Download(V5.3.1)</button>
                             </div>
 
                         </div>
@@ -365,6 +372,10 @@ export default {
                     text: 'Software'
                 }
             ],
+            ZKBioCVSecurityV531:{
+                manual:"https://storage.googleapis.com/zkteco_website_bucket/ZK_Bio_Security_v5000_user_manual_8302bd30d7/ZK_Bio_Security_v5000_user_manual_8302bd30d7.pdf",
+                download: "https://zkteco-india-official-website.s3.ap-south-1.amazonaws.com/files/20230427/India_ZKBio%20CVSecurity%205.3.1_R_x64.rar",
+            },
             ZKBioSecurityV5000:{
                 manual:"https://storage.googleapis.com/zkteco_website_bucket/ZK_Bio_Security_v5000_user_manual_8302bd30d7/ZK_Bio_Security_v5000_user_manual_8302bd30d7.pdf",
                 download: "https://zkteco.co.za/softwarenew/standalone/V5000_4.1.1_R_2021-11-04_x64.zip",
