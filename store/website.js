@@ -717,8 +717,6 @@ export const actions = {
         const subProduct = await Repository.get(subProductURL);
         const subProductCount = await Repository.get(subProductCountURL);
 
-        console.log('subProduct.data == ', subProduct.data);
-
         commit('setSubProductCategories', subProduct.data);
         commit('setTotalSingleProductCategories', subProductCount.data);
         commit('setLoading', false);
