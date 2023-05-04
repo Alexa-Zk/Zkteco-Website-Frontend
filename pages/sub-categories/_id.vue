@@ -34,7 +34,6 @@ import { mapState } from 'vuex';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import ShopWidget from '~/components/partials/shop/modules/website/ShopWidget';
 import LayoutShopSidebarSub from '~/components/partials/shop/website/LayoutShopSidebarSub';
-//LayoutShopSidebarSub.vue
 
 export default {
     components: {
@@ -68,13 +67,6 @@ export default {
                 state.website.totalSingleProductCategories,
             loading: state => state.website.loading
         })
-
-        // title() {
-        //     return this.$route.params.id
-        //         .split('-')
-        //         .join(' ')
-        //         .toUpperCase();
-        // }
     },
 
     async asyncData({ store, params }) {
@@ -85,14 +77,8 @@ export default {
             perPage: 0
         };
 
-        console.log(' pay 11 ', payload);
         try {
             await store.dispatch('website/getSubProductCategories', payload);
-
-            // await store.dispatch('website/getTotalSubCategories', payload.slug);
-            // return {
-            //     blogDetails
-            // };
         } catch (e) {}
     },
     head() {
