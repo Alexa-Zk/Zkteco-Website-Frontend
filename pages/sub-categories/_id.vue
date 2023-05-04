@@ -84,6 +84,8 @@ export default {
             sort_by: 'created_at:desc',
             perPage: 0
         };
+
+        console.log(' pay 11 ', payload);
         try {
             await store.dispatch('website/getSubProductCategories', payload);
 
