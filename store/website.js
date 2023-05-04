@@ -591,10 +591,12 @@ export const actions = {
         let params = {
             'tutorial_video_category.slug': payload.slug
         };
+        let url = `${subBaseUrl}/tutorial-video-sub-categories?${serializeQuery(
+            params
+        )}`;
+        console.log(' ---url--- ', url);
         commit('setLoading', true);
-        const reponse = await Repository.get(
-            `${subBaseUrl}/tutorial-video-sub-categories?${serializeQuery(params)}`
-        )
+        const reponse = await Repository.get(url)
             .then(response => {
                 commit('setVideoSubCategories', response.data);
                 commit('setLoading', false);
@@ -714,6 +716,8 @@ export const actions = {
 
         const subProduct = await Repository.get(subProductURL);
         const subProductCount = await Repository.get(subProductCountURL);
+
+        console.log('subProduct.data == ', subProduct.data);
 
         commit('setSubProductCategories', subProduct.data);
         commit('setTotalSingleProductCategories', subProductCount.data);
