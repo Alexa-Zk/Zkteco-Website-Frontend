@@ -4,7 +4,7 @@
             <section class="video-wrapper">
                 <section class="video">
                     <header>
-                        <h3>{{videoTitle}}</h3>
+                        <h3>How to Add admin to Device on ZKBioSecurity</h3>
                     </header>
                     <div>
                         <iframe
@@ -30,22 +30,236 @@
                 <header class="menu-header">
                     <h3>Contents</h3>
                 </header>
-                <section class="menu-list" @click="collapsible">
+                <section class="menu-list">
                     <div class="menu" v-for="(video, i) in videoSubCategories">
                         <header>
-                            <h4>{{video.name}}</h4>
+                            <div class="content">
+                                <h4>{{ video.name }}</h4>
+                            </div>
+                            <div class="icon">
+                                <i
+                                    aria-hidden="true"
+                                    class="mdi mdi-chevron-right"
+                                ></i>
+                            </div>
+                        </header>
+
+                        <!--nav class="dropdown">
+                            <div
+                                :index="i"
+                                v-for="(allVideo, i) in video.tutorial_videos"
+                                @click="
+                                    changeVideoSrc(allVideo.url),
+                                        changeVideoTitle(allVideo.title)
+                                "
+                            >
+                                <span>{{ `${i + 1}. ${allVideo.title}` }}</span>
+                            </div>
+                        </nav-->
+                    </div>
+                    <div class="menu">
+                        <header>
+                            <div class="content">
+                                <h4>Modele 1 Setup Security</h4>
+                            </div>
+
+                            <div class="icon">
+                                <i
+                                    aria-hidden="true"
+                                    class="mdi mdi-chevron-right"
+                                ></i>
+                            </div>
                         </header>
 
                         <nav class="dropdown">
                             <div
                                 :index="i"
-                                v-for="(allVideo, i) in video.tutorial_videos"
+                                v-for="(allVideo, i) in allVideos"
                                 @click="
-                                        changeVideoSrc(allVideo.url),
-                                        changeVideoTitle(allVideo.title)
+                                    event =>
+                                        changeVideoSrc(allVideo.src, i, event)
                                 "
                             >
-                                <span>{{ `${i + 1}. ${allVideo.title}` }}</span>
+                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="menu">
+                        <header>
+                            <div class="content">
+                                <h4>Time Switch on ZKTeco Linux Device</h4>
+                            </div>
+                            <div class="icon">
+                                <i
+                                    aria-hidden="true"
+                                    class="mdi mdi-chevron-right"
+                                ></i>
+                            </div>
+                        </header>
+                        <nav class="dropdown">
+                            <div
+                                :index="i"
+                                v-for="(allVideo, i) in allVideos"
+                                @click="
+                                    event =>
+                                        changeVideoSrc(allVideo.src, i, event)
+                                "
+                            >
+                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="menu">
+                        <header>
+                            <div class="content">
+                                <h4>Time Attendance and Access Control</h4>
+                            </div>
+                            <div class="icon">
+                                <i
+                                    aria-hidden="true"
+                                    class="mdi mdi-chevron-right"
+                                ></i>
+                            </div>
+                        </header>
+                        <nav class="dropdown">
+                            <div
+                                :index="i"
+                                v-for="(allVideo, i) in allVideos"
+                                @click="
+                                    event =>
+                                        changeVideoSrc(allVideo.src, i, event)
+                                "
+                            >
+                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="menu">
+                        <header>
+                            <div class="content">
+                                <h4>Modele 4 Setup Security</h4>
+                            </div>
+                            <div class="icon">
+                                <i
+                                    aria-hidden="true"
+                                    class="mdi mdi-chevron-right"
+                                ></i>
+                            </div>
+                        </header>
+                        <nav class="dropdown">
+                            <div
+                                :index="i"
+                                v-for="(allVideo, i) in allVideos"
+                                @click="
+                                    event =>
+                                        changeVideoSrc(allVideo.src, i, event)
+                                "
+                            >
+                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="menu">
+                        <header>
+                            <div class="content">
+                                <h4>Master Slave Configuration F18 & FR1200</h4>
+                            </div>
+                            <div class="icon">
+                                <i
+                                    aria-hidden="true"
+                                    class="mdi mdi-chevron-right"
+                                ></i>
+                            </div>
+                        </header>
+                        <nav class="dropdown">
+                            <div
+                                :index="i"
+                                v-for="(allVideo, i) in allVideos"
+                                @click="
+                                    event =>
+                                        changeVideoSrc(allVideo.src, i, event)
+                                "
+                            >
+                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="menu">
+                        <header>
+                            <div class="content">
+                                <h4>Modele 6 Setup Security</h4>
+                            </div>
+                            <div class="icon">
+                                <i
+                                    aria-hidden="true"
+                                    class="mdi mdi-chevron-right"
+                                ></i>
+                            </div>
+                        </header>
+                        <nav class="dropdown">
+                            <div
+                                :index="i"
+                                v-for="(allVideo, i) in allVideos"
+                                @click="
+                                    event =>
+                                        changeVideoSrc(allVideo.src, i, event)
+                                "
+                            >
+                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
+                            </div>
+                        </nav>
+                    </div>
+
+                    <div class="menu">
+                        <header>
+                            <div class="content">
+                                <h4>
+                                    How to Register New Users to ZKTeco G3Pro
+                                </h4>
+                            </div>
+                            <div class="icon">
+                                <i
+                                    aria-hidden="true"
+                                    class="mdi mdi-chevron-right"
+                                ></i>
+                            </div>
+                        </header>
+                        <nav class="dropdown">
+                            <div
+                                :index="i"
+                                v-for="(allVideo, i) in allVideos"
+                                @click="
+                                    event =>
+                                        changeVideoSrc(allVideo.src, i, event)
+                                "
+                            >
+                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
+                            </div>
+                        </nav>
+                    </div>
+
+                    <div class="menu">
+                        <header>
+                            <div class="content">
+                                <h4>ZKTeco Biotime 8.5 Installation</h4>
+                            </div>
+                            <div class="icon">
+                                <i
+                                    aria-hidden="true"
+                                    class="mdi mdi-chevron-right"
+                                ></i>
+                            </div>
+                        </header>
+                        <nav class="dropdown">
+                            <div
+                                :index="i"
+                                v-for="(allVideo, i) in allVideos"
+                                @click="
+                                    event =>
+                                        changeVideoSrc(allVideo.src, i, event)
+                                "
+                            >
+                                <span>{{ `${i + 1}. ${allVideo.name}` }}</span>
                             </div>
                         </nav>
                     </div>
@@ -56,7 +270,6 @@
 </template>
 
 <script>
-import { cloneWithoutLoc } from '@babel/types';
 import { mapState } from 'vuex';
 
 export default {
@@ -72,6 +285,7 @@ export default {
             videoTitle: null,
             musicIndex: 0,
             isClicked: false,
+            videoSubCategories: null,
             allVideos: [
                 {
                     name: 'How to Add admin to Device on ZKBioSecurity',
@@ -116,39 +330,45 @@ export default {
     computed: {
         title() {
             return 'Product Videos';
-        },
-        ...mapState({
-            videoSubCategories: state =>
-                state.website.videoSubCategories
-        })
+        }
     },
+    ...mapState({
+        videoSubCategories: state => state.website.videoSubCategories
+    }),
     async mounted() {
-        await this.$store.dispatch(
-            'website/getVideoSubCategoryBySlug', {slug:'security-solutions'}
-        ).then(data => {
-            this.videoSrc = this.videoSubCategories[0].tutorial_videos[this.musicIndex].url;
-            this.videoTitle = this.videoSubCategories[0].tutorial_videos[this.musicIndex].title;
+        let menu = document.getElementsByClassName('menu');
+        for (let i = 0; i < menu.length; i++) {
+            menu[i].addEventListener('click', e => {
+                let dropdown = menu[i].querySelector('.dropdown');
+                let rotate = menu[i].querySelector('.mdi');
+                dropdown.classList.toggle('active');
+                rotate.classList.toggle('rotate');
+            });
+        }
 
-        });
+        this.videoSrc = this.allVideos[this.musicIndex].src;
+
+        // await this.$store
+        //     .dispatch('website/getVideoSubCategoryBySlug', {
+        //         slug: 'security-solutions'
+        //     })
+        //     .then(data => {
+        //         this.videoSrc = this.videoSubCategories[0].tutorial_videos[
+        //             this.musicIndex
+        //         ].url;
+        //         this.videoTitle = this.videoSubCategories[0].tutorial_videos[c
+        //             this.musicIndex
+        //         ].title;
+        //     });
     },
     methods: {
-        async changeVideoSrc(src) {
-            this.videoSrc = src;
-            //let allLiTags = event.target.tagName;
-        },
-
         async changeVideoTitle(title) {
             this.videoTitle = title;
         },
 
-        collapsible() {
-            let menu = document.getElementsByClassName('menu');
-
-            for (let i = 0; i < menu.length; i++) {
-                menu[i].addEventListener('click', () => {
-                    let tag = menu[i].children[1].classList.toggle('active');
-                });
-            }
+        async changeVideoSrc(src, i, event) {
+            this.videoSrc = src;
+            let allLiTags = event.target.tagName;
         }
     }
 };
