@@ -75,6 +75,8 @@ export default {
                 'website/getSubProductCategories',
                 payload
             );
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     },
     computed: {
