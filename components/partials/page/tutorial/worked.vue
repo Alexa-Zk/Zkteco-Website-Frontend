@@ -4,7 +4,7 @@
             <section class="video-wrapper">
                 <section class="video">
                     <header>
-                        <h3>{{ videoTitle }}</h3>
+                        <h3>How to Add admin to Device on ZKBioSecurity</h3>
                     </header>
                     <div>
                         <iframe
@@ -30,24 +30,30 @@
                 <header class="menu-header">
                     <h3>Contents</h3>
                 </header>
-                <section class="menu-list" @click="collapsible">
-                    <div class="menu" v-for="(video, i) in videoSubCategories">
-                        <header>
-                            <h4>{{ video.name }}</h4>
-                        </header>
+                <section class="menu-list">
+                    <div class="menu">
+                        <div class="menu-topic" v-for="list in playList">
+                            <header>
+                                <div class="content">
+                                    <h4>{{ list.name }}</h4>
+                                </div>
+                                <div class="icon">
+                                    <i
+                                        aria-hidden="true"
+                                        class="mdi mdi-chevron-right"
+                                    ></i>
+                                </div>
+                            </header>
 
-                        <nav class="dropdown">
-                            <div
-                                :index="i"
-                                v-for="(allVideo, i) in video.tutorial_videos"
-                                @click="
-                                    changeVideoSrc(allVideo.url),
-                                        changeVideoTitle(allVideo.title)
-                                "
-                            >
-                                <span>{{ `${i + 1}. ${allVideo.title}` }}</span>
-                            </div>
-                        </nav>
+                            <nav class="dropdown">
+                                <Topic
+                                    v-for="(play, i) in list.tutorial_videos"
+                                    :play="play"
+                                    :key="i"
+                                    :count="i"
+                                />
+                            </nav>
+                        </div>
                     </div>
                 </section>
             </article>
@@ -56,11 +62,13 @@
 </template>
 
 <script>
-import { cloneWithoutLoc } from '@babel/types';
 import { mapState } from 'vuex';
+import Topic from '~/components/partials/page/tutorial/Topic';
 
 export default {
-    components: {},
+    components: {
+        Topic
+    },
 
     transition() {
         return 'fadeIn';
@@ -72,6 +80,8 @@ export default {
             videoTitle: null,
             musicIndex: 0,
             isClicked: false,
+            videoSubCategories: null,
+            playList: [],
             allVideos: [
                 {
                     name: 'How to Add admin to Device on ZKBioSecurity',
@@ -109,6 +119,60 @@ export default {
                     video: 'PSp60epZrvk',
                     id: 'vid_6'
                 }
+            ],
+            allPlayList: [
+                {
+                    topic: 'ZKBioSecurity',
+                    playlist: [
+                        {
+                            title:
+                                'How to Add admin to Device on ZKBioSecurity',
+                            src: 'https://www.youtube.com/embed/QGgz3QlaBjk'
+                        },
+                        {
+                            title:
+                                'How to Set Personnel Valid Times on ZKBioSecurity',
+                            src: 'https://www.youtube.com/embed/qIxde84wxj8'
+                        },
+                        {
+                            title:
+                                'How to Setup Security Parameters on ZKBioSecurity',
+                            src: 'https://www.youtube.com/embed/vqLn-g7scXE'
+                        }
+                    ]
+                },
+
+                {
+                    topic: 'Introduction',
+                    playlist: [
+                        {
+                            title: 'Computer Monitor Shape',
+                            src: 'https://www.youtube.com/embed/QGgz3QlaBjk'
+                        },
+                        {
+                            title: 'Computer Monitor Shape',
+                            src: 'https://www.youtube.com/embed/szH-m_W_8ss'
+                        }
+                    ]
+                },
+
+                {
+                    topic: 'Application',
+                    playlist: [
+                        {
+                            title: 'Computer Monitor Shape',
+                            src: 'https://www.youtube.com/embed/PSp60epZrvk'
+                        },
+                        {
+                            title: 'Computer Monitor Shape',
+                            src: 'https://www.youtube.com/embed/PSp60epZrvk'
+                        },
+                        {
+                            title: 'Computer Monitor Shape',
+                            src: 'https://www.youtube.com/embed/PSp60epZrvk'
+                        }
+                    ]
+                }
             ]
         };
     },
@@ -116,43 +180,80 @@ export default {
     computed: {
         title() {
             return 'Product Videos';
-        },
-        ...mapState({
-            videoSubCategories: state => state.website.videoSubCategories
-        })
+        }
     },
+    ...mapState({
+        videoSubCategories: state => state.website.videoSubCategories
+    }),
     async mounted() {
+        let menu = document.getElementsByClassName('menu');
+        //let menu = window.document.querySelectorAll('.menu');
+
+        // console.log(' click 1 -- ', menu);
+        // for (let i = 0; i < menu.length; i++) {
+        //     menu[i].addEventListener('click', e => {
+        //         console.log(` menu(${i}) -- `, menu[i]);
+        //     });
+        // }
+        for (let i = 0; i < menu.length; i++) {
+            menu[i].addEventListener('click', e => {
+                console.log(` menu(${i}) -- `, menu[i]);
+                let dropdown = menu[i].querySelector('.dropdown');
+                let rotate = menu[i].querySelector('.mdi');
+                dropdown.classList.toggle('active');
+                rotate.classList.toggle('rotate');
+            });
+        }
+
+        //this.videoSrc = this.allVideos[this.musicIndex].src;
+
+        // await this.$store
+        //     .dispatch('website/getVideoSubCategoryBySlug', {
+        //         slug: 'security-solutions'
+        //     })
+        //     .then(data => {
+        //         console.log('data::-::', data);
+        //     });
+
+        let record = [{}];
+
         await this.$store
             .dispatch('website/getVideoSubCategoryBySlug', {
                 slug: 'security-solutions'
             })
             .then(data => {
-                this.videoSrc = this.videoSubCategories[0].tutorial_videos[
-                    this.musicIndex
-                ].url;
-                this.videoTitle = this.videoSubCategories[0].tutorial_videos[
-                    this.musicIndex
-                ].title;
+                this.playList = data;
             });
+
+        console.log('record', this.playList);
+
+        // if (record) {
+        //     this.playList = record.map(e => {
+        //         return {
+        //             topic: e.name,
+        //             playlist:
+        //                 e.tutorial_videos != undefined
+        //                     ? e.tutorial_videos.map(x => {
+        //                           return {
+        //                               title: x.title,
+        //                               src: x.url
+        //                           };
+        //                       })
+        //                     : null
+        //         };
+        //     });
+
+        // }
     },
     methods: {
-        async changeVideoSrc(src) {
-            this.videoSrc = src;
-            //let allLiTags = event.target.tagName;
-        },
-
         async changeVideoTitle(title) {
             this.videoTitle = title;
         },
 
-        collapsible() {
-            let menu = document.getElementsByClassName('menu');
-
-            for (let i = 0; i < menu.length; i++) {
-                menu[i].addEventListener('click', () => {
-                    let tag = menu[i].children[1].classList.toggle('active');
-                });
-            }
+        async changeVideoSrc(src, i, event) {
+            console.log(' SRC ', src, ' C- ', i, ' - ', event);
+            this.videoSrc = src;
+            let allLiTags = event.target.tagName;
         }
     }
 };
@@ -270,6 +371,10 @@ export default {
                         div:hover {
                             background: #dcd8d8;
                         }
+                    }
+
+                    .menu-topic {
+                        border-bottom: 1px solid #dcd8d8;
                     }
 
                     .active {
