@@ -195,12 +195,12 @@
                         <div class="contentHead">
                             <p>
                             <h4> Update Alert </h4>
-                            Version 8.0.4 now available.
+                            Version 8 now available.
                             </p>
                         </div>
                         <div class="wrapper">
                             <p>
-                                <b>BioTime 8.0.4 :</b> a powerful web-based time and attendance management software 
+                                <b>BioTime 8 :</b> a powerful web-based time and attendance management software 
                                 that provides a stable connection to ZKTeco’s standalone push communication devices by 
                                 Ethernet/Wi-Fi/GPRS/3G and working as a private cloud to offer employee self-service by 
                                 mobile application and web browser. BioTime 8.0 comes with an intuitive 
@@ -222,7 +222,7 @@
                                         download(
                                             BioTime04.download
                                         )
-                                    "> Try Free</button>
+                                    "> Download(V8.0.8)</button>
                                 
                             </div>
 
