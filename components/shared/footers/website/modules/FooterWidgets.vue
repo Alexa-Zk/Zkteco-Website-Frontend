@@ -118,6 +118,9 @@
                         >Download Center</nuxt-link
                     >
                 </li>
+                <li>
+                    <nuxt-link to="/tutorial">Knowledge Base</nuxt-link>
+                </li>
                 <!--li>
                     <nuxt-link to="/support/tickets">Support Tickets</nuxt-link>
                 </li-->

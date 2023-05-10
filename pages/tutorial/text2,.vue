@@ -31,36 +31,35 @@
                     <h3>Contents</h3>
                 </header>
                 <section class="menu-list">
-                    <div class="menu" v-for="(video, i) in videoSubCategories">
-                        <div class="menu2">
-                            <header>
-                                <div class="content">
-                                    <h4>{{ video.name }}</h4>
-                                </div>
-                                <div class="icon">
-                                    <i
-                                        aria-hidden="true"
-                                        class="mdi mdi-chevron-right"
-                                    ></i>
-                                </div>
-                            </header>
+                    <div
+                        @click="collapsible"
+                        class="menu"
+                        v-for="(video, i) in videoSubCategories"
+                    >
+                        <header>
+                            <div class="content">
+                                <h4>{{ video.name }}</h4>
+                            </div>
+                            <div class="icon">
+                                <i
+                                    aria-hidden="true"
+                                    class="mdi mdi-chevron-right"
+                                ></i>
+                            </div>
+                        </header>
 
-                            <nav class="dropdown">
-                                <div
-                                    :index="i"
-                                    v-for="(allVideo,
-                                    i) in video.tutorial_videos"
-                                    @click="
-                                        changeVideoSrc(allVideo.url),
-                                            changeVideoTitle(allVideo.title)
-                                    "
-                                >
-                                    <span>{{
-                                        `${i + 1}. ${allVideo.title}`
-                                    }}</span>
-                                </div>
-                            </nav>
-                        </div>
+                        <nav class="dropdown">
+                            <div
+                                :index="i"
+                                v-for="(allVideo, i) in video.tutorial_videos"
+                                @click="
+                                    changeVideoSrc(allVideo.url),
+                                        changeVideoTitle(allVideo.title)
+                                "
+                            >
+                                <span>{{ `${i + 1}. ${allVideo.title}` }}</span>
+                            </div>
+                        </nav>
                     </div>
                 </section>
             </article>
@@ -135,14 +134,7 @@ export default {
         })
     },
     async mounted() {
-        console.log('mounted');
-        let menu2 = document.getElementsByClassName('menu2');
-        let menu = this.$el.querySelectorAll('.menu');
-        let menuList = this.$el.querySelectorAll('.menu-list');
-
-        console.log('menu', menu);
-        console.log('menu2', menu2);
-        console.log('menuList', menuList);
+        console.log('Sanwo');
         // let menu = this.$el.querySelectorAll('.menu');
         // //let menu = document.getElementsByClassName('menu');
 
@@ -182,24 +174,25 @@ export default {
         },
 
         collapsible() {
-            let menu2 = document.getElementsByClassName('menu2');
+            let menu = document.getElementsByClassName('menu');
 
-            console.log(' -SANWO  ', menu2);
+            // for (let i = 0; i < menu.length; i++) {
+            //     menu[i].addEventListener('click', () => {
+            //         let tag = menu[i].children[1].classList.toggle('active');
+            //     });
+            // }
 
-            for (let i = 0; i < menu2.length; i++) {
-                let inner = menu2[i];
-                //console.log(' -inner  ', inner);
-                inner.addEventListener('click', () => {
-                    console.log(' -inner  ', inner);
-                    let dropdown = inner.querySelector('.dropdown');
-                    let rotate = inner.querySelector('.mdi');
+            for (let i = 0; i < menu.length; i++) {
+                menu[i].addEventListener('click', () => {
+                    console.log(i, ' -Menu- ', menu[i]);
+
+                    //menu[i].children[1].classList.toggle('active');
+
+                    let dropdown = menu[i].querySelector('.dropdown');
+                    let rotate = menu[i].querySelector('.mdi');
                     dropdown.classList.toggle('active');
                     rotate.classList.toggle('rotate');
                 });
-                for (let index = 0; index < inner.length; index++) {
-                    console.log(' -::2::  ', inner, ' - ', inner[index]);
-                    const element = inner[index];
-                }
             }
         }
     }
