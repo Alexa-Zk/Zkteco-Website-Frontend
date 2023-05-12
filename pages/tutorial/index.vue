@@ -30,10 +30,10 @@
                 <header class="menu-header">
                     <h3>Contents</h3>
                 </header>
-                <section class="menu-list" @click="collapsible">
-                    <div class="menu" v-for="(video, i) in videoSubCategories">
+                <section class="menu-list">
+                    <div class="menu"  v-for="(video, i) in videoSubCategories">
                         <header>
-                            <h4>{{ video.name }}</h4>
+                            <h4  @click="collapsible(i)">{{ video.name }}</h4>
                         </header>
 
                         <nav class="dropdown">
@@ -122,6 +122,7 @@ export default {
         })
     },
     async mounted() {
+        
         await this.$store
             .dispatch('website/getVideoSubCategoryBySlug', {
                 slug: 'security-solutions'
@@ -145,14 +146,9 @@ export default {
             this.videoTitle = title;
         },
 
-        collapsible() {
+        collapsible(i) {
             let menu = document.getElementsByClassName('menu');
-
-            for (let i = 0; i < menu.length; i++) {
-                menu[i].addEventListener('click', () => {
-                    let tag = menu[i].children[1].classList.toggle('active');
-                });
-            }
+            menu[i+1].children[1].classList.toggle('active');
         }
     }
 };
