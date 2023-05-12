@@ -10,7 +10,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import Video from '~/components/partials/page/test/Video';
+import Video from '~/components/partials/page/tutorial/Video';
 
 export default {
     components: { Video },

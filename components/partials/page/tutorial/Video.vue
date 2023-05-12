@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import PlayList from '~/components/partials/page/test/PlayList';
+import PlayList from '~/components/partials/page/tutorial/PlayList';
 export default {
     name: 'Video',
     components: { PlayList },
