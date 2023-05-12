@@ -594,14 +594,11 @@ export const actions = {
         let url = `${subBaseUrl}/tutorial-video-sub-categories?${serializeQuery(
             params
         )}`;
-        console.log(' ---url--- ', url);
         commit('setLoading', true);
         const reponse = await Repository.get(url)
             .then(response => {
-                console.log(' Video ', response.data);
                 commit('setVideoSubCategories', response.data);
                 commit('setLoading', false);
-                return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
