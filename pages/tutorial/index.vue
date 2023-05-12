@@ -30,37 +30,24 @@
                 <header class="menu-header">
                     <h3>Contents</h3>
                 </header>
-                <section class="menu-list">
+                <section class="menu-list" @click="collapsible">
                     <div class="menu" v-for="(video, i) in videoSubCategories">
-                        <div class="menu2">
-                            <header>
-                                <div class="content">
-                                    <h4>{{ video.name }}</h4>
-                                </div>
-                                <div class="icon">
-                                    <i
-                                        aria-hidden="true"
-                                        class="mdi mdi-chevron-right"
-                                    ></i>
-                                </div>
-                            </header>
+                        <header>
+                            <h4>{{ video.name }}</h4>
+                        </header>
 
-                            <nav class="dropdown">
-                                <div
-                                    :index="i"
-                                    v-for="(allVideo,
-                                    i) in video.tutorial_videos"
-                                    @click="
-                                        changeVideoSrc(allVideo.url),
-                                            changeVideoTitle(allVideo.title)
-                                    "
-                                >
-                                    <span>{{
-                                        `${i + 1}. ${allVideo.title}`
-                                    }}</span>
-                                </div>
-                            </nav>
-                        </div>
+                        <nav class="dropdown">
+                            <div
+                                :index="i"
+                                v-for="(allVideo, i) in video.tutorial_videos"
+                                @click="
+                                    changeVideoSrc(allVideo.url),
+                                        changeVideoTitle(allVideo.title)
+                                "
+                            >
+                                <span>{{ `${i + 1}. ${allVideo.title}` }}</span>
+                            </div>
+                        </nav>
                     </div>
                 </section>
             </article>
@@ -135,29 +122,6 @@ export default {
         })
     },
     async mounted() {
-        console.log('mounted');
-        let menu2 = document.getElementsByClassName('menu2');
-        let menu = this.$el.querySelectorAll('.menu');
-        let menuList = this.$el.querySelectorAll('.menu-list');
-
-        console.log('menu', menu);
-        console.log('menu2', menu2);
-        console.log('menuList', menuList);
-        // let menu = this.$el.querySelectorAll('.menu');
-        // //let menu = document.getElementsByClassName('menu');
-
-        // for (let i = 0; i < menu.length; i++) {
-        //     menu[i].addEventListener('click', () => {
-        //         console.log(i, ' -K- ', menu[i]);
-        //         //menu[i].children[1].classList.toggle('active');
-
-        //         let dropdown = menu[i].querySelector('.dropdown');
-        //         let rotate = menu[i].querySelector('.mdi');
-        //         dropdown.classList.toggle('active');
-        //         rotate.classList.toggle('rotate');
-        //     });
-        // }
-
         await this.$store
             .dispatch('website/getVideoSubCategoryBySlug', {
                 slug: 'security-solutions'
@@ -182,24 +146,12 @@ export default {
         },
 
         collapsible() {
-            let menu2 = document.getElementsByClassName('menu2');
+            let menu = document.getElementsByClassName('menu');
 
-            console.log(' -SANWO  ', menu2);
-
-            for (let i = 0; i < menu2.length; i++) {
-                let inner = menu2[i];
-                //console.log(' -inner  ', inner);
-                inner.addEventListener('click', () => {
-                    console.log(' -inner  ', inner);
-                    let dropdown = inner.querySelector('.dropdown');
-                    let rotate = inner.querySelector('.mdi');
-                    dropdown.classList.toggle('active');
-                    rotate.classList.toggle('rotate');
+            for (let i = 0; i < menu.length; i++) {
+                menu[i].addEventListener('click', () => {
+                    let tag = menu[i].children[1].classList.toggle('active');
                 });
-                for (let index = 0; index < inner.length; index++) {
-                    console.log(' -::2::  ', inner, ' - ', inner[index]);
-                    const element = inner[index];
-                }
             }
         }
     }
@@ -320,10 +272,6 @@ export default {
                         }
                     }
 
-                    .menu-topic {
-                        border-bottom: 1px solid #dcd8d8;
-                    }
-
                     .active {
                         display: flex;
                         flex-direction: column;
@@ -338,135 +286,4 @@ export default {
         }
     }
 }
-
-/*
-.tutorial {
-    //background: #999;
-    padding: 5rem 0;
-    .wrapper {
-        margin: 0 auto;
-        max-width: 1200px;
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-        gap: 1.8rem;
-
-        @media (max-width: 920px) {
-            display: grid;
-            grid-template-columns: 1fr;
-        }
-
-        .video-wrapper {
-            display: flex;
-            flex-direction: column;
-
-            .video {
-                padding: 3rem 2rem;
-                border-top: 1px solid #dcd8d8;
-                border-left: 1px solid #dcd8d8;
-                border-right: 1px solid #dcd8d8;
-                border-radius: 0.5rem 0.5rem 0 0;
-                header {
-                    h3 {
-                        font-size: 2rem;
-                        font-weight: normal;
-                    }
-                }
-            }
-
-            footer {
-                border: 1px solid #dcd8d8;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
-
-                div:not(:last-child) {
-                    border-right: 1px solid #dcd8d8;
-                }
-                div {
-                    text-align: center;
-
-                    div {
-                        padding: 2rem;
-                    }
-                }
-            }
-        }
-
-        .menu-wrapper {
-            border-radius: 3px;
-            display: flex;
-            flex-direction: column;
-
-            .menu-header {
-                padding: 2rem 0 1rem 2rem;
-                border: 1px solid #dcd8d8;
-                border-radius: 0.5rem 0.5rem 0rem 0rem;
-
-                h3 {
-                    font-size: 2rem;
-                    font-weight: normal;
-                }
-            }
-            .menu-list {
-                border-left: 0.05rem solid #dcd8d8;
-                border-right: 0.05rem solid #dcd8d8;
-                display: flex;
-                flex-direction: column;
-                max-height: 565px;
-                overflow: auto;
-
-                .menu {
-                    border-bottom: 1px solid #dcd8d8;
-                    cursor: pointer;
-
-                    header {
-                        display: flex;
-                        justify-content: space-between;
-                        justify-items: center;
-                        align-items: center;
-
-                        .mdi-chevron-right {
-                            display: flex;
-                            font-size: 2.5rem;
-                        }
-
-                        .rotate {
-                            transform: rotate(90deg);
-                        }
-                    }
-
-                    h4 {
-                        padding: 2rem 0 1rem 2rem;
-                        font-size: 1.4rem;
-                        font-weight: normal;
-                        font-weight: bold;
-                    }
-
-                    .dropdown {
-                        display: none;
-                        div {
-                            padding: 1.3rem 3rem;
-                            border-top: 1px solid #dcd8d8;
-                        }
-                        div:hover {
-                            background: #dcd8d8;
-                        }
-                    }
-
-                    .active {
-                        display: flex;
-                        flex-direction: column;
-                        visibility: visible;
-                    }
-                }
-
-                &::-webkit-scrollbar {
-                    width: 0px;
-                }
-            }
-        }
-    }
-}
-
-*/
 </style>
