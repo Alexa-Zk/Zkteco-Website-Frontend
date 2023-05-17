@@ -74,21 +74,25 @@ export default {
     },
     created() {
         this.videoTitle =
-            this.videos[0].tutorial_videos[0].title != null ||
-            this.videos[0].tutorial_videos[0].title != undefined
+            this.videos[0].tutorial_videos.length <= 0
+                ? null
+                : this.videos[0].tutorial_videos[0].title != null
                 ? this.videos[0].tutorial_videos[0].title
                 : null;
 
         this.videoSrc =
-            this.videos[0].tutorial_videos[0].url != null ||
-            this.videos[0].tutorial_videos[0].url != undefined
+            this.videos[0].tutorial_videos.length <= 0
+                ? null
+                : this.videos[0].tutorial_videos[0].url != null
                 ? this.videos[0].tutorial_videos[0].url
                 : null;
     },
     methods: {
         async sendVideoToVideos(play) {
-            this.videoTitle = play.title;
-            this.videoSrc = play.url;
+            if (play != null || play != undefined) {
+                this.videoTitle = play.title;
+                this.videoSrc = play.url;
+            }
         }
     }
 };
