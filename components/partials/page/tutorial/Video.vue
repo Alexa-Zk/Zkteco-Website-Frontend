@@ -89,10 +89,8 @@ export default {
     },
     methods: {
         async sendVideoToVideos(play) {
-            if (play != null || play != undefined) {
-                this.videoTitle = play.title;
-                this.videoSrc = play.url;
-            }
+            this.videoTitle = play.title;
+            this.videoSrc = play.url;
         }
     }
 };
@@ -205,7 +203,7 @@ export default {
         font-weight: bold;
     }
 
-    .active {
+    .activeToggle {
         display: flex;
         flex-direction: column;
         visibility: visible;
