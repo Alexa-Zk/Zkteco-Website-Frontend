@@ -1,7 +1,7 @@
 <template>
     <nav class="dropdown">
         <div :index="i" v-for="(play, i) in playList" :key="i">
-            <span v-if="play" @click="sendPlayListToVideo(play)">{{
+            <span @click="sendPlayListToVideo(play)">{{
                 `${i + 1}. ${play.title}`
             }}</span>
         </div>
@@ -17,11 +17,12 @@ export default {
 
         for (let i = 0; i < playlist.length; i++) {
             playlist[i].addEventListener('click', () => {
-                const play = playlist[i];
-                let dropdown = play.querySelector('.dropdown');
-                let rotate = play.querySelector('.mdi');
-                dropdown.classList.add('active');
-                rotate.classList.add('rotate');
+                let dropdown = playlist[i].querySelector('.dropdown');
+                let rotate = playlist[i].querySelector('.mdi');
+                if (playlist[i].querySelector('.activeToggle') == null) {
+                    rotate.classList.toggle('rotate');
+                    dropdown.classList.toggle('activeToggle');
+                }
             });
         }
     },
