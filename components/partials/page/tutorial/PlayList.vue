@@ -17,11 +17,12 @@ export default {
 
         for (let i = 0; i < playlist.length; i++) {
             playlist[i].addEventListener('click', () => {
-                const play = playlist[i];
-                let dropdown = play.querySelector('.dropdown');
-                let rotate = play.querySelector('.mdi');
-                dropdown.classList.toggle('active');
-                rotate.classList.toggle('rotate');
+                let dropdown = playlist[i].querySelector('.dropdown');
+                let rotate = playlist[i].querySelector('.mdi');
+                if (playlist[i].querySelector('.activeToggle') == null) {
+                    rotate.classList.toggle('rotate');
+                    dropdown.classList.toggle('activeToggle');
+                }
             });
         }
     },

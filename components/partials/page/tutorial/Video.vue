@@ -74,14 +74,16 @@ export default {
     },
     created() {
         this.videoTitle =
-            this.videos[0].tutorial_videos[0].title != null ||
-            this.videos[0].tutorial_videos[0].title != undefined
+            this.videos[0].tutorial_videos.length <= 0
+                ? null
+                : this.videos[0].tutorial_videos[0].title != null
                 ? this.videos[0].tutorial_videos[0].title
                 : null;
 
         this.videoSrc =
-            this.videos[0].tutorial_videos[0].url != null ||
-            this.videos[0].tutorial_videos[0].url != undefined
+            this.videos[0].tutorial_videos.length <= 0
+                ? null
+                : this.videos[0].tutorial_videos[0].url != null
                 ? this.videos[0].tutorial_videos[0].url
                 : null;
     },
@@ -201,7 +203,7 @@ export default {
         font-weight: bold;
     }
 
-    .active {
+    .activeToggle {
         display: flex;
         flex-direction: column;
         visibility: visible;
