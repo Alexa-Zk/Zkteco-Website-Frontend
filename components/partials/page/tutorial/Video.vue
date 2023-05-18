@@ -36,8 +36,8 @@
                         v-for="(video, i) in videos"
                         :key="i"
                     >
-                        <header>
-                            <div class="content">
+                        <header @click="collapsible(i)">
+                            <div class="content" >
                                 <h4>{{ video.name }}</h4>
                             </div>
                             <div class="icon">
@@ -91,7 +91,13 @@ export default {
         async sendVideoToVideos(play) {
             this.videoTitle = play.title;
             this.videoSrc = play.url;
-        }
+        },
+        collapsible(i) {
+            let menu = document.getElementsByClassName('playlist');
+            let icon = menu[i].children[0].children[1];
+            menu[i].children[1].classList.toggle('activeToggle');
+            icon.classList.toggle('rotate');
+         }
     }
 };
 </script>
