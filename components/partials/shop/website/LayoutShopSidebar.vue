@@ -75,6 +75,7 @@ export default {
                 'website/getProductAndTotalCount',
                 params
             );
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     },
     computed: {
