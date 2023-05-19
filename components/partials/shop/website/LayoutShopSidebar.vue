@@ -66,6 +66,7 @@ export default {
             this.listView = !this.listView;
         },
         async handleChangePagination(value) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             const params = {
                 page: value * this.pageSize,
                 sort_by: 'created_at:desc',
@@ -75,7 +76,7 @@ export default {
                 'website/getProductAndTotalCount',
                 params
             );
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            console.log(' Sanwo Product ');
         }
     },
     computed: {
