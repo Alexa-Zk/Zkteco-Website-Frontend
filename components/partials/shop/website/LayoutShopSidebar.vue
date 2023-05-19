@@ -76,7 +76,6 @@ export default {
                 'website/getProductAndTotalCount',
                 params
             );
-            console.log(' Sanwo Product ');
         }
     },
     computed: {
