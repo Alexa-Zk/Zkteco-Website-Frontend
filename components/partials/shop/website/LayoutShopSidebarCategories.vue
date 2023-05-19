@@ -61,6 +61,7 @@ export default {
             this.listView = !this.listView;
         },
         async handleChangePagination(value) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             const page = parseInt(value) === 1 ? 1 : 1 + (value - 1) * 12;
             let nextStartPage = parseInt(page);
 
@@ -76,7 +77,6 @@ export default {
                 'website/getSingleProductCategories',
                 payload
             );
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     },
     computed: {

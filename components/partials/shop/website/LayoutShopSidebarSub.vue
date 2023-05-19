@@ -61,6 +61,7 @@ export default {
             this.listView = !this.listView;
         },
         async handleChangePagination(value) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             const slug = this.$route.params.id;
             const page = parseInt(value) === 1 ? 1 : 1 + (value - 1) * 12;
             let nextStartPage = parseInt(page);
@@ -75,8 +76,6 @@ export default {
                 'website/getSubProductCategories',
                 payload
             );
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     },
     computed: {
