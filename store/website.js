@@ -686,7 +686,6 @@ export const actions = {
     },
 
     async getSubProductCategories({ state, commit }, payload) {
-        commit('setLoading', true);
         let params = {
             _start:
                 payload.page === 0 ||
@@ -717,6 +716,7 @@ export const actions = {
         const subProductCount = await Repository.get(subProductCountURL);
 
         await Promise.all([subProduct, subProductCount]).then(value => {
+            commit('setLoading', true);
             commit('setSubProductCategories', value[0].data);
             commit('setTotalSingleProductCategories', value[1].data);
             commit('setLoading', false);
