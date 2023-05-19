@@ -72,11 +72,11 @@ export default {
                 perPage: this.pageSize
             };
 
-            console.log(payload);
             await this.$store.dispatch(
                 'website/getSingleProductCategories',
                 payload
             );
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     },
     computed: {
