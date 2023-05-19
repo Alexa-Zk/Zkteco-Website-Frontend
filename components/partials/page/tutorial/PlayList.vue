@@ -12,20 +12,6 @@
 export default {
     name: 'PlayList',
     props: ['playList'],
-    async mounted() {
-        let playlist = document.getElementsByClassName('playlist');
-
-        for (let i = 0; i < playlist.length; i++) {
-            playlist[i].addEventListener('click', () => {
-                let dropdown = playlist[i].querySelector('.dropdown');
-                let rotate = playlist[i].querySelector('.mdi');
-                if (playlist[i].querySelector('.activeToggle') == null) {
-                    rotate.classList.toggle('rotate');
-                    dropdown.classList.toggle('activeToggle');
-                }
-            });
-        }
-    },
     methods: {
         sendPlayListToVideo: function(play) {
             this.$emit('getVideoURLFromPlayList', play);
