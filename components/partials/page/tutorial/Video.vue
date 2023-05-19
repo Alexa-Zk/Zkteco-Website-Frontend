@@ -36,8 +36,8 @@
                         v-for="(video, i) in videos"
                         :key="i"
                     >
-                        <header>
-                            <div class="content">
+                        <header @click="collapsible(i)">
+                            <div class="content" >
                                 <h4>{{ video.name }}</h4>
                             </div>
                             <div class="icon">
@@ -74,14 +74,16 @@ export default {
     },
     created() {
         this.videoTitle =
-            this.videos[0].tutorial_videos[0].title != null ||
-            this.videos[0].tutorial_videos[0].title != undefined
+            this.videos[0].tutorial_videos.length <= 0
+                ? null
+                : this.videos[0].tutorial_videos[0].title != null
                 ? this.videos[0].tutorial_videos[0].title
                 : null;
 
         this.videoSrc =
-            this.videos[0].tutorial_videos[0].url != null ||
-            this.videos[0].tutorial_videos[0].url != undefined
+            this.videos[0].tutorial_videos.length <= 0
+                ? null
+                : this.videos[0].tutorial_videos[0].url != null
                 ? this.videos[0].tutorial_videos[0].url
                 : null;
     },
@@ -89,7 +91,13 @@ export default {
         async sendVideoToVideos(play) {
             this.videoTitle = play.title;
             this.videoSrc = play.url;
-        }
+        },
+        collapsible(i) {
+            let menu = document.getElementsByClassName('playlist');
+            let icon = menu[i].children[0].children[1];
+            menu[i].children[1].classList.toggle('activeToggle');
+            icon.classList.toggle('rotate');
+         }
     }
 };
 </script>
@@ -201,7 +209,7 @@ export default {
         font-weight: bold;
     }
 
-    .active {
+    .activeToggle {
         display: flex;
         flex-direction: column;
         visibility: visible;

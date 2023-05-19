@@ -594,6 +594,7 @@ export const actions = {
         let url = `${subBaseUrl}/tutorial-video-sub-categories?${serializeQuery(
             params
         )}`;
+        console.log(' SANWO:: ', url);
         commit('setLoading', true);
         const reponse = await Repository.get(url)
             .then(response => {

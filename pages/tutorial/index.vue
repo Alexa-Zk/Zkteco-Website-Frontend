@@ -33,6 +33,8 @@ export default {
         await this.$store.dispatch('website/getVideoSubCategoryBySlug', {
             slug: 'security-solutions'
         });
+
+        console.log(' videoSubCategories::', this.videoSubCategories);
     }
 };
 </script>
