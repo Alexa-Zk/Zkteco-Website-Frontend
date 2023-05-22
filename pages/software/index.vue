@@ -120,6 +120,17 @@
                                 >
                                     V5000 4.1.1
                                 </button>
+
+                                <button
+                                    class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            ZKBioSecurityV5000.download43
+                                        )
+                                    "
+                                >
+                                    V5000 4.1.3
+                                </button>
                                 
                             </div>
 
@@ -213,16 +224,23 @@
                                 <button class="ps-btn"
                                     @click.prevent="
                                         download(
-                                            BioTime04.manual
+                                            BioTime8.manual
                                         )
                                     ">User Manual</button>
                                 <!--button>App User Manual</button-->
                                 <button class="ps-btn"
                                     @click.prevent="
                                         download(
-                                            BioTime04.download
+                                            BioTime8.download
                                         )
                                     "> Download(V8.0.8)</button>
+                                    
+                                <!--button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            BioTime8.download07
+                                        )
+                                    "> Download(V8.0.7)</button -->
                                 
                             </div>
 
@@ -379,6 +397,7 @@ export default {
             ZKBioSecurityV5000:{
                 manual:"https://storage.googleapis.com/zkteco_website_bucket/ZK_Bio_Security_v5000_user_manual_8302bd30d7/ZK_Bio_Security_v5000_user_manual_8302bd30d7.pdf",
                 download: "https://zkteco.co.za/softwarenew/standalone/V5000_4.1.1_R_2021-11-04_x64.zip",
+                download43: "https://zkteco-india-official-website.s3.ap-south-1.amazonaws.com/files/20230329/Overseas_ZKBioSecurity_V5000_4.1.3_R.exe",
             },
 
             ZKBioHLM:{
@@ -386,9 +405,10 @@ export default {
                 download: "https://zkteco.co.za/softwarenew/standalone/ZKBioHLMS_x64_2021-06-10-1352.zip"
             },
 
-            BioTime04:{
+            BioTime8:{
                 manual: "https://storage.googleapis.com/zkteco_website_bucket/Bio_Time_8_0_user_manual_b74ea3f371/Bio_Time_8_0_user_manual_b74ea3f371.pdf",
-                download: "https://storage.googleapis.com/zkteco_website_bucket/ZK_Bio_Time8_0_8_20221205_15972_d838e9b89d/ZK_Bio_Time8_0_8_20221205_15972_d838e9b89d.exe"
+                download: "https://storage.googleapis.com/zkteco_website_bucket/ZK_Bio_Time8_0_8_20221205_15972_d838e9b89d/ZK_Bio_Time8_0_8_20221205_15972_d838e9b89d.exe",
+                download07: ""
             },
 
             ZKBioSecurity320:{
