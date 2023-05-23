@@ -235,12 +235,12 @@
                                         )
                                     "> Download(V8.0.8)</button>
                                     
-                                <!--button class="ps-btn"
+                                <button class="ps-btn"
                                     @click.prevent="
                                         download(
                                             BioTime8.download07
                                         )
-                                    "> Download(V8.0.7)</button -->
+                                    "> Download(V8.0.7)</button >
                                 
                             </div>
 
@@ -408,7 +408,7 @@ export default {
             BioTime8:{
                 manual: "https://storage.googleapis.com/zkteco_website_bucket/Bio_Time_8_0_user_manual_b74ea3f371/Bio_Time_8_0_user_manual_b74ea3f371.pdf",
                 download: "https://storage.googleapis.com/zkteco_website_bucket/ZK_Bio_Time8_0_8_20221205_15972_d838e9b89d/ZK_Bio_Time8_0_8_20221205_15972_d838e9b89d.exe",
-                download07: ""
+                download07: "https://storage.googleapis.com/zkteco_website_bucket/ZK_Bio_Time_9ce1d6e41f/ZK_Bio_Time_9ce1d6e41f.zip"
             },
 
             ZKBioSecurity320:{
