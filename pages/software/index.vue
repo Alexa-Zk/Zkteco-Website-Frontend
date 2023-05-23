@@ -227,6 +227,15 @@
                                             BioTime8.manual
                                         )
                                     ">User Manual</button>
+
+
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            BioTime8.download07
+                                        )
+                                    "> Download(V8.0.7)</button >
+                                    
                                 <!--button>App User Manual</button-->
                                 <button class="ps-btn"
                                     @click.prevent="
@@ -235,12 +244,7 @@
                                         )
                                     "> Download(V8.0.8)</button>
                                     
-                                <button class="ps-btn"
-                                    @click.prevent="
-                                        download(
-                                            BioTime8.download07
-                                        )
-                                    "> Download(V8.0.7)</button >
+                                
                                 
                             </div>
 
