@@ -867,8 +867,6 @@ export const actions = {
             Repository.get(productCountURL)
         ]);
 
-        console.log('Beng{data}', products.data);
-
         commit('setLoading', true);
         commit('setProducts', products.data);
         commit('setProductsTotal', productCount.data);
