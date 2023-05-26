@@ -890,7 +890,7 @@ export const actions = {
             _limit: -1
         };
         const reponse = await Repository.get(
-            1143`${subBaseUrl}/articles?${serializeQuery(params)}`
+            `${subBaseUrl}/articles?${serializeQuery(params)}`
         )
             .then(response => {
                 commit('setArticlesTotal', response.data.length);
