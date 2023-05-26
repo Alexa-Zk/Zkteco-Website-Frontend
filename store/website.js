@@ -836,8 +836,6 @@ export const actions = {
     async getProductAndTotalCount({ state, commit }, payload) {
         //commit('setLoading', true);
 
-        console.log('Bengi');
-
         let searchSolution = {};
         let params = {
             _start:
