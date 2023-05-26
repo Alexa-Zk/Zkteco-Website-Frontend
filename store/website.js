@@ -518,7 +518,6 @@ export const actions = {
     // },
 
     async getSingleProductCategories({ state, commit }, payload) {
-        commit('setLoading', true);
         let params = {
             _start:
                 payload.page === 0 ||
@@ -550,9 +549,12 @@ export const actions = {
 
         let count = await Repository.get(productCategoryCountURL);
 
-        commit('setSingleProductCategories', product.data);
-        commit('setTotalSingleProductCategories', count.data);
-        commit('setLoading', false);
+        await Promise.all([product, count]).then(value => {
+            commit('setLoading', true);
+            commit('setSingleProductCategories', value[0].data);
+            commit('setTotalSingleProductCategories', value[1].data);
+            commit('setLoading', false);
+        });
 
         return product.data;
     },
@@ -857,11 +859,12 @@ export const actions = {
             paramCount
         )}`;
 
-        const products = await Repository.get(productURL);
-        const productCount = await Repository.get(productCountURL);
+        let products = await Repository.get(productURL);
+        let productCount = await Repository.get(productCountURL);
 
         await Promise.all([products, productCount])
             .then(value => {
+                commit('setLoading', true);
                 commit('setProducts', value[0].data);
                 commit('setProductsTotal', value[1].data);
                 commit('setLoading', false);
