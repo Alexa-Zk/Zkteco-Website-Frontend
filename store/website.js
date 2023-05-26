@@ -596,7 +596,7 @@ export const actions = {
         let url = `${subBaseUrl}/tutorial-video-sub-categories?${serializeQuery(
             params
         )}`;
-        console.log(' SANWO:: ', url);
+
         commit('setLoading', true);
         const reponse = await Repository.get(url)
             .then(response => {
@@ -834,7 +834,7 @@ export const actions = {
     // },
 
     async getProductAndTotalCount({ state, commit }, payload) {
-        commit('setLoading', true);
+        //commit('setLoading', true);
 
         let searchSolution = {};
         let params = {
@@ -859,19 +859,30 @@ export const actions = {
             paramCount
         )}`;
 
-        let products = await Repository.get(productURL);
-        let productCount = await Repository.get(productCountURL);
+        //let products = await Repository.get(productURL);
+        //let productCount = await Repository.get(productCountURL);
 
-        await Promise.all([products, productCount])
-            .then(value => {
-                commit('setLoading', true);
-                commit('setProducts', value[0].data);
-                commit('setProductsTotal', value[1].data);
-                commit('setLoading', false);
-            })
-            .catch(error => ({
-                error: JSON.stringify(error)
-            }));
+        const [products, productCount] = await Promise.all([
+            Repository.get(productURL),
+            Repository.get(productCountURL)
+        ]);
+
+        commit('setLoading', true);
+        commit('setProducts', products.data);
+        commit('setProductsTotal', productCount.data);
+        commit('setLoading', false);
+
+        // await Promise.all([products, productCount])
+        //     .then(value => {
+        //         console.log(' XXX:: ', value[0].data);
+        //         commit('setLoading', true);
+        //         commit('setProducts', value[0].data);
+        //         commit('setProductsTotal', value[1].data);
+        //         commit('setLoading', false);
+        //     })
+        //     .catch(error => ({
+        //         error: JSON.stringify(error)
+        //     }));
     },
 
     async getArticlesTotal({ state, commit }, payload) {
