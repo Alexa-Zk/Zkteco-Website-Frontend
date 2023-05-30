@@ -714,14 +714,10 @@ export const actions = {
             paramCount
         )}`;
 
-        console.log(':: URL ::', subProductURL);
-
         const [subProduct, subProductCount] = await Promise.all([
             Repository.get(subProductURL),
             Repository.get(subProductCountURL)
         ]);
-
-        console.log(':: sanwo ::', subProduct.data);
 
         commit('setLoading', true);
         commit('setSubProductCategories', subProduct.data);
