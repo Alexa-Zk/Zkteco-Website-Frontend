@@ -532,11 +532,11 @@ export const actions = {
                 payload.perPage === 0
                     ? state.perPage
                     : payload.perPage,
-            'product_category.slug': payload.slug
+            'product_categories.slug': payload.slug
         };
 
         let paramCount = {
-            'product_category.slug': payload.slug
+            'product_categories.slug': payload.slug
         };
 
         let productCategoryCountURL = `${subBaseUrl}/products/count?${serializeQuery(
@@ -702,11 +702,11 @@ export const actions = {
                 payload.perPage === 0
                     ? state.perPage
                     : payload.perPage,
-            'product_sub_category.slug': payload.slug
+            'product_sub_categories.slug': payload.slug
         };
 
         let paramCount = {
-            'product_sub_category.slug': payload.slug
+            'product_sub_categories.slug': payload.slug
         };
 
         let subProductURL = `${subBaseUrl}/products/?${serializeQuery(params)}`;
