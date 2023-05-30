@@ -532,11 +532,11 @@ export const actions = {
                 payload.perPage === 0
                     ? state.perPage
                     : payload.perPage,
-            'product_category.slug': payload.slug
+            'product_categories.slug': payload.slug
         };
 
         let paramCount = {
-            'product_category.slug': payload.slug
+            'product_categories.slug': payload.slug
         };
 
         let productCategoryCountURL = `${subBaseUrl}/products/count?${serializeQuery(
@@ -702,11 +702,11 @@ export const actions = {
                 payload.perPage === 0
                     ? state.perPage
                     : payload.perPage,
-            'product_sub_category.slug': payload.slug
+            'product_sub_categories.slug': payload.slug
         };
 
         let paramCount = {
-            'product_sub_category.slug': payload.slug
+            'product_sub_categories.slug': payload.slug
         };
 
         let subProductURL = `${subBaseUrl}/products/?${serializeQuery(params)}`;
@@ -714,10 +714,14 @@ export const actions = {
             paramCount
         )}`;
 
+        console.log(':: URL ::', subProductURL);
+
         const [subProduct, subProductCount] = await Promise.all([
             Repository.get(subProductURL),
             Repository.get(subProductCountURL)
         ]);
+
+        console.log(':: sanwo ::', subProduct.data);
 
         commit('setLoading', true);
         commit('setSubProductCategories', subProduct.data);
