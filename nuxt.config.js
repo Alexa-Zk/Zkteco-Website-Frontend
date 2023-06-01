@@ -35,11 +35,17 @@ async function _getProductRoutes() {
             'categories/hotel-solutions'
         ];
 
+        const productCategories = ['smart-lock'];
+
         missBlog.map(v => paths.push(`/blog/${v.trim()}`));
 
         newCenter.map(v => paths.push(`/news-center/categories/${v.trim()}`));
 
         missProduct.map(v => paths.push(`/product/${v.trim()}`));
+
+        productCategories.map(v =>
+            paths.push(`/product-categories/${v.trim()}`)
+        );
 
         const productURL = axios.get(`https://admin.zkteco-wa.com/products`);
 
