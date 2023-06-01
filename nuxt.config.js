@@ -35,7 +35,19 @@ async function _getProductRoutes() {
             'categories/hotel-solutions'
         ];
 
-        const productCategories = ['smart-lock'];
+        const productCategories = [
+            'smart-lock',
+            'time-attendance',
+            'access-control',
+            'surveillance',
+            'green-label',
+            'entrance-control',
+            'security-inspection',
+            'pos-terminal',
+            'body-temperature-and-mask-detection',
+            'armatura',
+            'smart-home-security'
+        ];
 
         missBlog.map(v => paths.push(`/blog/${v.trim()}`));
 
