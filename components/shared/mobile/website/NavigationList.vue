@@ -18,6 +18,13 @@
             </a>
             <a
                 class="navigation__item"
+                @click.prevent="handleOpenDrawer('armatura')"
+            >
+                <i class="icon-list4"></i>
+                <span> Armatura</span>
+            </a>
+            <a
+                class="navigation__item"
                 @click.prevent="handleOpenDrawer('solutions')"
             >
                 <i class="icon-list4"></i>

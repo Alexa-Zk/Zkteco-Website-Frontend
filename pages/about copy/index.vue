@@ -38,7 +38,6 @@
                 </div>
             </div>
         </div>
-
         <div class="emp_stat_container">
             <div class="emp_stat">
                 <div>
@@ -63,19 +62,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="zkContainer">
-            <h2>OTHER SUBSIDIARIES</h2>
-            <div class="imgWrapper">
-                <img
-                    data-src="/img/about_us/Certify/countries.png"
-                    class="lazyload"
-                    alt=""
-                />
-            </div>
-        </div>
         <div class="goals">
-            <h2>SUBSIDIARY PROFILE</h2>
             <div class="vission_mission">
                 <div class="vission">
                     <div class="">
@@ -86,7 +73,7 @@
                         />
                     </div>
                     <div>
-                        <h2>Vision Statement</h2>
+                        <h2>Vision</h2>
 
                         To be the leading provider of identity & security
                         management solutions across West Africa
@@ -102,7 +89,7 @@
                         />
                     </div>
                     <div>
-                        <h2>Mission Statement</h2>
+                        <h2>Mission</h2>
 
                         To build a network of Security Solution Expert across
                         West Africa, delivering services to the highest standard
@@ -112,37 +99,7 @@
             </div>
         </div>
 
-        <div class="zkContainer">
-            <h2>WHO WE ARE</h2>
-            <p>
-                ZKTeco WA is the West African division of ZKTeco International.
-                ZKTeco is a global corporation with over 40 subsidiaries around
-                the globe that focuses on providing biometric veri cation
-                technology and incorporating it into other security components
-                to create a strong and improved security solution that creates a
-                better world for all of its residents.
-            </p>
-        </div>
-
-        <div class="zkContainer">
-            <h2>WHAT WE DO</h2>
-            <p>
-                ZKTeco is a globally renowned enterprise focused on delivering
-                biometric veri cation technology, integrating it into other
-                security subsystems for a powerful and enhanced security
-                solution creating a safer world for all its inhabitants. The
-                company is a multi-security solution manufacturer with over 10
-                variants of security products categories, ranging from Video
-                surveillance, Access control, Time attendance, Security
-                Inspection products, Human Entrance control, Vehicular entrance
-                controls, Smart and Hotel Locks, Video intercoms, IoT Products,
-                and LED Screens.ZKTeco in West Africa is positioned to provide
-                simple affordable and reliable security solutions for all
-                security needs within the West African market.
-            </p>
-        </div>
-
-        <!--div class="main_business">
+        <div class="main_business">
             <div class="main_business_wrapper">
                 <h2>Main Business</h2>
                 <div class="business_content">
@@ -277,7 +234,7 @@
                     <div class="business_emp">
                         <div>
                             <img
-                                data-src="/img/about_us/Smart_Office/smart_office.jpg"  
+                                data-src="/img/about_us/Smart_Office/smart_office.jpg"
                                 class="lazyload"
                                 alt=""
                             />
@@ -472,7 +429,7 @@
                     </div>
                 </div>
             </div>
-        </div-->
+        </div>
         <div class="icon_container">
             <div class="icon_header">
                 <h2>Application Area</h2>
@@ -578,60 +535,6 @@
                     </div>
                     <span> Retail </span>
                 </div>
-            </div>
-        </div>
-
-        <div class="zkContainer">
-            <h2>OUR VALUES</h2>
-            <p>
-                Our core principles are built around excellence, passion,
-                innovation, integrity, and collaboration (EPIIC). Customers and
-                partners have shown us great support and trust since all
-                employees know and follow our standards when handling support
-                issues, customer interactions, warranty services, training, and
-                contractual obligations.
-            </p>
-        </div>
-
-        <div class="zkContainer">
-            <h2>GLOBAL RECOGNITIONS</h2>
-            <p>
-                ZKTeco is the global leader in biometric entrance control
-                systems and was recognized as one of the "Top 3 in Entry System
-                Product Group" in a&s magazine's "Top 50 Global Security
-                Companies 2021" for developing and providing top-tier security
-                products and solutions.
-            </p>
-            <div class="imgWrapper">
-                <img
-                    data-src="/img/about_us/Certify/GLOBAL_RECOGNITIONS.png"
-                    class="lazyload"
-                    alt=""
-                />
-            </div>
-        </div>
-
-        <div class="zkContainer">
-            <h2>ISO CERTIFICATIONS</h2>
-
-            <div class="imgWrapper">
-                <img
-                    data-src="/img/about_us/Certify/ISO_CERTIFICATIONS.png"
-                    class="lazyload"
-                    alt=""
-                />
-            </div>
-        </div>
-
-        <div class="zkContainer">
-            <h2>QUALITY CERTIFICATES</h2>
-
-            <div class="imgWrapper">
-                <img
-                    data-src="/img/about_us/Certify/QUALITY_CERTIFICATES.png"
-                    class="lazyload"
-                    alt=""
-                />
             </div>
         </div>
     </div>
@@ -774,11 +677,6 @@ export default {
 }
 
 .goals {
-    text-align: center;
-
-    h2 {
-        color: #8bc76f;
-    }
     .vission_mission {
         margin-left: 8%;
         margin-right: 8%;
@@ -820,10 +718,6 @@ export default {
 .icon_container {
     .icon_header {
         text-align: center;
-        color: #8bc76f !important;
-        h2 {
-            color: #8bc76f;
-        }
     }
     .icon_wrapper {
         margin-left: 18%;
@@ -867,42 +761,6 @@ export default {
             text-align: center;
         }
     }
-}
-
-.zkContainer {
-    margin-left: 15%;
-    margin-right: 15%;
-    padding-top: 30px;
-    padding-bottom: 50px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    h2 {
-        color: #8bc76f;
-        margin-bottom: 2rem;
-    }
-    p {
-        font-size: 1.2em;
-        padding-top: 14px;
-        padding-bottom: 25px;
-    }
-    .imgWrapper {
-        img {
-            object-fit: cover;
-            width: 90%;
-            height: 90%;
-        }
-    }
-
-    // @media (max-width: 740px) {
-    //     h2 {
-    //         font-size: 18px !important;
-    //         color: red;
-    //     }
-    // }
 }
 .main_business {
     .main_business_wrapper {

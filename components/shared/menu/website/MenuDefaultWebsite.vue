@@ -1,6 +1,7 @@
 <template lang="html">
     <ul :class="className">
         <MenuProduct />
+        <MenuArmatura />
         <MenuSolutionCategories />
         <template v-for="item in mainMenu">
             <MenuDropdown v-if="item.subMenu" :menu-data="item" />
@@ -24,6 +25,7 @@
 import MenuDropdown from './MenuDropdown';
 import MenuMega from './MenuMega';
 import MenuProduct from './MenuProduct';
+import MenuArmatura from './MenuArmatura';
 import MenuSolutionCategories from './MenuSolutionCategories';
 // import MenuBrand from './MenuBrand';
 export default {
@@ -32,6 +34,7 @@ export default {
         MenuMega,
         MenuDropdown,
         MenuProduct,
+        MenuArmatura,
         MenuSolutionCategories
         //MenuBrand
     },
@@ -131,10 +134,6 @@ export default {
                 {
                     text: 'Case Study',
                     url: '/case-study'
-                },
-                {
-                    text: 'Armatura',
-                    url: '/armatura'
                 }
             ]
         };
