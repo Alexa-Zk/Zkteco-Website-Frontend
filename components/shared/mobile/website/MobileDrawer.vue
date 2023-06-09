@@ -5,6 +5,7 @@
         <panel-menu v-if="currentDrawerContent === 'menu'" />
         <panel-search v-if="currentDrawerContent === 'search'" />
         <panel-solution v-if="currentDrawerContent === 'solutions'" />
+        <panel-armatura v-if="currentDrawerContent === 'armatura'" />
     </v-navigation-drawer>
 </template>
 
@@ -15,6 +16,7 @@ import PanelCategories from '~/components/shared/mobile/website/modules/PanelCat
 import PanelMenu from '~/components/shared/mobile/website/modules/PanelMenu';
 import PanelSearch from '~/components/shared/mobile/website/modules/PanelSearch';
 import PanelSolution from '~/components/shared/mobile/website/modules/PanelSolution';
+import PanelArmatura from '~/components/shared/mobile/website/modules/PanelArmatura';
 
 export default {
     name: 'MobileDrawer',
@@ -23,7 +25,8 @@ export default {
         PanelMenu,
         PanelCategories,
         PanelShoppingCart,
-        PanelSolution
+        PanelSolution,
+        PanelArmatura
     },
     computed: {
         ...mapState({

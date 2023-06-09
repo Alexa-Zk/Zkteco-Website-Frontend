@@ -1,9 +1,9 @@
 <template lang="html">
     <div class="ps-panel--sidebar">
         <div class="ps-panel__header">
-            <h3>Solutions</h3>
+            <h3>Armatura</h3>
             <a
-                href="/product"
+                href="/armatura"
                 class="ps-panel__close"
                 @click.prevent="handleClosePanel"
             >
@@ -18,20 +18,10 @@
                         <content-placeholders-text :lines="3" />
                     </content-placeholders>
                 </div>
-                <li v-for="category in solutionCategoriesAndSub">
-                    <nuxt-link :to="`/solution-categories/${category.slug}`">{{
+                <li v-for="category in getArmatura">
+                    <nuxt-link :to="`/sub-categories/${category.slug}`">{{
                         category.name
                     }}</nuxt-link>
-                </li>
-                <li>
-                    <nuxt-link :to="`/biotime-ng`">
-                        Cloud Solution
-                    </nuxt-link>
-                </li>
-                <li>
-                    <a href="https://ngteco.ng/">
-                        Smart Home
-                    </a>
                 </li>
             </ul>
         </div>
@@ -42,13 +32,22 @@
 import { mapState } from 'vuex';
 
 export default {
-    name: 'PanelSolution',
+    name: 'PanelArmatura',
 
     computed: {
         ...mapState({
             loading: state => state.website.loading,
-            solutionCategoriesAndSub: state =>
-                state.website.solutionCategoriesAndSub
+            categoryAndSubCategories: state =>
+                state.website.categoryAndSubCategories,
+
+            getArmatura(state) {
+                const armature = state.website.categoryAndSubCategories;
+
+                return armature != undefined
+                    ? armature.find(e => e.slug === 'armatura')
+                          .product_sub_categories
+                    : [];
+            }
         })
     },
 
