@@ -38,13 +38,13 @@ async function _getProductRoutes() {
         const productCategories = [
             'smart-lock',
             'time-attendance',
-            'access-control',
             'surveillance',
+            'access-control',
             'green-label',
             'entrance-control',
             'security-inspection',
-            'pos-terminal',
             'body-temperature-and-mask-detection',
+            'pos-terminal',
             'armatura',
             'smart-home-security'
         ];
