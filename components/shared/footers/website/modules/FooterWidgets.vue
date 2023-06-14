@@ -90,16 +90,10 @@
                 Solutions
             </h4>
             <ul class="ps-list--link">
-                <li>
-                    <nuxt-link to="/solution-categories/classified-by-industry"
-                        >Classified by Industry</nuxt-link
-                    >
-                </li>
-                <li>
-                    <nuxt-link
-                        to="/solution-categories/classified-by-application"
-                        >Classified by Application</nuxt-link
-                    >
+                <li v-for="item in solutionCategoriesAndSub" :key="item.slug">
+                    <nuxt-link :to="`/solution-categories/${item.slug}`">{{
+                        item.name
+                    }}</nuxt-link>
                 </li>
             </ul>
         </aside>
@@ -151,6 +145,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Repository from '~/repositories/Repository.js';
 import { subBaseUrl } from '~/repositories/Repository';
 
@@ -160,6 +155,12 @@ export default {
         return {
             categories: ''
         };
+    },
+    computed: {
+        ...mapState({
+            solutionCategoriesAndSub: state =>
+                state.website.solutionCategoriesAndSub
+        })
     },
     async mounted() {
         this.getArticlesCategories();
