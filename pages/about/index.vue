@@ -897,12 +897,11 @@ export default {
         }
     }
 
-    // @media (max-width: 740px) {
-    //     h2 {
-    //         font-size: 18px !important;
-    //         color: red;
-    //     }
-    // }
+    @media (max-width: 740px) {
+        h2 {
+            font-size: 2.5rem;
+        }
+    }
 }
 .main_business {
     .main_business_wrapper {
@@ -999,6 +998,12 @@ export default {
         height: 200px;
         width: 100% !important;
         object-fit: cover;
+    }
+}
+
+@media (max-width: 740px) {
+    h2 {
+        font-size: 2.5rem;
     }
 }
 </style>
