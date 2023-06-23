@@ -67,9 +67,9 @@
                     </p>
                 </div>
                 <div class="dowloadbutton">
-                    <a v-on:click.prevent="download(i.file.url)">
+                    <button @click.prevent="download(i.file.url)">
                         Download
-                    </a>
+                    </button>
                 </div>
             </div>
             <div class="downloaderSide"></div>
@@ -127,7 +127,6 @@ export default {
             icon.classList.toggle('rotate');
         },
         download(data) {
-            //event.preventDefault();
             const link = document.createElement('a');
             link.href = data;
             link.setAttribute('download', 'image.jpg');
@@ -288,7 +287,7 @@ export default {
         }
 
         .dowloadbutton {
-            a {
+            button {
                 background: #7fc22e;
                 padding: 1.2rem 2.5rem;
                 border: none;
