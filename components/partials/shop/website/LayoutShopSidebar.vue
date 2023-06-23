@@ -52,23 +52,22 @@ export default {
     data() {
         return {
             page: 1,
-            pageSize: 12
+            pageSize: 12,
+            loading: false
         };
     },
-    props: {
-        loading: {
-            type: Boolean,
-            default: false
-        }
-    },
+
     methods: {
         handleChangeViewMode() {
             this.listView = !this.listView;
         },
         async handleChangePagination(value) {
+            this.loading = true;
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            const page = parseInt(value) === 1 ? 0 : (value - 1) * 12;
+
             const params = {
-                page: value * this.pageSize,
+                page: page,
                 sort_by: 'created_at:desc',
                 perPage: 12
             };
@@ -76,6 +75,7 @@ export default {
                 'website/getProductAndTotalCount',
                 params
             );
+            this.loading = false;
         }
     },
     computed: {

@@ -1,10 +1,49 @@
 <template lang="html">
-    <div class="tutorial">
-        <Video
-            v-if="videoSubCategories"
-            :videos="videoSubCategories"
-            :loading="loading"
-        />
+    <div>
+        <div class="container">
+            <div class="wrap">
+                <div class="twrap">
+                    <img src="~/static/tutorial/elearning.png" />
+                </div>
+                <div class="tcontent">
+                    <h2>E-Learning Platform</h2>
+
+                    <div class="content">
+                        <p>
+                            Do you need expert adivce and assistance? ZKTeco is
+                            here for you! Our account executives and technical
+                            specialists are positioned to offer you top-notch
+                            advice on the services you require.
+                        </p>
+                    </div>
+                    <div class="tbutton">
+                        <a href="#phases">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="phases" class="phases">
+            <div class="phaseheader">
+                <h2>Learning Phases</h2>
+                <h3>
+                    Advance Your Career. With Our Security & Smart technology
+                    Solution
+                </h3>
+            </div>
+            <div class="phasecontent">
+                <div class="content" v-for="course in courses" :key="course.id">
+                    <h4>{{ course.name }}</h4>
+                    <p>
+                        {{ course.description }}
+                    </p>
+                    <div class="learn">
+                        <nuxt-link :to="`/tutorial/${course.slug}`">
+                            Start Learning
+                        </nuxt-link>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -26,87 +65,114 @@ export default {
         },
         ...mapState({
             loading: state => state.website.loading,
-            videoSubCategories: state => state.website.videoSubCategories
+            courses: state => state.website.courses
         })
     },
     async mounted() {
-        await this.$store.dispatch('website/getVideoSubCategoryBySlug', {
-            slug: 'security-solutions'
-        });
-
-        console.log(' videoSubCategories::', this.videoSubCategories);
+        await this.$store.dispatch('website/getCourse');
     }
 };
 </script>
 
 <style lang="scss" scoped>
-.tutorial {
-    //background: #999;
-    padding: 5rem 0;
-    .wrapper {
-        margin: 0 auto;
-        max-width: 1200px;
+.container {
+    margin-top: 3rem;
+    height: 83vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 3rem;
+    justify-content: center;
+    align-items: center;
+
+    .twrap {
+        width: 90%;
+    }
+    .tcontent {
+        h2 {
+            color: #8fc74a;
+        }
+
+        .content {
+            p {
+                font-size: 1.65rem;
+            }
+        }
+
+        .tbutton {
+            display: flex;
+            justify-items: start;
+            a {
+                text-align: left;
+                border: 1px solid #8fc74a;
+                font-size: 1.5rem;
+                padding: 1.2rem 2.5rem;
+            }
+            a:hover {
+                //background: #8fc74a;
+
+                background: #8fc74a;
+            }
+        }
+    }
+    @media (max-width: 740px) {
+        margin-top: 10rem;
+        grid-template-columns: 1fr;
+    }
+}
+
+.phases {
+    padding-top: 18rem;
+    margin-left: 8%;
+    margin-right: 8%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .phaseheader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // h2,
+        // h3 {
+        //     color: #8fc74a;
+        // }
+    }
+    .phasecontent {
+        margin-top: 3rem;
+        margin-bottom: 10rem;
         display: grid;
-        grid-template-columns: 3fr 1fr;
-        gap: 1.8rem;
+        grid-template-columns: 1fr 1fr;
+        gap: 3.4rem;
+        margin-left: 5%;
+        margin-right: 5%;
 
-        @media (max-width: 920px) {
-            display: grid;
+        .content {
+            //display: flex;
+            padding: 3rem;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+            .learn {
+                a {
+                    border: 2px solid #8fc74a;
+                    padding: 0.8em;
+                    border-radius: 3px;
+                }
+                a:hover {
+                    color: #000;
+                    background: #8fc74a;
+                }
+            }
+        }
+
+        @media (max-width: 740px) {
             grid-template-columns: 1fr;
-        }
-
-        .video-wrapper {
-            display: flex;
-            flex-direction: column;
-
-            .video {
-                padding: 3rem 2rem;
-                border-top: 1px solid #dcd8d8;
-                border-left: 1px solid #dcd8d8;
-                border-right: 1px solid #dcd8d8;
-                border-radius: 0.5rem 0.5rem 0 0;
-                header {
-                    h3 {
-                        font-size: 2rem;
-                        font-weight: normal;
-                    }
-                }
-            }
-
-            footer {
-                border: 1px solid #dcd8d8;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
-
-                div:not(:last-child) {
-                    border-right: 1px solid #dcd8d8;
-                }
-                div {
-                    text-align: center;
-
-                    div {
-                        padding: 2rem;
-                    }
-                }
-            }
-        }
-
-        .menu-wrapper {
-            border-radius: 3px;
-            display: flex;
-            flex-direction: column;
-
-            .menu-header {
-                padding: 2rem 0 1rem 2rem;
-                border: 1px solid #dcd8d8;
-                border-radius: 0.5rem 0.5rem 0rem 0rem;
-
-                h3 {
-                    font-size: 2rem;
-                    font-weight: normal;
-                }
-            }
+            margin-left: 1%;
+            margin-right: 1%;
         }
     }
 }
