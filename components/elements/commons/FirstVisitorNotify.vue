@@ -57,7 +57,7 @@ export default {
     components: { PageLinks },
     data() {
         return {
-            demoDialog: true,
+            demoDialog: false,
             email: '',
             name: '',
             message: ''
@@ -69,8 +69,8 @@ export default {
     methods: {
         runPopupModalSubscriber() {
             const checkSubscriber = localStorage.getItem('SUBSCRIBER_POPUP');
-            if (checkSubscriber) {
-                this.demoDialog = false;
+            if (!checkSubscriber) {
+                this.demoDialog = true;
             }
             localStorage.setItem('SUBSCRIBER_POPUP', true);
         },

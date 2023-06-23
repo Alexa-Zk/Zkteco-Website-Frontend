@@ -57,7 +57,8 @@ export default {
                 {
                     text: 'All Products'
                 }
-            ]
+            ],
+            loading: false
         };
     },
     async asyncData({ store }) {
@@ -80,9 +81,9 @@ export default {
         // );
     },
     computed: {
-        ...mapState({
-            loading: state => state.website.loading
-        })
+        // ...mapState({
+        //     loading: state => state.website.loading
+        // })
     }
 };
 </script>

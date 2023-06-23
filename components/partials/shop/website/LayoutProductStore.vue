@@ -66,11 +66,13 @@ export default {
             this.listView = !this.listView;
         },
         async handleChangePagination(value) {
+            const page = parseInt(value) === 1 ? 0 : (value - 1) * 12;
             const params = {
-                page: value * this.pageSize,
+                page: page,
                 sort_by: 'created_at:desc',
                 perPage: 12
             };
+
             await this.$store.dispatch(
                 'website/getProductAndTotalCount',
                 params
