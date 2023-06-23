@@ -34,7 +34,10 @@ export const state = () => ({
     solutionSub: null,
     solutionSubTotal: 0,
     solutionTotal: 0,
-    videoSubCategories: null
+    videoSubCategories: null,
+    courseVideo: null,
+    courses: null,
+    courseSection: null
 });
 
 export const mutations = {
@@ -89,9 +92,16 @@ export const mutations = {
     // setProductCategories(state, payload) {
     //     state.productCategories = payload;
     // },
+    setCourse(state, payload) {
+        state.courses = payload;
+    },
 
-    setVideoSubCategories(state, payload) {
-        state.videoSubCategories = payload;
+    setCourseSection(state, payload) {
+        state.courseSection = payload;
+    },
+
+    setCourseVideo(state, payload) {
+        state.courseVideo = payload;
     },
 
     setSubProductCategories(state, payload) {
@@ -589,21 +599,51 @@ export const actions = {
     },
 
     // this fetches all the sub categories of a particular video using slug as the parameter
-    async getVideoSubCategoryBySlug({ commit }, payload) {
+
+    async getESectionBySlug({ commit }, payload) {
         let params = {
-            'tutorial_video_category.slug': payload.slug
+            'courses.slug': payload.slug
         };
-        let url = `${subBaseUrl}/tutorial-video-sub-categories?${serializeQuery(
-            params
-        )}`;
+        let url = `${subBaseUrl}/e-sections?${serializeQuery(params)}`;
 
         commit('setLoading', true);
         const reponse = await Repository.get(url)
             .then(response => {
-                commit('setVideoSubCategories', response.data);
+                commit('setCourseSection', response.data);
                 commit('setLoading', false);
             })
             .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getVideoById({ commit }, payload) {
+        let params = {
+            id: payload
+        };
+        let url = `${subBaseUrl}/tutorial-videos?${serializeQuery(params)}`;
+
+        // commit('setLoading', true);
+        const reponse = await Repository.get(url)
+            .then(response => {
+                commit('setCourseVideo', response.data[0]);
+                //commit('setLoading', false);
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getCourse({ commit }) {
+        let url = `${subBaseUrl}/tutorial-video-categories`;
+
+        commit('setLoading', true);
+        const reponse = await Repository.get(url)
+            .then(response => {
+                commit('setCourse', response.data);
+                commit('setLoading', false);
+            })
+            .catch(error => ({
+                error: JSON.stringify(error)
+            }));
         return reponse;
     },
 
@@ -859,9 +899,6 @@ export const actions = {
             paramCount
         )}`;
 
-        //let products = await Repository.get(productURL);
-        //let productCount = await Repository.get(productCountURL);
-
         const [products, productCount] = await Promise.all([
             Repository.get(productURL),
             Repository.get(productCountURL)
@@ -871,18 +908,6 @@ export const actions = {
         commit('setProducts', products.data);
         commit('setProductsTotal', productCount.data);
         commit('setLoading', false);
-
-        // await Promise.all([products, productCount])
-        //     .then(value => {
-        //         console.log(' XXX:: ', value[0].data);
-        //         commit('setLoading', true);
-        //         commit('setProducts', value[0].data);
-        //         commit('setProductsTotal', value[1].data);
-        //         commit('setLoading', false);
-        //     })
-        //     .catch(error => ({
-        //         error: JSON.stringify(error)
-        //     }));
     },
 
     async getArticlesTotal({ state, commit }, payload) {

@@ -16,14 +16,6 @@
                         ></iframe>
                     </div>
                 </section>
-                <footer>
-                    <div>
-                        <div>Download</div>
-                    </div>
-                    <div>
-                        <div>Attitude Test</div>
-                    </div>
-                </footer>
             </section>
             <article class="menu-wrapper">
                 <header class="menu-header">
@@ -37,7 +29,7 @@
                         :key="i"
                     >
                         <header @click="collapsible(i)">
-                            <div class="content" >
+                            <div class="content">
                                 <h4>{{ video.name }}</h4>
                             </div>
                             <div class="icon">
@@ -50,17 +42,43 @@
 
                         <PlayList
                             v-if="video"
-                            :playList="video.tutorial_videos"
+                            :playList="video.course_videos"
                             @getVideoURLFromPlayList="sendVideoToVideos"
                         />
                     </div>
                 </div>
             </article>
         </section>
+
+        <div class="videoOverview">
+            <div v-html="videoOverView"></div>
+            <div></div>
+        </div>
+
+        <div class="downloader" v-for="i in videoDownload" :key="i.id">
+            <div class="downloaderInfo">
+                <div class="downloadname">
+                    <img
+                        src="~/static/img/website/download-2.png"
+                        alt="Download"
+                    />
+                    <p>
+                        {{ i.name }}
+                    </p>
+                </div>
+                <div class="dowloadbutton">
+                    <a v-on:click.prevent="download(i.file.url)">
+                        Download
+                    </a>
+                </div>
+            </div>
+            <div class="downloaderSide"></div>
+        </div>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import PlayList from '~/components/partials/page/tutorial/PlayList';
 export default {
     name: 'Video',
@@ -69,35 +87,56 @@ export default {
     data() {
         return {
             videoSrc: null,
-            videoTitle: null
+            videoTitle: null,
+            videoOverView: null,
+            videoDownload: null
         };
     },
-    created() {
-        this.videoTitle =
-            this.videos[0].tutorial_videos.length <= 0
-                ? null
-                : this.videos[0].tutorial_videos[0].title != null
-                ? this.videos[0].tutorial_videos[0].title
-                : null;
-
-        this.videoSrc =
-            this.videos[0].tutorial_videos.length <= 0
-                ? null
-                : this.videos[0].tutorial_videos[0].url != null
-                ? this.videos[0].tutorial_videos[0].url
-                : null;
+    computed: {
+        ...mapState({
+            loading: state => state.website.loading,
+            courseVideo: state => state.website.courseVideo
+        })
     },
+    created() {
+        this.sendVideoToVideos(this.videos[0].course_videos[0]);
+    },
+
     methods: {
         async sendVideoToVideos(play) {
-            this.videoTitle = play.title;
-            this.videoSrc = play.url;
+            await this.$store.dispatch('website/getVideoById', play.id);
+            if (this.courseVideo) {
+                this.videoTitle = this.courseVideo.title
+                    ? this.courseVideo.title
+                    : null;
+                this.videoSrc = this.courseVideo.url
+                    ? this.courseVideo.url
+                    : null;
+                this.videoOverView = this.courseVideo.overview
+                    ? this.courseVideo.overview
+                    : null;
+                this.videoDownload = this.courseVideo.product_files
+                    ? this.courseVideo.product_files
+                    : null;
+            }
         },
         collapsible(i) {
             let menu = document.getElementsByClassName('playlist');
             let icon = menu[i].children[0].children[1];
             menu[i].children[1].classList.toggle('activeToggle');
             icon.classList.toggle('rotate');
-         }
+        },
+        download(data) {
+            //event.preventDefault();
+            const link = document.createElement('a');
+            link.href = data;
+            link.setAttribute('download', 'image.jpg');
+            link.setAttribute('target', '_blank');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            location.href = data;
+        }
     }
 };
 </script>
@@ -126,11 +165,12 @@ export default {
                 border-top: 1px solid #dcd8d8;
                 border-left: 1px solid #dcd8d8;
                 border-right: 1px solid #dcd8d8;
+                border-bottom: 1px solid #dcd8d8;
                 border-radius: 0.5rem 0.5rem 0 0;
                 header {
                     h3 {
                         font-size: 2rem;
-                        font-weight: normal;
+                        font-weight: bold;
                     }
                 }
             }
@@ -166,7 +206,7 @@ export default {
 
                 h3 {
                     font-size: 2rem;
-                    font-weight: normal;
+                    font-weight: bold;
                 }
             }
         }
@@ -213,6 +253,48 @@ export default {
         display: flex;
         flex-direction: column;
         visibility: visible;
+    }
+}
+
+.videoOverview {
+    margin: 0 auto;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 1.8rem;
+    margin-top: 5rem;
+}
+
+.downloader {
+    margin: 0 auto;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 1.8rem;
+    margin-top: 5rem;
+    .downloaderInfo {
+        display: flex;
+        justify-content: space-between;
+
+        .downloadname {
+            display: flex;
+            // justify-content: center;
+            // justify-items: center;
+            align-items: center;
+            p {
+                padding-left: 2rem;
+                padding-top: 1.6rem;
+            }
+        }
+
+        .dowloadbutton {
+            a {
+                background: #7fc22e;
+                padding: 1.2rem 2.5rem;
+                border: none;
+                border-radius: 3px;
+            }
+        }
     }
 }
 </style>

@@ -38,8 +38,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-//import ProductDefault from '~/components/elements/product/website/ProductDefault';
 import ProductCategoryDefault from '~/components/elements/product/website/ProductCategoryDefault';
 
 import ProductWide from '~/components/elements/product/ProductWide';
@@ -47,13 +45,14 @@ import ProductWide from '~/components/elements/product/ProductWide';
 export default {
     name: 'LayoutShopSidebar',
     components: { ProductWide, ProductCategoryDefault },
-    props: ['categories_products', 'totalProductCategories', 'loading'],
+    props: ['categories_products', 'totalProductCategories'],
     data() {
         return {
             listView: false,
             sort_by: 'created_at:desc',
             page: 1,
-            pageSize: 12
+            pageSize: 12,
+            loading: false
         };
     },
     methods: {
@@ -61,9 +60,10 @@ export default {
             this.listView = !this.listView;
         },
         async handleChangePagination(value) {
+            this.loading = true;
             window.scrollTo({ top: 0, behavior: 'smooth' });
             const slug = this.$route.params.id;
-            const page = parseInt(value) === 1 ? 1 : 1 + (value - 1) * 12;
+            const page = parseInt(value) === 1 ? 0 : (value - 1) * 12;
             let nextStartPage = parseInt(page);
 
             const payload = {
@@ -72,10 +72,12 @@ export default {
                 sort_by: this.sort_by,
                 perPage: this.pageSize
             };
-            const response = await this.$store.dispatch(
+            console.log(payload);
+            await this.$store.dispatch(
                 'website/getSubProductCategories',
                 payload
             );
+            this.loading = false;
         }
     },
     computed: {
