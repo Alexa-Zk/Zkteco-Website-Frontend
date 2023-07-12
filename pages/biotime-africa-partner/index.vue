@@ -3,6 +3,16 @@
         <div class="main_business">
             <div class="main_business_wrapper">
                 <div class="business_content">
+                    <div>
+                        <p class="content_header">
+                            Are you looking for a side hustle that generates
+                            recurring income? Or are you a young, tech-savvy
+                            individual who wants to be their own boss? The
+                            “African Timekeeper Initiative” is perfect for you!
+                            ZKTeco is actively recruiting dynamic and ambitious
+                            youth to help enhance productivity across Africa.
+                        </p>
+                    </div>
                     <div class="business_entrance">
                         <div>
                             <div>
@@ -60,66 +70,64 @@
                         </div>
                     </div>
 
-                    <div class="bap_container">
-                        <div class="img_container">
-                            <img
-                                data-src="/img/biotime-africa-partner/step.png"
-                                class="lazyload"
-                                alt=""
-                            />
+                    <div class="commission_container">
+                        <div class="Commission_header">
+                            <h3>
+                                As an African Timekeeper, you'll have three
+                                streams of income:
+                            </h3>
                         </div>
-                        <div class="content_container">
-                            <h2>Benefits</h2>
-
-                            <div>
+                        <div class="commission">
+                            <div class="device">
                                 <p>
-                                    Rewards and Recognition: Special promotions
-                                    and incentives are available to Independent
-                                    Consultants. Join us at our annual
-                                    conference and enjoy other bene ts like the
-                                    Hall of Fame, available to top performers.
+                                    Commission on Device sales
                                 </p>
-
+                            </div>
+                            <div class="training">
                                 <p>
-                                    Work-Life Balance: Manage your business on
-                                    your schedule, around family commitments or
-                                    even a full-time job
+                                    Installation and Training fees
                                 </p>
+                            </div>
+                            <div class="device">
                                 <p>
-                                    Purpose + Community: Join a passionate
-                                    Biotime Africa community revolutionizing
-                                    excellence and productivity at workplaces.
+                                    Ongoing commission on software sales
                                 </p>
-                                <p>
-                                    Connect with us: Have questions? Connect
-                                    with us and register to schedule a session
-                                    to learn more about the BAP program.
-                                </p>
-                                <a href="#form" class="start">Get Started</a>
                             </div>
                         </div>
-                        <div class="footer">
-                            <h3>Grow your business</h3>
+                        <div class="commission_world">
                             <p>
-                                Your time, your way—you’re the boss! Learn the
-                                business with our free online training modules,
-                                and do them at your own pace. Work from anywhere
-                                and Enjoy commissions and bonuses on your sales.
-                                Earn rewards and prizes as you grow your
-                                business.
+                                Our target by November is to onboard 300
+                                passionate African Timekeepers who will champion
+                                punctuality. Additionally, we aim to have 1500
+                                companies benefit from our cutting-edge Biotime
+                                Africa platform.
                             </p>
-                            <h3>Get Started</h3>
+
                             <p>
-                                Be connected—real support from the Biotime team
-                                Join team meetings and business workshops and
-                                learn 1-on-1 with peers, leaders, and Biotime
-                                support staff. Purchase a Biotime Africa device
-                                to join as an African Timekeeper with a
-                                discounted Welcome Kit, available for a limited
-                                time only.
+                                Biotime Africa empowers businesses with time
+                                efficiency. It is the leading web-based time
+                                attendance solution that effortlessly tracks
+                                staff attendance across multiple locations,
+                                improving productivity and efficiency.
+                            </p>
+
+                            <p>
+                                We also offer a free package exclusively for
+                                SMEs, supporting small businesses with fewer
+                                than 20 employees and one location. By
+                                purchasing the Biotime Africa Device, SMEs can
+                                access our powerful software for free.
+                            </p>
+
+                            <p>
+                                Join the African Timekeepers Movement today and
+                                be part of the punctuality revolution! Spread
+                                the message of timeliness and help businesses
+                                thrive.
                             </p>
                         </div>
                     </div>
+
                     <div class="bap_container">
                         <div class="img_container">
                             <img
@@ -196,6 +204,67 @@
                                 level at the end of the year, acknowledging
                                 their excellent achievements and unshakable
                                 devotion.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bap_container">
+                        <div class="img_container">
+                            <img
+                                data-src="/img/biotime-africa-partner/step.png"
+                                class="lazyload"
+                                alt=""
+                            />
+                        </div>
+                        <div class="content_container">
+                            <h2>Benefits</h2>
+
+                            <div>
+                                <p>
+                                    Rewards and Recognition: Special promotions
+                                    and incentives are available to Independent
+                                    Consultants. Join us at our annual
+                                    conference and enjoy other bene ts like the
+                                    Hall of Fame, available to top performers.
+                                </p>
+
+                                <p>
+                                    Work-Life Balance: Manage your business on
+                                    your schedule, around family commitments or
+                                    even a full-time job
+                                </p>
+                                <p>
+                                    Purpose + Community: Join a passionate
+                                    Biotime Africa community revolutionizing
+                                    excellence and productivity at workplaces.
+                                </p>
+                                <p>
+                                    Connect with us: Have questions? Connect
+                                    with us and register to schedule a session
+                                    to learn more about the BAP program.
+                                </p>
+                                <a href="#form" class="start">Get Started</a>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <h3>Grow your business</h3>
+                            <p>
+                                Your time, your way—you’re the boss! Learn the
+                                business with our free online training modules,
+                                and do them at your own pace. Work from anywhere
+                                and Enjoy commissions and bonuses on your sales.
+                                Earn rewards and prizes as you grow your
+                                business.
+                            </p>
+                            <h3>Get Started</h3>
+                            <p>
+                                Be connected—real support from the Biotime team
+                                Join team meetings and business workshops and
+                                learn 1-on-1 with peers, leaders, and Biotime
+                                support staff. Purchase a Biotime Africa device
+                                to join as an African Timekeeper with a
+                                discounted Welcome Kit, available for a limited
+                                time only.
                             </p>
                         </div>
                     </div>
@@ -293,8 +362,8 @@
                     </div>
                 </div>
             </div>
-            <!--Enquiry /-->
         </div>
+        <Enquiry />
     </div>
 </template>
 
@@ -395,6 +464,14 @@ export default {
         }
 
         .business_content {
+            .content_header {
+                background: #8bc76f;
+                color: #fff;
+                font-size: 1.4;
+                padding: 1rem 1.2rem;
+                font-weight: bold;
+                border-radius: 4px;
+            }
             h2 {
                 color: #8bc76f;
             }
@@ -402,6 +479,61 @@ export default {
                 color: #000;
             }
 
+            .commission_container {
+                margin: 70px 0;
+
+                .commission {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    grid-gap: 1rem;
+
+                    .device {
+                        background: #8bc76f;
+                    }
+
+                    .training {
+                        background: #363636;
+                        color: #fff;
+                        border-radius: 4px;
+                    }
+                    p {
+                        text-align: center;
+                        color: #fff;
+                        font-size: 1.9rem;
+                        font-weight: bold;
+                    }
+                }
+
+                /*
+                .commission {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    grid-gap: 2rem;
+
+                    p {
+                        font-size: 4rem;
+                        color: #fff;
+                        font-weight: bold;
+                        padding: 1rem;
+                    }
+                    .device {
+                        background: #8bc76f;
+                    }
+                    .training {
+                        background: #363636;
+                        color: #fff;
+                    }
+                    
+                }
+
+                */
+                .commission_world {
+                    margin: 30px 0px;
+                    p {
+                        font-size: 1.8rem;
+                    }
+                }
+            }
             .bap_container {
                 padding-bottom: 60px;
                 display: grid;
@@ -505,15 +637,17 @@ export default {
                     }
                 }
 
-                // .bap_container {
-                //     display: grid;
-                //     grid-template-columns: 1fr;
-                //     grid-template-rows: 1fr 1fr 1fr;
-                //     grid-template-areas:
-                //         'img_container '
-                //         'content_container'
-                //         'footer';
-                // }
+                //Commission_container Commission Commission_world
+
+                .bap_container {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 1fr 1fr 1fr;
+                    grid-template-areas:
+                        'img_container '
+                        'content_container'
+                        'footer';
+                }
             }
         }
     }
