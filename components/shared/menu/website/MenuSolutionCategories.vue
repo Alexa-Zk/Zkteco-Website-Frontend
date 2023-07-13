@@ -38,6 +38,11 @@
                             Biotime Africa
                         </nuxt-link>
                     </li>
+                    <li>
+                        <nuxt-link :to="`/africa-time-keeper`">
+                            Africa Time Keeper
+                        </nuxt-link>
+                    </li>
                 </ul>
             </div>
             <div>
