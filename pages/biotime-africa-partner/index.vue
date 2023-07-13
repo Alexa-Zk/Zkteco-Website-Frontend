@@ -317,47 +317,131 @@
                     <div id="form" class="form-container">
                         <h2>To Register</h2>
                         <div class="form">
+                            <!--form -->
                             <div class="first">
+                                <p class="el-error" v-if="$v.fullname.$error">
+                                    fullname is required!
+                                </p>
                                 <input
                                     type="text"
                                     class="form-text"
                                     placeholder="Full Name"
+                                    v-model.trim="$v.fullname.$model"
                                 />
                             </div>
 
                             <div class="email">
+                                <p
+                                    class="el-error"
+                                    v-if="$v.emailAddress.$error"
+                                >
+                                    Email is required!
+                                </p>
                                 <input
                                     type="email"
                                     class="form-text"
                                     placeholder="Email Address"
+                                    v-model.trim="$v.emailAddress.$model"
                                 />
                             </div>
 
                             <div class="phone">
+                                <p class="el-error" v-if="$v.phone.$error">
+                                    Phone number is required!
+                                </p>
                                 <input
                                     type="number"
                                     class="form-text"
                                     placeholder="Phone Number "
+                                    v-model.trim="$v.phone.$model"
                                 />
                             </div>
                             <div class="country">
+                                <p class="el-error" v-if="$v.country.$error">
+                                    Country is required!
+                                </p>
                                 <input
                                     type="text"
                                     class="form-text"
-                                    placeholder="Last Name"
+                                    placeholder="Country"
+                                    v-model.trim="$v.country.$model"
                                 />
                             </div>
                             <div class="state">
+                                <p class="el-error" v-if="$v.state.$error">
+                                    State is required!
+                                </p>
                                 <input
                                     type="text"
                                     class="form-text"
-                                    placeholder="Your Company"
+                                    placeholder="state"
+                                    v-model.trim="$v.state.$model"
                                 />
+                            </div>
+                            <div class="qualification">
+                                <p
+                                    class="el-error"
+                                    v-if="$v.qualification.$error"
+                                >
+                                    Qualification is required!
+                                </p>
+                                <!--input
+                                    type="text"
+                                    class="form-text"
+                                    placeholder="qualification"
+                                    v-model.trim="$v.qualification.$model"
+                                /-->
+
+                                <select
+                                    class="form-text"
+                                    v-model.trim="$v.qualification.$model"
+                                >
+                                    <option value="">Qualification</option>
+                                    <option value="NCE">NCE</option>
+                                    <option value="OND">OND</option>
+                                    <option value="HND">HND</option>
+                                    <option value="BSC">BSC</option>
+                                </select>
                             </div>
 
                             <div class="book">
-                                <button>Book</button>
+                                <!--button>Book</button-->
+
+                                <button @click.prevent="bookAppointment">
+                                    {{ loading ? 'Sending...' : 'Book' }}
+                                </button>
+
+                                <!--p class="el-error" v-if="showError">
+                                    An error occurred
+                                </p -->
+                                <p
+                                    style="font-size: 14px; color: green; font-weight: 600;"
+                                    v-if="showSuccess"
+                                >
+                                    You will be contacted shortly!!
+                                </p>
+
+                                <v-snackbar
+                                    v-model="snackbar"
+                                    :timeout="3000"
+                                    color="green"
+                                    tile
+                                >
+                                    {{ snackBarMessage }}
+
+                                    <template v-slot:action="{ attrs }">
+                                        <v-btn
+                                            color="white"
+                                            text
+                                            v-bind="attrs"
+                                            @click="snackbar = false"
+                                        >
+                                            Close
+                                        </v-btn>
+                                    </template>
+                                </v-snackbar>
                             </div>
+                            <!--/form -->
                         </div>
                     </div>
                 </div>
@@ -368,6 +452,8 @@
 </template>
 
 <script>
+import { required, email, numeric } from 'vuelidate/lib/validators';
+import { validationMixin } from 'vuelidate';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import AboutMission from '~/components/partials/page/website/AboutMission';
 import AboutVision from '~/components/partials/page/website/AboutVision';
@@ -377,7 +463,7 @@ import Enquiry from '~/components/partials/biotime-ng/Enquiry';
 export default {
     head() {
         return {
-            titleTemplate: 'About Us',
+            titleTemplate: 'Biotime Africa Partner',
             meta: [
                 {
                     hid: 'description',
@@ -387,6 +473,7 @@ export default {
             ]
         };
     },
+    mixins: [validationMixin],
     components: {
         AboutMission,
         AboutVision,
@@ -394,11 +481,25 @@ export default {
         BreadCrumb,
         Enquiry
     },
+
     layout: 'layout-default-website',
     transition: 'zoom',
 
     data: () => {
         return {
+            showError: false,
+            showSuccess: false,
+            loading: '',
+            fullname: '',
+            emailAddress: '',
+            phone: '',
+            country: '',
+            state: '',
+            qualification: '',
+            errors: '',
+            snackBarMessage:
+                'Form Submitted Successfully. You will be contacted by one of our customer representatives.',
+            snackbar: false,
             breadCrumb: [
                 {
                     text: 'Home',
@@ -410,23 +511,62 @@ export default {
             ]
         };
     },
-    mounted() {
-        let valueDisplays = window.document.querySelectorAll('.num');
-        let interval = 2000;
+    validations: {
+        fullname: { required },
+        emailAddress: { required, email },
+        phone: { required, numeric },
+        country: { required },
+        state: { required },
+        qualification: { required }
+    },
+    methods: {
+        resetForm() {
+            this.fullname = '';
+            this.emailAddress = '';
+            this.phone = '';
+            this.country = '';
+            this.state = '';
+            this.qualification = '';
+        },
+        async bookAppointment() {
+            this.$v.$touch();
+            if (this.$v.$invalid) {
+                return false;
+            } else if (this.$v.$error) {
+                return false;
+            } else {
+                this.loading = true;
+                const payload = {
+                    name: this.fullname,
+                    email: this.emailAddress,
+                    phone_number: this.phone,
+                    country: this.country,
+                    state: this.state,
+                    qualification: this.qualification
+                };
 
-        valueDisplays.forEach(valueDisplay => {
-            let startValue = 0;
-            let endValue = parseInt(valueDisplay.getAttribute('data-val'));
+                const response = await this.$store.dispatch(
+                    'website/bookAppointment',
+                    payload
+                );
 
-            let duration = Math.floor(interval / endValue);
-            let counter = setInterval(function() {
-                startValue += 1;
-                valueDisplay.textContent = startValue;
-                if (startValue == endValue) {
-                    clearInterval(counter);
+                if (response) {
+                    this.loading = false;
+                    this.snackbar = true;
+                    this.showError = false;
+                    setTimeout(() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        this.resetForm();
+                        //window.location.reload();
+                        //this.$router.push('/biotime-ng');
+                    }, 3001);
+                } else {
+                    this.loading = false;
+                    this.showSuccess = false;
+                    this.showError = true;
                 }
-            }, duration);
-        });
+            }
+        }
     }
 };
 </script>
@@ -441,6 +581,12 @@ export default {
     .start:hover {
         background: #5ba538;
     }
+}
+
+.el-error {
+    font-size: 14px !important;
+    color: red !important;
+    font-weight: lighter !important;
 }
 .main_business {
     display: flex;
@@ -668,6 +814,7 @@ export default {
                 'phone '
                 'country '
                 'state'
+                'qualification'
                 'book';
 
             .form-text,
@@ -679,6 +826,7 @@ export default {
                 padding: 1.2rem 2rem;
             }
 
+            text-align: left;
             .first {
                 grid-area: first;
             }
