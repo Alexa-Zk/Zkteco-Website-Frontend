@@ -137,9 +137,9 @@
                             />
                         </div>
                         <div class="content_container">
-                            <h2>
+                            <h3 class="hcolor">
                                 How to Become BAP Partner
-                            </h2>
+                            </h3>
                             <h3>
                                 Join the Movement by Becoming a BioTime Africa
                                 Partner (BAP) in Three Easy Steps!
@@ -217,7 +217,7 @@
                             />
                         </div>
                         <div class="content_container">
-                            <h2>Benefits</h2>
+                            <h3 class="hcolor">Benefits</h3>
 
                             <div>
                                 <p>
@@ -280,7 +280,7 @@
                             />
                         </div>
                         <div class="content_container">
-                            <h2>Requirements</h2>
+                            <h3 class="hcolor">Requirements</h3>
                             <h3>
                                 Prospective African Timekeepers must fulfill the
                                 following conditions:
@@ -313,11 +313,11 @@
                             </div>
                         </div>
                         <div class="footer">
-                            <h3>
+                            <p class="boldcontent">
                                 All shortlisted BAP candidates are to fill out
                                 the entry form and guiding principle, after
                                 which they will enjoy the following benefits:
-                            </h3>
+                            </p>
                             <ol>
                                 <li>
                                     <p>
@@ -390,53 +390,8 @@
 
                     <!-- End-->
 
-                    <!--div class="business_emp">
-                        <div>
-                            <img
-                                data-src="/img/biotime-africa-partner/contentlist.png"
-                                class="lazyload"
-                                alt=""
-                            />
-                        </div>
-                        <div>
-                            <h2>
-                                Requirements
-                            </h2>
-                            <h3>
-                                Prospective African Timekeepers must fulll the
-                                following conditions:
-                            </h3>
-                            <div>
-                                <ul>
-                                    <li>
-                                        <p>
-                                            Have a minimum qualication of OND.
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>You must be computer literate.</p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            You must have good communication
-                                            skills.
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            You must have an interest in
-                                            acquiring knowledge of biometric
-                                            technology
-                                        </p>
-                                    </li>
-                                </ul>
-                                <a href="#form" class="start">Get Started</a>
-                            </div>
-                        </div>
-                    </div -->
-
                     <div id="form" class="form-container">
-                        <h2>To Register</h2>
+                        <h3 class="hcolor">To Register</h3>
                         <div class="form">
                             <!--form -->
                             <div class="first">
@@ -522,6 +477,7 @@
                                     <option value="OND">OND</option>
                                     <option value="HND">HND</option>
                                     <option value="BSC">BSC</option>
+                                    <option value="OTHERS">OTHERS</option>
                                 </select>
                             </div>
 
@@ -536,7 +492,7 @@
                                     An error occurred
                                 </p -->
                                 <p
-                                    style="font-size: 14px; color: green; font-weight: 600;"
+                                    style="font-size: 1.5rem; color: green; font-weight: 600;"
                                     v-if="showSuccess"
                                 >
                                     You will be contacted shortly!!
@@ -705,7 +661,7 @@ export default {
 }
 
 .el-error {
-    font-size: 14px !important;
+    font-size: 1.5rem !important;
     color: red !important;
     font-weight: lighter !important;
 }
@@ -734,7 +690,7 @@ export default {
             .content_header {
                 background: #8bc76f;
                 color: #fff;
-                font-size: 1.4;
+                font-size: 1.4rem;
                 padding: 1rem 1.2rem;
                 font-weight: bold;
                 border-radius: 4px;
@@ -768,10 +724,14 @@ export default {
                         border-radius: 4px;
                     }
                     p {
-                        text-align: center;
                         color: #fff;
-                        font-size: 1.9rem;
+                        font-size: 1.5rem;
                         font-weight: bold;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-bottom: 0px;
+                        padding: 10px;
                     }
                 }
 
@@ -801,41 +761,53 @@ export default {
                 .commission_world {
                     margin: 30px 0px;
                     p {
-                        font-size: 1.8rem;
+                        font-size: 1.5rem;
+                        text-align: justify;
                     }
                 }
             }
             .bap_container {
-                padding-bottom: 60px;
+                padding-bottom: 30px;
                 display: grid;
-                grid-template-columns: 1.8fr 3.4fr;
-                grid-template-rows: 1fr 1fr;
+                grid-template-columns: 2fr 3.4fr;
+                grid-template-rows: 1fr 0.4fr;
                 grid-template-areas:
                     'img_container content_container'
                     'footer footer';
                 grid-gap: 2.3em;
                 align-items: center;
-
-                img {
-                    height: 100% !important;
-                    width: 100% !important;
-                    // object-fit: cover;
-                }
-
+                // background: yellow;
+                // img {
+                //     height: 100% !important;
+                //     width: 100% !important;
+                //     // object-fit: cover;
+                // }
                 @include start();
 
                 .img_container {
+                    // background: darkcyan;
                     grid-area: img_container;
                 }
                 .content_container {
+                    // background: violet;
                     grid-area: content_container;
+                }
+
+                .hcolor {
+                    color: #8bc76f;
                 }
                 .footer {
                     grid-area: footer;
+                    // margin-top: -50px;
+                    // background: red;
+
+                    .boldcontent {
+                        font-weight: bold;
+                    }
                 }
 
                 p {
-                    font-size: 1.8rem;
+                    font-size: 1.5rem;
                     text-align: justify;
                 }
             }
@@ -853,7 +825,7 @@ export default {
                     // object-fit: cover;
                 }
                 p {
-                    font-size: 1.8rem;
+                    font-size: 1.5rem;
                     text-align: justify;
                 }
                 @include start();
@@ -868,7 +840,7 @@ export default {
                 align-items: stretch;
 
                 p {
-                    font-size: 1.8rem;
+                    font-size: 1.5rem;
                     text-align: justify;
                 }
 
