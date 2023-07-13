@@ -971,5 +971,20 @@ export const actions = {
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
+    },
+
+    async bookAppointment({ commit }, payload) {
+        commit('setLoading', true);
+
+        const reponse = await Repository.post(
+            `${subBaseUrl}/biotime-africa-partners`,
+            payload
+        )
+            .then(response => {
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
     }
 };
