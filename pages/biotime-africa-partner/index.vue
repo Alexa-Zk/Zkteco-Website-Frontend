@@ -137,9 +137,9 @@
                             />
                         </div>
                         <div class="content_container">
-                            <h2>
+                            <h3 class="hcolor">
                                 How to Become BAP Partner
-                            </h2>
+                            </h3>
                             <h3>
                                 Join the Movement by Becoming a BioTime Africa
                                 Partner (BAP) in Three Easy Steps!
@@ -217,7 +217,7 @@
                             />
                         </div>
                         <div class="content_container">
-                            <h2>Benefits</h2>
+                            <h3 class="hcolor">Benefits</h3>
 
                             <div>
                                 <p>
@@ -280,7 +280,7 @@
                             />
                         </div>
                         <div class="content_container">
-                            <h2>Requirements</h2>
+                            <h3 class="hcolor">Requirements</h3>
                             <h3>
                                 Prospective African Timekeepers must fulfill the
                                 following conditions:
@@ -313,11 +313,11 @@
                             </div>
                         </div>
                         <div class="footer">
-                            <h3>
+                            <p class="boldcontent">
                                 All shortlisted BAP candidates are to fill out
                                 the entry form and guiding principle, after
                                 which they will enjoy the following benefits:
-                            </h3>
+                            </p>
                             <ol>
                                 <li>
                                     <p>
@@ -436,7 +436,7 @@
                     </div -->
 
                     <div id="form" class="form-container">
-                        <h2>To Register</h2>
+                        <h3 class="hcolor">To Register</h3>
                         <div class="form">
                             <!--form -->
                             <div class="first">
@@ -536,7 +536,7 @@
                                     An error occurred
                                 </p -->
                                 <p
-                                    style="font-size: 14px; color: green; font-weight: 600;"
+                                    style="font-size: 1.5rem; color: green; font-weight: 600;"
                                     v-if="showSuccess"
                                 >
                                     You will be contacted shortly!!
@@ -705,7 +705,7 @@ export default {
 }
 
 .el-error {
-    font-size: 14px !important;
+    font-size: 1.5rem !important;
     color: red !important;
     font-weight: lighter !important;
 }
@@ -734,7 +734,7 @@ export default {
             .content_header {
                 background: #8bc76f;
                 color: #fff;
-                font-size: 1.4;
+                font-size: 1.4rem;
                 padding: 1rem 1.2rem;
                 font-weight: bold;
                 border-radius: 4px;
@@ -770,7 +770,7 @@ export default {
                     p {
                         text-align: center;
                         color: #fff;
-                        font-size: 1.9rem;
+                        font-size: 1.5rem;
                         font-weight: bold;
                     }
                 }
@@ -801,7 +801,7 @@ export default {
                 .commission_world {
                     margin: 30px 0px;
                     p {
-                        font-size: 1.8rem;
+                        font-size: 1.5rem;
                     }
                 }
             }
@@ -830,12 +830,20 @@ export default {
                 .content_container {
                     grid-area: content_container;
                 }
+
+                .hcolor {
+                    color: #8bc76f;
+                }
                 .footer {
                     grid-area: footer;
+
+                    .boldcontent {
+                        font-weight: bold;
+                    }
                 }
 
                 p {
-                    font-size: 1.8rem;
+                    font-size: 1.5rem;
                     text-align: justify;
                 }
             }
@@ -853,7 +861,7 @@ export default {
                     // object-fit: cover;
                 }
                 p {
-                    font-size: 1.8rem;
+                    font-size: 1.5rem;
                     text-align: justify;
                 }
                 @include start();
@@ -868,7 +876,7 @@ export default {
                 align-items: stretch;
 
                 p {
-                    font-size: 1.8rem;
+                    font-size: 1.5rem;
                     text-align: justify;
                 }
 
