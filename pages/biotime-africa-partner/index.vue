@@ -390,51 +390,6 @@
 
                     <!-- End-->
 
-                    <!--div class="business_emp">
-                        <div>
-                            <img
-                                data-src="/img/biotime-africa-partner/contentlist.png"
-                                class="lazyload"
-                                alt=""
-                            />
-                        </div>
-                        <div>
-                            <h2>
-                                Requirements
-                            </h2>
-                            <h3>
-                                Prospective African Timekeepers must fulll the
-                                following conditions:
-                            </h3>
-                            <div>
-                                <ul>
-                                    <li>
-                                        <p>
-                                            Have a minimum qualication of OND.
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>You must be computer literate.</p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            You must have good communication
-                                            skills.
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            You must have an interest in
-                                            acquiring knowledge of biometric
-                                            technology
-                                        </p>
-                                    </li>
-                                </ul>
-                                <a href="#form" class="start">Get Started</a>
-                            </div>
-                        </div>
-                    </div -->
-
                     <div id="form" class="form-container">
                         <h3 class="hcolor">To Register</h3>
                         <div class="form">
@@ -806,7 +761,7 @@ export default {
                 }
             }
             .bap_container {
-                padding-bottom: 60px;
+                //padding-bottom: 30px;
                 display: grid;
                 grid-template-columns: 1.8fr 3.4fr;
                 grid-template-rows: 1fr 1fr;
