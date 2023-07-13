@@ -761,28 +761,29 @@ export default {
                 }
             }
             .bap_container {
-                //padding-bottom: 30px;
+                padding-bottom: 30px;
                 display: grid;
-                grid-template-columns: 1.8fr 3.4fr;
-                grid-template-rows: 1fr 1fr;
+                grid-template-columns: 2fr 3.4fr;
+                grid-template-rows: 1fr 0.4fr;
                 grid-template-areas:
                     'img_container content_container'
                     'footer footer';
                 grid-gap: 2.3em;
                 align-items: center;
-
-                img {
-                    height: 100% !important;
-                    width: 100% !important;
-                    // object-fit: cover;
-                }
-
+                // background: yellow;
+                // img {
+                //     height: 100% !important;
+                //     width: 100% !important;
+                //     // object-fit: cover;
+                // }
                 @include start();
 
                 .img_container {
+                    // background: darkcyan;
                     grid-area: img_container;
                 }
                 .content_container {
+                    // background: violet;
                     grid-area: content_container;
                 }
 
@@ -791,6 +792,8 @@ export default {
                 }
                 .footer {
                     grid-area: footer;
+                    // margin-top: -50px;
+                    // background: red;
 
                     .boldcontent {
                         font-weight: bold;
