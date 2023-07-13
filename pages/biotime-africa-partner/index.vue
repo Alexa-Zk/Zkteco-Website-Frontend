@@ -477,6 +477,7 @@
                                     <option value="OND">OND</option>
                                     <option value="HND">HND</option>
                                     <option value="BSC">BSC</option>
+                                    <option value="OTHERS">OTHERS</option>
                                 </select>
                             </div>
 
@@ -757,6 +758,7 @@ export default {
                     margin: 30px 0px;
                     p {
                         font-size: 1.5rem;
+                        text-align: justify;
                     }
                 }
             }
