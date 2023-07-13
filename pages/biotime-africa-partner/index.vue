@@ -7,27 +7,27 @@
                         <p class="content_header">
                             Are you looking for a side hustle that generates
                             recurring income? Or are you a young, tech-savvy
-                            individual who wants to be their own boss? The
-                            “African Timekeeper Initiative” is perfect for you!
-                            ZKTeco is actively recruiting dynamic and ambitious
-                            youth to help enhance productivity across Africa.
+                            individual who wants to be your boss? The “African
+                            Timekeeper Initiative” is perfect for you! ZKTECO is
+                            actively recruiting dynamic and ambitious youth to
+                            help enhance productivity across Africa.
                         </p>
                     </div>
                     <div class="business_entrance">
                         <div>
                             <div>
                                 <p>
-                                    ZKTeco is committing to assisting small and
-                                    medium-sized rms (SMEs) with a staff of 50
-                                    or less and up to three locations as part of
-                                    our commitment to strengthening Nigeria's
-                                    economy and making Nigeria more productive.
-                                    <br /><br />
-                                    SMEs may Unlock the power of attendance
-                                    monitoring without the need for extra
-                                    software and obtain free access to our
-                                    advanced Biotime-Africa software by
-                                    purchasing the Biotime- Africa devices.
+                                    Join our Biotime Africa Partners (BAPs) and
+                                    become an African Timekeeper, spreading the
+                                    message of punctuality from office to office
+                                    and street to street. Together, we will
+                                    transform Africa's approach to time. This
+                                    youth empowerment initiative involves
+                                    comprehensive training on selling, setting
+                                    up, and training customers on our Biotime
+                                    Africa platform. Our goal is to boost
+                                    productivity, combat time theft, and
+                                    eradicate ghost workers.
                                 </p>
 
                                 <a href="#form" class="start">Get Started</a>
@@ -53,17 +53,17 @@
                         <div>
                             <div>
                                 <p>
-                                    ZKTeco is committing to assisting small and
-                                    medium-sized rms (SMEs) with a staff of 50
-                                    or less and up to three locations as part of
-                                    our commitment to strengthening Nigeria's
-                                    economy and making Nigeria more productive.
-                                    <br /><br />
-                                    SMEs may Unlock the power of attendance
-                                    monitoring without the need for extra
-                                    software and obtain free access to our
-                                    advanced Biotime-Africa software by
-                                    purchasing the Biotime- Africa devices.
+                                    Join our Biotime Africa Partners (BAPs) and
+                                    become an African Timekeeper, spreading the
+                                    message of punctuality from office to office
+                                    and street to street. Together, we will
+                                    transform Africa's approach to time. This
+                                    youth empowerment initiative involves
+                                    comprehensive training on selling, setting
+                                    up, and training customers on our Biotime
+                                    Africa platform. Our goal is to boost
+                                    productivity, combat time theft, and
+                                    eradicate ghost workers.
                                 </p>
                                 <a href="#form" class="start">Get Started</a>
                             </div>
@@ -148,24 +148,23 @@
                                 <ol>
                                     <li>
                                         <p>
-                                            To begin with our program ll out the
-                                            BAP application form.
+                                            Visit our website and fill out the
+                                            application form.
                                         </p>
                                     </li>
                                     <li>
                                         <p>
-                                            If you satisfy the conditions, we
-                                            will encourage you to sign the BAP
-                                            agreement and look forward to a
-                                            bright future together.
+                                            If selected, you'll sign up as an
+                                            African Timekeeper and receive
+                                            exclusive training.
                                         </p>
                                     </li>
                                     <li>
                                         <p>
-                                            Attend our complete training
-                                            session, which will provide you with
-                                            the skills and information you need
-                                            to succeed as a BAP.
+                                            You'll visit companies and
+                                            enterprises, promoting punctuality
+                                            and time management, equipped with
+                                            the Biotime Africa solution.
                                         </p>
                                     </li>
                                 </ol>
@@ -174,36 +173,37 @@
                         </div>
                         <div class="footer">
                             <p>
-                                Based on their accumulated commission earnings,
+                                Based on your accumulated commission earnings,
                                 the commission system provides a clear path to
                                 recognition. We will celebrate your efforts with
                                 four outstanding levels of recognition:
 
-                                <br /><br />
+                                <br />
 
                                 <b>Bronze:</b> Achieved by earning between
                                 500,000 and 1,000,000 NGN in total commission.
-
                                 <br />
 
                                 <b>Silver:</b> Achieved by earning between
                                 1,000,000 and 3,000,000 NGN in cumulative
                                 commission.
-
                                 <br />
 
-                                <b>Gold:</b>Attained by earning between
+                                <b>Gold:</b> Attained by earning between
                                 3,000,000 and 5,000,000 NGN in cumulative
                                 commission earnings.
 
                                 <br />
+                                <b>Diamond:</b> The peak of achievement! Earn a
+                                total of over 5,000,000 NGN in commissions.
+                                <br />
+                            </p>
 
-                                <b>Diamond:</b>The peak of achievement! Earn a
-                                total of over 5,000,000 NGN in commissions. We
-                                will celebrate the winners of each recognition
-                                level at the end of the year, acknowledging
-                                their excellent achievements and unshakable
-                                devotion.
+                            <p>
+                                We will celebrate the winners of each
+                                recognition level at the end of the year,
+                                acknowledging their excellent achievements and
+                                unshakable devotion.
                             </p>
                         </div>
                     </div>
@@ -222,27 +222,28 @@
                             <div>
                                 <p>
                                     Rewards and Recognition: Special promotions
-                                    and incentives are available to Independent
-                                    Consultants. Join us at our annual
-                                    conference and enjoy other bene ts like the
-                                    Hall of Fame, available to top performers.
+                                    and incentives are available to our African
+                                    Timekeepers. Join us at our annual
+                                    conference and enjoy other benefits like the
+                                    Hall of Fame and many more.
                                 </p>
 
                                 <p>
                                     Work-Life Balance: Manage your business on
-                                    your schedule, around family commitments or
-                                    even a full-time job
+                                    your schedule or even make it a full-time
+                                    job
                                 </p>
                                 <p>
-                                    Purpose + Community: Join a passionate
-                                    Biotime Africa community revolutionizing
-                                    excellence and productivity at workplaces.
+                                    Biotime Community: Join a passionate Biotime
+                                    Africa community revolutionizing excellence
+                                    and productivity at workplaces.
                                 </p>
                                 <p>
-                                    Connect with us: Have questions? Connect
-                                    with us and register to schedule a session
-                                    to learn more about the BAP program.
+                                    Connect with us: Register to schedule a
+                                    session to learn more about the BAP program
+                                    that comes up every month.
                                 </p>
+
                                 <a href="#form" class="start">Get Started</a>
                             </div>
                         </div>
@@ -250,13 +251,12 @@
                             <h3>Grow your business</h3>
                             <p>
                                 Your time, your way—you’re the boss! Learn the
-                                business with our free online training modules,
-                                and do them at your own pace. Work from anywhere
-                                and Enjoy commissions and bonuses on your sales.
-                                Earn rewards and prizes as you grow your
-                                business.
+                                business with our free training modules, and do
+                                them at your own pace. Work from anywhere and
+                                earn commissions, rewards, and incentives on
+                                your sales.
                             </p>
-                            <h3>Get Started</h3>
+                            <!--h3>Get Started</h3>
                             <p>
                                 Be connected—real support from the Biotime team
                                 Join team meetings and business workshops and
@@ -265,11 +265,132 @@
                                 to join as an African Timekeeper with a
                                 discounted Welcome Kit, available for a limited
                                 time only.
-                            </p>
+                            </p -->
                         </div>
                     </div>
 
-                    <div class="business_emp">
+                    <!-- Requirement start-->
+
+                    <div class="bap_container">
+                        <div class="img_container">
+                            <img
+                                data-src="/img/biotime-africa-partner/contentlist.png"
+                                class="lazyload"
+                                alt=""
+                            />
+                        </div>
+                        <div class="content_container">
+                            <h2>Requirements</h2>
+                            <h3>
+                                Prospective African Timekeepers must fulfill the
+                                following conditions:
+                            </h3>
+
+                            <div>
+                                <ul>
+                                    <li>
+                                        <p>
+                                            Have a minimum qualification of OND.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>You must be computer literate.</p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            You must have good communication
+                                            skills.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            You must be interested in learning
+                                            about biometric technology.
+                                        </p>
+                                    </li>
+                                </ul>
+                                <a href="#form" class="start">Get Started</a>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <h3>
+                                All shortlisted BAP candidates are to fill out
+                                the entry form and guiding principle, after
+                                which they will enjoy the following benefits:
+                            </h3>
+                            <ol>
+                                <li>
+                                    <p>
+                                        Free intensive training on the
+                                        installation of biometric devices
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        Free work-through training for the
+                                        Biotime Africa solution
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>Free Sales training</p>
+                                </li>
+                                <li>
+                                    <p>
+                                        Purchase a Biotime Africa Start-Up Kit
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        After finishing the course and paying
+                                        for the Start-Up Kit, you'll receive
+                                        your special BAP Starter Kit, which
+                                        includes
+                                    </p>
+
+                                    <ul>
+                                        <li><p>A BAP Bag.</p></li>
+                                        <li>
+                                            <p>
+                                                Biotime account login
+                                                information to track activities
+                                                and downlines.
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                Marketing materials, product and
+                                                price information, and other
+                                                tools to help you succeed.
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ol>
+
+                            <!--h3>Grow your business</h3>
+                            <p>
+                                Your time, your way—you’re the boss! Learn the
+                                business with our free training modules, and do
+                                them at your own pace. Work from anywhere and
+                                earn commissions, rewards, and incentives on
+                                your sales.
+                            </p -->
+                            <!--h3>Get Started</h3>
+                            <p>
+                                Be connected—real support from the Biotime team
+                                Join team meetings and business workshops and
+                                learn 1-on-1 with peers, leaders, and Biotime
+                                support staff. Purchase a Biotime Africa device
+                                to join as an African Timekeeper with a
+                                discounted Welcome Kit, available for a limited
+                                time only.
+                            </p -->
+                        </div>
+                    </div>
+
+                    <!-- End-->
+
+                    <!--div class="business_emp">
                         <div>
                             <img
                                 data-src="/img/biotime-africa-partner/contentlist.png"
@@ -312,7 +433,7 @@
                                 <a href="#form" class="start">Get Started</a>
                             </div>
                         </div>
-                    </div>
+                    </div -->
 
                     <div id="form" class="form-container">
                         <h2>To Register</h2>
@@ -626,12 +747,16 @@ export default {
             }
 
             .commission_container {
-                margin: 70px 0;
+                margin: 40px 0;
 
                 .commission {
                     display: grid;
                     grid-template-columns: 1fr 1fr 1fr;
                     grid-gap: 1rem;
+                    // // display: flex;
+                    // // flex-direction: column;
+                    // background: yellow;
+                    // padding: 12px;
 
                     .device {
                         background: #8bc76f;
@@ -793,6 +918,13 @@ export default {
                         'img_container '
                         'content_container'
                         'footer';
+                }
+
+                .commission_container {
+                    .commission {
+                        display: flex;
+                        flex-direction: row;
+                    }
                 }
             }
         }
