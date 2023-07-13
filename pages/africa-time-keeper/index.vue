@@ -924,10 +924,11 @@ export default {
             .form-text,
             textarea {
                 width: 100%;
-                background: #8bc76f;
+                // background: #8bc76f;
                 margin: 1rem 0;
                 font-size: 1.5rem;
                 padding: 1.2rem 2rem;
+                border: 1px solid #424242;
             }
 
             text-align: left;
