@@ -761,7 +761,7 @@ export default {
                 }
             }
             .bap_container {
-                padding-bottom: 30px;
+                //padding-bottom: 30px;
                 display: grid;
                 grid-template-columns: 1.8fr 3.4fr;
                 grid-template-rows: 1fr 1fr;
