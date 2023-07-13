@@ -724,10 +724,14 @@ export default {
                         border-radius: 4px;
                     }
                     p {
-                        text-align: center;
                         color: #fff;
                         font-size: 1.5rem;
                         font-weight: bold;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-bottom: 0px;
+                        padding: 10px;
                     }
                 }
 
