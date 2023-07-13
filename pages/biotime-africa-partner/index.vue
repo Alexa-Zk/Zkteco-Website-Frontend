@@ -477,6 +477,7 @@
                                     <option value="OND">OND</option>
                                     <option value="HND">HND</option>
                                     <option value="BSC">BSC</option>
+                                    <option value="OTHERS">OTHERS</option>
                                 </select>
                             </div>
 
@@ -723,10 +724,14 @@ export default {
                         border-radius: 4px;
                     }
                     p {
-                        text-align: center;
                         color: #fff;
                         font-size: 1.5rem;
                         font-weight: bold;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-bottom: 0px;
+                        padding: 10px;
                     }
                 }
 
@@ -757,6 +762,7 @@ export default {
                     margin: 30px 0px;
                     p {
                         font-size: 1.5rem;
+                        text-align: justify;
                     }
                 }
             }
