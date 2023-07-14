@@ -393,134 +393,208 @@
                     <!-- End-->
 
                     <div id="form" class="form-container">
-                        <h3 class="hcolor">To Register</h3>
                         <div class="form">
-                            <!--form -->
-                            <div class="first">
-                                <p class="el-error" v-if="$v.fullname.$error">
-                                    fullname is required!
-                                </p>
-                                <input
-                                    type="text"
-                                    class="form-text"
-                                    placeholder="Full Name"
-                                    v-model.trim="$v.fullname.$model"
+                            <div id="mc_embed_shell">
+                                <link
+                                    href="//cdn-images.mailchimp.com/embedcode/classic-061523.css"
+                                    rel="stylesheet"
+                                    type="text/css"
                                 />
+                                <style type="text/css">
+                                    #mc_embed_signup{background:#fff; false;clear:left; font:14px Helvetica,Arial,sans-serif; width: 600px;}
+                                    /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+                                       We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+                                </style>
+                                <div id="mc_embed_signup">
+                                    <form
+                                        action="https://zkteco-wa.us19.list-manage.com/subscribe/post?u=47905133deeb2b86cb2b1e0ee&amp;id=a7d3efdd10&amp;f_id=0042a6e4f0"
+                                        method="post"
+                                        id="mc-embedded-subscribe-form"
+                                        name="mc-embedded-subscribe-form"
+                                        class="validate"
+                                        target="_blank"
+                                    >
+                                        <div id="mc_embed_signup_scroll">
+                                            <h2 style="color: #000;">
+                                                Sign Up
+                                            </h2>
+                                            <div class="indicates-required">
+                                                <span class="asterisk">*</span>
+                                                indicates required
+                                            </div>
+                                            <div class="mc-field-group">
+                                                <label for="mce-FNAME"
+                                                    >First Name
+                                                    <span
+                                                        class="asterisk"
+                                                    ></span></label
+                                                ><input
+                                                    type="text"
+                                                    name="FNAME"
+                                                    class="required text"
+                                                    id="mce-FNAME"
+                                                    required=""
+                                                    value=""
+                                                />
+                                            </div>
+                                            <div class="mc-field-group">
+                                                <label for="mce-MMERGE3"
+                                                    >Last Name
+                                                    <span
+                                                        class="asterisk"
+                                                    ></span></label
+                                                ><input
+                                                    type="text"
+                                                    name="MMERGE3"
+                                                    class="required text"
+                                                    id="mce-MMERGE3"
+                                                    required=""
+                                                    value=""
+                                                />
+                                            </div>
+                                            <div class="mc-field-group">
+                                                <label for="mce-PHONE"
+                                                    >Phone Number
+                                                    <span
+                                                        class="asterisk"
+                                                    ></span></label
+                                                ><input
+                                                    type="text"
+                                                    name="PHONE"
+                                                    class="REQ_CSS"
+                                                    id="mce-PHONE"
+                                                    value=""
+                                                />
+                                            </div>
+                                            <div class="mc-field-group">
+                                                <label for="mce-EMAIL"
+                                                    >Email Address
+                                                    <span
+                                                        class="asterisk"
+                                                    ></span></label
+                                                ><input
+                                                    type="email"
+                                                    name="EMAIL"
+                                                    class="required email"
+                                                    id="mce-EMAIL"
+                                                    value=""
+                                                    required=""
+                                                />
+                                            </div>
+                                            <div class="mc-field-group">
+                                                <label for="mce-MMERGE7"
+                                                    >Company </label
+                                                ><input
+                                                    type="text"
+                                                    name="MMERGE7"
+                                                    class=" text"
+                                                    id="mce-MMERGE7"
+                                                    value=""
+                                                />
+                                            </div>
+                                            <div
+                                                class="mc-field-group input-group"
+                                            >
+                                                <strong
+                                                    >Do you currently sell
+                                                    biometric/security products?
+                                                </strong>
+                                                <ul>
+                                                    <li>
+                                                        <input
+                                                            type="radio"
+                                                            name="group[179353]"
+                                                            id="mce-group[179353]-179353-0"
+                                                            value="1"
+                                                        /><label
+                                                            for="mce-group[179353]-179353-0"
+                                                            >Yes</label
+                                                        >
+                                                    </li>
+                                                    <li>
+                                                        <input
+                                                            type="radio"
+                                                            name="group[179353]"
+                                                            id="mce-group[179353]-179353-1"
+                                                            value="2"
+                                                        /><label
+                                                            for="mce-group[179353]-179353-1"
+                                                            >No</label
+                                                        >
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="mc-field-group">
+                                                <label for="mce-undefined"
+                                                    >Qualification
+                                                    <span class="asterisk"
+                                                        >*</span
+                                                    ></label
+                                                ><select
+                                                    style="border: 1px solid #afacac; padding:10px;"
+                                                    class="required form-text"
+                                                    id="mce-undefined"
+                                                >
+                                                    <option value=""
+                                                        >Select</option
+                                                    ><option value="OND"
+                                                        >OND</option
+                                                    ><option value="BSC/BA"
+                                                        >BSC/BA</option
+                                                    ><option value="HND"
+                                                        >HND</option
+                                                    ><option value="Others"
+                                                        >Others</option
+                                                    ></select
+                                                >
+                                            </div>
+                                            <div
+                                                id="mce-responses"
+                                                class="clearfalse"
+                                            >
+                                                <div
+                                                    class="response"
+                                                    id="mce-error-response"
+                                                    style="display: none;"
+                                                ></div>
+                                                <div
+                                                    class="response"
+                                                    id="mce-success-response"
+                                                    style="display: none;"
+                                                ></div>
+                                            </div>
+                                            <div
+                                                aria-hidden="true"
+                                                style="position: absolute; left: -5000px;"
+                                            >
+                                                <input
+                                                    type="text"
+                                                    name="b_47905133deeb2b86cb2b1e0ee_a7d3efdd10"
+                                                    tabindex="-1"
+                                                    value=""
+                                                />
+                                            </div>
+                                            <div class="clear">
+                                                <input
+                                                    style="background: #8bc76f;"
+                                                    type="submit"
+                                                    name="subscribe"
+                                                    id="mc-embedded-subscribe"
+                                                    class="button"
+                                                    value="Sign Up"
+                                                />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <script
+                                    type="text/javascript"
+                                    src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
+                                ></script>
+                                <script type="text/javascript">
+                                    (function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]=FNAME;ftypes[1]=merge;,fnames[3]=MMERGE3;ftypes[3]=merge;,fnames[4]=PHONE;ftypes[4]=merge;,fnames[0]=EMAIL;ftypes[0]=merge;,fnames[7]=MMERGE7;ftypes[7]=merge;,fnames[undefined]=interests_179353;ftypes[undefined]=group;,fnames[5]=MMERGE5;ftypes[5]=merge;,fnames[2]=MMERGE2;ftypes[2]=merge;false}(jQuery));var $mcj = jQuery.noConflict(true);
+                                </script>
                             </div>
-
-                            <div class="email">
-                                <p
-                                    class="el-error"
-                                    v-if="$v.emailAddress.$error"
-                                >
-                                    Email is required!
-                                </p>
-                                <input
-                                    type="email"
-                                    class="form-text"
-                                    placeholder="Email Address"
-                                    v-model.trim="$v.emailAddress.$model"
-                                />
-                            </div>
-
-                            <div class="phone">
-                                <p class="el-error" v-if="$v.phone.$error">
-                                    Phone number is required!
-                                </p>
-                                <input
-                                    type="number"
-                                    class="form-text"
-                                    placeholder="Phone Number "
-                                    v-model.trim="$v.phone.$model"
-                                />
-                            </div>
-                            <div class="country">
-                                <p class="el-error" v-if="$v.country.$error">
-                                    Country is required!
-                                </p>
-                                <input
-                                    type="text"
-                                    class="form-text"
-                                    placeholder="Country"
-                                    v-model.trim="$v.country.$model"
-                                />
-                            </div>
-                            <div class="state">
-                                <p class="el-error" v-if="$v.state.$error">
-                                    State is required!
-                                </p>
-                                <input
-                                    type="text"
-                                    class="form-text"
-                                    placeholder="state"
-                                    v-model.trim="$v.state.$model"
-                                />
-                            </div>
-                            <div class="qualification">
-                                <p
-                                    class="el-error"
-                                    v-if="$v.qualification.$error"
-                                >
-                                    Qualification is required!
-                                </p>
-                                <!--input
-                                    type="text"
-                                    class="form-text"
-                                    placeholder="qualification"
-                                    v-model.trim="$v.qualification.$model"
-                                /-->
-
-                                <select
-                                    class="form-text"
-                                    v-model.trim="$v.qualification.$model"
-                                >
-                                    <option value="">Qualification</option>
-                                    <option value="NCE">NCE</option>
-                                    <option value="OND">OND</option>
-                                    <option value="HND">HND</option>
-                                    <option value="BSC">BSC</option>
-                                    <option value="OTHERS">OTHERS</option>
-                                </select>
-                            </div>
-
-                            <div class="book">
-                                <!--button>Book</button-->
-
-                                <button @click.prevent="bookAppointment">
-                                    {{ loading ? 'Sending...' : 'Book' }}
-                                </button>
-
-                                <!--p class="el-error" v-if="showError">
-                                    An error occurred
-                                </p -->
-                                <p
-                                    style="font-size: 1.5rem; color: green; font-weight: 600;"
-                                    v-if="showSuccess"
-                                >
-                                    You will be contacted shortly!!
-                                </p>
-
-                                <v-snackbar
-                                    v-model="snackbar"
-                                    :timeout="3000"
-                                    color="green"
-                                    tile
-                                >
-                                    {{ snackBarMessage }}
-
-                                    <template v-slot:action="{ attrs }">
-                                        <v-btn
-                                            color="white"
-                                            text
-                                            v-bind="attrs"
-                                            @click="snackbar = false"
-                                        >
-                                            Close
-                                        </v-btn>
-                                    </template>
-                                </v-snackbar>
-                            </div>
-                            <!--/form -->
                         </div>
                     </div>
                 </div>
@@ -656,6 +730,8 @@ export default {
         padding: 1.2rem 2.3rem;
         background: #8bc76f;
         font-weight: bold;
+        text-decoration: none;
+        color: #fff;
     }
     .start:hover {
         background: #5ba538;
@@ -932,6 +1008,7 @@ export default {
                 font-size: 1.5rem;
                 padding: 1.2rem 2rem;
                 border: 1px solid #424242;
+                background: #424242;
             }
 
             text-align: left;
