@@ -3,6 +3,7 @@
         <div class="main_business">
             <div class="main_business_wrapper">
                 <div class="business_content">
+                    <h2 style="color:#000">Africa Time Keeper</h2>
                     <div>
                         <p class="content_header">
                             Are you looking for a side hustle that generates
