@@ -401,7 +401,7 @@
                                     type="text/css"
                                 />
                                 <style type="text/css">
-                                    #mc_embed_signup{background:#fff; false;clear:left; font:14px Helvetica,Arial,sans-serif; width: 600px;}
+                                    #mc_embed_signup{background:#fff; false;clear:left; font:14px Helvetica,Arial,sans-serif;}
                                     /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
                                        We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
                                 </style>
@@ -475,7 +475,7 @@
                                                 ><input
                                                     type="email"
                                                     name="EMAIL"
-                                                    class="required email"
+                                                    class="required "
                                                     id="mce-EMAIL"
                                                     value=""
                                                     required=""
@@ -531,7 +531,7 @@
                                                         >*</span
                                                     ></label
                                                 ><select
-                                                    style="border: 1px solid #afacac; padding:10px;"
+                                                    style="border: 1px solid #afacac; padding:10px; background:#fff;"
                                                     class="required form-text"
                                                     id="mce-undefined"
                                                 >
