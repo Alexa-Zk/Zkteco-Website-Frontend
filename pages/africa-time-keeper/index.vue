@@ -96,14 +96,6 @@
                         </div>
                         <div class="commission_world">
                             <p>
-                                Our target by November is to onboard 300
-                                passionate African Timekeepers who will champion
-                                punctuality. Additionally, we aim to have 1500
-                                companies benefit from our cutting-edge Biotime
-                                Africa platform.
-                            </p>
-
-                            <p>
                                 Biotime Africa empowers businesses with time
                                 efficiency. It is the leading web-based time
                                 attendance solution that effortlessly tracks
@@ -117,6 +109,16 @@
                                 than 20 employees and one location. By
                                 purchasing the Biotime Africa Device, SMEs can
                                 access our powerful software for free.
+                            </p>
+
+                            <p>
+                                Our African timekeeper initiative is an
+                                empowerment program for young enthusiast who
+                                seeks to start up a business venture or improve
+                                his/ her economic imbalance through the
+                                promotion of Biotime Africa to the vast majority
+                                of Nigerian SME's seeking to improve their
+                                business efficiency.
                             </p>
 
                             <p>
@@ -690,10 +692,11 @@ export default {
             .content_header {
                 background: #8bc76f;
                 color: #fff;
-                font-size: 1.4rem;
+                font-size: 1.7rem;
                 padding: 1rem 1.2rem;
                 font-weight: bold;
                 border-radius: 4px;
+                text-align: justify;
             }
             h2 {
                 color: #8bc76f;
