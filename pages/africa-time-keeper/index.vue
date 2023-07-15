@@ -393,7 +393,7 @@
 
                     <!-- End-->
                     <div id="form" class="form-container">
-                        <h3 class="hcolor">To Register</h3>
+                        <h3 class="hcolor">Sign Up</h3>
                         <div class="form">
                             <!--form -->
                             <div class="first">
