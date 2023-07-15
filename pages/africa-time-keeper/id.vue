@@ -3,7 +3,6 @@
         <div class="main_business">
             <div class="main_business_wrapper">
                 <div class="business_content">
-                    <h2 style="color:#000">Africa Time Keeper</h2>
                     <div>
                         <p class="content_header">
                             Are you looking for a side hustle that generates
@@ -97,6 +96,14 @@
                         </div>
                         <div class="commission_world">
                             <p>
+                                Our target by November is to onboard 300
+                                passionate African Timekeepers who will champion
+                                punctuality. Additionally, we aim to have 1500
+                                companies benefit from our cutting-edge Biotime
+                                Africa platform.
+                            </p>
+
+                            <p>
                                 Biotime Africa empowers businesses with time
                                 efficiency. It is the leading web-based time
                                 attendance solution that effortlessly tracks
@@ -110,16 +117,6 @@
                                 than 20 employees and one location. By
                                 purchasing the Biotime Africa Device, SMEs can
                                 access our powerful software for free.
-                            </p>
-
-                            <p>
-                                Our African timekeeper initiative is an
-                                empowerment program for young enthusiast who
-                                seeks to start up a business venture or improve
-                                his/ her economic imbalance through the
-                                promotion of Biotime Africa to the vast majority
-                                of Nigerian SME's seeking to improve their
-                                business efficiency.
                             </p>
 
                             <p>
@@ -392,6 +389,7 @@
                     </div>
 
                     <!-- End-->
+
                     <div id="form" class="form-container">
                         <h3 class="hcolor">To Register</h3>
                         <div class="form">
@@ -656,8 +654,6 @@ export default {
         padding: 1.2rem 2.3rem;
         background: #8bc76f;
         font-weight: bold;
-        text-decoration: none;
-        color: #fff;
     }
     .start:hover {
         background: #5ba538;
@@ -694,11 +690,10 @@ export default {
             .content_header {
                 background: #8bc76f;
                 color: #fff;
-                font-size: 1.7rem;
+                font-size: 1.4rem;
                 padding: 1rem 1.2rem;
                 font-weight: bold;
                 border-radius: 4px;
-                text-align: justify;
             }
             h2 {
                 color: #8bc76f;
@@ -911,6 +906,7 @@ export default {
         // background: #8bc63e;
         text-align: center;
         .form {
+            margin: 0 10%;
             display: grid;
             grid-template-columns: 1fr;
             grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -927,14 +923,6 @@ export default {
 
             .form-text,
             textarea {
-                // width: 100%;
-                // // background: #8bc76f;
-                // margin: 1rem 0;
-                // font-size: 1.5rem;
-                // padding: 1.2rem 2rem;
-                // border: 1px solid #424242;
-                // background: #424242;
-
                 width: 100%;
                 // background: #8bc76f;
                 margin: 1rem 0;
