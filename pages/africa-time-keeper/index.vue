@@ -487,7 +487,7 @@
                                 <!--button>Book</button-->
 
                                 <button @click.prevent="bookAppointment">
-                                    {{ loading ? 'Sending...' : 'Book' }}
+                                    {{ loading ? 'Sending...' : 'Sign Up' }}
                                 </button>
 
                                 <!--p class="el-error" v-if="showError">
