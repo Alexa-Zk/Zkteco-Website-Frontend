@@ -154,7 +154,7 @@ export default {
                 },
                 {
                     text: 'About Us',
-                    url: '/about'
+                    url: '/about-us'
                 },
                 {
                     text: 'News Center',
