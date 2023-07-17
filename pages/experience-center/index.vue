@@ -460,8 +460,7 @@ export default {
                 const response = await this.$store.dispatch(
                     'website/bookAppointmentExperienceCenter',
                     payload
-                );;
-                
+                );
 
                 if (response) {
                     this.loading = false;
@@ -469,6 +468,7 @@ export default {
                     this.showError = false;
                     setTimeout(() => {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
+
                         this.resetForm();
                         //window.location.reload();
                         //this.$router.push('/biotime-ng');

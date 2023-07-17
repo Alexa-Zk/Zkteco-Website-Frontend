@@ -60,13 +60,13 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <nuxt-link to="/about">Our Mission</nuxt-link>
+                    <nuxt-link to="/about-us">Our Mission</nuxt-link>
                 </li>
                 <li>
-                    <nuxt-link to="/about">Our Vision</nuxt-link>
+                    <nuxt-link to="/about-us">Our Vision</nuxt-link>
                 </li>
                 <li>
-                    <nuxt-link to="/about">Our Values</nuxt-link>
+                    <nuxt-link to="/about-us">Our Values</nuxt-link>
                 </li>
                 <!--li>
                     <nuxt-link to="/careers">Careers</nuxt-link>

@@ -4,7 +4,7 @@
             <div class="navigation__right">
                 <ul class="mega-menu__list">
                     <li class="menu-item-has-dropdown">
-                        <nuxt-link to="/about">
+                        <nuxt-link to="/about-us">
                             About Us
                         </nuxt-link>
                     </li>
