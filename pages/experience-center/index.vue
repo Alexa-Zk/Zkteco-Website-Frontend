@@ -217,56 +217,99 @@
                     <div class="form-container">
                         <div class="form">
                             <div class="first">
+                                <p class="el-error" v-if="$v.firstname.$error">
+                                    first name is required!
+                                </p>
                                 <input
                                     type="text"
                                     class="form-text"
                                     placeholder="First Name"
+                                    v-model.trim="$v.firstname.$model"
                                 />
                             </div>
                             <div class="last">
+                                <p class="el-error" v-if="$v.lastname.$error">
+                                    last name is required!
+                                </p>
                                 <input
                                     type="text"
                                     class="form-text"
                                     placeholder="Last Name"
+                                    v-model.trim="$v.lastname.$model"
                                 />
                             </div>
                             <div class="company">
+                                <p class="el-error" v-if="$v.company.$error">
+                                    company is required!
+                                </p>
                                 <input
                                     type="text"
                                     class="form-text"
                                     placeholder="Your Company"
+                                    v-model.trim="$v.company.$model"
                                 />
                             </div>
                             <div class="phone">
+                                <p class="el-error" v-if="$v.phone.$error">
+                                    phone is required!
+                                </p>
                                 <input
-                                    type="number"
+                                    type="text"
                                     class="form-text"
                                     placeholder="Enter your Cellphone Number "
+                                    v-model.trim="$v.phone.$model"
                                 />
                             </div>
                             <div class="email">
+                                <p class="el-error" v-if="$v.email.$error">
+                                    email is required!
+                                </p>
                                 <input
                                     type="email"
                                     class="form-text"
                                     placeholder="Enter Your Email Address"
+                                    v-model.trim="$v.email.$model"
                                 />
                             </div>
                             <div class="date">
+                                <p class="el-error" v-if="$v.date.$error">
+                                    date is required!
+                                </p>
                                 <label>Schedule Date</label>
-                                <input type="date" class="form-text" />
+                                <input
+                                    type="date"
+                                    class="form-text"
+                                    v-model.trim="$v.date.$model"
+                                />
                             </div>
                             <div class="description">
+                                <p
+                                    class="el-error"
+                                    v-if="$v.description.$error"
+                                >
+                                    description is required!
+                                </p>
                                 <textarea
                                     placeholder="Describe your request here..."
+                                    v-model.trim="$v.description.$model"
                                 >
                                 </textarea>
                             </div>
                             <div class="agreed">
                                 <div>
+                                    <div>
+                                        <p
+                                            class="el-error"
+                                            v-if="$v.agreement.$error"
+                                        >
+                                            agreement is required!
+                                        </p>
+                                    </div>
                                     <input
                                         type="checkbox"
                                         id="agreement"
                                         name="agreement"
+                                        v-model.trim="$v.agreement.$model"
                                     />
                                     <label for="scales"
                                         >I accept the Terms and
@@ -275,7 +318,36 @@
                                 </div>
                             </div>
                             <div class="book">
-                                <button>Book</button>
+                                <button @click.prevent="bookAppointment">
+                                    {{ loading ? 'Sending...' : 'Sign Up' }}
+
+                                    <p
+                                        style="font-size: 1.5rem; color: green; font-weight: 600;"
+                                        v-if="showSuccess"
+                                    >
+                                        You will be contacted shortly!!
+                                    </p>
+
+                                    <v-snackbar
+                                        v-model="snackbar"
+                                        :timeout="3000"
+                                        color="green"
+                                        tile
+                                    >
+                                        {{ snackBarMessage }}
+
+                                        <template v-slot:action="{ attrs }">
+                                            <v-btn
+                                                color="white"
+                                                text
+                                                v-bind="attrs"
+                                                @click="snackbar = false"
+                                            >
+                                                Close
+                                            </v-btn>
+                                        </template>
+                                    </v-snackbar>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -286,6 +358,8 @@
 </template>
 
 <script>
+import { required, email, numeric } from 'vuelidate/lib/validators';
+import { validationMixin } from 'vuelidate';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import AboutMission from '~/components/partials/page/website/AboutMission';
 import AboutVision from '~/components/partials/page/website/AboutVision';
@@ -315,6 +389,21 @@ export default {
 
     data: () => {
         return {
+            showError: false,
+            showSuccess: false,
+            loading: '',
+            errors: '',
+            firstname: '',
+            lastname: '',
+            company: '',
+            phone: '',
+            email: '',
+            date: '',
+            description: '',
+            agreement: '',
+            snackBarMessage:
+                'Form Submitted Successfully. You will be contacted by one of our customer representatives.',
+            snackbar: false,
             breadCrumb: [
                 {
                     text: 'Home',
@@ -326,28 +415,81 @@ export default {
             ]
         };
     },
-    mounted() {
-        let valueDisplays = window.document.querySelectorAll('.num');
-        let interval = 2000;
+    mixins: [validationMixin],
+    validations: {
+        firstname: { required },
+        lastname: { required },
+        company: { required },
+        phone: { required, numeric },
+        email: { required, email },
+        date: { required },
+        description: { required },
+        agreement: { required }
+    },
+    methods: {
+        resetForm() {
+            this.firstname = '';
+            this.lastname = '';
+            this.company = '';
+            this.phone = '';
+            this.email = '';
+            this.date = '';
+            this.description = '';
+            this.agreement = '';
+        },
+        async bookAppointment() {
+            this.$v.$touch();
+            if (this.$v.$invalid) {
+                return false;
+            } else if (this.$v.$error) {
+                return false;
+            } else {
+                this.loading = true;
+                const payload = {
+                    firstname: this.firstname,
+                    lastname: this.lastname,
+                    company: this.company,
+                    phone: this.phone,
+                    email: this.email,
+                    date: this.date,
+                    description: this.description,
+                    agreement: this.agreement
+                };
+                console.log('::payload::-', payload);
 
-        valueDisplays.forEach(valueDisplay => {
-            let startValue = 0;
-            let endValue = parseInt(valueDisplay.getAttribute('data-val'));
+                const response = await this.$store.dispatch(
+                    'website/bookAppointmentExperienceCenter',
+                    payload
+                );;
+                
 
-            let duration = Math.floor(interval / endValue);
-            let counter = setInterval(function() {
-                startValue += 1;
-                valueDisplay.textContent = startValue;
-                if (startValue == endValue) {
-                    clearInterval(counter);
+                if (response) {
+                    this.loading = false;
+                    this.snackbar = true;
+                    this.showError = false;
+                    setTimeout(() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        this.resetForm();
+                        //window.location.reload();
+                        //this.$router.push('/biotime-ng');
+                    }, 3001);
+                } else {
+                    this.loading = false;
+                    this.showSuccess = false;
+                    this.showError = true;
                 }
-            }, duration);
-        });
+            }
+        }
     }
 };
 </script>
 
 <style lang="scss" scoped>
+.el-error {
+    font-size: 1.5rem !important;
+    color: red !important;
+    font-weight: lighter !important;
+}
 .group_profile_container {
     display: flex;
     align-items: center;
@@ -595,9 +737,10 @@ export default {
 
     .form-container {
         // background: #8bc63e;
+        margin-top: 120px;
 
         .form {
-            margin: 0 10%;
+            margin: 0 20%;
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -616,10 +759,12 @@ export default {
             .form-text,
             textarea {
                 width: 100%;
-                background: #8bc76f;
+                // background: #8bc76f;
+
                 margin: 1rem 0;
                 font-size: 1.5rem;
                 padding: 1.2rem 2rem;
+                border: 1px solid #686767;
             }
 
             .first {
@@ -682,6 +827,27 @@ export default {
         height: 100%;
         width: 100% !important;
         object-fit: cover;
+    }
+
+    @media (max-width: 740px) {
+        .form-container {
+            margin-top: 20px;
+            .form {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+                grid-template-areas:
+                    'first'
+                    'last'
+                    'company'
+                    'phone'
+                    'email'
+                    'date'
+                    'description'
+                    'agreed'
+                    'book';
+            }
+        }
     }
 }
 </style>
