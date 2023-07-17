@@ -70,7 +70,7 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <a href="/about">About Us</a>
+                    <a href="/about-us">About Us</a>
                 </li>
                 <li>
                     <a href="/support/product-warranty">Privacy Policy</a>
