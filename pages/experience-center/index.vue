@@ -283,15 +283,15 @@
                                 />
                             </div>
                             <div class="description">
-                                <p
+                                <!--p
                                     class="el-error"
                                     v-if="$v.description.$error"
                                 >
                                     description is required!
-                                </p>
+                                </p-->
                                 <textarea
                                     placeholder="Describe your request here..."
-                                    v-model.trim="$v.description.$model"
+                                    v-model.trim="$v.description"
                                 >
                                 </textarea>
                             </div>
@@ -336,7 +336,7 @@
                                     >
                                         {{ snackBarMessage }}
 
-                                        <template v-slot:action="{ attrs }">
+                                        <!--template v-slot:action="{ attrs }">
                                             <v-btn
                                                 color="white"
                                                 text
@@ -345,7 +345,7 @@
                                             >
                                                 Close
                                             </v-btn>
-                                        </template>
+                                        </template -->
                                     </v-snackbar>
                                 </button>
                             </div>
@@ -399,7 +399,7 @@ export default {
             phone: '',
             email: '',
             date: '',
-            description: '',
+            //description: '',
             agreement: '',
             snackBarMessage:
                 'Form Submitted Successfully. You will be contacted by one of our customer representatives.',
@@ -423,7 +423,7 @@ export default {
         phone: { required, numeric },
         email: { required, email },
         date: { required },
-        description: { required },
+        //description: { required },
         agreement: { required }
     },
     methods: {
@@ -434,7 +434,7 @@ export default {
             this.phone = '';
             this.email = '';
             this.date = '';
-            this.description = '';
+            //this.description = '';
             this.agreement = '';
         },
         async bookAppointment() {
@@ -446,16 +446,16 @@ export default {
             } else {
                 this.loading = true;
                 const payload = {
-                    firstname: this.firstname,
-                    lastname: this.lastname,
-                    company: this.company,
-                    phone: this.phone,
+                    first_name: this.firstname,
+                    last_name: this.lastname,
+                    company_name: this.company,
+                    phone_number: this.phone,
                     email: this.email,
                     date: this.date,
                     description: this.description,
                     agreement: this.agreement
                 };
-                console.log('::payload::-', payload);
+                console.log('-::payload::-', payload);
 
                 const response = await this.$store.dispatch(
                     'website/bookAppointmentExperienceCenter',
