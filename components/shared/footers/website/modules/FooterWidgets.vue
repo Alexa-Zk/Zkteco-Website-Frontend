@@ -113,7 +113,7 @@
                     >
                 </li>
                 <li>
-                    <nuxt-link to="/tutorial">Knowledge Base</nuxt-link>
+                    <nuxt-link to="/tutorial">E Learning Platforms</nuxt-link>
                 </li>
                 <!--li>
                     <nuxt-link to="/support/tickets">Support Tickets</nuxt-link>
