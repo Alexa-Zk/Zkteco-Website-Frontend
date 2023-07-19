@@ -47,13 +47,14 @@ import ProductWide from '~/components/elements/product/ProductWide';
 export default {
     name: 'LayoutShopSidebarCategories',
     components: { ProductWide, ProductCategoryDefault },
-    props: ['categories_products', 'totalProductCategories', 'loading'],
+    props: ['categories_products', 'totalProductCategories'],
     data() {
         return {
             listView: false,
             sort_by: 'created_at:desc',
             page: 1,
-            pageSize: 12
+            pageSize: 12,
+            loading: false
         };
     },
     methods: {
@@ -61,7 +62,11 @@ export default {
             this.listView = !this.listView;
         },
         async handleChangePagination(value) {
-            const page = parseInt(value) === 1 ? 1 : 1 + (value - 1) * 12;
+            this.loading = true;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            console.log('value::', value, ' calcu ::', (value - 1) * 12);
+            const page = parseInt(value) === 1 ? 0 : (value - 1) * 12;
+
             let nextStartPage = parseInt(page);
 
             const slug = this.$route.params.id;
@@ -72,11 +77,11 @@ export default {
                 perPage: this.pageSize
             };
 
-            console.log(payload);
             await this.$store.dispatch(
                 'website/getSingleProductCategories',
                 payload
             );
+            this.loading = false;
         }
     },
     computed: {

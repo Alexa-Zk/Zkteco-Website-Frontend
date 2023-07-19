@@ -308,6 +308,5 @@ span.list-item {
     textarea {
         width: 80vw;
     }
-
 }
 </style>

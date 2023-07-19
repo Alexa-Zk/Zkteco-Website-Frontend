@@ -7,18 +7,57 @@ async function _getProductRoutes() {
             'pl-52d18e36e',
             'kit-8304xec-cl4-bs32b11m',
             'dl-32d26b',
-            'es-32b11j'
+            'es-32b11j',
+            'dl-854n28b',
+            'el-854n28',
+            'proface-x-(sl)',
+            'es-855l11-12-13h',
+            'blade6040',
+            'sbtl8000',
+            'g4l',
+            'dl-854n28b',
+            'es-32d11j-12j',
+            'bl-858m28l',
+            'es-852o11-12-13h',
+            'bs-855p12-13k',
+            'bl-32g59e',
+            'probg3000',
+            'probio(qr)',
+            'bs-31a11a'
         ];
 
-        const missBlog = ['cctv'];
+        const missBlog = ['cctv', 'benefits-of-using-a'];
 
-        const newCenter = ['smart-home', 'time-attendance', 'cctv'];
+        const newCenter = [
+            'smart-home',
+            'time-attendance',
+            'cctv',
+            'categories/hotel-solutions'
+        ];
+
+        const productCategories = [
+            'smart-lock',
+            'time-attendance',
+            'surveillance',
+            'access-control',
+            'green-label',
+            'entrance-control',
+            'security-inspection',
+            'body-temperature-and-mask-detection',
+            'pos-terminal',
+            'armatura',
+            'smart-home-security'
+        ];
 
         missBlog.map(v => paths.push(`/blog/${v.trim()}`));
 
         newCenter.map(v => paths.push(`/news-center/categories/${v.trim()}`));
 
         missProduct.map(v => paths.push(`/product/${v.trim()}`));
+
+        productCategories.map(v =>
+            paths.push(`/product-categories/${v.trim()}`)
+        );
 
         const productURL = axios.get(`https://admin.zkteco-wa.com/products`);
 

@@ -13,14 +13,21 @@
                 class="navigation__item"
                 @click.prevent="handleOpenDrawer('products')"
             >
-                <i class="icon-list4"></i>
+                <i class="fa fa-product-hunt"></i>
                 <span> Products</span>
+            </a>
+            <a
+                class="navigation__item"
+                @click.prevent="handleOpenDrawer('armatura')"
+            >
+                <i class="fa fa-microchip"></i>
+                <span> Armatura</span>
             </a>
             <a
                 class="navigation__item"
                 @click.prevent="handleOpenDrawer('solutions')"
             >
-                <i class="icon-list4"></i>
+                <i class="fa fa-puzzle-piece"></i>
                 <span> Solutions</span>
             </a>
 

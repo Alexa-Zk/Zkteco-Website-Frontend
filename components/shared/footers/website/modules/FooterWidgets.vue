@@ -60,13 +60,13 @@
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <nuxt-link to="/about">Our Mission</nuxt-link>
+                    <nuxt-link to="/about-us">Our Mission</nuxt-link>
                 </li>
                 <li>
-                    <nuxt-link to="/about">Our Vision</nuxt-link>
+                    <nuxt-link to="/about-us">Our Vision</nuxt-link>
                 </li>
                 <li>
-                    <nuxt-link to="/about">Our Values</nuxt-link>
+                    <nuxt-link to="/about-us">Our Values</nuxt-link>
                 </li>
                 <!--li>
                     <nuxt-link to="/careers">Careers</nuxt-link>
@@ -90,16 +90,10 @@
                 Solutions
             </h4>
             <ul class="ps-list--link">
-                <li>
-                    <nuxt-link to="/solution-categories/classified-by-industry"
-                        >Classified by Industry</nuxt-link
-                    >
-                </li>
-                <li>
-                    <nuxt-link
-                        to="/solution-categories/classified-by-application"
-                        >Classified by Application</nuxt-link
-                    >
+                <li v-for="item in solutionCategoriesAndSub" :key="item.slug">
+                    <nuxt-link :to="`/solution-categories/${item.slug}`">{{
+                        item.name
+                    }}</nuxt-link>
                 </li>
             </ul>
         </aside>
@@ -117,6 +111,9 @@
                     <nuxt-link to="/support/download-center"
                         >Download Center</nuxt-link
                     >
+                </li>
+                <li>
+                    <nuxt-link to="/tutorial">E Learning Platforms</nuxt-link>
                 </li>
                 <!--li>
                     <nuxt-link to="/support/tickets">Support Tickets</nuxt-link>
@@ -148,6 +145,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Repository from '~/repositories/Repository.js';
 import { subBaseUrl } from '~/repositories/Repository';
 
@@ -157,6 +155,12 @@ export default {
         return {
             categories: ''
         };
+    },
+    computed: {
+        ...mapState({
+            solutionCategoriesAndSub: state =>
+                state.website.solutionCategoriesAndSub
+        })
     },
     async mounted() {
         this.getArticlesCategories();

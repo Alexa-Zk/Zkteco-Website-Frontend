@@ -33,6 +33,11 @@
                         Smart Home
                     </a>
                 </li>
+                <li>
+                    <nuxt-link :to="`/africa-time-keeper`">
+                        Africa Time Keeper
+                    </nuxt-link>
+                </li>
             </ul>
         </div>
     </div>
@@ -46,6 +51,7 @@ export default {
 
     computed: {
         ...mapState({
+            loading: state => state.website.loading,
             solutionCategoriesAndSub: state =>
                 state.website.solutionCategoriesAndSub
         })

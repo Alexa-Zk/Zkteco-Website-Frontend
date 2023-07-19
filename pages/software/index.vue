@@ -13,6 +13,113 @@
 
         <div class="softwarecontainer">
             <div class="wrapper_001">
+                <!-- Start -->
+                <div class="container">
+                    <div class="logo">
+                        <img
+                                data-src="/img/software/zktecoParking.png"
+                                class="lazyload"
+                                alt=""
+                            />
+                    </div>
+                    <div class="content">
+                        <div class="contentHead">
+                            <p>
+                            <h4> New Software  </h4>
+                            ZKTecoParking.
+                            </p>
+                        </div>
+                        <div class="wrapper">
+                            <p>
+                                
+                                ZKTecoParking is a client/server architecture parking lot management software self-developed by ZKTeco. ZKTecoParking contains six functional modules: system management, personnel management, authorization management, financial management, terminal management and report management. With a user-friendly UI and complete parking lot management function, ZKTecoParking provides the most professional solution for a simple and convenient user experience.
+
+
+                            </p>
+                        </div>
+                        <div class="footer">
+                            <div>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            ZKTecoParking.manual
+                                        )
+                                    ">User Manual V1.2</button>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            ZKTecoParking.download
+                                        ) 
+                                    ">Software </button>
+
+                                    <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            ZKTecoParking.datasheet
+                                        ) 
+                                    "> Datasheet </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- End -->
+
+                <div class="container">
+                    <div class="logo">
+                        <img
+                                data-src="/img/software/ZKBioCVSecurity.png"
+                                class="lazyload"
+                                alt=""
+                            />
+                    </div>
+                    <div class="content">
+                        <div class="contentHead">
+                            <p>
+                            <h4> New Software  </h4>
+                            ZKBio CVSecurity.
+                            </p>
+                        </div>
+                        <div class="wrapper">
+                            <p>
+                                
+                                ZKBio CVSecurity is a web-based access control software that uses hybrid biometric and computer 
+                                vision technology. It offers various modules for comprehensive security solutions for various 
+                                settings.
+                                
+                                If you currently hold a ZKBioSecurity V5000 3.0.0 Licence we will do a free migration to ZKBio CVSecurity. 
+                                If your version is under 3.0.0, there will be a migration fee.
+                            </p>
+                        </div>
+                        <div class="footer">
+                            <div>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            ZKAccess35.manual
+                                        )
+                                    ">Brochure</button>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            ZKAccess35.download
+                                        ) 
+                                    ">Download(V5.0.0)</button>
+
+                                    <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            ZKBioCVSecurityV531.download
+                                        ) 
+                                    ">Download(V5.3.1)</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                </div>
+
                 <div class="container">
                     <div class="logo">
                         <img
@@ -65,6 +172,17 @@
                                     "
                                 >
                                     V5000 4.1.1
+                                </button>
+
+                                <button
+                                    class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            ZKBioSecurityV5000.download43
+                                        )
+                                    "
+                                >
+                                    V5000 4.1.3
                                 </button>
                                 
                             </div>
@@ -141,12 +259,12 @@
                         <div class="contentHead">
                             <p>
                             <h4> Update Alert </h4>
-                            Version 8.0.4 now available.
+                            Version 8 now available.
                             </p>
                         </div>
                         <div class="wrapper">
                             <p>
-                                <b>BioTime 8.0.4 :</b> a powerful web-based time and attendance management software 
+                                <b>BioTime 8 :</b> a powerful web-based time and attendance management software 
                                 that provides a stable connection to ZKTeco’s standalone push communication devices by 
                                 Ethernet/Wi-Fi/GPRS/3G and working as a private cloud to offer employee self-service by 
                                 mobile application and web browser. BioTime 8.0 comes with an intuitive 
@@ -159,16 +277,26 @@
                                 <button class="ps-btn"
                                     @click.prevent="
                                         download(
-                                            BioTime04.manual
+                                            BioTime8.manual
                                         )
                                     ">User Manual</button>
+
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            BioTime8.download07
+                                        )
+                                    "> Download(V8.0.7)</button >
+
                                 <!--button>App User Manual</button-->
                                 <button class="ps-btn"
                                     @click.prevent="
                                         download(
-                                            BioTime04.download
+                                            BioTime8.download
                                         )
-                                    "> Try Free</button>
+                                    "> Download(V8.0.8)</button>
+                                    
+                                
                                 
                             </div>
 
@@ -178,7 +306,7 @@
                 </div>
 
 
-                <div class="container">
+                <!--div class="container">
                     <div class="logo">
                         <img
                                 data-src="/img/software/zkbiosecurityV320.png"
@@ -195,7 +323,8 @@
                         </div>
                         <div class="wrapper">
                             <p>
-                                <b>ZKBioSecurity 3.2.0.0 : </b> ZKBioSecurity is the ultimate “All-in-One” web-based security platform 
+                                <b>
+                                    ZKBioSecurity 3.2.0.0 : </b> ZKBioSecurity is the ultimate “All-in-One” web-based security platform 
                                 developed by ZKTeco. It contains multiple integrated modules: access control, time & attendance, 
                                 consumption management, elevator control, visitor management, parking, guard patrol, entrance control, 
                                 FaceKiosk, and intelligent facial recognition camera management, video(VMS), mask, and temperature 
@@ -223,7 +352,7 @@
                         </div>
                     </div>
                     
-                </div>
+                </div -->
 
 
                 <div class="container">
@@ -278,51 +407,7 @@
 
 
 
-                <div class="container">
-                    <div class="logo">
-                        <img
-                                data-src="/img/software/zkbiosecurityV320.png"
-                                class="lazyload"
-                                alt=""
-                            />
-                    </div>
-                    <div class="content">
-                        <div class="contentHead">
-                            <p>
-                            <h4> New Software  </h4>
-                            ZKAccess.
-                            </p>
-                        </div>
-                        <div class="wrapper">
-                            <p>
-                                <b>ZKAccess 3.5 : </b>As a professional access control software, 
-                                ZKAccess3.5 is designed to manage all ZKTeco’s access control panels and standalone access 
-                                control terminals. The software can simultaneously manage access control and generate 
-                                attendance report. It’s a desktop software which is suitable for small and medium 
-                                businesses application. The brand new flat GUI design and humanized structure of 
-                                new ZKAccess3.5 will make your daily management more pleasant and convenient.
-                            </p>
-                        </div>
-                        <div class="footer">
-                            <div>
-                                <button class="ps-btn"
-                                    @click.prevent="
-                                        download(
-                                            ZKAccess35.manual
-                                        )
-                                    ">Download Free</button>
-                                <button class="ps-btn"
-                                    @click.prevent="
-                                        download(
-                                            ZKAccess35.download
-                                        ) 
-                                    ">Public Key</button>
-                            </div>
-
-                        </div>
-                    </div>
-                    
-                </div>
+                
 
                 
             </div>
@@ -361,9 +446,14 @@ export default {
                     text: 'Software'
                 }
             ],
+            ZKBioCVSecurityV531:{
+                manual:"https://storage.googleapis.com/zkteco_website_bucket/ZK_Bio_Security_v5000_user_manual_8302bd30d7/ZK_Bio_Security_v5000_user_manual_8302bd30d7.pdf",
+                download: "https://zkteco-india-official-website.s3.ap-south-1.amazonaws.com/files/20230427/India_ZKBio%20CVSecurity%205.3.1_R_x64.rar",
+            },
             ZKBioSecurityV5000:{
                 manual:"https://storage.googleapis.com/zkteco_website_bucket/ZK_Bio_Security_v5000_user_manual_8302bd30d7/ZK_Bio_Security_v5000_user_manual_8302bd30d7.pdf",
                 download: "https://zkteco.co.za/softwarenew/standalone/V5000_4.1.1_R_2021-11-04_x64.zip",
+                download43: "https://zkteco-india-official-website.s3.ap-south-1.amazonaws.com/files/20230329/Overseas_ZKBioSecurity_V5000_4.1.3_R.exe",
             },
 
             ZKBioHLM:{
@@ -371,9 +461,10 @@ export default {
                 download: "https://zkteco.co.za/softwarenew/standalone/ZKBioHLMS_x64_2021-06-10-1352.zip"
             },
 
-            BioTime04:{
+            BioTime8:{
                 manual: "https://storage.googleapis.com/zkteco_website_bucket/Bio_Time_8_0_user_manual_b74ea3f371/Bio_Time_8_0_user_manual_b74ea3f371.pdf",
-                download: "https://storage.googleapis.com/zkteco_website_bucket/ZK_Bio_Time8_0_8_20221205_15972_d838e9b89d/ZK_Bio_Time8_0_8_20221205_15972_d838e9b89d.exe"
+                download: "https://storage.googleapis.com/zkteco_website_bucket/ZK_Bio_Time8_0_8_20221205_15972_d838e9b89d/ZK_Bio_Time8_0_8_20221205_15972_d838e9b89d.exe",
+                download07: "https://storage.googleapis.com/zkteco_website_bucket/ZK_Bio_Time_9ce1d6e41f/ZK_Bio_Time_9ce1d6e41f.zip"
             },
 
             ZKBioSecurity320:{
@@ -387,8 +478,14 @@ export default {
             },
 
             ZKAccess35:{
-                manual:"https://storage.googleapis.com/zkteco_website_bucket/ZK_Access3_5_Security_System_user_manual_V3_0_1_20141218_57e2073104/ZK_Access3_5_Security_System_user_manual_V3_0_1_20141218_57e2073104.pdf",
-                download: "https://storage.googleapis.com/zkteco_website_bucket/ZK_Access_3_5_5_1_1_874da05153/ZK_Access_3_5_5_1_1_874da05153.zip"
+                manual:"https://zkteco.co.za/downloads/brochures/zkbio_cvsecurity_brochure.pdf",
+                download: "https://zkteco.co.za/downloads/software/zkbio_cv_security_5.3.0.zip"
+            },
+
+            ZKTecoParking:{
+                manual:"https://new-website-file.s3.ap-southeast-1.amazonaws.com/files/20220408/6961a4ca5863710d81cb5f2dad8dc60f.pdf",
+                datasheet: "https://new-website-file.s3.ap-southeast-1.amazonaws.com/files/20220408/e02ac3b2868ca510ecf78830faef0f3b.pdf",
+                download: "https://new-website-file.s3.ap-southeast-1.amazonaws.com/files/20220408/6d76373153cc773e725040d2257b9c57.zip"
             },
             
             // zkbioV5000 :"https://storage.googleapis.com/zkteco_website_bucket/KF_160_3af1582d3b/KF_160_3af1582d3b.pdf",
