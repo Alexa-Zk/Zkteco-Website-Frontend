@@ -5,7 +5,7 @@
             
         </nuxt-link> -->
         <nuxt-link to="/auth/login" class="header__extra">
-            <i class="icon-user"></i>
+            <i class="fa fa-user-o" style="font-size: 3.4rem;"></i>
         </nuxt-link>
     </div>
 </template>
