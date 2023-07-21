@@ -6,28 +6,28 @@
                 href="#"
                 @click.prevent="handleOpenDrawer('menu')"
             >
-                <i class="icon-menu"></i>
+                <i class="fa fa-navicon"></i>
                 <span> Menu</span>
             </a>
             <a
                 class="navigation__item"
                 @click.prevent="handleOpenDrawer('products')"
             >
-                <i class="fa fa-product-hunt"></i>
+                <i class="fa fa-shopping-basket"></i>
                 <span> Products</span>
             </a>
             <a
                 class="navigation__item"
                 @click.prevent="handleOpenDrawer('armatura')"
             >
-                <i class="fa fa-microchip"></i>
+                <i class="fa fa-shield"></i>
                 <span> Armatura</span>
             </a>
             <a
                 class="navigation__item"
                 @click.prevent="handleOpenDrawer('solutions')"
             >
-                <i class="fa fa-puzzle-piece"></i>
+                <i class="fa fa-gears"></i>
                 <span> Solutions</span>
             </a>
 
@@ -35,7 +35,7 @@
                 class="navigation__item"
                 @click.prevent="handleOpenDrawer('search')"
             >
-                <i class="icon-magnifier"></i>
+                <i class="fa fa-search"></i>
                 <span> Search</span>
             </a>
 
