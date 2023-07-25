@@ -86,14 +86,15 @@
                             </h3>
                             <div>
                                 <p>
-                                    ZKTeco provides product- and solution-based
-                                    knowledge to its partners, system
-                                    integrators, and resellers. With full- edged
-                                    monthly online seminars on new technologies
-                                    and onsite and hands-on technical training,
-                                    we help users completely understand the
-                                    products that they install while actively
-                                    using their expertise in everyday scenarios.
+                                    ZKTeco provides product-based and
+                                    solution-based knowledge to its partners,
+                                    system integrators, and resellers. With
+                                    full- edged monthly online seminars on new
+                                    technologies and onsite and hands-on
+                                    technical training, we help users completely
+                                    understand the products that they install
+                                    while actively using their expertise in
+                                    everyday scenarios.
                                 </p>
                             </div>
                         </div>
@@ -144,7 +145,7 @@
                                     />
                                 </div>
                                 <div class="read">
-                                    <p>Airport Security Management Solution</p>
+                                    <p>Security Management Solution</p>
                                 </div>
                             </div>
 
@@ -215,6 +216,7 @@
                         </div>
                     </div>
                     <div class="form-container">
+                        <h3>Do you want to Experience Live?</h3>
                         <div class="form">
                             <div class="first">
                                 <p class="el-error" v-if="$v.firstname.$error">
@@ -727,7 +729,8 @@ export default {
                     grid-gap: 2em;
 
                     p {
-                        font-size: 1.5rem;
+                        // font-size: 1.5rem;
+                        font-size: 1.8rem;
                         text-align: justify;
                     }
                 }
@@ -737,8 +740,8 @@ export default {
 
     .form-container {
         // background: #8bc63e;
-        margin-top: 120px;
-
+        margin-top: 40px;
+        text-align: center;
         .form {
             margin: 0 20%;
             display: grid;
