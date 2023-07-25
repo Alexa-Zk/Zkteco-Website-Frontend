@@ -217,6 +217,7 @@
                     </div>
                     <div class="form-container">
                         <h3>Do you want to Experience Live?</h3>
+                        <h4>Schedule A Visit</h4>
                         <div class="form">
                             <div class="first">
                                 <p class="el-error" v-if="$v.firstname.$error">
@@ -742,7 +743,11 @@ export default {
         // background: #8bc63e;
         margin-top: 40px;
         text-align: center;
+        // h4 {
+        //     color: #8bc76f;
+        // }
         .form {
+            text-align: left;
             margin: 0 20%;
             display: grid;
             grid-template-columns: 1fr 1fr;
