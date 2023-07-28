@@ -95,6 +95,11 @@
                         item.name
                     }}</nuxt-link>
                 </li>
+                <li>
+                    <nuxt-link :to="`/experience-center`">
+                        Experience Center
+                    </nuxt-link>
+                </li>
             </ul>
         </aside>
         <aside class="widget widget_footer">
@@ -123,6 +128,9 @@
                 </li>
                 <li>
                     <nuxt-link to="/support">FAQs</nuxt-link>
+                </li>
+                <li>
+                    <nuxt-link to="/software">Software</nuxt-link>
                 </li>
             </ul>
         </aside>
