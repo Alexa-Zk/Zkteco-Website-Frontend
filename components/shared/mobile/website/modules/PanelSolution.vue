@@ -23,6 +23,7 @@
                         category.name
                     }}</nuxt-link>
                 </li>
+
                 <li>
                     <nuxt-link :to="`/biotime-ng`">
                         Cloud Solution
@@ -36,6 +37,11 @@
                 <li>
                     <nuxt-link :to="`/africa-time-keeper`">
                         Africa Time Keeper
+                    </nuxt-link>
+                </li>
+                <li>
+                    <nuxt-link :to="`/experience-center`">
+                        Experience Center
                     </nuxt-link>
                 </li>
             </ul>
