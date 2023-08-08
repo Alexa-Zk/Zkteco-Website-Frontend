@@ -59,7 +59,7 @@
                 <img
                     loading="lazy"
                     src="/img/website/biotime-feature.gif"
-                    alt="biotime cloud logo"
+                    alt="biotime africa logo"
                 />
             </div>
         </div>

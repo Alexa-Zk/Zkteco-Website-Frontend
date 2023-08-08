@@ -8,7 +8,7 @@
                     <img
                         loading="lazy"
                         src="/img/biotime/cloud.png"
-                        alt="biotime cloud"
+                        alt="biotime Africa"
                     />
                 </div>
                 <div class="ptag">
