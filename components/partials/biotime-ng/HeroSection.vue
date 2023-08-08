@@ -41,7 +41,7 @@
                 <img
                     loading="lazy"
                     src="/img/biotime-ng.png"
-                    alt="biotime cloud logo"
+                    alt="biotime Africa logo"
                 />
                 <!--div class="play-circle" @click.prevent="showVideoModal = true">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

@@ -2,12 +2,12 @@
     <div id="btc-prices" class="btc-pricing">
         <div class="header-text">
             <h2>
-                Benefits on Biotime Cloud
+                Benefits on Biotime Africa
             </h2>
             <div class="flex-center-center">
                 <p>
-                    ZKTeco Biotime cloud offers you the best Cloud functionality
-                    for your business.
+                    ZKTeco Biotime Africa offers you the best Cloud
+                    functionality for your business.
                 </p>
             </div>
         </div>

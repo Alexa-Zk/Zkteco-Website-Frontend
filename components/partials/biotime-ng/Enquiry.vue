@@ -18,7 +18,7 @@
                 <h6>Email</h6>
                 <p>
                     <a
-                        href="mailto:enquiry@zkteco-wa.com?subject=Biotime Cloud&body=Enquiry"
+                        href="mailto:enquiry@zkteco-wa.com?subject=Biotime Africa&body=Enquiry"
                         >enquiry@zkteco-wa.com</a
                     >
                 </p>
