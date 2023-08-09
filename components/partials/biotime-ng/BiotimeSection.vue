@@ -7,7 +7,7 @@
                 <div class="image-awa">
                     <img
                         loading="lazy"
-                        src="/img/biotime/cloud.png"
+                        src="/img/biotime/biotime_africa_website.png"
                         alt="biotime Africa"
                     />
                 </div>
