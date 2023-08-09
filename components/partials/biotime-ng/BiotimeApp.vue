@@ -3,16 +3,16 @@
         <div class="feature-container">
             <div class="ltf">
                 <div>
-                    <h2>ZKBioTime NG</h2>
+                    <h2>ZKBioTime Africa</h2>
                     <p>
                         Employees and administrators can use the Biotime.ng
                         software portal from anywhere and at any time using
                         internet-connected devices like laptops or mobile apps
                     </p>
                     <p>
-                        Download the BioTime NG app and enjoy all the features
-                        of our attendance management software from your Android
-                        or iOS device
+                        Download the BioTime Africa app and enjoy all the
+                        features of our attendance management software from your
+                        Android or iOS device
                     </p>
                 </div>
                 <div class="app-buttons">
