@@ -3,10 +3,25 @@
         <div class="ps-container">
             <div class="navigation__right">
                 <ul class="mega-menu__list">
-                    <li class="menu-item-has-dropdown">
+                    <!--li class="menu-item-has-dropdown">
                         <nuxt-link to="/about-us">
                             About Us
                         </nuxt-link>
+                    </li -->
+
+                    <li class="menu-item-has-dropdown">
+                        <div class="dropdown">
+                            <button>Company</button>
+                            <div class="dropdown-content">
+                                <nuxt-link to="/about-us">
+                                    About Us
+                                </nuxt-link>
+
+                                <nuxt-link to="/experience-center">
+                                    Experience Center
+                                </nuxt-link>
+                            </div>
+                        </div>
                     </li>
                     |
                     <li class="menu-item-has-dropdown">
@@ -151,5 +166,38 @@ export default {
             }
         }
     }
+}
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+    padding: 0 1.3rem;
+    text-align: center;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 100%;
+    overflow: auto;
+    background: #e3e3e3;
+    padding: 0.8rem 0;
+    //box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
+    z-index: 999;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content a {
+    display: block;
+    color: #000000;
+    padding: 1.4rem 0rem;
+
+    text-decoration: none;
+    text-align: center;
+    // padding: 0 5rem;
+}
+.dropdown-content a:hover {
+    color: #ffffff;
+    background-color: #fff;
 }
 </style>

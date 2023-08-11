@@ -39,11 +39,6 @@
                         Africa Time Keeper
                     </nuxt-link>
                 </li>
-                <li>
-                    <nuxt-link :to="`/experience-center`">
-                        Experience Center
-                    </nuxt-link>
-                </li>
             </ul>
         </div>
     </div>
