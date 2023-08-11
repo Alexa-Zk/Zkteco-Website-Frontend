@@ -149,6 +149,10 @@ export default {
                         {
                             text: 'Anti Counterfeit Enquiry',
                             url: '/support/anti-counterfeiting'
+                        },
+                        {
+                            text: 'E Learning Platforms',
+                            url: '/tutorial'
                         }
                     ]
                 },
