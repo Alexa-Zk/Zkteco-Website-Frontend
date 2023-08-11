@@ -104,6 +104,15 @@ export default {
                                     url: '/support'
                                 }
                             ]
+                        },
+                        {
+                            heading: 'Education',
+                            megaItems: [
+                                {
+                                    text: 'E Learning Platforms',
+                                    url: '/tutorial'
+                                }
+                            ]
                         }
                     ]
                 },
