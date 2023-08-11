@@ -43,7 +43,7 @@
                                         outlined
                                     />
                                 </div>
-                                <div class="form-group">
+                                <!--div class="form-group">
                                     <v-checkbox
                                         :error-messages="checkboxErrors"
                                         @change="$v.checkbox.$touch()"
@@ -71,7 +71,7 @@
                                             </div>
                                         </template>
                                     </v-checkbox>
-                                </div>
+                                </div-->
                                 <div class="form-group forget-link">
                                     <nuxt-link to="/auth/forget-password"
                                         >forgot password?</nuxt-link
@@ -147,8 +147,8 @@ export default {
     },
     validations: {
         username: { required },
-        password: { required },
-        checkbox: { required }
+        password: { required }
+        // checkbox: { required }
     },
     beforeRouteEnter(to, from, next) {
         next(vm => {
@@ -202,14 +202,14 @@ export default {
             !this.$v.password.required &&
                 errors.push('This password field is required');
             return errors;
-        },
-        checkboxErrors() {
-            const errors = [];
-            if (!this.$v.checkbox.$dirty) return errors;
-            !this.$v.checkbox.required &&
-                errors.push('Please agree to the terms');
-            return errors;
         }
+        // checkboxErrors() {
+        //     const errors = [];
+        //     if (!this.$v.checkbox.$dirty) return errors;
+        //     !this.$v.checkbox.required &&
+        //         errors.push('Please agree to the terms');
+        //     return errors;
+        // }
     }
 };
 </script>

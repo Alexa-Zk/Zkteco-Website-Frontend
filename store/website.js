@@ -292,15 +292,15 @@ export const actions = {
         };
 
         const URL = `${subBaseUrl}/articles?${serializeQuery(params)}`;
-        const reponse = await Repository.get(URL)
-            .then(response => {
-                commit('setArticles', response.data);
-                commit('setLoading', false);
-                return response.data;
-            })
-            .catch(error => ({ error: JSON.stringify(error) }));
+        const URLCount = `${subBaseUrl}/articles/count`;
+        const res = Repository.get(URL);
+        const count = Repository.get(URLCount);
 
-        return reponse;
+        await Promise.all([res, count]).then(value => {
+            commit('setArticles', value[0].data);
+            commit('setArticlesTotal', value[1].data);
+            commit('setLoading', false);
+        });
     },
 
     async getDownloadCategories({ commit }) {
@@ -908,21 +908,6 @@ export const actions = {
         commit('setProducts', products.data);
         commit('setProductsTotal', productCount.data);
         commit('setLoading', false);
-    },
-
-    async getArticlesTotal({ state, commit }, payload) {
-        let params = {
-            _limit: -1
-        };
-        const reponse = await Repository.get(
-            `${subBaseUrl}/articles?${serializeQuery(params)}`
-        )
-            .then(response => {
-                commit('setArticlesTotal', response.data.length);
-                return response.data;
-            })
-            .catch(error => ({ error: JSON.stringify(error) }));
-        return reponse;
     },
 
     async getSearchResults({ state, commit }, payload) {

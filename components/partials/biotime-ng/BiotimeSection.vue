@@ -7,13 +7,13 @@
                 <div class="image-awa">
                     <img
                         loading="lazy"
-                        src="/img/biotime/cloud.png"
-                        alt="biotime cloud"
+                        src="/img/biotime/biotime_africa_website.png"
+                        alt="biotime Africa"
                     />
                 </div>
                 <div class="ptag">
                     <p>
-                        AWS cloud technology powers the Biotime.ng platform,
+                        AWS cloud technology powers the Biotime Africa platform,
                         making it the most flexible and secure cloud computing
                         environment available today. The platform gives you
                         total visibility into your business operations and makes

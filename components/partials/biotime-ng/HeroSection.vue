@@ -4,14 +4,14 @@
             <div class="ltf">
                 <div class="tag">
                     <span>
-                        BioTime NG
+                        BioTime Africa
                     </span>
                 </div>
                 <h2>
                     A smarter attendance solution for your business
                 </h2>
                 <p>
-                    Biotime.ng is a smart cloud-based attendance management
+                    Biotime Africa is a smart cloud-based attendance management
                     system that allows for efficient and safe data and
                     information administration. The system provides cutting-edge
                     features for running a successful business and enables you
@@ -41,7 +41,7 @@
                 <img
                     loading="lazy"
                     src="/img/biotime-ng.png"
-                    alt="biotime cloud logo"
+                    alt="biotime Africa logo"
                 />
                 <!--div class="play-circle" @click.prevent="showVideoModal = true">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

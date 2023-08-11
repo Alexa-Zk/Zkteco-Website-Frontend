@@ -6,7 +6,7 @@
             </h2>
             <div class="flex-center-center">
                 <p>
-                    ZKTeco offers you the best BioTime Cloud plan that best
+                    ZKTeco offers you the best BioTime Africa plan that best
                     suits your company's needs. The experience, reliability,
                     security and performance of our platform are second to none!
                 </p>

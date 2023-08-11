@@ -56,17 +56,17 @@
         </aside>
         <aside class="widget widget_footer">
             <h4 class="widget-title">
-                About Us
+                Company
             </h4>
             <ul class="ps-list--link">
                 <li>
-                    <nuxt-link to="/about-us">Our Mission</nuxt-link>
+                    <nuxt-link to="/about-us">About Us</nuxt-link>
                 </li>
+
                 <li>
-                    <nuxt-link to="/about-us">Our Vision</nuxt-link>
-                </li>
-                <li>
-                    <nuxt-link to="/about-us">Our Values</nuxt-link>
+                    <nuxt-link :to="`/experience-center`">
+                        Experience Center
+                    </nuxt-link>
                 </li>
                 <!--li>
                     <nuxt-link to="/careers">Careers</nuxt-link>
@@ -123,6 +123,9 @@
                 </li>
                 <li>
                     <nuxt-link to="/support">FAQs</nuxt-link>
+                </li>
+                <li>
+                    <nuxt-link to="/software">Software</nuxt-link>
                 </li>
             </ul>
         </aside>

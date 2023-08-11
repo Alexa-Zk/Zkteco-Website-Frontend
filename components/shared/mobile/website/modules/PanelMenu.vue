@@ -149,6 +149,10 @@ export default {
                         {
                             text: 'Anti Counterfeit Enquiry',
                             url: '/support/anti-counterfeiting'
+                        },
+                        {
+                            text: 'E Learning Platforms',
+                            url: '/tutorial'
                         }
                     ]
                 },
@@ -194,6 +198,10 @@ export default {
                     url: '/armatura'
                 },
 
+                {
+                    text: 'Experience Center',
+                    url: '/experience-center'
+                },
                 {
                     text: 'Login',
                     url: '/website/page/login'

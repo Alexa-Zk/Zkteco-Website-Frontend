@@ -45,7 +45,7 @@
                     </li>
                 </ul>
             </div>
-            <div>
+            <div class="mega-menu__column">
                 <h4 class="brands">
                     <a href="https://ngteco.ng/">
                         Smart Home
