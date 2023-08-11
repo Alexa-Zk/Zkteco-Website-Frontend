@@ -59,13 +59,6 @@
                     </li>
                 </ul>
             </div>
-            <div class="mega-menu__column">
-                <h4 class="brands">
-                    <nuxt-link :to="`/experience-center`">
-                        Experience Center
-                    </nuxt-link>
-                </h4>
-            </div>
         </div>
     </li>
 </template>
