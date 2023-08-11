@@ -195,6 +195,10 @@ export default {
                 },
 
                 {
+                    text: 'Experience Center',
+                    url: '/experience-center'
+                },
+                {
                     text: 'Login',
                     url: '/website/page/login'
                 }
