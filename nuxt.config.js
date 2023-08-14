@@ -100,7 +100,22 @@ async function _getProductRoutes() {
             'zkrf10m',
             'bs-852o22c',
             'zkx5030c',
-            'profac'
+            'profac',
+            'iclock-880',
+            'tl200',
+            'bs-35j1213b',
+            'es-32d11b',
+            'proface-x',
+            'kit-8304xec-cl4-bs32b11b',
+            'silkbio-100tc',
+            'es-32b11a',
+            'sbtl2200',
+            'revface15-ti',
+            'dl-855p28b',
+            'sw12-eu',
+            'sw13-eu',
+            'es-854n11-12-13h',
+            'sw11-eu'
         ];
 
         const missBlog = ['cctv', 'benefits-of-using-a'];
