@@ -12,12 +12,12 @@
         </div>
         <div class="navigation__content">
             <ul class="menu--mobile">
-                <div class="placeholder-image" v-if="loading">
+                <!--div class="placeholder-image" v-if="loading">
                     <content-placeholders v-for="x in 3" :key="x">
                         <content-placeholders-heading :img="true" />
                         <content-placeholders-text :lines="3" />
                     </content-placeholders>
-                </div>
+                </div-->
                 <li v-for="category in categoryAndSubCategories">
                     <nuxt-link :to="`/product-categories/${category.slug}`">{{
                         category.name
@@ -43,8 +43,8 @@ export default {
     computed: {
         ...mapState({
             categoryAndSubCategories: state =>
-                state.website.categoryAndSubCategories,
-            loading: state => state.website.loading
+                state.website.categoryAndSubCategories
+            //loading: state => state.website.loading
         })
     },
 
