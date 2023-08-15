@@ -28,7 +28,10 @@
 
             <div class="mega-menu__column">
                 <h4>
-                    <nuxt-link :to="`/biotime-ng`">
+                    <nuxt-link
+                        :to="`/biotime-ng`"
+                        @click.prevent="handleClosePanel"
+                    >
                         Cloud Solution
                     </nuxt-link>
                 </h4>
@@ -81,6 +84,12 @@ export default {
         await this.$store.dispatch(
             'website/getSolutionCategoryAndSubCategories'
         );
+    },
+    methods: {
+        handleClosePanel() {
+            this.$store.commit('app/setCurrentDrawerContent', null);
+            this.$store.commit('app/setAppDrawer', false);
+        }
     }
 };
 </script>
