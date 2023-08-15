@@ -29,7 +29,7 @@
                         :to="`/biotime-ng`"
                         @click.prevent="handleClosePanel"
                     >
-                        Cloud Solution
+                        Biotime Africa
                     </nuxt-link>
                 </li>
                 <li>
