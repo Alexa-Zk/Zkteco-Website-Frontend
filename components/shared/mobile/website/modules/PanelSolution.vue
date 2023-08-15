@@ -25,7 +25,10 @@
                 </li>
 
                 <li>
-                    <nuxt-link :to="`/biotime-ng`">
+                    <nuxt-link
+                        :to="`/biotime-ng`"
+                        @click.prevent="handleClosePanel"
+                    >
                         Cloud Solution
                     </nuxt-link>
                 </li>
@@ -50,11 +53,17 @@ import { mapState } from 'vuex';
 export default {
     name: 'PanelSolution',
 
+    data() {
+        return {
+            loading: false
+        };
+    },
+
     computed: {
         ...mapState({
-            loading: state => state.website.loading,
             solutionCategoriesAndSub: state =>
-                state.website.solutionCategoriesAndSub
+                state.website.solutionCategoriesAndSub,
+            loading: state => state.website.loading
         })
     },
 

@@ -645,6 +645,11 @@ export default {
                     this.showError = true;
                 }
             }
+        },
+
+        handleClosePanel() {
+            this.$store.commit('app/setCurrentDrawerContent', null);
+            this.$store.commit('app/setAppDrawer', false);
         }
     }
 };

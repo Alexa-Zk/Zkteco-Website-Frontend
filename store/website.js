@@ -570,11 +570,11 @@ export const actions = {
     },
 
     async getCategoryAndSubCategories({ commit }) {
-        commit('setLoading', true);
         const reponse = await Repository.get(
             `${subBaseUrl}/product-categories/categoryAndSubcategory`
         )
             .then(response => {
+                commit('setLoading', true);
                 const data = response.data;
                 commit('setCategoryAndSubCategories', data);
                 commit('setLoading', false);
