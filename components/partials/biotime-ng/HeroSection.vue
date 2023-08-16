@@ -40,7 +40,7 @@
             <div class="rtf">
                 <img
                     loading="lazy"
-                    src="/img/biotime-ng.png"
+                    src="/img/biotime/biotime_africa_website.png"
                     alt="biotime Africa logo"
                 />
                 <!--div class="play-circle" @click.prevent="showVideoModal = true">

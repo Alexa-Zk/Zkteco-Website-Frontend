@@ -12,13 +12,13 @@
         </div>
         <div class="navigation__content">
             <ul class="menu--mobile">
-                <div class="placeholder-image" v-if="loading">
+                <!--div class="placeholder-image" v-if="loading">
                     <content-placeholders v-for="x in 3" :key="x">
                         <content-placeholders-heading :img="true" />
                         <content-placeholders-text :lines="3" />
                     </content-placeholders>
-                </div>
-                <li v-for="category in productCategories">
+                </div-->
+                <li v-for="category in categoryAndSubCategories">
                     <nuxt-link :to="`/product-categories/${category.slug}`">{{
                         category.name
                     }}</nuxt-link>
@@ -29,39 +29,61 @@
 </template>
 
 <script>
-import Repository from '~/repositories/Repository.js';
-import { subBaseUrl } from '~/repositories/Repository';
+import { mapState } from 'vuex';
 
 export default {
     name: 'PanelCategories',
 
     data() {
         return {
-            productCategories: null,
             loading: false
         };
     },
-    mounted() {
-        this.getProductCategories();
+
+    computed: {
+        ...mapState({
+            categoryAndSubCategories: state =>
+                state.website.categoryAndSubCategories
+            //loading: state => state.website.loading
+        })
     },
+
     methods: {
         handleClosePanel() {
             this.$store.commit('app/setCurrentDrawerContent', null);
             this.$store.commit('app/setAppDrawer', false);
-        },
-        async getProductCategories() {
-            this.loading = true;
-            const reponse = await Repository.get(
-                `${subBaseUrl}/product-categories`
-            )
-                .then(response => {
-                    this.productCategories = response.data;
-                    this.loading = false;
-                })
-                .catch(error => ({ error: JSON.stringify(error) }));
-            return reponse;
         }
     }
+
+    // data() {
+    //     return {
+    //         productCategories: null,
+    //         loading: false
+    //     };
+    // },
+
+    // mounted() {
+    //     this.getProductCategories();
+    // },
+
+    // methods: {
+    //     handleClosePanel() {
+    //         this.$store.commit('app/setCurrentDrawerContent', null);
+    //         this.$store.commit('app/setAppDrawer', false);
+    //     },
+    //     async getProductCategories() {
+    //         this.loading = true;
+    //         const reponse = await Repository.get(
+    //             `${subBaseUrl}/product-categories`
+    //         )
+    //             .then(response => {
+    //                 this.productCategories = response.data;
+    //                 this.loading = false;
+    //             })
+    //             .catch(error => ({ error: JSON.stringify(error) }));
+    //         return reponse;
+    //     }
+    // }
 };
 </script>
 
