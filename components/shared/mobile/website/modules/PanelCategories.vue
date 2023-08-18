@@ -113,6 +113,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.a {
+    text-decoration: none;
+}
 .placeholder-image {
     padding: 15px;
 }
