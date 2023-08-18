@@ -119,5 +119,6 @@ export default {
 
 .v-list-item__content {
     text-decoration: none;
+    color: black;
 }
 </style>
