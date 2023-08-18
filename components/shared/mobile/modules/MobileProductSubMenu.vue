@@ -25,8 +25,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.a {
+.v-list-item__content {
     text-decoration: none;
+    color: black;
 }
 .theme--light {
     background-color: #eaeaea;
