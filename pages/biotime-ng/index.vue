@@ -38,6 +38,12 @@ export default {
         BiotimeApp,
         Benefits,
         BiotimeSection
+    },
+    methods: {
+        handleClosePanel() {
+            this.$store.commit('app/setCurrentDrawerContent', null);
+            this.$store.commit('app/setAppDrawer', false);
+        }
     }
 };
 </script>

@@ -51,7 +51,7 @@ export default {
                             megaItems: [
                                 {
                                     text: this.$i18n.t('menu.mainMenu.aboutUs'),
-                                    url: '/about'
+                                    url: '/about-us'
                                 },
                                 {
                                     text: this.$i18n.t('menu.mainMenu.contact'),

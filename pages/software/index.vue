@@ -13,6 +13,59 @@
 
         <div class="softwarecontainer">
             <div class="wrapper_001">
+                <!-- Start -->
+                <div class="container">
+                    <div class="logo">
+                        <img
+                                data-src="/img/software/zktecoParking.png"
+                                class="lazyload"
+                                alt=""
+                            />
+                    </div>
+                    <div class="content">
+                        <div class="contentHead">
+                            <p>
+                            <h4> New Software  </h4>
+                            ZKTecoParking.
+                            </p>
+                        </div>
+                        <div class="wrapper">
+                            <p>
+                                
+                                ZKTecoParking is a client/server architecture parking lot management software self-developed by ZKTeco. ZKTecoParking contains six functional modules: system management, personnel management, authorization management, financial management, terminal management and report management. With a user-friendly UI and complete parking lot management function, ZKTecoParking provides the most professional solution for a simple and convenient user experience.
+
+
+                            </p>
+                        </div>
+                        <div class="footer">
+                            <div>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            ZKTecoParking.manual
+                                        )
+                                    ">User Manual V1.2</button>
+                                <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            ZKTecoParking.download
+                                        ) 
+                                    ">Software </button>
+
+                                    <button class="ps-btn"
+                                    @click.prevent="
+                                        download(
+                                            ZKTecoParking.datasheet
+                                        ) 
+                                    "> Datasheet </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- End -->
+
                 <div class="container">
                     <div class="logo">
                         <img
@@ -427,6 +480,12 @@ export default {
             ZKAccess35:{
                 manual:"https://zkteco.co.za/downloads/brochures/zkbio_cvsecurity_brochure.pdf",
                 download: "https://zkteco.co.za/downloads/software/zkbio_cv_security_5.3.0.zip"
+            },
+
+            ZKTecoParking:{
+                manual:"https://new-website-file.s3.ap-southeast-1.amazonaws.com/files/20220408/6961a4ca5863710d81cb5f2dad8dc60f.pdf",
+                datasheet: "https://new-website-file.s3.ap-southeast-1.amazonaws.com/files/20220408/e02ac3b2868ca510ecf78830faef0f3b.pdf",
+                download: "https://new-website-file.s3.ap-southeast-1.amazonaws.com/files/20220408/6d76373153cc773e725040d2257b9c57.zip"
             },
             
             // zkbioV5000 :"https://storage.googleapis.com/zkteco_website_bucket/KF_160_3af1582d3b/KF_160_3af1582d3b.pdf",

@@ -23,15 +23,24 @@
                         category.name
                     }}</nuxt-link>
                 </li>
+
                 <li>
-                    <nuxt-link :to="`/biotime-ng`">
-                        Cloud Solution
+                    <nuxt-link
+                        :to="`/biotime-ng`"
+                        @click.prevent="handleClosePanel"
+                    >
+                        Biotime Africa
                     </nuxt-link>
                 </li>
                 <li>
                     <a href="https://ngteco.ng/">
                         Smart Home
                     </a>
+                </li>
+                <li>
+                    <nuxt-link :to="`/africa-time-keeper`">
+                        Africa Time Keeper
+                    </nuxt-link>
                 </li>
             </ul>
         </div>
@@ -44,11 +53,17 @@ import { mapState } from 'vuex';
 export default {
     name: 'PanelSolution',
 
+    data() {
+        return {
+            loading: false
+        };
+    },
+
     computed: {
         ...mapState({
-            loading: state => state.website.loading,
             solutionCategoriesAndSub: state =>
-                state.website.solutionCategoriesAndSub
+                state.website.solutionCategoriesAndSub,
+            loading: state => state.website.loading
         })
     },
 

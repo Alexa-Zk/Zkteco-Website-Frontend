@@ -149,12 +149,16 @@ export default {
                         {
                             text: 'Anti Counterfeit Enquiry',
                             url: '/support/anti-counterfeiting'
+                        },
+                        {
+                            text: 'E Learning Platforms',
+                            url: '/tutorial'
                         }
                     ]
                 },
                 {
                     text: 'About Us',
-                    url: '/about'
+                    url: '/about-us'
                 },
                 {
                     text: 'News Center',
@@ -195,6 +199,10 @@ export default {
                 },
 
                 {
+                    text: 'Experience Center',
+                    url: '/experience-center'
+                },
+                {
                     text: 'Login',
                     url: '/website/page/login'
                 }
@@ -214,4 +222,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.v-list-item__content {
+    text-decoration: none;
+    color: black;
+}
+</style>

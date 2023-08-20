@@ -28,7 +28,10 @@
 
             <div class="mega-menu__column">
                 <h4>
-                    <nuxt-link :to="`/biotime-ng`">
+                    <nuxt-link
+                        :to="`/biotime-ng`"
+                        @click.prevent="handleClosePanel"
+                    >
                         Cloud Solution
                     </nuxt-link>
                 </h4>
@@ -38,9 +41,14 @@
                             Biotime Africa
                         </nuxt-link>
                     </li>
+                    <li>
+                        <nuxt-link :to="`/africa-time-keeper`">
+                            Africa Time Keeper
+                        </nuxt-link>
+                    </li>
                 </ul>
             </div>
-            <div>
+            <div class="mega-menu__column">
                 <h4 class="brands">
                     <a href="https://ngteco.ng/">
                         Smart Home
@@ -76,6 +84,12 @@ export default {
         await this.$store.dispatch(
             'website/getSolutionCategoryAndSubCategories'
         );
+    },
+    methods: {
+        handleClosePanel() {
+            this.$store.commit('app/setCurrentDrawerContent', null);
+            this.$store.commit('app/setAppDrawer', false);
+        }
     }
 };
 </script>

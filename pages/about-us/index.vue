@@ -65,6 +65,27 @@
         </div>
 
         <div class="zkContainer">
+            <h2>CORPORATE VALUES</h2>
+            <p>
+                At ZKTeco, our mission is to provide innovative and reliable
+                solutions to our customers while maintaining a strong commitment
+                to our core values and fundamental principles. These values and
+                principles guide our actions and shape our corporate culture,
+                ensuring that we create lasting and positive relationships with
+                our stakeholders. In this document, we outline our corporate
+                values, which serve as the foundation for our interactions with
+                employees, partners, customers, and the communities we serve.
+            </p>
+            <a
+                href="https://storage.googleapis.com/zkteco_website_bucket/ZK_Teco_Corporate_Values_11_07_2023_e1a62d82ba/ZK_Teco_Corporate_Values_11_07_2023_e1a62d82ba.pdf"
+                target="_blank"
+                download
+            >
+                Read more</a
+            >
+        </div>
+
+        <div class="zkContainer">
             <h2>OTHER SUBSIDIARIES</h2>
             <div class="imgWrapper">
                 <img
@@ -695,6 +716,12 @@ export default {
                 }
             }, duration);
         });
+    },
+    methods: {
+        handleClosePanel() {
+            this.$store.commit('app/setCurrentDrawerContent', null);
+            this.$store.commit('app/setAppDrawer', false);
+        }
     }
 };
 </script>
@@ -888,6 +915,17 @@ export default {
         font-size: 1.2em;
         padding-top: 14px;
         padding-bottom: 25px;
+        text-align: justify;
+    }
+    a {
+        text-decoration: none;
+        padding: 1rem 2rem;
+        background: #8bc63e;
+        color: #fff;
+        font-weight: bold;
+    }
+    a:hover {
+        background: #5ba538;
     }
     .imgWrapper {
         img {
