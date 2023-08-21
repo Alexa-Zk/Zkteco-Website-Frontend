@@ -115,7 +115,17 @@ async function _getProductRoutes() {
             'sw12-eu',
             'sw13-eu',
             'es-854n11-12-13h',
-            'sw11-eu'
+            'sw11-eu',
+            'bs-858m12-13k',
+            'op1200-series',
+            'ts2000-pro-series',
+            'sp1',
+            'sbtl5200',
+            'probio',
+            'bl-855p28l',
+            'zkb-barcode-scanner-series',
+            'speedface-v4lti',
+            'fht2400d-series'
         ];
 
         const missBlog = ['cctv', 'benefits-of-using-a'];
