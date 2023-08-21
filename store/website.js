@@ -11,6 +11,7 @@ export const state = () => ({
     articles: null,
     articlesLimited: null,
     articlesCategories: null,
+    articlesCategoriesLimited: null,
     singleArticlesCategories: null,
     productsTotal: 0,
     articlesTotal: 0,
@@ -79,6 +80,10 @@ export const mutations = {
 
     setArticlesCategories(state, payload) {
         state.articlesCategories = payload;
+    },
+
+    setArticlesCategoriesLimited(state, payload) {
+        state.articlesCategoriesLimited = payload;
     },
 
     setSingleArticlesCategories(state, payload) {
@@ -841,6 +846,31 @@ export const actions = {
             commit('setSolutionSubTotal', value[1].data);
             commit('setLoading', false);
         });
+    },
+
+    async getArticlesCategoriesLimited({ commit }) {
+        commit('setLoading', true);
+        const reponse = await Repository.get(`${subBaseUrl}/categories/home_page_categories/`)
+            .then(response => {
+                commit('setArticlesCategoriesLimited', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return [];
+    },
+
+    async fetchArticlesCountByCategorySlug({ commit }, slug) {
+        commit('setLoading', true);
+
+        const response = await Repository.get(
+            `${subBaseUrl}/articles/count?categories.slug=${slug}`
+        )
+            .then(response => {
+                return response;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return response;
     },
 
     async getNewsCategories({ commit }, slug) {

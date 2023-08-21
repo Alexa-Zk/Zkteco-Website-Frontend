@@ -26,13 +26,13 @@
                     </content-placeholders>
                 </div>
                 <ul v-else>
-                    <li v-for="category in Categories" :key="category.id">
+                    <li v-for="category in categoryCount" :key="category.id">
                         <nuxt-link
                             :to="`/news-center/categories/${category.slug}`"
                         >
                             {{ category.name }}
                             <span class="widget__content_value">{{
-                                category.articles.length
+                              category.count
                             }}</span>
                         </nuxt-link>
                     </li>
@@ -55,21 +55,30 @@ export default {
     //props: ['searchQuery'],
     data() {
         return {
-            searchQuery: ''
+            searchQuery: '',
+            categoryCount: []
         };
     },
     async created() {
         const response = await this.$store.dispatch(
-            'website/getArticlesCategories'
+            'website/getArticlesCategoriesLimited'
         );
+        this.Categories.map(async data => {
+            const count = await this.getArticlesCountByCategorySlug(data.slug)
+            this.categoryCount.push({
+                name: data.name,
+                slug: data.slug,
+                count: count
+            })
+        })
     },
     computed: {
         ...mapState({
             loading: state => state.website.loading,
-            articlesCategories: state => state.website.articlesCategories
+            articlesCategoriesLimited: state => state.website.articlesCategoriesLimited
         }),
         Categories() {
-            return this.articlesCategories;
+            return this.articlesCategoriesLimited;
         }
     },
     watch: {
@@ -78,6 +87,14 @@ export default {
         // }
     },
     methods: {
+         async getArticlesCountByCategorySlug(slug){
+            const response = await this.$store.dispatch(
+                'website/fetchArticlesCountByCategorySlug',
+                slug
+            );
+            return response.data
+
+        },
         searchButtonIcon() {
             this.$emit('searchBlogQuery', this.searchQuery);
         },
