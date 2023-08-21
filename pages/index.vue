@@ -5,7 +5,7 @@
         <div class="ps-container">
             <related-posts />
         </div>
-        <!--home-brand :partnersLogo="ourPartners" /-->
+        <home-brand :partnersLogo="ourPartners" />
         <newsletters layout="fullwidth" />
     </main>
 </template>
@@ -48,12 +48,12 @@ export default {
         }
     },
     created() {
-        // let payload = {};
-        // const response = this.$store.dispatch(
-        //     'website/getArticlesLimited',
-        //     payload
-        // );
-        // this.$store.dispatch('website/getArticlesCategories', payload)
+        let payload = {};
+        const response = this.$store.dispatch(
+            'website/getArticlesLimited',
+            payload
+        );
+        this.$store.dispatch('website/getArticlesCategories', payload);
     },
     mounted() {
         this.getHomePageBanners();
@@ -64,7 +64,6 @@ export default {
             const reponse = await Repository.get(`${subBaseUrl}/home-pages`)
                 .then(response => {
                     this.homePages = response.data;
-                    console.log(' Parterns', response.data[0].partners);
                     this.loading = false;
                 })
                 .catch(error => ({ error: JSON.stringify(error) }));
