@@ -5,7 +5,7 @@
         <div class="ps-container">
             <related-posts />
         </div>
-        <home-brand :partnersLogo="ourPartners" />
+        <!--home-brand :partnersLogo="ourPartners" /--->
         <newsletters layout="fullwidth" />
     </main>
 </template>
@@ -42,10 +42,10 @@ export default {
     computed: {
         adSliders() {
             return this.homePages ? this.homePages[0].sliders : [];
-        },
-        ourPartners() {
-            return this.homePages ? this.homePages[0].partners.slice(0, 8) : [];
         }
+        // ourPartners() {
+        //     return this.homePages ? this.homePages[0].partners.slice(0, 8) : [];
+        // }
     },
     created() {
         let payload = {};
@@ -53,7 +53,7 @@ export default {
             'website/getArticlesLimited',
             payload
         );
-        this.$store.dispatch('website/getArticlesCategories', payload);
+        //this.$store.dispatch('website/getArticlesCategories', payload);
     },
     mounted() {
         this.getHomePageBanners();
