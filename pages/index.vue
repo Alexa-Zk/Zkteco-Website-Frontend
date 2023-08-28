@@ -53,6 +53,7 @@ export default {
             'website/getArticlesLimited',
             payload
         );
+       // this.$store.dispatch('website/getArticlesCategoriesLimited', payload)
         //this.$store.dispatch('website/getArticlesCategories', payload);
     },
     mounted() {
