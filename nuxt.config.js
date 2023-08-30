@@ -347,7 +347,17 @@ export default {
                     `https://admin.zkteco-wa.com/product-categories/categoryAndSubcategory`
                 );
 
-                const productCategoriesArray = productCategoriesData.map(v => {
+                const category = [];
+                productCategoriesData.map(e => {
+                    let cat = {
+                        id: e.id,
+                        slug: e.slug,
+                        name: e.name
+                    };
+                    category.push(cat);
+                });
+
+                const productCategoriesArray = category.map(v => {
                     if (
                         v?.slug != null ||
                         v?.slug != '' ||

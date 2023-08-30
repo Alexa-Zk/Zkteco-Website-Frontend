@@ -471,7 +471,6 @@ export default {
                     this.showError = false;
                     setTimeout(() => {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
-
                         this.resetForm();
                         //window.location.reload();
                     }, 3001);
