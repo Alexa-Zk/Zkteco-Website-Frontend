@@ -8,6 +8,7 @@ export const state = () => ({
     solutions: null,
     solutionCategoriesAndSub: null,
     caseStudies: null,
+    caseStudyLimit: null,
     articles: null,
     articlesLimited: null,
     articlesCategories: null,
@@ -147,6 +148,9 @@ export const mutations = {
 
     setCaseStudies(state, payload) {
         state.caseStudies = payload;
+    },
+    setCaseStudyLimit(state, payload) {
+        state.caseStudyLimit = payload;
     },
 
     setHomepage(state, payload) {
@@ -396,15 +400,11 @@ export const actions = {
         return response;
     },
 
-    async getArticlesLimited({ commit }, payload) {
+    async getArticlesLimited({ commit }) {
         commit('setLoading', true);
-        let params = {
-            _start: 0,
-            _sort: 'created_at:desc',
-            _limit: 4
-        };
+
         const reponse = await Repository.get(
-            `${subBaseUrl}/articles?${serializeQuery(params)}`
+            `${subBaseUrl}/articles/getArticleByLimit`
         )
             .then(response => {
                 commit('setArticlesLimited', response.data);
@@ -1018,5 +1018,18 @@ export const actions = {
             })
             .catch(error => ({ error: JSON.stringify(error) }));
         return reponse;
+    },
+
+    async getCaseStudyLimit({ commit }) {
+        commit('setLoading', true);
+
+        const url = `${subBaseUrl}/case-studies/getCaseStudyByLimit`;
+
+        return await Repository.get(url)
+            .then(response => {
+                commit('setCaseStudyLimit', response.data);
+                commit('setLoading', false);
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
     }
 };
