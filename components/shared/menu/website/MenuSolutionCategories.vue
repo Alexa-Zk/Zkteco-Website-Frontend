@@ -29,7 +29,7 @@
             <div class="mega-menu__column">
                 <h4>
                     <nuxt-link
-                        :to="`/biotime-ng`"
+                        :to="`/biotime.africa`"
                         @click.prevent="handleClosePanel"
                     >
                         Cloud Solution
@@ -37,7 +37,7 @@
                 </h4>
                 <ul class="mega-menu__list">
                     <li>
-                        <nuxt-link :to="`/biotime-ng`">
+                        <nuxt-link :to="`/biotime.africa`">
                             Biotime Africa
                         </nuxt-link>
                     </li>

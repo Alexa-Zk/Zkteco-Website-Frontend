@@ -179,7 +179,7 @@ export default {
 
                 // {
                 //     text: 'BioTime NG',
-                //     url: '/biotime-ng'
+                //     url: '/biotime.africa'
                 // },
                 {
                     text: 'Project Consultation',

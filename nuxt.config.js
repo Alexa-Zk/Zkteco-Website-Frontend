@@ -139,7 +139,7 @@ async function _getProductRoutes() {
             'categories/hotel-solutions'
         ];
 
-        const productCategories = [
+        const productCategoriesTest = [
             'smart-lock',
             'time-attendance',
             'surveillance',
@@ -161,7 +161,7 @@ async function _getProductRoutes() {
 
         landingPage.map(v => paths.push(`/${v.trim()}`));
 
-        productCategories.map(v =>
+        productCategoriesTest.map(v =>
             paths.push(`/product-categories/${v.trim()}`)
         );
 

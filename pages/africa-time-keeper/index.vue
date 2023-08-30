@@ -637,7 +637,6 @@ export default {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                         this.resetForm();
                         //window.location.reload();
-                        //this.$router.push('/biotime-ng');
                     }, 3001);
                 } else {
                     this.loading = false;

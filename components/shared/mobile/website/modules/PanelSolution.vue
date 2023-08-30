@@ -26,7 +26,7 @@
 
                 <li>
                     <nuxt-link
-                        :to="`/biotime-ng`"
+                        :to="`/biotime.africa`"
                         @click.prevent="handleClosePanel"
                     >
                         Biotime Africa

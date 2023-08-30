@@ -474,7 +474,6 @@ export default {
 
                         this.resetForm();
                         //window.location.reload();
-                        //this.$router.push('/biotime-ng');
                     }, 3001);
                 } else {
                     this.loading = false;
