@@ -27,12 +27,12 @@
                             class="facebook"
                             href="https://www.facebook.com/zktecowa"
                         >
-                            <i class="fa fa-facebook"></i>
+                            <i class="fa fa-facebook icon_size"></i>
                         </a>
                     </li>
                     <li>
                         <a class="twitter" href="https://twitter.com/ZKTeco_WA">
-                            <i class="fa fa-twitter"></i>
+                            <i class="fa fa-twitter icon_size"></i>
                         </a>
                     </li>
                     <li>
@@ -40,7 +40,7 @@
                             class="instagram"
                             href="https://www.instagram.com/zktecowa/"
                         >
-                            <i class="fa fa-instagram"></i>
+                            <i class="fa fa-instagram icon_size"></i>
                         </a>
                     </li>
                     <li>
@@ -48,7 +48,7 @@
                             class="linkedin"
                             href="https://www.linkedin.com/company/zkteco-wa/?originalSubdomain=ng"
                         >
-                            <i class="fa fa-linkedin"></i>
+                            <i class="fa fa-linkedin icon_size"></i>
                         </a>
                     </li>
                 </ul>
@@ -242,6 +242,9 @@ export default {
                 }
             }
         }
+    }
+    .icon_size {
+        font-size: 4rem;
     }
 }
 </style>
