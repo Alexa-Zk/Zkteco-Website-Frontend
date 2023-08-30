@@ -90,7 +90,7 @@ export default {
             window.location.href = url;
         },
         toRequestQuote() {
-            this.$router.push('/biotime-ng#btc-contact');
+            this.$router.push('/biotime-africa#btc-contact');
         }
     }
 };

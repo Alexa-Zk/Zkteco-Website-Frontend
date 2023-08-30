@@ -140,7 +140,7 @@
                     >
                 </li>
                 <li>
-                    <a href="/biotime-ng" target="_blank">Biotime</a>
+                    <a href="/biotime.africa" target="_blank">Biotime</a>
                 </li>
             </ul>
         </aside>

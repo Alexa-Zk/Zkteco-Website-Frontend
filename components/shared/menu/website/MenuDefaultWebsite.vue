@@ -132,10 +132,6 @@ export default {
                     text: 'Partners',
                     url: '/website/page/store-locator'
                 },
-                // {
-                //     text: 'BioTime NG',
-                //     url: '/biotime-ng'
-                // },
                 {
                     text: 'Consultation',
                     url: '/support/project-consultation'
