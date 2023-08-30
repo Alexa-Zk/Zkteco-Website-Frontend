@@ -41,19 +41,12 @@ export default {
 
     computed: {
         adSliders() {
-            return this.homePages ? this.homePages[0].sliders : [];
+            return this.homePages ? this.homePages : [];
         }
-        // ourPartners() {
-        //     return this.homePages ? this.homePages[0].partners.slice(0, 8) : [];
-        // }
     },
     created() {
         let payload = {};
-        const response = this.$store.dispatch(
-            'website/getArticlesLimited',
-            payload
-        );
-        //this.$store.dispatch('website/getArticlesCategories', payload);
+        this.$store.dispatch('website/getArticlesLimited', payload);
     },
     mounted() {
         this.getHomePageBanners();
@@ -61,9 +54,12 @@ export default {
     methods: {
         async getHomePageBanners() {
             this.loading = true;
-            const reponse = await Repository.get(`${subBaseUrl}/home-pages`)
+            const reponse = await Repository.get(
+                `${subBaseUrl}/home-pages/findBySlider`
+            )
                 .then(response => {
-                    this.homePages = response.data;
+                    const res = response.data;
+                    this.homePages = res[0].sliders;
                     this.loading = false;
                 })
                 .catch(error => ({ error: JSON.stringify(error) }));

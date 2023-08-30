@@ -3,6 +3,7 @@ const axios = require('axios');
 async function _getProductRoutes() {
     try {
         let paths = [];
+        const landingPage = ['bitome.africa'];
         const missProduct = [
             'pl-52d18e36e',
             'kit-8304xec-cl4-bs32b11m',
@@ -125,7 +126,8 @@ async function _getProductRoutes() {
             'bl-855p28l',
             'zkb-barcode-scanner-series',
             'speedface-v4lti',
-            'fht2400d-series'
+            'fht2400d-series',
+            'biotime-africa'
         ];
 
         const missBlog = ['cctv', 'benefits-of-using-a'];
@@ -156,6 +158,8 @@ async function _getProductRoutes() {
         newCenter.map(v => paths.push(`/news-center/categories/${v.trim()}`));
 
         missProduct.map(v => paths.push(`/product/${v.trim()}`));
+
+        landingPage.map(v => paths.push(`/${v.trim()}`));
 
         productCategories.map(v =>
             paths.push(`/product-categories/${v.trim()}`)
