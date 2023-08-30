@@ -8,7 +8,7 @@
                 <p>Call us 24/7</p>
                 <h3>
                     <a style="font-weight: inherit;" href="tel:2348175555512">
-                        +234 817 5555 512 kazeem
+                        +234 817 5555 512
                     </a>
                     <br />
                     <a style="font-weight: inherit;" href="tel:2348175555513">
