@@ -346,7 +346,9 @@ export default {
                 let { data: productCategoriesData } = await axios.get(
                     `https://admin.zkteco-wa.com/product-categories/categoryAndSubcategory`
                 );
-                const category = JSON.stringify(productCategoriesData);
+                const category = JSON.parse(
+                    JSON.stringify(productCategoriesData)
+                );
 
                 const productCategoriesArray = category.map(v => {
                     if (
@@ -354,7 +356,7 @@ export default {
                         v?.slug != '' ||
                         v?.slug != undefined
                     ) {
-                        return `/product-categories/${v?.slug}`;
+                        return `/product-categories/${v?.slug.trim()}`;
                     }
                 });
 
