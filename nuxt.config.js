@@ -362,8 +362,9 @@ export default {
                         v?.slug != null ||
                         v?.slug != '' ||
                         v?.slug != undefined
-                    )
+                    ) {
                         return `/product-categories/${v?.slug}`;
+                    }
                 });
 
                 let { data: productsData } = await axios.get(
