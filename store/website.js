@@ -581,7 +581,32 @@ export const actions = {
             .then(response => {
                 commit('setLoading', true);
                 const data = response.data;
+                const category = [];
+                console.log('data', data);
+                data.map(e => {
+                    let cat = {
+                        id: e.id,
+                        slug: e.slug,
+                        name: e.name
+                    };
+                    category.push(cat);
+                    const productCategoriesArray = category.map(v => {
+                        if (
+                            v?.slug != null ||
+                            v?.slug != '' ||
+                            v?.slug != undefined
+                        ) {
+                            console.log(
+                                ' --',
+                                `/product-categories/${v?.slug}`
+                            );
+                            return `/product-categories/${v?.slug}`;
+                        }
+                        console.log(' ++ ', productCategoriesArray);
+                    });
+                });
                 commit('setCategoryAndSubCategories', data);
+                console.log('category', category);
                 commit('setLoading', false);
                 return data;
             })
