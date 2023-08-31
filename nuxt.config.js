@@ -357,7 +357,7 @@ export default {
                     category.push(cat);
                 });
 
-                const productCategoriesArray = category.map(v => {
+                const productCategory = category.map(v => {
                     if (
                         v?.slug != null ||
                         v?.slug != '' ||
@@ -394,7 +394,7 @@ export default {
 
                 return [
                     ...solutionCategoryArray,
-                    ...productCategoriesArray,
+                    ...productCategory,
                     ...productArray,
                     ...solutionArray,
                     ...articlesArray
