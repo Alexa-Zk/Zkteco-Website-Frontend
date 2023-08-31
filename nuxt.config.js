@@ -344,20 +344,20 @@ export default {
                 });
 
                 let { data: productCategoriesData } = await axios.get(
-                    `https://admin.zkteco-wa.com/product-categories/categoryAndSubcategory`
+                    `https://admin.zkteco-wa.com/categories`
                 );
 
-                const category = [];
-                productCategoriesData.map(e => {
-                    let cat = {
-                        id: e.id,
-                        slug: e.slug,
-                        name: e.name
-                    };
-                    category.push(cat);
-                });
+                // const category = [];
+                // productCategoriesData.map(e => {
+                //     let cat = {
+                //         id: e.id,
+                //         slug: e.slug,
+                //         name: e.name
+                //     };
+                //     category.push(cat);
+                // });
 
-                const productCategory = category.map(v => {
+                const productCategory = productCategoriesData.map(v => {
                     if (
                         v?.slug != null ||
                         v?.slug != '' ||
