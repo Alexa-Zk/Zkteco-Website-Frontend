@@ -349,11 +349,11 @@ export default {
 
                 const productCategoriesArray = productCategoriesData.map(v => {
                     if (
-                        v?.slug != null ||
-                        v?.slug != '' ||
-                        v?.slug != undefined
+                        v.slug != null ||
+                        v.slug != '' ||
+                        v.slug != undefined
                     ) {
-                        return `/product-categories/${v?.slug}`;
+                        return `/product-categories/${v.slug}`;
                     }
                 });
 
