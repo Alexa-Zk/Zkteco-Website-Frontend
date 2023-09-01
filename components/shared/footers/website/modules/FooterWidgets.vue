@@ -1,6 +1,38 @@
 <template lang="html">
     <div class="ps-footer__widgets">
         <aside class="widget widget_footer widget_contact-us">
+            <ul class="ps-list--social">
+                <li>
+                    <a
+                        class="facebook"
+                        href="https://www.facebook.com/zktecowa"
+                    >
+                        <i class="fa fa-facebook icon_size"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="twitter" href="https://twitter.com/ZKTeco_WA">
+                        <i class="fa fa-twitter icon_size"></i>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        class="instagram"
+                        href="https://www.instagram.com/zktecowa/"
+                    >
+                        <i class="fa fa-instagram icon_size"></i>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        class="linkedin"
+                        href="https://www.linkedin.com/company/zkteco-wa/?originalSubdomain=ng"
+                    >
+                        <i class="fa fa-linkedin icon_size"></i>
+                    </a>
+                </li>
+            </ul>
+            <br />
             <h4 class="widget-title">
                 {{ $t('footer.widgetHeading.contactUs') }}
             </h4>
@@ -21,37 +53,6 @@
                         >enquiry@zkteco-wa.com</a
                     >
                 </p>
-                <ul class="ps-list--social">
-                    <li>
-                        <a
-                            class="facebook"
-                            href="https://www.facebook.com/zktecowa"
-                        >
-                            <i class="fa fa-facebook icon_size"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="twitter" href="https://twitter.com/ZKTeco_WA">
-                            <i class="fa fa-twitter icon_size"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            class="instagram"
-                            href="https://www.instagram.com/zktecowa/"
-                        >
-                            <i class="fa fa-instagram icon_size"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            class="linkedin"
-                            href="https://www.linkedin.com/company/zkteco-wa/?originalSubdomain=ng"
-                        >
-                            <i class="fa fa-linkedin icon_size"></i>
-                        </a>
-                    </li>
-                </ul>
             </div>
         </aside>
         <aside class="widget widget_footer">
