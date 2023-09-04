@@ -185,8 +185,8 @@ async function _getProductRoutes() {
         const blog = await blogURL;
         const productCategory = await productCategoryURL;
 
-        const category = JSON.parse(JSON.stringify(productCategory));
-        category.data.map(v => {
+        const category = JSON.parse(JSON.stringify(productCategory.data));
+        category.map(v => {
             let slug = v?.slug?.trim();
             if (slug != null || slug != undefined) {
                 paths.push(`/product-categories/${slug}`);
