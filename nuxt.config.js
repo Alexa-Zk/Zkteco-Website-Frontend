@@ -351,12 +351,8 @@ export default {
                 );
 
                 const productCategoriesArray = category.map(v => {
-                    if (
-                        v?.slug != null ||
-                        v?.slug != '' ||
-                        v?.slug != undefined
-                    ) {
-                        return `/product-categories/${v?.slug.trim()}`;
+                    if (v.slug != null || v.slug != '' || v.slug != undefined) {
+                        return `/product-categories/${v.slug.trim()}`;
                     }
                 });
 

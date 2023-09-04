@@ -131,10 +131,9 @@ export default {
         async fetchCaseStudyByCategory(case_slug) {
             let slug = case_slug == 'all' ? null : case_slug;
             let params = {
-                _sort: 'sort_id:desc',
+                _sort: 'sort_id:asc',
                 ...(slug && { 'case_study_categories.slug': slug })
             };
-            console.log(params);
             this.loading = true;
             const reponse = await Repository.get(
                 `${subBaseUrl}/case-studies?${serializeQuery(params)}`
