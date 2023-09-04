@@ -564,12 +564,12 @@ export const actions = {
 
         let count = await Repository.get(productCategoryCountURL);
 
-        await Promise.all([product, count]).then(value => {
-            commit('setLoading', true);
-            commit('setSingleProductCategories', value[0].data);
-            commit('setTotalSingleProductCategories', value[1].data);
-            commit('setLoading', false);
-        });
+        //await Promise.all([product, count]).then(value => {
+        commit('setLoading', true);
+        commit('setSingleProductCategories', product.data);
+        commit('setTotalSingleProductCategories', count.data);
+        commit('setLoading', false);
+        //});
 
         return product.data;
     },

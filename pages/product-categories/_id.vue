@@ -63,14 +63,16 @@ export default {
 
     computed: {
         ...mapState({
-            product: state => state.website.singleProductCategories,
+            singleProductCategories: state =>
+                state.website.singleProductCategories,
             totalSingleProductCategories: state =>
                 state.website.totalSingleProductCategories,
             loading: state => state.website.loading
         }),
         categoriesWithProduct() {
-            console.log('Product::-', this.product);
-            return this.product ? this.product : [];
+            return this.singleProductCategories
+                ? this.singleProductCategories
+                : [];
         },
         title() {
             return this.$route.params.id
