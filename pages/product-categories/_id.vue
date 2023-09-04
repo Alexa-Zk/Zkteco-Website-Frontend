@@ -105,10 +105,15 @@ export default {
         let keywords = 'ZKTeco | Product Categories';
 
         if (this.$data.blogDetails[0] !== undefined) {
-            // let seo = this.$data.blogDetails[0].product_category.SEO;
-            // description = seo ? seo.description : 'ZKTeco | Product Categories';
-            // title = seo ? seo.title : 'ZKTeco | Product Categories';
-            // keywords = seo ? seo.keywords : 'keywords';
+            const metaTag = this.$data.blogDetails[0];
+            if (metaTag.SEO != null) {
+                let seo = metaTag?.SEO;
+                description = seo
+                    ? seo.description
+                    : 'ZKTeco | Product Categories';
+                title = seo ? seo.title : 'ZKTeco | Product Categories';
+                keywords = seo ? seo.keywords : 'keywords';
+            }
         }
 
         return {
