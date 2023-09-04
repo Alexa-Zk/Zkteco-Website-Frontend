@@ -139,17 +139,17 @@ async function _getProductRoutes() {
             'categories/hotel-solutions'
         ];
 
-        const productCategories = [
-            'time-attendance',
-            'access-control',
-            'surveillance',
-            'smart-lock',
-            'security-inspection',
-            'smart-home-security',
-            'armatura',
-            'green-label',
-            'entrance-control'
-        ];
+        // const productCategories = [
+        //     'time-attendance',
+        //     'access-control',
+        //     'surveillance',
+        //     'smart-lock',
+        //     'security-inspection',
+        //     'smart-home-security',
+        //     'armatura',
+        //     'green-label',
+        //     'entrance-control'
+        // ];
 
         missBlog.map(v => paths.push(`/blog/${v.trim()}`));
 
@@ -159,9 +159,9 @@ async function _getProductRoutes() {
 
         landingPage.map(v => paths.push(`/${v.trim()}`));
 
-        productCategories.map(v => {
-            paths.push(`/product-categories/${v.trim()}`);
-        });
+        // productCategories.map(v => {
+        //     paths.push(`/product-categories/${v.trim()}`);
+        // });
 
         const productURL = axios.get(`https://admin.zkteco-wa.com/products`);
 
@@ -185,7 +185,8 @@ async function _getProductRoutes() {
         const blog = await blogURL;
         const productCategory = await productCategoryURL;
 
-        productCategory.data.map(v => {
+        const category = JSON.parse(JSON.stringify(productCategory));
+        category.data.map(v => {
             let slug = v?.slug?.trim();
             if (slug != null || slug != undefined) {
                 paths.push(`/product-categories/${slug}`);
