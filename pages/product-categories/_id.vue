@@ -69,6 +69,7 @@ export default {
             loading: state => state.website.loading
         }),
         categoriesWithProduct() {
+            console.log('Product::-', this.product);
             return this.product ? this.product : [];
         },
         title() {
@@ -101,14 +102,12 @@ export default {
         let title = 'ZKTeco | Product Categories';
         let keywords = 'ZKTeco | Product Categories';
 
-        /*
         if (this.$data.blogDetails[0] !== undefined) {
-            let seo = this.$data.blogDetails[0].product_category.SEO;
-            description = seo ? seo.description : 'ZKTeco | Product Categories';
-            title = seo ? seo.title : 'ZKTeco | Product Categories';
-            keywords = seo ? seo.keywords : 'keywords';
+            // let seo = this.$data.blogDetails[0].product_category.SEO;
+            // description = seo ? seo.description : 'ZKTeco | Product Categories';
+            // title = seo ? seo.title : 'ZKTeco | Product Categories';
+            // keywords = seo ? seo.keywords : 'keywords';
         }
-        */
 
         return {
             title: title,
