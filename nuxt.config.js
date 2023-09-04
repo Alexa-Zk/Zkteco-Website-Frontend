@@ -139,18 +139,16 @@ async function _getProductRoutes() {
             'categories/hotel-solutions'
         ];
 
-        const productCategoriesTest = [
-            'smart-lock',
+        const productCategories = [
             'time-attendance',
-            'surveillance',
             'access-control',
-            'green-label',
-            'entrance-control',
+            'surveillance',
+            'smart-lock',
             'security-inspection',
-            'body-temperature-and-mask-detection',
-            'pos-terminal',
+            'smart-home-security',
             'armatura',
-            'smart-home-security'
+            'green-label',
+            'entrance-control'
         ];
 
         missBlog.map(v => paths.push(`/blog/${v.trim()}`));
@@ -161,9 +159,9 @@ async function _getProductRoutes() {
 
         landingPage.map(v => paths.push(`/${v.trim()}`));
 
-        productCategoriesTest.map(v =>
-            paths.push(`/product-categories/${v.trim()}`)
-        );
+        productCategories.map(v => {
+            paths.push(`/product-categories/${v.trim()}`);
+        });
 
         const productURL = axios.get(`https://admin.zkteco-wa.com/products`);
 
@@ -343,6 +341,7 @@ export default {
                         return `/solution-categories/${v?.slug}`;
                 });
 
+                /*
                 let { data: productCategoriesData } = await axios.get(
                     `https://admin.zkteco-wa.com/product-categories/categoryAndSubcategory`
                 );
@@ -351,10 +350,15 @@ export default {
                 );
 
                 const productCategoriesArray = category.map(v => {
-                    if (v.slug != null || v.slug != '' || v.slug != undefined) {
-                        return `/product-categories/${v.slug.trim()}`;
+                    if (
+                        v?.slug != null ||
+                        v?.slug != '' ||
+                        v?.slug != undefined
+                    ) {
+                        return `/product-categories/${v?.slug.trim()}`;
                     }
                 });
+                */
 
                 let { data: productsData } = await axios.get(
                     `https://admin.zkteco-wa.com/products`
@@ -384,7 +388,7 @@ export default {
 
                 return [
                     ...solutionCategoryArray,
-                    ...productCategoriesArray,
+                    //...productCategoriesArray,
                     ...productArray,
                     ...solutionArray,
                     ...articlesArray
