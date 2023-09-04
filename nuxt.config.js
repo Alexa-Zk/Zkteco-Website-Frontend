@@ -175,10 +175,22 @@ async function _getProductRoutes() {
 
         const blogURL = axios.get(`https://admin.zkteco-wa.com/articles`);
 
+        const productCategoryURL = axios.get(
+            `https://admin.zkteco-wa.com/product-categories/categoryAndSubcategory`
+        );
+
         const products = await productURL;
         const solution = await solutionURL;
         const subcategory = await productsubURL;
         const blog = await blogURL;
+        const productCategory = await productCategoryURL;
+
+        productCategory.data.map(v => {
+            let slug = v?.slug?.trim();
+            if (slug != null || slug != undefined) {
+                paths.push(`/product-categories/${slug}`);
+            }
+        });
 
         products.data.map(v => {
             let slug = v?.slug?.trim();
