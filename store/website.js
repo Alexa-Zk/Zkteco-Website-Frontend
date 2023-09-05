@@ -16,6 +16,7 @@ export const state = () => ({
     singleArticlesCategories: null,
     productsTotal: 0,
     articlesTotal: 0,
+    singleProduct: null,
     singleProductCategories: null,
     //productCategories: null,
     subProductCategories: null,
@@ -175,6 +176,9 @@ export const mutations = {
 
     setCategoryAndSubCategories(state, payload) {
         state.categoryAndSubCategories = payload;
+    },
+    setSingleProduct(state, payload) {
+        state.singleProduct = payload;
     }
 };
 
@@ -1032,10 +1036,13 @@ export const actions = {
     },
 
     async getProductCategoryBySlug({ commit }, slug) {
-        const reponse = await Repository.get(
-            `${subBaseUrl}/product-categories?slug=${slug}`
-        )
+        commit('setLoading', true);
+
+        const URL = `${subBaseUrl}/product-categories?slug=${slug}`;
+        const reponse = await Repository.get(URL)
             .then(response => {
+                commit('setSingleProduct', response.data);
+                commit('setLoading', false);
                 return response;
             })
             .catch(error => ({

@@ -67,7 +67,8 @@ export default {
                 state.website.singleProductCategories,
             totalSingleProductCategories: state =>
                 state.website.totalSingleProductCategories,
-            loading: state => state.website.loading
+            loading: state => state.website.loading,
+            singleProduct: state => state.website.singleProduct
         }),
         categoriesWithProduct() {
             return this.singleProductCategories
@@ -94,9 +95,12 @@ export default {
                 payload
             );
 
-            return {
-                blogDetails
-            };
+            const categoryBySlug = await store.dispatch(
+                'website/getProductCategoryBySlug',
+                params.id
+            );
+
+            return { categoryBySlug, blogDetails };
         } catch (e) {}
     },
     head() {
@@ -104,15 +108,16 @@ export default {
         let title = 'ZKTeco | Product Categories';
         let keywords = 'ZKTeco | Product Categories';
 
-        if (this.$data.blogDetails[0] !== undefined) {
-            const metaTag = this.$data.blogDetails[0];
-            if (metaTag.SEO != null) {
-                let seo = metaTag?.SEO;
-                description = seo
-                    ? seo.description
-                    : 'ZKTeco | Product Categories';
-                title = seo ? seo.title : 'ZKTeco | Product Categories';
-                keywords = seo ? seo.keywords : 'keywords';
+        if (this.$data.categoryBySlug !== undefined) {
+            if (this.$data.categoryBySlug.data[0] !== undefined) {
+                if (this.$data.categoryBySlug.data[0].SEO !== undefined) {
+                    let seo = this.$data.categoryBySlug.data[0].SEO;
+                    description = seo
+                        ? seo.description
+                        : 'ZKTeco | Product Categories';
+                    title = seo ? seo.title : 'ZKTeco | Product Categories';
+                    keywords = seo ? seo.keywords : 'keywords';
+                }
             }
         }
 
