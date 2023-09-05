@@ -568,23 +568,24 @@ export const actions = {
 
         let count = await Repository.get(productCategoryCountURL);
 
-        const URL = `${subBaseUrl}/product-categories?slug=${payload.slug}`;
-        const productCategory = await Repository.get(URL);
+        // const URL = `${subBaseUrl}/product-categories?slug=${payload.slug}`;
+        // const productCategory = await Repository.get(URL);
 
         commit('setLoading', true);
         commit('setSingleProductCategories', product.data);
         commit('setTotalSingleProductCategories', count.data);
-        commit('setSingleProduct', productCategory.data);
+        //commit('setSingleProduct', productCategory.data);
         commit('setLoading', false);
 
-        let categories = {
-            product: product,
-            productCategory: productCategory.data
-        };
+        return product;
+        // let categories = {
+        //     product: product,
+        //     productCategory: productCategory.data
+        // };
 
-        console.log('categories::', categories);
+        // console.log('categories::', categories);
 
-        return categories;
+        // return categories;
     },
 
     async getCategoryAndSubCategories({ commit }) {
