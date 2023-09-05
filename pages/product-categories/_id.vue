@@ -103,19 +103,26 @@ export default {
         let title = 'ZKTeco | Product Categories';
         let keywords = 'ZKTeco | Product Categories';
 
-        if (this.$data.productCategories.productCategory !== undefined) {
-            if (this.$data.productCategories.productCategory[0] !== undefined) {
+        if (this.$data.productCategories !== undefined) {
+            if (this.$data.productCategories.productCategory !== undefined) {
                 if (
-                    this.$data.productCategories.productCategory[0].SEO !==
+                    this.$data.productCategories.productCategory[0] !==
                     undefined
                 ) {
-                    let seo = this.$data.productCategories.productCategory[0]
-                        .SEO;
-                    description = seo
-                        ? seo.description
-                        : 'ZKTeco | Product Categories';
-                    title = seo ? seo.title : 'ZKTeco | Product Categories';
-                    keywords = seo ? seo.keywords : 'keywords';
+                    if (
+                        this.$data.productCategories.productCategory[0].SEO !==
+                        undefined
+                    ) {
+                        let seo = this.$data.productCategories
+                            .productCategory[0].SEO;
+
+                        console.log(' ::', seo);
+                        description = seo
+                            ? seo.description
+                            : 'ZKTeco | Product Categories';
+                        title = seo ? seo.title : 'ZKTeco | Product Categories';
+                        keywords = seo ? seo.keywords : 'keywords';
+                    }
                 }
             }
         }
