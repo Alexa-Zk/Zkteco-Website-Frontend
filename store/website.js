@@ -564,12 +564,10 @@ export const actions = {
 
         let count = await Repository.get(productCategoryCountURL);
 
-        //await Promise.all([product, count]).then(value => {
         commit('setLoading', true);
         commit('setSingleProductCategories', product.data);
         commit('setTotalSingleProductCategories', count.data);
         commit('setLoading', false);
-        //});
 
         return product.data;
     },
@@ -1031,5 +1029,18 @@ export const actions = {
                 commit('setLoading', false);
             })
             .catch(error => ({ error: JSON.stringify(error) }));
+    },
+
+    async getProductCategoryBySlug({ commit }, slug) {
+        const reponse = await Repository.get(
+            `${subBaseUrl}/product-categories?slug=${slug}`
+        )
+            .then(response => {
+                return response;
+            })
+            .catch(error => ({
+                error: JSON.stringify(error)
+            }));
+        return reponse;
     }
 };
