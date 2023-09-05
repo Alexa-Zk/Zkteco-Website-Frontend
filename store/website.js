@@ -578,9 +578,11 @@ export const actions = {
         commit('setLoading', false);
 
         let categories = {
-            product: product.data,
+            product: product,
             productCategory: productCategory.data
         };
+
+        console.log('categories::', categories);
 
         return categories;
     },
