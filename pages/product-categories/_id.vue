@@ -82,25 +82,20 @@ export default {
                 .toUpperCase();
         }
     },
+
     async asyncData({ store, params }) {
-        const payload = {
-            slug: params.id,
-            page: 0,
-            sort_by: 'created_at:desc',
-            perPage: 0
-        };
         try {
-            const blogDetails = await store.dispatch(
+            const payload = {
+                slug: params.id,
+                page: 0,
+                sort_by: 'created_at:desc',
+                perPage: 0
+            };
+            const productCategories = await store.dispatch(
                 'website/getSingleProductCategories',
                 payload
             );
-
-            const categoryBySlug = await store.dispatch(
-                'website/getProductCategoryBySlug',
-                params.id
-            );
-
-            return { categoryBySlug, blogDetails };
+            return { productCategories };
         } catch (e) {}
     },
     head() {
@@ -108,10 +103,14 @@ export default {
         let title = 'ZKTeco | Product Categories';
         let keywords = 'ZKTeco | Product Categories';
 
-        if (this.$data.categoryBySlug !== undefined) {
-            if (this.$data.categoryBySlug.data[0] !== undefined) {
-                if (this.$data.categoryBySlug.data[0].SEO !== undefined) {
-                    let seo = this.$data.categoryBySlug.data[0].SEO;
+        if (this.$data.productCategories.productCategory !== undefined) {
+            if (this.$data.productCategories.productCategory[0] !== undefined) {
+                if (
+                    this.$data.productCategories.productCategory[0].SEO !==
+                    undefined
+                ) {
+                    let seo = this.$data.productCategories.productCategory[0]
+                        .SEO;
                     description = seo
                         ? seo.description
                         : 'ZKTeco | Product Categories';
