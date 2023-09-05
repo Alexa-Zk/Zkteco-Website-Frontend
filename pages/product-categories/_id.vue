@@ -116,7 +116,6 @@ export default {
                         let seo = this.$data.productCategories
                             .productCategory[0].SEO;
 
-                        console.log(' ::', seo);
                         description = seo
                             ? seo.description
                             : 'ZKTeco | Product Categories';
