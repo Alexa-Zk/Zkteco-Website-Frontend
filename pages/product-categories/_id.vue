@@ -112,7 +112,7 @@ export default {
         let title = 'ZKTeco | Product Categories';
         let keywords = 'ZKTeco | Product Categories';
 
-        console.log('reponse::', this.$data.category.data[0].SEO);
+        //console.log('reponse::', this.$data.category.data[0].SEO);
         //console.log('blogDetails::', this.$data.blogDetails);
 
         if (this.$data.category.data[0] !== undefined) {
