@@ -35,9 +35,6 @@ import BreadCrumb from '~/components/elements/BreadCrumb';
 import ShopWidget from '~/components/partials/shop/modules/website/ShopWidget';
 import LayoutShopSidebarCategories from '~/components/partials/shop/website/LayoutShopSidebarCategories';
 
-import Repository from '~/repositories/Repository.js';
-import { subBaseUrl } from '~/repositories/Repository';
-
 export default {
     components: {
         LayoutShopSidebarCategories,
@@ -84,17 +81,13 @@ export default {
                 .toUpperCase();
         }
     },
-    async asyncData({ store, params, Repository }) {
+    async asyncData({ store, params }) {
         const payload = {
             slug: params.id,
             page: 0,
             sort_by: 'created_at:desc',
             perPage: 0
         };
-        const category = await store.dispatch(
-            'website/getProductCategoryBySlug',
-            `${params.id}`
-        );
         try {
             const blogDetails = await store.dispatch(
                 'website/getSingleProductCategories',
@@ -102,8 +95,7 @@ export default {
             );
 
             return {
-                blogDetails,
-                category
+                blogDetails
             };
         } catch (e) {}
     },
@@ -112,11 +104,8 @@ export default {
         let title = 'ZKTeco | Product Categories';
         let keywords = 'ZKTeco | Product Categories';
 
-        //console.log('reponse::', this.$data.category.data[0].SEO);
-        //console.log('blogDetails::', this.$data.blogDetails);
-
-        if (this.$data.category.data[0] !== undefined) {
-            const metaTag = this.$data.category.data[0];
+        if (this.$data.blogDetails[0] !== undefined) {
+            const metaTag = this.$data.blogDetails[0];
             if (metaTag.SEO != null) {
                 let seo = metaTag?.SEO;
                 description = seo
