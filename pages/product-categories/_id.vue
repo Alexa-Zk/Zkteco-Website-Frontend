@@ -97,25 +97,29 @@ export default {
             return {
                 blogDetails
             };
-        } catch (e) {}
+        } catch (e) {
+            console.log(' Error ', e);
+        }
     },
     head() {
         let description = 'ZKTeco | Product Categories';
         let title = 'ZKTeco | Product Categories';
         let keywords = 'ZKTeco | Product Categories';
 
-        if (this.$data.blogDetails[0] !== undefined) {
-            const metaTag = this.$data.blogDetails[0];
-            if (metaTag?.SEO != null) {
-                console.log('product_category ::', metaTag);
-                console.log('SEO ::', metaTag?.SEO.title);
-                console.log('Text ::', metaTag.product_category);
-                let seo = this.$data.blogDetails[0].product_category.SEO;
-                description = seo
-                    ? seo.description
-                    : 'ZKTeco | Product Categories';
-                title = seo ? seo.title : 'ZKTeco | Product Categories';
-                keywords = seo ? seo.keywords : 'keywords';
+        const blogDetails = JSON.parse(this.$data.blogDetails);
+
+        if (blogDetails !== undefined) {
+            const product_categories = blogDetails[0].product_categories[0];
+
+            if (product_categories !== undefined) {
+                if (product_categories.SEO !== undefined) {
+                    let seo = product_categories.SEO;
+                    description = seo
+                        ? seo.description
+                        : 'ZKTeco | Product Categories';
+                    title = seo ? seo.title : 'ZKTeco | Product Categories';
+                    keywords = seo ? seo.keywords : 'keywords';
+                }
             }
         }
 
