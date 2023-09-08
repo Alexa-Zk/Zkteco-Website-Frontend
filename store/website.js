@@ -522,20 +522,6 @@ export const actions = {
         return reponse;
     },
 
-    // async getTotalSingleProductCategories({ commit }, slug) {
-    //     let params = {
-    //         'product_category.slug': slug
-    //     };
-    //     const reponse = await Repository.get(
-    //         `${subBaseUrl}/products/count?${serializeQuery(params)}`
-    //     )
-    //         .then(response => {
-    //             commit('setTotalSingleProductCategories', response.data);
-    //         })
-    //         .catch(error => ({ error: JSON.stringify(error) }));
-    //     return reponse;
-    // },
-
     async getSingleProductCategories({ state, commit }, payload) {
         try {
             let params = {
@@ -589,7 +575,7 @@ export const actions = {
             cache = null; // reset the cache
             return categories;
         } catch (error) {
-            console.log(' error:: ', error);
+            console.log('error ', error);
             return JSON.stringify(error);
         }
     },
