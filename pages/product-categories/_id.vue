@@ -106,41 +106,44 @@ export default {
         let title = 'ZKTeco | Product Categories';
         let keywords = 'ZKTeco | Product Categories';
 
-        const blogDetails = JSON.parse(this.$data.blogDetails);
+        try {
+            const blogDetails = JSON.parse(this.$data.blogDetails);
 
-        if (blogDetails !== undefined) {
-            const product_categories = blogDetails[0].product_categories[0];
-
-            if (product_categories !== undefined) {
-                if (product_categories.SEO !== undefined) {
-                    let seo = product_categories.SEO;
-                    description = seo
-                        ? seo.description
-                        : 'ZKTeco | Product Categories';
-                    title = seo ? seo.title : 'ZKTeco | Product Categories';
-                    keywords = seo ? seo.keywords : 'keywords';
+            if (blogDetails !== undefined) {
+                const product_categories = blogDetails[0].product_categories;
+                if (product_categories[0] !== undefined) {
+                    if (product_categories[0].SEO !== undefined) {
+                        let seo = product_categories[0].SEO;
+                        description = seo
+                            ? seo.description
+                            : 'ZKTeco | Product Categories';
+                        title = seo ? seo.title : 'ZKTeco | Product Categories';
+                        keywords = seo ? seo.keywords : 'keywords';
+                    }
                 }
             }
-        }
 
-        return {
-            title: title,
-            titleTemplate(title) {
-                return `${title}`;
-            },
-            meta: [
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: description
+            return {
+                title: title,
+                titleTemplate(title) {
+                    return `${title}`;
                 },
-                {
-                    hid: 'keywords',
-                    name: 'keywords',
-                    content: keywords
-                }
-            ]
-        };
+                meta: [
+                    {
+                        hid: 'description',
+                        name: 'description',
+                        content: description
+                    },
+                    {
+                        hid: 'keywords',
+                        name: 'keywords',
+                        content: keywords
+                    }
+                ]
+            };
+        } catch (error) {
+            console.log(' Product by category ', error);
+        }
     }
 };
 </script>
