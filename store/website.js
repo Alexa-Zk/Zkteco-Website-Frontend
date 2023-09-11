@@ -552,7 +552,6 @@ export const actions = {
             let product = await Repository.get(
                 `${subBaseUrl}/products?${serializeQuery(params)}`
             );
-
             let count = await Repository.get(productCategoryCountURL);
 
             commit('setLoading', true);
