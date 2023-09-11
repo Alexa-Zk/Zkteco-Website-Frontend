@@ -38,11 +38,9 @@
                 "
                 class="ps-product__vendor"
             >
-                {{
-                    product.product_category
-                        ? product.product_categories[0].name
-                        : 'NILL'
-                }}
+                <div v-for="category in product.product_categories">
+                    {{ category.name ? category.name : 'NILL' }}
+                </div>
             </nuxt-link>
             <div class="ps-product__content">
                 <nuxt-link
