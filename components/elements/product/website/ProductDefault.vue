@@ -28,6 +28,8 @@
                     `/product-categories/${
                         product.product_categories
                             ? product.product_categories[0].slug
+                                ? product.product_categories[0].slug
+                                : 0
                             : 0
                     }`
                 "
