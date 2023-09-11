@@ -78,7 +78,11 @@ export default {
         };
 
         try {
-            await store.dispatch('website/getSubProductCategories', payload);
+            const subCategories = await store.dispatch(
+                'website/getSubProductCategories',
+                payload
+            );
+            return subCategories;
         } catch (e) {}
     },
     head() {
@@ -87,13 +91,15 @@ export default {
             let title = 'ZKTeco | Product Sub-categories';
             let keywords = 'ZKTeco | Product Sub-categories';
 
-            if (this.$data.blogDetails[0] !== undefined) {
-                let seo = this.$data.blogDetails[0].product_sub_category.SEO;
-                description = seo
-                    ? seo.description
-                    : 'ZKTeco | Product Sub-categories';
-                title = seo ? seo.title : 'ZKTeco | Product Sub-categories';
-                keywords = seo ? seo.keywords : 'keywords';
+            if (this.$data[0] !== undefined) {
+                if (this.$data[0].product_categories[0] !== undefined) {
+                    const seo = this.$data[0].product_categories[0].SEO;
+                    description = seo
+                        ? seo.description
+                        : 'ZKTeco | Product Sub-categories';
+                    title = seo ? seo.title : 'ZKTeco | Product Sub-categories';
+                    keywords = seo ? seo.keywords : 'keywords';
+                }
             }
 
             return {

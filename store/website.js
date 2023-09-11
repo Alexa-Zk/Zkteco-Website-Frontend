@@ -708,6 +708,7 @@ export const actions = {
         commit('setSubProductCategories', subProduct.data);
         commit('setTotalSingleProductCategories', subProductCount.data);
         commit('setLoading', false);
+        return subProduct.data;
     },
 
     async getSolutionCategories({ commit }, payload) {
