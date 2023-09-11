@@ -93,10 +93,7 @@ export default {
                 'website/getSingleProductCategories',
                 payload
             );
-
-            return {
-                blogDetails
-            };
+            return blogDetails;
         } catch (e) {
             console.log(' Error ', e);
         }
@@ -107,7 +104,7 @@ export default {
         let keywords = 'ZKTeco | Product Categories';
 
         try {
-            const blogDetails = JSON.parse(this.$data.blogDetails);
+            const blogDetails = this.$data;
 
             if (blogDetails !== undefined) {
                 const product_categories = blogDetails[0].product_categories;

@@ -83,29 +83,25 @@ export default {
                 this.$data.pdt !== undefined ||
                 this.$data.pdt !== ''
             ) {
-                description =
-                    this.$data.pdt.description == null ||
-                    this.$data.pdt.description == undefined
-                        ? description
-                        : this.$data.pdt.description.replace(
-                              /<\/?[^>]+(>|$)/g,
-                              ''
-                          );
-                image =
-                    this.$data.pdt.images[0].url == null ||
-                    this.$data.pdt.images[0].url == undefined
-                        ? image
-                        : this.$data.pdt.images[0].url;
-                title =
-                    this.$data.pdt.images[0].url == null ||
-                    this.$data.pdt.images[0].url == undefined
-                        ? title
-                        : this.$data.pdt.name;
-                keywords =
-                    this.$data.pdt.images[0].url == null ||
-                    this.$data.pdt.images[0].url == undefined
-                        ? keywords
-                        : this.$data.pdt.name;
+                if (
+                    this.$data.pdt.SEO !== null ||
+                    this.$data.pdt.SEO !== undefined ||
+                    this.$data.pdt.SEO !== ''
+                ) {
+                    const seo = this.$data.pdt.SEO;
+                    description = seo.description.replace(
+                        /<\/?[^>]+(>|$)/g,
+                        ''
+                    );
+
+                    title = seo.title;
+                    keywords = seo.name;
+                    image =
+                        this.$data.pdt.images[0].url == null ||
+                        this.$data.pdt.images[0].url == undefined
+                            ? image
+                            : this.$data.pdt.images[0].url;
+                }
             }
 
             return {

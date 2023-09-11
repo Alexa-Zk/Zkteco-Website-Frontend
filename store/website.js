@@ -554,11 +554,16 @@ export const actions = {
             );
             let count = await Repository.get(productCategoryCountURL);
 
-            commit('setLoading', true);
-            commit('setSingleProductCategories', product.data);
-            commit('setTotalSingleProductCategories', count.data);
-            commit('setLoading', false);
+            await Promise.all([product, count]).then(value => {
+                commit('setLoading', true);
+                commit('setSingleProductCategories', value[0].data);
+                commit('setTotalSingleProductCategories', value[1].data);
+                commit('setLoading', false);
+            });
 
+            return product.data;
+
+            /*
             let cache = [];
             let categories = JSON.stringify(product.data, function(key, value) {
                 if (typeof value === 'object' && value !== null) {
@@ -573,6 +578,7 @@ export const actions = {
             });
             cache = null; // reset the cache
             return categories;
+            */
         } catch (error) {
             console.log('error ', error);
             return JSON.stringify(error);
