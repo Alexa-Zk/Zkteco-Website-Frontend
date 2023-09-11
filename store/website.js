@@ -557,7 +557,6 @@ export const actions = {
             await Promise.all([product, count]).then(value => {
                 commit('setLoading', true);
                 commit('setSingleProductCategories', value[0].data);
-                console.log('value[0].data ', value[0].data);
                 commit('setTotalSingleProductCategories', value[1].data);
                 commit('setLoading', false);
             });

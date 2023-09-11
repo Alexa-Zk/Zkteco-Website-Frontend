@@ -93,7 +93,6 @@ export default {
                 'website/getSingleProductCategories',
                 payload
             );
-            console.log('blogDetails', blogDetails);
             return blogDetails;
         } catch (e) {
             console.log(' Error ', e);
