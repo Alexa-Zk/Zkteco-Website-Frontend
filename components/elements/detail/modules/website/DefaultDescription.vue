@@ -163,13 +163,19 @@ export default {
         // document.getElementById('v-slide-group__prev--disabled').style.display =
         //     'none';
         //v-slide-group__prev v-slide-group__prev--disabled
-        let payload = {
-            id: this.product_information.product_categories[0].slug
-        };
-        const response = await this.$store.dispatch(
-            'website/getRelatedProducts',
-            payload
-        );
+        if (
+            this.product_information.product_categories[0].slug !== undefined ||
+            this.product_information.product_categories[0].slug != null
+        ) {
+            let payload = {
+                id: this.product_information.product_categories[0].slug
+            };
+
+            const response = await this.$store.dispatch(
+                'website/getRelatedProducts',
+                payload
+            );
+        }
     },
     computed: {
         ...mapState({
