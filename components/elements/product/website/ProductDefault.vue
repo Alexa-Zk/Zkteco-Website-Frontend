@@ -1,6 +1,6 @@
 <template lang="html">
     <div class="ps-product">
-        <div class="ps-product__thumbnail">
+        <div class="ps-product__thumbnail" v-if="product">
             <nuxt-link :to="`/product/${product.slug}`">
                 <img
                     class="lazyload"
