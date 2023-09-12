@@ -163,10 +163,7 @@ export default {
         // document.getElementById('v-slide-group__prev--disabled').style.display =
         //     'none';
         //v-slide-group__prev v-slide-group__prev--disabled
-        if (
-            this.product_information.product_categories[0].slug !== undefined ||
-            this.product_information.product_categories[0].slug != null
-        ) {
+        if (product.product_categories.length > 0) {
             let payload = {
                 id: this.product_information.product_categories[0].slug
             };
