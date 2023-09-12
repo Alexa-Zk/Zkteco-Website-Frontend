@@ -83,24 +83,31 @@ export default {
                 this.$data.pdt !== undefined ||
                 this.$data.pdt !== ''
             ) {
+                let pdt = this.$data.pdt;
                 if (
-                    this.$data.pdt.SEO !== null ||
-                    this.$data.pdt.SEO !== undefined ||
-                    this.$data.pdt.SEO !== ''
+                    pdt.SEO !== null ||
+                    pdt.SEO !== undefined ||
+                    pdt.SEO !== ''
                 ) {
-                    const seo = this.$data.pdt.SEO;
+                    const seo = pdt.SEO;
                     description = seo.description.replace(
                         /<\/?[^>]+(>|$)/g,
                         ''
                     );
 
-                    title = seo.title;
-                    keywords = seo.name;
+                    title =
+                        seo.title !== null || seo.title !== undefined
+                            ? seo.title
+                            : pdt.name;
+                    keywords =
+                        seo.title !== null || seo.title !== undefined
+                            ? seo.name
+                            : pdt.name;
                     image =
-                        this.$data.pdt.images[0].url == null ||
-                        this.$data.pdt.images[0].url == undefined
+                        pdt.images[0].url == null ||
+                        pdt.images[0].url == undefined
                             ? image
-                            : this.$data.pdt.images[0].url;
+                            : pdt.images[0].url;
                 }
             }
 
