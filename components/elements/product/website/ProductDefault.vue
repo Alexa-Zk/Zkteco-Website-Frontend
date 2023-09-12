@@ -24,6 +24,7 @@
         </div>
         <div class="ps-product__container">
             <nuxt-link
+                v-if="product.product_categories.length > 0"
                 :to="
                     `/product-categories/${
                         product.product_categories
