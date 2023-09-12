@@ -71,8 +71,8 @@
                         No Downloads
                     </div>
                     <div
-                        class="download_container"
                         v-else
+                        class="download_container"
                         v-for="i in product_information.product_files"
                         :key="i.id"
                     >
@@ -163,9 +163,8 @@ export default {
         // document.getElementById('v-slide-group__prev--disabled').style.display =
         //     'none';
         //v-slide-group__prev v-slide-group__prev--disabled
-
         let payload = {
-            id: this.product_information.product_category.slug
+            id: this.product_information.product_categories[0].slug
         };
         const response = await this.$store.dispatch(
             'website/getRelatedProducts',
