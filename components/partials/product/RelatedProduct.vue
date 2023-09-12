@@ -14,7 +14,11 @@
                 "
             >
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide" v-for="product in products">
+                    <div
+                        class="swiper-slide"
+                        v-if="products.length > 0"
+                        v-for="product in products"
+                    >
                         <product-default :product="product" />
                     </div>
                 </div>
@@ -53,7 +57,7 @@ export default {
     computed: {
         ...mapState({
             products: state => state.website.productsRelated
-        }),
+        })
     },
     data() {
         return {
