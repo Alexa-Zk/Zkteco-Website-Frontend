@@ -815,6 +815,7 @@ export const actions = {
             `${subBaseUrl}/articles/count?categories.slug=${slug}`
         )
             .then(response => {
+                commit('setLoading', false);
                 return response;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
