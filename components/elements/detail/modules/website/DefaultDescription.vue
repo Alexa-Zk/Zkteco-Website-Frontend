@@ -49,7 +49,7 @@
             </div>
 
             <v-tab-item>
-                <div class="tab-content">
+                <div class="tab-content" v-if="product_information">
                     <partial-description :product="product_information" />
                 </div>
             </v-tab-item>
@@ -159,11 +159,7 @@ export default {
         }
     },
     async created() {
-        // document.getElementById('v-slide-group__prev').style.display = 'none';
-        // document.getElementById('v-slide-group__prev--disabled').style.display =
-        //     'none';
-        //v-slide-group__prev v-slide-group__prev--disabled
-        if (product.product_categories.length > 0) {
+        if (this.product_information) {
             let payload = {
                 id: this.product_information.product_categories[0].slug
             };
