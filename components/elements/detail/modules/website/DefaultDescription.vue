@@ -160,14 +160,16 @@ export default {
     },
     async created() {
         if (this.product_information) {
-            let payload = {
-                id: this.product_information.product_categories[0].slug
-            };
+            if (this.product_information.product_categories) {
+                let payload = {
+                    id: this.product_information.product_categories[0].slug
+                };
 
-            const response = await this.$store.dispatch(
-                'website/getRelatedProducts',
-                payload
-            );
+                const response = await this.$store.dispatch(
+                    'website/getRelatedProducts',
+                    payload
+                );
+            }
         }
     },
     computed: {
