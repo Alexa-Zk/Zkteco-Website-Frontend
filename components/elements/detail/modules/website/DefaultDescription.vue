@@ -160,7 +160,7 @@ export default {
     },
     async created() {
         if (this.product_information) {
-            if (this.product_information.product_categories) {
+            if (this.product_information.product_categories.length > 0) {
                 let payload = {
                     id: this.product_information.product_categories[0].slug
                 };
