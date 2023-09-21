@@ -153,6 +153,10 @@ export default {
                         {
                             text: 'E Learning Platforms',
                             url: '/tutorial'
+                        },
+                        {
+                            text: 'Software',
+                            url: '/software'
                         }
                     ]
                 },
