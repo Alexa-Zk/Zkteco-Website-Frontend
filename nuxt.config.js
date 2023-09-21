@@ -136,7 +136,7 @@ async function _getProductRoutes() {
             'smart-home',
             'time-attendance',
             'cctv',
-            'categories/hotel-solutions'
+            'hotel-solutions'
         ];
 
         const productCategories = [
