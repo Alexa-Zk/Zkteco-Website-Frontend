@@ -59,7 +59,11 @@ export default {
             color: #78bc27;
         }
     }
+
     .mega-menu {
+        &:hover .mega-menu__list {
+            display: block;
+        }
         border: none;
         background: rgba(0, 0, 0, 0.7);
         opacity: 0.95;
@@ -84,6 +88,7 @@ export default {
         }
 
         .mega-menu__list {
+            display: none;
             li {
                 a {
                     color: white;
@@ -94,5 +99,7 @@ export default {
             }
         }
     }
+
+    
 }
 </style>
