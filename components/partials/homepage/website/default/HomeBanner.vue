@@ -8,13 +8,13 @@
                     :key="slide.id"
                     @click="openSlider(slide.url)"
                 >
-                <!-- :srcset="
+                    <!-- :srcset="
                             `${slide.image.formats.thumbnail.url} 320w, ${slide.image.formats.small.url} 480w, ${slide.image.formats.large.url} 720w,`
                         " -->
                     <img
                         loading="lazy"
-                        :src="slide.image.url"
-                        :alt="slide.image.name"
+                        :src="slide.image_url"
+                        :alt="slide.image_name"
                     />
                 </div>
             </div>
@@ -56,7 +56,7 @@ export default {
         openSlider(url) {
             window.open(url, '_blank');
         }
-    },
+    }
 };
 </script>
 

@@ -63,13 +63,16 @@ export default {
 
     computed: {
         ...mapState({
-            product: state => state.website.singleProductCategories,
+            singleProductCategories: state =>
+                state.website.singleProductCategories,
             totalSingleProductCategories: state =>
                 state.website.totalSingleProductCategories,
             loading: state => state.website.loading
         }),
         categoriesWithProduct() {
-            return this.product ? this.product : [];
+            return this.singleProductCategories
+                ? this.singleProductCategories
+                : [];
         },
         title() {
             return this.$route.params.id
@@ -90,42 +93,54 @@ export default {
                 'website/getSingleProductCategories',
                 payload
             );
-
-            return {
-                blogDetails
-            };
-        } catch (e) {}
+            return blogDetails;
+        } catch (e) {
+            console.log(' Error ', e);
+        }
     },
     head() {
         let description = 'ZKTeco | Product Categories';
         let title = 'ZKTeco | Product Categories';
         let keywords = 'ZKTeco | Product Categories';
 
-        if (this.$data.blogDetails[0] !== undefined) {
-            let seo = this.$data.blogDetails[0].product_category.SEO;
-            description = seo ? seo.description : 'ZKTeco | Product Categories';
-            title = seo ? seo.title : 'ZKTeco | Product Categories';
-            keywords = seo ? seo.keywords : 'keywords';
-        }
+        try {
+            const blogDetails = this.$data;
 
-        return {
-            title: title,
-            titleTemplate(title) {
-                return `${title}`;
-            },
-            meta: [
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: description
-                },
-                {
-                    hid: 'keywords',
-                    name: 'keywords',
-                    content: keywords
+            if (blogDetails !== undefined) {
+                const product_categories = blogDetails[0].product_categories;
+                if (product_categories[0] !== undefined) {
+                    if (product_categories[0].SEO !== undefined) {
+                        let seo = product_categories[0].SEO;
+                        description = seo
+                            ? seo.description
+                            : 'ZKTeco | Product Categories';
+                        title = seo ? seo.title : 'ZKTeco | Product Categories';
+                        keywords = seo ? seo.keywords : 'keywords';
+                    }
                 }
-            ]
-        };
+            }
+
+            return {
+                title: title,
+                titleTemplate(title) {
+                    return `${title}`;
+                },
+                meta: [
+                    {
+                        hid: 'description',
+                        name: 'description',
+                        content: description
+                    },
+                    {
+                        hid: 'keywords',
+                        name: 'keywords',
+                        content: keywords
+                    }
+                ]
+            };
+        } catch (error) {
+            console.log(' Product by category ', error);
+        }
     }
 };
 </script>

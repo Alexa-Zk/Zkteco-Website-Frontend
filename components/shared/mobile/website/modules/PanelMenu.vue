@@ -153,6 +153,10 @@ export default {
                         {
                             text: 'E Learning Platforms',
                             url: '/tutorial'
+                        },
+                        {
+                            text: 'Software',
+                            url: '/software'
                         }
                     ]
                 },
@@ -179,7 +183,7 @@ export default {
 
                 // {
                 //     text: 'BioTime NG',
-                //     url: '/biotime-ng'
+                //     url: '/biotime.africa'
                 // },
                 {
                     text: 'Project Consultation',
@@ -222,4 +226,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.v-list-item__content {
+    text-decoration: none;
+    color: black;
+}
+</style>

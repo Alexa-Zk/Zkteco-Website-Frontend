@@ -8,12 +8,15 @@ export const state = () => ({
     solutions: null,
     solutionCategoriesAndSub: null,
     caseStudies: null,
+    caseStudyLimit: null,
     articles: null,
     articlesLimited: null,
     articlesCategories: null,
+    articlesCategoriesLimited: null,
     singleArticlesCategories: null,
     productsTotal: 0,
     articlesTotal: 0,
+    singleProduct: null,
     singleProductCategories: null,
     //productCategories: null,
     subProductCategories: null,
@@ -81,6 +84,10 @@ export const mutations = {
         state.articlesCategories = payload;
     },
 
+    setArticlesCategoriesLimited(state, payload) {
+        state.articlesCategoriesLimited = payload;
+    },
+
     setSingleArticlesCategories(state, payload) {
         state.singleArticlesCategories = payload;
     },
@@ -143,6 +150,9 @@ export const mutations = {
     setCaseStudies(state, payload) {
         state.caseStudies = payload;
     },
+    setCaseStudyLimit(state, payload) {
+        state.caseStudyLimit = payload;
+    },
 
     setHomepage(state, payload) {
         state.homePage = payload;
@@ -166,6 +176,9 @@ export const mutations = {
 
     setCategoryAndSubCategories(state, payload) {
         state.categoryAndSubCategories = payload;
+    },
+    setSingleProduct(state, payload) {
+        state.singleProduct = payload;
     }
 };
 
@@ -391,15 +404,11 @@ export const actions = {
         return response;
     },
 
-    async getArticlesLimited({ commit }, payload) {
+    async getArticlesLimited({ commit }) {
         commit('setLoading', true);
-        let params = {
-            _start: 0,
-            _sort: 'created_at:desc',
-            _limit: 4
-        };
+
         const reponse = await Repository.get(
-            `${subBaseUrl}/articles?${serializeQuery(params)}`
+            `${subBaseUrl}/articles/getArticleByLimit`
         )
             .then(response => {
                 commit('setArticlesLimited', response.data);
@@ -513,68 +522,75 @@ export const actions = {
         return reponse;
     },
 
-    // async getTotalSingleProductCategories({ commit }, slug) {
-    //     let params = {
-    //         'product_category.slug': slug
-    //     };
-    //     const reponse = await Repository.get(
-    //         `${subBaseUrl}/products/count?${serializeQuery(params)}`
-    //     )
-    //         .then(response => {
-    //             commit('setTotalSingleProductCategories', response.data);
-    //         })
-    //         .catch(error => ({ error: JSON.stringify(error) }));
-    //     return reponse;
-    // },
-
     async getSingleProductCategories({ state, commit }, payload) {
-        let params = {
-            _start:
-                payload.page === 0 ||
-                payload.page === undefined ||
-                payload.page === null
-                    ? state.page
-                    : payload.page,
-            _sort: payload.sort_by === 0 ? state.sort_by : payload.sort_by,
-            _limit:
-                payload.perPage === null ||
-                payload.perPage === undefined ||
-                payload.perPage === 0
-                    ? state.perPage
-                    : payload.perPage,
-            'product_categories.slug': payload.slug
-        };
+        try {
+            let params = {
+                _start:
+                    payload.page === 0 ||
+                    payload.page === undefined ||
+                    payload.page === null
+                        ? state.page
+                        : payload.page,
+                _sort: payload.sort_by === 0 ? state.sort_by : payload.sort_by,
+                _limit:
+                    payload.perPage === null ||
+                    payload.perPage === undefined ||
+                    payload.perPage === 0
+                        ? state.perPage
+                        : payload.perPage,
+                'product_categories.slug': payload.slug
+            };
 
-        let paramCount = {
-            'product_categories.slug': payload.slug
-        };
+            let paramCount = {
+                'product_categories.slug': payload.slug
+            };
 
-        let productCategoryCountURL = `${subBaseUrl}/products/count?${serializeQuery(
-            paramCount
-        )}`;
+            let productCategoryCountURL = `${subBaseUrl}/products/count?${serializeQuery(
+                paramCount
+            )}`;
 
-        let product = await Repository.get(
-            `${subBaseUrl}/products?${serializeQuery(params)}`
-        );
+            let product = await Repository.get(
+                `${subBaseUrl}/products?${serializeQuery(params)}`
+            );
+            let count = await Repository.get(productCategoryCountURL);
 
-        let count = await Repository.get(productCategoryCountURL);
+            await Promise.all([product, count]).then(value => {
+                commit('setLoading', true);
+                commit('setSingleProductCategories', value[0].data);
+                commit('setTotalSingleProductCategories', value[1].data);
+                commit('setLoading', false);
+            });
 
-        await Promise.all([product, count]).then(value => {
-            commit('setLoading', true);
-            commit('setSingleProductCategories', value[0].data);
-            commit('setTotalSingleProductCategories', value[1].data);
-            commit('setLoading', false);
-        });
+            return product.data;
 
-        return product.data;
+            /*
+            let cache = [];
+            let categories = JSON.stringify(product.data, function(key, value) {
+                if (typeof value === 'object' && value !== null) {
+                    if (cache.indexOf(value) !== -1) {
+                        // Circular reference found, discard key
+                        return;
+                    }
+                    // Store value in our collection
+                    cache.push(value);
+                }
+                return value;
+            });
+            cache = null; // reset the cache
+            return categories;
+            */
+        } catch (error) {
+            console.log('error ', error);
+            return JSON.stringify(error);
+        }
     },
 
     async getCategoryAndSubCategories({ commit }) {
-        commit('setLoading', true);
         const reponse = await Repository.get(
             `${subBaseUrl}/product-categories/categoryAndSubcategory`
         )
             .then(response => {
+                commit('setLoading', true);
                 const data = response.data;
                 commit('setCategoryAndSubCategories', data);
                 commit('setLoading', false);
@@ -647,72 +663,6 @@ export const actions = {
         return reponse;
     },
 
-    async getArticlesCategories({ commit }) {
-        commit('setLoading', true);
-        const reponse = await Repository.get(`${subBaseUrl}/categories/`)
-            .then(response => {
-                commit('setArticlesCategories', response.data);
-                commit('setLoading', false);
-                return response.data;
-            })
-            .catch(error => ({ error: JSON.stringify(error) }));
-        return [];
-    },
-
-    // async getProductCategories({ state, commit }, payload) {
-    //     try {
-    //         commit('setLoading', true);
-
-    //         //let searchProduct = {};
-    //         let params = {
-    //             _start:
-    //                 payload.page === 0 ||
-    //                 payload.page === undefined ||
-    //                 payload.page === null
-    //                     ? state.page
-    //                     : payload.page,
-    //             _sort: payload.sort_by === 0 ? state.sort_by : payload.sort_by,
-    //             _limit:
-    //                 payload.perPage === null ||
-    //                 payload.perPage === undefined ||
-    //                 payload.perPage === 0
-    //                     ? state.perPage
-    //                     : payload.perPage,
-    //             'product_category.slug': payload.slug
-    //         };
-
-    //         let paramCount = {
-    //             'product_category.slug': payload.slug
-    //         };
-
-    //         let productCategoryURL = `${subBaseUrl}/products?${serializeQuery(
-    //             params
-    //         )}`;
-    //         let productCategoryCountURL = `${subBaseUrl}/products/count?${serializeQuery(
-    //             paramCount
-    //         )}`;
-
-    //         try {
-    //             let productCategory = Repository.get(productCategoryURL);
-    //             let productCategoryCount = Repository.get(
-    //                 productCategoryCountURL
-    //             );
-
-    //             let product = await productCategory;
-    //             let count = await productCategoryCount;
-
-    //             commit('setSingleProductCategories', product.data);
-    //             commit('setTotalSingleProductCategories', count.data);
-
-    //             return product.data;
-    //         } catch (error) {
-    //             console.log('sub categories', error);
-    //         }
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // },
-
     async getSingleArticlesCategories({ commit }, slug) {
         commit('setLoading', true);
         const reponse = await Repository.get(
@@ -763,6 +713,7 @@ export const actions = {
         commit('setSubProductCategories', subProduct.data);
         commit('setTotalSingleProductCategories', subProductCount.data);
         commit('setLoading', false);
+        return subProduct.data;
     },
 
     async getSolutionCategories({ commit }, payload) {
@@ -841,6 +792,34 @@ export const actions = {
             commit('setSolutionSubTotal', value[1].data);
             commit('setLoading', false);
         });
+    },
+
+    async getArticlesCategoriesLimited({ commit }) {
+        commit('setLoading', true);
+        const reponse = await Repository.get(
+            `${subBaseUrl}/categories/home_page_categories/`
+        )
+            .then(response => {
+                commit('setArticlesCategoriesLimited', response.data);
+                commit('setLoading', false);
+                return response.data;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return [];
+    },
+
+    async fetchArticlesCountByCategorySlug({ commit }, slug) {
+        commit('setLoading', true);
+
+        const response = await Repository.get(
+            `${subBaseUrl}/articles/count?categories.slug=${slug}`
+        )
+            .then(response => {
+                commit('setLoading', false);
+                return response;
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+        return response;
     },
 
     async getNewsCategories({ commit }, slug) {
@@ -985,6 +964,35 @@ export const actions = {
                 return response.data;
             })
             .catch(error => ({ error: JSON.stringify(error) }));
+        return reponse;
+    },
+
+    async getCaseStudyLimit({ commit }) {
+        commit('setLoading', true);
+
+        const url = `${subBaseUrl}/case-studies/getCaseStudyByLimit`;
+
+        return await Repository.get(url)
+            .then(response => {
+                commit('setCaseStudyLimit', response.data);
+                commit('setLoading', false);
+            })
+            .catch(error => ({ error: JSON.stringify(error) }));
+    },
+
+    async getProductCategoryBySlug({ commit }, slug) {
+        commit('setLoading', true);
+
+        const URL = `${subBaseUrl}/product-categories?slug=${slug}`;
+        const reponse = await Repository.get(URL)
+            .then(response => {
+                commit('setSingleProduct', response.data);
+                commit('setLoading', false);
+                return response;
+            })
+            .catch(error => ({
+                error: JSON.stringify(error)
+            }));
         return reponse;
     }
 };

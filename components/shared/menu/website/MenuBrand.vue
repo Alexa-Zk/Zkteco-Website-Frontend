@@ -1,18 +1,18 @@
 <template>
     <li class=" menu-item-has-children has-mega-menu">
-        <nuxt-link to="/biotime-ng">
+        <nuxt-link to="/biotime.africa">
             Brand
         </nuxt-link>
         <div class="mega-menu">
             <div>
                 <h4 class="brands">
-                    <nuxt-link :to="`/biotime-ng`">
+                    <nuxt-link :to="`/biotime.africa`">
                         Cloud Solution
                     </nuxt-link>
                 </h4>
                 <ul class="mega-menu__list">
                     <li>
-                        <nuxt-link :to="`/biotime-ng`">
+                        <nuxt-link :to="`/biotime.africa`">
                             Biotime Africa
                         </nuxt-link>
                     </li>

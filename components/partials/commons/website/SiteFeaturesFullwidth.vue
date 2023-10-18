@@ -6,12 +6,12 @@
                 <div class="row">
                     <div
                         class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 "
-                        v-for="item in caseStudies"
+                        v-for="item in caseStudyLimit"
                         :key="item.id"
                     >
                         <article class="ps-block--store-2">
                             <div class="ps-img">
-                                <img :src="`${item.side_image.url} `" />
+                                <img :src="`${item.url} `" />
                             </div>
                             <div class="ps-block__author">
                                 <nuxt-link
@@ -30,33 +30,22 @@
 </template>
 
 <script>
-import Repository, { serializeQuery } from '~/repositories/Repository.js';
-import { subBaseUrl } from '~/repositories/Repository';
+import { mapState } from 'vuex';
 export default {
     name: 'SiteFeauturesFullwidth',
 
-    data: () => {
-        return {
-            loading: false,
-            caseStudies: null
-        };
+    computed: {
+        title() {
+            return 'Product Videos';
+        },
+        ...mapState({
+            loading: state => state.website.loading,
+            caseStudyLimit: state => state.website.caseStudyLimit
+        })
     },
-    async mounted() {
-        let params = {
-            _sort: 'sort_id:desc',
-            _limit: 4
-        };
-        this.loading = true;
 
-        await Repository.get(
-            `${subBaseUrl}/case-studies?${serializeQuery(params)}`
-        )
-            .then(response => {
-                this.loading = false;
-                this.caseStudies = response.data;
-            })
-            .catch(error => ({ error: JSON.stringify(error) }));
-        this.loading = false;
+    async mounted() {
+        this.$store.dispatch('website/getCaseStudyLimit');
     },
     methods: {
         subString(string) {

@@ -25,10 +25,10 @@ export default {
     },
     computed: {
         ...mapState({
-            articles: state => state.website.articlesLimited
+            articlesLimited: state => state.website.articlesLimited
         }),
         formattedArticles() {
-            return this.articles ? this.articles : [];
+            return this.articlesLimited ? this.articlesLimited : [];
         }
     }
 };

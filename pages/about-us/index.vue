@@ -716,6 +716,12 @@ export default {
                 }
             }, duration);
         });
+    },
+    methods: {
+        handleClosePanel() {
+            this.$store.commit('app/setCurrentDrawerContent', null);
+            this.$store.commit('app/setAppDrawer', false);
+        }
     }
 };
 </script>

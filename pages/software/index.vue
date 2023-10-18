@@ -515,7 +515,11 @@ export default {
             // } else {
             //     this.$router.push('/auth/login');
             // }
-        }
+        },
+        handleClosePanel() {
+            this.$store.commit('app/setCurrentDrawerContent', null);
+            this.$store.commit('app/setAppDrawer', false);
+        },
     }
 };
 

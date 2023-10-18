@@ -3,6 +3,7 @@ const axios = require('axios');
 async function _getProductRoutes() {
     try {
         let paths = [];
+        const landingPage = ['bitome.africa'];
         const missProduct = [
             'pl-52d18e36e',
             'kit-8304xec-cl4-bs32b11m',
@@ -100,7 +101,33 @@ async function _getProductRoutes() {
             'zkrf10m',
             'bs-852o22c',
             'zkx5030c',
-            'profac'
+            'profac',
+            'iclock-880',
+            'tl200',
+            'bs-35j1213b',
+            'es-32d11b',
+            'proface-x',
+            'kit-8304xec-cl4-bs32b11b',
+            'silkbio-100tc',
+            'es-32b11a',
+            'sbtl2200',
+            'revface15-ti',
+            'dl-855p28b',
+            'sw12-eu',
+            'sw13-eu',
+            'es-854n11-12-13h',
+            'sw11-eu',
+            'bs-858m12-13k',
+            'op1200-series',
+            'ts2000-pro-series',
+            'sp1',
+            'sbtl5200',
+            'probio',
+            'bl-855p28l',
+            'zkb-barcode-scanner-series',
+            'speedface-v4lti',
+            'fht2400d-series',
+            'biotime-africa'
         ];
 
         const missBlog = ['cctv', 'benefits-of-using-a'];
@@ -109,21 +136,19 @@ async function _getProductRoutes() {
             'smart-home',
             'time-attendance',
             'cctv',
-            'categories/hotel-solutions'
+            'hotel-solutions'
         ];
 
         const productCategories = [
-            'smart-lock',
             'time-attendance',
-            'surveillance',
             'access-control',
-            'green-label',
-            'entrance-control',
+            'surveillance',
+            'smart-lock',
             'security-inspection',
-            'body-temperature-and-mask-detection',
-            'pos-terminal',
+            'smart-home-security',
             'armatura',
-            'smart-home-security'
+            'green-label',
+            'entrance-control'
         ];
 
         missBlog.map(v => paths.push(`/blog/${v.trim()}`));
@@ -132,9 +157,11 @@ async function _getProductRoutes() {
 
         missProduct.map(v => paths.push(`/product/${v.trim()}`));
 
-        productCategories.map(v =>
-            paths.push(`/product-categories/${v.trim()}`)
-        );
+        landingPage.map(v => paths.push(`/${v.trim()}`));
+
+        productCategories.map(v => {
+            paths.push(`/product-categories/${v.trim()}`);
+        });
 
         const productURL = axios.get(`https://admin.zkteco-wa.com/products`);
 
@@ -147,6 +174,10 @@ async function _getProductRoutes() {
         );
 
         const blogURL = axios.get(`https://admin.zkteco-wa.com/articles`);
+
+        const productCategoryURL = axios.get(
+            `https://admin.zkteco-wa.com/product-categories/categoryAndSubcategory`
+        );
 
         const products = await productURL;
         const solution = await solutionURL;
@@ -317,14 +348,18 @@ export default {
                 let { data: productCategoriesData } = await axios.get(
                     `https://admin.zkteco-wa.com/product-categories/categoryAndSubcategory`
                 );
+                const category = JSON.parse(
+                    JSON.stringify(productCategoriesData)
+                );
 
-                const productCategoriesArray = productCategoriesData.map(v => {
+                const productCategoriesArray = category.map(v => {
                     if (
                         v?.slug != null ||
                         v?.slug != '' ||
                         v?.slug != undefined
-                    )
-                        return `/product-categories/${v?.slug}`;
+                    ) {
+                        return `/product-categories/${v?.slug.trim()}`;
+                    }
                 });
 
                 let { data: productsData } = await axios.get(

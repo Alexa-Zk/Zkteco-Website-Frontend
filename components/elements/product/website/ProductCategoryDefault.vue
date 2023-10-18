@@ -26,18 +26,21 @@
             <nuxt-link
                 :to="
                     `/product-categories/${
-                        product.product_category
-                            ? product.product_category.slug
+                        product.product_categories
+                            ? product.product_categories[0]
+                                ? product.product_categories[0].slug !==
+                                  undefined
+                                    ? product.product_categories[0].slug
+                                    : 0
+                                : 0
                             : 0
                     }`
                 "
                 class="ps-product__vendor"
             >
-                {{
-                    product.product_category
-                        ? product.product_category.name
-                        : 'NILL'
-                }}
+                <div v-for="category in product.product_categories">
+                    {{ category.name ? category.name : 'NILL' }}
+                </div>
             </nuxt-link>
             <div class="ps-product__content">
                 <nuxt-link

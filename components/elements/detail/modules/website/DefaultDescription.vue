@@ -49,7 +49,7 @@
             </div>
 
             <v-tab-item>
-                <div class="tab-content">
+                <div class="tab-content" v-if="product_information">
                     <partial-description :product="product_information" />
                 </div>
             </v-tab-item>
@@ -71,8 +71,8 @@
                         No Downloads
                     </div>
                     <div
-                        class="download_container"
                         v-else
+                        class="download_container"
                         v-for="i in product_information.product_files"
                         :key="i.id"
                     >
@@ -159,18 +159,18 @@ export default {
         }
     },
     async created() {
-        // document.getElementById('v-slide-group__prev').style.display = 'none';
-        // document.getElementById('v-slide-group__prev--disabled').style.display =
-        //     'none';
-        //v-slide-group__prev v-slide-group__prev--disabled
+        if (this.product_information) {
+            if (this.product_information.product_categories.length > 0) {
+                let payload = {
+                    id: this.product_information.product_categories[0].slug
+                };
 
-        let payload = {
-            id: this.product_information.product_category.slug
-        };
-        const response = await this.$store.dispatch(
-            'website/getRelatedProducts',
-            payload
-        );
+                const response = await this.$store.dispatch(
+                    'website/getRelatedProducts',
+                    payload
+                );
+            }
+        }
     },
     computed: {
         ...mapState({

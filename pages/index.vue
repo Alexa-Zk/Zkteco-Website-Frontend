@@ -5,7 +5,7 @@
         <div class="ps-container">
             <related-posts />
         </div>
-        <home-brand :partnersLogo="ourPartners" />
+        <!--home-brand :partnersLogo="ourPartners" /--->
         <newsletters layout="fullwidth" />
     </main>
 </template>
@@ -27,7 +27,7 @@ export default {
             fullPage: true
         };
     },
-    
+
     components: {
         HomeBanner,
         HomeBrand,
@@ -41,34 +41,30 @@ export default {
 
     computed: {
         adSliders() {
-            return this.homePages ? this.homePages[0].sliders : [];
-        },
-        ourPartners() {
-            return this.homePages ? this.homePages[0].partners.slice(0, 8) : [];
+            return this.homePages ? this.homePages : [];
         }
     },
     created() {
         let payload = {};
-        const response = this.$store.dispatch(
-            'website/getArticlesLimited',
-            payload
-        );
-        this.$store.dispatch('website/getArticlesCategories', payload)
+        this.$store.dispatch('website/getArticlesLimited', payload);
     },
     mounted() {
-        this.getHomePageBanners()
+        this.getHomePageBanners();
     },
     methods: {
-        async getHomePageBanners () {
-            this.loading = true
-            const reponse = await Repository.get( `${subBaseUrl}/home-pages`)
+        async getHomePageBanners() {
+            this.loading = true;
+            const reponse = await Repository.get(
+                `${subBaseUrl}/home-pages/findBySlider`
+            )
                 .then(response => {
-                    this.homePages = response.data
-                    this.loading = false
+                    const res = response.data;
+                    this.homePages = res[0].sliders;
+                    this.loading = false;
                 })
                 .catch(error => ({ error: JSON.stringify(error) }));
             return reponse;
         }
-    },
+    }
 };
 </script>

@@ -4,10 +4,26 @@
         <div class="ps-product__meta">
             <p>
                 Categories:
-                <nuxt-link :to="`/product-categories/${product.product_category.slug}`">
-                    <span class="ml-2 text-capitalize">
-                        {{product.product_category.name}}
-                    </span >
+                <nuxt-link
+                    :to="
+                        `/product-categories/${
+                            product.product_categories
+                                ? product.product_categories[0]
+                                    ? product.product_categories[0].slug !==
+                                      undefined
+                                        ? product.product_categories[0].slug
+                                        : 0
+                                    : 0
+                                : 0
+                        }`
+                    "
+                >
+                    <span
+                        class="ml-2 text-capitalize"
+                        v-for="category in product.product_categories"
+                    >
+                        {{ category.name ? category.name : 'NILL' }}
+                    </span>
                 </nuxt-link>
             </p>
             <!-- <div class="ps-product__rating">

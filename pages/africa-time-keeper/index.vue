@@ -637,7 +637,6 @@ export default {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                         this.resetForm();
                         //window.location.reload();
-                        //this.$router.push('/biotime-ng');
                     }, 3001);
                 } else {
                     this.loading = false;
@@ -645,6 +644,11 @@ export default {
                     this.showError = true;
                 }
             }
+        },
+
+        handleClosePanel() {
+            this.$store.commit('app/setCurrentDrawerContent', null);
+            this.$store.commit('app/setAppDrawer', false);
         }
     }
 };

@@ -11,7 +11,11 @@
 
                     <li class="menu-item-has-dropdown">
                         <div class="dropdown">
-                            <button>Company</button>
+                            <button>
+                                Company
+                                <i class="icon-chevron-down"></i>
+                            </button>
+
                             <div class="dropdown-content">
                                 <nuxt-link to="/about-us">
                                     About Us
@@ -138,7 +142,7 @@ export default {
     methods: {
         logoutDownloads() {
             this.$store.dispatch('auth/logoutDownloadToken');
-            window.location.reload(true);
+            this.$router.push('/');
         }
     }
 };
@@ -173,6 +177,13 @@ export default {
     position: relative;
     padding: 0 1.3rem;
     text-align: center;
+}
+.dropdown .icon-chevron-down {
+    position: absolute;
+    padding: 7px 0 0 8px;
+    font-size: 1.1rem;
+    font-weight: bolder;
+    color: #000000;
 }
 .dropdown-content {
     display: none;

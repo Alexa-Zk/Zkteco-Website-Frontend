@@ -34,4 +34,19 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.v-list-item__content {
+    text-decoration: none;
+    color: black;
+}
+.theme--light {
+    background-color: #eaeaea;
+}
+
+.v-list-item:hover {
+    background-color: #fff;
+}
+.v-list-item__content:hover {
+    background-color: #fff;
+}
+</style>
