@@ -36,6 +36,15 @@ export default {
         })
     },
     async mounted() {
+        const tokenForDownloads = this.$cookies.get('download_token', {
+            parseJSON: true
+        });
+        if (tokenForDownloads) {
+            return true;
+        } else {
+            this.$router.push('/auth/login');
+        }
+
         let params = {
             slug: this.$route.params.id
         };

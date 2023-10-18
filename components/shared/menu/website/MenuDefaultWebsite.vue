@@ -106,7 +106,7 @@ export default {
                             ]
                         },
                         {
-                            heading: 'Education',
+                            heading: 'Training',
                             megaItems: [
                                 {
                                     text: 'E Learning Platforms',

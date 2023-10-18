@@ -142,7 +142,7 @@ export default {
     methods: {
         logoutDownloads() {
             this.$store.dispatch('auth/logoutDownloadToken');
-            window.location.reload(true);
+            this.$router.push('/');
         }
     }
 };
