@@ -43,6 +43,7 @@
                 collection-slug="shop-recommend-items"
             />
         </div> -->
+
         <div id="related_product" class="related_product">
             <h3>Related Products</h3>
             <div class="ps-section__content">
@@ -74,6 +75,54 @@
                     <div
                         class="swiper-pagination swiper-pagination-bullets"
                     ></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="downloads" class="related_product">
+            <br /><br /><br />
+            <h3>Downloads</h3>
+
+            <div
+                class="ps-block__content"
+                v-if="formatted.product_files.length > 0"
+            >
+                <div
+                    class="downloads_container"
+                    v-for="i in formatted.product_files"
+                    :key="i.id"
+                >
+                    <div class="download_left">
+                        <div class="row-left">
+                            <div class="download-avatar">
+                                <img
+                                    src="~/static/img/website/download-2.png"
+                                    alt="Download"
+                                />
+                            </div>
+                            <div class="title">
+                                {{ i.name }}
+                            </div>
+                        </div>
+                        <!--div class="size">
+                                Size:
+                                {{ Math.floor(i.file.size) }}
+                            </div -->
+                    </div>
+                    <div class="download_right">
+                        <button
+                            class="ps-btn"
+                            @click.prevent="download(i.file.url)"
+                        >
+                            Download
+                        </button>
+
+                        <div class="date">
+                            <!-- Uploaded on:
+                                {{ formatDate(i.file.updated_at) }} -->
+                            Size: {{ formatBytes(i.file.size) }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -166,6 +215,36 @@ export default {
                 }
             }
         };
+    },
+    methods: {
+        formatBytes(bytes) {
+            var marker = 1024; // Change to 1000 if required
+            var decimal = 0; // Change as required
+            var kiloBytes = marker; // One Kilobyte is 1024 bytes
+            var megaBytes = marker * marker; // One MB is 1024 KB
+            var gigaBytes = marker * marker * marker; // One GB is 1024 MB
+            var teraBytes = marker * marker * marker * marker; // One TB is 1024 GB
+
+            // return bytes if less than a KB
+            if (bytes < kiloBytes) return bytes.toFixed(decimal) + 'B';
+            // return KB if less than a MB
+            else if (bytes < megaBytes)
+                return (bytes / kiloBytes).toFixed(decimal) + 'KB';
+            // return MB if less than a GB
+            else if (bytes < gigaBytes)
+                return (bytes / megaBytes).toFixed(decimal) + 'MB';
+            // return GB if less than a TB
+            else return (bytes / gigaBytes).toFixed(decimal) + 'GB';
+        },
+        download(data) {
+            const link = document.createElement('a');
+            link.href = data;
+            link.setAttribute('download', 'image.jpg');
+            link.setAttribute('target', '_blank');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
     }
 };
 </script>
