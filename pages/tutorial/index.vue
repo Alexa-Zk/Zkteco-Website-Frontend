@@ -6,14 +6,26 @@
                     <img src="~/static/tutorial/elearning.png" />
                 </div>
                 <div class="tcontent">
-                    <h2>E-Learning Platform</h2>
+                    <h2>ZKTeco E-Learning Platform</h2>
 
                     <div class="content">
                         <p>
-                            Do you need expert adivce and assistance? ZKTeco is
-                            here for you! Our account executives and technical
-                            specialists are positioned to offer you top-notch
-                            advice on the services you require.
+                            Are you in need of professional guidance and
+                            assistance? Look no further than ZKTeco! Our team of
+                            dedicated sales executives and technical specialists
+                            are ready to provide you with expert advice and
+                            tailored assistance to meet your specific needs.
+                            Whether you require advice on our services or
+                            technical support, we are here to help and ensure
+                            your complete satisfaction. Our team is equipped
+                            with extensive knowledge and expertise to assist you
+                            in making informed decisions and resolving issues
+                            promptly.
+                            <br /><br />
+                            Our unwavering commitment to excellence and customer
+                            satisfaction ensures unparalleled dissemination of
+                            ZKTeco's products and solution training, as well as
+                            outstanding support.
                         </p>
                     </div>
                     <div class="tbutton">

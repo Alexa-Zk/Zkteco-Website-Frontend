@@ -18,7 +18,10 @@
                 <br /><br /><br />
                 <h3>Downloads</h3>
 
-                <div class="ps-block__content" v-if="formatted.product_files">
+                <div
+                    class="ps-block__content"
+                    v-if="formatted.product_files.length > 0"
+                >
                     <div
                         class="downloads_container"
                         v-for="i in formatted.product_files"
@@ -52,7 +55,7 @@
                             <div class="date">
                                 <!-- Uploaded on:
                                 {{ formatDate(i.file.updated_at) }} -->
-                                Size: {{ formatBytes(i.file.siz) }}
+                                Size: {{ formatBytes(i.file.size) }}
                             </div>
                         </div>
                     </div>
