@@ -39,9 +39,8 @@ export default {
         const tokenForDownloads = this.$cookies.get('download_token', {
             parseJSON: true
         });
-        if (tokenForDownloads) {
-            return true;
-        } else {
+
+        if (!tokenForDownloads) {
             this.$router.push('/auth/login');
         }
 
