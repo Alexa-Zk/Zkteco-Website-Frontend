@@ -345,7 +345,7 @@
                         @click.prevent="willContactUs"
                         class="ps-btn ps-btn--fullwidth"
                     >
-                        {{ loading ? 'Sending...' : 'Send Quote' }}
+                        {{ loading ? 'Sending...' : 'Request a Quote' }}
                     </button>
                 </div>
                 <p class="el-error" v-if="showError">

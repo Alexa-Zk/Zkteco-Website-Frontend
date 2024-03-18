@@ -3,7 +3,7 @@
         <nuxt-link to="/biotime.africa">
             Brand
         </nuxt-link>
-        <div class="mega-menu">
+        <div class="mega-menu menu-item-has-children has-mega-menu"> 
             <div>
                 <h4 class="brands">
                     <nuxt-link :to="`/biotime.africa`">

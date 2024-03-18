@@ -34,6 +34,7 @@
                     >
                         Cloud Solution
                     </nuxt-link>
+                    <i class="icon-chevron-right"></i>
                 </h4>
                 <ul class="mega-menu__list">
                     <li>

@@ -26,16 +26,16 @@
             <nuxt-link
                 :to="
                     `/product-categories/${
-                        product.product_category
-                            ? product.product_category.slug
+                        product.product_categories
+                            ? product.product_categories[0].slug
                             : 0
                     }`
                 "
                 class="ps-product__vendor"
             >
                 {{
-                    product.product_category
-                        ? product.product_category.name
+                    product.product_categories
+                        ? product.product_categories[0].name
                         : 'NILL'
                 }}
             </nuxt-link>

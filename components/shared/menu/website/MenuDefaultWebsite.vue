@@ -102,7 +102,11 @@ export default {
                                 {
                                     text: 'FAQ',
                                     url: '/support'
-                                }
+                                },
+                                {
+                                    text: 'Consultation',
+                                    url: '/support/project-consultation'
+                                },
                             ]
                         },
                         {
@@ -133,8 +137,8 @@ export default {
                     url: '/website/page/store-locator'
                 },
                 {
-                    text: 'Consultation',
-                    url: '/support/project-consultation'
+                    text: 'ZKDigimax',
+                    url: '/zk-digimax'
                 },
                 {
                     text: 'Case Study',
