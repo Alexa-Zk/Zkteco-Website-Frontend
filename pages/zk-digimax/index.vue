@@ -20,6 +20,7 @@
                         </div>
 
                         <div class="row" v-if="zkdigimaxProducts">
+                            
                             <div
                                 v-for="product in zkdigimaxProducts"
                                 class="col-lg-4 col-md-4 col-sm-6 col-6 "
@@ -98,7 +99,7 @@ export default {
                 'website/getSingleProductCategories',
                 payload
             );
-            this.armaturaProducts = products;
+            this.zkdigimaxProducts = products;
         },
         async getArmaturas() {
             this.loading = true;
