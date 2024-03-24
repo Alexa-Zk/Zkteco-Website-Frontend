@@ -9,7 +9,7 @@
                     </div>
                     <div class="ps-layout__right">
                         <div class="ps-page__header">
-                            <h1 class="text-uppercase">{{ title }}</h1>
+                            <h1 class="text-uppercase">ee{{ title }}</h1>
                         </div>
                         <layout-shop-sidebar-categories
                             :loading="loading"
@@ -48,6 +48,7 @@ export default {
     layout: 'layout-default-website',
     data() {
         return {
+            categoriesWithProduct2: null,
             breadCrumb: [
                 {
                     text: 'Home',
@@ -72,7 +73,7 @@ export default {
         categoriesWithProduct() {
             return this.singleProductCategories
                 ? this.singleProductCategories
-                : [];
+                : categoriesWithProduct2;
         },
         title() {
             return this.$route.params.id
@@ -81,23 +82,30 @@ export default {
                 .toUpperCase();
         }
     },
-    async asyncData({ store, params }) {
-        const payload = {
-            slug: params.id,
-            page: 0,
-            sort_by: 'created_at:desc',
-            perPage: 0
-        };
-        try {
-            const blogDetails = await store.dispatch(
-                'website/getSingleProductCategories',
-                payload
-            );
-            return blogDetails;
-        } catch (e) {
-            console.log(' Error ', e);
-        }
+    created(){
+        this.getProducts()
     },
+    methods: {
+        async getProducts() {
+            const payload = {
+                slug: this.$route.params.id,
+                page: 0,
+                sort_by: 'created_at:desc',
+                perPage: 0
+            };
+            try {
+                const blogDetails = await this.$store.dispatch(
+                    'website/getSingleProductCategories',
+                    payload
+                );
+                this.categoriesWithProduct = blogDetails
+                return blogDetails;
+            } catch (e) {
+                console.log(' Error ', e);
+            }
+        },
+    },
+   
     head() {
         let description = 'ZKTeco | Product Categories';
         let title = 'ZKTeco | Product Categories';

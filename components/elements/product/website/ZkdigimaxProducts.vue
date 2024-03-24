@@ -27,7 +27,7 @@
                 :to="
                     `/product-categories/${
                         product.product_category
-                            ? product.product_category.slug
+                            ? product.product_category[0].slug
                             : 0
                     }`
                 "
@@ -35,7 +35,7 @@
             >
                 {{
                     product.product_category
-                        ? product.product_category.name
+                        ? product.product_category[0].name
                         : 'NILL'
                 }}
             </nuxt-link>
