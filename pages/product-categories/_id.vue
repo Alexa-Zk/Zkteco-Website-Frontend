@@ -9,7 +9,7 @@
                     </div>
                     <div class="ps-layout__right">
                         <div class="ps-page__header">
-                            <h1 class="text-uppercase">ee{{ title }}</h1>
+                            <h1 class="text-uppercase">{{ title }}</h1>
                         </div>
                         <layout-shop-sidebar-categories
                             :loading="loading"
