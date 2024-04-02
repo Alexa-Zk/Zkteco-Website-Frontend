@@ -114,19 +114,19 @@ export default {
         try {
             const blogDetails = this.$data;
 
-            if (blogDetails !== undefined) {
-                const product_categories = blogDetails[0].product_categories;
-                if (product_categories[0] !== undefined) {
-                    if (product_categories[0].SEO !== undefined) {
-                        let seo = product_categories[0].SEO;
-                        description = seo
-                            ? seo.description
-                            : 'ZKTeco | Product Categories';
-                        title = seo ? seo.title : 'ZKTeco | Product Categories';
-                        keywords = seo ? seo.keywords : 'keywords';
-                    }
-                }
-            }
+            // if (blogDetails !== undefined) {
+            //     const product_categories = blogDetails[0].product_categories;
+            //     if (product_categories[0] !== undefined) {
+            //         if (product_categories[0].SEO !== undefined) {
+            //             let seo = product_categories[0].SEO;
+            //             description = seo
+            //                 ? seo.description
+            //                 : 'ZKTeco | Product Categories';
+            //             title = seo ? seo.title : 'ZKTeco | Product Categories';
+            //             keywords = seo ? seo.keywords : 'keywords';
+            //         }
+            //     }
+            // }
 
             return {
                 title: title,
