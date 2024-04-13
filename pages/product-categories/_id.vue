@@ -25,6 +25,8 @@
                     </div>
                 </div>
             </div>
+            <product-purchase-notify/>
+
         </div>
     </div>
 </template>
@@ -34,12 +36,15 @@ import { mapState } from 'vuex';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import ShopWidget from '~/components/partials/shop/modules/website/ShopWidget';
 import LayoutShopSidebarCategories from '~/components/partials/shop/website/LayoutShopSidebarCategories';
+import ProductPurchaseNotify from '../../components/elements/commons/ProductPurchaseNotify';
 
 export default {
     components: {
         LayoutShopSidebarCategories,
         ShopWidget,
-        BreadCrumb
+        BreadCrumb,
+        ProductPurchaseNotify,
+
     },
 
     transition() {
@@ -73,7 +78,7 @@ export default {
         categoriesWithProduct() {
             return this.singleProductCategories
                 ? this.singleProductCategories
-                : categoriesWithProduct2;
+                : this.categoriesWithProduct2;
         },
         title() {
             return this.$route.params.id

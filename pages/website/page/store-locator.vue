@@ -89,11 +89,11 @@ export default {
                     url: '/'
                 },
                 {
-                    text: 'Contact Us',
-                    url: '/contact'
+                    text: 'Our Partners',
+                    url: '/website/page/store-locator'
                 },
                 {
-                    text: 'Store Locator'
+                    text: 'Find A Partner'
                 }
             ]
         };

@@ -134,7 +134,20 @@ export default {
                 // },
                 {
                     text: 'Partners',
-                    url: '/website/page/store-locator'
+                    url: '/website/page/store-locator',
+                    extraClass: 'menu-item-has-children',
+                    subClass: 'sub-menu',
+                    subMenu: [
+                        {
+                            text: 'Our Partners',
+                            url: '/website/page/store-locator'
+                        },
+                        {
+                            text: 'Become a Partner',
+                            url: '/website/page/become-a-partner'
+                        },
+                       
+                    ]
                 },
                 {
                     text: 'ZKDigimax',
