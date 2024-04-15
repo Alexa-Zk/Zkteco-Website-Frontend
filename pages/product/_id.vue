@@ -71,118 +71,118 @@ export default {
         }
     },
 
-    head() {
-        try {
-            let description = 'ZKTeco | Product ';
-            let title = 'ZKTeco | Product ';
-            let image = 'ZKTeco | Product ';
-            let keywords = 'ZKTeco | Product ';
+    // head() {
+    //     try {
+    //         let description = 'ZKTeco | Product ';
+    //         let title = 'ZKTeco | Product ';
+    //         let image = 'ZKTeco | Product ';
+    //         let keywords = 'ZKTeco | Product ';
 
-            if (
-                this.$data.pdt !== null ||
-                this.$data.pdt !== undefined ||
-                this.$data.pdt !== ''
-            ) {
-                let pdt = this.$data.pdt;
-                if (
-                    pdt.SEO !== null ||
-                    pdt.SEO !== undefined ||
-                    pdt.SEO !== ''
-                ) {
-                    const seo = pdt.SEO;
-                    description = seo.description.replace(
-                        /<\/?[^>]+(>|$)/g,
-                        ''
-                    );
+    //         if (
+    //             this.$data.pdt !== null ||
+    //             this.$data.pdt !== undefined ||
+    //             this.$data.pdt !== ''
+    //         ) {
+    //             let pdt = this.$data.pdt;
+    //             if (
+    //                 pdt.SEO !== null ||
+    //                 pdt.SEO !== undefined ||
+    //                 pdt.SEO !== ''
+    //             ) {
+    //                 const seo = pdt.SEO;
+    //                 description = seo.description.replace(
+    //                     /<\/?[^>]+(>|$)/g,
+    //                     ''
+    //                 );
 
-                    title =
-                        seo.title !== null || seo.title !== undefined
-                            ? seo.title
-                            : pdt.name;
-                    keywords =
-                        seo.title !== null || seo.title !== undefined
-                            ? seo.name
-                            : pdt.name;
-                    image =
-                        pdt.images[0].url == null ||
-                        pdt.images[0].url == undefined
-                            ? image
-                            : pdt.images[0].url;
-                }
-            }
+    //                 title =
+    //                     seo.title !== null || seo.title !== undefined
+    //                         ? seo.title
+    //                         : pdt.name;
+    //                 keywords =
+    //                     seo.title !== null || seo.title !== undefined
+    //                         ? seo.name
+    //                         : pdt.name;
+    //                 image =
+    //                     pdt.images[0].url == null ||
+    //                     pdt.images[0].url == undefined
+    //                         ? image
+    //                         : pdt.images[0].url;
+    //             }
+    //         }
 
-            return {
-                title: title,
-                titleTemplate(title) {
-                    return `${title}`;
-                },
-                meta: [
-                    {
-                        hid: 'title',
-                        name: 'title',
-                        content: title
-                    },
-                    {
-                        hid: 'description',
-                        name: 'description',
-                        content: description.replace(/<\/?[^>]+(>|$)/g, '')
-                    },
-                    {
-                        hid: 'twitter:title',
-                        name: 'twitter:title',
-                        content: title
-                    },
-                    {
-                        hid: 'twitter:description',
-                        name: 'twitter:description',
-                        content: description.replace(/<\/?[^>]+(>|$)/g, '')
-                    },
-                    {
-                        hid: 'twitter:image',
-                        name: 'twitter:image',
-                        content: image
-                    },
-                    {
-                        hid: 'twitter:image:alt',
-                        name: 'twitter:image:alt',
-                        content: description.replace(/<\/?[^>]+(>|$)/g, '')
-                    },
-                    {
-                        hid: 'og:title',
-                        property: 'og:title',
-                        content: title
-                    },
-                    {
-                        hid: 'og:description',
-                        property: 'og:description',
-                        content: description.replace(/<\/?[^>]+(>|$)/g, '')
-                    },
-                    {
-                        hid: 'og:image',
-                        property: 'og:image',
-                        content: image
-                    },
-                    {
-                        hid: 'og:image:secure_url',
-                        property: 'og:image:secure_url',
-                        content: image
-                    },
-                    {
-                        hid: 'og:image:alt',
-                        property: 'og:image:alt',
-                        content: description.replace(/<\/?[^>]+(>|$)/g, '')
-                    },
-                    {
-                        hid: 'keywords',
-                        name: 'keywords',
-                        content: keywords
-                    }
-                ]
-            };
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    //         return {
+    //             title: title,
+    //             titleTemplate(title) {
+    //                 return `${title}`;
+    //             },
+    //             meta: [
+    //                 {
+    //                     hid: 'title',
+    //                     name: 'title',
+    //                     content: title
+    //                 },
+    //                 {
+    //                     hid: 'description',
+    //                     name: 'description',
+    //                     content: description.replace(/<\/?[^>]+(>|$)/g, '')
+    //                 },
+    //                 {
+    //                     hid: 'twitter:title',
+    //                     name: 'twitter:title',
+    //                     content: title
+    //                 },
+    //                 {
+    //                     hid: 'twitter:description',
+    //                     name: 'twitter:description',
+    //                     content: description.replace(/<\/?[^>]+(>|$)/g, '')
+    //                 },
+    //                 {
+    //                     hid: 'twitter:image',
+    //                     name: 'twitter:image',
+    //                     content: image
+    //                 },
+    //                 {
+    //                     hid: 'twitter:image:alt',
+    //                     name: 'twitter:image:alt',
+    //                     content: description.replace(/<\/?[^>]+(>|$)/g, '')
+    //                 },
+    //                 {
+    //                     hid: 'og:title',
+    //                     property: 'og:title',
+    //                     content: title
+    //                 },
+    //                 {
+    //                     hid: 'og:description',
+    //                     property: 'og:description',
+    //                     content: description.replace(/<\/?[^>]+(>|$)/g, '')
+    //                 },
+    //                 {
+    //                     hid: 'og:image',
+    //                     property: 'og:image',
+    //                     content: image
+    //                 },
+    //                 {
+    //                     hid: 'og:image:secure_url',
+    //                     property: 'og:image:secure_url',
+    //                     content: image
+    //                 },
+    //                 {
+    //                     hid: 'og:image:alt',
+    //                     property: 'og:image:alt',
+    //                     content: description.replace(/<\/?[^>]+(>|$)/g, '')
+    //                 },
+    //                 {
+    //                     hid: 'keywords',
+    //                     name: 'keywords',
+    //                     content: keywords
+    //                 }
+    //             ]
+    //         };
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 };
 </script>
 
