@@ -36,13 +36,13 @@ export default {
         })
     },
     async mounted() {
-        const tokenForDownloads = this.$cookies.get('download_token', {
-            parseJSON: true
-        });
-
-        if (!tokenForDownloads) {
-            this.$router.push('/auth/login');
-        }
+        // const user = this.$cookies.get('ELEARNING_USER', {
+        //     parseJSON: true
+        // });
+        // console.log('user', user);
+        // if (!user) {
+        //     this.$router.push('/auth/tutorial-login');
+        // }
 
         let params = {
             slug: this.$route.params.id

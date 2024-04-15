@@ -48,9 +48,9 @@
                     <p>
                         {{ course.description }}
                     </p>
-                    <div class="learn">
-                        <nuxt-link :to="`/tutorial/${course.slug}`">
-                            Start Learning
+                    <div class="learn" @click.prevent="updateUserActivity(course.id)">
+                        <nuxt-link  :to="`/tutorial/${course.slug}/`">
+                            {{ isUserActive ? 'Continue Learning' : 'Start Learning' }}
                         </nuxt-link>
                     </div>
                 </div>
@@ -62,6 +62,7 @@
 <script>
 import { mapState } from 'vuex';
 import Video from '~/components/partials/page/tutorial/Video';
+import { serializeQuery } from '~/repositories/Repository';
 
 export default {
     components: { Video },
@@ -70,7 +71,12 @@ export default {
         return 'fadeIn';
     },
     layout: 'layout-default-website',
-
+    data: () => {
+        return {
+            user: null,
+            isUserActive: false
+        }
+    },
     computed: {
         title() {
             return 'Product Videos';
@@ -82,6 +88,64 @@ export default {
     },
     async mounted() {
         await this.$store.dispatch('website/getCourse');
+        const user = this.$cookies.get('ELEARNING_USER', {
+            parseJSON: true
+        });
+
+        console.log('user', user);
+        if (!user) {
+            this.$router.push('/auth/tutorial-login');
+        }
+
+
+        this.user = user
+        if(user){
+            this.isUserActive = true
+        }
+
+    },
+    methods: {
+        async updateUserActivity(module){
+            // get the user id from cookie
+            // fetch the moduleActivity by user id
+            // if the record is found, increment by 1
+            // if no record found, then create a new record for that user
+            const params = {
+                user_id: this.user.id,
+                module_id: module,
+            }
+            const getModuleUsage = await this.$axios.$get(`https://admin.zkteco-wa.com/module-usages?${serializeQuery(params)}`);
+            console.log('currentUsage', getModuleUsage);
+
+            if(getModuleUsage.length > 0){
+                let id = getModuleUsage[0].id
+                let newUsageCount = getModuleUsage[0].usage_count + 1
+                const updateModuleUsageCount = {
+                    user_id: this.user.id,
+                    module_id: module,
+                    usage_count: newUsageCount
+                }
+                const response = await this.$axios.$put(
+                    `https://admin.zkteco-wa.com/module-usages/${id}`,
+                    updateModuleUsageCount
+                );
+                console.log('update usage', response);
+                return true
+            } else {
+                const payload = {
+                    user_id: this.user.id,
+                    module_id: module,
+                    usage_count: 1
+                }
+                console.log('create usage', payload);
+                const response = await this.$axios.$post(
+                    'https://admin.zkteco-wa.com/module-usages',
+                    payload
+                );
+            }
+            
+            
+        }
     }
 };
 </script>
