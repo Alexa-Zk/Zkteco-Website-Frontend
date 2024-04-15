@@ -3,7 +3,7 @@ const axios = require('axios');
 async function _getProductRoutes() {
     try {
         let paths = [];
-        const landingPage = ['bitome.africa'];
+        const landingPage = ['biotime.africa'];
         const missProduct = [
             'pl-52d18e36e',
             'kit-8304xec-cl4-bs32b11m',
