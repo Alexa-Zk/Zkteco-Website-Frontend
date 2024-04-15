@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                         <div class="form-group">
-                            <select v-model="salutation" class="form-control form-select form-select-lg">
+                            <select v-model="salutation" placeholder="Salutation *" class="form-control form-select form-select-lg">
                                 <option>Mr</option>
                                 <option>Miss</option>
                                 <option>Mrs</option>
