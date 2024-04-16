@@ -127,7 +127,6 @@ export default {
             if (!this.$v.$invalid) {
                 this.loading = true;
                 let payload =  {
-                    username: this.username,
                     email: this.email,
                 }
                 // fetch from the subscribers collection to see if a user with the email exists,
@@ -136,7 +135,7 @@ export default {
                 const user = await this.$axios.$get(`https://admin.zkteco-wa.com/elearning-subscribers?${serializeQuery(payload)}`);
                 
                 if(user.length){
-                    this.setUserInCookie({...payload, id: user[0].id})
+                    this.setUserInCookie({...payload,username: user[0].username, id: user[0].id})
 
                     this.$router.push('/tutorial');
                     this.loading = false;
