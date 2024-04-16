@@ -285,15 +285,11 @@ export default {
                     type_of_partnership: this.partner_type
                 }
 
-                // const response = await this.$axios.$post(
-                //     'https://admin.zkteco-wa.com/partners',
-                //     data
-                // );
-
                 const response = await this.$axios.$post(
-                    'http://localhost:1337/partners',
+                    'https://admin.zkteco-wa.com/partners',
                     data
                 );
+
 
                 if (response) {
                     this.loading = false;
