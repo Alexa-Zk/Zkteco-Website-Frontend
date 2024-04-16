@@ -20,6 +20,7 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                         <div class="form-group">
                             <select v-model="salutation" placeholder="Salutation *" class="form-control form-select form-select-lg">
+                                <option value="" selected disabled>Please select your preferred salutation</option>
                                 <option>Mr</option>
                                 <option>Miss</option>
                                 <option>Mrs</option>
@@ -27,6 +28,21 @@
                             </select>
                             <p class="el-error" v-if="$v.salutation.$error">
                                 Salutation is required!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
+                        <div class="form-group">
+                            <select v-model="partner_type" placeholder="Partnership Type *" class="form-control form-select form-select-lg">
+                                <option value="" selected disabled>Please select a partnership type</option>
+                                <option>Authorised Distribution Partner </option>
+                                <option>System Integrator</option>
+                                <option>Product Line partner</option>
+                                <option>Reseller</option>
+                                <option>Installer</option>
+                            </select>
+                            <p class="el-error" v-if="$v.partner_type.$error">
+                                Partnership is required!
                             </p>
                         </div>
                     </div>
@@ -154,7 +170,7 @@
                         </div>
                     </div>
                     <div
-                        class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 "
+                        class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 "
                     >
                         <div class="form-group">
                             <input
@@ -218,6 +234,7 @@ export default {
             company_name: '',
             email: '',
             years_in_business: '',
+            partner_type: '',
             industry: '',
             avg_sales: '',
             key_focus_area: '',
@@ -239,7 +256,8 @@ export default {
         years_in_business: { required },
         industry: { required },
         avg_sales: { required },
-        key_focus_area: { required }
+        key_focus_area: { required },
+        partner_type: { required }
     },
     methods: {
         async becomeAPartner() {
@@ -264,10 +282,16 @@ export default {
                     avg_sales: this.avg_sales,
                     key_focus_area: this.key_focus_area,
                     phone_number: this.phone_number,
+                    type_of_partnership: this.partner_type
                 }
 
+                // const response = await this.$axios.$post(
+                //     'https://admin.zkteco-wa.com/partners',
+                //     data
+                // );
+
                 const response = await this.$axios.$post(
-                    'https://admin.zkteco-wa.com/partners',
+                    'http://localhost:1337/partners',
                     data
                 );
 
