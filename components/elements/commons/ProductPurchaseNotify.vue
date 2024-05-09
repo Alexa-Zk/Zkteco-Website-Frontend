@@ -15,13 +15,13 @@
                             style="position: relative;z-index: 100"
                         ></i>
                     </a>
-                    <h3>
+                    <!-- <h3>
                         Join thousands of businesses with a headstart
-                    </h3>
+                    </h3> -->
 
-                    <p>
+                    <h3>
                         Subscribe to receive a special 10% discount on your next purchase
-                    </p>
+                    </h3>
 
                     <div class="form-group--nest">
                         <input
