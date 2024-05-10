@@ -923,6 +923,7 @@ export const actions = {
         commit('setLoading', true);
         let params = {
             _sort: 'sort_id:desc',
+            category: payload.category,
             ...(payload.query && { _q: payload.query })
         };
         const reponse = await Repository.get(
