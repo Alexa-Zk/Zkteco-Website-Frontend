@@ -6,7 +6,8 @@
                 <div class="ps-block--methods">
                                 <v-tabs
                                     background-color="white"
-                                    color="warning"
+                                    bg-color="black"
+                                    color="success"
                                     class="ps-tab-list"
                                     grow
                                 >
@@ -33,7 +34,7 @@
                                                                 <input
                                                                     class="form-control"
                                                                     type="text"
-                                                                    placeholder="Find a store"
+                                                                    placeholder="Find an authorised distribution partner"
                                                                     v-model="location"
                                                                 />
                                                                 <button
@@ -104,7 +105,7 @@
                                                                 <input
                                                                     class="form-control"
                                                                     type="text"
-                                                                    placeholder="Find a store"
+                                                                    placeholder="Find a system integrator"
                                                                     v-model="location"
                                                                 />
                                                                 <button
@@ -228,6 +229,9 @@ export default {
         ...mapState({
             storeLocator: state => state.website.storeLocator
         })
+    },
+    mounted(){
+        this.resetState()
     },
     async created() {
         const payload = {
