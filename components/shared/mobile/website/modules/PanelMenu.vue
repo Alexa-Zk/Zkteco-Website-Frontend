@@ -207,6 +207,10 @@ export default {
                     url: '/experience-center'
                 },
                 {
+                    text: 'ZkDigimax',
+                    url: '/zk-digimax'
+                },
+                {
                     text: 'Login',
                     url: '/website/page/login'
                 }
