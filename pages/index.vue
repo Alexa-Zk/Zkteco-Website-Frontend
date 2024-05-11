@@ -7,7 +7,9 @@
         </div>
         <!--home-brand :partnersLogo="ourPartners" /--->
         <newsletters layout="fullwidth" />
+       
     </main>
+
 </template>
 <script>
 import HomeBanner from '~/components/partials/homepage/website/default/HomeBanner';
@@ -15,7 +17,6 @@ import Newsletters from '~/components/partials/commons/website/Newsletters';
 import SiteFeauturesFullwidth from '~/components/partials/commons/website/SiteFeaturesFullwidth';
 import RelatedPosts from '~/components/partials/post/website/RelatedPosts';
 import HomeBrand from '~/components/partials/shop/sections/website/ShopBrands';
-
 import Repository from '~/repositories/Repository.js';
 import { subBaseUrl } from '~/repositories/Repository';
 

@@ -35,6 +35,8 @@
                 </div>
             </div>
         </div>
+        <product-purchase-notify/>
+
     </div>
 </template>
 
@@ -45,6 +47,7 @@ import LayoutShopSidebarCategories from '~/components/partials/shop/website/Layo
 import ZkdigimaxProducts from '~/components/elements/product/website/ZkdigimaxProducts';
 import ProductCategoryDefault from '~/components/elements/product/website/ProductCategoryDefault';
 import Repository from '~/repositories/Repository.js';
+import ProductPurchaseNotify from '~/components/elements/commons/ProductPurchaseNotify';
 import { subBaseUrl } from '~/repositories/Repository';
 
 export default {
@@ -53,7 +56,8 @@ export default {
         ShopWidget,
         ZkdigimaxProducts,
         ProductCategoryDefault,
-        BreadCrumb
+        BreadCrumb,
+        ProductPurchaseNotify
     },
 
     transition() {
