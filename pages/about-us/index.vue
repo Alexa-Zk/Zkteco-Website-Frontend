@@ -42,24 +42,36 @@
         <div class="emp_stat_container">
             <div class="emp_stat">
                 <div>
-                    <span class="num" data-val="3800">
+                    <span class="num" data-val="4100">
                         0
                     </span>
                     <p>Global Employees Exceed</p>
                 </div>
                 <div>
-                    <span class="num" data-val="1100">
+                    <span class="num" data-val="1200">
                         0
                     </span>
                     <p>R&D Staffs Exceed</p>
                 </div>
                 <div>
-                    <span class="num" data-val="730">0 </span>
+                    <span class="num" data-val="1100">0 </span>
                     <p>Number of Foreign Employees</p>
                 </div>
                 <div>
-                    <span class="num" data-val="40">0</span>
-                    <p>Overseas Subsidiaries</p>
+                    <span class="num" data-val="1000+">0</span>
+                    <p>Manufacturing production staffs</p>
+                </div>
+                <div>
+                    <span class="num" data-val="4"></span>
+                    <p>Manufacturing Base</p>
+                </div>
+                <div>
+                    <span class="num" data-val="4"></span>
+                    <p>R&D Centers</p>
+                </div>
+                <div>
+                    <span class="num" data-val="89"></span>
+                    <p>R&D Centers</p>
                 </div>
             </div>
         </div>
