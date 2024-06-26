@@ -1,7 +1,22 @@
 <template lang="html">
     <ul :class="className">
         <MenuProduct />
-        <MenuArmatura />
+        <template v-for="item in softwareMenu">
+            <MenuDropdown v-if="item.subMenu" :menu-data="item" />
+            <MenuMega v-else-if="item.mega" :menu-data="item" />
+            <li
+                class="menu-item-has-dropdown"
+                v-else-if="item.redirect"
+                :key="item.text"
+            ></li>
+            <li class="menu-item-has-dropdown" v-else :key="item.text">
+                <nuxt-link :to="item.url">
+                    {{ item.text }}
+                    <i :class="item.icon"></i>
+                </nuxt-link>
+            </li>
+        </template>
+        <!-- <MenuArmatura /> -->
         <MenuSolutionCategories />
         <template v-for="item in mainMenu">
             <MenuDropdown v-if="item.subMenu" :menu-data="item" />
@@ -156,6 +171,26 @@ export default {
                 {
                     text: 'Case Study',
                     url: '/case-study'
+                }
+            ],
+            softwareMenu: [
+         
+                {
+                    text: 'Software',
+                    url: '/software',
+                    extraClass: 'menu-item-has-children',
+                    subClass: 'sub-menu',
+                    subMenu: [
+                        {
+                            text: 'Biotime Africa',
+                            url: '/biotime.africa'
+                        },
+                        {
+                            text: 'Zk Software',
+                            url: '/software'
+                        },
+                       
+                    ]
                 }
             ]
         };
