@@ -182,11 +182,11 @@ export default {
                     subClass: 'sub-menu',
                     subMenu: [
                         {
-                            text: 'Biotime Africa',
+                            text: 'ZKTeco Cloud',
                             url: '/biotime.africa'
                         },
                         {
-                            text: 'Zk Software',
+                            text: 'ZkTeco Enterprise Software',
                             url: '/software'
                         },
                        
