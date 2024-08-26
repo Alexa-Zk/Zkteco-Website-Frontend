@@ -195,7 +195,7 @@
                     </button>
                 </div>
             </form>
-            <v-snackbar v-model="snackbar" :timeout="3000" color="green" tile>
+            <v-snackbar v-model="snackbar" :timeout="3000" :color="snackbarColor" tile>
                 {{ snackBarMessage }}
 
                 <template v-slot:action="{ attrs }">
@@ -240,6 +240,7 @@ export default {
             key_focus_area: '',
             phone_number: '',
             snackbar: false,
+            snackbarColor: "green",
             snackBarMessage:
                 'Your request has been submitted Successfully. You will be contacted by one of our customer representatives.',
         }
@@ -285,22 +286,29 @@ export default {
                     type_of_partnership: this.partner_type
                 }
 
-                const response = await this.$axios.$post(
-                    'https://admin.zkteco-wa.com/partners',
-                    data
-                );
+                try {
 
+                    const response = await this.$axios.$post(
+                        'https://admin.zkteco-wa.com/partners',
+                        data
+                    );
+                    console.log('yes', response);
 
-                if (response) {
                     this.loading = false;
                     this.snackbar = true;
                     setTimeout(() => {
                         window.location.reload();
                     }, 3001);
-                } else {
+                }catch (error){
+                    console.log('no', error);
                     this.loading = false;
                     this.showError = true;
+                    this.snackbarColor = "red";
+                    this.snackBarMessage = 'An error has occured, kindly contact the administrator';
+                    this.snackbar = true;
                 }
+                
+
 
             }
         }
