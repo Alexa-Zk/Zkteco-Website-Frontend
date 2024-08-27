@@ -211,6 +211,27 @@ export default {
                     url: '/zk-digimax'
                 },
                 {
+                    text: 'Partners',
+                    url: '/website/page/store-locator',
+                    extraClass: 'menu-item-has-children',
+                    subClass: 'sub-menu',
+                    subMenu: [
+                        {
+                            text: 'Our Partners',
+                            url: '/website/page/store-locator'
+                        },
+                        {
+                            text: 'Become a Partner',
+                            url: '/website/page/become-a-partner'
+                        },
+                       
+                    ]
+                },
+                {
+                    text: 'Blog',
+                     url: '/news-center'
+                },
+                {
                     text: 'Login',
                     url: '/website/page/login'
                 }

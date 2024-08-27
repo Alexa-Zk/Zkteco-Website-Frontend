@@ -171,6 +171,10 @@ export default {
                 {
                     text: 'Case Study',
                     url: '/case-study'
+                },
+                {
+                    text: 'Blog',
+                     url: '/news-center'
                 }
             ],
             softwareMenu: [
