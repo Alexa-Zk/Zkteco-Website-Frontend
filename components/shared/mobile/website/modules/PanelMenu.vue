@@ -227,10 +227,7 @@ export default {
                        
                     ]
                 },
-                {
-                    text: 'Blog',
-                     url: '/news-center'
-                },
+              
                 {
                     text: 'Login',
                     url: '/website/page/login'
