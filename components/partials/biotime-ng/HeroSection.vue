@@ -86,7 +86,7 @@ export default {
     },
     methods: {
         toBiotime() {
-            const url = 'http://biotime.ng';
+            const url = 'https://biotime.ng/accounts/create_user/';
             window.location.href = url;
         },
         toRequestQuote() {
