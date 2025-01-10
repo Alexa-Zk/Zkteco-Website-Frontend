@@ -86,7 +86,7 @@ export default {
     },
     methods: {
         toBiotime() {
-            const newTab = window.open('', '_blank');
+            const newTab2 = window.open('', '_blank');
             const url = 'https://biotime.ng/accounts/create_user/';
             newTab.location.href = url;
         },
