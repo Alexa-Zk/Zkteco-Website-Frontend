@@ -86,8 +86,9 @@ export default {
     },
     methods: {
         toBiotime() {
+            const newTab = window.open('', '_blank');
             const url = 'https://biotime.ng/accounts/create_user/';
-            window.location.href = url;
+            newTab.location.href = url;
         },
         toRequestQuote() {
             this.$router.push('/biotime-africa#btc-contact');
