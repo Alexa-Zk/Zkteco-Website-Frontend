@@ -86,6 +86,7 @@ export default {
             if (!checkSubscriber) {
                 this.demoDialog = true;
             }
+            localStorage.setItem('PRODUCT_SUBSCRIPTION', true);
         },
         closeModal() {
             this.demoDialog = false;

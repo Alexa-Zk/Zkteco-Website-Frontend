@@ -34,7 +34,6 @@
                 </div>
             </div>
         </div>
-        <product-purchase-notify/>
 
     </div>
 </template>
@@ -47,7 +46,6 @@ import ArmaturaProducts from '~/components/elements/product/website/ArmaturaProd
 import ProductCategoryDefault from '~/components/elements/product/website/ProductCategoryDefault';
 import Repository from '~/repositories/Repository.js';
 import { subBaseUrl } from '~/repositories/Repository';
-import ProductPurchaseNotify from '~/components/elements/commons/ProductPurchaseNotify';
 
 export default {
     components: {
@@ -56,7 +54,6 @@ export default {
         ArmaturaProducts,
         ProductCategoryDefault,
         BreadCrumb,
-        ProductPurchaseNotify
     },
 
     transition() {
