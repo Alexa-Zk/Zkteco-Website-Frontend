@@ -43,10 +43,30 @@
                         +234 817 5555 512
                     </a>
                     <br />
+                    <a style="font-weight: inherit;" href="tel:2348175555514">
+                        +234 817 5555 514
+                    </a>
+                     <a
+                        class="linkedin"
+                        href="https://wa.me/2348175555514"
+                    >
+                        <i class="fa fa-whatsapp"></i>
+                    </a>
+                </h3>
+                <p>For Support related issues</p>
+                <h3>
                     <a style="font-weight: inherit;" href="tel:2348175555513">
                         +234 817 5555 513
                     </a>
+                    <a
+                        class="linkedin"
+                        href="https://wa.me/2348175555513"
+                    >
+                        <i class="fa fa-whatsapp"></i>
+                    </a>
                 </h3>
+                
+                        
                 <p>
                     64 Adetokunbo Ademola Street, Victoria Island, Lagos<br />
                     <a href="mailto:enquiry@zkteco-wa.com"
