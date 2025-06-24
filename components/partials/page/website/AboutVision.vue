@@ -69,7 +69,7 @@ export default {
         return {};
     }
 };
-// hello
+// hello there
 </script>
 
 <style lang="scss" scoped>
