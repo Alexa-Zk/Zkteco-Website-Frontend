@@ -342,7 +342,7 @@ export default {
                         v?.slug != '' ||
                         v?.slug != undefined
                     )
-                        return `/solution-categories/${v?.slug}`;
+                        return `/solution-categories/${v?.slug}/`;
                 });
 
                 let { data: productCategoriesData } = await axios.get(
@@ -358,7 +358,7 @@ export default {
                         v?.slug != '' ||
                         v?.slug != undefined
                     ) {
-                        return `/product-categories/${v?.slug.trim()}`;
+                        return `/product-categories/${v?.slug.trim()}/`;
                     }
                 });
 
@@ -373,7 +373,7 @@ export default {
                     `https://admin.zkteco-wa.com/solutions`
                 );
                 const solutionArray = solutionData.map(
-                    v => `/solution-details/${v?.slug}`
+                    v => `/solution-details/${v?.slug}/`
                 );
 
                 let { data: articlesData } = await axios.get(
@@ -385,7 +385,7 @@ export default {
                         .join('-')
                         .toLowerCase();
 
-                    return `/blog/${name}`;
+                    return `/blog/${name}/`;
                 });
 
                 return [
