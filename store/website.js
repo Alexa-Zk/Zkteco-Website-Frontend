@@ -218,7 +218,7 @@ export const actions = {
         commit('setLoading', true);
 
         const reponse = await Repository.post(
-            `${baseUrl}/integrations/enquiries`,
+            `${subBaseUrl}/zkteco-contact-uses`,
             payload
         )
             .then(response => {

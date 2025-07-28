@@ -10,7 +10,7 @@
                                 class="form-control"
                                 type="text"
                                 placeholder="Full Name *"
-                                v-model="payload.full_name"
+                                v-model="payload.name"
                             />
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                                 class="form-control"
                                 type="text"
                                 placeholder="Company Name *"
-                                v-model="payload.company"
+                                v-model="payload.company_name"
                             />
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                                 class="form-control"
                                 type="text"
                                 placeholder="Phone Number *"
-                                v-model="payload.phone"
+                                v-model="payload.phone_number"
                             />
                         </div>
                     </div>
@@ -105,10 +105,10 @@ export default {
         return {
             loading: '',
             payload: {
-                full_name: '',
-                company: '',
+                name: '',
+                company_name: '',
                 email: '',
-                phone: '',
+                phone_number: '',
                 subject: '',
                 message: '',
             },
@@ -131,17 +131,17 @@ export default {
                 'website/sendEnquiry',
                 this.payload
             );
-            if (response.data) {
+            if (response) {
                 this.loading = false;
                 this.$notify({
                     group: 'addCartSuccess',
                     title: 'Success!',
                     text: `your enquiry has been sent! you would be contact shortly. Thank you`
                 });
-                this.payload.full_name = '';
-                this.payload.company = '';
+                this.payload.name = '';
+                this.payload.company_name = '';
                 this.payload.email = '';
-                this.payload.phone = '';
+                this.payload.phone_number = '';
                 this.payload.subject = '';
                 this.payload.message = '';
             } else {
