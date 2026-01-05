@@ -27,6 +27,14 @@
                             </nuxt-link>
                         </li>
                         <li>
+                            <nuxt-link
+                                to="biotime.africa/pricing"
+                                class="ps-logo"
+                            >
+                                Pricing Plans
+                            </nuxt-link>
+                        </li>
+                        <li>
                             <nuxt-link to="#btc-faq" class="ps-logo">
                                 FAQ
                             </nuxt-link>
