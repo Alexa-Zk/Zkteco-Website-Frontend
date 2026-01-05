@@ -33,7 +33,8 @@
                         class="ps-btn ps-btn--xs ps-btn--gray"
                         v-on:click="toRequestQuote"
                     >
-                        <i class="icon-document"></i> Request a quote
+                        <!-- <i class="icon-document"></i> Request a quote -->
+                        <i class="icon-document"></i> View Pricing Plans
                     </button>
                 </div>
             </div>
@@ -91,7 +92,8 @@ export default {
             newTab2.location.href = url;
         },
         toRequestQuote() {
-            this.$router.push('/biotime-africa#btc-contact');
+            this.$router.push('/biotime.africa/pricing');
+            /* this.$router.push('/biotime-africa#btc-contact'); */
         }
     }
 };
