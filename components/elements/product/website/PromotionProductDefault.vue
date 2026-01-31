@@ -43,7 +43,7 @@
             </nuxt-link>
             <div class="ps-product__content">
                 <nuxt-link
-                    :to="`/product/${product.slug}`"
+                    :to="`/product/${product.slug}/`"
                     class="ps-product__title"
                 >
                     {{ product.name }}

@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="ps-product--cart-mobile">
         <div class="ps-product__thumbnail">
-            <nuxt-link :to="`/store/product/${product.id}`">
+            <nuxt-link :to="`/store/product/${product.id}/`">
                 <img
                     :src="product.images[0] ? product.images[0].src : '' "
                     alt="martfury"
@@ -16,7 +16,7 @@
             >
                 <i class="icon-cross"></i>
             </a>
-            <nuxt-link :to="`/store/product/${product.id}`" class="ps-product__title">
+            <nuxt-link :to="`/store/product/${product.id}/`" class="ps-product__title">
                 {{ product.name }}
             </nuxt-link>
             <p>

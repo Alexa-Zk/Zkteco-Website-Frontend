@@ -19,14 +19,14 @@
                     </content-placeholders>
                 </div>
                 <li v-for="category in solutionCategoriesAndSub">
-                    <nuxt-link :to="`/solution-categories/${category.slug}`">{{
+                    <nuxt-link :to="`/solution-categories/${category.slug}/`">{{
                         category.name
                     }}</nuxt-link>
                 </li>
 
                 <li>
                     <nuxt-link
-                        :to="`/biotime.africa`"
+                        :to="`/biotime.africa/`"
                         @click.prevent="handleClosePanel"
                     >
                         Biotime Africa

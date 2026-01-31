@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="ps-product">
         <div class="ps-product__thumbnail">
-            <nuxt-link :to="`/product/${product.slug}`">
+            <nuxt-link :to="`/product/${product.slug}/`">
                 <img
                     class="lazyload"
                     :data-src="product.images[0].url"
@@ -29,7 +29,7 @@
                         product.product_category
                             ? product.product_category.slug
                             : 0
-                    }`
+                    }/`
                 "
                 class="ps-product__vendor"
             >
@@ -41,7 +41,7 @@
             </nuxt-link>
             <div class="ps-product__content">
                 <nuxt-link
-                    :to="`/product/${product.slug}`"
+                    :to="`/product/${product.slug}/`"
                     class="ps-product__title"
                 >
                     {{ product.name }}
@@ -49,7 +49,7 @@
             </div>
             <div class="ps-product__content hover">
                 <p class="ps-product__price sale">
-                    <nuxt-link :to="`/product/${product.slug}`">
+                    <nuxt-link :to="`/product/${product.slug}/`">
                         <span class="ps-product__title">Learn More</span>
                     </nuxt-link>
                 </p>

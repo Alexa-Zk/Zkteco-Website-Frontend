@@ -33,7 +33,7 @@
                         <template v-slot:activator>
                             <v-list-item-content>
                                 <nuxt-link
-                                    :to="`/product-categories/${category.slug}`"
+                                    :to="`/product-categories/${category.slug}/`"
                                     @click="handleClosePanel"
                                 >
                                     {{ category.name }}

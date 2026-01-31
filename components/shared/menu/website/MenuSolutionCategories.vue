@@ -10,7 +10,7 @@
                 :key="item.id"
             >
                 <h4>
-                    <nuxt-link :to="`/solution-categories/${item.slug}`">
+                    <nuxt-link :to="`/solution-categories/${item.slug}/`">
                         {{ item.name }}
                     </nuxt-link>
                 </h4>
@@ -19,7 +19,7 @@
                         v-for="subItem in item.solution_sub_cats"
                         :key="subItem.id"
                     >
-                        <nuxt-link :to="`/solution-sub/${subItem.slug}`">
+                        <nuxt-link :to="`/solution-sub/${subItem.slug}/`">
                             {{ subItem.name }}
                         </nuxt-link>
                     </li>

@@ -44,7 +44,7 @@
                 >
                     <i class="fa fa-whatsapp"></i>
                 </a>
-                <nuxt-link :to="`/product/${product.slug}`">
+                <nuxt-link :to="`/product/${product.slug}/`">
                     <span class="learn-more">Learn More</span>
                 </nuxt-link>
             </div>

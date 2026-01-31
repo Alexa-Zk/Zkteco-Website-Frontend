@@ -3,13 +3,13 @@
         
         <p class="categories">
             <strong> Categories:</strong>
-            <nuxt-link v-for="category in product.categories" :key="category.id" :to="`/shop/${category.slug}`">
+            <nuxt-link v-for="category in product.categories" :key="category.id" :to="`/shop/${category.slug}/`">
                 <a>{{category.name}}</a>
             </nuxt-link>
         </p>
         <p class="tags">
             <strong> Tags</strong>
-            <nuxt-link v-for="tag in product.tags" :key="tag.slug" :to="`/shop/${tag.slug}`" >
+            <nuxt-link v-for="tag in product.tags" :key="tag.slug" :to="`/shop/${tag.slug}/`" >
                 <a>{{tag.name}}</a>
             </nuxt-link>
         </p>

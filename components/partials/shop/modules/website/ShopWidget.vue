@@ -23,7 +23,7 @@
                         <v-list-group>
                             <template v-slot:activator>
                                 <nuxt-link
-                                    :to="`/product-categories/${category.slug}`"
+                                    :to="`/product-categories/${category.slug}/`"
                                 >
                                     <v-list-item-title>{{
                                         category.name

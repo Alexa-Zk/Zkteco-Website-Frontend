@@ -16,7 +16,7 @@
                             <div class="ps-block__author">
                                 <nuxt-link
                                     class="ps-btn-case-study"
-                                    :to="`/case-study/${item.slug}`"
+                                    :to="`/case-study/${item.slug}/`"
                                 >
                                     {{ item.title.substring(0, 72) }}
                                 </nuxt-link>

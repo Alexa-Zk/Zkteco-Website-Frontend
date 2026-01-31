@@ -129,7 +129,7 @@ export default {
             this.getCartProduct(this.cartItems);
 
             if (argument) {
-                this.$router.push(`/store/product/${argument.id}`);
+                this.$router.push(`/store/product/${argument.id}/`);
             } else {
                 this.$notify({
                     group: 'addCartSuccess',

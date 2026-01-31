@@ -19,7 +19,7 @@
                     </content-placeholders>
                 </div>
                 <li v-for="category in getArmatura">
-                    <nuxt-link :to="`/sub-categories/${category.slug}`">{{
+                    <nuxt-link :to="`/sub-categories/${category.slug}/`">{{
                         category.name
                     }}</nuxt-link>
                 </li>

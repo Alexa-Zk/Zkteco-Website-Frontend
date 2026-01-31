@@ -15,13 +15,13 @@
                 <div class="ps-post__meta">
                     <nuxt-link
                         v-for="category in post.categories"
-                        :to="`/news-center/categories/${category.slug}`"
+                        :to="`/news-center/categories/${category.slug}/`"
                         :key="category.id"
                     >
                         {{ category.name }}
                     </nuxt-link>
                 </div>
-                <nuxt-link :to="`/blog/${post.slug}`" class="ps-post__title">
+                <nuxt-link :to="`/blog/${post.slug}/`" class="ps-post__title">
                     {{ post.title }}
                 </nuxt-link>
                 <div class="ps-post__desc">

@@ -45,7 +45,7 @@
                                 </a>
                                 <nuxt-link
                                     class="ps-btn"
-                                    :to="`/solution-details/${item.slug}`"
+                                    :to="`/solution-details/${item.slug}/`"
                                 >
                                     Learn More
                                 </nuxt-link>

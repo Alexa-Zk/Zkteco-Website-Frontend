@@ -10,7 +10,7 @@
                 :key="item.id"
             >
                 <h4>
-                    <nuxt-link :to="`/sub-categories/${item.slug}`">
+                    <nuxt-link :to="`/sub-categories/${item.slug}/`">
                         {{ item.name }}
                     </nuxt-link>
                 </h4>
