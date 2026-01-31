@@ -28,7 +28,7 @@
                 <ul v-else>
                     <li v-for="category in categoryCount" :key="category.id">
                         <nuxt-link
-                            :to="`/news-center/categories/${category.slug}`"
+                            :to="`/news-center/categories/${category.slug}/`"
                         >
                             {{ category.name }}
                             <span class="widget__content_value">{{

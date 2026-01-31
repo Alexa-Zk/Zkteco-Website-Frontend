@@ -55,17 +55,7 @@ export default {
     target: 'static',
     ssr: true,
     head() {
-        const path = this.$route.path.endsWith('/')
-            ? this.$route.path
-            : `${this.$route.path}/`;
-
         return {
-            link: [
-                {
-                    rel: 'canonical',
-                    href: `https://zkteco-wa.com${path}`
-                }
-            ],
             titleTemplate: 'ZKTeco West Africa',
             title: 'ZKTeco West Africa',
             meta: [

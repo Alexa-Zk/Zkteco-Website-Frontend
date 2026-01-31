@@ -52,7 +52,7 @@
                                     </p>
                                 </div>
                                 <nuxt-link
-                                    :to="`/store/product/${product.id}`"
+                                    :to="`/store/product/${product.id}/`"
                                     class="ps-orders__more"
                                 >
                                     See Product

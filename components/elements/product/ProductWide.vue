@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="ps-product ps-product--wide" v-if="product">
         <div class="ps-product__thumbnail">
-            <nuxt-link :to="`/product/${product.id}`">
+            <nuxt-link :to="`/product/${product.id}/`">
                 <img
                     :src="product.images[0].src"
                     alt="martfury"
@@ -11,7 +11,7 @@
         <div class="ps-product__container">
             <div class="ps-product__content">
                 <nuxt-link
-                    :to="`/product/${product.id}`"
+                    :to="`/product/${product.id}/`"
                     class="ps-product__title"
                 >
                     {{ product.name }}

@@ -46,7 +46,7 @@
                         :key="item.id"
                     >
                         <article class="ps-block--store-2">
-                            <nuxt-link :to="`/solution-details/${item.slug}`">
+                            <nuxt-link :to="`/solution-details/${item.slug}/`">
                                 <div
                                     class="ps-block__content bg--cover"
                                     :style="{
@@ -58,7 +58,7 @@
                                 <a class="ps-block__user" href="#"> </a>
 
                                 <nuxt-link
-                                    :to="`/solution-details/${item.slug}`"
+                                    :to="`/solution-details/${item.slug}/`"
                                 >
                                     {{ item.title }}
                                 </nuxt-link>

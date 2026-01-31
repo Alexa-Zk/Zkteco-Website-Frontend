@@ -1,12 +1,12 @@
 <template lang="html">
     <div class="ps-product--cart">
         <div class="ps-product__thumbnail">
-            <nuxt-link to="/product/pid">
+            <nuxt-link to="/product/pid/">
                 <img :src="product.images[0].src" :alt="product.images[0].name" />
             </nuxt-link>
         </div>
         <div class="ps-product__content">
-            <nuxt-link to="/product/[pid]">
+            <nuxt-link to="/product/[pid]/">
                 <a class="ps-product__title">{{ product.name }}</a>
             </nuxt-link>
         </div>

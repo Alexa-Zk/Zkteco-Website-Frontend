@@ -3,7 +3,7 @@
         <template v-for="menuItem in menu">
             <v-list-item v-if="!menuItem.subMenu">
                 <v-list-item-content>
-                    <nuxt-link :to="`/sub-categories/${menuItem.slug}`">
+                    <nuxt-link :to="`/sub-categories/${menuItem.slug}/`">
                         {{ menuItem.name }}
                     </nuxt-link>
                 </v-list-item-content>

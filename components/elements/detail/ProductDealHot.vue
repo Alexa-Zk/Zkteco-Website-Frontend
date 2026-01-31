@@ -6,7 +6,7 @@
                 <h5>Investor</h5>
                 <h3 class="ps-product__name">
                     <nuxt-link
-                        :to="`/product/${product.id}`"
+                        :to="`/product/${product.id}/`"
                         class="ps-product__title"
                     >
                         {{ product.title }}

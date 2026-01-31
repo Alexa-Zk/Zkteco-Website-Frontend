@@ -12,7 +12,7 @@
                 <figure class="ps-block__items">
                     <nuxt-link
                         v-for="(product, index) in cartProducts"
-                        :to="`/store/product/${product.id}`"
+                        :to="`/store/product/${product.id}/`"
                         :key="product.id"
                         class="ps-product__title"
                     >

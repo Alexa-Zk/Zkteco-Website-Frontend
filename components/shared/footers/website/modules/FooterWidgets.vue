@@ -100,7 +100,7 @@
             </h4>
             <ul class="ps-list--link">
                 <li v-for="item in categories" :key="item.slug">
-                    <nuxt-link :to="`/news-center/categories/${item.slug}`">{{
+                    <nuxt-link :to="`/news-center/categories/${item.slug}/`">{{
                         item.name
                     }}</nuxt-link>
                 </li>
@@ -112,7 +112,7 @@
             </h4>
             <ul class="ps-list--link">
                 <li v-for="item in solutionCategoriesAndSub" :key="item.slug">
-                    <nuxt-link :to="`/solution-categories/${item.slug}`">{{
+                    <nuxt-link :to="`/solution-categories/${item.slug}/`">{{
                         item.name
                     }}</nuxt-link>
                 </li>

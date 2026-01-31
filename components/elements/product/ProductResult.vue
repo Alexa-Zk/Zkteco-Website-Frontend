@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="ps-product ps-product--wide ps-product--search-result">
         <div class="ps-product__thumbnail">
-            <nuxt-link :to="`/store/product/${product.id}`">
+            <nuxt-link :to="`/store/product/${product.id}/`">
                 <img
                     :src="product.images[0] ? product.images[0].src : '' "
                     alt="martfury"
@@ -9,7 +9,7 @@
             </nuxt-link>
         </div>
         <div class="ps-product__content">
-            <nuxt-link :to="`/store/product/${product.id}`" class="ps-product__title">
+            <nuxt-link :to="`/store/product/${product.id}/`" class="ps-product__title">
                 {{ product.name }}
             </nuxt-link>
             <div class="ps-product__rating">
