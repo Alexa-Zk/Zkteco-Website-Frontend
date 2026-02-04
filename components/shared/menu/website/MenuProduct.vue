@@ -4,6 +4,12 @@
             Products
         </nuxt-link>
         <div class="mega-menu">
+            <div class="mega-menu__column">
+                 <h4>
+                       <a href="https://www.zkdigimax.ng">Zkdigimax</a> 
+                    <i class="icon-chevron-right"></i>
+                </h4>
+            </div>
             <div
                 v-for="item in categoryAndSubCategories"
                 class="mega-menu__column"
