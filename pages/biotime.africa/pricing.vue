@@ -134,8 +134,8 @@ export default {
                     transactions: 75000,
                     mobileAppUsers: 5,
                     price: {
-                        monthly: 6,
-                        annually: 65
+                        monthly: 7,
+                        annually: 70
                     }
                 },
                 {
@@ -146,8 +146,8 @@ export default {
                     transactions: 100000,
                     mobileAppUsers: 10,
                     price: {
-                        monthly: 12,
-                        annually: 118
+                        monthly: 13,
+                        annually: 127
                     }
                 },
                 {
@@ -158,8 +158,8 @@ export default {
                     transactions: 200000,
                     mobileAppUsers: 20,
                     price: {
-                        monthly: 19,
-                        annually: 194
+                        monthly: 21,
+                        annually: 209
                     }
                 },
                 {
@@ -170,8 +170,8 @@ export default {
                     transactions: 300000,
                     mobileAppUsers: 30,
                     price: {
-                        monthly: 27,
-                        annually: 269
+                        monthly: 29,
+                        annually: 289
                     }
                 },
                 {
@@ -182,8 +182,8 @@ export default {
                     transactions: 400000,
                     mobileAppUsers: 40,
                     price: {
-                        monthly: 32,
-                        annually: 323
+                        monthly: 35,
+                        annually: 347
                     }
                 },
                 {
@@ -194,8 +194,8 @@ export default {
                     transactions: 500000,
                     mobileAppUsers: 50,
                     price: {
-                        monthly: 48,
-                        annually: 484
+                        monthly: 52,
+                        annually: 520
                     }
                 },
                 {
@@ -206,8 +206,8 @@ export default {
                     transactions: 700000,
                     mobileAppUsers: 70,
                     price: {
-                        monthly: 54,
-                        annually: 538
+                        monthly: 58,
+                        annually: 578
                     }
                 },
                 {
@@ -218,8 +218,8 @@ export default {
                     transactions: 900000,
                     mobileAppUsers: 90,
                     price: {
-                        monthly: 77,
-                        annually: 774
+                        monthly: 83,
+                        annually: 832
                     }
                 },
                 {
@@ -230,8 +230,8 @@ export default {
                     transactions: 1000000,
                     mobileAppUsers: 200,
                     price: {
-                        monthly: 97,
-                        annually: 968
+                        monthly: 104,
+                        annually: 1041
                     }
                 },
                 {
@@ -242,8 +242,8 @@ export default {
                     transactions: 2500000,
                     mobileAppUsers: 500,
                     price: {
-                        monthly: 194,
-                        annually: 1935
+                        monthly: 208,
+                        annually: 2080
                     }
                 },
                 {
@@ -254,8 +254,8 @@ export default {
                     transactions: 5000000,
                     mobileAppUsers: 1000,
                     price: {
-                        monthly: 323,
-                        annually: 3225
+                        monthly: 347,
+                        annually: 3467
                     }
                 },
                 {
