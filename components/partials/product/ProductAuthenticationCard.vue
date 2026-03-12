@@ -3,73 +3,50 @@
         <div class="row" v-show="productData">
             <div class="left-row">
                 <div class="col">
-                    <h3>Personal Details</h3>
-                    <div class="col-inner">
-                        <div class="col-title">Name/Company:</div>
-                        <span>{{
-                            productData ? productData.customer_name : 'unknown'
-                        }}</span>
-                    </div>
-                </div>
-                <div class="col">
-                    <h3>Device Details</h3>
+                    <h3>Product Details</h3>
                     <div class="col-inner">
                         <div class="col-title">Serial Number:</div>
                         <span>{{
-                            productData ? productData.serial_number : 'unknown'
+                            productData ? productData.serial_number : 'Unknown'
                         }}</span>
                     </div>
-                    <!-- <div class="col-inner">
+                    <div class="col-inner">
                         <div class="col-title">Model:</div>
                         <span>{{
-                            productData ? productData.device_model : 'unknown'
-                        }}</span>
-                    </div> -->
-                    <div class="col-inner">
-                        <div class="col-title">Exclusive Area:</div>
-                        <span>{{
-                            productData ? productData.exclusive_area : 'unknown'
+                            productData ? productData.model : 'Unknown'
                         }}</span>
                     </div>
-                </div>
-                <div class="col">
-                    <h3>Warranty Details</h3>
                     <div class="col-inner">
-                        <div class="col-title">Warranty Status:</div>
-                        <span :class="{'text-danger': productData.warranty_status == 'Expired' }">{{
-                            productData && productData.warranty_status ? productData.warranty_status : 'Not Supported'
-                        }}</span>
-                    </div>                                         
-                    <div class="col-inner">
-                        <div class="col-title">Warranty Period:</div>
+                        <div class="col-title">Exclusive zone:</div>
                         <span>{{
-                             productData && productData.warranty_status 
-                                ? (productData.warranty_days_left = 'Supported')
-                                : 'Not supported'
+                            productData ? productData.exclusive_area : 'Unknown'
                         }}</span>
                     </div>
-                </div>
-                <!-- <div class="col">
-                    <h3>Support Details</h3>
                     <div class="col-inner">
-                        <div class="col-title">Support:</div>
+                        <div class="col-title">Date of manufacture:</div>
                         <span>{{
                             productData
-                                ? (productData.warranty_days_left = 'supported')
-                                : 'not-supported'
+                                ? productData.date_of_manufacture
+                                : 'Unknown'
                         }}</span>
                     </div>
-                </div> -->
+                </div>
+                <p
+                    v-if="productData && productData.status === false"
+                    class="text-danger"
+                >
+                    {{
+                        productData.message || 'Serial number not found'
+                    }}
+                </p>
             </div>
             <div class="right-row">
-                <!-- <img src="../../assets/certified-2.png" alt="" /> -->
                 <img v-if="productData.status === false" src="@/static/img/website/unknown.png" alt="" />
                 <img
                     v-else
                     src="@/static/img/website/certified.png"
                     alt=""
                 />
-                
             </div>
         </div>
     </div>

@@ -102,21 +102,55 @@ export default {
     methods: {
         async ProductAuthentication() {
             try {
-                const payload = {
-                    serial_number: this.serial_number
-                };
-                const response = await this.$axios.$post(
-                    'https://wslbackend.zkteco-wa.com/api/v1/integrations/devices',
-                    payload
-                );
-                if (response) {
-                    this.serial_number = '';
-
-                    this.productData = response.data;
+                const serialNumber = (this.serial_number || '').trim();
+                if (!serialNumber) {
+                    return;
                 }
-            } catch (error) {
+
+                const response = await this.$axios.$post(
+                    `https://admin.zkteco-wa.com/products/anticounterfeitingquery?barCode=${encodeURIComponent(serialNumber)}`,
+                    {},
+                    {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }
+                );
+
+                const resultCode = response?.data?.ResultCode;
+                const body = response?.data?.body || {};
+
+                if (resultCode === 1) {
+                    this.productData = {
+                        status: true,
+                        serial_number: body.ZSN || body.ZHN || serialNumber,
+                        exclusive_area: body.BZIRK || 'Unknown',
+                        date_of_manufacture: body.WADAT || 'Unknown',
+                        model: body.ZZJCPH || 'Unknown'
+                    };
+                } else {
+                    this.productData = {
+                        status: false,
+                        serial_number: serialNumber,
+                        exclusive_area: 'Unknown',
+                        date_of_manufacture: 'Unknown',
+                        model: 'Unknown',
+                        message: 'Serial number not found'
+                    };
+                }
+
                 this.serial_number = '';
-                this.productData = error.response.data;
+            } catch (error) {
+                const serialNumber = (this.serial_number || '').trim();
+                this.serial_number = '';
+                this.productData = {
+                    status: false,
+                    serial_number: serialNumber || 'Unknown',
+                    exclusive_area: 'Unknown',
+                    date_of_manufacture: 'Unknown',
+                    model: 'Unknown',
+                    message: 'Unable to verify serial number at the moment'
+                };
             }
         }
     }
