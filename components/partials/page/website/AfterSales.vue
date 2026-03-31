@@ -30,6 +30,15 @@
                             Anti-counterfeit enquiry
                         </nuxt-link>
                     </div>
+                    <div class="ps-column">
+                        <nuxt-link
+                            to="/support/warranty-check"
+                            class="ps-post__title"
+                        >
+                            <policy />
+                            Warranty Check
+                        </nuxt-link>
+                    </div>
                     <!--div class="ps-column">
                         <nuxt-link to="/support/tickets" class="ps-post__title">
                             <support />
@@ -79,9 +88,12 @@ export default {
     .ps-section__content {
         .ps-row {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
             column-gap: 30px;
             row-gap: 40px;
+            @include media('<lg') {
+                grid-template-columns: 1fr 1fr;
+            }
             @include media('<sm') {
                 display: grid;
                 grid-template-columns: 1fr;

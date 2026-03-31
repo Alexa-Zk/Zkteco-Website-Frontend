@@ -106,6 +106,10 @@ export default {
                                     text: 'Anti-Counterfeit Enquiry',
                                     url: '/support/anti-counterfeiting'
                                 },
+                                {
+                                    text: 'Warranty Check',
+                                    url: '/support/warranty-check'
+                                },
                                 // {
                                 //     text: 'Support Ticket',
                                 //     url: '/support/tickets'

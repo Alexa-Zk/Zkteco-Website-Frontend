@@ -153,10 +153,26 @@ export default {
 
     modules: [
         '@nuxtjs/axios',
+        '@nuxtjs/proxy',
         'nuxt-i18n',
         '@nuxtjs/robots',
         '@nuxtjs/sitemap'
     ],
+
+    axios: {
+        proxy: true
+    },
+
+    proxy: {
+        '/zkteco-proxy/': {
+            target: 'https://www.zkteco.com',
+            pathRewrite: {
+                '^/zkteco-proxy/': '/'
+            },
+            changeOrigin: true,
+            secure: true
+        }
+    },
 
     robots: {
         Sitemap: 'https://zkteco-wa.com/sitemap.xml',

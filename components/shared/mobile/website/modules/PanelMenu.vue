@@ -151,6 +151,10 @@ export default {
                             url: '/support/anti-counterfeiting'
                         },
                         {
+                            text: 'Warranty Check',
+                            url: '/support/warranty-check'
+                        },
+                        {
                             text: 'E Learning Platforms',
                             url: '/tutorial'
                         },
