@@ -12,7 +12,6 @@
                             `${slide.image.formats.thumbnail.url} 320w, ${slide.image.formats.small.url} 480w, ${slide.image.formats.large.url} 720w,`
                         " -->
                     <img
-                        loading="lazy"
                         :src="slide.image_url"
                         :alt="slide.image_name"
                     />
