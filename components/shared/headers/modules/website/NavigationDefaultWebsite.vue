@@ -30,7 +30,7 @@
                     |
                     <li class="menu-item-has-dropdown">
                         <nuxt-link to="/news-center">
-                            News Center
+                           Blog
                         </nuxt-link>
                     </li>
                     |

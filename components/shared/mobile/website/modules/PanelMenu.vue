@@ -169,7 +169,7 @@ export default {
                     url: '/about-us'
                 },
                 {
-                    text: 'News Center',
+                    text: 'Blog',
                     url: '/news-center'
                 },
                 {

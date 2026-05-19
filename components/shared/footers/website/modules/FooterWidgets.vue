@@ -96,7 +96,7 @@
         </aside>
         <aside class="widget widget_footer">
             <h4 class="widget-title">
-                News Center
+               Blog
             </h4>
             <ul class="ps-list--link">
                 <li v-for="item in categories" :key="item.slug">
